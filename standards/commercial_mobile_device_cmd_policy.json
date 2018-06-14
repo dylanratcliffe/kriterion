@@ -1,0 +1,83 @@
+{
+  "name": "commercial_mobile_device_cmd_policy",
+  "date": "2016-09-30",
+  "description": "This STIG contains the policy, training, and operating procedure security controls for the use of CMDs in the DoD environment. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil..",
+  "title": "Commercial Mobile Device (CMD) Policy Security Technical Implementation Guide (STIG)",
+  "version": "2",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-24953",
+      "title": "Site physical security policy must include a statement outlining whether CMDs with digital cameras (still and video) are permitted or prohibited on or in this DoD facility.",
+      "description": "Mobile devices with cameras are easily used to photograph sensitive information and areas if not addressed. Sites must establish, document, and train on how to mitigate this threat. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-24955",
+      "title": "A data spill (Classified Message Incident (CMI)) procedure or policy must be published for site CMDs.",
+      "description": "When a data spill occurs on a CMD, classified or sensitive data must be protected to prevent disclosure. After a data spill, the CMD must either be wiped using approved procedures, or destroyed if no procedures are available, so classified or sensitive data is not exposed. If a data spill procedure is not published, the site may not use approved procedures to remediate after a data spill occurs and classified data could be exposed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24957",
+      "title": "If a data spill (Classified Message Incident (CMI)) occurs on a wireless email device or system at a site, the site must follow required data spill procedures.",
+      "description": "If required procedures are not followed after a data spill, classified data could be exposed to unauthorized personnel.",
+      "severity": "high"
+    },
+    {
+      "id": "V-24958",
+      "title": "Required procedures must be followed for the disposal of CMDs.",
+      "description": "If appropriate procedures are not followed prior to disposal of a CMD, an adversary may be able to obtain sensitive DoD information or learn aspects of the configuration of the device that might facilitate a subsequent attack.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24960",
+      "title": "Mobile operating system (OS) based CMDs and systems must not be used to send, receive, store, or process classified messages unless specifically approved by NSA for such purposes and NSA approved transmission and storage methods are used.",
+      "description": "DoDD 8100.2 states wireless devices will not be used for classified data unless approved for such use. Classified data could be exposed to unauthorized personnel.",
+      "severity": "high"
+    },
+    {
+      "id": "V-24961",
+      "title": "Mobile device users must complete training on required content before being provided mobile devices or allowed access to DoD networks with a mobile device.",
+      "description": "Users are the first line of security controls for CMD systems. They must be trained in using CMD security controls or the system could be vulnerable to attack.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24962",
+      "title": "The site Incident Response Plan or other procedure must include procedures to follow when a mobile operating system (OS) based mobile device is reported lost or stolen.",
+      "description": "Sensitive DoD data could be stored in memory on a DoD operated mobile operating system (OS) based CMD and the data could be compromised if required actions are not followed when a CMD is lost or stolen. Without procedures for lost or stolen mobile operating system (OS) based CMD devices, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24963",
+      "title": "The mobile device system administrator must perform a wipe command on all new or reissued CMDs and a STIG-compliant IT policy will be pushed to the device before issuing it to DoD personnel.",
+      "description": "Malware can be installed on the device at some point between shipping from the factory and delivery to DoD.  The malware could result in the compromise of sensitive DoD information or result in the introduction of malware within the DoD network.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24964",
+      "title": "Mobile device software updates must only originate from approved DoD sources.",
+      "description": "Users must not accept Over-The-Air (OTA) wireless software updates from the wireless carrier or other non-DoD sources unless the updates have been tested and approved by the ISSO. Unauthorized/unapproved software updates could include malware or cause a degradation of the security posture of the CMD and DoD network infrastructure. All software updates should be reviewed and/or tested by the smartphone system administrator and originate from a DoD source or DoD-approved source. Wireless software updates should be pushed from the CMD management server, when this feature is available.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24969",
+      "title": "Required actions must be followed at the site when a CMD has been lost or stolen.",
+      "description": "If procedures for lost or stolen CMDs are not followed, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA.",
+      "severity": "low"
+    },
+    {
+      "id": "V-28317",
+      "title": "Mobile users must complete required training annually.",
+      "description": "Users are the first line of security controls for CMD systems. They must be trained in using CMD security controls or the system could be vulnerable to attack. If training is not renewed on an annual basis, users may not be informed of new security procedures or may forget previously trained procedures, which could lead to an exposure of sensitive DoD information.",
+      "severity": "low"
+    },
+    {
+      "id": "V-32677",
+      "title": "A security risk analysis must be performed on a mobile application by the Authorizing Official (AO) or AO-authorized authority prior to the application being approved for use. \n",
+      "description": "Non-approved applications can contain malware. Approved applications should be reviewed and tested by the AO to ensure they do not contain malware, spyware, or have unexpected features (e.g., send private information to a web site, track user actions, connect to a non-DoD management server).\n",
+      "severity": "high"
+    }
+  ]
+}

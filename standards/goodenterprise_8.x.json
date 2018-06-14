@@ -1,0 +1,401 @@
+{
+  "name": "goodenterprise_8.x",
+  "date": "2014-08-18",
+  "description": "Developed by Good Technology in coordination with DISA for the DoD.",
+  "title": "Good for Enterprise 8.x Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-53019",
+      "title": "The Good Mobility Suite must implement separation of administrator duties by requiring a specific role to be assigned to each administrator account.",
+      "description": "Separation of duties supports the management of individual accountability and reduces the power of one individual or administrative account. Employing a separation of duties model reduces the threat that one individual has the authority to make changes to a system and the authority to delete any record of those changes.\nThis requirement is intended to limit exposure due to operating from within a privileged account or role. The inclusion of a role is intended to address those situations where an access control policy, such as Role-Based Access Control (RBAC), is being implemented and where a change of role provides the same degree of assurance in the change of access authorizations for both the user and all processes acting on behalf of the user as would be provided by a change between a privileged and a non-privileged account.\nIt is recommended that the following or similar roles be supported:  \n1) Good Mobility Suite administrative account administrator is responsible for server installation, initial configuration, and maintenance functions.\n2) Security configuration policy administrator (IA technical professional) is responsible for security configuration of the server and setting up and maintenance of mobile device security policies.\n3) Device management administrator (Technical operator) is responsible for maintenance of mobile device accounts, including setup, change of account configurations, and account deletion.\n4) Auditor (internal auditor or reviewer) is responsible for reviewing and maintaining server and mobile device audit logs.",
+      "severity": "high"
+    },
+    {
+      "id": "V-53027",
+      "title": "The Good Mobility Suite server must accept alerts from the mobile operating system when the mobile OS has detected integrity check failures.",
+      "description": "Successful incident response and auditing relies on timely, accurate system information and analysis in order to allow the organization to identify and respond to potential incidents in a proficient manner.  Alerting a Good Mobility Suite mitigates the potential for attacks triggering integrity failures to have further consequences to the enterprise.",
+      "severity": "high"
+    },
+    {
+      "id": "V-53029",
+      "title": "The Good Mobility Suite server must perform required actions when a security-related alert is received.",
+      "description": "Incident response functions are intended to monitor, detect, and alarm on defined events occurring on the system or on the network.  A large part of their functionality is accurate and timely notification of events.  Notifications can be made more efficient by the creation of notification groups containing members who would be responding to a particular alarm or event.  Types of actions the Good Mobility Suite must be able to perform after a security alert include:  log the alert, send email to a system administrator, wipe the managed mobile device, lock the mobile device account on the Good Mobility Suite, disable the security container, wipe the security container, and delete an unapproved application.  Security alerts include any alert from the MDIS or MAM component of the Good Mobility Suite.",
+      "severity": "high"
+    },
+    {
+      "id": "V-53031",
+      "title": "The Good Mobility Suite server must detect and report the version of the operating system, device drivers, and application software for managed mobile devices.",
+      "description": "Organizations are required to identify information systems containing software affected by recently announced software flaws (and potential vulnerabilities resulting from those flaws) and report this information to designated organizational officials with information security responsibilities (e.g., senior information security officers, information system security managers, information systems security officers).  To support this requirement, an automated process or mechanism is required.  This mechanism also ensures the network configuration is known for risk mitigation when known issues are found with certain versions of the operating system or applications.",
+      "severity": "high"
+    },
+    {
+      "id": "V-53033",
+      "title": "The Good Mobility Suite email client must support retrieving encryption certificates not stored in the local trust anchor store for S/MIME purposes.",
+      "description": "Cryptography is only as strong as the encryption modules/algorithms that are employed to encrypt the data.  Strong encryption must be used to protect the integrity and confidentiality of the data.  In this case, the requirement stated that the email client must support retrieving certificates not stored in the local trust anchor store.",
+      "severity": "low"
+    },
+    {
+      "id": "V-53035",
+      "title": "The Good Mobility Suite email client must provide a mechanism to provide certificate validation through a trusted OCSP, CRL, or SCVP.",
+      "description": "Cryptography is only as strong as the encryption modules/algorithms that are employed to encrypt the data.  Strong encryption must be used to protect the integrity and confidentiality of the data.  In this case, the requirement states that the email client must validate certificates through a trusted OCSP, CRL, or SCVP.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53037",
+      "title": "The Good Mobility Suite email client must provide the mobile device user the capability to decrypt incoming email messages using software- or hardware-based digital certificates.",
+      "description": "Cryptography is only as strong as the encryption modules/algorithms that are employed to encrypt the data.  Strong encryption must be used to protect the integrity and confidentiality of the data.  In this case, the requirement states that the email client must be able to decrypt incoming email messages.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53039",
+      "title": "The Good Mobility Suite email client must provide the mobile device user the capability to digitally sign and encrypt outgoing email messages using software- or hardware-based digital certificates.",
+      "description": "Cryptography is only as strong as the encryption modules/algorithms that are employed to encrypt the data.  Strong encryption must be used to protect the integrity and confidentiality of the data.  In this case, the requirement states that the email client must be able to sign and/or encrypt outgoing messages.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53041",
+      "title": "The Good Mobility Suite email client must set the Smart Card or Certificate Store Password caching timeout period to 120 minutes.",
+      "description": "Cryptography is only as strong as the encryption modules/algorithms that are employed to encrypt the data.  Strong encryption must be used to protect the integrity and confidentiality of the data.  In this case, the requirement states that Smart Card/Certificate Store password caching must time out.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53043",
+      "title": "The Good Mobility Suite email client S/MIME must be fully interoperable with DoD PKI and CAC/PIV.  CAC/PIV (hard token) and PKCS#12 (soft token) certificate stores must be supported.",
+      "description": "Cryptography is only as strong as the encryption modules/algorithms that are employed to encrypt the data.  Strong encryption must be used to protect the integrity and confidentiality of the data.  In this case, the CAC is the required mechanism for that protection.",
+      "severity": "low"
+    },
+    {
+      "id": "V-53045",
+      "title": "The Good Mobility Suite email client must be capable of providing S/MIME v3 (or later version) encryption of email.",
+      "description": "Cryptography is only as strong as the encryption modules/algorithms that are employed to encrypt the data.  Strong encryption must be used to protect the integrity and confidentiality of the data.  In this case, S/MIME is the required mechanism for encryption of email.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53047",
+      "title": "The Good Mobility Suite email client must restrict contact list data elements transferred to the phone application.",
+      "description": "The contact list data elements may contain sensitive or PII information; therefore, the data elements accessed outside the security container must be limited so sensitive data is not exposed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-53049",
+      "title": "The Good Mobility Suite server must disable copying data from inside a security container to a non-secure data area on a mobile device via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.  If this control is not available, sensitive DoD data stored inside the security container could be exposed if it is copied to a non-secure area on the device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53051",
+      "title": "The Good Mobility Suite server must specify a list of approved applications that must be installed on the mobile device and cannot be removed by the user.",
+      "description": "DoD can perform due diligence on sources of software to mitigate the risk that malicious software is introduced to those sources.  Therefore, if software is downloaded from a DoD-approved source, then it is less likely to be malicious than if it is downloaded from an unapproved source.  To prevent access to unapproved sources, the operating system, in most cases, can be configured to disable user access to public application stores. In some cases, some applications are required for secure operation of the mobile devices controlled by the Good Mobility Suite.  In these cases, the ability for users to remove the application is needed to ensure proper secure operations of the device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53053",
+      "title": "The Good Mobility Suite server must configure the mobile device agent to prohibit the download of software from a non-DoD approved source.",
+      "description": "DoD can perform due diligence on sources of software to mitigate the risk that malicious software is introduced to those sources.  Therefore, if software is downloaded from a DoD-approved source, then it is less likely to be malicious than if it is downloaded from an unapproved source.  To prevent access to unapproved sources, the operating system, in most cases, can be configured to disable user access to public application stores.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53055",
+      "title": "The Good Mobility Suite server must prohibit the mobile device user from installing unapproved applications on the mobile device.",
+      "description": "The operating system must enforce software installation by users based upon what types of software installations are permitted (e.g., updates and security patches to existing software) and what types of installations are prohibited (e.g., software whose pedigree with regard to being potentially malicious is unknown or suspect) by the organization.  The installation and execution of unauthorized software on an operating system may allow the application to obtain sensitive information or further compromise the system.  Preventing a user from installing unapproved applications mitigates this risk.  All OS core applications, third-party applications, and carrier-installed applications must be approved.  In this case, applications include any applets, browse channel apps, and icon apps.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53057",
+      "title": "The Good Mobility Suite server application white list for managed mobile devices must be set to Deny All by default when no applications are listed.",
+      "description": "The installation and execution of unauthorized software on an operating system may allow the application to obtain sensitive information or further compromise the system.  If the system administrator has control over what applications are downloaded, then the system administrator can check that only known good programs are installed, which significantly mitigates the risk posed by malicious software.",
+      "severity": "high"
+    },
+    {
+      "id": "V-53059",
+      "title": "The Good Mobility Suite server must configure the Good Mobility Suite agent to prohibit the download of applications on mobile operating system devices without system administrator control.",
+      "description": "The installation and execution of unauthorized software on an operating system may allow the application to obtain sensitive information or further compromise the system.  If the system administrator has control over what applications are downloaded, then the system administrator can check that only known good programs are installed, which significantly mitigates the risk posed by malicious software.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53061",
+      "title": "The Good Mobility Suite server must enable iOS Force encrypted backups via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53063",
+      "title": "The Good Mobility Suite server must disable iOS Allow diagnostic data to be sent to Apple via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53065",
+      "title": "The Good Mobility Suite server must disable iOS Auto-fill via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53067",
+      "title": "The Good Mobility Suite server must disable iOS Allow documents from unmanaged apps in managed apps via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53069",
+      "title": "The Good Mobility Suite server must disable iOS Allow documents from managed apps in unmanaged apps via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53071",
+      "title": "The Good Mobility Suite server must disable iOS Touch ID to unlock device via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53073",
+      "title": "The Good Mobility Suite server must disable the iOS Today View in lock screen via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53075",
+      "title": "The Good Mobility Suite server must disable iOS Airdrop via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53077",
+      "title": "The Good Mobility Suite server must disable the iOS notification center in lock screen via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53079",
+      "title": "The Good Mobility Suite server must disable iOS voice dialing via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53081",
+      "title": "The Good Mobility Suite server must disable iOS Siri while the device is locked via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53083",
+      "title": "The Good Mobility Suite server must enable iOS force limited ad tracking via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53085",
+      "title": "The Good Mobility Suite server must disable iOS iCloud documents and data via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53087",
+      "title": "The Good Mobility Suite server must disable iOS iCloud backup via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53089",
+      "title": "The Good Mobility Suite server must disable iOS iCloud keychain sync via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53091",
+      "title": "The Good Mobility Suite server must disable iOS photo streams via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53093",
+      "title": "The Good Mobility Suite server must disable iOS shared photo streams via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53095",
+      "title": "The Good Mobility Suite server must disable iOS screenshots via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53097",
+      "title": "The Good Mobility Suite email client must either block or convert all active content in email (HTML, RTF, etc.) to text before the email is forwarded to the mobile device.",
+      "description": "HTML code embedded in emails can contain links to malicious sites. Requiring that all emails are viewed in plain text helps remediate phishing attempts.",
+      "severity": "low"
+    },
+    {
+      "id": "V-53099",
+      "title": "The Good Mobility Suite must transfer audit logs from managed mobile devices to the Good Mobility Suite.",
+      "description": "Good Mobility Suite auditing capability is critical for accurate forensic analysis.  The ability to transfer audit logs often is necessary to quickly isolate them, protect their integrity, and analyze their contents.",
+      "severity": "high"
+    },
+    {
+      "id": "V-53101",
+      "title": "The Good Mobility Suite email client must notify the user if it cannot verify the revocation status of the certificate.",
+      "description": "If the user is aware that the revocation status of a certificate could not be verified, the user is better prepared to identify suspicious behavior that indicates an IA incident is in progress.  Failure to notify the user of this occurrence makes it more likely that an adversary can use revoked certificates without detection.",
+      "severity": "low"
+    },
+    {
+      "id": "V-53103",
+      "title": "The Good Mobility Suite email client must give the user the option to deny acceptance of a certificate if it cannot verify the certificates revocation status.",
+      "description": "When additional assurance is required, the system should deny acceptance of a certificate if it cannot verify its revocation status.  Otherwise, there is the potential that it is accepting the credentials of an unauthorized system.  Allowing the operating system or user to deny certificates with unverified revocation status mitigates the risk associated with the acceptance of such certificates.",
+      "severity": "low"
+    },
+    {
+      "id": "V-53105",
+      "title": "The Good Mobility Suite email client must alert the user if it receives a public-key certificate issued from an untrusted certificate authority.",
+      "description": "If the user is aware that a certificate has been issued from an untrusted certificate authority, the user can opt not to proceed or, alternatively, is better prepared to identify suspicious behavior that indicates an IA incident is in progress.  Failure to notify the user of this occurrence makes it more likely that an adversary can launch an attack from an untrusted system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53107",
+      "title": "The Good Mobility Suite email client must give the user the option to deny acceptance of a certificate if the certificate was issued by an untrusted certificate authority.",
+      "description": "When the operating system accepts the use of certificates issued from untrusted certificate authorities, there is the potential that the system or object presenting the certificate is malicious and can compromise sensitive information or system integrity.  When additional assurance is required, the system must deny acceptance of a certificate if it was issued by an untrusted certificate authority.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53109",
+      "title": "The Good Mobility Suite email client must alert the user if it receives an invalid public-key certificate.",
+      "description": "If the user is aware that a certificate is invalid, the user can opt not to proceed or, alternatively, is better prepared to identify suspicious behavior that indicates an IA incident is in progress.  Failure to notify the user of this occurrence makes it more likely that an adversary can launch an attack from an untrusted system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53111",
+      "title": "The Good Mobility Suite email client must give the user the option to deny acceptance of a certificate if the mobile email client determines that the certificate is invalid.",
+      "description": "When the operating system accepts the use of invalid certificates, there is the potential that the system or object presenting the certificate is malicious and can compromise sensitive information or system integrity.  When additional assurance is required, the system must deny acceptance of invalid certificates.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53113",
+      "title": "The Good Mobility Suite email client must not accept certificate revocation information without verifying its authenticity.",
+      "description": "If the operating system does not verify the authenticity of revocation information, there is the potential that an authorized system is providing false information.  Acceptance of the false information could result in the installation of unauthorized software or connection to rogue networks, depending on the use for which the certificate is intended.  Verifying the authenticity of revocation information mitigates this risk.",
+      "severity": "low"
+    },
+    {
+      "id": "V-53115",
+      "title": "The Good Mobility Suite email client must verify all digital certificates in the certificate chain when performing PKI transactions.",
+      "description": "If an adversary is able to compromise one of the certificates in the certificate chain, the adversary may be able to sign lower-level certificates in the chain.  This would enable the adversary to masquerade as other users or systems.  By providing the mobile user with such false assurance, the adversary may be able obtain DoD information, capture authentication credentials, and perform other unauthorized functions.  Verifying all digital certificates in the chain mitigates this risk.",
+      "severity": "low"
+    },
+    {
+      "id": "V-53117",
+      "title": "The Good Mobility Suite email client must give the user the option to deny acceptance of a certificate if the mobile email client determines that the certificate is unverified.",
+      "description": "When the operating system accepts the use of invalid certificates, there is the potential that the system or object presenting the certificate is malicious and can compromise sensitive information or system integrity.  When additional assurance is required, the system must deny acceptance of invalid certificates.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53125",
+      "title": "The Good Mobility Suite email client must alert the user if it receives a public-key certificate with a non-FIPS approved algorithm.",
+      "description": "If the user is aware that a certificate is invalid, the user can opt not to proceed or, alternatively, is better prepared to identify suspicious behavior that indicates an IA incident is in progress.  Failure to notify the user of this occurrence makes it more likely that an adversary can launch an attack from an untrusted system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53127",
+      "title": "The Good Mobility Suite email client must give the user the option to deny acceptance of a certificate if the mobile email client determines that the certificate uses a non-FIPS approved algorithm.",
+      "description": "When the operating system accepts the use of invalid certificates, there is the potential that the system or object presenting the certificate is malicious and can compromise sensitive information or system integrity.  When additional assurance is required, the system must deny acceptance of invalid certificates.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53129",
+      "title": "The Good Mobility Suite email client must alert the user if it receives an unverified public-key certificate.",
+      "description": "If the user is aware that a certificate is invalid, the user can opt not to proceed or, alternatively, is better prepared to identify suspicious behavior that indicates an IA incident is in progress.  Failure to notify the user of this occurrence makes it more likely that an adversary can launch an attack from an untrusted system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53133",
+      "title": "The Good Mobility Suite must be configured to provide the administrative functionality to transmit a remote Data Wipe command, including removable media cards, to a managed mobile device.",
+      "description": "Without a Data Wipe capability, the data on the mobile device can be compromised in the event of a lost or stolen device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53135",
+      "title": "The Good Mobility Suite must enforce the minimum password length for the device unlock password via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53137",
+      "title": "The Good Mobility Suite server must set the device inactivity timeout to 15 minutes via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53143",
+      "title": "The Good Mobility Suite server must set the device inactivity timeout grace period to be immediate via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53145",
+      "title": "The Good Mobility Suite server must disable the mobile device users access to an application store or repository via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53149",
+      "title": "The Good Mobility Suite server must block access to specific web sites via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53153",
+      "title": "The Good Mobility Suite server must force the display of a warning banner on the mobile device via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.  \nThe warning banner must be displayed before or immediately after the user successfully unlocks the mobile device or unlocks a secure application where sensitive DoD data is stored:  \"I've read & consent to terms in IS user agreement.\"  (Wording must be exactly as specified.)",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53155",
+      "title": "The Good Mobility Suite server must set the number of incorrect password attempts before a data wipe procedure is initiated to 10 via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53157",
+      "title": "The Good Mobility Suite server must enable a Good Mobility Suite agent password via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53161",
+      "title": "The Good Mobility Suite server must enable the Good Mobility Suite agent password length to be six or more characters.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53163",
+      "title": "The Good Mobility Suite must set the Good Mobility Suite agent inactivity timeout to 15 minutes via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53165",
+      "title": "The Good Mobility Suite server must disable the automatic removal of the iOS configuration profile via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53167",
+      "title": "The Good Mobility Suite server must disable the use of simple values within the iOS Good Mobility Server agent password via centrally managed policy.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of a Good Mobility Suite allows an organization to assign values to security-related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53251",
+      "title": "The Good Mobility Suite email client must alert the user if the certificate uses an unverified CRL.",
+      "description": "If the user is aware that a certificate is invalid, the user can opt not to proceed or, alternatively, is better prepared to identify suspicious behavior that indicates an IA incident is in progress. Failure to notify the user of this occurrence makes it more likely that an adversary can launch an attack from an untrusted system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-53253",
+      "title": "The Good Mobility Suite email client must give the user the option to deny acceptance of a certificate if the mobile email client determines the CRL of the certificate is unverified.",
+      "description": "If the user is aware that a certificate is invalid, the user can opt not to proceed or, alternatively, is better prepared to identify suspicious behavior that indicates an IA incident is in progress. Failure to notify the user of this occurrence makes it more likely that an adversary can launch an attack from an untrusted system.",
+      "severity": "medium"
+    }
+  ]
+}

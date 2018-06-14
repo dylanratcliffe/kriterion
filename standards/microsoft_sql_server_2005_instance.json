@@ -1,0 +1,1001 @@
+{
+  "name": "microsoft_sql_server_2005_instance",
+  "date": "2015-06-16",
+  "description": "The Microsoft SQL Server 2005 Instance Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "Microsoft SQL Server 2005 Instance Security Technical Implementation Guide",
+  "version": "8",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-15102",
+      "title": "Automated notification of suspicious activity detected in the audit trail should be implemented.",
+      "description": "Audit record collection may quickly overwhelm storage resources and an auditor's ability to review it in a productive manner. Automated tools can provide the means to manage the audit data collected as well as present it to an auditor in an efficient way.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15103",
+      "title": "An automated tool that monitors audit data and immediately reports suspicious activity should be employed for the DBMS.",
+      "description": "Audit logs only capture information on suspicious events. Without an automated monitoring and alerting tool, malicious activity may go undetected and without response until compromise of the database or data is severe.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15104",
+      "title": "Sensitive data served by the DBMS should be protected by encryption when transmitted across the network.",
+      "description": "Sensitive data served by the DBMS and transmitted across the network in clear text is vulnerable to unauthorized capture and review.",
+      "severity": "high"
+    },
+    {
+      "id": "V-15105",
+      "title": "Unauthorized access to external database objects should be removed from application user roles.",
+      "description": "Access to objects stored and/or executed outside of the DBMS security context may provide an avenue of attack to host system resources not controlled by the DBMS. Any access to external resources from the DBMS can lead to a compromise of the host system or its resources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15106",
+      "title": "DBA roles should be periodically monitored to detect assignment of unauthorized or excess privileges.",
+      "description": "Excess privilege assignment can lead to intentional or unintentional unauthorized actions. Such actions may compromise the operation or integrity of the DBMS and its data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15107",
+      "title": "DBMS privileges to restore database data or other DBMS configurations, features or objects should be restricted to authorized DBMS accounts.",
+      "description": "Unauthorized restoration of database data, objects, or other configuration or features can result in a loss of data integrity, unauthorized configuration, or other DBMS interruption or compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15108",
+      "title": "Privileges assigned to developers on shared production and development DBMS hosts and the DBMS should be monitored every three months or more frequently for unauthorized changes.",
+      "description": "The developer role does not require Need-to-Know or administrative privileges to production databases. Assigning excess privileges can lead to unauthorized access to sensitive data or compromise of database operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15109",
+      "title": "DBMS production application and data directories should be protected from developers on shared production/development DBMS host systems.",
+      "description": "Developer roles should not be assigned DBMS administrative privileges to production DBMS application and data directories. The separation of production and development DBA and developer roles help protect the production system from unauthorized, malicious or unintentional interruption due to development activities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15110",
+      "title": "Use of the DBMS installation account should be logged.",
+      "description": "The DBMS installation account may be used by any authorized user to perform DBMS installation or maintenance. Without logging, accountability for actions attributed to the account is lost.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15111",
+      "title": "Use of the DBMS software installation account should be restricted to DBMS software installation, upgrade and maintenance actions.",
+      "description": "The DBMS software installation account is granted privileges not required for DBA or other functions. Use of accounts configured with excess privileges may result in unauthorized or unintentional compromise of the DBMS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15112",
+      "title": "The DBMS should be periodically tested for vulnerability management and IA compliance.",
+      "description": "The DBMS security configuration may be altered either intentionally or unintentionally over time. The DBMS may also be the subject of published vulnerabilities that require the installation of a security patch or a reconfiguration to mitigate the vulnerability. If the DBMS is not monitored for required or unintentional changes that render it not compliant with requirements, it can be vulnerable to attack or compromise.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15113",
+      "title": "SQL Server replications agents should be run under separate and dedicated OS accounts.",
+      "description": "Use of shared accounts used by replication agents require that all permissions required to support each of the separate replication agent roles (snapshot publication, distribution, log reading, merge publication, queue reading, and replication maintenance) be assigned to the shared account. This translates to excess privilege assignment to the account to perform a specific job task and an exploit to the single account means a compromise to all replication elements accessed by the shared account. Separation of duties by use of separate and dedicated accounts reduces the risk to the entire replication implementation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15114",
+      "title": "Developers should not be assigned excessive privileges on production databases.",
+      "description": "Developers play a unique role and represent a specific type of threat to the security of the DBMS.  Where restricted resources prevent the required separation of production and development DBMS installations, developers granted elevated privileges to create and manage new database objects must also be prevented from actions that can threaten the production operation.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15116",
+      "title": "The DBMS host platform and other dependent applications should be configured in compliance with applicable STIG requirements.",
+      "description": "The security of the data stored in the DBMS is also vulnerable to attacks against the host platform, calling applications, and other application or optional components.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15117",
+      "title": "The DBMS audit logs should be included in backup operations.",
+      "description": "DBMS audit logs are essential to the investigation and prosecution of unauthorized access to the DBMS data. Unless audit logs are available for review, the extent of data compromise may not be determined and the vulnerability exploited may not be discovered. Undiscovered vulnerabilities could lead to additional or prolonged compromise of the data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15118",
+      "title": "Remote administrative access to the database should be monitored by the IAO or IAM.",
+      "description": "Remote administrative access to systems provides a path for access to and exploit of DBA privileges. Where the risk has been accepted to allow remote administrative access, it is imperative to instate increased monitoring of this access to detect any abuse or compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15119",
+      "title": "DBMS files critical for DBMS recovery should be stored on RAID or other high-availability storage devices.",
+      "description": "DBMS recovery can be adversely affected by hardware storage failure. Impediments to DBMS recovery can have a significant impact on operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15120",
+      "title": "DBMS backup and restoration files should be protected from unauthorized access.",
+      "description": "Lost or compromised DBMS backup and restoration files may lead to not only the loss of data, but also the unauthorized access to sensitive data. Backup files need the same protections against unauthorized access when stored on backup media as when online and actively in use by the database system. In addition, the backup media needs to be protected against physical loss. Most DBMSs maintain online copies of critical control files to provide transparent or easy recovery from hard disk loss or other interruptions to database operation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15121",
+      "title": "DBMS software libraries should be periodically backed up.",
+      "description": "The DBMS application depends upon the availability and integrity of its software libraries. Without backups, compromise or loss of the software libraries can prevent a successful recovery of DBMS operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15122",
+      "title": "The database should not be directly accessible from public or unauthorized networks.",
+      "description": "Databases often store critical and/or sensitive information used by the organization. For this reason, databases are targeted for attacks by malicious users. Additional protections provided by network defenses that limit accessibility help protect the database and its data from unnecessary exposure and risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15124",
+      "title": "The Named Pipes network protocol should be documented and approved if enabled.",
+      "description": "The named pipes network protocol requires more ports to be opened on firewalls than TCP/IP. Managing and administering multiple network protocols may unnecessarily complicate network controls.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15125",
+      "title": "Only authorized users should be assigned permissions to SQL Server Agent proxies.",
+      "description": "Database accounts granted access to SQL Server Agent proxies are granted permissions to create and submit specific function job steps to be executed by SQL Server Agent. Unauthorized users may use access to proxies to execute unauthorized functions against the SQL Server instance or host operating system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15126",
+      "title": "Database backup procedures should be defined, documented and implemented.",
+      "description": "Database backups provide the required means to restore databases after compromise or loss. Backups help reduce the vulnerability to unauthorized access or hardware loss.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15127",
+      "title": "The IAM should review changes to DBA role assignments.",
+      "description": "Unauthorized assignment of DBA privileges can lead to a compromise of DBMS integrity. Providing oversight to the authorization and assignment of privileges provides the separation of duty to support sufficient oversight.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15129",
+      "title": "Backup and recovery procedures should be developed, documented, implemented and periodically tested.",
+      "description": "Problems with backup procedures or backup media may not be discovered until after a recovery is needed. Testing and verification of procedures provides the opportunity to discover oversights, conflicts, or other issues in the backup procedures or use of media designed to be used.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15130",
+      "title": "Unapproved inactive or expired database accounts should not be found on the database.",
+      "description": "Unused or expired DBMS accounts provide a means for undetected, unauthorized access to the database.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15131",
+      "title": "Sensitive information stored in the database should be protected by encryption.",
+      "description": "Sensitive data stored in unencrypted format within the database is vulnerable to unauthorized viewing.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15132",
+      "title": "Database data files containing sensitive information should be encrypted.",
+      "description": "Where access controls do not provide complete protection of sensitive or classified data, encryption can help to close the gap. Encryption of sensitive data helps protect disclosure to privileged users who do not have a need-to-know requirement to view the data that is stored in files outside of the database. Data encryption also provides a level of protection where database controls cannot restrict access to single rows and columns of data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15133",
+      "title": "Transaction logs should be periodically reviewed for unauthorized modification of data.",
+      "description": "Unauthorized or malicious changes to data compromise the integrity and usefulness of the data. Auditing changes to data supports accountability and non-repudiation. Auditing changes to data may be provided by the application accessing the DBMS or may depend upon the DBMS auditing functions. When DBMS auditing is used, the DBA is responsible for ensuring the auditing configuration meets the application design requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15134",
+      "title": "The Integration Services service account should not be assigned excess host system privileges.",
+      "description": "Excess privileges can unnecessarily increase the vulnerabilities to a successful attack. If the Integration Service is compromised, the attack can lead to use of the privileges assigned to the service account. Administrative and other unnecessary privileges assigned to the service account can be used for an attack on the host system and/or SQL Server database.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15137",
+      "title": "Error log retention shoud be set to meet log retention policy.",
+      "description": "For SQL Server, error logs are used to store system event and system error information. In addition to assisting in correcting system failures or issues that could affect system availability and operation, log information may also be useful in discovering evidence of malicious intent. Management of the error logs requires consideration and planning to prevent loss of security data and maintaining system operation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15138",
+      "title": "The DBMS IA policies and procedures should be reviewed annually or more frequently.",
+      "description": "A regular review of current database security policies and procedures is necessary to maintain the desired security posture of the DBMS. Policies and procedures should be measured against current DOD policy, STIG guidance, vendor-specific guidance and recommendations, and site-specific or other security policy.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15139",
+      "title": "Plans and procedures for testing DBMS installations, upgrades and patches should be defined and followed prior to production implementation.",
+      "description": "Updates and patches to existing software have the intention of improving the security or enhancing or adding features to the product. However, it is unfortunately common that updates or patches can render production systems inoperable or even introduce serious vulnerabilities. Some updates also set security configurations back to unacceptable settings that do not meet security requirements. For these reasons, it is a good practice to test updates and patches offline before introducing them in a production environment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15140",
+      "title": "Procedures and restrictions for import of production data to development databases should be documented, implemented and followed.",
+      "description": "Data export from production databases may include sensitive data. Application developers do not have a need to know to sensitive data. Any access they may have to production data would be considered unauthorized access and subject the sensitive data to unlawful or unauthorized disclosure.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15141",
+      "title": "DBMS processes or services should run under custom, dedicated OS accounts.",
+      "description": "Shared accounts do not provide separation of duties nor allow for assignment of least privileges for use by database processes and services. Without separation and least privilege, the exploit of one service or process is more likely to be able to compromise another or all other services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15143",
+      "title": "Database data encryption controls should be configured in accordance with application requirements.",
+      "description": "Authorizations may not sufficiently protect access to sensitive data and may require encryption. In some cases, the required encryption may be provided by the application accessing the database. In others, the DBMS may be configured to provide the data encryption. When the DBMS provides the encryption, the requirement must be implemented as identified by the Information Owner to prevent unauthorized disclosure or access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15144",
+      "title": "Sensitive data is stored in the database and should be identified in the System Security Plan and AIS Functional Architecture documentation.",
+      "description": "A DBMS that does not have the correct confidentiality level identified or any confidentiality level assigned stands the chance of not being secured at a level appropriate to the risk it poses.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15145",
+      "title": "The DBMS restoration priority should be assigned.",
+      "description": "When DBMS service is disrupted, the impact it has on the overall mission of the organization can be severe. Without the proper assignment of the priority to be placed on restoration of the DBMS and its subsystems, restoration of DBMS services may not meet mission requirements.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15146",
+      "title": "The DBMS should not be operated without authorization on a host system supporting other application services.",
+      "description": "In the same way that added security layers can provide a cumulative positive effect on security posture, multiple applications can provide a cumulative negative effect. A vulnerability and subsequent exploit to one application can lead to an exploit of other applications sharing the same security context. For example, an exploit to a web server process that leads to unauthorized administrative access to the host system can most likely lead to a compromise of all applications hosted by the same system. A DBMS not installed on a dedicated host may pose a threat to and be threatened by other hosted applications. Applications that share a single DBMS may also create risk to one another. Access controls defined for one application by default may provide access to the other application's database objects or directories. Any method that provides any level of separation of security context assists in the protection between applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15147",
+      "title": "The DBMS data files, transaction logs and audit files should be stored in dedicated directories or disk partitions separate from software or other application files.",
+      "description": "Protection of DBMS data, transaction and audit data files stored by the host operating system is dependent on OS controls. When different applications share the same database process, resource contention and differing security controls may be required to isolate and protect one application's data and audit logs from another. DBMS software libraries and configuration files also require differing access control lists.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15148",
+      "title": "DBMS network communications should comply with PPS usage restrictions.",
+      "description": "Non-standard network ports, protocol or services configuration or usage could lead to bypass of network perimeter security controls and protections.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15149",
+      "title": "DBA roles assignments should be assigned and authorized by the IAO.",
+      "description": "The DBA role and associated privileges provide complete control over the DBMS operation and integrity. DBA role assignment without authorization could lead to the assignment of these privileges to untrusted and untrustworthy persons and complete compromise of DBMS integrity.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15150",
+      "title": "The DBMS requires a System Security Plan containing all required information.",
+      "description": "A System Security Plan identifies security control applicability and configuration for the DBMS. It also contains security control documentation requirements. Security controls applicable to the DBMS may not be documented, tracked or followed if not identified in the System Security Plan. Any omission of security control consideration could lead to an exploit of DBMS vulnerabilities.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15152",
+      "title": "DBMS login accounts require passwords to meet complexity requirements.",
+      "description": "Weak passwords are a primary target for attack to gain unauthorized access to databases and other systems. Where username/password is used for identification and authentication to the database, requiring the use of strong passwords can help prevent simple and more sophisticated methods for guessing at passwords.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15153",
+      "title": "DBMS account passwords should be set to expire every 60 days or more frequently.",
+      "description": "Unchanged passwords provide a means for compromised passwords to be used for unauthorized access to DBMS accounts over a long time.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15154",
+      "title": "Credentials stored and used by the DBMS to access remote databases or applications should be authorized and restricted to authorized users.",
+      "description": "Credentials defined for access to remote databases or applications may provide unauthorized access to additional databases and applications to unauthorized or malicious users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15155",
+      "title": "The SQL Server Agent service account should not be assigned excess user rights.",
+      "description": "Excess privileges can unnecessarily increase the vulnerabilities to a successful attack. If the SQL Server Agent service is compromised, the attack can lead to use of the privileges assigned to the service account. Administrative and other unnecessary privileges assigned to the service account can be used for an attack on the host system and/or SQL Server database.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15165",
+      "title": "Only authorized service broker endpoints should be configured on the server.",
+      "description": "Service Broker endpoints expose the database to SQL Server messaging communication access. Where not carefully designed and implemented, messaging communication can unnecessarily expose the database to additional exploit that compromises data confidentiality and integrity. Removing messaging communication endpoints helps to protect the database from unauthorized messaging communication access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15166",
+      "title": "Database Engine Ad Hoc distributed queries should be disabled.",
+      "description": "Adhoc queries allow undefined access to remote database sources. Access to untrusted databases could result in execution of malicious applications and/or a compromise of local data confidentiality and integrity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15167",
+      "title": "The data directory should specify a dedicated disk partition and restricted access.",
+      "description": "Data directories require different access controls than software file directories. Locating data directories in separate directories on a dedicated disk partition allows assign of access controls to only those users that require access and helps protect the data from unauthorized access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15169",
+      "title": "The SQL Server services should not be assigned excessive user rights.",
+      "description": "Excessive or unneeded privileges allow for unauthorized actions. When application vulnerabilities are exploited, excessive privileges assigned to the application can lead to unnecessary risk to the host system and other services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15170",
+      "title": "SQL Server services should be assigned least privileges on the SQL Server Windows host.",
+      "description": "Exploits to SQL Server services may provide access to the host system resources within the security context of the service. Excess privileges assigned to the SQL Services can increase the threat to the host system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15173",
+      "title": "Database TRUSTWORTHY status should be authorized and documented or set to off.",
+      "description": "The TRUSTWORTHY database setting restricts access to database resources by databases that contain assemblies with the EXTERNAL_ACCESS or UNSAFE permission settings and modules that use impersonation of accounts assigned elevated privileges. Unless all assemblies and code for the database have been reviewed, especially in the case where databases have been detached and attached between server instances, leaving the TRUSTWORTHY status to off can help reduce threats from malicious assemblies or modules.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15176",
+      "title": "SQL Server event forwarding, if enabled, should be operational.",
+      "description": "If SQL Server is configured to forward events to an Alerts Management Server that is not available,  then no alerts are issued for the server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15178",
+      "title": "Replication databases should have authorized db_owner role members. The replication monitor role should have authorized members.",
+      "description": "Role privileges required by replication include full privileges to the databases with replicated objects. Restrict replication database db_owner role memberships and the system distribution database replmonitor database role membership to authorized replication agent accounts that require access to the database. Unauthorized access can provide unintentional or malicious users greater opportunity to exploit replication access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15179",
+      "title": "The DBMS should not share a host supporting an independent security service.",
+      "description": "The Security Support Structure is a security control function or service provided by an external system or application. An example of this would be a Windows domain controller that provides identification and authentication that can be used by other systems to control access. The vulnerabilities and, therefore, associated risk of a DBMS installed on a system that provides a security support structure is significantly higher than when installed with other functions that do not provide security support. In cases where the DBMS is dedicated to local support of a security support function (e.g. a directory service), separation may not be possible.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15180",
+      "title": "Only authorized users should be granted access to Analysis Services data sources.",
+      "description": "Access control applied to data sources controls user access to remotely defined systems using the authentication and authorizations defined for the data source. Unauthorized access to the data source in turn provides unauthorized access to remote systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15181",
+      "title": "Analysis Services user-defined COM functions should be disabled if not required.",
+      "description": "Allowing user-defined COM functions can allow unauthorized code access to the Analysis Services instance. Where not required as part of the operational design, allowing user-defined COM functions can expose the instance to unnecessary risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15182",
+      "title": "Replication snapshot folders should be protected from unauthorized access.",
+      "description": "Replication snapshot folders contain database data to which only authorized replication accounts require access. Unauthorized access to these folders could compromise data confidentiality and integrity, and could compromise database availability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15183",
+      "title": "The Analysis Services ad hoc data mining queries configuration option should be disabled if not required.",
+      "description": "SQL Server Ad Hoc distributed queries allow specific functions (OPENROWSET and OPENDATASOURCE) to connect to remote systems without those remote systems being defined within database. Access to unauthorized systems could lead to unauthorized activity in remote systems that could compromise the local database.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15184",
+      "title": "Analysis Services Anonymous Connections should be disabled.",
+      "description": "Anonymous connections allow unauthenticated access to the database. Although the database may not store sensitive application data, operation and data compromise may occur without accountability where unauthenticated access is allowed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15186",
+      "title": "Analysis Services Links From Objects should be disabled if not required.",
+      "description": "Analysis Services allows other server instances to link to local analysis services objects. Where not required, enabling of this allowance can unnecessarily expose the database objects to unauthorized access or compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15187",
+      "title": "Linked server providers should not allow ad hoc access.",
+      "description": "Ad hoc access allows undefined access to remote systems. Access to remote systems should be controlled to prevent untrusted data to be executed or uploaded to the local server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15188",
+      "title": "Analysis Services Required Protection Levels should be set to 1.",
+      "description": "Sensitive data is vulnerable to unauthorized access when traversing untrusted network segments. Encryption of the data in transit helps protect the confidentiality of the data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-15190",
+      "title": "Analysis Services Security Package List should be disabled if not required.",
+      "description": "Analysis Services Security Packages are security applications provided outside of the default Analysis Services installation. The packages may be provided by custom development or commercial third-party products used for client authentication. Use of untested or unverified security applications may introduce unknown vulnerabilities to the instance. Restrict use of non-default security packages to tested and trusted applications that meet DOD authentication requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15193",
+      "title": "The Analysis Services server role should be restricted to authorized users.",
+      "description": "The Analysis Services server role grants server-wide security privileges to the assigned user. An unauthorized user could compromise database and analysis server data and operational integrity or availability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15194",
+      "title": "Only authorized accounts should be assigned to one or more Analysis Services database roles.",
+      "description": "Unauthorized group membership assignment grants unauthorized privileges to database accounts. Unauthorized may lead to a compromise of data confidentiality or integrity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15196",
+      "title": "Only authorized SQL Server proxies should be assigned access to subsystems.",
+      "description": "SQL Server subsystems define a set of functionality available for assignment to a SQL Server Agent proxy. These act as privileges to perform certain job tasks. Excess privilege assignment or subsystem assignment can lead to unauthorized access to the SQL Server instance or host operating system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15197",
+      "title": "Dedicated accounts should be designated for SQL Server Agent proxies.",
+      "description": "SQL Server proxies use to execute specific job functions defined for SQL Server Agent. If proxies share a single account for multiple job functions, least privileges cannot be assigned based on the particular job function. This can compromise the security of the shared functions should a compromise of the SQL Server Agent job occur.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15198",
+      "title": "The Web Assistant procedures configuration option should be disabled if not required.",
+      "description": "The Web Assistant procedures are used by database applications to create web pages. This capability may easily be abused to send malicious messages to remote users or systems. Disabling its use helps to protect the database from generating or receiving malicious email notifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15199",
+      "title": "Reporting Services Web service requests and HTTP access should be disabled if not required.",
+      "description": "Where not required, SOAP and URL access to the web service unnecessarily exposes the report server to attack via the SOAP and HTTP protocols.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15201",
+      "title": "Cross database ownership chaining, if required, should be documented and authorized by the IAO.",
+      "description": "Cross database ownership chaining allows permissions to objects to be assigned by users other than the Information Owner. This allows access to objects that are not authorized directly by the Information Owner based on job functions defined by the owner. Unauthorized access may lead to a compromise of data integrity or confidentiality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15202",
+      "title": "Use of Command Language Runtime objects should be disabled if not required.",
+      "description": "The clr_enabled parameter configures SQL Server to allow or disallow use of Command Language Runtime objects. CLR objects is managed code that integrates with the .NET Framework. This is a more secure method than external stored procedures, although it still contains some risk. Where no external application execution requirements are required, disallowing use of any improves the overall security posture of the database.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15203",
+      "title": "Reporting Services Windows Integrated Security should be disabled.",
+      "description": "Use of Windows integrated security may allow access via Report Services bypasses security controls assessed at the database level. This may be restricted by requiring that all report data source connections use specific credentials to access report data sources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15204",
+      "title": "Analysis Services Links to Objects should be disabled if not required.",
+      "description": "Analysis Services may make connections to external SQL Server instances. In some cases this may be required for the intended operation, however, where not required, this may introduce unnecessary risk where unauthorized external links may be made.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15205",
+      "title": "Reporting Services scheduled events and report delivery should be disabled if not required.",
+      "description": "Where not required, Scheduled events and report delivery unnecessarily exposes the report server to attack via Report Service event handling and report delivery.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15206",
+      "title": "Only authorized XML Web Service endpoints should be configured on the server.",
+      "description": "XML Web Service endpoints expose the database its data to web service access. Where not carefully designed and implemented, web services can unnecessarily expose the database to additional exploit that compromises data confidentiality and integrity. Removing web service endpoints helps to protect the database from unauthorized web service access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15210",
+      "title": "The Agent XPs option should be set to disabled if not required.",
+      "description": "The Agent XPs are extended stored procedures used by the SQL Server Agent that provide privileged actions that run externally to the DBMS under the security context of the SQL Server Agent service account. If these procedures are available from a database session, an exploit to the SQL Server instance could result in a compromise of the host system and external SQL Server resources. Access to these procedures should be disabled unless use of SQL Server Agent is required and authorized.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15211",
+      "title": "The SMO and DMO SPs option should be set to disabled if not required.",
+      "description": "The SMO and DMO XPs are management object extended stored procedures that provide highly privileged actions that run externally to the DBMS under the security context of the SQL Server service account. If these procedures are available from a database session, an exploit to the SQL Server instance could result in a compromise of the host system and external SQL Server resources including the SQL Server software, audit, log and data files. Access to these procedures should be disabled unless a clear requirement for their use is indicated and authorized.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15608",
+      "title": "Access to DBMS software files and directories should not be granted to unauthorized users.",
+      "description": "The DBMS software libraries contain the executables used by the DBMS to operate. Unauthorized access to the libraries can result in malicious alteration or planting of operational executables. This may in turn jeopardize data stored in the DBMS and/or operation of the host system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15609",
+      "title": "Default demonstration and sample database objects and applications should be removed.",
+      "description": "Demonstration and sample database objects and applications present publicly known attack points for malicious users. These demonstration and sample objects are meant to provide simple examples of coding specific functions and are not developed to prevent vulnerabilities from being introduced to the DBMS and host system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15610",
+      "title": "DBMS should use NIST FIPS 140-2 validated cryptography.",
+      "description": "Use of cryptography to provide confidentiality and non-repudiation is not effective unless strong methods are employed with its use. Many earlier encryption methods and modules have been broken and/or overtaken by increasing computing power. The NIST FIPS 140-2 cryptographic standards provide proven methods and strengths to employ cryptography effectively.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15611",
+      "title": "The audit logs should be periodically monitored to discover DBMS access using unauthorized applications.",
+      "description": "Regular and timely reviews of audit records increases the likelihood of early discovery of suspicious activity. Discovery of suspicious behavior can in turn trigger protection responses to minimize or eliminate a negative impact from malicious activity. Use of unauthorized application to access the DBMS may indicate an attempt to bypass security controls including authentication and data access or manipulation implemented by authorized applications.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15612",
+      "title": "Database password changes by users should be limited to one change within 24 hours where supported by the DBMS.",
+      "description": "Frequent password changes may indicate suspicious activity or attempts to bypass password controls based on password histories. Limiting the frequency of password changes helps to enforce password change rules and can lead to the discovery of compromised accounts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15613",
+      "title": "Each database user, application or process should have an individually assigned account.",
+      "description": "Use of accounts shared by multiple users, applications, or processes limit the accountability for actions taken in or on the data or database. Individual accounts provide an opportunity to limit database authorizations to those required for the job function assigned to each individual account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15614",
+      "title": "The DBMS should be configured to clear residual data from memory, data objects or files, or other storage locations.",
+      "description": "Database storage locations may be reassigned to different objects during normal operations.  If not cleared of residual data, sensitive data may be exposed to unauthorized access.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15615",
+      "title": "DBA accounts should not be assigned excessive or unauthorized role privileges.",
+      "description": "The default DBA privileges typically include all privileges defined for a DBMS. These privileges are required to configure the DBMS and to provide other users access to DBMS objects. However, DBAs may not require access to application data or other privileges to administer the DBMS. Where not required or desired, DBAs may be prevented from accessing protected data for which they have no need-to-know or from utilizing unauthorized privileges for other actions. Although DBAs may assign themselves privileges to override any restrictions, the assignment of privileges is an audit requirement and this auditable event may assist discovery of a misuse of privileges.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15616",
+      "title": "Sensitive data should be labeled.",
+      "description": "The sensitivity marking or labeling of data items promotes the correct handling and protection of the data.  Without such notification, the user may unwittingly disclose sensitive data to unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15617",
+      "title": "Access to external objects should be disabled if not required and authorized.",
+      "description": "Objects defined within the database, but stored externally to the database are accessible based on authorizations defined by the local operating system or other remote system that may be under separate security authority. Access to external objects may thus be uncontrolled or not based on least privileges defined for each user job function. This in turn may provide unauthorized access to the external objects.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15618",
+      "title": "Access to external DBMS executables should be disabled or restricted.",
+      "description": "DBMS’s may spawn additional external processes to execute procedures that are defined in the DBMS, but stored in external host files (external procedures). The spawned process used to execute the external procedure may operate within a different OS security context than the DBMS and provide unauthorized access to the host system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15619",
+      "title": "Replication accounts should not be granted DBA privileges.",
+      "description": "Replication accounts may be used to access databases defined for the replication architecture. An exploit of a replication on one database could lead to the compromise of any database participating in the replication that uses the same account name and credentials. If the replication account is compromised and it has DBA privileges, the database is at additional risk to unauthorized or malicious action.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15620",
+      "title": "OS accounts used to execute external procedures should be assigned minimum privileges.",
+      "description": "External applications spawned by the DBMS process may be executed under OS accounts assigned unnecessary privileges that can lead to unauthorized access to OS resources. Unauthorized access to OS resources can lead to the compromise of the OS, the DBMS, and any other service provided by the host platform.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15622",
+      "title": "DBMS service identification should be unique and clearly identifies the service.",
+      "description": "Local or network services that do not employ unique or clearly identifiable targets can lead to inadvertent or unauthorized connections.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15625",
+      "title": "Recovery procedures and technical system features exist to ensure that recovery is done\nin a secure and verifiable manner.",
+      "description": "A DBMS may be vulnerable to use of compromised data or other critical files during recovery. Use of compromised files could introduce maliciously altered application code, relaxed security settings or loss of data integrity. Where available, DBMS mechanisms to ensure use of only trusted files can help protect the database from this type of compromise during DBMS recovery.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15626",
+      "title": "Database privileged role assignments should be restricted to IAO-authorized DBMS accounts.",
+      "description": "Roles assigned privileges to perform DDL and/or system configuration actions in the database can lead to compromise of any data in the database as well as operation of the DBMS itself. Restrict assignment of privileged roles to authorized personnel and database accounts to help prevent unauthorized activity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15627",
+      "title": "Administrative privileges should be assigned to database accounts via database roles.",
+      "description": "Privileges granted outside the role of the administrative user job function are more likely to go unmanaged or without oversight for authorization. Maintenance of privileges using roles defined for discrete job functions offers improved oversight of administrative user privilege assignments and helps to protect against unauthorized privilege assignment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15628",
+      "title": "DBMS application users should not be granted administrative privileges to the DBMS.",
+      "description": "DBMS privileges to issue other than Database Manipulation Language (DML) commands provide means to affect database object configuration and use of resources.  Application users do not require these privileges to complete non-administrative job functions.  Where applications require administrative privileges to execute non-administrative functions, exploits of the application can lead to unauthorized administrative access to the DBMS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15631",
+      "title": "Access to DBMS system tables and other configuration or metadata should be restricted to DBAs.",
+      "description": "Administrative data includes DBMS metadata and other configuration and management data. Unauthorized access to this data could result in unauthorized changes to database objects, access controls, or DBMS configuration.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15632",
+      "title": "Use of DBA accounts should be restricted to administrative activities.",
+      "description": "Use of privileged accounts for non-administrative purposes puts data at risk of unintended or unauthorized loss, modification or exposure. In particular, DBA accounts if used for non-administration application development or application maintenance can lead to miss-assignment of privileges where privileges are inherited by object owners. It may also lead to loss or compromise of application data where the elevated privileges bypass controls designed in and provided by applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15634",
+      "title": "DBMS account passwords should not be set to easily guessed words or values.",
+      "description": "DBMS account passwords set to common dictionary words or values render accounts vulnerable to password guessing attacks and unauthorized access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15635",
+      "title": "DBMS default accounts should be assigned custom passwords.",
+      "description": "DBMS default passwords provide a commonly known and exploited means for unauthorized access to database installations.",
+      "severity": "high"
+    },
+    {
+      "id": "V-15636",
+      "title": "Passwords should be encrypted when transmitted across the network.",
+      "description": "DBMS passwords sent in clear text format across the network are vulnerable to discovery by unauthorized users. Disclosure of passwords may easily lead to unauthorized access to the database.",
+      "severity": "high"
+    },
+    {
+      "id": "V-15637",
+      "title": "DBMS passwords should not be stored in compiled, encoded or encrypted batch jobs or compiled, encoded or encrypted application source code.",
+      "description": "The storage of passwords in application source or batch job code that is compiled, encoded or encrypted prevents compliance with password expiration and other management requirements as well as provides another means for potential discovery.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15638",
+      "title": "DBMS default account names should be changed.",
+      "description": "Well-known DBMS account names are targeted most frequently by attackers and are thus more prone to providing unauthorized access to the database.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15639",
+      "title": "Unlimited account lock times should be specified for locked accounts.",
+      "description": "When no limit is imposed on failed logon attempts and accounts are not disabled after a set number of failed access attempts, then the DBMS account is vulnerable to sustained attack.  When access attempts may continue unrestricted, the likelihood of success is increased.  A successful attempt results in unauthorized access to the database.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15643",
+      "title": "Access to DBMS security should be audited.",
+      "description": "DBMS security data is useful to malicious users to perpetrate activities that compromise DBMS operations or data integrity. Auditing of access to this data supports forensic and accountability investigations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15644",
+      "title": "Attempts to bypass access controls should be audited.",
+      "description": "Detection of suspicious activity including access attempts and successful access from unexpected places, during unexpected times, or other unusual indicators can support decisions to apply countermeasures to deter an attack. Without detection, malicious activity may proceed without impedance.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15645",
+      "title": "Changes to configuration options should be audited.",
+      "description": "The default audit trace provides a log of activity and changes primarily related to DBMS configuration options. The default audit trace option does not provide adequate auditing and should be disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15646",
+      "title": "Audit records should contain required information.",
+      "description": "Complete forensically valuable data may be unavailable or accountability may be jeopardized when audit records do not contain sufficient information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15648",
+      "title": "Access to the DBMS should be restricted to static, default network ports.",
+      "description": "Use of static, default ports helps management of enterprise network device security controls. Use of non-default ports makes tracking and protection of published vulnerabilities to services and protocols more difficult to track and block. and may result in the exposure of the database to unintended network segments and users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15649",
+      "title": "The DBMS should have configured all applicable settings to use trusted files, functions, features, or other components during startup, shutdown, aborts, or other unplanned interruptions.",
+      "description": "The DBMS opens data files and reads configuration files at system startup, system shutdown and during abort recovery efforts. If the DBMS does not verify the trustworthiness of these files, it is vulnerable to malicious alterations of its configuration or unauthorized replacement of data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15651",
+      "title": "Remote DBMS administration is not authorized and is not disabled.",
+      "description": "Remote administration may expose configuration and sensitive data to unauthorized viewing during transit across the network or allow unauthorized administrative access to the DBMS to remote users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15652",
+      "title": "DBMS remote administration should be audited.",
+      "description": "When remote administration is available, the vulnerability to attack for administrative access is increased. An audit of remote administrative access provides additional means to discover suspicious activity and to provide accountability for administrative actions completed by remote users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15656",
+      "title": "The DBMS should not have a connection defined to access or be accessed by a DBMS at a different classification level.",
+      "description": "Applications that access databases and databases connecting to remote databases that differ in their assigned classification levels may expose sensitive data to unauthorized clients. Any interconnections between databases or applications and databases differing in classification levels are required to comply with interface control rules.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15658",
+      "title": "The DBMS warning banner does not meet DoD policy requirements.",
+      "description": "Without sufficient warning of monitoring and access restrictions of a system, legal prosecution to assign responsibility for unauthorized or malicious access may not succeed. A warning message provides legal support for such prosecution. Access to the DBMS or the applications used to access the DBMS require this warning to help assign responsibility for database activities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15662",
+      "title": "Remote administration of the DBMS should be restricted to known, dedicated and encrypted network addresses and ports.",
+      "description": "Remote administration provides many conveniences that can assist in the maintenance of the designed security posture of the DBMS. On the other hand, remote administration of the database also provides malicious users the ability to access from the network a highly privileged function. Remote administration needs to be carefully considered and used only when sufficient protections against its abuse can be applied. Encryption and dedication of ports to access remote administration functions can help prevent unauthorized access to it.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2420",
+      "title": "Database executable and configuration files should be monitored for unauthorized modifications.",
+      "description": "Changes to files in the DBMS software directory including executable, configuration, script, or batch files can indicate malicious compromise of the software files. Changes to non-executable files, such as log files and data files, do not usually reflect unauthorized changes, but are modified by the DBMS as part of normal operation. These modifications can be ignored.",
+      "severity": "low"
+    },
+    {
+      "id": "V-2422",
+      "title": "The DBMS software installation account should be restricted to authorized users.",
+      "description": "DBA and other privileged administrative or application owner accounts are granted privileges that allow actions that can have a greater impact on database security and operation. It is especially important to grant access to privileged accounts to only those persons who are qualified and authorized to use them.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2423",
+      "title": "Database software, applications and configuration files should be monitored to discover unauthorized changes.",
+      "description": "Unmanaged changes that occur to the database software libraries or configuration can lead to unauthorized or compromised installations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2424",
+      "title": "All database non-interactive, n-tier connection, and shared accounts that exist should be documented and approved by the IAO.",
+      "description": "Group authentication does not provide individual accountability for actions taken on the DBMS or data.  Whenever a single database account is used to connect to the database, a secondary authentication method that provides individual account ability is required. This scenario most frequently occurs when an externally hosted application authenticates individual users to the application and the application uses a single account to retrieve or update database information on behalf of the individual users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2426",
+      "title": "C2 Audit mode should be enabled or custom audit traces defined.",
+      "description": "The C2 audit mode uses a system-defined trace to collect audit information for MS SQL Server 2000 and higher. It utilizes all security event categories defined within SQL Server, not all of which are required by the Database STIG. Without required auditing, accountability and investigative support is limited.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2427",
+      "title": "Fixed Server roles should have only authorized users or groups assigned as members.",
+      "description": "Fixed server roles provide a mechanism to grant groups of privileges to users. These privilege groupings are defined by the installation or upgrade of the SQL Server software at the discretion of Microsoft. Memberships in these roles granted to users should be strictly controlled and monitored. Privileges assigned to these roles should be reviewed for change after software upgrade or maintenance to ensure that the privileges continue to be appropriate to the assigned members.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2436",
+      "title": "MS SQL Server Instance name should not incude a SQL Server or other software version number.",
+      "description": "The use of version numbers within the database instance name restricts the use of the instance name from meaningful use in subsequent upgrades. Changing the database instance names on a production database causes unnecessary administrative overhead and compromise existing secure network configurations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2461",
+      "title": "Extended stored procedure xp_cmdshell should be restricted to authorized accounts.",
+      "description": "The xp_cmdshell extended stored procedure allows execution of host executables outside the controls of database access permissions. This access may be exploited by malicious users who have compromised the integrity of the SQL Server database process to control the host operating system to perpetrate additional malicious activity.",
+      "severity": "high"
+    },
+    {
+      "id": "V-2464",
+      "title": "Execute stored procedures at startup, if enabled, should have a custom audit trace defined.",
+      "description": "The DBMS startup process may be vulnerable to introduction of malicious or unauthorized actions. Any use of automated execution of custom procedures provides an opportunity to deploy unauthorized code. For some versions of SQL Server, audit requirements may only be met by audit procedures that are set to start automatically at system startup.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2472",
+      "title": "OLE Automation extended stored procedures should be restricted to sysadmin access.",
+      "description": "Extended stored procedures allow SQL Server users to execute functions external to SQL Server. An extended stored procedure is a function within a Windows DLL that can be referenced as a stored procedure. While this feature is a powerful extension of SQL Server, it also increases the risk of SQL Server users gaining unauthorized access to the operating system. The Windows account used by SQL Server to log on determines the security context used by extended stored procedures. Certain sensitive extended stored procedures should be closely monitored. These sensitive stored procedures include the OLE Automation stored procedures. OLE Automation stored procedures can be used to reconfigure the security of other services including IIS (Internet Information Server).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2473",
+      "title": "Registry extended stored procedures should be restricted to sysadmin access.",
+      "description": "Extended stored procedures allow SQL Server users to execute functions external to SQL Server. An extended stored procedure is a function within a Windows NT DLL that can be referenced as a stored procedure. While this feature is a powerful extension of SQL Server, it also increases the risk of SQL Server users gaining unauthorized access to the operating system. The Windows NT account used by SQL Server to log on determines the security context used by extended stored procedures. Certain sensitive extended stored procedures should be closely monitored. These sensitive stored procedures include the registry editing stored procedures. Registry extended stored procedures can be used to read or change security information, including the NT password database, from the registry.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2485",
+      "title": "Remote access should be disabled if not authorized.",
+      "description": "The remote access option determines if connections to and from other Microsoft SQL Servers are allowed. Remote connections are used to support distributed queries and other data access and command executions across and between remote database hosts. The list of remote servers determines the servers that have defined for remote connections to and from the SQL Server instance. The list of remote logins determines which users on remote servers can connect to and from other SQL Servers. Remote servers and logins that are not properly secured can be used to compromise the server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2487",
+      "title": "SQL Server authentication mode should be set to Windows authentication mode or Mixed mode.",
+      "description": "SQL Server authentication does not provide a sufficiently robust password complexity and management capability to meet stringent security requirements. SQL Server allows use of Windows authentication, a more robust and security authentication service, to control access to the database.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2488",
+      "title": "SQL Server Agent CmdExec or ActiveScripting jobs should be restricted to sysadmins.",
+      "description": "SQL Server Agent CmdExec and ActiveScripting subsystems allow the execution of code by the host operating system under the security context. Allow use of these features only to SYSADMINs and use only where necessary to limit risk of database exploit to the host operating system. Members of the SYSADMIN group have access to all proxies and subsystems by default. Additional assignments are not necessary and would be considered suspect.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2500",
+      "title": "Trace Rollover should be enabled for audit traces that have a maximum trace file size.",
+      "description": "The majority of Microsoft SQL Server security auditing is provided by the trace facility. Traces may be created using system stored procedures or with Microsoft SQL Profiler. The trace must be running in order for security event data to be collected for analysis. Traces can specify a maximum size for the trace file. An action may also be specified when a maximum file size is reached. The trace file rollover option for a defined trace causes the current trace file to close and a new one to be opened with no loss of data. If a maximum file size has been set and the rollover option is not set, the trace stops writing when the maximum file size is reached. If the trace file writes function stops, then auditing is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2507",
+      "title": "Audit trail data should be retained for one year.",
+      "description": "Without preservation, a complete discovery of an attack or suspicious activity may not be determined. DBMS audit data also contributes to the complete investigation of unauthorized activity and needs to be included in audit retention plans and procedures.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2508",
+      "title": "Unauthorized user accounts should not exist.",
+      "description": "Unauthorized user accounts provide unauthorized access to the database and may allow access to database objects. Only authorized users should be granted database accounts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3335",
+      "title": "SQL Mail, SQL Mail Extended Stored Procedures (XPs) and Database Mail XPs are required and enabled.",
+      "description": "The SQL Mail, SQL Mail Extended Stored Procedures (XPs) and Database Mail XPs are used by database applications to provide email messages to and from the database. This capability may easily be abused to send malicious messages to remote users or systems. Disabling its use helps to protect the database from generating or receiving malicious email notifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3336",
+      "title": "SQL Server Agent email notification usage if enabled should be documented and approved by the IAO.",
+      "description": "SQL Mail accepts incoming database commands via email. This can introduce malicious codes or viruses into the SQL server environment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3726",
+      "title": "Configuration management procedures should be defined and implemented for database software modifications.",
+      "description": "Uncontrolled, untested, or unmanaged changes result in an unreliable security posture. All changes to software libraries related to the database and its use need to be reviewed, considered, and the responsibility for CM assigned. CM responsibilities may appear to cross boundaries. It is important, however, for the boundaries of CM responsibility to be clearly defined and assigned to ensure no libraries or configurations are left unaddressed. Related database application libraries may include third-party DBMS management tools, DBMS stored procedures, or other end-user applications.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3728",
+      "title": "Unused database components, database application software and database objects should be removed from the DBMS system.",
+      "description": "Unused, unnecessary DBMS components increase the attack vector for the DBMS by introducing additional targets for attack. By minimizing the services and applications installed on the system, the number of potential vulnerabilities is reduced.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3803",
+      "title": "A production DBMS installation should not coexist on the same DBMS host with other, non-production DBMS installations.",
+      "description": "Production, development and other non-production DBMS installations have different access and security requirements.  Shared production/non-production DBMS installations secured at a production-level can impede development efforts whereas production/non-production DBMS installations secured at a development-level can lead to exploitation of production-level installations. Production DBMS installations should be kept separate from development, QA, TEST and other non-production DBMS systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3805",
+      "title": "Application software should be owned by a Software Application account.",
+      "description": "File and directory ownership imparts full privileges to the owner. These privileges should be restricted to a single, dedicated account to preserve proper chains of ownership and privilege assignment management.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3806",
+      "title": "A baseline of database application software should be documented and maintained.",
+      "description": "Without maintenance of a baseline of current DBMS application software, monitoring for changes cannot be complete and unauthorized changes to the software can go undetected. Changes to the DBMS executables could be the result of intentional or unintentional actions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3807",
+      "title": "All applications that access the database should be logged in the audit trail.",
+      "description": "Protections and privileges are designed within the database to correspond to access via authorized software. Use of unauthorized software to access the database could indicate an attempt to bypass established permissions. Reviewing the use of application software to the database can lead to discovery of unauthorized access attempts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3808",
+      "title": "Database job/batch queues should be reviewed regularly to detect unauthorized database job submissions.",
+      "description": "Unauthorized users may bypass security mechanisms by submitting jobs to job queues managed by the database to be run under a more privileged security context of the database or host system. These queues should be monitored regularly to detect any such unauthorized job submissions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3810",
+      "title": "DBMS authentication should require use of a DoD PKI certificate.",
+      "description": "In a properly configured DBMS, access controls defined for data access and DBMS management actions are assigned based on the user identity and  job function. Unauthenticated or falsely authenticated access leads directly to the potential unauthorized access, misuse, and lost accountability of data and activities within the DMBS. Use of PKI certificates for authentication to the DBMS provides a robust mechanism to ensure identity to authorize access to the DBMS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3811",
+      "title": "Procedures for establishing temporary passwords that meet DoD password requirements for new accounts should be defined, documented and implemented.",
+      "description": "New accounts authenticated by passwords that are created without a password or with an easily guessed password are vulnerable to unauthorized access. Procedures for creating new accounts with passwords should include the required assignment of a temporary password to be modified by the user upon first use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3812",
+      "title": "Database account passwords should be stored in encoded or encrypted format whether stored in database objects, external host files, environment variables or any other storage locations.",
+      "description": "Database passwords stored in clear text are vulnerable to unauthorized disclosure. Database passwords should always be encoded or encrypted when stored internally or externally to the DBMS.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3813",
+      "title": "DBMS tools or applications that echo or require a password entry in clear text should be protected from password display.",
+      "description": "Database applications may allow for entry of the account name and password as a visible parameter of the application execution command. This practice should be prohibited and disabled, if possible, by the application. If it cannot be disabled, users should be strictly instructed not to use this feature. Typically, the application will prompt for this information and accept it without echoing it on the users computer screen.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3815",
+      "title": "New passwords should be required to differ from old passwords by more than four characters.",
+      "description": "Changing passwords frequently can thwart password-guessing attempts or re-establish protection of a compromised DBMS account. Minor changes to passwords may not accomplish this as password guessing may be able to continue to build on previous guesses or the new password may be easily guessed using the old password.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3818",
+      "title": "Unauthorized database links should not be defined and active.",
+      "description": "DBMS links provide a communication and data transfer path definition between two databases that may be used by malicious users to discover and obtain unauthorized access to remote systems. Database links between production and development DBMSs provide a means for developers to access production data not authorized for their access or to introduce untested or unauthorized applications to the production database. Only protected, controlled, and authorized downloads of any production data to use for development should be allowed. Only applications that have completed the configuration management process should be introduced by the application object owner account to the production system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3819",
+      "title": "Sensitive information from production database exports should be modified after import to a development database.",
+      "description": "Data export from production databases may include sensitive data. Application developers do not have a need to know to sensitive data. Any access they may have to production data would be considered unauthorized access and subject the sensitive data to unlawful or unauthorized disclosure. See DODD 8500.1 section E2.1.41 for a definition of Sensitive Information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3820",
+      "title": "Production databases should be protected from unauthorized access by developers on shared production/development host systems.",
+      "description": "Developers granted elevated database and operating system privileges on systems that support both development and production databases can affect the operation and/or security of the production database system. Operating system and database privileges assigned to developers on shared development and production systems should be restricted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3821",
+      "title": "Application user privilege assignment should be reviewed monthly or more frequently to ensure compliance with least privilege and documented policy.",
+      "description": "Users granted privileges not required to perform their assigned functions are able to make unauthorized modifications to the production data or database. Monthly or more frequent periodic review of privilege assignments assures that organizational and/or functional changes are reflected appropriately.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3825",
+      "title": "Remote adminstrative connections to the database should be encrypted.",
+      "description": "Communications between a client and database service across the network may contain sensitive information including passwords. Encryption of remote administrative connections to the database ensures confidentiality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3827",
+      "title": "Audit trail data should be reviewed daily or more frequently.",
+      "description": "Review of audit trail data provides a means for detection of unauthorized access or attempted access. Frequent and regularly scheduled reviews ensures that such access is discovered in a timely manner.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3832",
+      "title": "A Windows OS DBA group should exist.",
+      "description": "The DBA job function differs from the host system administrator job function.  Without a separate host OS group to assign necessary privileges on the operating system, separation of duties is not achieved and excess privileges for the job function are assigned.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3833",
+      "title": "Windows OS DBA group should contain only authorized users.",
+      "description": "The host DBA group is assigned permissions to the DBMS system libraries and may also be used to assign DBA privileges within the database.  Unauthorized DBA privilege assignment leaves the DBMS data and operations vulnerable to complete compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3835",
+      "title": "The SQL Server service should use a least-privileged local or domain user account.",
+      "description": "The Windows builtin Administrators group and LocalSystem account are assigned full privileges to the Windows operating system. These privileges are not required by the SQL Server service accounts for operation and, if assigned, could allow a successful attack of the SQL Server service to lead to a full compromise of the host system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3838",
+      "title": "SQL Server registry keys should be properly secured.",
+      "description": "Registry keys contain configuration data for the SQL Server services and applications. Unrestricted access or access unnecessary for operation can lead to a compromise of the application or disclosure of information that may lead to a successful attack or compromise of data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-4754",
+      "title": "Database software directories including DBMS configuration files are stored in dedicated directories separate from the host OS and other applications.",
+      "description": "Multiple applications can provide a cumulative negative effect. A vulnerability and subsequent exploit to one application can lead to an exploit of other applications sharing the same security context. For example, an exploit to a web server process that leads to unauthorized administrative access to host system directories can most likely lead to a compromise of all applications hosted by the same system. Database software not installed using dedicated directoriies both threatens and is threatened by other hosted applications. Access controls defined for one application may by default provide access to the other application’s database objects or directories. Any method that provides any level of separation of security context assists in the protection between applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-4758",
+      "title": "An upgrade/migration plan should be developed to address an unsupported DBMS software version.",
+      "description": "Unsupported software versions are not patched by vendors to address newly discovered security versions. An unpatched version is vulnerable to attack.  Developing and implementing an upgrade plan prior to a lapse in support helps to protect against published vulnerabilities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-5658",
+      "title": "Vendor supported software is evaluated and patched against newly found vulnerabilities.",
+      "description": "The version of MS SQL Server must be listed by Microsoft as a supported version. Microsoft discontinues fixes for unsupported versions on reported dates. In order to maintain a secure environment, the installed version must continue to receive fixes for reported vulnerabilities.",
+      "severity": "high"
+    },
+    {
+      "id": "V-5659",
+      "title": "The latest security patches should be installed.",
+      "description": "Maintaining the currency of the software version protects the database from known vulnerabilities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-5685",
+      "title": "Required auditing parameters for database auditing should be set.",
+      "description": "Auditing provides accountability for changes made to the DBMS configuration or its objects and data. It provides a means to discover suspicious activity and unauthorized changes. Without auditing, a compromise may go undetected and without a means to determine accountability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-5686",
+      "title": "Audit records should be restricted to authorized individuals.",
+      "description": "Audit data is frequently targeted by malicious users as it can provide a means to detect their activity. The protection of the audit trail data is of special concern and requires restrictions to allow only the auditor and DBMS backup, recovery, and maintenance users access to it.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6756",
+      "title": "Only necessary privileges to the host system should be granted to DBA OS accounts.",
+      "description": "Database administration accounts are frequently granted more permissions to the local host system than are necessary. This allows inadvertent or malicious changes to the host operating system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6767",
+      "title": "The database should be secured in accordance with DoD, vendor and/or commercially accepted practices where applicable.",
+      "description": "DBMS systems that do not follow DoD, vendor and/or public best security practices are vulnerable to related published vulnerabilities. A DoD reference document such as a security technical implementation guide or security recommendation guide constitutes the primary source for security configuration or implementation guidance for the deployment of newly acquired IA- and IA-enabled IT products that require use of the product's IA capabilities.",
+      "severity": "medium"
+    }
+  ]
+}

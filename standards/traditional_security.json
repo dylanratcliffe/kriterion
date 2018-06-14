@@ -1,0 +1,917 @@
+{
+  "name": "traditional_security",
+  "date": "2013-07-11",
+  "description": "Previously the Traditional Security Checklist, consisted of five (5) component sub-checklists that were selected for use based upon the type of review being conducted. The new Traditional Security Checklist consolidates all checks into one document and is more granular both in the increased number of checks (151 total versus 96 total in the old checklists) and the details about how to conduct them.  It provides a more complete and current list of references, the relationship and authority for checks relative to protection of Defense Information System Network (DISN) assets, and will enhance reviewer consistency with application of potential findings.\n \nWhile the number of potential findings have increased and are more focused to a specific check there is additional granularity within each check.  In many of the primary checks there are additional considerations and \"sub-checks\".  As the new checklist is further developed it may be that some of these sub-checks will become additional stand-alone primary checks.\n\nThe format and content flow of the new checklist is like other Security Technical Implementation Guide (STIG) checklists derived from the Vulnerability Management System (VMS) database, which is used by DISA FSO, the Combatant Commands, Services, and Agencies (CC/S/A) and other Federal Agencies with access to the Defense Information Systems Network (DISN) to document and follow-up findings noted during Command Cyber Readiness Inspections (CCRIs).\n\nComments or proposed revisions to this document should be sent via e-mail to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailbox@mail.mil.\n\n\n\n",
+  "title": "Traditional Security",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-30837",
+      "title": "COMSEC Account Management - Equipment and Key Storage  ",
+      "description": "Improper handling and storage of COMSEC material can result in the loss or compromise of classified cryptologic devices or classified key or unclassified COMSEC Controlled Items (CCI).",
+      "severity": "high"
+    },
+    {
+      "id": "V-30885",
+      "title": "COMSEC Account Management - Appointment of Responsible Person",
+      "description": "Lack of formal designation of an individual to be responsible for COMSEC items could result in mismanagement, loss or even compromise of COMSEC materials.  Additionally, lack of formal vetting for a specific individual to be appointed for management of COMSEC material could result in a person (such as a non-US Citizen) having unauthorized access.\n\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-30928",
+      "title": "COMSEC Account Management - Program Management and Standards Compliance\n",
+      "description": "Recipients of NSA or Service COMSEC accounts are responsible to properly maintain the accounts.  Procedures covering security, transport, handling, etc. of COMSEC must be developed to supplement regulatory guidelines.  NSA or sponsoring Services of the COMSEC accounts maintain oversight by conducting required inspections.  If COMSEC accounts are not properly maintained and findings are noted during an inspection they must be  addressed properly and promptly.  Should this not be done, the integrity of COMSEC items may be adversely impacted resulting in the loss or compromise of COMSEC equipment or key material. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-30931",
+      "title": "COMSEC Training - COMSEC Custodian or Hand Receipt Holder\n",
+      "description": "Lack of appropriate training for managers of COMSEC accounts could result in the mismanagement of COMSEC records, inadequate physical protection and ultimately lead to the loss or compromise of COMSEC keying material. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30933",
+      "title": "COMSEC Training - COMSEC User\n",
+      "description": "Failure to properly brief COMSEC users could result in the loss of cryptologic devices or key, or\nthe compromise of classified information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30934",
+      "title": "Classified Transmission - Electronic Means using Cryptographic System Authorized by the Director, NSA",
+      "description": "Failure to properly encrypt classified data in transit can lead to the loss or compromise of\nclassified or sensitive information.",
+      "severity": "high"
+    },
+    {
+      "id": "V-30938",
+      "title": "Protected Distribution System (PDS) Construction - Point of Presence (PoP) and Terminal Equipment Protection.  This requirement concerns security of both the starting and ending points for PDS within proper physically protected and access controlled environments. ",
+      "description": "A PDS that is not constructed and physically protected as required could result in the covert or undetected interception of classified information.",
+      "severity": "high"
+    },
+    {
+      "id": "V-30940",
+      "title": "Protected Distribution System (PDS) Construction - Visible for Inspection\n",
+      "description": "A PDS that is not inspected and monitored as required could result in undetected access, sabotage or tampering of the unencrypted transmission lines. This could directly lead to the loss or compromise of classified.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30942",
+      "title": "Protected Distribution System (PDS) Construction - Hardened Carrier\n",
+      "description": "A PDS that is not constructed and configured as required could result in the undetected interception of classified information.",
+      "severity": "high"
+    },
+    {
+      "id": "V-30949",
+      "title": "Protected Distribution System (PDS) Construction - Sealed Joints\n",
+      "description": "A PDS that is not constructed and sealed as required could result in the undetected interception of classified information.  Sealing of joints is necessary to ensure that daily visual inspections of the PDS for signs of attempted or actual intrusion can be accurately and thoroughly conducted. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30958",
+      "title": "Protected Distribution System (PDS) Construction - Accessible Pull Box Security\n",
+      "description": "A PDS that is not constructed and configured as required could result in the undetected interception of classified information.",
+      "severity": "high"
+    },
+    {
+      "id": "V-30969",
+      "title": "Protected Distribution System (PDS) Construction - Buried PDS Carrier\n",
+      "description": "A PDS that is not constructed, configured and physically secured as required could result in the undetected interception of classified information.",
+      "severity": "high"
+    },
+    {
+      "id": "V-30970",
+      "title": "Protected Distribution System (PDS) Construction - External Suspended PDS\n",
+      "description": "A PDS that is not constructed and configured as required could result in the undetected interception of classified information.",
+      "severity": "high"
+    },
+    {
+      "id": "V-30971",
+      "title": "Protected Distribution System (PDS) Construction - Continuously Viewed Carrier\n",
+      "description": "A PDS that is not constructed and configured as required could result in the undetected interception of classified information.  A continuously viewed PDS may not be in a physically hardened carrier and the primary means of protection is continuous observation and control of the unencrypted transmission line.  If not maintained under continuous observation an attacker (insider or external) could have an opportunity to tap and intercept unencrypted communications on the exposed cable.",
+      "severity": "high"
+    },
+    {
+      "id": "V-30973",
+      "title": "Protected Distribution System (PDS) Construction - Tactical Environment Application\n",
+      "description": "A PDS that is not constructed and configured as required could result in the undetected interception of classified information.  Within mobile tactical situations a hardened carrier is not possible and therefore the unencrypted SIPRNet cable must be maintained within the confines of the tactical encampment with the cable under continuous observation and control to prevent exploitation by enemy forces.  In theaters of operation where fixed facilities are well established, standard PDS applications must be employed unless a risk assessment is conducted to determine the vulnerabilities and risks associated with using unencrypted cable that is not in a hardened carrier.",
+      "severity": "high"
+    },
+    {
+      "id": "V-30974",
+      "title": "Protected Distribution System (PDS) Documentation - Signed Approval\n",
+      "description": "A PDS that is not approved could cause an Information Assurance Manager, Designated Approving Authority and other concerned managerial personnel to not be fully aware of all vulnerabilities and residual risk of IA systems under their purview.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30975",
+      "title": "Protected Distribution System (PDS) Documentation - Request for Approval Documentation\n",
+      "description": "A PDS that is not approved could cause an Information Assurance Manager, Designated Accrediting Authority and other concerned managerial personnel to not be fully aware of all vulnerabilities and residual risk of IA systems under their purview.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30976",
+      "title": "Protected Distribution System (PDS) Monitoring - Daily (Visual) Checks\n",
+      "description": "A PDS that is not inspected, monitored and maintained as required could result in undetected access, sabotage or tampering of the unencrypted transmission lines. This could directly lead to the loss or compromise of classified.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30977",
+      "title": "Protected Distribution System (PDS) Monitoring - Technical Inspections\n",
+      "description": "A PDS that is not inspected, monitored and maintained as required could result in undetected access, sabotage or tampering of the unencrypted transmission lines. This could directly lead to the loss or compromise of classified.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30978",
+      "title": "Protected Distribution System (PDS) Monitoring - Initial Inspection\n",
+      "description": "A PDS that is not inspected, monitored and maintained as required could result in undetected access, sabotage or tampering of the unencrypted transmission lines. This could directly lead to the loss or compromise of classified.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30979",
+      "title": "Protected Distribution System (PDS) Monitoring - Reporting Incidents\n",
+      "description": "A PDS that is not inspected, monitored and maintained as required could result in undetected access, sabotage or tampering of the unencrypted transmission lines. This could directly lead to the loss or compromise of classified.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30980",
+      "title": "TEMPEST Countermeasures\n",
+      "description": "Failure to implement required TEMPEST countermeasures could leave the system(s)\nvulnerable to a TEMPEST attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30981",
+      "title": "TEMPEST - Red/Black separation (Processors)\n",
+      "description": "Failure to maintain proper separation could result in detectable emanations of classified information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30982",
+      "title": "TEMPEST - Red/Black Separation (Cables)\n",
+      "description": "Failure to maintain proper separation could result in detectable emanations of classified information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30983",
+      "title": "Environmental IA Controls - Emergency Power Shut-Off (EPO)\n\n",
+      "description": "A lack of an emergency shut-off switch or a master power switch for electricity to IT equipment\ncould cause damage to the equipment or injury to personnel during an emergency.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30984",
+      "title": "Environmental IA Controls - Emergency Lighting and Exits - Properly Installed\n",
+      "description": "Lack of automatic emergency lighting and exits can cause injury and/or death to employees and\nemergency responders. Lack of automatic emergency lighting can also cause a disruption in\nservice.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30985",
+      "title": "Environmental IA Controls  - Emergency Lighting and Exits - Documentation and Testing\n",
+      "description": "Lack of automatic emergency lighting can cause injury and/or death to employees and\nemergency responders. Lack of automatic emergency lighting can cause a disruption in\nservice.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30987",
+      "title": "Environmental IA Controls - Voltage Control (power)\n",
+      "description": "Failure to use automatic voltage control can result in damage to the IT equipment creating a\nservice outage.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30988",
+      "title": "Environmental IA Controls - Training\n",
+      "description": "If employees have not received training on the environmental controls they will not be able to\nrespond to a fluctuation of environmental conditions, which could damage equipment and ultimately disrupt operations.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30989",
+      "title": "Environmental IA Controls - Temperature \n\n\n",
+      "description": "Lack of temperature controls can lead to fluctuations in temperature which could be potentially\nharmful to personnel or equipment operation.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30990",
+      "title": "Environmental IA Controls - Humidity \n\n\n\n",
+      "description": "Fluctuations in humidity can be potentially harmful to personnel or equipment causing the loss of\nservices or productivity.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30991",
+      "title": "Environmental IA Controls - Fire Inspections/ Discrepancies\n",
+      "description": "Failure to conduct fire inspections and correct any discrepancies could result in hazardous\nsituations leading to a possible fire and loss of service.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30992",
+      "title": "Environmental IA Controls - Fire Detection and Suppression\n",
+      "description": "Failure to provide adequate fire detection and suppression could result in the loss of or damage to\ndata, equipment, facilities, or personnel.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30993",
+      "title": "Industrial Security - DD Form 254\n",
+      "description": "Failure to complete a DD Form 254 (Contract Security Classification Specification) or to specify security clearance and/or IT requirements for all contracts that require access to classified material can result in unauthorized personnel having access to classified material or mission failure if personnel are not authorized the proper access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30994",
+      "title": "Industrial Security - Contractor Visit Authorization Letters (VALs)\n",
+      "description": "Failure to require Visit Authorization Letters (VALs) for contractor visits could result in sensitive or classified materials being released to unauthorized personnel.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30995",
+      "title": "Industrial Security - Contract Guard Vetting\n",
+      "description": "Failure to screen guards could result in employment of unsuitable personnel who are responsible\nfor the safety and security of DOD personnel and facilities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30996",
+      "title": "Information Assurance - System Security Operating Procedures (SOPs)\n",
+      "description": "Failure to have documented procedures in an SOP could result in a security incident due to lack of\nknowledge by personnel assigned to the organization.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30997",
+      "title": "Information Assurance - COOP Plan  Testing (Not in Place for MAC I  II Systems or Not Considered for MAC III Systems)\n\n",
+      "description": "Failure to develop a COOP and test it periodically can result in the partial or total loss of operations\nand INFOSEC. A contingency plan is necessary to reduce mission impact in the event of system\ncompromise or disaster.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31004",
+      "title": "Information Assurance - COOP Plan  Testing (Incomplete)\n",
+      "description": "Failure to develop a COOP and test it periodically can result in the partial or total loss of operations\nand INFOSEC. A contingency plan is necessary to reduce mission impact in the event of system\ncompromise or disaster",
+      "severity": "low"
+    },
+    {
+      "id": "V-31008",
+      "title": "Information Assurance - System Security Incidents (Identifying, Reporting, and Handling)\n",
+      "description": "Failure to recognize, investigate and report information systems security incidents could result in\nthe loss of confidentiality, integrity, and availability of the systems and its data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31011",
+      "title": "Information Assurance - System Access Control Records (DD Form 2875 or equivalent)\n\n",
+      "description": "If accurate records of authorized users are not maintained, then unauthorized personnel could have\naccess to the system. Failure to have user sign an agreement may preclude disciplinary actions if\nuser does not comply with security procedures",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31013",
+      "title": "Information Assurance - System Training and Certification/ IA Personnel\n\n\n",
+      "description": "Improperly trained personnel can cause serious system-wide/network-wide problems that render\na system/network unstable.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31082",
+      "title": "Information Assurance - System Training /Users\n",
+      "description": "Improperly trained personnel can cause serious system-wide/network-wide problems that render\na system/network unstable.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31084",
+      "title": "Information Assurance - Accreditation Documentation\n",
+      "description": "Failure to provide the proper documentation can lead to a system connecting without all proper\nsafeguards in place, creating a threat to the networks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31090",
+      "title": "Information Assurance - NIPRNET Connection Approval (CAP)\n",
+      "description": "Failure to meet security standards and have approval before connecting to the NIPRNET can result\nin a vulnerability to the DISN.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31091",
+      "title": "Information Assurance - SIPRNET Connection Approval Process (CAP)\n",
+      "description": "Failure to provide current connection documentation to the Classified Connection Approval Office (CCAO) and allowing a system to connect and operate without a current CCAO approval can result in a vulnerability to all SIPRNet connected systems on the DISN.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31115",
+      "title": "Information Assurance - KVM Switch not Approved by the Defense Security Accreditation Working Group (DSAWG)\n",
+      "description": "Failure to use approved switch boxes can result in the loss or compromise of classified information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31124",
+      "title": "Information Assurance - KVM Switch (Port Separation) on CYBEX/Avocent 4 or 8 port \n",
+      "description": "The back plate of some 4 or 8 port CYBEX/AVOCENT KVM devices  provides a physical connection between adjacent ports.  Therefore failure to provide for physical port separation between SIPRNet (classified devices) and NIPRNet (unclassified devices) when using  CYBEX/AVOCENT KVM devices  can result in the loss or compromise of classified information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31125",
+      "title": "Information Assurance - KVM Switch Use of Hot-Keys on SIPRNet Connected Devices\n",
+      "description": "Use of \"Hot Keys\" for switching between devices relies on use of software to separate and switch between the devices.  Unless software use involves an approved Cross Domain Solution (CDS) it can result in the loss or compromise of classified information from low side devices to those devices on the high side.  Only physical switching between devices can assure that information will not be exchanged.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31126",
+      "title": "Information Assurance - KVM Switch (Request for Approval ) Documentation is not Available\n\n\n",
+      "description": "Failure to request approval for connection of new or additional KVM devices (switch boxes) for use in switching betwee SIPRNet devices and unclassified devices (NIPRNet) from the Classified Connection Approval Office (CCAO) could result in unapproved devices being used or approved devices being used or configured in an unapproved manner; therby increasing the risk for the DISN.",
+      "severity": "low"
+    },
+    {
+      "id": "V-31127",
+      "title": "Information Assurance - Unauthorized Wireless Devices - Connected to the SIPRNet\n\n",
+      "description": "Finding unauthorized wireless devices connected and/or operating on the SIPRNet is a security incident and could directly result in the loss or compromise of classified or sensitive information either intentionally or accidentally.  ",
+      "severity": "high"
+    },
+    {
+      "id": "V-31128",
+      "title": "Information Assurance - Unauthorized Wireless Devices - Portable Electronic Devices (PEDs) Used in Classified Processing Areas without Certified TEMPEST Technical Authority (CTTA) Review and Designated Accrediting Authority (DAA) Approval\n",
+      "description": "Allowing wireless devices in the vicinity of classified processing or discussion could directly result in\nthe loss or compromise of classified or sensitive information either intentionally or accidentally.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31129",
+      "title": "Information Assurance - Unauthorized Wireless Devices - No Formal Policy and/or Warning Signs\n",
+      "description": "Not having a wireless policy and/or warning signs at entrances could result in the unauthorized introduction of wireless devices into classified processing areas.",
+      "severity": "low"
+    },
+    {
+      "id": "V-31132",
+      "title": "Information Assurance - Network Connections - Physical Protection of Classified Network Devices such as Routers, Switches and Hubs (SIPRNet or Other Classified Networks or Systems Being Inspected)\n",
+      "description": "SIPRNet or other classified network connections that are not properly protected in their physical environment are highly vulnerable to unauthorized access, resulting in the probable loss or compromise of classified or sensitive information.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-31171",
+      "title": "Information Assurance - Network Connections - Wall Jack Security on Classified Networks (SIPRNet or other Inspected Classified Network or System) Where Port Authentication Using IEEE 802.1X IS NOT Implemented\n",
+      "description": "Network connections that are not properly protected are highly vulnerable to unauthorized access,\nresulting in the loss or compromise of classified or sensitive information.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-31190",
+      "title": "Information Assurance - Network Connections - Physical Protection of Unclassified (NIPRNet) Network Devices such as Routers, Switches and Hubs \n\n",
+      "description": "Unclassified (NIPRNet) network connections that are not properly protected in their physical environment are highly vulnerable to unauthorized access, resulting in the probable loss or compromise of sensitive information such as personally identifiable information (PII) or For Official Use Only (FOUO).\n\n\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31199",
+      "title": "Foreign National System Access - Local Access Control Procedures\n",
+      "description": "Unauthorized access by foreign nationals to Information Systems can result in, among other things, security incidents, compromise of the system, or the introduction of a virus.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-31210",
+      "title": "Foreign National System Access - Identification as FN in E-mail Address\n",
+      "description": "Unauthorized access by foreign nationals to Information Systems can result in, among other things,\nsecurity incidents, compromise of the system, or the introduction of a virus.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31211",
+      "title": "Foreign National (FN) Systems Access - Local Nationals Overseas System Access -  (NIPRNet User)\n",
+      "description": "Failure to subject foreign nationals to background checks could result in the loss or compromise of\nclassified or sensitive information by foreign sources.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31215",
+      "title": "Foreign National (FN) Systems Access - Local Nationals Overseas System Access -  (SIPRNet or Other Classified System or Classified Network being Reviewed)\n\n",
+      "description": "Failure to subject foreign nationals to background checks could result in the loss or compromise of\nclassified or sensitive information by foreign sources.",
+      "severity": "high"
+    },
+    {
+      "id": "V-31221",
+      "title": "Foreign National (FN) Systems Access - Local Nationals (LN) Overseas System Access -  Vetting for Privileged Access\n\n",
+      "description": "Failure to subject foreign nationals to background checks could result in the loss or compromise of\nclassified or sensitive information by foreign sources.",
+      "severity": "high"
+    },
+    {
+      "id": "V-31223",
+      "title": "Foreign National (FN) Systems Access - Delegation of Disclosure Authority Letter (DDL)\n",
+      "description": "Unauthorized access by foreign nationals to Information Systems can result in, among other things, security incidents, compromise of the system, or the introduction of a virus.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31225",
+      "title": "Foreign National System Access - FN or Immigrant Aliens (not representing a foreign government or entity) System Access - Limited Access Authorization (LAA)\n",
+      "description": "Failure to verify citizenship and proper authorization for access to either sensitive or classified information could enable personnel to have access to classified or sensitive information to which they are not entitled.",
+      "severity": "high"
+    },
+    {
+      "id": "V-31227",
+      "title": "Foreign National (FN) System Access - FN or Immigrant Aliens (not representing a foreign government or entity) with LAA Granted Uncontrolled Access\n",
+      "description": "Failure to verify citizenship and proper authorization for access to either sensitive or classified information could enable personnel to have access to classified or sensitive information to which they are not entitled.  Further uncontrolled/unsupervised access to physical facilities can lead directly to unauthorized access to classified or sensitive information.",
+      "severity": "high"
+    },
+    {
+      "id": "V-31242",
+      "title": "Foreign National (FN) Physical Access Control - Areas Containing US Only Information Systems Workstations/Monitor Screens, Equipment, Media or Documents",
+      "description": "Physically co-locating REL Partners or other FN - who have limited or no access to the SIPRNet or other US Classified systems - near US personnel in a collateral classified (Secret or higher) open storage area or in a Secret or higher Controlled Access Area (CAA) that processes classified material is permissible for operational efficiency and coordination.\n\nFailure to limit and control physical access to information visible on system monitor screens, information processing equipment containing classified data, removable storage media and printed documents is especially important in mixed US/FN environments.  Inadequate access and procedural controls can result in FN personnel having unauthorized access to classified materials and data, which can result in the loss or compromise of classified information, including NOFORN information. \n   \nAppropriate but simple physical and procedural security measures must be put in place to ensure the FN partners do not have unauthorized access to information not approved for release to them. \n\nThe primary control measure is to either keep US Only classified documents, information systems equipment and/ or associated removable storage media under continuous observation and control of a cleared US employee or place such items in an approved safe when unattended.\n\nAdditionally, escorting  visitors AND all FN employees/personnel into any area where there is US Only classified processing, documents, media, equipment or materials is not only a prudent security measure but an absolute requirement to prevent both intentional (insider threat) or unintentional (inadvertent) unauthorized exposure to classified materials and information.\n \nFollowing are applicable excerpts from CJCSI 6510.01F pertaining to control of US Only workstation spaces (in particular SCIFs and secure rooms):\n\n7. Information and Information System Access.  Access to DOD ISs is a revocable privilege and shall be granted to individuals based on need-to-know and IAW DODI 8500.2, NSTISSP No. 200, “National Policy on Controlled Access Protection” , Status of Forces Agreements for host national access, and DOD 5200.2-R, “Personnel Security System”.\nb. Individual foreign nationals may be granted access to specific classified U.S. networks and systems as specifically authorized under Information Sharing guidance outlined in changes to National Disclosure Policy (NDP-1).  \n(1) Classified ISs shall be sanitized or configured to guarantee that foreign nationals have access only to classified information that has been authorized for disclosure to the foreign national’s government or coalition, and is necessary to fulfill the terms of their assignments.\n(2) U.S.-only classified workstations shall be under strict U.S. control at all times.\n27. Foreign Access.\nf. Foreign National Access to U.S.-Only Workstations and Network Equipment. CC/S/As shall:\n(1) Maintain strict U.S. control of U.S.-only workstations and network equipment at all times.\n(4) Announce presence. If a foreign national is permitted access to U.S.-controlled workstation space, the individual must be announced, must wear a badge clearly identifying him or her as a foreign national, and must be escorted at all times. In addition, a warning light must be activated if available and screens must be covered or blanked.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-31243",
+      "title": "Foreign National (FN) Physical Access Control -  (Identification Badges)\n\n",
+      "description": "Failure to limit access to information visible on system monitor screens in mixed US/FN environments can result in FN personnel having unauthorized access to classified information, which can result in the loss or compromise of classified information, including NOFORN information.  Physically co-locating REL Partners or other FN - who have limited access to the SIPRNet or other US Classified systems - near US personnel in a collateral classified (Secret) open storage area or in a Secret Controlled Access Area (CAA) that processes classified material is permissible for operational efficiency and coordination.  Appropriate but simple physical and procedural security measures must be put in place to ensure the FN partners do not have unauthorized access to information not approved for release to them. Ensuring that US employees can clearly identify FN workers is an important control measure and can be accomplished by requiring the FN employees or partners to wear picture identification badges that clearly identify their affiliated / represented Country.  Wearing of Country specific military uniforms also can be used.",
+      "severity": "low"
+    },
+    {
+      "id": "V-31262",
+      "title": "Foreign National (FN) Administrative Controls - Contact Officer Appointment\n",
+      "description": "Failure to provide proper oversight of Foreign National partners or employees and limit access to classified and sensitive information can result in the loss or compromise of NOFORN information.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-31263",
+      "title": "Foreign National (FN) Administrative Controls - Written Procedures and Employee Training\n\n",
+      "description": "Failure to limit access for Foreign Nationals to classified information can result in the loss or compromise of NOFORN information.  Documented local policies and procedures concerning what information FN employees or partners have access to and what they are excluded from having, what physical access limitations and allowances are in place, how to recognize a FN (badges, uniforms, etc.), steps to take to sanitize a work area before a FN can access the area, etc. are an essential part of controlling FN access.  Just as important as development of policy and procedure is the training/familiarization of both employees and assigned FNs with the rules of interaction.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31264",
+      "title": "Foreign National (FN) Administrative Controls - Proper Investigation and Clearance for Access to Classified Systems and/or Information Assurance (IA) Positions of Trust\n\n",
+      "description": "Failure to validate that FN partners or employees have the required security clearance levels for access to classified systems and/or the proper level of background investigation for IA Positions of Trust could result in untrustworthy Foreign Nationals having access to classified or sensitive US systems.  In situations where they have been assigned to IA positions of trust this consideration becomes even more critical as they could adversely impact the CIA of the systems, possibly without being easily discovered. ",
+      "severity": "high"
+    },
+    {
+      "id": "V-31265",
+      "title": "Foreign National (FN) Administrative Controls - Procedures for Requests to Provide Foreign Nationals System Access\n\n",
+      "description": "Unauthorized access by foreign nationals to Information Systems can result in, among other things,\nsecurity incidents, compromise of the system, or the introduction of a virus.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31266",
+      "title": "Information Security (INFOSEC) - Safe/Vault/Secure Room Management\n\n",
+      "description": "Lack of adequate or Improper procedures for management of safes/vaults and secure rooms could result in the loss or compromise of classified material.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31267",
+      "title": "Information Security (INFOSEC) - Vault/Secure Room Storage Standards - Door Combination Lock  Meeting Federal Specification FF-L-2740",
+      "description": "Failure to meet Physical Security storage standards could result in the undetected loss or compromise of classified material.",
+      "severity": "high"
+    },
+    {
+      "id": "V-31268",
+      "title": "Information Security (INFOSEC) - Secure Room Storage Standards - Door Construction \n\n",
+      "description": "Failure to meet construction standards could result in the undetected loss or compromise of classified material.",
+      "severity": "high"
+    },
+    {
+      "id": "V-31269",
+      "title": "Information Security (INFOSEC) - Secure Room Storage Standards - Perimeter Construction using Proper Permanent Construction Materials for True Ceiling, Walls and Floors. \n\n",
+      "description": "Failure to meet standards for ensuring that there is structural integrity of the physical Perimeter surrounding a secure room (AKA: collateral classified open storage area) could result in a lack of structural integrity and the undetected loss or compromise of classified material.  Permanent construction materials; while not impenetrable, provide physical evidence of an attempted or actual intrusion into a secure room space.  Construction materials and application techniques that are not permanent in nature can  potentially be removed to allow for access to secure room space and then replaced by an intruder upon egress from the area.  This effectively negates the detection capability afforded by permanent construction techniques and materials.  Examples of non-permanent material would be modular walls that can be removed and replaced with ease or plywood board (or other materials) applied with screws or nails that can be removed from outside the secure room space and then replaced with standard tools.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31270",
+      "title": "Information Security (INFOSEC) - Secure Room Storage Standards  Wall and Ceiling Structural Integrity (AKA: True Floor to True Ceiling Connection)\n\n",
+      "description": "Failure to meet standards for ensuring that there is structural integrity of the physical perimeter surrounding a secure room (AKA: collateral classified open storage area) IAW DoD Manual 5200.01, Volume 3, Enclosure 3 could result in the undetected loss or compromise of classified material.",
+      "severity": "high"
+    },
+    {
+      "id": "V-31271",
+      "title": "Information Security (INFOSEC) - Vault/Secure Room Storage Standards - Openings in Perimeter Exceeding 96 Square Inches\n",
+      "description": "Failure to meet standards for ensuring that there is structural integrity of the physical perimeter surrounding a vault or secure room (AKA: collateral classified open storage area) IAW DoD Manual 5200.01, Volume 3, Enclosure 3 could result in the undetected loss or compromise of classified material.",
+      "severity": "high"
+    },
+    {
+      "id": "V-31272",
+      "title": "Information Security (INFOSEC) - Secure Room Storage Standards  Windows - Accessible from the Ground Hardened Against Forced Entry and Shielded from Exterior Viewing of Classified Materials Contained within the Area.\n\n",
+      "description": "Failure to meet standards for ensuring that there is structural integrity of the physical perimeter surrounding a secure room (AKA: collateral classified open storage area) IAW DoD Manual 5200.01, Volume 3 could result in the undetected loss or compromise of classified material.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-31273",
+      "title": "Information Security (INFOSEC) - Vault Storage/Construction Standards  \n\n",
+      "description": "Failure to meet standards IAW the DoD Manual 5200.01, Volume 3, Appendix to Enclosure 3, for ensuring that there is required structural integrity of the physical perimeter surrounding a classified storage vault could result in the undetected loss or compromise of classified material.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-31274",
+      "title": "Information Security (INFOSEC) - Secure Room Storage Standards - Intrusion Detection System (IDS)\n",
+      "description": "Failure to meet standards for maintenance and validation of structural integrity of the physical perimeter surrounding a secure room (AKA: collateral classified open storage area) IAW DoD Manual 5200.01, Volume 3, could result in the undetected loss or compromise of classified material.  Using a physical intrusion detection system enables immediate detection of attempted and/or actual intrusion into a secure room space.  This is often the best supplemental protective measure (vice using 4-hour random checks) due to providing capability for immediate detection, and for immediate response to assess and counter the threat to the secure room space.  Use of 4-hour checks may be adequate if supported by a risk assessment, but will not provide the immediate detection and response capability of a properly installed IDS.  It is required that a risk assessment be conducted to determine which of these two intrusion detection methods (use of IDS OR 4-hour random checks) is appropriate for any particular location.",
+      "severity": "high"
+    },
+    {
+      "id": "V-31275",
+      "title": "Information Security (INFOSEC) - Secure Room Storage Standards - Balanced Magnetic Switch (BMS) on Perimeter Doors\n\n",
+      "description": "Failure to meet standards for ensuring that there is structural integrity of the physical perimeter surrounding a secure room (AKA: collateral classified open storage area) IAW DoD Manual 5200.01, Volume 3 could result in the undetected loss or compromise of classified material.  When a physical Intrusion Detection System (IDS) is used as the supplemental protection measure (in lieu of 4-hour random checks) for secure rooms there is a requirement to place a Balanced Magnetic Switch (BMS) alarm contact on the primary ingress/egress door and any secondary/emergency exit doors.  This alarm sensor is an essential part of any properly installed IDS and ensures that doors opened by force or that are left open are immediately detected.  A BMS (AKA: triple biased alarm contact) is the most difficult door alarm contact to defeat and must be used in lieu of dual biased or simple alarm contacts.",
+      "severity": "high"
+    },
+    {
+      "id": "V-31276",
+      "title": "Information Security (INFOSEC) - Secure Room Storage Standards - Interior Motion Detection\n",
+      "description": "Failure to meet standards for ensuring that there is structural integrity of the physical perimeter surrounding a secure room (AKA: collateral classified open storage area) IAW DoD Manual 5200.01, Volume 3 could result in the undetected loss or compromise of classified material.  Motion detection located interior to secure rooms provides the most complete/overarching coverage of any Intrusion Detection System (IDS) alarm sensor.  While most sensors like BMS alarm contacts, glass break detectors, etc. are only able to detect potential intrusion at specific locations, use of motion detection provides a capability to protect large areas with \"blanket coverage\" generally using fewer sensors.  This capability need not cover the entire secure room space (although that would be best) but can be used effectively by placement directly over the protected assets or in hallways or other restricted passage ways leading to classified/sensitive assets.  Consolidating classified information system assets in specific spaces within secure rooms enables a more efficient use of motion detectors and ensures the most critical assets are properly protected.\n\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-31277",
+      "title": "Information Security (INFOSEC) - Secure Room Storage Standards - Structural Integrity Checks\n",
+      "description": "Failure to ensure that there is structural integrity of the physical perimeter surrounding a secure room (AKA: collateral classified open storage area) IAW DoD Manual 5200.01, Volume 3 could result in the undetected loss or compromise of classified material.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31278",
+      "title": "Information Security (INFOSEC) - Secure Room Storage Standards - Four (4) Hour Random Checks in Lieu of Using Intrusion Detection System (IDS)\n\n",
+      "description": "Failure to meet standards for ensuring that there is structural integrity of the physical perimeter surrounding a secure room (AKA: collateral classified open storage area) IAW DoD Manual 5200.01, Volume 3 could result in the undetected loss or compromise of classified material.\n\nUsing a physical intrusion detection system enables immediate detection of attempted and/or actual intrusion into a secure room space.  This is often the best supplemental protective measure (vice using 4-hour random checks) due to providing capability for immediate detection, and for immediate response to assess and counter the threat to the secure room space.  Use of 4-hour checks may be adequate if supported by a risk assessment, but will not provide the immediate detection and response capability of a properly installed IDS.  It is required that a risk assessment be conducted to determine which of these two intrusion detection methods (use of IDS OR 4-hour random checks) is appropriate for any particular location.  If the risk assessment results in a determination that use of 4-hour random checks is the most cost efficient supplemental control (vice IDS) to protect SIPRNet assets contained in secure rooms, the manner in which the checks are conducted can greatly impact the effectiveness of the checks.  Thorough physical checks conducted on a frequent basis can reduce the time between an attempted or actual intrusion and time of discovery - during random checks. \n",
+      "severity": "high"
+    },
+    {
+      "id": "V-31279",
+      "title": "Vault/Secure Room Storage Standards - IDS Performance Verification\n\n",
+      "description": "Failure to test IDS functionality on a periodic basis could result in undetected alarm sensor or other system failure.  This in-turn could result in an undetected intrusion into a secure room  (AKA: collateral classified open storage area) and the undetected loss or compromise of classified material.\n\n\n\nmeet standards for ensuring that there is structural integrity of the physical perimeter surrounding a secure room",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31284",
+      "title": "Vault/Secure Room Storage Standards - IDS Transmission Line Security\n\n",
+      "description": "Failure to meet standards for ensuring integrity of the intrusion detection system signal transmission supporting a secure room (AKA: collateral classified open storage area) containing SIPRNet assets could result in the undetected loss or compromise of classified material.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-31286",
+      "title": "Vault/Secure Room Storage Standards - Masking of IDS Sensors Displayed at the Intrusion Detection System (IDS) Monitoirng Station\n\n",
+      "description": "Failure to meet standards for the display of masked alarm sensors at the IDS monitoring station could result in the location with masked or inactive sensors not being properly supervised.  This could result in an undetected breach of a secure room perimeter and the undetected loss or compromise of classified material.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31289",
+      "title": "Vault/Secure Room Storage Standards - IDS Alarm Monitoring Indicators, both audible and visual (Alarm Status) must be displayed for each sensor or alarmed zone at the monitoring station.\n\n",
+      "description": "Failure to meet standards for the display of audible and visual alarm indicators at the IDS monitoring station could result in an a sensor going into alarm state and not being immediately detected.  This could result in an undetected or delayed discovery of a secure room perimeter breach and the  loss or compromise of classified material.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31290",
+      "title": "Vault/Secure Room Storage Standards - Intrusion Detection System (IDS) / Access Control System (ACS) Primary and Emergency Power Supply\n\n",
+      "description": "Failure to meet standards for ensuring that there is an adequate commercial and back-up power sources for IDS/ACS with uninterrupted failover to emergency power could result in a malfunctionof the physical alarm and access control system.  This could result in the undetected breach of classified open storage / secure rooms or vaults containing SIPRNet assets and undetected loss or compromise of classified material.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31291",
+      "title": "Vault/Secure Room Storage Standards - Intrusion Detection System and Access Control System (IDS/ACS) Component Tamper Protection\n\n",
+      "description": "Failure to tamper protect IDS/ACS component enclosures and access points external to protected vaults/secure rooms space could result in the undetected modification or disabling of IDS/ACS system components.  This could lead to the undetected breach of secure space containing SIPRNet assets and result in the undetected loss or compromise of classified information or materials.\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31292",
+      "title": "Vault/Secure Room Storage Standards - IDS Access/Secure Control Units Must be Located within the Secure Room Space\n\n",
+      "description": "Failure to ensure that IDS Access and Secure Control Units used to activate and deactivate alarms (primarily motion detectors) within vaults or secure rooms protecting SIPRNet assets are not located within the confines of the vault or secure room near the primary ingress/egress door could result in the observation of the access/secure code by an unauthorized person.  Further the control units would be more exposed with a greater possibility of tampering outside the more highly protected space of a secure room/collateral classified open storage area.  This could result in the undetected breach of secure room space and the loss or compromise of classified information or materials.\n\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-31293",
+      "title": "Vault/Secure Room Storage Standards - Primary IDS Monitoring Location Outside the \"Monitored\" Space\n\n",
+      "description": "Failure to locate the alarm monitoring station at an external location; at a safe distance from the space being monitored to not be involved in any surprise attack of the alarmed space could result in a perimeter breach and the  loss or compromise of classified material with limited or no capability to immediately notify response forces.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31294",
+      "title": "Information Security (IS) - Continuous Operations Facility: Access Control Monitoring Methods\n",
+      "description": "Failure to control door access to a Continuous Operations Facility containing classified SIPRNET assets may result in immediate and potentially undetected access to classified information, with no capability to immediately alert response forces.  Ultimately this could result in the undetected loss or compromise of classified material.\n\nUSE CASE EXPLANATION:\n\nA Continuous Operations Facility functions 24/7 and contains classified SIPRNet equipment and/or media that does not meet all the physical and procedural requirements of a vault or secure room (AKA: collateral classified open storage area) and the classified equipment and/or media may not be stored in an approved safe when not in use.  Examples of such facilities are Emergency Operations Centers (EOC), Information System Monitoring Centers, Trouble Desk Centers, etc.  All standards for Continuous Operations Facilities are found in the DoD Manual 5200.01, V3 and this STIG Requirement provides additional clarification and implementation standards for all Continuous Operations Facilities containing SIPRNet assets.\n\nContinuous Operations Facilities are not routinely closed and secured after normal business hours and reopened at the beginning of normal workdays.   A Continuous Operations Facility is either continuously occupied or receives frequent access (several times during an 8 hour shift).  A “facility” can be a single room or a larger contiguous area, usually (but not always) without Federal Specification FF-L-2740 combination locks on the primary access door.  Continuous Operations area access must meet the requirements herein even where the surrounding area is continuously occupied.  Continuous Operations minimizes or eliminates the need for certain other security measures such as door locks, IDS, etc.\n\nWhere there is a Continuous Operations Facility there should be demonstrated need for continuous occupation or frequent access to the “specific” room or area containing the classified SIPRNet assets.  A justification that the surrounding building or facility is continuously occupied is not acceptable.  If this is observed, reviewers should consider the possibility that the stated requirement for a Continuous Operations Facility is being used to cover deficiencies with what should legitimately be established as a secure room or vault.  In such cases the use of Traditional Security STIG Requirements and applicable standards for vaults and/or secure rooms may be more appropriate, resulting in findings under those Requirements.\n\nA Continuous Operations Facility containing classified materials is most appropriate when it is continuously occupied by properly cleared employees (or others with security clearance and a need-to-know) who are capable of controlling or monitoring ingress and egress from within the area.  This provides the most legitimate justification for using a Continuous Operations Facility vice using a properly constructed and access controlled vault or secure room (AKA: collateral classified open storage area).\n\nAlternatively (and less desirable from a security perspective) the area may not be continuously occupied but access is required on a very frequent basis by cleared employees.  The frequency of access makes opening and closing of the area impractical.  So while there is not an absolute rule, if such a room or area is not routinely accessed for operational reasons several times during a standard 8-hour shift the justification for not constructing and securing it in accordance with requirements for a secure room or vault is unacceptable.  Convenience and ease of access is not proper justification for a Continuous Operations Facility.\n\nContinuous Operations area door control may be accomplished multiple ways.  The five main types of access control methods are listed below.  One or more of the five methods may apply to any site.  Each access point must comply with one or more of the methods of access control for 24 hours of each day.  Any deficiency for any area access point or for a portion of the day for an access point will result in a finding under this item.  All Continuous Operations Facilities access points should be checked for proper access control according to the type of access control methods implemented.\nDirect access control monitoring for both occupied and unoccupied Continuous Operations Facilities is conducted by:  cleared employees, guards or receptionists located inside the area or directly outside the area.  A properly configured Automated Entry Control System (AECS) or continuously monitored Closed Circuit Television (CCTV) are the only options for indirect monitoring of Continuous Operations Facilities.\n\nThe five basic methods for controlling access to Continuous Operations Facilities are:\n\n1.  Method #1: Use of an Automated Entry Control System (AECS) Card Reader with Biometrics or Personal Identification Number (PIN)\n\n2.  Method #2:  Access Continually Monitored by Occupants (Cleared Employees) of the Continuous Operations Facility - all doors NOT visible\n\n3.  Method #3:  Access Monitored by Occupants (Cleared Employees) of the Continuous Operations Facility - all doors are visible\n\n4.  Method #4:  Access Monitored by Employees Directly Outside the Open Storage Space - all doors MUST BE visible\n\n5.  Method #5:  Access Monitored by Closed Circuit Television (CCTV) reporting to a Central Monitoring Station Staffed 24/7 by cleared Guards or Other cleared Security Professionals - all doors MUST HAVE CCTV cameras\n\nNormally only one method of access control will be applicable to a specific Continuous Operations Facility; however, there may be situations where more than one approved method is being used at a single facility.  For instance an Automated Entry Control System (AECS) with card reader and PIN may be used to secure the access door while there are also employees located inside the room who can monitor and control access.  In situations where multiple methods are found, reviewers should choose only one of the five to evaluate compliance and the effectiveness of access control to the Continuous Operations Facility.  If one of the methods is found to be totally compliant while others in use contain deficiencies, the method that is 100% compliant should be selected for use during the review.  In the example just provided, if the room is only occupied by one employee who during breaks or for other reasons must exit the room for periods of time this would cause a significant deficient condition since the room is not continuously occupied by an employee.  Therefore using the AECS as the method to evaluate access control for the Continuous Operations Facility would likely be selected since it appears to be (and for this example we will assume) 100% compliant.\n\nThere is also a possibility that multiple Continuous Operations Facilities could be found at a particular site location (even in the same building) that are using different methods to control access.  Once again, multiple methods of access control from the list of five could be selected for the evaluation, based on the access control methods actually being used for the various 24/7Continuous Operations Facilities.\n\nOnce the applicable Continuous Operations Facility access control methods that apply to each of the Continuous Operations Facilities at the site are selected, the site must comply with all of the individual checks for the selected method(s).  Specific checks for requirements associated with a method of access control are found in the Check Content information field.\n\nIf there is no Continuous Operations Facility at a particular site this Requirement is Not Applicable (NA) for a review.\n\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-31529",
+      "title": "Vault/Secure Room Storage Standards - Access Control During Working Hours Using Visual Control OR Automated ACS with PIN / Biometrics:  \n\n",
+      "description": "Failure to properly monitor and control collateral classified open storage area access doors during working hours (while the FF-L-2740 combination lock is not secured)  could result in an undetected perimeter breach and limited or no capability to immediately notify response forces.  Ultimately this could result in the undetected loss or compromise of classified material.\n\nEntrances to secure rooms or areas (and/or vaults that are opened for access) must be under visual control at all times during duty hours to prevent entry by unauthorized personnel . This may be accomplished by several methods (e.g., employee work station, guard, continuously monitored CCTV). \n\nAn automated entry control system (AECS) may be used to control admittance during working hours instead of visual control, if it meets certain criteria.  ",
+      "severity": "high"
+    },
+    {
+      "id": "V-31548",
+      "title": "Vault/Secure Room Storage Standards - Access Control System Records Maintenance, which includes documented procedures for removal of access. ",
+      "description": "Failure to document procedures for removal of access and inadequate maintenance of access records for both active and removed persons could result in unauthorized persons having unescorted access to vaults, secure rooms or collateral classified open storage areas where classified information is processed and stored. \n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31549",
+      "title": "Vault/Secure Room Storage Standards - Automated Entry Control System (AECS) and Intrusion Detection System (IDS) Head-End Equipment Protection: \n \nThe physical location (room or area) containing AECS and IDS head-end equipment (server and/or work station/monitoring equipment) where authorization, personal identification or verification data is input, stored, or recorded and/or where system status/alarms are monitored must be physically protected.",
+      "description": "Inadequate physical protection of Intrusion Detection System or Automated Entry Control System servers, data base storage drives, or monitoring work stations could result in unauthorized access to core system devices providing protection for classified vaults, secure rooms and collaterial classified open storage areas.  This could result in the loss of confidentiality, integrity or availability of system functionality or data.  The impact of this would be possible undetected and unauthorized access to classified processing spaces; resulting in the loss or compromise of classified information or sensitive information such as personal data (PII) of persons issued access control cards or badges.",
+      "severity": "high"
+    },
+    {
+      "id": "V-31657",
+      "title": "Vault/Secure Room Storage Standards - Access Control System Keypad Device Protection:\nKeypad devices designed or installed in a manner that an unauthorized person in the immediate vicinity cannot observe the selection of input numbers.                ",
+      "description": "If someone were to sucessfully observe an authorized user's selection of numbers for their PIN at an entrance to a classified storage area or unclassified but sensitive computer room  it could result in an unauthorized person being able touse that same PIN to gain access. Where purely electronic (cipher type) locks are used without an access card or badge this could lead to direct access by anunauthorized person.  Where coded Access Control System cards and badges  are used the risk is deminished significantly as the coded badge associated with the PIN would need to be lost/stolen and subsequently recovered by someone with unauthorized knowledge of the PIN for them to be able to successfully gain access to the secured area.",
+      "severity": "low"
+    },
+    {
+      "id": "V-31897",
+      "title": "Vault/Secure Room Storage Standards - Access Control System (ACS) Transmission Line Security:  \nACS Transmission lines traversing an uncontrolled area (not within at least a Secret Controlled Access Area (CAA) ) shall use line supervision and be physically protected within conduit.\n\n",
+      "description": "Persons not vetted to at least the same level of classification residing on the information systems being protected by the ACS could gain access to the ACS transmission line and tamper with it to facilitate surreptitious access to the secure space.  Proper line supervision and physical protection within conduit will enable detection of line tampering.  Such failure to meet standards for line supervision and physical protection could result in the loss or compromise of classified material.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31908",
+      "title": "\nVault/Secure Room Storage Standards - Access Control System (ACS) Door Locks: Electric Strikes and/or Magnetic Locking devices used in access control systems shall be heavy duty, industrial grade and be configured to fail secure in the event of a total loss of power (primary and backup) .  \n\n",
+      "description": "There are a variety of locking mechanisms that may be used to secure both primary and secondary doors for vaults and classified open storage areas (secure rooms).  While the primary access door is to be secured with an appropriate combination lock when closed; during working hours Automated  Access Control Systems (ACS) using electric strikes or magnetic locks, electrical, mechanical, or electromechanical access control devices, or standard keyed locks may be used to facilitate frequent access to the secured space by employees vetted for unescorted access.  Where electrically actuated locks are used, locking mechanisms must be properly configured and controlled to ensure they fail in a secure state during partial or total loss of power (primary and backup).  Failure to provide for these considerations could result in the loss or compromise of classified material.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31909",
+      "title": "Marking Classified - Local or Enclave Classified Marking Procedures must be developed to ensure employees are familiar with appropriate organization Security Classification Guides (SCG), how to obtain guidance for marking classified documents, media and equipment, and where associated forms, classified cover sheets, labels, stamps, wrapping material for classified shipment, etc. can be obtained.\n",
+      "description": "Failure to properly mark classified material could result in the loss or compromise of classified\ninformation.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-31910",
+      "title": "Marking Classified - Equipment, Documents or Media:  In a classified operating environment, all unclassified items must be marked in addition to all classified items.  \n\n\n",
+      "description": "Failure to properly mark classified material could result in the loss or compromise of classified\ninformation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31976",
+      "title": "Classified Working Papers are properly marked, destroyed when no longer needed, or treated as a finished document after 180 days\n\n",
+      "description": "Failure to properly mark or handle classified documents can lead to the loss or compromise of\nclassified or sensitive information.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-31986",
+      "title": "Storage/Handling of Classified Documents, Media, Equipment - must be under continuous personal protection and control of an authorized (cleared) individual OR guarded or stored in an approved locked security container (safe), vault, secure room, collateral classified open storage area or SCIF.\n",
+      "description": "Failure to store classified in an approved container OR to properly protect classified when removed from storage can lead to the loss or compromise of classified or sensitive information.\n\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-31987",
+      "title": "Non-Disclosure Agreement - Standard Form 312: no person may have access to classified information unless that person has a security clearance in accordance with DoD 5200.2-R and has signed a Standard Form (SF) 312, Classified Information Non-Disclosure Agreement (NDA), and access is essential to the accomplishment of a lawful and authorized Government function (i.e., has a need to know).\n\n\n\n",
+      "description": "Failure to verify clearance, need-to-know, and execute a non-disclosure agreement before granting\naccess to classified can result in unauthorized personnel having access to classified.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-31988",
+      "title": "Handling of Classified Documents, Media, Equipment - Written Procedures  for when classified material/equipment is removed from a security container and/or secure room. \n",
+      "description": "Failure to develop procedures and to train employees on protection of classified when removed from storage could lead to the loss or compromise of classified or sensitive information due to a lack of employee knowledge of requirements.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-31989",
+      "title": "Handling of Classified - Use of Cover Sheets on Documents Removed from Secure Storage\n\n                                                                                                                                                                                                                                           \n",
+      "description": "Failure to protect readable classified information printed from classified systems such as SIPRNet when removed from secure storage can lead to the loss or compromise of classified or sensitive information.",
+      "severity": "low"
+    },
+    {
+      "id": "V-31991",
+      "title": "Classified Monitors/Displays (Physical Control of Classified Monitors From Unauthorized Viewing) \n\n                     \n\n",
+      "description": "Failure to limit access to unauthorized personnel to information displayed on classified monitors/displays can result in the loss or compromise of classified information, including NOFORN information.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-31992",
+      "title": "Classified Monitors/Displays (Procedures for Obscuration of Classified Monitors) - protection from uncleared persons or those without a need-to-know.\n\n",
+      "description": "Failure to develop procedures and training for employees to cover responsibilities and methods for limiting the access of unauthorized personnel to classified information reflected on information system monitors and displays can result in the loss or compromise of classified information.",
+      "severity": "low"
+    },
+    {
+      "id": "V-31993",
+      "title": "Monitor Screens - Disable Access by CAC or Token Removal, or Lock Computer via Ctrl/Alt/Del\n\n\n\n\n",
+      "description": "The DoD Common Access Cards (CAC) a \"smart\" card, is the standard identification for active-duty military personnel, Selected Reserve, DoD civilian employees, and eligible contractor personnel.  It is also the principal card used to enable physical access to buildings and controlled spaces, and it provides access to defense computer networks and systems. \n \nThe card, which is the property of the U.S. Government, is required to be in the personal custody of the member at all times.\n\nSystem Access Tokens are also used on the SIPRNet and the cards along with a Personal identity Number (PIN) can be used to access classified information on the SIPRNet in lieu of a logon ID and password.\n\nCAC and SIPRNet tokens are very important components for providing both physical and logical access control to DISN assets and must therefore be strictly controlled.\n\nPhysically co-locating REL Partners or other FN - who have limited access to the SIPRNet or other US Classified systems - near US personnel in a collateral classified (Secret or higher) open storage area or in a Secret or higher Controlled Access Area (CAA) that processes classified material is permissible for operational efficiency and coordination.\n  \nFailure to limit access to information systems is especially important in mixed US/FN environments.   This is particularly important on US Only classified terminals when not personally and physically attended by US personnel.  The failure to properly disable information workstations and monitor screens when unattended can result in FN personnel having unauthorized access to classified information, which can result in the loss or compromise of classified information, including NOFORN information. \n\nAppropriate but simple physical and procedural security measures must be put in place to ensure that unauthorized persons to include FN partners do not have unauthorized access to information not approved for release to them.  Control of CACs, SIPRNet tokens and locking of computer work stations when unattended is an important aspect of proper procedural security measure implementation.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-31994",
+      "title": "End-of-Day Checks - Organizations that process or store classified information must establish a system of security checks at the close of each duty and/or business day to ensure that any area where classified information is used or stored is secure. SF 701, Activity Security Checklist, shall be used to record such checks. \n\n",
+      "description": "Failure to have written guidance to provide guidance for end-of-day (EOD) checks could lead to  such checks not being properly conducted.  If EOD checks are not properly conducted the loss or improper storage of classified material might not be promptly discovered.  This could result in a longer duration of the security deficiency before corrective action is taken and make discovery of factual information concerning what caused the security incident and assigning responsibility and remedail actions more difficult. Ultimately the failure to perform consistent EOD checks can lead to the loss or compromise of classified or sensitive information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31995",
+      "title": "Classified Reproduction - Document Copying Procedures: This STIG Check (AKA: Vulnerability (Vul)) concerns ONLY PROCEDURES for the reproduction (copying) of classified DOCUMENTS on Multi-Functional Devices (MDF) connected to the DISN.\n                                       \n\n",
+      "description": "Lack of or improper reproduction procedures for classified material could result in the loss or compromise of classified information.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-31996",
+      "title": "Classified Reproduction - Following guidance for System to Media Transfer of Data from systems connected specifically to the SIPRNet In-Accordance-With (IAW) US Cybercom CTO 10-133 .\n\n                      ",
+      "description": "Failure to follow guidance for disabling removable media drives on devices connected to the SIPRNet or if approved by the local DAA failure to  follow US CYBERCOM procedures for using removable media on SIPRNet could result in the loss or compromise of classified information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32008",
+      "title": "Classified Reproduction - SIPRNet Connected Classified Multi-Functional Devices (MFD) located in Space Not Approved for Collateral Classified Open Storage.\n                  \n",
+      "description": "Classified Multi-Functional Devices (MFD) include copiers and contain hard drives that maintain classified data or images.  Failure to locate these devices in spaces approved for classified open storage could enable uncleared persons to access classified information, either from unsanitized hard drives or from printed/copied material that is left unattended on the machine for any period of time.",
+      "severity": "high"
+    },
+    {
+      "id": "V-32009",
+      "title": "Destruction of Classified Documents Printed from the SIPRNet Using Approved Devices on NSA Evaluated Products Lists (EPL).\n\n",
+      "description": "Failure to properly destroy classified material can lead to the loss or compromise of classified or NSA\nsensitive information.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-32090",
+      "title": "Classified Destruction - Availability of Local Policy and Procedures\n",
+      "description": "Failure to properly destroy classified material can lead to the loss or compromise of classified or\nsensitive information.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32102",
+      "title": "Classified Destruction - Hard Drive and Storage Media Sanitization Devices and Plans are not Available for Automated Information System (AIS) Equipment On-Hand\n\n",
+      "description": "Failure to properly destroy classified material can lead to the loss or compromise of classified or\nsensitive information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32111",
+      "title": "Classified Destruction - Improper Disposal of Automated Information System (AIS) Hard Drives and Storage Media\n\n",
+      "description": "Failure to properly destroy classified or sensitive material can lead to the loss or compromise of classified or sensitive information.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-32132",
+      "title": "Classified Emergency Destruction Plans  - Develop and Make Available\n\n",
+      "description": "Failure to develop emergency procedures can lead to the loss or compromise of classified or\nsensitive information.\n\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32138",
+      "title": "Security Incident/Spillage - Lack of Procedures or Training for Handling and Reporting\n\n",
+      "description": "Failure to report possible security compromise can result in the impact of the loss or compromise\nof classified information not to be evaluated, responsibility affixed, or a plan of action developed to prevent recurrence of future incidents.\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32150",
+      "title": "Classification Guides Must be Available for Programs and Systems for an Organization or Site \n\n",
+      "description": "Failure to have proper classification guidance available for can result in the misclassification of information and ultimatley lead to the loss or compromise of classified or sensitive information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32156",
+      "title": " Controlled Unclassified Information (CUI) - Local Policy  Procedure\n  \n \n\n                       \n",
+      "description": "Failure to handle CUI in an approved manner can result in the loss or compromise of sensitive\ninformation.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32159",
+      "title": "Controlled Unclassified Information (CUI) - Employee Education and Training\n\n",
+      "description": "Failure to handle CUI in an approved manner can result in the loss or compromise of sensitive\ninformation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32180",
+      "title": "Controlled Unclassified Information - Document, Hard Drive and Media Disposal\n\n",
+      "description": "Failure to handle CUI in an approved manner can result in the loss or compromise of sensitive\ninformation.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32261",
+      "title": "Controlled Unclassified Information - Handling, Storage and Controlling Access to Areas where CUI is Processed or Maintained \n\n",
+      "description": "Failure to handle CUI in an approved manner can result in the loss or compromise of sensitive\ninformation.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32262",
+      "title": "Controlled Unclassified Information - Marking/Labeling Media within Unclassified Environments (Not Mixed with Classified)\n\n",
+      "description": "Failure to mark CUI in an approved manner can result in the loss or compromise of sensitive\ninformation.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32263",
+      "title": "Controlled Unclassified Information - Encryption of Data at Rest\n\n",
+      "description": "Failure to handle CUI in an approved manner can result in the loss or compromise of sensitive\ninformation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32264",
+      "title": "Controlled Unclassified Information - Transmission by either Physical or Electronic Means\n\n",
+      "description": "Failure to handle/transmit CUI in an approved manner can result in the loss or compromise of sensitive\ninformation.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32265",
+      "title": "Controlled Unclassified Information - Posting Only on Web-Sites with Appropriate Encryption; not on Publicly Accessible Web-Sites.\n\n",
+      "description": "Failure to handle CUI in an approved manner can result in the loss or compromise of sensitive\ninformation.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32321",
+      "title": "Classified Annual Review\n\n",
+      "description": "Failure to conduct the annual review and clean out day can result in an excessive amount of\nclassified (including IS storage media) being on hand and therefore being harder to account for, resulting in the possibility of loss or compromise of classified or sensitive information.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32336",
+      "title": "Position of Trust - Knowledge of Responsibility to Self Report Derogatory Information\n\n",
+      "description": "Failure to inform personnel of the expected standards of conduct while holding a position of trust and their responsibility to self-report derogatory information to the organization security manager\ncan result in conduct by the individual that will require them being removed from that position.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32340",
+      "title": "Position of Trust - Local Policy Covering Employee Personal Standards of Conduct and Responsibilities\n\n",
+      "description": "Failure to inform personnel of the expected standards of conduct while holding a position of trust\ncan result in conduct by the individual that will require them being removed from that position and/or result in an untrustworthy person continuing in a postion of trust without proper vetting of new derogatory information.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32341",
+      "title": "Position of Trust - Training Covering Employee Standards of Conduct and Personal Responsibilities\n\n",
+      "description": "Failure to inform personnel of the expected standards of conduct while holding a position of trust\ncan result in conduct by the individual that will require them being removed from that position or result in a person no longer meeting standards criteria continuing to hold a position of trust without proper vetting for suitability.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32342",
+      "title": "Position Sensitivity - Assignment based on Security Clearance and/or Information Technology (IT) Level on Assigned Information Systems (IS)\n\n",
+      "description": "Failure to designate position sensitivity could result in personnel having access to classified\ninformation or other sensitive duties (such as privileged access to DoD Information Systems)  without the required investigative and adjudicative prerequisites\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32343",
+      "title": "Validation Procedures for Security Clearance Issuance and (Classified Systems and/or Physical) Access Granted\n\n",
+      "description": "Failure to verify security clearance status could result in an unauthorized person having access to a\nclassified information system or an authorized person being unable to perform assigned duties.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32372",
+      "title": "IT Position Designation\n",
+      "description": "Failure to designate an appropriate IT level could result in an individual having access to an\ninformation system without the required investigative and adjudicative prerequisites.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32396",
+      "title": "Background Investigations - Completed based Upon IT/Position Sensitivity Levels\n\n",
+      "description": "Failure to investigate personnel based upon their position sensitivity could result in unauthorized\npersonnel having access to classified or sensitive information.\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32408",
+      "title": "Periodic Reinvestigations - Submitted in a Timely Manner based Upon Position Sensitivity and Type of Investigation Required\n\n",
+      "description": "Failure to subject personnel to periodic reinvestigation can result in derogatory information not\nbeing discovered on personnel having access to sensitive or classified information.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32425",
+      "title": "Outprocessing Procedures for Departing or Terminated Employees (Military, Government Civilian and Contractor)\n\n",
+      "description": "Failure to properly out process through the security section allows the possibility of (unauthorized) continued access to the facility and/or the systems.",
+      "severity": "low"
+    },
+    {
+      "id": "V-32457",
+      "title": "Intrusion Detection System (IDS) Monitoring Station Personnel -  Suitability Checks\n\n",
+      "description": "Failure to subject personnel who monitor the IDS alarms to a trustworthiness determination can\nresult in the inadvertent or deliberate unauthorized access to, or release of classified material.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32477",
+      "title": "Intrusion Detection System (IDS) Installation and Maintenance Personnel -   Suitability Checks\n\n",
+      "description": "Failure to subject personnel who install and maintain the IDS alarms to a trustworthiness determination can result in the inadvertent or deliberate unauthorized release of classified material.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32482",
+      "title": "Physical Security Program - Physical Security Plan Development and Implementation with Consideration of Information Systems Assets\n\n",
+      "description": "Failure to have a physical security program will result in an increased risk to DoD Information Systems; including personnel, equipment, material and documents.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32541",
+      "title": "Risk Assessment -Holistic Review (site/environment/information systems)\n\n",
+      "description": "Failure to conduct a risk analysis could result in not implementing an effective countermeasure to a\nvulnerability or wasting resources on ineffective measures leading to a possible loss of classified,\nequipment, facilities, or personnel.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32580",
+      "title": "Physical Protection of Unclassified Key System Devices/Computer Rooms in Large Processing Facilities\n\n",
+      "description": "Allowing access to systems processing sensitive information by personnel without the need-to-know\ncould permit loss, destruction of data or equipment or a denial of service. Loss could be accidental\ndamage or intentional theft or sabotage.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32600",
+      "title": "Restricted Area and Controlled Area Designation of Areas Housing Critical Information System Components or Classified /Sensitive Technology or Data\n\n",
+      "description": "Failure to designate the areas housing the critical information technology systems as a restricted or controlled access area may result in inadequate protection being assigned during emergency actions or the site having insufficient physical security protection measures in place.  Further, warning signs may not be in place to advise visitors or other unauthorized persons that such areas are off-limits, resulting in inadvertent access by unauthorized persons.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32601",
+      "title": "Security-in-Depth (AKA: Defense-in-Depth) - Minimum Physical Barriers and Access Control Measures for Facilities or Buildings Containing DISN (SIPRNet/NIPRNet) Connected Assets.\n\n",
+      "description": "Failure to use security in-depth can result in a facility being vulnerable to an undetected intrusion or an intrusion that cannot be responded to in a timely manner - or both.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32602",
+      "title": "Visitor Control  - To Facility or Organization with Information System Assets Connected to the DISN\n\n",
+      "description": "Failure to identify and control visitors could result in unauthorized personnel gaining access to the\nfacility with the intent to compromise classified information, steal equipment, or damage equipment\nor the facility.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32603",
+      "title": "Sensitive Item Control - Keys, Locks and Access Cards Controlling Access to Information Systems (IS) or IS Assets Connected to the DISN\n\n",
+      "description": "Lack of an adequate key/credential/access device control could result in unauthorized personnel gaining\naccess to the facility or systems with the intent to compromise classified information, steal\nequipment, or damage equipment or the facility.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32604",
+      "title": "Physical Penetration Testing - of Facilities or Buildings Containing Information Systems (IS) Connected to the DISN ",
+      "description": "Failure to periodically test facility/building security where Information Systems (IS) connected to the DISN are present could lead to the unauthorized access of an individual into the facility with nefarious intentions to affect the Confidentiality, Integrity or Assurance of data or hardware on the IS.",
+      "severity": "low"
+    },
+    {
+      "id": "V-32605",
+      "title": "Security and Information Assurance (IA) Staff Appointment, Training/Certification and Suitability\n\n",
+      "description": "Failure to formally appoint security personnel and detail responsibilities, training and other requirements in the appointment notices could result in a weaken security program due to critical security and information assurance personnel not being fully aware of the scope of their duties and responsibilities or not being properly trained or meeting standards for appointment to assigned positions.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32606",
+      "title": "Security Training - Information Security (INFOSEC) and Information Assurance (IA) for ALL Employees; Military, Government Civilian and Contractor\n\n",
+      "description": "Failure to provide security training to ALL employees results in a weak security program and could lead to the loss or compromise of classified or sensitive information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32607",
+      "title": "Counter-Intelligence Program - Training, Procedures and  Incident Reporting\n\n",
+      "description": "Failure to establish a good working relationship with the supporting/local CI agency and lack of proper CI training for site/organization employees could result in not being informed of local threats and warnings leaving the organization vulnerable to the threat and/or a delay in reporting a possible incident involving  reportable FIE-Associated Cyberspace Contacts, Activities, Indicators, and Behaviors, which could adversely impact the Confidnetiality, Intergity or Availability (CIA) of the DISN.\n.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-33456",
+      "title": "Protected Distribution System (PDS) Construction - Alarmed Carrier",
+      "description": "A PDS that is not constructed and configured as required could result in the covert or undetected interception of classified information.",
+      "severity": "high"
+    }
+  ]
+}

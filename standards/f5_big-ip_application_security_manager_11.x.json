@@ -1,0 +1,89 @@
+{
+  "name": "f5_big-ip_application_security_manager_11.x",
+  "date": "2015-06-02",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "F5 BIG-IP Application Security Manager 11.x Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-60065",
+      "title": "The BIG-IP ASM module must check the validity of all data inputs except those specifically identified by the organization.",
+      "description": "Invalid user input occurs when a user inserts data or characters into an application's data entry fields and the application is unprepared to process that data. This results in unanticipated application behavior potentially leading to an application or information system compromise. Invalid input is one of the primary methods employed when attempting to compromise an application.\n\nNetwork devices with the functionality to perform application layer inspection may be leveraged to validate data content of network communications. Checking the valid syntax and semantics of information system inputs (e.g., character set, length, numerical range, and acceptable values) verifies that inputs match specified definitions for format and content. Software typically follows well-defined protocols that use structured messages (i.e., commands or queries) to communicate between software modules or system components. Structured messages can contain raw or unstructured data interspersed with metadata or control information. If network elements use attacker-supplied inputs to construct structured messages without properly encoding such messages, then the attacker could insert malicious commands or special characters that can cause the data to be interpreted as control information or metadata. Consequently, the module or component that receives the tainted output will perform the wrong operations or otherwise interpret the data incorrectly. Pre-screening inputs prior to passing to interpreters prevents the content from being unintentionally interpreted as commands. Input validation helps to ensure accurate and correct inputs and prevents attacks such as cross-site scripting and a variety of injection attacks.\n\nThis requirement applies to gateways and firewalls that perform content inspection or have higher-layer proxy functionality.\n\nNote: A limitation of ~200 policies per cluster currently exists on the BIG-IP Core.  If this requirement cannot be met due to this limitation, documentation from the AO is required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60067",
+      "title": "The BIG-IP ASM module supporting intermediary services for remote access communications traffic must ensure inbound traffic is monitored for compliance with remote access security policies.",
+      "description": "Automated monitoring of remote access traffic allows organizations to detect cyber attacks and also ensure ongoing compliance with remote access policies by inspecting connection activities of remote access capabilities.\n\nRemote access methods include both unencrypted and encrypted traffic (e.g., web portals, web content filter, TLS, and webmail). With inbound TLS inspection, the traffic must be inspected prior to being allowed on the enclave's web servers hosting TLS or HTTPS applications. \n\nRemote access security policies provide the guidance and define the traffic that will be monitored.  These policies consist of local policies, organizational policies, and DoD policies.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60069",
+      "title": "The BIG-IP ASM module must be configured to produce ASM Event Logs containing information to establish what type of unauthorized events occurred.",
+      "description": "Without establishing what type of event occurred, it would be difficult to establish, correlate, and investigate the events leading up to an outage or attack.\n\nEvent log content that may be necessary to satisfy this requirement includes, for example, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nAssociating event types with detected events in the event logs provide a means of investigating an attack, recognizing resource utilization or capacity thresholds, or identifying an improperly configured network element.\n\nThis requirement does not apply to audit logs generated on behalf of the device itself (management).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60071",
+      "title": "The BIG-IP ASM module must be configured to update malicious code protection mechanisms and signature definitions when providing content filtering to virtual servers for whenever new releases are available in accordance with organizational configuration management policy and procedures.",
+      "description": "Malicious code protection mechanisms include, but are not limited to, anti-virus and malware detection software. In order to minimize any potential negative impact to the organization caused by malicious code, malicious code must be identified and eradicated. Malicious code includes viruses, worms, Trojan horses, and Spyware.\n\nThis requirement is limited to ALGs, web content filters, and packet inspection firewalls that perform malicious code detection as part of their functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60073",
+      "title": "The BIG-IP ASM module must be configured to automatically update malicious code protection mechanisms when providing content filtering to virtual servers.",
+      "description": "The malicious software detection functionality on network elements needs to be constantly updated in order to identify new threats as they are discovered.\n\nAll malicious software detection functions must come with an update mechanism that automatically updates the application and any associated signature definitions. The organization (including any contractor to the organization) is required to promptly install security-relevant malicious code protection updates. Examples of relevant updates include anti-virus signatures, detection heuristic rule sets, and/or file reputation data employed to identify and/or block malicious software from executing.\n\nMalicious code includes viruses, worms, Trojan horses, and Spyware.\n\nThis requirement is limited to ALGs, web content filters, and packet inspection firewalls that perform malicious code detection as part of their functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60075",
+      "title": "To protect against data mining, the BIG-IP ASM module must be configured to prevent code injection attacks from being launched against data storage objects, including, at a minimum, databases, database records, queries, and fields when providing content filtering to virtual servers.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to prevent attacks launched against organizational information from unauthorized data mining may result in the compromise of information.\n\nInjection attacks allow an attacker to inject code into a program or query or inject malware into a computer to execute remote commands that can read or modify a database or change data on a website. Web applications frequently access databases to store, retrieve, and update information. An attacker can construct inputs that the database will execute. This is most commonly referred to as a code injection attack. This type of attack includes XPath and LDAP injections.\n\nCompliance requires the Application Layer Gateway (ALG) to have the capability to prevent code injections. Examples include Web Application Firewalls (WAFs) or database application gateways.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60077",
+      "title": "To protect against data mining, the BIG-IP ASM module must be configured to prevent code injection attacks launched against application objects, including, at a minimum, application URLs and application code when providing content filtering to virtual servers.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to prevent attacks launched against organizational information from unauthorized data mining may result in the compromise of information.\n\nInjection attacks allow an attacker to inject code into a program or query or inject malware into a computer to execute remote commands that can read or modify a database or change data on a website. These attacks include buffer overrun, XML, JavaScript, and HTML injections.\n\nCompliance requires the ALG to have the capability to prevent code injections. Examples include Web Application Firewalls (WAFs) or database application gateways.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60079",
+      "title": "To protect against data mining, The BIG-IP ASM module must be configured to prevent SQL injection attacks launched against data storage objects, including, at a minimum, databases, database records, and database fields when providing content filtering to virtual servers.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to prevent attacks launched against organizational information from unauthorized data mining may result in the compromise of information.\n\nSQL injection attacks are the most prevalent attacks against web applications and databases. These attacks inject SQL commands that can read, modify, or compromise the meaning of the original SQL query. An attacker can spoof identity; expose, tamper, destroy, or make existing data unavailable; or gain unauthorized privileges on the database server.\n\nCompliance requires the ALG to have the capability to prevent SQL code injections. Examples include Web Application Firewalls (WAFs) or database application gateways.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60081",
+      "title": "To protect against data mining, The BIG-IP ASM module must be configured to detect code injection attacks from being launched against data storage objects, including, at a minimum, databases, database records, queries, and fields when providing content filtering to virtual servers.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to detect attacks launched against organizational databases may result in the compromise of information.\n\nInjection attacks allow an attacker to inject code into a program or query or inject malware into a computer to execute remote commands that can read or modify a database or change data on a website. Web applications frequently access databases to store, retrieve, and update information. An attacker can construct inputs that the database will execute. This is most commonly referred to as a code injection attack. This type of attack includes XPath and LDAP injections.\n\nALGs with anomaly detection must be configured to protect against unauthorized code injections. These devices must include rules and anomaly detection algorithms to monitor for atypical database queries or accesses. Examples include Web Application Firewalls (WAFs) or database application gateways.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60083",
+      "title": "To protect against data mining, The BIG-IP ASM module must be configured to detect SQL injection attacks launched against data storage objects, including, at a minimum, databases, database records, and database fields when providing content filtering to virtual servers.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to detect attacks launched against organizational databases may result in the compromise of information.\n\nSQL injection attacks are the most prevalent attacks against web applications and databases. These attacks inject SQL commands that can read, modify, or compromise the meaning of the original SQL query. An attacker can spoof identity; expose, tamper, destroy, or make existing data unavailable; or gain unauthorized privileges on the database server.\n\nALGs with anomaly detection must be configured to protect against unauthorized data mining attacks. These devices must include rules and anomaly detection algorithms to monitor for atypical database queries or accesses. Examples include Web Application Firewalls (WAFs) or database application gateways.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60085",
+      "title": "The BIG-IP ASM module must be configured to detect code injection attacks launched against application objects including, at a minimum, application URLs and application code, when providing content filtering to virtual servers.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to detect attacks launched against organizational applications may result in the compromise of information.\n\nInjection attacks allow an attacker to inject code into a program or query or inject malware onto a computer to execute remote commands that can read or modify a database, or change data on a website. These attacks include buffer overrun, XML, JavaScript, and HTML injections.\n\nALGs with anomaly detection must be configured to protect against unauthorized code injections. These devices must include rules and anomaly detection algorithms to monitor for atypical database queries or accesses. Examples include Web Application Firewalls (WAFs) or database application gateways.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60087",
+      "title": "The BIG-IP ASM module must be configured to handle invalid inputs in a predictable and documented manner that reflects organizational and system objectives.",
+      "description": "A common vulnerability of network elements is unpredictable behavior when invalid inputs are received. This requirement guards against adverse or unintended system behavior caused by invalid inputs, where information system responses to the invalid input may be disruptive or cause the system to fail into an unsafe state.\n\nThe behavior will be derived from the organizational and system requirements and includes, but is not limited to, notifying the appropriate personnel, creating an audit record, and rejecting invalid input.\n\nThis requirement applies to gateways and firewalls that perform content inspection or have higher layer proxy functions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60089",
+      "title": "The BIG-IP ASM module must continuously monitor inbound communications traffic crossing internal security boundaries for unusual or unauthorized activities or conditions.",
+      "description": "If inbound communications traffic is not continuously monitored, hostile activity may not be detected and prevented. Output from application and traffic monitoring serves as input to continuous monitoring and incident response programs.\n\nInternal monitoring includes the observation of events occurring on the network crossing internal boundaries at managed interfaces such as web content filters. Depending on the type of ALG, organizations can monitor information systems by monitoring audit activities, application access patterns, characteristics of access, content filtering, or unauthorized exporting of information across boundaries. Unusual/unauthorized activities or conditions may include large file transfers, long-time persistent connections, unusual protocols and ports in use, and attempted communications with suspected malicious external addresses.",
+      "severity": "medium"
+    }
+  ]
+}

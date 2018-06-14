@@ -1,0 +1,53 @@
+{
+  "name": "zos_ibm_system_display_and_search_facility_sdsftss",
+  "date": "2016-03-23",
+  "description": "None",
+  "title": "z/OS IBM System Display and Search Facility (SDSF) for TSS STIG",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-16932",
+      "title": "IBM System Display and Search Facility (SDSF) installation data sets will be properly protected.",
+      "description": "IBM System Display and Search Facility (SDSF) installation data sets have the ability to use privileged functions and/or have access to sensitive data.  Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17452",
+      "title": "IBM System Display and Search Facility (SDSF) Started Task name will be properly identified and/or defined to the system ACP.",
+      "description": "IBM System Display and Search Facility (SDSF) requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17454",
+      "title": "IBM System Display and Search Facility (SDSF) Started task will be properly defined to the Started Task Table ACID for Top Secret.",
+      "description": "Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources.  Improper control of product resources could potentially compromise the operating system, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17947",
+      "title": "IBM System Display and Search Facility (SDSF) resources will be properly defined and protected.",
+      "description": "IBM System Display and Search Facility (SDSF) can run with sensitive system privileges, and potentially can circumvent system controls.  Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data.  Many utilities assign resource controls that can be granted to system programmers only in greater than read authority.  Resources are also granted to certain non systems personnel with read only authority.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17982",
+      "title": "IBM System Display and Search Facility (SDSF) resources will be properly defined and protected.",
+      "description": "IBM System Display and Search Facility (SDSF) can run with sensitive system privileges, and potentially can circumvent system controls.  Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data.  Many utilities assign resource controls that can be granted to system programmers only in greater than read authority.  Resources are also granted to certain non systems personnel with read only authority.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18014",
+      "title": "IBM System Display and Search Facility (SDSF) Configuration parameters must be correctly specified.",
+      "description": "IBM System Display and Search Facility (SDSF) ISFPARMS defines global options, panel formats, and security for SDSF.  Failure to properly specify these parameter values could potentially compromise the integrity and availability of the MVS operating system and user data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21592",
+      "title": "IBM System Display and Search Facility (SDSF) HASPINDX data set identified in the INDEX parameter must be properly protected.",
+      "description": "IBM System Display and Search Facility (SDSF) HASPINDX data set control the execution, configuration, and security of the SDSF products.  Failure to properly protect access to these data sets could result in unauthorized access.  This exposure may threaten the availability of SDSF, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    }
+  ]
+}

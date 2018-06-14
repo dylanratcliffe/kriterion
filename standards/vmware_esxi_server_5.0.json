@@ -1,0 +1,809 @@
+{
+  "name": "vmware_esxi_server_5.0",
+  "date": "2017-01-06",
+  "description": "The VMware ESXi Version 5 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "VMware ESXi Server 5.0 Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-39246",
+      "title": "The system must prevent the use of dictionary words for passwords.",
+      "description": "An easily guessable password provides an open door to any external or internal malicious intruder. Many computer compromises occur as the result of account name and password guessing. This is generally done by someone with an automated script using repeated logon attempts until the correct account and password pair is guessed. Utilities, such as cracklib, can be used to validate passwords are not dictionary words and meet other criteria during password changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39247",
+      "title": "SNMP communities, users, and passphrases must be changed from the default.",
+      "description": "Whether active or inactive, default communities, users, and passwords must be changed to maintain security. A service running with default authenticators allows acquisition of data about the system and the network to potentially compromise the integrity of the system or network(s).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39248",
+      "title": "The SSH daemon must be configured to not allow TCP connection forwarding.",
+      "description": "SSH TCP connection forwarding provides a mechanism to establish TCP connections proxied by the SSH server. This function can provide similar convenience to a Virtual Private Network (VPN) with the similar risk of providing a path to circumvent firewalls and network ACLs.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39249",
+      "title": "The SSH client must be configured to not allow TCP forwarding.",
+      "description": "SSH TCP connection forwarding provides a mechanism to establish TCP connections proxied by the SSH server. This function can provide similar convenience to a Virtual Private Network (VPN) with the similar risk of providing a path to circumvent firewalls and network ACLs. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-39250",
+      "title": "The SSH daemon must be configured to not allow gateway ports.",
+      "description": "SSH TCP connection forwarding provides a mechanism to establish TCP connections proxied by the SSH server. This function can provide similar convenience to a Virtual Private Network (VPN) with the similar risk of providing a path to circumvent firewalls and network ACLs. Gateway ports allow remote forwarded ports to bind to non-loopback addresses on the server.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39251",
+      "title": "The SSH client must be configured to not allow gateway ports.",
+      "description": "SSH TCP connection forwarding provides a mechanism to establish TCP connections proxied by the SSH server. This function can provide similar convenience to a Virtual Private Network (VPN) with the similar risk of providing a path to circumvent firewalls and network ACLs. Gateway ports allow remote forwarded ports to bind to non-loopback addresses on the server. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-39252",
+      "title": "There must be no .rhosts  or hosts.equiv files on the system.",
+      "description": "The .rhosts or hosts.equiv files are used to configure host-based authentication for individual users or the system. Host-based authentication is not sufficient for preventing unauthorized access to the system. ",
+      "severity": "high"
+    },
+    {
+      "id": "V-39253",
+      "title": "The SSH daemon must limit connections to a single session.",
+      "description": "The SSH protocol has the ability to provide multiple sessions over a single connection without reauthentication. A compromised client could use this feature to establish additional sessions to a system without consent or knowledge of the user.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39254",
+      "title": "The system must use time sources local to the enclave.",
+      "description": "A synchronized system clock is critical for the enforcement of time-based policies and the correlation of logs and audit records with other systems. The network architecture should provide multiple time servers (at least two) within an enclave providing local service to the enclave and synchronize with time sources outside of the enclave.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39255",
+      "title": "The system must require that passwords contain at least one uppercase alphabetic character.",
+      "description": "To enforce the use of complex passwords, minimum numbers of characters of different classes are mandated. The use of complex passwords reduces the ability of attackers to successfully obtain valid passwords using guessing or exhaustive search techniques. Complexity requirements increase the password search space by requiring users to construct passwords from a larger character set than they may otherwise use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39256",
+      "title": "The system must require passwords contain at least one lowercase alphabetic character.",
+      "description": "To enforce the use of complex passwords, minimum numbers of characters of different classes are mandated. The use of complex passwords reduces the ability of attackers to successfully obtain valid passwords using guessing or exhaustive search techniques. Complexity requirements increase the password search space by requiring users to construct passwords from a larger character set than they may otherwise use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39258",
+      "title": "The system must require that passwords contain at least one numeric character.",
+      "description": "To enforce the use of complex passwords, minimum numbers of characters of different classes are mandated. The use of complex passwords reduces the ability of attackers to successfully obtain valid passwords using guessing or exhaustive search techniques. Complexity requirements increase the password search space by requiring users to construct passwords from a larger character set than they may otherwise use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39259",
+      "title": "The system must require at least four characters be changed between the old and new passwords during a password change.",
+      "description": "To ensure password changes are effective in their goals, the system must ensure old and new passwords have significant differences. Without significant changes, new passwords may be easily guessed based on the value of a previously compromised password.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39260",
+      "title": "The password hashes stored on the system must have been generated using a FIPS 140-2 approved cryptographic hashing algorithm.",
+      "description": "Systems must employ cryptographic hashes for passwords using the SHA-2 family of algorithms or FIPS 140-2 approved successors. The use of unapproved algorithms may result in weak password hashes more vulnerable to compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39261",
+      "title": "The system must prohibit the reuse of passwords within five iterations.",
+      "description": "If a user, or root, used the same password continuously or was allowed to change it back shortly after being forced to change it to something else, it would provide a potential intruder with the opportunity to keep guessing at one user's password until it was guessed correctly.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39262",
+      "title": "The system must require that passwords contain a minimum of 14 characters.",
+      "description": "The use of longer passwords reduces the ability of attackers to successfully obtain valid passwords using guessing or exhaustive search techniques by increasing the password search space.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39263",
+      "title": "The system must enforce the entire password during authentication.",
+      "description": "Some common password hashing schemes only process the first eight characters of a user's password, which reduces the effective strength of the password.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39264",
+      "title": "System BIOS or system controllers supporting password protection must have administrator accounts/passwords configured, and no others.",
+      "description": "A system's BIOS or system controller handles the initial startup of a system and its configuration must be protected from unauthorized modification. When the BIOS or system controller supports the creation of user accounts or passwords, such protections must be used and accounts/passwords only assigned to system administrators. Failure to protect BIOS or system controller settings could result in Denial-of-Service or compromise of the system resulting from unauthorized configuration changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39265",
+      "title": "The SSH daemon must be configured to not allow X11 forwarding.",
+      "description": "X11 forwarding over SSH allows for the secure remote execution of X11-based applications. This feature can increase the attack surface of an SSH connection and should not be enabled unless needed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39266",
+      "title": "The SSH daemon must not accept environment variables from the client or must only accept those pertaining to locale.",
+      "description": "Environment variables can be used to change the behavior of remote sessions and should be limited. Locale environment variables that specify the language, character set, and other features modifying the operation of software to match the user's preferences.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39267",
+      "title": "The SSH daemon must not permit user environment settings.",
+      "description": "SSH may be used to provide limited functions other than an interactive shell session, such as file transfer. If local, user-defined environment settings (such as, those configured in ~/.ssh/authorized_keys and ~/.ssh/environment) are configured by the user and permitted by the SSH daemon, they could be used to alter the behavior of the limited functions, potentially granting unauthorized access to the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39268",
+      "title": "The SSH daemon must not permit tunnels.",
+      "description": "OpenSSH has the ability to create network tunnels (layer-2 and layer-3) over an SSH connection. This function can provide similar convenience to a Virtual Private Network (VPN) with the similar risk of providing a path to circumvent firewalls and network ACLs.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39269",
+      "title": "The SSH client must not send environment variables to the server or must only send those pertaining to locale.",
+      "description": "Environment variables can be used to change the behavior of remote sessions and should be limited. Locale environment variables specify the language, character set, and other features modifying the operation of software to match the user's preferences.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39270",
+      "title": "The SSH client must not permit tunnels.",
+      "description": "OpenSSH has the ability to create network tunnels (layer-2 and layer-3) over an SSH connection. This function can provide similar convenience to a Virtual Private Network (VPN) with the similar risk of providing a path to circumvent firewalls and network ACLs.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39271",
+      "title": "The SSH client must be configured to not allow X11 forwarding.",
+      "description": "X11 forwarding over SSH allows for the secure remote execution of X11-based applications. This feature can increase the attack surface of an SSH connection and should not be enabled unless needed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39273",
+      "title": "The root accounts executable search path must be the vendor default and must contain only absolute paths.",
+      "description": "The executable search path (typically the PATH environment variable) contains a list of directories for the shell to search to find executables. If this path includes the current working directory or other relative paths, executables in these directories may be executed instead of system commands. This variable is formatted as a colon-separated list of directories. If there is an empty entry, such as a leading or trailing colon or two consecutive colons, this is interpreted as the current working directory. Entries starting with a slash (/) are absolute paths.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39274",
+      "title": "The GID assigned to a user must exist.",
+      "description": "If a user is assigned the GID of a group not existing on the system, and a group with that GID is subsequently created, the user may have unintended rights to that group.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39275",
+      "title": "The /etc/shells (or equivalent) file must exist.",
+      "description": "The shells file (or equivalent) lists approved default shells. It helps provide layered defense to the security approach by ensuring users cannot change their default shell to an unauthorized shell that may not be secure.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39276",
+      "title": "All shells referenced in /etc/passwd must be listed in the /etc/shells file, except any shells specified for the purpose of preventing logins.",
+      "description": "The shells file lists approved default shells. It helps provide layered defense to the security approach by ensuring users cannot change their default shell to an unauthorized shell that may not be secure. By default, the shells file contains the only shell files in the ESXi file system, /bin/ash and /bin/sh. Users not granted shell access are assigned the shell /sbin/nologin.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39277",
+      "title": "The system must not use removable media as the boot loader.",
+      "description": "Malicious users with removable boot media can gain access to a system configured to use removable media as the boot loader.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39278",
+      "title": "The system must only use remote syslog servers (log hosts) justified and documented using site-defined procedures.",
+      "description": "If a remote log host is in use and it has not been justified and documented with the IAO, sensitive information could be obtained by unauthorized users without the SA's knowledge. A remote log host is any host to which the system is sending syslog messages over a network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39279",
+      "title": "The system must not be used as a syslog server (log host) for systems external to the enclave.",
+      "description": "Syslog messages are typically unencrypted and may contain sensitive information and are, therefore, restricted to the enclave.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39285",
+      "title": "The SSH daemon must not allow compression or must only allow compression after successful authentication.",
+      "description": "If compression is allowed in an SSH connection prior to authentication, vulnerabilities in the compression software could result in compromise of the system from an unauthenticated connection, potentially with root privileges.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39286",
+      "title": "The system must be configured with a default gateway for IPv6 if the system uses IPv6, unless the system is a router.",
+      "description": "If a system has no default gateway defined, the system is at increased risk of man-in-the-middle, monitoring, and Denial-of-Service attacks. NOTE that IPv6 is not enabled by default.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39287",
+      "title": "The DHCP client must be disabled if not used.",
+      "description": "DHCP allows for the unauthenticated configuration of network parameters on the system by exchanging information with a DHCP server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39288",
+      "title": "The system must have USB disabled unless needed.",
+      "description": "USB is a common computer peripheral interface. USB devices may include storage devices that could be used to install malicious software on a system or exfiltrate data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39289",
+      "title": "The system must have USB Mass Storage disabled unless needed.",
+      "description": "USB is a common computer peripheral interface. USB devices may include storage devices that could be used to install malicious software on a system or exfiltrate data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39291",
+      "title": "The system must have IEEE 1394 (Firewire) disabled unless needed.",
+      "description": "Firewire is a common computer peripheral interface. Firewire devices may include storage devices that could be used to install malicious software on a system or exfiltrate data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39292",
+      "title": "NTP time synchronization must be configured.",
+      "description": "By ensuring that all systems use the same relative time source (including the relevant localization offset), and that the relative time source can be correlated to an agreed-upon time standard (such as Coordinated Universal Time-UTC), it can make it simpler to track and correlate an intruder's actions when reviewing the relevant log files. Incorrect time settings can make it difficult to inspect and correlate log files to detect attacks, and can make auditing inaccurate.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39293",
+      "title": "Persistent logging for all ESXi hosts must be configured.",
+      "description": "ESXi can be configured to store log files on an in-memory file system. This occurs when the host's \"/scratch\" directory is linked to \"/tmp/scratch\". When this is done only a single day's worth of logs are stored at any time, in addition, log files will be reinitialized upon each reboot. This presents a security risk as user activity logged on the host is only stored temporarily and will not persistent across reboots. This can also complicate auditing and make it harder to monitor events and diagnose issues. ESXi host logging should always be configured to a persistent datastore.\n\nNote: ESXi automatically creates a persistent 4 GB Fat16 scratch partition on the local target device during installation. If space is not available, ESXi will store temporary data on a space constrained ramdisk. As ramdisk data does not persist across reboots, log and core files will be lost. Syslog.global.logDir points to a location on a local or remote datastore (and path) where log files can be saved to. The format [DatastoreName] DirectoryName/Filename maps to /vmfs/volumes/DatastoreName/DirectoryName/Filename. The [DatastoreName] is case sensitive and if the specified DirectoryName does not exist, it will be created. If the datastore path field is blank, logs are stored in their default location.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39294",
+      "title": "The system must disable DCUI to prevent local administrative control.",
+      "description": "The DCUI allows for low-level host configuration, such as configuring IP address, hostname, and root password, as well as diagnostic capabilities, such as enabling the ESXi shell, viewing log files, restarting agents, and resetting configurations. Actions performed from the DCUI are not tracked by vCenter Server. Even if Lockdown Mode is enabled, someone with the root password can perform administrative tasks in the DCUI bypassing RBAC and auditing controls provided through vCenter. DCUI access can be disabled. Disabling it prevents all local activity and thus forces actions to be performed in vCenter Server where they can be centrally audited and monitored.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39295",
+      "title": "The system must disable ESXi Shell unless needed for diagnostics or troubleshooting.",
+      "description": "The ESXi Shell is an interactive command line environment available locally from the DCUI or remotely via SSH. Activities performed from the ESXi Shell bypass vCenter RBAC and audit controls. The ESXi shell should only be turned on when needed to troubleshoot/resolve problems that cannot be fixed through the vSphere client.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39296",
+      "title": "The system must disable the Managed Object Browser (MOB).",
+      "description": "The Managed Object Browser (MOB) provides a way to explore the object model used by the VMkernel to manage the host and enables configurations to be changed as well. This interface is meant to be used primarily for debugging the vSphere SDK, but because there are no access controls it could also be used as a method obtain information about a host being targeted for unauthorized access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39297",
+      "title": "The system must not provide root/administrator level access to CIM-based hardware monitoring tools or other 3rd party applications.",
+      "description": "The CIM system provides an interface that enables hardware-level management from remote applications via a set of standard APIs. Create a limited-privilege, read-only service account for CIM. Place the CIM account into the \"root\" group. When/where write access is required, create/enable a limited-privilege, service account and grant only the minimum required privileges. CIM accounts should be limited to the \"Host >> Config >> System Management\" and \"Host >> CIM >> CIMInteraction\" privileges.\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39298",
+      "title": "The system must enable bidirectional CHAP authentication for iSCSI traffic.",
+      "description": "When enabled, vSphere performs bidirectional authentication of both the iSCSI target and host. There is a potential for a MiTM attack, when not authenticating both the iSCSI target and host, in which an attacker might impersonate either side of the connection to steal data. Bidirectional authentication mitigates this risk.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39299",
+      "title": "The system must enable SSL for NFC.",
+      "description": "NFC (Network File Copy) is used to migrate or clone a VM between two ESXi hosts over the network. By default, SSL is used only for the authentication of the transfer, but SSL must also be enabled on the data transfer. Without this setting VM contents could potentially be sniffed if the management network is not adequately isolated and secured.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39300",
+      "title": "The system must ensure the vpxuser auto-password change meets policy. ",
+      "description": "By default, the vpxuser password will be automatically changed by vCenter every 30 days. Ensure this setting meets your policies; if not, configure to meet password aging policies. \n\nNOTE: It is very important the password aging policy not be shorter than the default interval that is set to automatically change the vpxuser password, to preclude the possibility that vCenter might get locked out of an ESXi host.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39301",
+      "title": "The system must ensure the vpxuser auto-password change meets policy. ",
+      "description": "By default, the vpxuser password will be automatically changed by vCenter every 30 days. Ensure this setting meets your policies; if not, configure to meet password aging policies. \n\nNOTE: It is very important the password aging policy not be shorter than the default interval that is set to automatically change the vpxuser password, to preclude the possibility that vCenter might get locked out of an ESXi host.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39302",
+      "title": "The system must ensure the vpxuser password meets length policy.",
+      "description": "The vpxuser password default length is 32 characters. Ensure this setting meets site policies; if not, configure to meet password length policies. Longer passwords make brute-force password attacks more difficult. The vpxuser password is added by vCenter, meaning no manual intervention is normally required. The vpxuser password length must never be modified to less than the default length of 32 characters.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39303",
+      "title": "The system must ensure uniqueness of CHAP authentication secrets.",
+      "description": "The mutual authentication secret for each host must be different and the secret for each client authenticating to the server must be different as well. This ensures if a single host is compromised, an attacker cannot create another arbitrary host and authenticate to the storage device. With a single shared secret, compromise of one host can allow an attacker to authenticate to the storage device.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39304",
+      "title": "SAN resources must be masked and zoned appropriately.",
+      "description": "SAN activity must be segregated via zoning and LUN masking. The potential for any SAN client to mount and access any SAN drive will result in disk resource contention and data corruption. Zoning and LUN masking must be used to isolate and protect SAN storage devices. Use of zoning must also take into account any host groups on the SAN device(s).",
+      "severity": "low"
+    },
+    {
+      "id": "V-39346",
+      "title": "The system must prevent unintended use of dvfilter network APIs.",
+      "description": "If products that use the dvfilter network API are not used, the host should not be configured to send network information to a VM. If the API is enabled, an attacker might attempt to connect a VM to it, thereby potentially providing access to the network of other VMs on the host.\n\nIf a product uses this API, the host must be verified as being correctly configured.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-39347",
+      "title": "Keys from SSH authorized_keys file must be removed.",
+      "description": "ESXi hosts come with SSH which can be enabled to allow remote access without requiring user authentication. To enable password free access copy the remote users public key into the \"/etc/ssh/keys-root/authorized_keys\" file on the ESXi host. The presence of the remote user's public key in the \"authorized_keys\" file identifies the user as trusted, meaning the user is granted access to the host without providing a password. Note:  Lockdown mode does not apply to root users who log in using authorized keys. When you use an authorized key file for root user authentication, root users are not prevented from accessing a host with SSH even when the host is in lockdown mode.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39348",
+      "title": "The system must use Active Directory for local user authentication for accounts other than root and the vpxuser.  ",
+      "description": "Creating local user accounts on each host presents challenges with having to synchronize account names and passwords across multiple hosts. Join ESXi hosts to an Active Directory domain to eliminate the need to create and maintain local user accounts. Using Active Directory for user authentication simplifies the ESXi host configuration and reduces the risk for configuration issues that could lead to unauthorized access. Note that when adding ESXi hosts to Active Directory, if the group \"ESX Admins\" exists, all user/group accounts assigned to the group will have full administrative access to the host. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-39349",
+      "title": "Active Directory ESX Admin group membership must be verified unused.",
+      "description": "When adding ESXi hosts to Active Directory, if the group \"ESX Admins\" exists, all user/group accounts assigned to the group will have full administrative access to the host. Discretion should be used when managing membership to the \"ESX Admins\" group.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39350",
+      "title": "The contents of exposed configuration files must be verified.",
+      "description": "Although most configurations on ESXi are controlled via an API, there are a limited set of configuration files that are used directly to govern host behavior. These specific files are exposed via the vSphere HTTPS-based file transfer API. Any changes to these files should be correlated with an approved administrative action, such as an authorized configuration change. Tampering with these files has the potential to enable unauthorized access to the host configuration and virtual machines.  WARNING: do not attempt to monitor files that are NOT exposed via this file-transfer API, since this can result in a destabilized system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39351",
+      "title": "Unauthorized kernel modules must not be loaded on the host.",
+      "description": "VMware provides digital signatures for kernel modules.  By default the ESXi host does not permit loading of kernel modules that lack a valid digital signature.  However, this behavior can be overridden allowing unauthorized kernel modules to be loaded.  Untested or  malicious kernel modules loaded onto an ESXi host can put the host at risk for instability and/or exploitation. The ESXi host must be monitored for unsigned kernel modules.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39352",
+      "title": "The system must use the vSphere Authentication Proxy to protect passwords when adding ESXi hosts to Active Directory.",
+      "description": "ESXi hosts configured to join an Active Directory domain using host profiles do not protect the passwords used for host authentication. To avoid transmitting clear text passwords, the vSphere Authentication Proxy must be used to configure hosts in an Active Directory.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39353",
+      "title": "The system must zero out VMDK files prior to deletion.",
+      "description": "The virtual disk must be zeroed out prior to deletion in order to prevent sensitive data in VMDK files from being recovered.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39355",
+      "title": "Kernel core dumps must be disabled unless needed.",
+      "description": "Kernel core dumps may contain the full contents of system memory at the time of the crash. Kernel core dumps may consume a considerable amount of disk space and may result in Denial-of-Service by exhausting the available space on the target file system. The kernel core dump process may increase the amount of time a system is unavailable due to a crash. Kernel core dumps can be useful for kernel debugging.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39356",
+      "title": "All dvPortgroup VLAN IDs must be fully documented.",
+      "description": "If using VLAN tagging on a dvPortgroup, tags must correspond to the IDs on external VLAN-aware upstream switches if any. If VLAN IDs are not tracked completely, mistaken re-use of IDs could allow for traffic to be allowed between inappropriate physical and virtual machines. Similarly, wrong or missing VLAN IDs may lead to traffic not passing between appropriate physical and virtual machines.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39357",
+      "title": "All dvSwitch Private VLAN IDs must be fully documented.",
+      "description": "dvSwitch Private VLANs (PVLANs) require primary and secondary VLAN IDs. The IDs must correspond to the IDs on external PVLAN-aware upstream switches, if any. If VLAN IDs are not tracked completely, mistaken re-use of IDs could allow for traffic to be allowed between inappropriate physical and virtual machines. Similarly, wrong or missing PVLAN IDs may lead to traffic not passing between appropriate physical and virtual machines.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39358",
+      "title": "All virtual switches must have a clear network label.",
+      "description": "Network labels must identify each port group with a name. These names are important because they serve as a functional descriptor for the port group. Without these descriptions, identifying port groups and their functions becomes difficult as the network becomes more complex.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-39359",
+      "title": "Virtual switch VLANs must be fully documented and have only the required VLANs.",
+      "description": "When defining a physical switch port for trunk mode, only specified VLANs must be configured on the VLAN trunk link. The risk with not fully documenting all VLANs on the vSwitch is that it is possible that a physical trunk port might be configured without needed VLANs, or with unneeded VLANs, potentially enabling an administrator to either accidentally or maliciously connect a VM to an unauthorized VLAN.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39360",
+      "title": "All vSwitch and VLAN IDs must be fully documented.",
+      "description": "VLAN tagging used on a vSwitch must correspond to the IDs on external VLAN-aware upstream switches, if any. If VLAN IDs are not tracked completely, mistaken re-use of IDs could allow for traffic to be allowed between inappropriate physical and virtual machines. Similarly, wrong or missing VLAN IDs may lead to traffic not passing between appropriate physical and virtual machines.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39361",
+      "title": "All IP-based storage traffic must be isolated to a management-only network using a dedicated, physical network adaptor.",
+      "description": "Virtual machines might share virtual switches and VLANs with the IP-based storage configurations. IP-based storage includes iSCSI and NFS. This configuration might expose IP-based storage traffic to unauthorized virtual machine users. IP-based storage frequently is not encrypted. It can be viewed by anyone with access to this network. To restrict unauthorized users from viewing the IP-based storage traffic, the IP-based storage network must be logically separated from the production traffic. Configuring the IP-based storage adaptors on separate VLANs or network segments from the VMkernel management and service console network will limit unauthorized users from viewing the traffic.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39362",
+      "title": "All IP-based storage traffic must be isolated to a management-only network using a dedicated, management-only vSwitch.",
+      "description": "Virtual machines might share virtual switches and VLANs with the IP-based storage configurations. IP-based storage includes iSCSI and NFS. This configuration might expose IP-based storage traffic to unauthorized virtual machine users. IP-based storage frequently is not encrypted. It can be viewed by anyone with access to this network. To restrict unauthorized users from viewing the IP-based storage traffic, the IP-based storage network must be logically separated from the production traffic. Configuring the IP-based storage adaptors on separate VLANs or network segments from the VMkernel management and service console network will limit unauthorized users from viewing the traffic.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39363",
+      "title": "All IP-based storage traffic must be isolated using a vSwitch containing management-only port groups.",
+      "description": "Virtual machines might share virtual switches and VLANs with the IP-based storage configurations. IP-based storage includes iSCSI and NFS. This configuration might expose IP-based storage traffic to unauthorized virtual machine users. IP-based storage frequently is not encrypted. It can be viewed by anyone with access to this network. To restrict unauthorized users from viewing the IP-based storage traffic, the IP-based storage network must be logically separated from the production traffic. Configuring the IP-based storage adaptors on separate VLANs or network segments from the VMkernel management and service console network will limit unauthorized users from viewing the traffic.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39364",
+      "title": "Only authorized administrators must have access to virtual networking components.",
+      "description": "This control mitigates the risk of misconfiguration, whether accidental or malicious, and enforces key security concepts of separation of duties and least privilege. It is important to leverage the role-based access controls within vSphere to ensure that only authorized administrators have access to the different virtual networking components. For example, VM administrators should have access only to port groups in which their VMs reside. Network administrators should have permissions to all virtual networking components but not have access to VMs. These controls will depend very much on the organization's policy on separation of duties, least privilege, and the responsibilities of the administrators within the organization.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39365",
+      "title": "All physical switch ports must be configured with spanning tree disabled.",
+      "description": "Due to the integration of the ESXi Server into the physical network, the physical network (switch) adaptors must have spanning tree disabled or portfast configured for external switches, because VMware virtual switches do not support STP. Virtual switch uplinks do not create loops within the physical switch network. If these are not set, potential performance and connectivity issues might arise.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39366",
+      "title": "All port groups must be configured with a clear network label.",
+      "description": "Each port group must be identified with a network label/name. Names serve as a functional descriptor for the port group. Without these descriptions, identifying port groups and functions becomes difficult as the network becomes more complex.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39367",
+      "title": "All port groups must be configured to a value other than that of the native VLAN.",
+      "description": "ESXi does not use the concept of native VLAN. Frames with VLAN specified in the port group will have a tag, but frames with VLAN not specified in the port group are not tagged and therefore will end up as belonging to native VLAN of the physical switch. For example, frames on VLAN 1 from a Cisco physical switch will be untagged, because this is considered as the native VLAN. However, frames from ESXi specified as VLAN 1 will be tagged with a \"1\"; therefore, traffic from ESXi that is destined for the native VLAN will not be correctly routed (because it is tagged with a \"1\" instead of being untagged), and traffic from the physical switch coming from the native VLAN will not be visible (because it is not tagged). If the ESXi virtual switch port group uses the native VLAN ID, traffic from those VMs will not be visible to the native VLAN on the switch, because the switch is expecting untagged traffic.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39368",
+      "title": "All port groups must not be configured to VLAN 4095 except for Virtual Guest Tagging (VGT).",
+      "description": "When a port group is set to VLAN 4095, this activates VGT mode. In this mode, the vSwitch passes all network frames to the guest VM without modifying the VLAN tags, leaving it up to the guest to deal with them. VLAN 4095 should be used only if the guest has been specifically configured to manage VLAN tags itself. If VGT is enabled inappropriately, it might cause denial-of-service or allow a guest VM to interact with traffic on an unauthorized VLAN.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39369",
+      "title": "All port groups must not be configured to VLAN values reserved by upstream physical switches.",
+      "description": "Physical vendor-specific switches reserve certain VLAN IDs for internal purposes and often disallow traffic configured to these values. Use of reserved VLAN IDs can result in a network denial-of-service.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39370",
+      "title": "The system must ensure that the virtual switch Forged Transmits policy is set to reject.",
+      "description": "If the virtual machine operating system changes the MAC address, the operating system can send frames with an impersonated source MAC address at any time. This allows an operating system to stage malicious attacks on the devices in a network by impersonating a network adaptor authorized by the receiving network. Forged transmissions should be set to accept by default. This means the virtual switch does not compare the source and effective MAC addresses. To protect against MAC address impersonation, all virtual switches should have forged transmissions set to reject.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39371",
+      "title": "The system must ensure that the dvPortgroup Forged Transmits policy is set to reject.",
+      "description": "If the virtual machine operating system changes the MAC address, the operating system can send frames with an impersonated source MAC address at any time. This allows an operating system to stage malicious attacks on the devices in a network by impersonating a network adaptor authorized by the receiving network. Forged transmissions should be set to accept by default. This means the virtual switch does not compare the source and effective MAC addresses. To protect against MAC address impersonation, all virtual switches should have forged transmissions set to reject.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39372",
+      "title": "The system must ensure the dvPortGroup MAC Address Change policy is set to reject.",
+      "description": "If the virtual machine operating system changes the MAC address, it can send frames with an impersonated source MAC address at any time. This allows it to stage malicious attacks on the devices in a network by impersonating a network adaptor authorized by the receiving network. This will prevent VMs from changing their effective MAC address. It will affect applications that require this functionality. An example of an application like this is Microsoft Clustering, which requires systems to effectively share a MAC address. This will also affect how a layer 2 bridge will operate. This will also affect applications that require a specific MAC address for licensing. VMs, guest OSs, and/or applications that require specific MAC settings must be placed in a separate, specially-configured  dvPortgroup on the vDistributed Switch (vDS).",
+      "severity": "high"
+    },
+    {
+      "id": "V-39373",
+      "title": "The system must ensure the virtual switch MAC Address Change policy is set to reject.",
+      "description": "If the virtual machine operating system changes the MAC address, it can send frames with an impersonated source MAC address at any time. This allows it to stage malicious attacks on the devices in a network by impersonating a network adaptor authorized by the receiving network. This will prevent VMs from changing their effective MAC address. It will affect applications that require this functionality. An example of an application like this is Microsoft Clustering, which requires systems to effectively share a MAC address. This will also affect how a layer 2 bridge will operate. This will also affect applications that require a specific MAC address for licensing. VMs, guest OSs, and/or applications that require specific MAC settings must be placed in a separate, specially-configured  Portgroup on the vSwitch.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39374",
+      "title": "The non-negotiate option must be configured for trunk links between external physical switches and virtual switches in VST mode.",
+      "description": "In order to communicate with virtual switches in VST mode, external switch ports must be configured as trunk ports. VST mode does not support Dynamic Trunking Protocol (DTP), so the trunk must be static and unconditional. The auto or desirable physical switch settings do not work with the ESXi Server because the physical switch communicates with the ESXi Server using DTP. The non-negotiate and on options unconditionally enable VLAN trunking on the physical switch and create a VLAN trunk link between the ESXi Server and the physical switch. The difference between non-negotiate and on options is that on mode still sends out DTP frames, whereas the non-negotiate option does not.  The non-negotiate option should be used for all VLAN trunks, to minimize unnecessary network traffic for virtual switches in VST mode.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39375",
+      "title": "The system must ensure the virtual switch Promiscuous Mode policy is set to reject.",
+      "description": "When promiscuous mode is enabled for a virtual switch, all virtual machines connected to the dvPortgroup have the potential of reading all packets across that network, meaning only the virtual machines connected to that  dvPortgroup. Promiscuous mode is disabled by default on the ESXi Server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39376",
+      "title": "The system must ensure the dvPortgroup Promiscuous Mode policy is set to reject.",
+      "description": "When promiscuous mode is enabled for a dvPortgroup, all virtual machines connected to the dvPortgroup have the potential of reading all packets across that network, meaning only the virtual machines connected to that  dvPortgroup. Promiscuous mode is disabled by default on the ESXi Server, and this is the recommended setting. However, there might be a legitimate reason to enable it for debugging, monitoring or troubleshooting reasons. Security devices might require the ability to see all packets on a vSwitch.  An exception should be made for the dvPortgroups that these applications are connected to, in order to allow for full-time visibility to the traffic on that dvPortgroup.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39377",
+      "title": "The system must ensure there are no unused ports on a distributed virtual port group.",
+      "description": "The number of ports available on a dvSwitch distributed port group must be adjusted to exactly match the number of virtual machine vNICs that need to be assigned to that dvPortgroup. Limiting the number of ports to just what is needed also limits the accidental or malicious potential to move a virtual machine to an unauthorized network.  This is especially relevant if the management network is on a dvPortgroup, because it could help prevent putting a rogue virtual machine on this network. \n",
+      "severity": "low"
+    },
+    {
+      "id": "V-39378",
+      "title": "vMotion traffic must be isolated.",
+      "description": "The security issue with vMotion migrations is that information is transmitted in plain text, and anyone with access to the network over which this information flows can view it. Potential attackers can intercept vMotion traffic to obtain memory contents of a virtual machine. They might also potentially stage a MiTM attack in which the contents are modified during migration. \nvMotion traffic must be sequestered from production traffic on an isolated network. This network must be non-routable (no layer-3 router spanning this and other networks), preventing  outside access to the network. \n",
+      "severity": "low"
+    },
+    {
+      "id": "V-39379",
+      "title": "Spanning tree protocol must be enabled and BPDU guard and Portfast must be disabled on the upstream physical switch port for virtual machines that route or bridge traffic.",
+      "description": "If an ESXi host guest VM is configured to perform a bridging function, the VM will generate BPDU frames to send out to the VDS. The VDS forwards the BPDU frames through the network adapter to the physical switch port. When the switch port configured with \"BPDU guard\" receives the BPDU frame, the switch will disable the port and the VM will lose connectivity. To avoid this network failure scenario while running a software-bridging function on an ESXi host, the \"portfast\" and \"BPDU guard\" configuration must be disabled on the port and spanning tree protocol must be enabled.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39380",
+      "title": "The system must disable the autoexpand option for VDS dvPortgroups.",
+      "description": "If the \"no-unused-dvports\" guideline is followed, there should be only the amount of ports on a VDS that are actually needed. The Autoexpand feature on VDS dvPortgroups can override that limit. The feature allows dvPortgroups to automatically add 10 virtual distributed switch ports to a dvPortgroup that has run out of available ports. The risk is that maliciously or inadvertently, a virtual machine that is not supposed to be part of that portgroup is able to affect confidentiality, integrity, or authenticity of data of other virtual machines on that portgroup. To reduce the risk of inappropriate dvPortgroup access, the autoexpand option on VDS should be disabled. By default the option is disabled, but regular monitoring must be implemented to verify this has not been changed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39381",
+      "title": "Removable media, remote file systems, and any file system that does not contain approved device files must be mounted with the nodev option.",
+      "description": "The \"nodev\" (or equivalent) mount option causes the system to not handle device files as system devices. This option must be used for mounting any file system that does not contain approved device files. Device files can provide direct access to system hardware and can compromise security if not protected.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39382",
+      "title": "The root accounts library search path must be the system default and must contain only absolute paths.",
+      "description": "The library search path environment variable(s) contain a list of directories for the dynamic linker to search to find libraries. If this path includes the current working directory or other relative paths, libraries in these directories may be loaded instead of system libraries. This variable is formatted as a colon-separated list of directories. If there is an empty entry, such as a leading or trailing colon or two consecutive colons, this is interpreted as the current working directory. Entries starting with a slash (/) are absolute paths.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39383",
+      "title": "The root accounts list of preloaded libraries must be empty.",
+      "description": "The library preload list environment variable contains a list of libraries for the dynamic linker to load before loading the libraries required by the binary. If this list contains paths to libraries relative to the current working directory, unintended libraries may be preloaded. This variable is formatted as a space-separated list of libraries. Paths starting with (/) are absolute paths.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39384",
+      "title": "The system must be configured to only boot from the system boot device.",
+      "description": "The ability to boot from removable media is the same as being able to boot into single user or maintenance mode without a password. This ability could allow a malicious user to boot the system and perform changes possibly compromising or damaging the system. It could also allow the system to be used for malicious purposes by a malicious anonymous user.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39385",
+      "title": "The system must enable lockdown mode to restrict remote access.",
+      "description": "Enabling lockdown prevents all API-based access by the accounts to the ESXi host. Enabling lockdown mode disables all remote access to ESXi machines. \n\nThere are some operations, such as backup and troubleshooting that require direct access to the host. In these cases Lockdown Mode can be disabled on a temporary basis for specific hosts as needed, and then re-enabled when the task is completed. Lockdown restricts access to the ESXi console to the root user only, requiring non-root users access the host through vSphere Client/vCenter where RBAC and logging can be used to restrict and log activity. By forcing all interaction to occur through vCenter Server, the risk of someone inadvertently attaining elevated privileges or performing tasks that are not properly audited is greatly reduced. \n\nNote:  Lockdown mode does not apply to root users who log in using authorized keys. When an authorized key file is used for root user authentication, root users are not prevented from accessing a host with SSH even when the host is in lockdown mode. Use of an authorized key file for root must therefore be disallowed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39386",
+      "title": "Inetd and xinetd must be disabled or removed if no network services utilizing them are enabled.",
+      "description": "Unnecessary services should be disabled to decrease the attack surface of the system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39387",
+      "title": "The system must verify the integrity of the installation media before installing ESXi.",
+      "description": "Any changes to the hardware, software, and/or firmware components of the information system and/or application can potentially have significant effects on the overall security of the system. \n\nAccordingly, software defined by the organization as critical software must be signed with a certificate that is recognized and approved by the organization.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39388",
+      "title": "All accounts on the system must have unique user or account names.",
+      "description": "A unique user name is the first part of the identification and authentication process. If user names are not unique, there can be no accountability on the system for auditing purposes. Multiple accounts sharing the same name could result in the Denial-of-Service to one or both of the accounts or unauthorized access to files or privileges.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39389",
+      "title": "All accounts must be assigned unique User Identification Numbers (UIDs).",
+      "description": "Accounts sharing a UID have full access to each others' files. This has the same effect as sharing a login. There is no way to assure identification, authentication, and accountability because the system sees them as the same user. If the duplicate UID is 0, this gives potential intruders another privileged account to attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39390",
+      "title": "The system must disable SSH.",
+      "description": "The ESXi Shell is an interactive command line interface (CLI) available at the ESXi server console. The ESXi shell provides temporary access to commands essential for server maintenance. Intended primarily for use in break-fix scenarios, the ESXi shell is well suited for checking and modifying configuration details, not always generally accessible, using the vSphere Client. The ESXi shell is accessible remotely using SSH. Under normal operating conditions, SSH access to the host must be disabled. As with the ESXi shell, SSH is also intended only for temporary use during break-fix scenarios. SSH must therefore be disabled under normal operating conditions and must only be enabled for diagnostics or troubleshooting. Remote access to the host must therefore be limited to the vSphere Client at all other times.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39391",
+      "title": "The system must not permit root logins using remote access programs, such as SSH.",
+      "description": "Even though communications are encrypted, an additional layer of security may be gained by extending the policy of not logging directly on as root. In addition, logging in with a user-specific account preserves the audit trail.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39392",
+      "title": "The system must set a timeout for the ESXi Shell to automatically disable itself after a predetermined period.",
+      "description": "The ESXiShellTimeout setting is the number of seconds that can elapse before a logon occurs after the ESXi Shell is enabled. After the timeout period, if a logon has not occurred, the shell is disabled. Leaving the shell enabled unnecessarily increases the potential for someone to gain privileged access to the host\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39393",
+      "title": "vSphere management traffic must be on a restricted network.",
+      "description": "The vSphere management network provides access to the vSphere management interface on each component. Services running on the management interface provide an opportunity for an attacker to gain privileged access to the systems. Any remote attack most likely would begin with gaining entry to this network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39394",
+      "title": "The SSH daemon must be configured with the Department of Defense (DoD) logon banner.",
+      "description": "Failure to display the DoD logon banner prior to a log in attempt will negate legal proceedings resulting from unauthorized access to system resources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39395",
+      "title": "The system must be configured with a default gateway for IPv4 if the system uses IPv4, unless the system is a router.",
+      "description": "If a system has no default gateway defined, the system is at increased risk of man-in-the-middle, monitoring, and Denial-of-Service attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39396",
+      "title": "The operating system must implement host-based boundary protection mechanisms for servers, workstations, and mobile devices.",
+      "description": "Unrestricted access to services running on an ESXi host can exposes a host to outside attacks and unauthorized access. Reduce the risk by configuring the ESXi firewall to allow access from authorized networks only.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39397",
+      "title": "The operating system must monitor and control communications at the external boundary of the information system and at key internal boundaries within the system.",
+      "description": "Unrestricted access to services running on an ESXi host can exposes a host to outside attacks and unauthorized access. Reduce the risk by configuring the ESXi firewall to allow access from authorized networks only.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39398",
+      "title": "The operating system, at managed interfaces, must deny network traffic by default and must allow network traffic by exception (i.e., deny all, permit by exception).",
+      "description": "Unrestricted access to services running on an ESXi host can exposes a host to outside attacks and unauthorized access. Reduce the risk by configuring the ESXi firewall to allow access from authorized networks only.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39399",
+      "title": "The operating system must enforce requirements for remote connections to the information system.",
+      "description": "Unrestricted access to services running on an ESXi host can exposes a host to outside attacks and unauthorized access. Reduce the risk by configuring the ESXi firewall to allow access from authorized networks only.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39400",
+      "title": "Access to the management network must be strictly controlled through a network gateway.",
+      "description": "A controlled gateway or other controlled method must be configured to access the management network. The management network must be isolated in order to prevent access by internal and external, unauthorized personnel.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39401",
+      "title": "Access to the management network must be strictly controlled through a network jump box.",
+      "description": "Based upon an organization's risk assessment, jump boxes that run vSphere Client and other management clients (e.g., VSphere Management Assistant) must be configured. The management network must be isolated in order to prevent access by internal and external, unauthorized personnel.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39402",
+      "title": "The SSH client must be configured to not use CBC-based ciphers.",
+      "description": "The Cipher-Block Chaining (CBC) mode of encryption as implemented in the SSHv2 protocol is vulnerable to chosen plain text attacks and must not be used. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39403",
+      "title": "The SSH client must be configured to only use Message Authentication Codes (MACs) employing FIPS 140-2 approved cryptographic hash algorithms.",
+      "description": "DoD information systems are required to use FIPS 140-2 approved cryptographic hash functions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39404",
+      "title": "The SSH client must be configured to only use FIPS 140-2 approved ciphers.",
+      "description": "DoD information systems are required to use FIPS 140-2 approved ciphers. SSHv2 ciphers meeting this requirement are 3DES and AES.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39405",
+      "title": "The operating system must terminate the network connection associated with a communications session at the end of the session or after an organization-defined time period of inactivity.",
+      "description": "If ESXi Shell is enabled on the host and a user neglects to initiate an SSH session the idle connection will remain available indefinitely increasing the potential for someone to gain privileged access to the host.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39407",
+      "title": "The Image Profile and VIB Acceptance Levels must be verified.",
+      "description": "The ESXi Image profile supports four acceptance levels: \n \n(1) VMwareCertified - VIBs created, tested and signed by VMware \n(2) VMwareAccepted - VIBs created by a VMware partner but tested and signed by VMware\n(3) PartnerSupported - VIBs created, tested and signed by a certified VMware partner\n(4) CommunitySupported - VIBs that have not been tested by VMware or a VMware partner\n\nCommunity Supported VIBs are not supported and do not have a digital signature. An unsigned VIB represents untested code installed on an ESXi host. To protect the security and integrity of an ESXi host, unsigned (CommunitySupported) VIBs must not be installed.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39408",
+      "title": "Remote logging for ESXi hosts must be configured.",
+      "description": "Remote logging to a central log host provides a secure, centralized store for ESXi logs. By gathering host log files onto a central host it can more easily monitor all hosts with a single tool. It can also do aggregate analysis and searching to look for such things as coordinated attacks on multiple hosts. Logging to a secure, centralized log server also helps prevent log tampering and also provides a long-term audit record.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39409",
+      "title": "The operating system must back up audit records on an organization-defined frequency onto a different system or media than the system being audited.",
+      "description": "Remote logging to a central log host provides a secure, centralized store for ESXi logs. By gathering host log files onto a central host it can more easily monitor all hosts with a single tool. It can also do aggregate analysis and searching to look for such things as coordinated attacks on multiple hosts. Logging to a secure, centralized log server also helps prevent log tampering and also provides a long-term audit record.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39410",
+      "title": "The operating system must protect the audit records resulting from non-local accesses to privileged accounts and the execution of privileged functions.",
+      "description": "Remote logging to a central log host provides a secure, centralized store for ESXi logs. By gathering host log files onto a central host it can more easily monitor all hosts with a single tool. It can also do aggregate analysis and searching to look for such things as coordinated attacks on multiple hosts. Logging to a secure, centralized log server also helps prevent log tampering and also provides a long-term audit record.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39411",
+      "title": "The operating system must use cryptography to protect the confidentiality of remote access sessions.",
+      "description": "Remote network access is accomplished by leveraging common communication protocols and establishing a remote connection. These connections will occur over the public Internet. \n\nRemote access is any access to an organizational information system by a user (or an information system) communicating through an external, non-organization-controlled network (e.g., the Internet). Examples of remote access methods include dial-up, broadband, and wireless. \n\nUsing cryptography ensures confidentiality of the remote access connections.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39412",
+      "title": "The SSH daemon must be configured to only use the SSHv2 protocol.",
+      "description": "SSHv1 is not a DoD-approved protocol and has many well-known vulnerability exploits. Exploits of the SSH daemon could provide immediate root access to the system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39413",
+      "title": "The operating system must use organization-defined replay-resistant authentication mechanisms for network access to non-privileged accounts.",
+      "description": "An authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message. \n\nTechniques used to address this include protocols using challenges (e.g., TLS, WS_Security), time synchronous, or challenge-response one-time authenticators.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39414",
+      "title": "The SSH client must be configured to only use the SSHv2 protocol.",
+      "description": "SSHv1 is not a DoD-approved protocol and has many well-known vulnerability exploits. Exploits of the SSH client could provide access to the system with the privileges of the user running the client.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39415",
+      "title": "The SSH daemon must be configured to only use Message Authentication Codes (MACs) employing FIPS 140-2 approved cryptographic hash algorithms.",
+      "description": "DoD information systems are required to use FIPS 140-2 approved cryptographic hash functions.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39416",
+      "title": "The system must require that passwords contain at least one special character.",
+      "description": "To enforce the use of complex passwords, minimum numbers of characters of different classes are mandated. The use of complex passwords reduces the ability of attackers to successfully obtain valid passwords using guessing or exhaustive search techniques. Complexity requirements increase the password search space by requiring users to construct passwords from a larger character set than they may otherwise use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39417",
+      "title": "The system must ensure proper SNMP configuration.",
+      "description": "If SNMP is not being used, it must remain disabled. If it is being used, the proper trap destination must be configured. If SNMP is not properly configured, monitoring information can be sent to a malicious host that can then use this information to plan an attack. SNMP must be configured on each ESXi host using Power/v CLI. vSphere PowerCLI is a command line tool used to automate vSphere management. PowerCLI is distributed as a Windows PowerShell snapin, and includes 300+ PowerShell cmdlets and use documentation.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39418",
+      "title": "The system must prevent the use of dictionary words for passwords.",
+      "description": "An easily guessable password provides an open door to any external or internal malicious intruder. Many computer compromises occur as the result of account name and password guessing. This is generally done by someone with an automated script using repeated logon attempts until the correct account and password pair is guessed. Utilities, such as cracklib, can be used to validate passwords are not dictionary words and meet other criteria during password changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39420",
+      "title": "The SSH daemon must perform strict mode checking of home directory configuration files.",
+      "description": "If other users have access to modify user-specific SSH configuration files, they may be able to log into the system as another user.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39422",
+      "title": "Removable media, remote file systems, and any file system that does not contain approved setuid files must be mounted with the nosuid option.",
+      "description": "The \"nosuid\" mount option causes the system to not execute setuid files with owner privileges. This option must be used for mounting any file system that does not contain approved setuid files. Executing setuid files from untrusted file systems, or file systems that do not contain approved setuid files, increases the opportunity for unprivileged users to attain unauthorized administrative access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39423",
+      "title": "The nosuid option must be enabled on all NFS client mounts.",
+      "description": "Enabling the nosuid mount option prevents the system from granting owner or group owner privileges to programs with the suid or sgid bit set. If the system does not restrict this access, users with unprivileged access to the local system may be able to acquire privileged access by executing setuid or setgid files located on the mounted NFS file system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39424",
+      "title": "The system must be checked for extraneous device files at least weekly.",
+      "description": "If an unauthorized device is allowed to exist on the system, there is the possibility the system may perform unauthorized operations.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39425",
+      "title": "The system must be checked weekly for unauthorized setuid files, as well as, unauthorized modification to authorized setuid files.",
+      "description": "Files with the setuid bit set will allow anyone running these files to be temporarily assigned the UID of the file. While many system files depend on these attributes for proper operation, security problems can result if setuid is assigned to programs that allow reading and writing of files, or shell escapes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39426",
+      "title": "The system must be checked weekly for unauthorized setgid files, as well as, unauthorized modification to authorized setgid files.",
+      "description": "Files with the setgid bit set will allow anyone running these files to be temporarily assigned the GID of the file. While many system files depend on these attributes for proper operation, security problems can result if setgid is assigned to programs that allow reading and writing of files, or shell escapes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39427",
+      "title": "For systems using DNS resolution, at least two name servers must be configured.",
+      "description": "To provide availability for name resolution services, multiple redundant name servers are mandated. A failure in name resolution could lead to the failure of security functions requiring name resolution, which may include time synchronization, centralized authentication, and remote system logging.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39428",
+      "title": "If the system boots from removable media, it must be stored in a safe or similarly secured container.",
+      "description": "Storing the boot loader on removable media in an insecure location could allow a malicious user to modify the systems boot instructions or boot to an insecure operating system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39429",
+      "title": "The operating system must be a supported release.",
+      "description": "An operating system release is considered supported if the vendor continues to provide security patches for the product. With an unsupported release, it will not be possible to resolve security issues discovered in the system software.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39430",
+      "title": "The system clock must be synchronized to an authoritative DoD time source.",
+      "description": "To assure the accuracy of the system clock, it must be synchronized with an authoritative time source within DoD. Many system functions, including time-based login and activity restrictions, automated reports, system logs, and audit records depend on an accurate system clock. If there is no confidence in the correctness of the system clock, time-based functions may not operate as intended and records may be of diminished value.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73127",
+      "title": "Wireless network adapters must be disabled.",
+      "description": "The use of wireless networking can introduce many different attack vectors into the organization's network. Common attack vectors such as malicious association and ad hoc networks will allow an attacker to spoof a wireless access point (AP), allowing validated systems to connect to the malicious AP and enabling the attacker to monitor and record network traffic. These malicious APs can also serve to create a man-in-the-middle attack or be used to create a denial of service  to valid network resources.",
+      "severity": "medium"
+    }
+  ]
+}

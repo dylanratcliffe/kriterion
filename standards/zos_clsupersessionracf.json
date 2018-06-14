@@ -1,0 +1,65 @@
+{
+  "name": "zos_clsupersessionracf",
+  "date": "2017-09-15",
+  "description": "None",
+  "title": "z/OS CL/SuperSession for RACF STIG",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-16932",
+      "title": "CL/SuperSession Install data sets must be properly protected.",
+      "description": "CL/SuperSession Install data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17067",
+      "title": "CL/SuperSession STC data sets must be properly protected.",
+      "description": "CL/SuperSession STC data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17452",
+      "title": "CL/SuperSession Started Task name is not properly identified / defined to the system ACP.",
+      "description": "CL/SuperSession requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17454",
+      "title": "CL/SuperSession Started task(s) must be properly defined to the STARTED resource class for RACF.\n",
+      "description": "Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources.  Improper control of product resources could potentially compromise the operating system, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18011",
+      "title": "CL/SuperSessions Resouce Class will be defined or active in the ACP.",
+      "description": "Failure to use a robust ACP to control a product could potentially compromise the integrity and availability of the MVS operating system and user data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18014",
+      "title": "CL/SuperSession profile options are set improperly.",
+      "description": "Product configuration/parameters control the security and operational characteristics of products.  If these parameter values are improperly specified, security and operational controls may be weakened.  This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22689",
+      "title": "CL/SuperSession is not properly configured to generate SMF records for audit trail and accounting reports.",
+      "description": "Product configuration/parameters control the security and operational characteristics of products.  If these parameter values are improperly specified, security and operational controls may be weakened.  This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22690",
+      "title": "CL/SuperSession KLVINNAM member must be configured in accordance to security requirements.",
+      "description": "CL/SuperSession configuration/parameters control the security and operational characteristics of products.  If these parameter values are improperly specified, security and operational controls may be weakened.  This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22691",
+      "title": "CL/SuperSession APPCLASS member is not configured in accordance with the proper security requirements.",
+      "description": "Product configuration/parameters control the security and operational characteristics of products.  If these parameter values are improperly specified, security and operational controls may be weakened.  This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    }
+  ]
+}

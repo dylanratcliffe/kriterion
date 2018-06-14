@@ -1,0 +1,257 @@
+{
+  "name": "idsips",
+  "date": "2013-10-08",
+  "description": "IDS/IPS Security Technical Implementation Guide",
+  "title": "IDS/IPS Security Technical Implementation Guide",
+  "version": "8",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-14646",
+      "title": "Alerts must be automatically generated to notify the administrator when log storage reaches seventy-five percent or more of its maximum capacity.",
+      "description": "Configuring the network device or syslog server to provide alerts to the administrator in the event of modification or audit log capacity being exceeded ensures administrative staff is aware of critical alerts.  Without this type of notification setup, logged audits and events could potentially fill to capacity, causing subsequent records to not be recorded and dropped without any knowledge by the administrative staff.  Other unintended consequences of filling the log storage to capacity may include a denial of service of the device itself without proper notification.",
+      "severity": "low"
+    },
+    {
+      "id": "V-14671",
+      "title": "The network element must authenticate all NTP messages received from NTP servers and peers.",
+      "description": "Since NTP is used to ensure accurate log file timestamp information, NTP could pose a security risk if a malicious user were able to falsify NTP information. To launch an attack on the NTP infrastructure, a hacker could inject time that would be accepted by NTP clients by spoofing the IP address of a valid NTP server. To mitigate this risk, the time messages must be authenticated by the client before accepting them as a time source. \n\nTwo NTP-enabled devices can communicate in either client-server mode or peer-to-peer mode (aka “symmetric mode”). The peering mode is configured manually on the device and indicated in the outgoing NTP packets. The fundamental difference is the synchronization behavior: an NTP server can synchronize to a peer with better stratum, whereas it will never synchronize to its client regardless of the client’s stratum. From a protocol perspective, NTP clients are no different from the NTP servers. The NTP client can synchronize to multiple NTP servers, select the best server and synchronize with it, or synchronize to the averaged value returned by the servers.\n\nA hierarchical model can be used to improve scalability. With this implementation, an NTP client can also become an NTP server providing time to downstream clients at a higher stratum level and of decreasing accuracy than that of its upstream server. To increase availability, NTP peering can be used between NTP servers. In the event the device looses connectivity to it upstream NTP server, it will be able to choose time from one of its peers. \n\nThe NTP authentication model is opposite of the typical client-server authentication model. NTP authentication enables an NTP client or peer to authenticate time received from their servers and peers. It’s not used to authenticate NTP clients because NTP servers don’t care about the authenticity of their clients, as they never accept any time from them. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14717",
+      "title": "The network element must not allow SSH Version 1 to be used for administrative access.",
+      "description": "SSH Version 1 is a protocol that has never been defined in a standard. Since SSH-1 has inherent design flaws which make it vulnerable to attacks, e.g., man-in-the-middle attacks, it is now generally considered obsolete and should be avoided by explicitly disabling fallback to SSH-1. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17821",
+      "title": "The network element’s OOBM interface must be configured with an OOBM network address.",
+      "description": "The OOBM access switch will connect to the management interface of the managed network elements. The management interface of the managed network element will be directly connected to the OOBM network. An OOBM interface does not forward transit traffic; thereby, providing complete separation of production and management traffic. Since all management traffic is immediately forwarded into the management network, it is not exposed to possible tampering.  The separation also ensures that congestion or failures in the managed network do not affect the management of the device. If the OOBM interface does not have an IP address from the managed network address space, it will not have reachability from the NOC using scalable and normal control plane and forwarding mechanisms.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18484",
+      "title": "IDPS consoles, management and database servers must reside on the management network.",
+      "description": "Sensors and agents monitor and analyze activity. The term sensor is typically used for IDPSs that monitor networks, including network-based, wireless, and network behavior analysis technologies. The term agent is typically used for host-based IDPS technologies. \n\nA management server is a centralized device that receives information from the sensors or agents and manages them. Some management servers perform analysis on the event information that the sensors or agents provide and can identify events that the individual sensors or agents cannot. Matching event information from multiple sensors or agents, such as finding events triggered by the same IP address, is known as correlation. Management servers are available as both appliance and software-only products. Some small IDPS deployments do not use any management servers, but most IDPS deployments do. In larger IDPS deployments, there are often multiple management servers, and in some cases there are two tiers of management servers.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18489",
+      "title": "The Network IDPS administrator will ensure all Network IDPS systems are installed and operational in stealth mode —no ip address on interface with data flow.",
+      "description": "Administrators should ensure that for both passive and inline sensors, IP addresses are not\nassigned to the network interfaces used to monitor network traffic. Only networks interfaces used for IDPS management should have an IP address assigned. Operating a sensor without IP addresses assigned to its monitoring interfaces is known as operating in stealth mode. Stealth mode improves the security of the IDPS sensors because it prevents other hosts from initiating connections to them. This conceals the sensors from attackers and thus limits their exposure to attacks.  If monitoring is being performed using a switch SPAN port, it is recommended that the IDPS is configured in Stealth Mode; the NIC connected to the SPAN port would not have any network protocol stacks bound to it.  A second NIC would then be connected to an OOB network.  Stealth mode will reduce the risk of the IDPS itself being attacked.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18501",
+      "title": "The IAO/NSO will ensure notifications are sent to the syslog server or central controller when threshold limits exceed the sensor’s capacity.",
+      "description": "Scaling IDPS sensors to avoid missed packets as a result of CPU and memory thresholds when link mbps is greater than what the engine can inspect should be an initial consideration prior to deployment. The IDPS administrator will have the sensor send notifications to the syslog server or central controller when thresholds limits do occur.\n\nAs mentioned in the guidance for Server Farms, VACLs can also be a useful tool to help scale the traffic a sensor receives. The VACL capture feature allows you to mirror traffic to ports configured to forward captured traffic. By defining the interested traffic, for instance web traffic, a copy of the http traffic only could be forwarded to the sensing interface avoiding data overflow. Additional design options such as Remote Switch Port Analyzer (RSPAN) are available and should be considered by the network engineer.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18502",
+      "title": "The Network IDPS administrator will review whitelists and blacklists regularly and validate all entries to ensure that they are still accurate and necessary.",
+      "description": "A blacklist is a list of discrete entities, such as hosts, TCP or UDP port numbers, ICMP types and codes, applications, usernames, URLs, filenames, or file extensions, that have been previously determined to be associated with malicious activity. Blacklists, also known as hot lists, are typically used to allow IDPSs to recognize and block activity that is highly likely to be malicious, and may also be used to assign a higher priority to alerts that match entries on the blacklists. Some IDPSs generate dynamic blacklists that are used to temporarily block recently detected threats (e.g., activity from an attacker’s IP address). A whitelist is a list of discrete entities that are known to be benign. Whitelists are typically used on a granular basis, such as protocol-by-protocol, to reduce or ignore false positives involving known benign activity from trusted hosts. Whitelists and blacklists are most commonly used in signature-based detection and stateful protocol analysis.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18508",
+      "title": "The Network administrator will implement signatures that detect specific attacks and protocols that should not be seen on the segments containing web servers.",
+      "description": "In the Regional Enterprise Enclave different sets of sensors will see different traffic as a result of their location within the regional enclave. By establishing separate signature profiles for each set of sensors, each profile can then be tuned to generate alarms based on the traffic types seen, the attack signatures, and the specific traffic (string signatures) that is relevant to that particular set of sensors. If more than one set of sensors will see the same traffic types, then the same signature profile may be used for both sets. Alerting on specific connection signatures, general attack signatures, and specific string signatures provides focused segment analysis at Layers 4 through 7.\n\nThe IDPS system administrator will ensure the sensor monitoring the web servers is configured for application inspection and control of all web ports e.g. 80, 3128, 8000, 8010, 8080, 8888, 24326, etc. The sensor monitoring the web servers should be capable of inspecting web traffic that is not received on web ports; known as port redirection. In many implementations this is a separate signature that needs to be enabled.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18509",
+      "title": "The Network administrator will implement signatures that detect both specific attacks on public service servers and traffic types (protocols) that should not be seen on the segments containing ftp servers.",
+      "description": "In the Regional Enterprise Enclave different sets of sensors will see different traffic as a result of their location within the regional enclave. By establishing separate signature profiles for each set of sensors, each profile can then be tuned to generate alarms based on the traffic types seen, the attack signatures, and the specific traffic (string signatures) that is relevant to that particular set of sensors. If more than one set of sensors will see the same traffic types, then the same signature profile may be used for both sets. Alerting on specific connection signatures, general attack signatures, and specific string signatures provides focused segment analysis at Layers 4 through 7.\n\nNetwork segments containing FTP servers should have sensors installed that monitor, inspect and log all recognized ftp commands, as well as unrecognized ftp commands.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18512",
+      "title": "The Network IDPS administrator will tune the sensor to alarm if unexpected protocols for network management enter the subnet.",
+      "description": "The management network must detect all attacks on the management hosts. The management network has a various range of traffic that is permitted. Some of the following traffic is allowed on the\nManagement Hosts Segment: Trivial File Transfer Protocol (TFTP [UDP 69])—For network device configuration files from devices on the Managed Devices Segment; FTP-Data (TCP 20)—For file transfers to network devices on the Managed Devices Segment and for Internet downloads; FTP-Control (TCP 21)—For file transfers to network devices on the Managed Devices Segment and for Internet downloads; Syslog (UDP 514)—From network devices on the Managed Devices Segment; Telnet (TCP 23)—To network devices on the Managed Devices Segment; SSH (TCP 22)—To network devices on the Managed Devices Segment;  Network Time Protocol (NTP [UDP 123])—To synchronize the clocks of all network devices on the Managed Devices Segment; HTTP (TCP 80)—To the Internet and from hosts on other segments to download the host-based IPS agent software; HTTPS (TCP 443)—To network devices on the Managed Devices Segment and the Internet as well as between the host-based IPS Console and its agents;  TACACS+ (TCP 49)—For administrator authentication to devices on the Managed Devices Segment;  RADIUS (UDP 1812/1813 authentication/accounting)—For authentication of administrator remote-access VPN connections coming from the Remote Administration Segment; ICMP (IP Protocol 1)—Echo request and response to reach network devices on the Managed Devices Segment and the Internet; DNS (UDP 53)—For name translation services for management hosts as they access services on the Internet;  Simple Network Management Protocol (SNMP [UDP 161])—To query information from network devices on the\nManaged Devices Segment; SNMP-Trap (UDP 162)—To receive trap information from network devices on the Managed Devices Segment.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18513",
+      "title": "The Network IDPS administrator will ensure IP hijacking signatures have been implemented with the common default signatures.",
+      "description": "There are a number of publicly available tools that exist to facilitate the hijacking of TCP sessions. An attacker using such tools can determine the TCP sequence and acknowledgement numbers that two hosts are using in a communication session. This information could enable the attacker to take over the legitimate network connection of an authorized user and inject commands into the session. This is particularly serious because most forms of one-time passwords do not prevent this access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18632",
+      "title": "The IAO/NSO will ensure if DHCPV6 is not being used in the enclave it will be disabled.",
+      "description": "Currently, many vendors are not prepared for DHCPv6 stateful autoconfiguration, thus there are very few implementations of it.  DHCPv6 is a completely separate protocol than DHCPv4.  In IPV6 DHCPDISCOVER use of the unspecified address 0.0.0.0 with a broadcast address. These messages are sent with a FF02::1:2 (RFC3315) via IPv6 support of link-local autoconfiguration.  There is also DHCPv6-Prefix Delegation that allows nodes to request not just an address, but also the entire prefix.  DHCPv6-PD is primarily used by routers.  Stateful autoconfiguration offers the best auditing capabilities due to the logs being centralized at the DHCP server and may become the preferred implementation as the protocol matures.\n\nWhen DHCP is not being used in an IPv6 network, DHCP packets should be filtered at security boundaries and internally at router interfaces where possible.  The internal filtering will not completely prevent use since any on-link attacks never pass through a router, hence the IDS recommendations follow.\n\nCreate an IDS check to detect any inconsistencies in the advertised “M or O bit values” of router advertisements on a link.\n\nIf DHCP is not being used in the network, create an IDS check to detect traffic on the commonly used DHCP ports. The following port numbers for both TCP and UDP are associated with DHCP: 67, 68, 546, 547, 647, 847, and 2490. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19233",
+      "title": "The IDPS device positioned to protect servers in the server farm or DMZs must provide protection from DoS SYN Flood attacks by dropping half open TCP sessions.",
+      "description": "SYN flood sends a flood of TCP/SYN packets, often with a forged sender address. Each of these packets is handled like a connection request, causing the server to spawn a half-open connection, by sending back a TCP/SYN-ACK packet, and waiting for a packet in response from the sender address. However, because the sender address is forged, the response never comes. These half-open connections saturate the number of available connections the server is able to make, keeping it from responding to legitimate requests until after the attack ends.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19246",
+      "title": "The Network IDPS administrator will ensure the IDPS is protecting the enclave from malware and unexpected traffic by using TCP Reset signatures. ",
+      "description": "By listening to the conversation flow of inbound and outbound internet traffic for malware and malware references,  the IDPS can prevent unwanted programs entering into the enclave. When it detects unmanaged instant messaging and peer-to-peer protocols or malware coming over IM , the IDPS can prevent the unwanted computer programs from entering the network by spoofing the source and destination machine addresses to send each session partner a TCP Reset packet. The TCP Reset instructs both sender and receiver to cease the current transfer of data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19250",
+      "title": "The IDPS administrator will ensure LAND DoS signature has been implemented to protect the enclave. ",
+      "description": "The LAND attack is a denial-of-service (DoS) attack in which an attacker sends a TCP packet (with the SYN bit set) to a system in which the source and destination IP address (along with the source and destination port) are the same. When it was first discovered, many IP stacks crashed the system when they received a LAND attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19256",
+      "title": "The IDPS Administrator will ensure Atomic Signatures are implemented to protect the enclave.",
+      "description": "Without an industry agreed-upon set of definitions for IDPS controls, the use of the term signature will apply to all IDPS technologies. Signatures are defined as identifying something, defining it and then stop it from occurring.\n\nSignatures fall into one of the following two basic categories depending on their functionality:\n- Atomic\n- Stateful\n\nAtomic signatures trigger on a single event, they do not require your intrusion system to maintain state. The entire inspection can be accomplished in an atomic operation that does not require any knowledge of past or future activities. these signatures consume minimal resources (such as memory) on the IPS/IDS device. These signatures are easy to understand because they search only for a specific event. \n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-23747",
+      "title": "The network element must use two or more NTP servers to synchronize time.",
+      "description": "Without synchronized time, accurately correlating information between devices becomes difficult, if not impossible. If logs cannot be successfully compared between each of the routers, switches, and firewalls, it will be very difficult to determine the exact events that resulted in a network breach incident. NTP provides an efficient and scalable method for network elements to synchronize to an accurate time source.",
+      "severity": "low"
+    },
+    {
+      "id": "V-28784",
+      "title": "A service or feature that calls home to the vendor must be disabled.  \n",
+      "description": "Call home services or features will routinely send data such as configuration and diagnostic information to the vendor for routine or emergency analysis and troubleshooting.  The risk that transmission of sensitive data sent to unauthorized persons could result in data loss or downtime due to an attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3012",
+      "title": "The network element must be password protected.",
+      "description": "Network access control mechanisms interoperate to prevent unauthorized access and to enforce the organization’s security policy. Access to the network must be categorized as administrator, user, or guest so the appropriate authorization can be assigned to the user requesting access to the network or a network element. Authorization requires an individual account identifier that has been approved, assigned, and configured on an authentication server. Authentication of user identities is accomplished through the use of passwords, tokens, biometrics, or in the case of multi-factor authentication, some combination thereof. Lack of authentication enables anyone to gain access to the network or possibly a network element providing opportunity for intruders to compromise resources within the network infrastructure.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3013",
+      "title": "The network element must display the DoD approved login banner warning in accordance with the CYBERCOM DTM-08-060 document.",
+      "description": "All network devices must present  a DoD approved warning banner prior to a system administrator logging on. The banner should warn any unauthorized user not to proceed. It also should provide clear and unequivocal notice to both authorized and unauthorized personnel that access to the device is subject to monitoring to detect unauthorized usage. Failure to display the required login warning banner prior to logon attempts will limit DoD’s ability to prosecute unauthorized access and also presents the potential to give rise to criminal and civil liability for systems administrators and information systems managers. In addition, DISA’s ability to monitor the device’s usage is limited unless a proper warning banner is displayed.\n\nDoD CIO has issued new, mandatory policy standardizing the wording of “notice and consent” banners and matching user agreements for all Secret and below DoD information systems, including stand-alone systems by releasing DoD CIO Memo, “Policy on Use of Department of Defense (DoD) Information Systems Standard Consent Banner and User Agreement”, dated 9 May 2008. The banner is mandatory and deviations are not permitted except as authorized in writing by the Deputy Assistant Secretary of Defense for Information and Identity Assurance. Implementation of this banner verbiage is further directed to all DoD components for all DoD assets via USCYBERCOM CTO 08-008A.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3014",
+      "title": "The network element must timeout management connections for administrative access after 10 minutes or less of inactivity.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled between the managed network element and a PC or terminal server when the later has been left unattended. In addition quickly terminating an idle session will also free up resources committed by the managed network element as well as reduce the risk of a management session from being hijacked. Setting the timeout of the session to 10 minutes or less increases the level of protection afforded critical network components.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3056",
+      "title": "Group accounts must not be configured for use on the network device.\n",
+      "description": "Group accounts configured for use on a network device do not allow for accountability or repudiation of individuals using the shared account.  If group accounts are not changed when someone leaves the group, that person could possibly gain control of the network device.  Having group accounts does not allow for proper auditing of who is accessing or changing the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3057",
+      "title": "Authorized accounts must be assigned the least privilege level necessary to perform assigned duties.\n",
+      "description": "By not restricting authorized accounts to their proper privilege level, access to restricted functions may be allowed before authorized personell are trained or experienced enough to use those functions.  Network disruptions or outages may occur due to mistakes made by inexperienced persons using accounts with greater privileges than necessary.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3058",
+      "title": "Unauthorized accounts must not be configured for access to the network device.",
+      "description": "A malicious user attempting to gain access to the network device may compromise an account that may be unauthorized for use.  The unauthorized account may be a temporary or inactive account that is no longer needed to access the device.  Denial of Service, interception of sensitive information, or other destructive actions could potentially take place if an unauthorized account is configured to access the network device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3069",
+      "title": "Management connections to a network device must be established using secure protocols with FIPS 140-2 validated cryptographic modules.",
+      "description": "Administration and management connections performed across a network are inherently dangerous because anyone with a packet sniffer and access to the right LAN segment can acquire the network device account and password information.  With this intercepted information they could gain access to the router and cause denial of service attacks, intercept sensitive information, or perform other destructive actions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3070",
+      "title": "The network element must log all attempts to establish a management connection for administrative access.",
+      "description": "Audit logs are necessary to provide a trail of evidence in case the network is compromised.  Without an audit trail that provides a when, where, who and how set of information, repeat offenders could continue attacks against the network indefinitely.  With this information, the network administrator can devise ways to block the attack and possibly identify and prosecute the attacker.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3143",
+      "title": "The network element must not have any default manufacturer passwords.",
+      "description": "Network elements not protected with strong password schemes provide the opportunity for anyone to crack the password thus gaining access to the device and causing network outage or denial of service.  Many default vendor passwords are well known; hence, not removing them prior to deploying the network element into production provides an opportunity for a malicious user to gain unauthorized access to the device.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3160",
+      "title": "The network element must be running a current and supported operating system with all IAVMs addressed.",
+      "description": "Network devices not running the latest tested and approved versions of software are vulnerable to network attacks. Running the most current, approved version of system and device software helps the site maintain a stable base of security fixes and patches, as well as enhancements to IP security. Viruses, denial of service attacks, system weaknesses, back doors and other potentially harmful situations could render a system vulnerable, allowing unauthorized access to DoD assets.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3175",
+      "title": "The network device must require authentication prior to establishing a management connection for administrative access.",
+      "description": "Network devices with no password for administrative access via a management connection provide the opportunity for anyone with network access to the device to make configuration changes enabling them to disrupt network operations resulting in a network outage.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3176",
+      "title": "The IAO/NSO will ensure the IDS or firewall is configured to alert the administrator of a potential attack or system failure. ",
+      "description": "The IDS or firewall is the first device that is under the sites control that has the possibility to alarm the local staff of an ongoing attack. An alert from either of these devices can be the first indication of an attack or system failure.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3179",
+      "title": "The IAO/NSO will ensure the sensor’s monitoring application or mechanism retrieves events from the sensor before the queue becomes full.",
+      "description": "Events on the sensor are typically stored on a large input queue. The queue in the sensor is typically very large and can hold several days of logging events under normal conditions. Nevertheless, the monitoring application must retrieve events from the sensor before the queue becomes full; otherwise the sensor will start overwriting the unread events.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3196",
+      "title": "The network element must use SNMP Version 3 Security Model with FIPS 140-2 validated cryptography for any SNMP agent configured on the device.",
+      "description": "SNMP Versions 1 and 2 are not considered secure. Without the strong authentication and privacy that is provided by the SNMP Version 3 User-based Security Model (USM), an unauthorized user can gain access to network management information used to launch an attack against the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3210",
+      "title": "The network element must not use the default or well-known SNMP community strings public and private.",
+      "description": "Network elements may be distributed by the vendor pre-configured with an SNMP agent using the well known SNMP community strings public for read only and private for read and write authorization.  An attacker can obtain information about a network element using the read community string \"public\". In addition, an attacker can change a system configuration using the write community string \"private\".",
+      "severity": "high"
+    },
+    {
+      "id": "V-3967",
+      "title": "The network element must time out access to the console port after 10 minutes or less of inactivity.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition quickly terminating an idle session will also free up resources committed by the managed network element. Setting the timeout of the session to 10 minutes or less increases the level of protection afforded critical network components.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-4582",
+      "title": "The network device must require authentication for console access.",
+      "description": "Network devices with no password for administrative access via the console provide the opportunity for anyone with physical access to the device to make configuration changes enabling them to disrupt network operations resulting in a network outage.",
+      "severity": "high"
+    },
+    {
+      "id": "V-5611",
+      "title": "The network element must only allow management connections for administrative access from hosts residing in the management network.",
+      "description": "Remote administration is inherently dangerous because anyone with a sniffer and access to the right LAN segment, could acquire the device account and password information. With this intercepted information they could gain access to the infrastructure and cause denial of service attacks, intercept sensitive information, or perform other destructive actions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-5612",
+      "title": "The network element must be configured to timeout after 60 seconds or less for incomplete or broken SSH sessions.",
+      "description": "An attacker may attempt to connect to the device using SSH by guessing the authentication method, encryption algorithm, and keys. Limiting the amount of time allowed for authenticating and negotiating the SSH session reduces the window of opportunity for the malicious user attempting to make a connection to the network element.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-5613",
+      "title": "The network element must be configured for a maximum number of unsuccessful SSH login attempts set at 3 before resetting the interface.  ",
+      "description": "An attacker may attempt to connect to the device using SSH by guessing the authentication method and authentication key or shared secret. Setting the authentication retry to 3 or less strengthens against a Brute Force attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-5646",
+      "title": "The network device must drop half-open TCP connections through filtering thresholds or timeout periods.",
+      "description": "A TCP connection consists of a three-way handshake message sequence. A connection request is transmitted by the originator, an acknowledgement is returned from the receiver, and then an acceptance of that acknowledgement is sent by the originator.\n\nAn attacker’s goal in this scenario is to cause a denial of service to the network or device by initiating a high volume of TCP packets, then never sending an acknowledgement, leaving connections in a half-opened state.  Without the device having a connection or time threshold for these half-opened sessions, the device risks being a victim of a denial of service attack.  Setting a TCP timeout threshold will instruct the device to shut down any incomplete connections. Services such as SSH, BGP, SNMP, LDP, etc. are some services that may be prone to these types of denial of service attacks. If the router does not have any BGP connections with BGP neighbors across WAN links, values could be set to even tighter constraints.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7011",
+      "title": "The network element’s auxiliary port must be disabled unless it is connected to a secured modem providing encryption and authentication.",
+      "description": "The use of POTS lines to modems connecting to network devices provides clear text of authentication traffic over commercial circuits that could be captured and used to compromise the network.  Additional war dial attacks on the device could degrade the device and the production network.\n\nSecured modem devices must be able to authenticate users and must negotiate a key exchange before full encryption takes place.  The modem will provide full encryption capability (Triple DES) or stronger.  The technician who manages these devices will be authenticated using a key fob and granted access to the appropriate maintenance port, thus the technician will gain access to the managed device (router, switch, etc.).  The token provides a method of strong (two-factor) user authentication.  The token works in conjunction with a server to generate one-time user passwords that will change values at second intervals.  The user must know a personal identification number (PIN) and possess the token to be allowed access to the device.",
+      "severity": "low"
+    }
+  ]
+}

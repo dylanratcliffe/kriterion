@@ -1,0 +1,281 @@
+{
+  "name": "lg_android_6.x",
+  "date": "2016-05-05",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "LG Android 6.x Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-66805",
+      "title": "LG Android 6.x must require a valid password be successfully entered before the mobile device data is unencrypted.",
+      "description": "Passwords provide a form of access control that prevents unauthorized individuals from accessing computing resources and sensitive data. Passwords may also be a source of entropy for generation of key encryption or data encryption keys. If a password is not required to access data, then this data is accessible to any adversary who obtains physical possession of the device. Requiring that a password be successfully entered before the mobile device data is unencrypted mitigates this risk.\n\nNote: MDF PP v.2.0 requires a Password Authentication Factor and requires management of its length and complexity. It leaves open whether the existence of a password is subject to management. This STIGID addresses the configuration to require a password, which is critical to the cybersecurity posture of the device.\n\nSFR ID: FIA_UAU_EXT.1.1",
+      "severity": "high"
+    },
+    {
+      "id": "V-66807",
+      "title": "LG Android 6.x must enforce a minimum password length of 6 characters.",
+      "description": "Password strength is a measure of the effectiveness of a password in resisting guessing and brute force attacks. The ability to crack a password is a function of how many attempts an adversary is permitted, how quickly an adversary can do each attempt, and the size of the password space. The longer the minimum length of the password is, the larger the password space. Having a too-short minimum password length significantly reduces password strength, increasing the chance of password compromise and resulting device and data compromise.\n\nSFR ID: FMT_SMF_EXT.1.1 #01a",
+      "severity": "low"
+    },
+    {
+      "id": "V-66809",
+      "title": "LG Android 6.x must lock the display after 15 minutes (or less) of inactivity.",
+      "description": "The screen lock timeout must be set to a value that helps protect the device from unauthorized access. Having a too-long timeout would increase the window of opportunity for adversaries who gain physical access to the mobile device through loss, theft, etc. Such devices are much more likely to be in an unlocked state when acquired by an adversary, thus granting immediate access to the data on the mobile device. The maximum timeout period of 15 minutes has been selected to balance functionality and security; shorter timeout periods may be appropriate depending on the risks posed to the mobile device.\n\nSFR ID: FMT_SMF_EXT.1.1 #02b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66811",
+      "title": "LG Android 6.x must not allow passwords that include more than two repeating or sequential characters.",
+      "description": "Password strength is a measure of the effectiveness of a password in resisting guessing and brute force attacks. Passwords that contain repeating or sequential characters are significantly easier to guess than those that do not contain repeating or sequential characters. Therefore, disallowing repeating or sequential characters increases password strength and decreases risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #01b",
+      "severity": "low"
+    },
+    {
+      "id": "V-66813",
+      "title": "LG Android 6.x must not allow more than 10 consecutive failed authentication attempts.",
+      "description": "The more attempts an adversary has to guess a password, the more likely the adversary will enter the correct password and gain access to resources on the device. Setting a limit on the number of attempts mitigates this risk. Setting the limit at 10 gives authorized users the ability to make a few mistakes when entering the password but still provides adequate protection against dictionary or brute force attacks on the password.\n\nSFR ID: FMT_SMF_EXT.1.1 #02c",
+      "severity": "low"
+    },
+    {
+      "id": "V-66815",
+      "title": "LG Android 6.x must enforce an application installation policy by specifying one or more authorized application repositories by disabling Google Play.",
+      "description": "Forcing all applications to be installed from authorized application repositories can prevent unauthorized and malicious applications from being installed and executed on mobile devices. Allowing such installations and executions could cause a compromise of DoD data accessible by these unauthorized/malicious applications.\n\nSFR ID: FMT_SMF_EXT.1.1 #10a",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66817",
+      "title": "LG Android 6.x must enforce an application installation policy by specifying an application whitelist.",
+      "description": "Requiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications.\n\nThe application whitelist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core applications (included in the operating system (OS) by the OS vendor) and pre-installed applications (provided by the MD vendor and wireless carrier), or the MD must provide an alternate method of restricting user access/execution to core and pre-installed applications.\n\nSFR ID: FMT_SMF_EXT.1.1 #10b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66819",
+      "title": "LG Android 6.x must not display notifications when the device is locked.",
+      "description": "Many mobile devices display notifications on the lock screen so that users can obtain relevant information in a timely manner without having to frequently unlock the phone to determine if there are new notifications. However, in many cases, these notifications can contain sensitive information. When they are available on the lock screen, an adversary can see them merely by being in close physical proximity to the device. Configuring the mobile operating system to not send notifications to the lock screen mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #21",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66821",
+      "title": "LG Android 6.x must not allow use of developer modes.",
+      "description": "Developer modes expose features of the mobile operating system that are not available during standard operation. An adversary may leverage a vulnerability inherently in developer mode to compromise the confidentiality, integrity, and availability of DoD-sensitive information. Disabling developer modes mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #24",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66823",
+      "title": "LG Android 6.x must protect data at rest on built-in storage media.",
+      "description": "The mobile operating system must ensure the data being written to the mobile device's built-in storage media is protected from unauthorized access. If data at rest is unencrypted, it is vulnerable to disclosure. Even if the operating system enforces permissions on data access, an adversary can read storage media directly, thereby circumventing operating system controls. Encrypting the data ensures confidentiality is protected even when the operating system is not running.\n\nSFR ID: FMT_SMF_EXT.1.1 #25",
+      "severity": "high"
+    },
+    {
+      "id": "V-66825",
+      "title": "LG Android 6.x must protect data at rest on removable storage media.",
+      "description": "The mobile operating system must ensure the data being written to the mobile device's removable media is protected from unauthorized access. If data at rest is unencrypted, it is vulnerable to disclosure. Even if the operating system enforces permissions on data access, an adversary can read removable media directly, thereby circumventing operating system controls. Encrypting the data ensures confidentiality is protected even when the operating system is not running.\n\nSFR ID: FMT_SMF_EXT.1.1 #26",
+      "severity": "high"
+    },
+    {
+      "id": "V-66827",
+      "title": "LG Android 6.x must display the DoD advisory warning message at start-up or each time the user unlocks the device.",
+      "description": "The mobile operating system is required to display the DoD-approved system use notification message or banner before granting access to the system that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Required banners help ensure that DoD can audit and monitor the activities of mobile device users without legal restriction.\n\nSystem use notification messages can be displayed when individuals first access or unlock the mobile device. The banner shall be implemented as a \"click-through\" banner at device unlock (to the extent permitted by the operating system). A \"click through\" banner prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating “OK.”\n\nThe approved DoD text must be used exactly as required in the KS referenced in DoDI 8500.01. For devices accommodating banners of 1300 characters, the banner text is: \n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n\nFor devices with severe character limitations, the banner text is:\n\nI've read & consent to terms in IS user agreem't.\n\nThe administrator must configure the banner text exactly as written without any changes.\n\nSFR ID: FMT_SMF_EXT.1.1 #36",
+      "severity": "low"
+    },
+    {
+      "id": "V-66829",
+      "title": "LG Android 6.x must not allow a USB mass storage mode.",
+      "description": "USB mass storage mode enables the transfer of data and software from one device to another. This software can include malware. When USB mass storage is enabled on a mobile device, it becomes a potential vector for malware and unauthorized data exfiltration. Prohibiting USB mass storage mode mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #39",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66831",
+      "title": "LG Android 6.x must not allow backup to locally connected systems.",
+      "description": "Data on mobile devices is protected by numerous mechanisms, including user authentication, access control, and cryptography. When the data is backed up to an external system (either locally connected or cloud-based), many if not all of these mechanisms are no longer present. This leaves the backed up data vulnerable to attack. Disabling backup to external systems mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #40",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66833",
+      "title": "LG Android 6.x must not allow backup to remote systems.",
+      "description": "Backups to remote systems (including cloud backup) can leave data vulnerable to breach on the external systems, which often offer less protection than the mobile operating system. Where the remote backup involves a cloud-based solution, the backup capability is often used to synchronize data across multiple devices. In this case, DoD devices may synchronize DoD-sensitive information to a user's personal device or other unauthorized computers that are vulnerable to breach. Disallowing remote backup mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #40",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66835",
+      "title": "LG Android 6.x must disable automatic transfer of diagnostic data to an external device other than an MDM service with which the device has enrolled.",
+      "description": "Many software systems automatically send diagnostic data to the manufacturer or a third party. This data enables the developers to understand real world field behavior and improve the product based on that information. Unfortunately, it can also reveal information about what DoD users are doing with the systems and what causes them to fail. An adversary embedded within the software development team or elsewhere could use the information acquired to breach mobile operating system security. Disabling automatic transfer of such information mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1#45",
+      "severity": "low"
+    },
+    {
+      "id": "V-66837",
+      "title": "LG Android 6.x must disable authentication mechanisms providing user access to protected data other than a Password Authentication Factor: Disable fingerprint.",
+      "description": "Many mobile devices now permit a user to unlock the user's device by presenting a fingerprint to an embedded fingerprint reader. Other biometrics and token-based systems are feasible as well. None of these alternatives are currently evaluated in a Common Criteria evaluation of a mobile device against the Security Target based on the Mobile Device Fundamentals Protection Profile. Many have known vulnerabilities. Until there are DoD-approved assurance activities to evaluate the efficacy of these alternatives, they are significant potential vulnerabilities to DoD information and information systems. Disabling them mitigates the risk of their use.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66839",
+      "title": "LG Android 6.x must enable VPN protection.",
+      "description": "A key characteristic of a mobile device is that they typically will communicate wirelessly and are often expected to reside in locations outside the physical security perimeter of a DoD facility. In these circumstances, the threat of eavesdropping is substantial. Virtual private networks (VPNs) provide confidentiality and integrity protection for data transmitted over untrusted media (e.g., air) and networks (e.g., the Internet). They also provide authentication services to ensure that only authorized users are able to use them. Consequently, enabling VPN protection counters threats to communications to and from mobile devices.\n\nSFR ID: FMT_SMF_EXT.1.1 #03",
+      "severity": "low"
+    },
+    {
+      "id": "V-66841",
+      "title": "LG Android 6.x whitelist must not include applications with the following characteristics:\n\n-backup MD data to non-DoD cloud servers (including user and application access to cloud backup services);\n-transmit MD diagnostic data to non-DoD servers;\n-voice assistant application if available when MD is locked;\n-voice dialing application if available when MD is locked;\n-allows synchronization of data or applications between devices associated with user;\n-payment processing; and\n-allows unencrypted (or encrypted but not FIPS 140-2 validated) data sharing with other MDs, display screens (screen mirroring), or printers.",
+      "description": "Requiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications.\n\nSFR ID: FMT_SMF_EXT.1.1 #10b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66843",
+      "title": "LG Android 6.x must be configured to implement the management setting: Disable Bluetooth Data Transfer.",
+      "description": "Some Bluetooth profiles provide the capability for remote transfer of sensitive DoD data without encryption or otherwise do not meet DoD IT security policies and therefore should be disabled.\n\nSFR ID: FMT_SMF_EXT.1.1 #20",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66845",
+      "title": "LG Android 6.x must be configured to disable VPN split-tunneling.",
+      "description": "Spilt-tunneling allows multiple simultaneous remote connections to the mobile device. Without VPN split-tunneling disabled, malicious applications can covertly off-load device data to a third-party server or set up a trusted tunnel between a non-DoD third-party server and a DoD network, providing a vector to attack the network.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66861",
+      "title": "LG Android 6.x must be configured to disable automatic updates of system software.",
+      "description": "FOTA allows the user to download and install firmware updates over-the-air. These updates can include OS upgrades, security patches, bug fixes, new features and applications. Since the updates are controlled by the carriers, DoD will not have an opportunity to review and update policies prior to update availability to end users. Disabling FOTA will mitigate the risk of allowing users access to applications that could compromise DoD sensitive data. After reviewing the update and adjusting any necessary policies (i.e., disabling applications determined to pose risk), the administrator can re-enable FOTA.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66863",
+      "title": "LG Android 6.x must implement the management setting: Install CA certificate.",
+      "description": "Without implementing the desired security configuration settings, the mobile operating system will have known weaknesses that adversaries could exploit to disrupt the confidentiality, integrity, and availability of the DoD data accessed on and through the mobile device.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66865",
+      "title": "LG Android 6.x must enforce an application installation policy by specifying one or more authorized application repositories by disabling unknown sources.",
+      "description": "Forcing all applications to be installed from authorized application repositories can prevent unauthorized and malicious applications from being installed and executed on mobile devices. Allowing such installations and executions could cause a compromise of DoD data accessible by these unauthorized/malicious applications.\n\nSFR ID: FMT_SMF_EXT.1.1 #10a",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66867",
+      "title": "LG Android 6.x must not allow protocols supporting wireless remote access connections: Bluetooth tethering.",
+      "description": "Having wireless remote access connections enabled could allow establishment of unauthorized remote access connections, which may give an adversary unintended capabilities. These remote access connections would expose the mobile device to additional risk, thereby increasing the likelihood of compromise of the confidentiality and integrity of its resident data. In this context, tethering refers to wired connections to an external device and not use of the device as a hotspot. A mobile device providing personal hotspot functionality is not considered wireless remote access if the functionality only provides access to a distribution network (such as a mobile carrier's cellular data network) and does not provide access to local applications or data.\n\nSFR ID: FMT_SMF_EXT.1.1 #23",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66869",
+      "title": "LG Android 6.x must disable authentication mechanisms providing user access to protected data other than a Password Authentication Factor: Disable Smart Lock.",
+      "description": "Many mobile devices now permit a user to unlock the user's device by presenting a fingerprint to an embedded fingerprint reader. Other biometrics and token-based systems are feasible as well. None of these alternatives are currently evaluated in a Common Criteria evaluation of a mobile device against the Security Target based on the Mobile Device Fundamentals Protection Profile. Many have known vulnerabilities. Until there are DoD-approved assurance activities to evaluate the efficacy of these alternatives, they are significant potential vulnerabilities to DoD information and information systems. Disabling them mitigates the risk of their use.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66871",
+      "title": "LG Android 6.x must not allow protocols supporting wireless remote access connections: USB tethering.",
+      "description": "Having wireless remote access connections enabled could allow establishment of unauthorized remote access connections, which may give an adversary unintended capabilities. These remote access connections would expose the mobile device to additional risk, thereby increasing the likelihood of compromise of the confidentiality and integrity of its resident data. In this context, tethering refers to wired connections to an external device and not use of the device as a hotspot. A mobile device providing personal hotspot functionality is not considered wireless remote access if the functionality only provides access to a distribution network (such as a mobile carrier's cellular data network) and does not provide access to local applications or data.\n\nSFR ID: FMT_SMF_EXT.1.1 #23",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66873",
+      "title": "LG Android 6.x must implement the management setting: Disable USB host storage.",
+      "description": "The USB host storage feature allows the device to connect to select USB devices (e.g., USB flash drives, USB mouse, USB keyboard) using a micro USB to USB adapter cable. A user can copy sensitive DoD information to external USB storage unencrypted, resulting in compromise of DoD data. Disabling this feature mitigates the risk of compromising sensitive DoD data.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66875",
+      "title": "LG Android 6.x must implement the management setting: Disable Voice Command.",
+      "description": "On mobile operating system devices, users (may be able to) access the device's contact database or calendar to obtain phone numbers and other information using a human voice even when the mobile device is locked. Often this information is personally identifiable information (PII), which is considered sensitive. It could also be used by an adversary to profile the user or engage in social engineering to obtain further information from other unsuspecting users. Disabling access to the contact database and calendar in these situations mitigates the risk of this attack. The AO may waive this requirement with written notice if the operational environment requires this capability.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "low"
+    },
+    {
+      "id": "V-66877",
+      "title": "LG Android 6.x must implement the management setting: Disable NFC.",
+      "description": "NFC is a wireless technology that transmits small amounts of information from the device to the NFC reader. Any data transmitted can be potentially compromised. Disabling this feature mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "low"
+    },
+    {
+      "id": "V-66879",
+      "title": "LG Android 6.x must implement the management setting: Disable Nearby devices.",
+      "description": "The Nearby devices feature allows the user to share files with other devices that are connected on the same Wi-Fi access point using the DLNA technology. Even though the user must allow requests from other devices, this feature can potentially result in unauthorized access to and compromise of sensitive DoD files. Disabling this feature will mitigate this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66881",
+      "title": "LG Android 6.x must implement the management setting: Disable Removal of device administrator rights.",
+      "description": "Security-related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls. If these controls are not implemented, the system may be vulnerable to a variety of attacks. The use of an MDM allows an organization to assign values to security-related parameters across all the devices it manages. This provides assurance that the required mobile OS security controls are being enforced and that the device user or an adversary has not modified or disabled the controls. It also greatly increases efficiency and manageability of devices in a large-scale environment relative to an environment in which each device must be configured separately. For these reasons, a user must not be allowed to remove the MDM from the device.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66883",
+      "title": "LG Android 6.x must implement the management setting: Disable System Time Changes.",
+      "description": "Determining the correct time a particular application event occurred on a system is critical when conducting forensic analysis and investigating system events.\n\nPeriodically synchronizing internal clocks with an authoritative time source is needed in order to correctly correlate the timing of events that occur across the enterprise. The three authoritative time sources for mobile operating systems are an authoritative time server that is synchronized with redundant United States Naval Observatory (USNO) time servers as designated for the appropriate DoD network (NIPRNet or SIPRNet), or the Global Positioning System (GPS), or the wireless carrier.\n\nTime stamps generated by the audit system in mobile operating systems shall include both date and time. The time may be expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66885",
+      "title": "LG Android 6.x must implement the management setting: Enable CC mode.",
+      "description": "CC mode implements several security controls required by the Mobile Device Functional Protection Profile (MDFPP). If CC mode is not implemented, DoD data is more at risk of being compromised, and the MD is more at risk of being compromised if lost or stolen.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "high"
+    },
+    {
+      "id": "V-66887",
+      "title": "LG Android 6.x must implement the management setting: Disable all non-approved preinstalled applications.",
+      "description": "Applications from various sources (including the vendor, the carrier, and Google) are installed on the device at the time of manufacture. Core apps are apps preinstalled by Google. Third-party preinstalled apps included apps from the vendor and carrier. Some of the applications can compromise DoD data or upload user's information to non-DoD approved servers. A user must be blocked from using such applications that exhibit behavior that can result in compromise of DoD data or DoD user information. The site administrator must analyze all pre-installed applications on the device and block all applications not approved for DoD use by configuring the \"Application blacklist configuration (launch)\".\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66889",
+      "title": "LG Android 6.x must be configured to implement the management setting: Disable LG browser and Chrome browser.\n\nNote: This requirement is Not Applicable for the COPE#2 activation type.",
+      "description": "The native browser includes encryption modules that are not FIPS 140-2 validated. DoD policy requires all encryption modules used in DoD IT systems be FIPS 140-2 validated.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66891",
+      "title": "LG Android 6.x must not allow Google Auto sync.",
+      "description": "Synchronization of data between devices associated with one user permits a user of a mobile operating system device to transition user activities from one device to another. This feature passes sufficient information between the devices to describe the activity, but app data synchronization associated with the activity is handled through cloud services, which should be disabled on a compliant mobile operating system device. If a user associates both DoD and personal devices to the same Apple ID, the user may improperly reveal information about the nature of the user's activities on an unprotected device. Disabling this service mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66893",
+      "title": "LG Android 6.x must be configured to implement the management settings: Disable Android Beam.",
+      "description": "Android Beam provides the capability for Android devices to transfer data between them. Data transfer is not encrypted using FIPS-validated encryption mechanisms. Sensitive DoD information could be compromised if Android beam is enabled.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66895",
+      "title": "LG Android 6.x must be configured to disable download mode.",
+      "description": "Download mode allows the firmware of the device to be flashed (updated) by the user. All updates should be controlled by the system administrator to ensure configuration control of the security baseline of the device.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66897",
+      "title": "LG Android 6.x must implement the management setting: Disallow addition of Google Accounts (for Work Profile).\n\nThis requirement is only valid for activation type COPE#2.",
+      "description": "A Google account may gather a user's information, such as PII, or sensitive documents. With this feature enabled, sensitive information will be backed up to the manufacturer's servers and database. This data is stored at a location that has unauthorized employees accessing this data. This data is stored on a server that has a location unknown to the DoD.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66899",
+      "title": "LG Android 6.x must implement the management setting: list approved apps on the Whitelisted Android Apps (for Work Profile).\n\nThis requirement is only valid for activation type COPE#2.",
+      "description": "This setting enables an application whitelist in the Work Profile. Failure to specify which applications are approved could allow unauthorized and malicious applications to be downloaded, installed, and/or executed on the mobile device, causing a compromise of DoD data accessible by these applications.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66901",
+      "title": "LG Android 6.x must implement the management setting: Set uninstall not allowed for mandatory Work Profile apps.\n\nThis requirement is only valid for activation type COPE#2.",
+      "description": "This setting will block the removal of required applications. The Approving Authority may determine that a specific set of apps are required to meet mission needs. Key mission capabilities may be degraded if required apps are removed.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "low"
+    },
+    {
+      "id": "V-66903",
+      "title": "LG Android 6.x must implement the management setting: Install CA certificate (for Work Profile).\n\nThis requirement is only valid for activation type COPE#2.",
+      "description": "Unauthorized applications pose a variety of risks to DoD information and systems. Digital signature (or public key) technology enables strong assurance of application source and integrity. However, these assurance characteristics are only present when the certificates or public keys used to validate signatures are known and trusted. If an adversary's key is used to validate signatures on applications, the MOS would then trust any code that the adversary signed with its corresponding private key. The impact could include compromise of DoD-sensitive information. Limiting certificates and public keys to those that DoD has approved mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66905",
+      "title": "LG Android 6.x must implement the management setting: Disable content sharing (for Work Profile).\n\nThis requirement is only valid for activation type COPE#2.",
+      "description": "Allowing movement of files between the container and personal side will result in both personal data and sensitive DoD data being placed in the same space. This can potentially result in DoD data being transmitted to non-authorized recipients via personal email accounts or social applications, or transmission of malicious files to DoD accounts. Disabling this feature mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66907",
+      "title": "LG Android 6.x must implement the management setting: Disable allow copy and paste between Work Profile and personal space.\n\nThis requirement is only valid for activation type COPE#2.",
+      "description": "Allowing movement of data between the container and personal side will result in both personal data and sensitive DoD data being placed in the same space. This can potentially result in DoD data being transmitted to non-authorized recipients via personal email accounts or social applications. Disabling this feature mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    }
+  ]
+}

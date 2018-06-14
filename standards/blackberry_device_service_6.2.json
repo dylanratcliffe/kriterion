@@ -1,0 +1,425 @@
+{
+  "name": "blackberry_device_service_6.2",
+  "date": "2013-05-03",
+  "description": "Developed by Research In Motion Ltd. in coordination with DISA for use in the DoD.",
+  "title": "BlackBerry Device Service 6.2 STIG",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "BBDS-00-000100",
+      "title": "The BlackBerry Device Service server must implement separation of administrator duties by requiring a specific role be assigned to each administrator account.",
+      "description": "Separation of duties supports the management of individual accountability and reduces the power of one individual or administrative account.  Employing a separation of duties model reduces the threat that one individual has the authority to make changes to a system, and the authority to delete any record of those changes. \nThis requirement is intended to limit exposure due to operating from within a privileged account or role.  The inclusion of a role is intended to address those situations where an access control policy, such as Role Based Access Control (RBAC), is being implemented and where a change of role provides the same degree of assurance in the change of access authorizations for both the user and all processes acting on behalf of the user as would be provided by a change between a privileged and non-privileged account. \nIt is recommended that the following or similar roles be supported:  \n- MDM administrative account administrator:  responsible for server installation, initial configuration, and maintenance functions.\n- Security configuration policy administrator (IA technical professional):  responsible for security configuration of the server and setting up and maintenance of mobile device security policies.\n- Device management administrator (Technical operator):  responsible for maintenance of mobile device accounts, including setup, change of account configurations, and account deletion.\n- Auditor (internal auditor or reviewer):  responsible for reviewing and maintaining server and mobile device audit logs.\n",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-000105",
+      "title": "The BlackBerry Device Service server must deploy operating system and application updates via over-the-air (OTA) provisioning for managed mobile devices.",
+      "description": "Without the MDM  ability to deploy operating systems and application updates over the air, it is possible for the mobile devices under the MDM's control to be susceptible to a zero day attack.  The ability to apply updates OTA allows for rapid response to patching.",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000110",
+      "title": "The BlackBerry Device Service server must prevent the installation of applications that are not digitally signed with an organizationally accepted private key.",
+      "description": "Any additions of applications can potentially have significant effects on the overall security of the system.  Digital signatures on code provide assurance that the code comes from a known source and has not been modified.  This feature is a key malware control on mobile devices.",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-000115",
+      "title": "BlackBerry accounts must not be assigned to the default IT policy on the BlackBerry Device Service server or any other non-STIG compliant IT policy.",
+      "description": "The BlackBerry default policy on the BDS server does not include many DoD required security policies for data encryption, authentication, and access control.  DoD enclaves are at risk of data exposure and hacker attack if users are assigned the default (or other non-STIG compliant) IT policy.",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-000120",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Perform a \"Data Wipe\" function whereby all data stored in user addressable memory on the mobile device and the removable memory card is erased when the maximum number of incorrect passwords for device unlock has been reached.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  Data wipe could be accomplished by deleting the data-at-rest encryption key (data obfuscation). \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000130",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable data-at-rest encryption on the mobile device.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000131",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable two-factor encryption key generation on the mobile device.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-000132",
+      "title": "If the BlackBerry Device Service server includes a mobile email management capability, the email client S/MIME encryption algorithm must be 3DES or AES.  When AES is used, AES 128 bit encryption key length is the minimum requirement; AES 256 desired.",
+      "description": "Cryptography is only as strong as the encryption modules/algorithms that are employed to encrypt the data.  Strong encryption must be used to protect the integrity and confidentiality of the data.  In this case the requirement states that S/MIME must utilize a 3DES or AES encryption algorithm.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000135",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Set the device inactivity timeout (the following settings must be available, at a minimum:  Disable (no timeout), 15 minutes, and 60 minutes).",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000140",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable the mobile device Bluetooth stack.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000145",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable any supported Bluetooth profile.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000150",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable  Bluetooth.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000155",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable the Bluetooth discoverable mode.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000156",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable the transfer of any file-based data via Bluetooth.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-000160",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Bluetooth pairing using a randomly generated passkey size of at least 8 digits.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000165",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Bluetooth 128 bit encryption.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000166",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Bluetooth radio range.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000170",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable MMS messaging.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000175",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable Wi-Fi.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000180",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable the Voice recorder.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000185",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable the near-field communications (NFC) radio.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000190",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable the all cameras.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000195",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable the memory card port.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000200",
+      "title": "BlackBerry Web Desktop Manager must be configured to permit users to activate new BlackBerry devices only.",
+      "description": "The overall security posture of the BlackBerry system is dependent on strict configuration management controls, including ensuring only authorized BlackBerry devices are being used and authorized devices are provisioned as required.  When these configurations are not set as required, users may have the capability to activate unauthorized BlackBerry devices.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000205",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable location services.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000210",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable the video recorder.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000215",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable the USB Port mass storage mode.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000220",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable tethering (Wi-Fi, Bluetooth, or USB).",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000225",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Perform a \"Data Wipe\" function whereby all data stored in the security container is erased when the maximum number of incorrect passwords for the security container application has been reached.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000230",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Set the number of incorrect password attempts before a data wipe procedure is initiated (minimum requirement is 3-10).",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000235",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable an MDM agent password.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000240",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Set the number of upper case letters in the MDM agent password.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000245",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Set the number of numbers in the MDM agent password.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000250",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Set the number of special characters in the MDM agent password.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000255",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Maximum MDM agent password age (e.g., 30 days, 90 days, or 180 days).",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000260",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Minimum MDM agent password length of eight or more characters.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000265",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Maximum MDM agent password history (3 previous passwords checked is the recommended setting).",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000270",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Set the MDM agent inactivity timeout (the following settings must be available, at a minimum:  Disable (no timeout), 15 minutes, and 60 minutes).",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000275",
+      "title": "The BlackBerry Device Service server must configure the mobile device agent to prohibit the download of software from a DoD non-approved source (e.g., DoD operated mobile device application store or BlackBerry Device Service server).",
+      "description": "DoD can perform due diligence on sources of software to mitigate the risk that malicious software is introduced to those sources.  Therefore, if software is downloaded from a DoD approved source, then it is less likely to be malicious than if it is downloaded from an unapproved source.  To prevent access to unapproved sources, the operating system in most cases can be configured to disable user access to public application stores.",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000280",
+      "title": "The BlackBerry Device Service server must provide the administrative functionality to specify a list of approved applications that must be installed on the mobile device and cannot be removed by the user.",
+      "description": "DoD can perform due diligence on sources of software to mitigate the risk that malicious software is introduced to those sources.  Therefore, if software is downloaded from a DoD approved source, then it is less likely to be malicious than if it is downloaded from an unapproved source.  To prevent access to unapproved sources, the operating system in most cases can be configured to disable user access to public application stores.  In some cases, some applications are required for secure operation of the mobile devices controlled by the MDM.  In these cases, the ability for users to remove the application is needed as to ensure proper secure operations of the device.",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000285",
+      "title": "BlackBerry Web Desktop Manager must be configured to disable a user's capability to perform self-service tasks.",
+      "description": "The overall security posture of the BlackBerry system is dependent on strict configuration management controls, including ensuring only authorized BlackBerry devices are being used and authorized devices are provisioned as required.  When these configurations are not set as required, users may have the capability to activate unauthorized BlackBerry devices.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000286",
+      "title": "BlackBerry Device Service must be configured to disable a user's capability to perform a user initiated backup or restore of the work persona of a managed mobile device.",
+      "description": "The overall security posture of the BlackBerry system is dependent on strict configuration management controls, including ensuring only authorized BlackBerry devices are being used and authorized devices are provisioned as required.  When these configurations are not set as required, users may have the capability to activate unauthorized BlackBerry devices.\n",
+      "severity": "low"
+    },
+    {
+      "id": "BBDS-00-000287",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Disallow any native applications pertaining to billing on a managed mobile device.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "low"
+    },
+    {
+      "id": "BBDS-00-000288",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Disallow any native applications pertaining to billing on a managed mobile device.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "low"
+    },
+    {
+      "id": "BBDS-00-000290",
+      "title": "The BlackBerry Device Service server must require administrators to be authenticated with an individual authenticator prior to using a group authenticator.",
+      "description": "To assure individual accountability and prevent unauthorized access, MDM administrators and users (and any processes acting on behalf of users) must be individually identified and authenticated.  Without individual accountability, there can be no traceability back to an individual if there were a security incident on the system.  In addition, group accounts can be shared with individuals who do not have authorized access.",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-000295",
+      "title": "The BlackBerry Device Service server must use organization defined replay-resistant authentication mechanisms for network access to privileged accounts.",
+      "description": "An authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message. Replay attacks, if successfully used against a MDM account could result in unfettered access to the MDM settings and data records. \n",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-000300",
+      "title": "The BlackBerry Device Service server must be configured to accept only trusted connections to back-office enclave application or web push servers.  Push servers are set up to push content to BlackBerry users.",
+      "description": "Device authentication is a solution enabling an organization to manage both users and devices. This requirement applies to MDM servers that provide mobile device and user access to network shares, web servers, and other network resources located on the internal enclave (back-office servers, etc.). This connection bypasses user network authentication mechanisms (i.e., CAC authentication). Therefore, the MDM server must allow connections to only back-office network resources that support CAC authentication with the mobile device user. In this case, a trusted connection refers to mutual PKI based authentication between the MDM server and the network server.",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000305",
+      "title": "The BlackBerry Device Service server must support administrator authentication to the server via the Enterprise Authentication Mechanism's authentication.",
+      "description": "In the DoD, Administrator credential requirements for authentication are defined by CTO 07-115Rev1, which is usually enforced by the Enterprise Authentication Mechanism.  Non-complaint credential enforcement mechanisms make the DoD IS vulnerable to attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-000310",
+      "title": "The key store password for the certificate that the BlackBerry Administration Service (BAS) and BlackBerry Web Desktop Manager (BWDM) use must be changed from the default.",
+      "description": "The key store password protects the server digital authentication certificates from unauthorized use.",
+      "severity": "low"
+    },
+    {
+      "id": "BBDS-00-000315",
+      "title": "The BlackBerry Device Service server must use mechanisms for authentication to a cryptographic module meeting the requirements of applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication.",
+      "description": "MDM applications utilizing encryption are required to use approved encryption modules that meet the requirements of applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.  Encryption is only as good as the encryption modules utilized. Unapproved cryptographic module algorithms cannot be verified, and cannot be relied upon to provide confidentiality or integrity and DoD data may be compromised due to weak algorithms. \n",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-000320",
+      "title": "The BlackBerry Device Service server must employ strong identification and authentication techniques in the establishment of non-local maintenance and diagnostic sessions.",
+      "description": "Lack of authentication enables anyone to gain access to the MDM.  Network access control mechanisms interoperate to prevent unauthorized access and to enforce the organization's security policy. Authorization for access to the MDM to perform maintenance and diagnostics requires an individual account identifier that has been approved, assigned, and configured.  Authentication of non-local maintenance and diagnostics sessions must be accomplished through two-factor authentication via the combination of passwords, tokens, and biometrics.\n",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-000325",
+      "title": "The server PKI digital certificate installed on the BlackBerry Device Service (BDS) Server to support BlackBerry Administration Service and BlackBerry Web Desktop Manager (BWDM) authentication must be a DoD PKI issued certificate. A self signed certificate will not be used.",
+      "description": "When a self signed PKI certificate is used, a rogue BDS server can impersonate the DoD BDS server during SA connections to the BAS or when a BlackBerry user uses BWDM to connect to the BAS.  In addition, DoDI 8520-02 requires PKI certificates come from a trusted DoD PKI.",
+      "severity": "low"
+    },
+    {
+      "id": "BBDS-00-000330",
+      "title": "The BlackBerry Device Service server must be able to filter both inbound and outbound traffic based on IP address and UDP/TCP port.",
+      "description": "A host-based boundary protection mechanism is a host-based firewall.  Host-based boundary protection mechanisms are employed on mobile devices, such as notebook/laptop computers, and other types of mobile devices where such boundary protection mechanisms are available.  This helps mitigate attacks at the network interface.",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-000335",
+      "title": "The BlackBerry Device Service server must be configured so the connection between the BlackBerry Device Service server and the mobile device is initiated based on an out-bound connection request from the BlackBerry Device Service server only.",
+      "description": "By configuring the BlackBerry Device Service server to connect to the mobile device on an out-bound connection, the traffic is segregated which made it more difficult for an intruder to compromise the device management session.",
+      "severity": "low"
+    },
+    {
+      "id": "BBDS-00-000340",
+      "title": "The BlackBerry Device Service server must detect and report the version of the operating system, device drivers, and application software for managed mobile devices.",
+      "description": "Organizations are required to identify information systems containing software affected by recently announced software flaws (and potential vulnerabilities resulting from those flaws) and report this information to designated organizational officials with information security responsibilities (e.g., senior information security officers, information system security managers, information systems security officers).  To support this requirement, an automated process or mechanism is required.  This mechanism also ensures the network configuration is known for risk mitigation when known issues are found with certain versions of the operating system or applications.",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-002431",
+      "title": "The BlackBerry Device Service server must protect audit information on a managed mobile device from unauthorized distribution.",
+      "description": "Audit data is considered sensitive, and is intended to be read by the System Administrator only.  Allowing non-administrators access to this data could expose vulnerabilities in the system.\n\n",
+      "severity": "low"
+    },
+    {
+      "id": "BBDS-00-002541",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Disable copying data from inside a non-secure data area on a mobile device into the security container.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  If this control is not available, sensitive DoD data stored inside the security container could be exposed if it is copied to a non-secure area on the device.\n",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-002542",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Allow only work persona contacts to be read from a native personal persona application.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  If this control is not available, sensitive DoD data stored inside the security container could be exposed if it is copied to a non-secure area on the device.\n",
+      "severity": "low"
+    },
+    {
+      "id": "BBDS-00-002543",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices: Disable access to the work persona via any device-to-device bridging application.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-003110",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Enable or disable device unlock password.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "low"
+    },
+    {
+      "id": "BBDS-00-003120",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Minimum password length for the device unlock password is configured to the organizationally defined value when DoD sensitive data is being protected.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "low"
+    },
+    {
+      "id": "BBDS-00-003130",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Device inactivity timeout whereby the user must reenter their user password or Smart Card PIN to unlock the device.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "low"
+    },
+    {
+      "id": "BBDS-00-003131",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Disallow mobile device applications the ability to reset the device lock timer.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-003176",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Disable any mobile OS service that connects to a cloud storage server.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-003177",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Direct all work persona application traffic through the BlackBerry Device Service server.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "high"
+    },
+    {
+      "id": "BBDS-00-003178",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Disallow personal persona applications access to the work personas network connection.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-003179",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Disallow hyperlinks within work persona applications from opening within the personal persona browser application.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "BBDS-00-003180",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Set the number of allowed repeated characters in the mobile device unlock password.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "low"
+    },
+    {
+      "id": "BBDS-00-003185",
+      "title": "The BlackBerry Device Service server must have the administrative functionality to centrally manage the following security policy rule on managed mobile devices:  Disallow sequential numbers in the mobile device unlock password.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls.  If these controls are not implemented, the system may be vulnerable to a variety of attacks.  The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages.  This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls.  It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.  \n",
+      "severity": "low"
+    }
+  ]
+}

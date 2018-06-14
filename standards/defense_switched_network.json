@@ -1,0 +1,683 @@
+{
+  "name": "defense_switched_network",
+  "date": "2015-01-02",
+  "description": "The Defense Switched Network (DSN) Security Technical Implementation Guide (STIG) provides the policy and architectual guidance for applying security concepts to DoD telecommunications systems. These policies ensure conformance to DoD requirements that govern DSN voice services deployment and operations, to include special-C2, C2, and non-C2 services. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailbox@mail.mil.",
+  "title": "Defense Switched Network STIG",
+  "version": "2",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-16076",
+      "title": "Deficient Policy or SOP regarding VTC, PC, and speakerphone microphone operations regarding their ability to pickup and transmit sensitive or classified information in aural form.",
+      "description": "Microphones used with VTC systems and devices are designed to be extremely sensitive such that people speaking anywhere within a conference room is picked up and amplified so they can be heard clearly and understood at the remote location(s) on the call. This same sensitivity is included in VTUs that are used in office spaces. This has one disadvantage. The microphones can pick up sidebar conversations that have no relationship to the conference or call in progress. Likewise, in an open area, received conference audio can be broadcast to others in the area that are not part of the conference, and possibly should not be exposed to the conference information for need-to-know reasons. Speakerphones exhibit a similar vulnerability. This is the same confidentiality vulnerability posed to audible sound information in the environment as discussed above with the added twist that the conference audio is vulnerable to others in the environment. While this is more of an issue in environments where classified conversations normally occur, it is also an issue in any environment. This is of particularly concern in open work areas or open offices where multiple people work in near proximity. Users or operators of VTC systems of any type must take care regarding who can hear what is being said during a conference call and what unrelated conversations can be picked up by the sensitive microphone(s). Where a VTU is used by a single person in an open area, a partial mitigation for this could be the use of a headset with earphones and a microphone. While this would limit the ability of others to hear audio from the conference and could also limit the audio pickup of unrelated conversations, it may not be fully effective. In some instances, such as when a VTU is located in a SCIF, a Push-to-Talk (PTT) handset/headset may be required Microphones embedded in or connected to a communications endpoint, PC, or PC monitor can be sensitive enough to pickup sound that is not related to a given communications session. They could pickup nearby conversations and other sounds. This capability could compromise sensitive or classified information that is not related to the communications in progress. Speakers embedded in or connected to a communications endpoint or PC can be made loud enough to be heard across a room or in the next workspace (e.g., cube). This capability could compromise sensitive or classified information that is being communicated during a session. Users must be aware of other conversations in the area and their sensitivity when using any communications endpoint, not only a PC based voice, video, or collaboration communications application. This awareness must then translate into protecting or eliminating these other conversations. A short range, reduced gain, or noise canceling microphone may be required. A push to talk microphone may also be required for classified areas. The microphone should be muted when the user is not speaking as both a mitigation for this issue, and for proper etiquette when participating in a conference. The muting function should be performed using a positively controlled disconnect, shorting switch, or mechanism instead of a software controlled mute function on the PC. Users must be aware of other people in the area that could hear what is being communicated. This is particularly an issue if the communicated information is sensitive or classified since the parties overhearing the information may not have proper clearance or a need-to-know. To mitigate this issue, a headset or speakers should be used and at a volume that only the user can hear. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-55025",
+      "title": "DSN system components Standard Mandatory DoD Notice and Consent Banner must be acknowledged by the user prior to logon or initial access.",
+      "description": "The operating system and remotely accessed information systems are required to display the DoD-approved system use notification message or banner before granting access to the system that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. This ensures the legal requirements for auditing and monitoring are met. \n\nSystem use notification messages must be displayed when individuals log on to the information system. The approved DoD text must be used as specified in the DoD Instruction 8500.01 dated March 14, 2014.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7921",
+      "title": "The IAO does not conduct and document self-inspections of the DSN components at least semi-annually for security risks.",
+      "description": "Requirement: The IAO will ensure that self-inspections of the telephone components, are conducted and documented for security risks at least semi annually.  \n\nIf periodic security self-inspections are not conducted, vulnerabilities could go unnoticed during day to day operations resulting in an unacceptable level of risk that could lead to possible compromise.  By conducting security self-inspections, security risks can be identified, analyzed, and if not mitigated, appropriately addressed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7922",
+      "title": "The sites telephone switch is not frequently monitored for changing calling patterns and system uses for possible security concerns.",
+      "description": "Requirement: The IAO will ensure that the site’s telephone switch is frequently monitored for changing calling patterns and system uses for possible security concerns.\n\nChanging calling patterns and system uses can be an indication of telephone misuse, abuse, or even security compromise.  The ISSO/IAO should ensure the sites telephone switch is frequently monitored for changing calling patterns and system uses for possible security concerns.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7923",
+      "title": "The ISSO/IAO does not ensure that administration and maintenance personnel have proper access to the facilities, functions, commands, and calling privileges required to perform their job.",
+      "description": "Requirement: The IAO will ensure that internal and external administrator/maintenance personnel have appropriate but limited access to the facilities, functions, commands, and calling privileges in accordance with their role as required when performing their job.\n\nPrivileged access to any system should be controlled.  Anyone with privileged access can cause serious system damage that could in turn have detrimental affects on the operational environment.  Administration and maintenance personnel should be provided only that privileged access needed to perform their job.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7924",
+      "title": "DSN systems are not registered in the DISA VMS",
+      "description": "Requirement: The IAO will ensure that all DISA owned and operated DSN critical assets are registered with the DISA/DoD VMS as follows: \n- All backbone switches (TSs, STPs, MFSs)\n- All other switches (EOs, SMEOs, PBX1s, PBX2s and RSUs) owned by DISA\n- All components of the ADIMSS \n- All components of auxiliary/adjunct or peripheral systems owned by DISA\n- All TSs or MFSs owned and operated by DOD components\nException: This requirement is not applicable to systems owned, operated, and maintained by DOD components other than DISA such as EOs, SMEOs, PBX1s, PBX2s and RSUs or their OAM&P and auxiliary/adjunct or peripheral systems. See DSN02.02 below.The DISA/DoD VMS in conjunction with JTF-GNO sends out notifications on vulnerabilities (IAVMs) as they are discovered in commercial and military information infrastructures.  If DSN assets and their SAs are not registered with the DISA/DoD VMS,, administrators will not be notified of important vulnerabilities such as viruses, denial of service attacks, system weaknesses, back doors and other potentially harmful situations.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7925",
+      "title": "System Administrators (SAs) responsible for DSN information systems are not registered with the DISA VMS.",
+      "description": "Requirement: The IAO will ensure that all Switch and System Administrators (SAs) responsible for VMS registered DSN critical assets will also be registered with the VMS. This includes non DISA personnel responsible for TSs or MFSs owned and operated by DoD components                                                                                                                                       Exception: This does not apply to SAs that are ONLY responsible for systems owned, operated, and maintained by DoD components other than DISA.The DISA/DoD VMS in conjunction with JTF-GNO sends out notifications on vulnerabilities (IAVMs) as they are discovered in commercial and military information infrastructures.  If DSN assets and their SAs are not registered with the DISA/DoD VMS, administrators will not be notified of important vulnerabilities such as viruses, denial of service attacks, system weaknesses, back doors and other potentially harmful situations.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7926",
+      "title": "The ISSO/IAO and ISSM/IAM, in coordination with the SA, will be responsible for ensuring that all IAVM notices are responded to within the specified time period.",
+      "description": "Requirement: The IAO will ensure that all IAVM notices are responded to within the time period specified within the notice.\n\nThe JTF-GNO (DoD CERT) automatically sends out IAVM notices that affect various systems. If appropriate actions are not taken, systems/assets may be open to a potential compromise.  The DOD IAVM requirement is:  Receipt of IAVM alerts will be acknowledged within 5 days and a report of compliance status provided within 30 days.  For IAVM bulletins, receipt must also be acknowledged within 5 days, and a report of compliance status must be provided within 60 days.  For IAVM technical advisories, receipt must be acknowledged within 5 days, but no compliance status report is required.  Although DOD organizations are not required to report compliance for technical advisories, DISA organizations are required to provide a report of compliance status within 60 days.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7930",
+      "title": "Switch administration, ADIMSS, or other Network Management terminals are not located on a dedicated LAN.\n",
+      "description": "All Network Management and switch administration terminals connecting to the DSN are to be through a dedicated DSN network segment.  Only authorized systems will be connected to this LAN.  No other networks may interface with components that are connected to this LAN.  By connecting in this controlled manner, many vulnerabilities that are associated with IP networks are eliminated. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7931",
+      "title": "Network Management routers located at switch sites are not configured to provide IP and packet level filtering/protection.\n",
+      "description": "Requirement: The IAO will ensure that routers that provide remote connectivity to out-of-band management networks located at switch sites provide IP and packet level filtering/protection.\n\nAll routers connected to a DSN Switch are to be configured to control network access to the DSN switch by IP and port/service.  Implementing standard and extended access lists to control network access to the switch will add another security access layer minimizing risk to the DSN.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7932",
+      "title": "Administration terminals are used for other day-to-day functions (i.e. email, web browsing, etc).",
+      "description": "Requirement: The IAO will ensure that OAM&P / NM and CTI system workstations are not used for other day-to-day functions (i.e., e-mail, web browsing, etc).                               \n\nDedicating DSN administration terminals to their intended purpose and not using them for day-to-day functions such as email and web browsing, will reduce the risk of unauthorized access by those that could achieve entry by exploiting an existing IP based vulnerability.  Not only should DSN administration terminals connect to DSN switching systems via a controlled network segment, the terminal should also be dedicated for administration purposes only.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7933",
+      "title": "Switch Administration terminals do not connect directly to the switch administration port or connect via a controlled, dedicated, out of band network used for switch administration support.",
+      "description": "Requirement: The IAO will ensure that switch/device administration terminals are connected directly to the administration port of the switch/device or are connected via an out-of-band network used only for administration support.                             \n> Switch administration terminals must connect to the switch by using either a direct connection to the administration port or through a dedicated, out of band network.  Connections other than these, for example through a non-dedicated network connection, will introduce security risks.                                 \n> The requirement to dedicate OAM&P / NM and CTI networks or LANS is to protect the particular solution from threats from sources external to the solution. Connecting these dedicated LANs to another LAN negates this protection.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7934",
+      "title": "Attendant console ports are available to unauthorized users by not allowing any instrument other than the Attendant console to connect to the Attendant console port.\n",
+      "description": "Requirement: The IAO will ensure that attendant console ports will not be available to unauthorized users by not allowing any instrument other than the attendant console to connect to the attendant console port. \n\nAdditionally the attendant console shall not be able to connect to a regular instrument port. Attendant console ports provide privileged access to switch features not normally provided to the normal subscriber community.  This type of access to unauthorized users or subscribers can result in disruption of calls processing, calls monitoring, or unauthorized class of service.  Positive control of attendant consoles and ports must be enforced to mitigate these types of vulnerabilities.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7935",
+      "title": "The ISSO/IAO has not established Standard Operating Procedures.\n",
+      "description": "Requirement: The IAO will establish a standard operating procedure (SOP) or other form of record that will accomplish the following:\n- Identify and document all users, administrators, maintainers, managers, and their associated training requirements.\n- Identify and document all telephone system assets\n- Identify and document all telephone services required\n- Identify and document all telephone services that are not to be allowed\n- Identify and document all telephone system threats.\n- Identify and document all audit items as required by this document.At a minimum, the ISSO/IAO should be aware of who has what level of access to the DSN switching system, as well as possible threats to the system based on its environment.  By establishing an SOP that identifies and documents all assets, services, threats, as well as users, administrators, managers and their associated operational requirements in supporting DSN systems, the ISSO/IAO will ensure that the DSN is providing the proper service securely.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7936",
+      "title": "Applicable security packages have not been installed on the system.\n",
+      "description": "Requirement: The IAO will ensure that all applicable security feature packages have been installed on the system to enable the required security features.\n\nIn order for the requirements of this STIG to be met, a number of specific security software packages may need to be loaded on each switch.  However, in most cases these packages will be part of the software load at the time of purchase and no additional steps will need to be taken.  It is, however, the responsibility of the IAO to ensure that all necessary software is installed and up-to-date as dictated by the PMO in coordination with the DSN APL certifications.  Without all system security software installed, all system security features cannot be configured or implemented.  It is the responsibility of the ISSO/IAO to ensure that security features are available on the DSN components under their control through the application of certain software packages.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7937",
+      "title": "The IAO DOES NOT ensure that all temporary Foreign/Local National personnel given access to DSN switches and subsystems for the purpose of installation and maintenance, are controlled and provided direct supervision and oversight (e.g., escort) by a knowledgeable and appropriately cleared U.S. citizen.",
+      "description": "Requirement: The IAO will ensure that all temporary Foreign/Local National personnel given access to DSN switches and subsystems for the purpose of installation and maintenance, is controlled and provided direct supervision and oversight (e.g. escort) by a knowledgeable and appropriately cleared U.S. citizen.Foreign Nationals are not permitted to access DOD unclassified information systems without the immediate supervision by a U.S. citizen.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7940",
+      "title": "The option to restrict user access based on duty hours is available but is not being utilized.",
+      "description": "Requirement: The IAO will ensure that user access is restricted based on duty hours, where technically feasible.                                \n\nThe restriction of user access by limiting access to the DSN associated to the users work hours and workweek will mitigate security vulnerabilities if a user account is compromised.  If available, technically feasible (i.e., the system is capable of performing the restriction), and implemented, this option provides additional access control to the system.",
+      "severity": "unknown"
+    },
+    {
+      "id": "V-7941",
+      "title": "The Direct Inward System Access feature and/or access to Voice Mail is not controlled by either class of service, special authorization code, or PIN.",
+      "description": "Requirement: The IAO will ensure that either class of service, special authorization code or PIN controls access to Voice Mail services.\n\nIf used, the Direct Inward System Access feature provides subscriber access to the DSN from outside facilities. Users of this feature may connect to the DSN switch from the trunk side of the system and appear to the system as a local user having access to system features. Such users can make calls on the DSN as if they are on the line side of the switch. If this feature is not controlled, risk of unauthorized access to the DSN could result in call fraud and abuse.  If operationally required, this feature should be implemented with class of service, special authorization code, or PIN assigned. Additionally. Voice Mail access should be configured to require a PIN.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7942",
+      "title": "Direct Inward System Access and Voice Mail access codes are not changed semi-annually.",
+      "description": "Requirement: The IAO will ensure that if Voice Mail services are controlled by special authorization code, this code will be controlled and changed semi-annually.\n\nThe special access code used by all subscribers to control access to the Direct Inward System Access and Voice Mail features should be controlled much like a password.  If this special access code is not changed periodically, the service is more likely to be compromised, thus degrading system access security.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7943",
+      "title": "Personal Identification Numbers (PIN) assigned to special subscribers used to control Direct Inward System Access and Voice Mail services are not being controlled like passwords and deactivated when no longer required.",
+      "description": "The PIN used to control access to the DISA feature should be controlled much like a special access code or password.  If this PIN is not changed periodically and deactivated when no longer required, the DISA feature is more likely to be compromised, thus degrading system access security.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7944",
+      "title": "Privilege authorization, Direct Inward System Access and/or Voice Mail special authorization codes or individually assigned PINS are not changed when compromised.",
+      "description": "Requirement: The IAO will ensure that all Voice Mail (and/or Privilege authorization, Direct Inward System Access) special authorization codes or individually assigned PINs are changed immediately if it is determined that they are compromised.\n\nIf special authorization codes or individually assigned PINS are determined to be compromised, all access control to this feature is lost.  Furthermore, this can lead to call fraud and abuse.  As with any access control mechanism, once compromised, changes should be implemented to ensure secure access.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7945",
+      "title": "Equipment, cabling, and terminations that provide emergency life safety services such as 911 (or European 112) services and/or emergency evacuation paging systems are NOT clearly identified and marked.",
+      "description": "Requirement: The IAO will ensure that all equipment that provides emergency life safety services such as 911 services is clearly identified.\n\nThe availability of systems supporting emergency life safety services such as 911 (or European 112) and/or emergency evacuation paging services is essential. The specific equipment that handles Emergency 911 (112) service must be clearly identified to maintenance and administration personnel.  Identification of the transmission equipment, i.e. DS-1 circuit packs and T-1 cross connect ports, should additionally be the focus for identification as well as any terminations occurring at the MDF.  This will help to preclude unnecessary service outages due to making wrong system or wiring changes due to unidentified and unmarked systems supporting this function while maintenance and administration personnel perform standard tasks or work nearby which could result in denial of service of emergency services.",
+      "severity": "unknown"
+    },
+    {
+      "id": "V-7946",
+      "title": "SS7 links are not clearly identified and routed separately from termination point to termination point.\n",
+      "description": "Requirement: The IAO will ensure that all SS7 Links are clearly identified and redundant links are diversely routed from termination point to termination point.The A links that connect an SSP to the STPs need to be clearly identified and routed diversely throughout the switching facility.  The A links will take separate routes from termination point to termination point.  The termination blocks of the A links should be clearly identified at the MDF.  The routes should not cross each other.  If the routes need to cross each other, they should cross at 90-degree angles.  These precautions will limit possible service degradations to the SS7 network by making service personnel aware of their location and ensure that the switching facility is not isolated from the DSN network.",
+      "severity": "unknown"
+    },
+    {
+      "id": "V-7947",
+      "title": "The SS7 termination blocks are not clearly identified at the MDF.",
+      "description": "Requirement: The IAO will ensure that the SS7 termination blocks are clearly identified at the MDF.\n\nThe A links that connect an SSP to the STPs need to be clearly identified and routed diversely throughout the switching facility.  The A links will take separate routes from termination point to termination point.  The termination blocks of the A links should be clearly identified at the MDF.  The routes should not cross each other.  If the routes need to cross each other, they should cross at 90-degree angles.  These precautions will limit possible service degradations to the SS7 network by making service personnel aware of their location and ensure that the switching facility is not isolated from the DSN network.",
+      "severity": "unknown"
+    },
+    {
+      "id": "V-7948",
+      "title": "Power cabling that serves SS7 equipment is not diversely routed to separate Power Distribution Frames (PDF) and identified.\n",
+      "description": "Requirement: The IAO will ensure that the power cabling serving SS7 equipment is diversely routed to separate and redundant PDFs.\n\nThe power cabling of the SS7 equipment needs to be routed diversely and terminate in separate PDF.  All power cabling should be clearly marked near the termination of the cabling and near the fuse assignments.  These precautions will limit possible service degradations to the SS7 network by making service personnel aware of their location and ensure that the switching facility is not isolated from the DSN network.",
+      "severity": "unknown"
+    },
+    {
+      "id": "V-7949",
+      "title": "Power cabling that serves SS7 equipment is not clearly identified at both the termination point and at the fusing position.",
+      "description": "Requirement: The IAO will ensure that the power cabling serving SS7 equipment is clearly identified at both the termination point and at the fusing position.\n\nThe power cabling serving SS7 equipment needs to be routed diversely and terminate in separate PDFs.  All power cabling should be clearly marked near the termination of the cabling and near the fuse assignments.  These precautions will limit possible service degradations to the SS7 network by making service personnel aware of their location and ensure that the switching facility is not isolated from the DSN network.",
+      "severity": "unknown"
+    },
+    {
+      "id": "V-7950",
+      "title": "Links within the SS7 network are not encrypted.\n",
+      "description": "Requirement: The IAO will ensure that all SS7 links leaving a base/post/camp/station are encrypted.\n\nThe examination of traffic patterns and statistics can reveal compromising information.  Such information may include call source, destination, duration, frequency, and precedence level.  The DSN common channel signaling links contain this type of information and must be protected.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7952",
+      "title": "A DoD VoIP system, device, or network is NOT configured in compliance with all applicable STIGs or the appropriate STIGs have not been applied to the fullest extent possible.",
+      "description": "Requirement: Voice Over IP systems and networks will comply with the DSN, VoIP, and all other applicable STIGs as well as other applicable DOD Component guides.\n\nThe applicable STIGs define threat and vulnerability mitigations that must be applied to resolve the associated threat and/or vulnerability in accordance with DoD policy. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7953",
+      "title": "Transport circuits are not encrypted. \n",
+      "description": "Requirement: The IAO will ensure that all circuits leaving the B/C/P/S are bulk encrypted.\n\nThe transport system is responsible for the delivery of voice and data circuits from one switch node to another.  Though not classified, this type of information is sensitive.  To ensure the security of all information being exchanged between nodes and to protect it from unauthorized monitoring and man in the middle attacks, the ISSO/IAO should ensure all circuits are bulk encrypted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7954",
+      "title": "Physical access to commercial Add/Drop Multiplexers (ADMs) is not restricted.\n",
+      "description": "Requirement: The IAO or other responsible party will ensure that the physical access to commercial Add/Drop Multiplexers (ADMs) is limited.\n\nTransport equipment to include ADMs may be located in isolated areas with no personnel assigned to work in these facilities on a regular basis.  The site must protect these systems from unauthorized access in order to protect the integrity and reliability of the DSN.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7955",
+      "title": "The ISSO/IAO does not maintain a library of security documentation. \n",
+      "description": "Requirement: The site IAO will maintain an up-to-date library to include, at a minimum.\n- CJCSI 6215.01B, 23SEP01, Policy For Department Of Defense Voice Networks\n- CJCSM 6510.01, 15 MAR02, Defense In Depth Information Assurance and Computer Network Defense\n- DODI 8100.3, 16 JAN 03, Department of Defense DOD Voice Networks\n- DODD 8500.1, 24OCT02, Information Assurance-\tDODI 8500.2, 6FEB03, Information Assurance Implementation\n- DSN STIG -\tOther STIGs applicable to equipment or systems that are the responsibility of the IAO\n- A copy of the Security Assessment Report and Certifying Authority’s Recommendation Memo to the DSAWG for each DSN APL certified system or product installed at the site that are the responsibility of the IAO\n- The SSAA for the site(s)and system(s) for which the IAO is responsibleThe ISSO/IAO is responsible to maintain a library of relevant security documentation and make this documentation available to users, administrators, maintainers, and managers associated with the DSN.  The minimum documents that the ISSO/IAO should maintain are the:  CJCSI 6215.01B, 23 SEP 01, Policy For Department Of Defense Voice Networks; CJCSM 6510.01, 23 MAR 2003, Defense In Depth Information Assurance and Computer Network Defense; DODD 8500.1, 24 OCT 02, Information Assurance; DODI 8500.2, 6 FEB 03, Information Assurance Implementation; DSN Security Guide (under revision).  The library will support the required security training program.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7956",
+      "title": "Users are not required to change their password during their first session.",
+      "description": "Requirement: The IAO will ensure that user passwords are assigned with the requirement for the user to change their password at first logon.                                     \n\nThe ISSO/IAO will assign passwords (typically a default) to new users of DSN components.  The user will be required to change this assigned password during their first session.  This gives the user full accountability for a session opened in their name since the IAO will no longer know the user’s password. If this is not technically feasible, the IAO should implement and enforce a policy that requires a manual change of passwords at the first logon.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7957",
+      "title": "Default passwords and user names have not been changed.",
+      "description": "Requirement: The IAO will ensure that all system default passwords and user names are changed prior to connection to the DSN.                               \n\nSystems not protected with strong password schemes provide the opportunity for anyone to crack the password, gain access to the system, and cause information damage, or denial of service.  Default user accounts and passwords must be changed prior to any user connection to a DSN system.  This will prevent commonly known and used user accounts from being used by unauthorized users.",
+      "severity": "high"
+    },
+    {
+      "id": "V-7958",
+      "title": "Shared user accounts are used and not documented by the ISSO/IAO.",
+      "description": "Requirement: The IAO will ensure that shared user accounts will not be used. Unless the use of shared user accounts is operationally essential and/or the device in question does not support multiple accounts.  \n\nThe identity of users of DSN components need to be available to the ISSO/IAO through the use of unique usernames assigned to each user.  This ensures that the ISSO/IAO is able to hold users accountable for their actions through the analysis of audit records.  This type of accountability cannot be accomplished if shared accounts are used.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7959",
+      "title": "The option to disable user accounts after 30 days of inactivity is not being used.",
+      "description": "Requirement: The IAO will ensure that user accounts are disabled after 30 days of inactivity.                             \n\nUser accounts that are inactive for more than 30 days should be disabled by the system.  Outdated or unused user accounts provide penetration points that may go undetected.  Deleting or disabling these types of accounts will help to prevent unauthorized users from gaining access to the DSN system by using an old account that is not needed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7960",
+      "title": "Management access points (i.e. administrative/maintenance ports, system access, etc.) are not protected by requiring a valid username and a valid password for access.",
+      "description": "A valid username and a valid password are required to access all management system workstations and administrative / management ports on any device or system.                     \n\nAll system management access points must be password protected to ensure that all actions performed on the DSN component can be associated with a specific user.  Lack of an account password provides access to anyone who knows the user account name.",
+      "severity": "high"
+    },
+    {
+      "id": "V-7961",
+      "title": "Passwords do not meet complexity requirements.",
+      "description": "Requirement: The IAO will ensure that passwords are required and contain at a minimum, a case sensitive, eight-character mix of upper-case letters, lower-case letters, numbers, and special characters, including at least one of each (e.g., emPagd2!                                 \n\n Devices not protected with strong password schemes provide the opportunity for anyone to crack the password thus gaining access to the device and causing system or information damage, or denial of service.  By requiring passwords to be eight non-repeating characters in length, contain numbers, upper and lower case characters, and a special character, the probability of password guessing is mitigated.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7962",
+      "title": "Maximum password age does not meet minimum requirements.",
+      "description": "Requirement: The IAO will ensure that all user passwords are changed at intervals of 90 days or less.                             \n\nThe longer a password is in use, the greater the opportunity for someone to gain unauthorized knowledge of the passwords.  Further, scheduled changing of passwords hinders the ability of unauthorized system users to crack passwords and gain access to a system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7963",
+      "title": "Users are permitted to change their passwords at an interval of less than 24 hours without ISSO/IAO intervention.\n",
+      "description": "Requirement: The IAO will ensure that NO user passwords will be changed at an interval of less than 24 hours without IAO intervention.                                      \n\n Permitting passwords to be changed in immediate succession within the same day, allows users to cycle password through their history database.  This enables users to effectively negate the purpose of mandating periodic password changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7964",
+      "title": "Password reuse is not set to 8 or greater.",
+      "description": "Requirement: The IAO will ensure that user passwords are not reused within eight of the previous passwords used. As a minimum.                                \n\nA system is more vulnerable to unauthorized access when system users recycle the same password several times without being required to change a password to a unique password on a regularly scheduled basis.  This enables users to effectively negate the purpose of mandating periodic password changes.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7965",
+      "title": "The ISSO/IAO has not recorded the passwords of high level users (ADMIN) used on DSN components and stored them in a secure or controlled manner.",
+      "description": "Requirement: The IAO will ensure that no user (to include Administrator) is permitted to retrieve the password of any user in clear text.                       \n\nPasswords should be recorded and stored in a secure location for emergency use. This helps prevent time consuming password recovery techniques and denial of administrator access, in the event a password is forgotten or the individual with the access is incapacitated.  The passwords of high level users should be recorded and controlled so that the ISSO/IAO would be able to gain high level access if an unforeseen situation occurred that prevented the high level user to perform their duties.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7966",
+      "title": "User passwords can be retrieved and viewed in clear text by another user.",
+      "description": "Requirement: The IAO will ensure that users’ passwords are not displayed in the clear when logging into the system.                           \n\nPassword integrity is non existent if passwords are stored or displayed in clear text.  Many attacks on DOD computer systems are launched internally by unsatisfied or disgruntled employees.  It is imperative that all DSN systems be configured to store passwords in encrypted format.  This will ensure password integrity by other system users who have privileged system access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7967",
+      "title": "User passwords are displayed in the clear when logging into the system.",
+      "description": "Requirement: The IAO will ensure that users’ passwords are not displayed in the clear when logging into the system.                              \n\nWhen passwords are displayed (echoed) during logon, the risk of password compromise is increased and password confidentiality is greatly reduced.  If the password is displayed during logon, it can be easily compromised through the use of a simple technique of shoulder surfing.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7968",
+      "title": "The option to use passwords that are randomly generated by the DSN component is available but not being used.",
+      "description": "Requirement: The IAO will ensure that users will be prompted by the system three times to change their passwords before or after the password has reached the maximum password lifetime.  If the user fails to change their password, their account will be disabled.                          \n\nRandomly generated passwords are preferred over user-defined passwords because a user-defined password has more potential to be guessed.",
+      "severity": "unknown"
+    },
+    {
+      "id": "V-7969",
+      "title": "The system is not configured to disable a users account after three notifications of password expiration.",
+      "description": "Requirement: The IAO will ensure that users will be prompted by the system three times to change their passwords before or after the password has reached the maximum password lifetime.  If the user fails to change their password, their account will be disabled                             \n\nThe user should be notified three times after their password has expired.  If the user does not change their password after three notifications, the system should disable the account and require the ISSO/IAO or other designated individual intervention to reactivate the account.  This measure ensures that all users comply with mandatory password changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7970",
+      "title": "Crash-restart vulnerabilities are present on the DSN system component.\n",
+      "description": "Requirement: The IAO will ensure that tests are performed for crash-restart vulnerabilities and develop procedures to eliminate vulnerabilities found (i.e., ensure ENHANCED_PASSWORD_CONTROL is active to prevent system logons after restart on Nortel switches).               \n\nSome systems reset to default settings (i.e. users names, passwords, user access privileges) when a re-boot is initiated.  If this is the case and a restart occurs and action is not taken to reset default settings, the risk is increased for unauthorized access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7971",
+      "title": "The DSN system component is not installed in a controlled space with visitor access controls applied.\n",
+      "description": "Requirement: The IAO will ensure that DSN switches, peripheral, and OAM&P systems are installed in a controlled space with personnel and visitor access controls applied.\n\nControlling access to the DSN site is critical to determine accountability for auditing purposes as well as the obvious physical security violations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7972",
+      "title": "Documented procedures do not exist that will prepare for a suspected compromise of a DSN component.\n",
+      "description": "Requirement: The IAO will ensure that compromise recovery procedures are documented that will accomplish the following:\n- Verify the integrity of the hardware, software, and communication lines configuration.-\tVerify the integrity of the switch tables (database).\n- Perform an audit trail analysis and evaluation.\n- Enforce the change of all passwords for accessing the A/NM domain\n.- Report to the Theater and other concerned authorities the detection of possible unauthorized physical intrusion.The following measures will ensure that a compromise of a DSN component will be handled and reported properly:  verification of the integrity of the hardware, software, communication lines configuration, switch tables (database); performance of an audit trail analysis and evaluation; enforcing the change of all passwords for accessing the DSN component; reporting to the theater and other concerned authorities the detection of possible unauthorized physical intrusion.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7973",
+      "title": "Audit records are NOT stored in an unalterable file and can be accessed by individuals not authorized to analyze switch access activity.",
+      "description": "Requirement: The IAO will ensure that auditing records are placed in an unalterable audit or history file that is available only to those individuals authorized to analyze switch access and configuration activity.                   \n\nAudit files must be available to only those individuals who are authorized and have a need to analyze DSN activity.  These records must be stored in a format that will prevent any individual from making modifications to the records. Audit files are necessary to investigate switch activity that appears to be abusive, unauthorized, or damaging to the DSN.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7974",
+      "title": "Audit records do not record the identity of each person and terminal device having access to switch software or databases.  \n",
+      "description": "Requirement: The IAO will ensure that the auditing process records the identity of each person and terminal device having access to switch software or databases                     \n\nThe identity of the individual user and the terminal used during their session will be recorded in the audit records.  This is needed for accountability of command issues and actions taken during each session.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7975",
+      "title": "Audit records do not record the time of the access.",
+      "description": "Requirement: The IAO will ensure that the auditing process records the time of the access.                       \n\nThe time of access needs to be recorded in the audit files to determine accountability of personnel if an issue arises that requires analysis of the audit records.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7976",
+      "title": "The auditing records do not record activities that may change, bypass, or negate safeguards built into the software.",
+      "description": "Requirement: The IAO will ensure that the auditing process records commands, actions, and activities executed during each session that might change, bypass, or negate safeguards built into the software.                             \n\nActions that have the potential to change, bypass, or negate safeguards must be recorded in the audit files.  This will identify suspicious activities that are being investigated and will assist investigators in following the course of events that have led to a situation that is being examined.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7977",
+      "title": "Audit record archive and storage do not meet minimum requirements.",
+      "description": "Requirement: The IAO will ensure that audit records (files) are stored on-line for 90 days and off-line for an additional 12 months. \n\nAudit records provide the means for the ISSO/IAO or other designated person to investigate any suspicious activity and to hold users accountable for their actions. By storing audit records online for 90 days and offline for 12 months, the ISSO or other designated personnel will be able to investigate all suspicious activity even if the activity is not noticed immediately.\n\nAPL NOTE: The storage of log data both online and offline for a given period of time is a site responsibility. While a vendor's product may provide the required storage capacity for a sufficient number of log entries internally to satisfy the online storage requirement, it must at a minimum work in conjunction with a logging server where the logs can be collected and maintained online. The remote logging process should also be automated such that logs are collected without SA intervention. The vendor's product and the architecture in which it is implemented as a whole must support the online storage requirement. Such requirements are covered elsewhere and do not constitute a finding here..\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7978",
+      "title": "Audit records are not being reviewed by the ISSO/IAO weekly.",
+      "description": "Requirement: The IAO will ensure that audit records (files) are stored on-line for 90 days and off-line for an additional 12 months.                           \n\nBy reviewing audit records on a weekly schedule, the ISSO/IAO ensures that any suspicious activity is detected in a timely manner.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7979",
+      "title": "An Information Systems Security Officer/Information Assurance Officer (ISSO/IAO) is not designated for each telecommunications switching system or DSN Site.",
+      "description": "Requirement: The DSN Program Management Office (PMO) or local site command/management, as appropriate, will document and ensure that an IAO is designated to oversee the IA posture and security of each switch, site, system, and facility. The IAO will have the proper training and clearance level as directed by DODI 8500.2 E3.4.8. The DSN PMO should maintain documentation regarding IAO assignments for all sites and/or systems in the inventory. The DSN IAO may have responsibility for systems other than DSN systems and may be responsible for remote sites attached to his/her main site or system.\n\nSecurity Administration is accomplished through the ongoing efforts of a number of personnel.  The Security Manager is the principal advisor to the site Commander/Director for the administration and management of the overall site security program.  The Information Systems Security Manager/Information Assurance Manager (ISSM/IAM) is responsible for managing the AIS security program.  The ISSO/IAO is responsible for implementing security requirements for one or more computer systems and reports directly to the ISSM/IAM.  To oversee the security of the systems within the DSN, all sites will establish an onsite DSN ISSO/IAO position.  This individual should be knowledgeable of the security features available in the sites telecommunications switching system and how these features are employed. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7980",
+      "title": "Site personnel have not received the proper security training and/or are not familiar with the documents located in the security library.",
+      "description": "Requirement: The IAO will ensure that personnel are familiar with the security practices outlined by applicable documents found in the site’s library and have received the appropriate security training.A personnel security program, combined with other protective measures, make up a security plan to keep DSN assets safe from intrusion or other types of disruptions.  The DSN Security Guide describes the personnel security requirements for various types of individuals.  To be effective, any security plan requires some type of familiarization and training for its users and participants.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7981",
+      "title": "The ISSO/IAO does not maintain a DSN Personnel Security Certification letter on file for each person involved in DSN A/NM duties.",
+      "description": "A DSN Personnel Security Certification letter will provide documented proof that site personnel have attended and successfully passed a security training and awareness program.  This program will provide training appropriate to the security needs of each person involved with the DSN.  The program will ensure that all personnel understand the risks to the DSN.  This type of program reminds the personnel of the proper security-related operational and control procedures for which they are responsible.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7982",
+      "title": "System administrators are NOT appropriately cleared.",
+      "description": "Requirement: The IAO will ensure that all System Administrators are appropriately cleared.\nIn order to maintain positive control over personnel access to DSN system components, all who are provided physical and administrative access to the components must be controlled.  Confirmation of those who are authorized access must be confirmed before access is given.  If physical and administrative access to systems is not confirmed and controlled, this may result in unauthorized access or compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7983",
+      "title": "Site staff does not verify and record the identity of individuals installing or modifying a device or software.\n",
+      "description": "Requirement: The IAO will ensure that site staff will verify and record the identity of individuals installing or modifying a device or software.\n\nThe identity of individuals performing software load upgrades or maintenance of a DSN component must be recorded.  This will make a particular person or vendor representative accountable for all actions performed, giving the ISSO/IAO and site personnel the means to investigate all activity.One means of maintaining such records, is to obtain a DD2875 from all individuals this type of work.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7984",
+      "title": "System images are not being backed up on a weekly basis to the local system and a copy is not being stored on a removable storage device and/or is not being stored off site.",
+      "description": "Requirement: The IAO will ensure that systems will be backed up on a weekly basis to the local system and a copy will be stored, off site, on a removable storage device by the Switch Administrator.System backup images or views need to be taken frequently and stored in such a way that a current copy can be obtained if needed.  By storing a copy on the local system and a copy on removable media, in most instances, a copy can be used to restore the system. The storage of a copy off site improved the safety of the copy in the event of a catastrophe at the operations site.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7985",
+      "title": "Site staff does not ensure backup media is available and up to date prior to software modification.",
+      "description": "Requirement: The IAO will ensure that site staff will ensure back-up media is available and up-to-date prior to software modification that could cause a significant disruption to service if the new software is corrupted.\n\nBack up media will be available to site personnel prior to any software upgrades or major provisioning changes.  This will enable site personnel to recover the DSN system in case of system failure under newly introduced software or major changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7986",
+      "title": "Modems are not physically protected to prevent unauthorized device changes.\n",
+      "description": "Requirement: The IAO will ensure that all modems are physically protected to prevent unauthorized device changes.  \n\nControlling physical access to modems supporting the DSN will limit the chance of unauthorized access to DSN system components.  Failure to control physical access to modems could result in modem settings being changed to allow unauthorized access to DSN system components.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7987",
+      "title": "A detailed listing of all modems is not being maintained.\n",
+      "description": "Requirement:  The IAO will maintain a listing of all modems by model number, serial number, associated phone number, and location.\n\nEnsure an accurate listing of all modems supporting the DSN is maintained. Maintaining a list of all approved modems will ensure that non-approved modems can be identified easily.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7988",
+      "title": "Unauthorized modems are installed.\n",
+      "description": "Modems that are not provided by the Government for access to the DSN will not be allowed to connect to the DSN for access.  No personally provided modems are permitted.  This measure will assist the ISSO/IAO in the task of controlling remote access to the DSN components. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7989",
+      "title": "Modem phone lines are not restricted and configured to their mission required purpose (i.e. inward/outward dial only).\n",
+      "description": "Requirement: The IAO will ensure that all modem phone lines are restricted and configured to their mission required purpose (inward dial only or outward dial only).\n\nUbiquitous phone lines open major security holes in a network.  The more tightly they can be controlled, the less the exposure to vulnerabilities.  Allowing special features to remain active on modem phone lines create advantageous situations for malicious attacks.  An attacker may use special features to forward modem or voice calls to destinations that cause toll-fraud, or forward the number to itself causing a denial of service.  Telephone lines that provide DSN modems dial tone will be provisioned only with their required functions. Some components of the DSN “dial back” option may require two modems for proper operation.  If a modem is dedicated to receive calls, it should be provisioned to not allow outbound calling.  If a modem is dedicated to place calls, it should be provisioned to not accept incoming calls.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7990",
+      "title": "Modem phone lines are not restricted to single-line operation. \n",
+      "description": "Requirement: The IAO will ensure that all modem phone lines are restricted to single-line operation without any special features such as the call forwarding capability.\n\nBy restricting modem phone lines to single-line operation, the risk of unauthorized access is limited by preventing the added functions of a multi-line to be used by an unauthorized person to gain access.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7991",
+      "title": "The option of Automatic Number Identification (ANI) is available but not being used.\n",
+      "description": "Requirement: The IAO will ensure that Automatic Number Identification (ANI) is enabled on modem lines to record access to remote access ports if this function is available.  The IAO, or authorized security personnel, will maintain and review ANI logs.  These records should be kept for the previous twelve months.\n\nAutomatic Number Identification (ANI) logs are ideal for auditing unauthorized accesses and toll-fraud.",
+      "severity": "unknown"
+    },
+    {
+      "id": "V-7992",
+      "title": "Authentication is not required for every session requested.",
+      "description": "Requirement: The IAO will ensure that identification and authentication is required for every session requested in accordance with I&A / password policy.\n\nAuthentication is a measure used to verify the eligibility of a subject and the ability of that subject to access certain information.  Authentication protects against the fraudulent use of a system or the deceptive transmission of information.  All users must be authenticated prior to every authorized session allowing system access.  This is necessary to ensure that no unauthorized sessions are granted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7993",
+      "title": "The option to use the “callback” feature for remote access is not being used.",
+      "description": "Requirement: The IAO will ensure that modem access to remote management ports incorporates the “callback” feature where technically feasible.\n\nThe callback feature ensures that pre-authorized user directory numbers are being used to access the DSN components.  Callback features are an attempt to protect the network by providing a service that disconnects an incoming call and reestablishes the call, dialing back to a predetermined number.  Upon establishment of the callback connection, the communications device will require the user to authenticate to the system.  This feature enhances security authentication access to the system.  If available, this feature should be used. This feature is especially important for remote unmanned switch sites where modem connections can not be physically disconnected when not in use.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7994",
+      "title": "FIPS 140-2 validated Link encryption mechanisms are not being used to provide end-to-end security of all data streams entering the remote access port of a telephone switch.",
+      "description": "Requirement: The IAO will ensure that a FIPS 140-2 validated encryption mechanism is used to provide security of all data streams between the management port of the DSN component and a remote management station whether connected via a modem or network.\n\nThe most secure authenticated session to any remote system is accomplished via a secure connection.  Encryption provides confidentiality and should be used, if possible, to secure remote access connections to DSN administration/maintenance ports.",
+      "severity": "unknown"
+    },
+    {
+      "id": "V-7995",
+      "title": "The option to use two-factor authentication when accessing remote access ports is not being used.",
+      "description": "Requirement: The IAO will ensure that remote access ports require two-factor authentication. This is defined as requiring something along the lines of a token in addition to a User ID and password combination.\n\nThe use of two-factor authentication will help prevent unauthorized persons from accessing the DSN component.",
+      "severity": "unknown"
+    },
+    {
+      "id": "V-7996",
+      "title": "Administrative/maintenance ports are not being controlled by deactivating or physically disconnecting remote access devices when not in use.",
+      "description": "Requirement: The IAO will ensure that serial management ports are controlled by deactivating or physically disconnecting access devices (i.e. modems or terminals) that are not in use.\n\nThe disconnection of remote access devices when not being used will greatly reduce the risk of unauthorized access.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7997",
+      "title": "Idle connections DO NOT disconnect in 15 min.",
+      "description": "Requirement: The IAO will ensure that a timeout feature, set to 15 minutes, is used to disconnect idle connections.\n\nUnattended systems are susceptible to unauthorized use.  The system should be locked when unattended.  The user idle timeout should be set to a maximum of 15 minutes.  This setting protects critical and sensitive system areas from exposure to unauthorized personnel with physical access to an unattended administration/maintenance terminal.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7998",
+      "title": "The DSN component is not configured to be unavailable for 60 seconds after 3 consecutive failed logon attempts.",
+      "description": "Requirement: The IAO will ensure that management ports that receive three consecutive failed logon attempts will be unavailable for at least 60 seconds.\n\nAfter three failed logon attempts the system should be configured to force the user to wait for 60 seconds.  This measure will prevent unauthorized access through the means of hacking a password.  If the time that the port is unavailable is substantially greater than 60 seconds, denial of service could result by maliciously attempting logins on all ports.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7999",
+      "title": "Serial management/maintenance ports are not configured to “force out” or drop any interrupted user session.",
+      "description": "Requirement: The IAO will ensure that serial management ports immediately drop any connection that is interrupted for any reason. Reasons include modem power failure, link disconnection, loss of carrier, etc. Serial ports that are interrupted due to link disconnection, power failure or other reasons will force out the user (i.e., end the session using the port). This will prevent a remote user from ending a session without logging off and leaving the remote maintenance port available with an active session that might allow unauthorized use by someone other than the authenticated user. This will also prevent the physical hijacking of an active session by unplugging the connected cable and plugging in another. \n\nNOTE: This requirement primarily addresses the use of EIA/RS-232 serial interfaces (serial craft or console ports) in conjunction with a modem. It requires the enablement of the hardware handshaking capabilities that are typically inherent in the interface and the associated Universal Asynchronous Receiver/Transmitter (UART). The hardware handshaking capabilities can easily detect modem power failure, link disconnection, and loss of carrier. The software response to these hardware indicators is to terminate any active session such that re-authentication is required if the session is re-established. This capability also supports the prevention of physically hijacking the connection or session by unplugging the modem and plugging in a local workstation or other communications device. However, such physical hijacking is substantially mitigated by limiting physical access to the port connection to authorized personnel via physical access security methods. Unfortunately, some EIA/RS-232 port implementations in some vendor’s products do not include the physical handshaking lead connections needed to fulfill this requirement. In some cases only the three minimally required data leads (TX, RX, and GND) are implemented. In this case, Xon-Xoff flow control is used to synchronize communications as opposed to the hardware handshaking. Additional measures must be implemented in hardware or software to detect session interruption and effect its termination. This may require special serial communications software or middleware that implements a keep-alive signal. When the keep-alive signal is lost, the session is terminated. Other methods may be employed as well. \n",
+      "severity": "low"
+    },
+    {
+      "id": "V-8000",
+      "title": "DSN system components must display the Standard Mandatory DoD Notice and Consent Banner exactly as specified prior to logon or initial access.",
+      "description": "The operating system and remotely accessed information systems are required to display the DoD-approved system use notification message or banner before granting access to the system that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. This ensures the legal requirements for auditing and monitoring are met. \n\nSystem use notification messages must be displayed when individuals log on to the information system. The approved DoD text must be used as specified in the DoD Instruction 8500.01 dated March 14, 2014.",
+      "severity": "low"
+    },
+    {
+      "id": "V-8225",
+      "title": "Voice/Video Telecommunications infrastructure  components (traditional TDM, VVoIP, or VTC) are not housed in secured or “controlled access” facilities with appropriate classification level or appropriate documented access control methods.",
+      "description": "Controlling physical access to telecommunications infrastructure components is critical to assuring the reliability of the voice network and service delivery. Documenting or logging physical access to these components is critical to determine accountability for auditing purposes. Key control and access logs are a large part of this. Additionally, the facilities housing the telecommunications infrastructure must be certified at a classification level commensurate with the highest classification level of the information communicated by the system. \n\nNOTE: The infrastructure addressed here are components of traditional TDM, VVoIP, UC or VTC systems that support the communications endpoints. This includes “wiring closets” for traditional non IP based systems.\n\nNOTE: Physical access to the LAN infrastructure (which may also support VVoIP, UC, and VTCoIP services) is covered by a Network Infrastructure STIG requirement. This requirement does not directly address the physical security of the general LAN infrastructure, such as LAN routers and switches.  \n\nNOTE: While this requirement is based on best practice and requirements for protecting classified information, it is also supported in part by DOD 5200.08-R, Physical Security Program, April 9, 2007 Incorporating change 1, 27 May 2009, Chapter 6, Security of Communications Facilities, section C6.2.4 which states: “Access shall be controlled at all communications facilities and only authorized personnel shall be allowed to enter. Facilities should be designated and posted as a minimum, a Controlled Area, as directed.”\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8338",
+      "title": "IAVMs are not addressed using RTS system vendor approved or provided patches.",
+      "description": "Requirement: The IAO will ensure that all IAVM notices relating to the installation of security or other patches for general-purpose operating systems and software on devices other than workstations is vetted through the system vendor and approved by the local DAA before installation.\n\nMany IPT / VoIP systems are based on general-purpose operating systems and applications such as databases and web servers (i.e., Windows XX, MS-SQL, IIS, Unix, LINUX, etc). The original vendors of these general-purpose software packages provide patches for their individual packages. A vendor of a IPT / VoIP system must test and approve these patches for use on their system before they are applied in the event that the OEM patch might break a portion of the IPT / VoIP system or degrade its security. The IPT / VoIP vendor may have to modify the OEM patch before releasing it to their customers.\n\nIPT / VoIP vendors must be immediately advised of IAVAs that apply to their systems so that they can test the required patch / mitigation and subsequently distribute an approved patch for their system (in accordance with VoIP0281) so that the site can maintain IAVA compliance.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8339",
+      "title": "DoD voice/video/RTS information system assets and vulnerabilities are not tracked and managed using any vulnerability management system as required by DoD policy.",
+      "description": "Requirement: The IAO will ensure that all systems including switches, OAM&P systems, auxiliary/adjunct, and peripheral systems connected to the DSN along with their SAs are registered and tracked with an asset and vulnerability management system similar to VMS.",
+      "severity": "low"
+    },
+    {
+      "id": "V-8340",
+      "title": "A DoD Voice/Video/RTS system or device is NOT configured in compliance with all applicable STIGs or the appropriate STIGs have not been applied to the fullest extent possible.",
+      "description": "Requirement: The IAO will ensure that all systems connected to DOD telecommunications systems that use technologies covered by a DISA/DOD STIG, is secured in compliance with the applicable STIG(s) \nThe applicable STIGs define threat and vulnerability mitigations that must be applied to resolve the associated threat and/or vulnerability in accordance with DoD policy.",
+      "severity": "low"
+    },
+    {
+      "id": "V-8341",
+      "title": "The purchase / maintenance contract, or specification, for the Voice/Video/RTS system under review does not contain verbiage requiring compliance and validation measures for all applicable STIGs.",
+      "description": "Requirement: The DSN PMO and/or site command/management will ensure that “compliance with all applicable STIGs” requirements and validation measures are added to specifications and contracts for commercially leased or procured telecommunications services or systems.STIG compliance is DoD policy and must be accomplished to the greatest extent possible so that any information system may be Certified and Accredited, operated, and connected to other systems if applicable. Placing this requirement in procurement contracts puts the vendor on notice that their product or solution must support these DoD policy requirements. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-8342",
+      "title": "The DAA, IAM, IAO, or SA for the system DOES NOT enforce contract requirements for STIG compliance and validation",
+      "description": "Requirement: The IAO will ensure that commercially contracted (leased or procured) systems and services supporting the DSN comply with all applicable STIGs in accordance with contract requirements.STIG compliance is DoD policy and must be accomplished to the greatest extent possible so that any information system may be Certified and Accredited, operated, and connected to other systems if applicable. Placing this requirement in procurement contracts puts the vendor on notice that their product or solution must support these DoD policy requirements. The responsibility of monitoring compliance of contract requirements falls to the DAA, IAM, IAO, and/or SA responsible for operating the system in compliance with policy. Placing compliance requirements in a contract provides no assurance that they are being met if there is no validation or enforcement  of the contract requirements. ",
+      "severity": "unknown"
+    },
+    {
+      "id": "V-8345",
+      "title": "A Voice/Video/RTS system is in operation but is not listed on the DSN APL nor is it in the process of being tested.",
+      "description": "Requirement: The IAO will ensure that all installed systems and associated software releases for which he/she is responsible appear on the DSN APL in accordance with DODI 8100.3 requirements. This applies to previously installed, new, and upgraded systems.\n\nDOD Instruction 8100.3 which governs DOD telecommunications and the Defense Switched Network (DSN), requires that “Telecommunications switches (and associated software releases) leased, procured (whether systems or services), or operated by the DOD Components, and connected or planned for connection to the DSN, shall be joint interoperability certified by the Defense Information Systems Agency (DISA), Joint Interoperability Test Command (JITC) and granted information assurance certification and accreditation by the Defense Information System Network (DISN) Designated Approval Authorities (DAAs).” DAA certification is obtained through the DISN Security Accreditation Working Group (DSAWG). DODI 8100.3 also requires that the DOD use (or connect to the DSN) only devices that appear on the DSN Approved Products List (APL). Both IA and Interoperability certification requirements must be met for inclusion on the DSN APL.\n\nThe testing for IA and IO that occurs prior to DSN APL listing determines if the system/device meets, or can be configured to meet DoD requirements. The IA testing determines any residual risk for operating the system. This risk is accepted by the DSAWG prior to APL listing.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8346",
+      "title": "A Voice/Video/RTS system or device is NOT installed according to the deployment restrictions and/or mitigations contained in the IA test report, Certifying Authority’s recommendation and/or DSAWG approval documentation.",
+      "description": "Requirement: The IAO will ensure that products or software releases are installed and maintained in accordance with all applicable STIGs AND the installation restrictions and vulnerability mitigations presented in the Security Assessment Report and Certifying Authority’s (CA’s) Recommendation Memo to the DSAWG.\nSystems listed on the DSN APL have been approved by the DSAWG as having acceptable risk for operation by DoD components.  The residual risk is determined by the mitigations for any findings that cannot be closed. These mitigations may be determined or proposed by the vendor, IA test team, Certifying Authority, and/or the DSAWG and may take the form of deployment limitations and/or installation restrictions. The application of the recommended mitigations along with complying with any deployment limitations and/or installation restrictions is paramount to legally operating the system in a secure manner. The required mitigations, limitations, and restrictions should be contained in final test report produced by the VCAO following DSAWG approval. The IAO should maintain a copy of the final system testing report so that the required mitigations, limitations, and restrictions can be applied and compliance can be validated or verified.",
+      "severity": "low"
+    },
+    {
+      "id": "V-8347",
+      "title": "A Voice/Video/RTS system or device is NOT installed in the same configuration and being used for the same purpose that was tested for prior to DSAWG approval and DSN APL listing.",
+      "description": "Requirement: The IAO will ensure that systems are implemented using the configuration that was approved and for the approved purpose. Alternate configurations and purposes must be resubmitted for certification.DSN APL listed systems are submitted for testing in coordination with the sponsor’s needs. Systems and devices are submitted with a specific suite of equipment, software, software versions, connection types, configurations, and use cases or purposes. The resulting test results are only applicable to the specific solution/purpose submitted. As a result, it is the specific solution and purpose that is approved and listed on the APL. If any of submitted solution is changed, there may be different vulnerabilities associated with the modified solution that were not present in the originally tested solution. For this reason, modified solutions must be tested to assure that any newly acquired vulnerabilities are found and addressed. ",
+      "severity": "unknown"
+    },
+    {
+      "id": "V-8348",
+      "title": "The requirement of DSN APL listing is not being considered during the procurement, installation, connection, or upgrade to the site’s Voice/Video/RTS infrastructure.",
+      "description": "Requirement: The DSN PMO, DOD Component command, site command/management, or the IAO will ensure that products being considered for procurement, installation, connection, or upgrade to the DSN are certified and appear on the DSN APL, OR are in the process of being certified, OR will sponsor the product for certification.",
+      "severity": "unknown"
+    },
+    {
+      "id": "V-8352",
+      "title": "The voice or video system certification and accreditation must be maintained to reflect the installation or modification of the system configuration.",
+      "description": "The DSN system is certified and accredited per the DoD Risk Management Framework (RMF) either separately or as part of a larger site accreditation. Previous to the DoD RMF, the DoD Information Assurance Certification and Accreditation Process (DIACAP) or DoD Information Technology Security Certification and Accreditation Process (DITSCAP) were  used for certification and accreditation.",
+      "severity": "low"
+    },
+    {
+      "id": "V-8512",
+      "title": "The SMU management port or management workstations is improperly connected to a network that is not dedicated to management of the SMU.",
+      "description": "Requirement: The IAO at the SMU site will ensure that the SMU management port or stations are not connected to any network other than one dedicated to management of the SMU.The system design and architecture of the SMU provides for no security configuration capability (i.e., user account, password, privileged user, or auditing capability).  Trunk and subscriber provisioning is accomplished via an administrator’s terminal, which is a dumb terminal, connected to the system via serial connection.  From this terminal, at power up, the user has direct access to provisioning features of the system.  Therefore, security protection to the SMU is provided through the physical security of the unit.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8513",
+      "title": "The ADIMSS server connected to the SMU is NOT dedicated to ADIMSS functions.",
+      "description": "Requirement: The IAO at the SMU site will ensure that the ADIMSS server connected to the SMU is dedicated to ADIMSS functions.ADIMSS servers represent mission critical equipment that contain potentially sensitive information that needs to be secured and treated with the same precautions as any other servers containing sensitive information.   Dedicating critical ADIMSS servers to only ADIMSS required applications is key to securing the ADIMSS network.  To minimize possible risk these servers are to be dedicated to the ADIMSS applications required for ADIMSS operations minimizing the chance of infection or attack through an unused, unnecessary application residing on the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8514",
+      "title": "The SMU ADIMSS connection is NOT dedicated to the ADIMSS network",
+      "description": "Requirement: The IAO at the SMU site will ensure that the SMU ADIMSS connection is dedicated to the ADIMSS network.In addition to the administrator terminal connection, a secondary connection is also provided for the ADIMSS network.  This connection is used for remote access to the system to collect call processing and billing information.  This connection is a serial connection to the SMU from an ADIMSS server physically located on site.  This ADIMSS server is in turn connected to the ADIMSS network via an Ethernet connection.  This server should be dedicated to the ADIMSS and SMU and not connected to any other network",
+      "severity": "low"
+    },
+    {
+      "id": "V-8515",
+      "title": "A SMU component is not installed in a controlled space with visitor access controls applied.",
+      "description": "Requirement: The IAO at the SMU site will ensure that the SMU has adequate physical security protection.\n\nThe system design and architecture of the SMU provides for no security configuration capability (i.e., user account, password, privileged user, or auditing capability).  Trunk and subscriber provisioning is accomplished via an administrator’s terminal, which is a dumb terminal, connected to the system via serial connection.  From this terminal, at power up, the user has direct access to provisioning features of the system.  Therefore, security protection to the SMU is provided through the physical security of the unit.",
+      "severity": "high"
+    },
+    {
+      "id": "V-8516",
+      "title": "Network management/maintenance ports are not configured to “force out” or drop any user session that is interrupted for more than 15 seconds.",
+      "description": "Requirement: The IAO will ensure that network connected management ports drop a connection that is interrupted for any reason within 15 seconds.\n\nNetwork ports that are interrupted due to link disconnection, power failure or other reasons must end any session using that connection.  This will prevent a user from ending a session without logging off and leaving the maintenance port available with an active session that might allow unauthorized use by someone other than the authenticated user. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8517",
+      "title": "OOB management network are NOT dedicated to management of like or associated systems",
+      "description": "Requirement: The IAO will ensure that network connected switch and device management ports are connected to a network dedicated to management of the device only and/or that of other associated devices, i.e. an out-of-band management network.\n\nManagement networks must be dedicated to management to mitigate unauthorized access to the managed systems of the sensitive management information/traffic that is carried on the network",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8518",
+      "title": "An OOB Management DOES NOT comply with the Enclave and/or Network Infrastructure STIGs.  ",
+      "description": "Requirement: The IAO will ensure that out-of-band management networks comply with the Enclave and Network Infrastructure STIGs.\n\nout-of-band management networks must comply with the requirements contained in the Enclave and Network Infrastructure STIGs so that the threats and/or vulnerabilities associated with all networks and enclaves are properly mitigated according to DoD policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8519",
+      "title": "Foreign/Local National personnel hired by a base/post/camp/station for the purpose of operating or performing OAM&P / NM functions on DSN switches and subsystems have not been vetted through the normal process for providing SA clearance as dictated by the local Status of Forces Agreement (SOFA).",
+      "description": "Requirement: The IAO and IAM will ensure that all Foreign/Local National personnel hired by a base/post/camp/station for the purpose of operating or performing OAM&P / NM functions on DSN switches and subsystems shall be vetted through the normal process for providing SA clearance as dictated by the local Status of Forces Agreement (SOFA).All SAs and particularly those who are foreign or local nationals must have the appropriate clearance before being granted access to DoD systems. Failure to do this may result in unauthorized access or compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8520",
+      "title": "Foreign/Local National personnel have duties or access privileges that exceed those allowed by DODI 8500.2 E3.4.8.",
+      "description": "Requirement: The IAO and IAM will ensure that all Foreign/Local National personnel hired by a base/post/camp/station for the purpose of operating or performing OAM&P / NM functions on DSN switches and subsystems shall be granted duties and system access in accordance with DODI 8500.2 E3.4.8.\nAll SAs and particularly those who are foreign or local nationals must not be given duties or access privileges that exceed those allowed by DoD policy and must only be granted enough access as required to perform the assigned duties.Failure to do this may result in unauthorized access or compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8531",
+      "title": "The latest software loads and patches are NOT applied to all systems to take advantage of security enhancements.",
+      "description": "Requirement: The IAO will ensure that the latest software loads and patches are applied to all systems to take advantage of security enhancements.\n\nMany vendors provide patches or new versions of software to incorporate mitigations for newly discovered security vulnerabilities. In some cases this is the only way to mitigate a threat to the system. SAs are therefore required to use the latest vendor provided software or patch that addresses security. This is not the case if the new software only provides additional features or a patch only resolves a operational issue or bug. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8532",
+      "title": "Maintenance and security patches are NOT approved by the local DAA prior to installation in the system",
+      "description": "Requirement: The IAO will ensure that maintenance and security patches that are applied to a system are approved by the local DAA before installation.\n\nAll patches and new system software must be tested on non-production systems/hardware prior to use / installation to determine the effects that the new software will have on systems operations and security. Furthermore the local DAA responsible for personally accepting the risk of operating the system must be aware of these effects and approve their use if the risk of using the software is acceptable.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8535",
+      "title": "Major software version upgrades have NOT been tested, certified, and placed on the DSN APL before installation.",
+      "description": "Requirement: The IAO will ensure that major software version upgrades have been tested, certified, and placed on the DSN APL before installation.\n\nAll new system major software releases must be tested on non-production systems/hardware prior to use / installation to determine the effects that the new software will have on systems operations and security. This is a requirement under DODI 8100.3 for system software. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8537",
+      "title": "There is no system installed that can provide emergency life safety or security announcements ",
+      "description": "Requirement: The IAO should ensure that a system is installed to provide emergency announcements and messages in accordance with public law in response to 11 September 2001 and/or local building codes. \n\nLocal building codes have for years required that certain facilities provide for emergency alert/evacuation announcement sound systems that are used for life safety. These types of systems are even more useful and may be required by federal or public law in the wake of 9/11/2001. In addition to life safety announcements about an evacuation or emergency condition within a facility, these systems may be used for security alerts that could, for example, instruct site personnel to be on the look out for an intruder or other unauthorized person. ",
+      "severity": "unknown"
+    },
+    {
+      "id": "V-8539",
+      "title": "A policy is NOT in place and/or NOT enforced regarding the use of unclassified telephone/RTS instruments located in areas or rooms where classified meetings, conversations, or work normally occur.",
+      "description": "Requirement: The IAO will ensure that a policy is in place and enforced regarding the use of telephone instruments connected to unclassified telecommunications systems located in areas or rooms where classified meetings, conversations, or work normally occur.\n\nAll unclassified voice/video/RTS terminals or instruments present a potential risk to the security of areas where classified conversations are conducted. This is due to the ability of some phones to pick up room audio and transmitting it or sending it down the wire even when the phone is on hook. This ability is usually caused by poor design or malfunction in the hook switch circuitry. Additionally speakerphones in such areas may be activated by accident or surreptitiously. These vulnerabilities can affect the security or confidentiality of any conversation at any classification level. Of particular concern are those areas or rooms used for classified meetings, conversations, or work.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8541",
+      "title": "An OAM&P / NM or CTI network DOES NOT comply with the Enclave and/or Network Infrastructure STIGs.  ",
+      "description": "Requirement: The IAO will ensure that OAM&P / NM and CTI networks comply with the Enclave and Network Infrastructure STIGs.  \n\nOAM&P / NM and CTI networks must comply with the requirements contained in the Enclave and Network Infrastructure STIGs so that the threats and/or vulnerabilities associated with all networks and enclaves are properly mitigated according to DoD policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8542",
+      "title": "An OAM&P / NM and CTI network/LAN is connected to the local general use (base) LAN without appropriate boundary protection.                \n\n                         ",
+      "description": "Requirement: The IAO will ensure that OAM&P / NM and CTI networks are not connected to the local general use (base) WAN.       \n\nThe requirement to dedicate OAM&P / NM and CTI networks or LANS is to protect the particular solution from threats from sources external to the solution. Connecting these dedicated LANs to a WAN negates this protection unless a proper boundary is created. Such a boundary should be a firewall. Access to the dedicated LAN and the devices on it from the WAN must be filtered by source and destination IP addresses as well as the specific ports and protocols that are required or permitted to cross the boundary.                                                                                         ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8543",
+      "title": "Voice/Video/RTS devices located in SCIFs do not prevent on-hook audio pick-up and/or do not have a speakerphone feature disabled or are not implemented in accordance with DCID 6/9 or TSG Standard 2.",
+      "description": "Requirement: In the event that a telephone instrument connected to an unclassified telecommunications system are placed within a Sensitive Compartmented Information Facility (SCIF), the IAO will ensure that the instrument is configured such that the instrument provides on-hook audio protection and that speakerphone audio pickup feature (microphone) is disabled or is nonexistent. (RE: Director of Central Intelligence Directive (DCID) 6/9 Annex G, Paragraphs 2.2.1, 2.2.1.1, 2.2.1.6, and Telecommunications Security Group (TSG) Standard 2)\n\nAll voice/video/RTS terminals or instruments present a potential risk to the security of areas where classified conversations are conducted. This is due to the ability of some phones to pick up room audio and transmitting it or sending it down the wire even when the phone is on hook. This ability is usually caused by poor design or malfunction in the hook switch circuitry. This is covered in TSG Standard 2. Additionally speakerphones in such areas may be activated by accident or surreptitiously. These vulnerabilities can affect the security or confidentiality of any conversation at any classification level. Of particular concern are those areas or rooms used for classified meetings, conversations, or work such as SCIFs. Additionally, VoIP systems in which the central call manager controls the telephone instrument, there is the potential of hijacking control of the instrument from somewhere else on the network. This potential vulnerability means that audio pickup might be activated clandestinely without the knowledge of the people near it. Speakerphones and push to talk handsets are covered in DCID 6/9",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8544",
+      "title": "An OAM&P / NM and CTI network/LAN is connected to the local general use (base) LAN without appropriate boundary protection.                                         ",
+      "description": "Requirement: The IAO will ensure that OAM&P / NM and CTI networks are not connected to the local general use (base) LAN.  \nThe requirement to dedicate OAM&P / NM and CTI networks or LANS is to protect the particular solution from threats from sources external to the solution. Connecting these dedicated LANs to another LAN negates this protection unless a proper boundary is created. Such a boundary should be a firewall but minimally must be a router ACL. Access to the dedicated LAN and the devices on it must be filtered by source and destination IP addresses as well as the specific ports and protocols that are required or permitted to cross the boundary. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8545",
+      "title": "OAM&P / NM and CTI networks are NOT dedicated to the system that they serve in accordance with their separate DSN APL certifications.",
+      "description": "Requirement: The IAO will ensure that out-of-band OAM&P / NM and CTI networks are dedicated to the system that they serve in accordance with their separate DSN APL certifications. CTI networks may be combined taking into consideration the vulnerabilities of each system and with documented local DAA approval.                  \n> OAM&P/NM and CTI terminals must connect to the switch by using either a direct connection to the system administration port or through a dedicated, out of band network.  Connections other than these, for example through a non-dedicated network connection, will introduce security risks.                     > The requirement to dedicate OAM&P / NM and CTI networks or LANS is to protect the particular solution from threats from sources external to the solution. Connecting these dedicated LANs to another LAN negates this protection.                                  \n> OAM&P/NM and CTI solutions are tested and approved for DSN APL listing based on a dedicated / OOB network for each solution. In keeping with the requirement that APL solutions be implemented in the same configuration as was tested, these systems must be implemented on a dedicated LAN for each solution. This is because there is no way of knowing what security risks will result from merging different solutions on a single LAN without testing the specific combination. One solution could affect the security of the other. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8546",
+      "title": "The auditing process DOES NOT record security relevant actions such as  the changing of security levels or categories of information",
+      "description": "Requirement: The IAO will ensure that the auditing process records security relevant actions (e.g., the changing of security levels or categories of information).                \n\nSecurity relevant actions such as the following should be recorded to provide an effective security audit process:                \n-\tLogons and logouts                 \n-\tExcessive logon attempts/failures                  \n-\tRemote system access                    \n-\tChange in privileges or security attributes                     \n-\tChange of security levels or categories of information                          \n-\tFailed attempts to access restricted system privilege levels or data files                         \n-\tAudit file access (if possible)                    \n-\tPassword changes                      \n-\tDevice configuration changes                                                    \n\nThe information that each audit record should have is as follows:                                \n-\tDate and time of the event                        \n-\tOrigin of the request (e.g., terminal ID)                     \n-\tUnique ID of the user who initiated the event                          \n-\tType of event                     \n-\tSuccess or failure                     \n-\tDescription of modification to configurations",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8554",
+      "title": "The available option of Command classes or command screening is NOT being used to limit system privileges ",
+      "description": "Requirement: The IAO will ensure that devices that are capable of command screening or command classes are configured to use this feature in conjunction with DAC.              \n          \nInput screening in telecommunications switches is the feature that permits an authorized individual to use one or more command classes.  This feature supports DAC requirements and is used for both local and remote administration of the switches.                         \n\nMost switches utilize user password protection to access the operation and configuration of the switch.  Most switch designs utilize levels of privileged access, each using password submission and validation at each level, to allow access to that particular function.  The lowest privilege level would allow user access to perform various routine maintenance tasks or entry of subscriber data.  A second level would give access to perform highly important routines, configuration changes, and change capability of first and second level passwords.  Changing a second level password often requires a distinct identification or special password.                          \n\nDiscretionary access control for system administration and maintenance access to the switch or peripheral system commands must be restricted based on the required functions or role of the user where technically feasible.                              \n\nInput command screening can be implemented in switches to further control user access and privileges.  To do this, individual commands available in the switch are first assigned a specific command class.  Each Administrative/Maintenance user is then assigned a primary function that is associated with a collection of input commands that the system accepts from that specific user.",
+      "severity": "low"
+    },
+    {
+      "id": "V-8556",
+      "title": "All system administrative and maintenance user accounts are not documented.",
+      "description": "Requirement: The IAO will document all system administrative and maintenance user accounts.                 \n\nIt is imperative that the IAO and SA is aware of all administrative and maintenance accounts that are configured on the system. These accounts must be documented and validated against the roster of SAs and maintenance users that are approved for access to the system. Un-needed accounts provide a means of compromise.Additionally, for each user / allowable account, the privileges, roles, and allowable commands for the account must be documented.  ",
+      "severity": "low"
+    },
+    {
+      "id": "V-8558",
+      "title": "System administrative and maintenance users are assigned accounts with privileges that are not commensurate with their assigned responsibilities.",
+      "description": "Requirement: The IAO will ensure that all systems and devices employ a role-based Discretionary Access Control system used to control access to OAM&P / NM systems, the devices they manage, and their command classes for administrative and maintenance users commensurate with their assigned responsibilities.               \n\nTo ensure system security, all assigned administrator and maintenance user account privileges must be limited to perform their specific function.  Furthermore, super user access is to be held to a minimum and assigned to only those most knowledgeable of the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8559",
+      "title": "Strong two-factor authentication is NOT used to access all management system workstations and administrative / management ports on all devices or systems",
+      "description": "Requirement: The IAO will ensure strong two-factor authentication is required to access all management system workstations and administrative / management ports on any device or system. The term strong two-factor authentication refers to the use of two forms of identification. This is usually something you know and something you have. A username and password is not considered two-factor authentication. It is actually the something you know. This could also be a security code. The something you have is a typically physical token. An example of this is a bankcard and PIN. Additionally there are tokens associated with one-time password access control systems available such as RSA Security’s SecurID and Quest Software’s NC-Pass. These provide a constantly changing code that is used in conjunction with an additional PIN or password to generate a one time password. The code is generated by a RNG algorithm that is synchronized with a server application (e.g., RSA ACE). These and similar tokens are, and have been, widely used in DoD for access control to network elements, servers, and mainframes.  These and similar one-time password tokens used in conjunction with their associated access control servers meet the intent of this requirement. \n\nNOTE: One-time password tokens and systems are older technology which is no longer mentioned in DoD policy even though the technology has been in previous DoD policy; has been in use for some time; and is currently being used in many instances for access control to legacy systems. Going forward, however, DoD policy only supports DoD’s token of choice which is the Common Access Card (CAC) or Personal Identity Verification (PIV) card which contain DoD Public Key Infrastructure (PKI) certificates. The CAC/PIV is the DoD’s token of choice. Meeting this requirement does not satisfy requirements that dictate the use of CAC/PKI tokens. The use of a one-time-password token and access control server can only (and may only) serve as a mitigation for not being able to meet CAC/PKI requirements. This is typical of older legacy systems such as mainframes. \n\nAPL NOTE: New systems being developed for use by DoD and those being tested for inclusion on the DoD Approved Products List (APL) should support CAC/PKI tokens rather than one-time password token systems.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8560",
+      "title": "Access to all management system workstations and administrative / management ports is NOT remotely authenticated",
+      "description": "Requirement: The IAO will ensure that remote authentication is used to control access to all management system workstations and administrative / management ports on any device or system. \n\nThe term remote authentication refers to a system or device that communicates with a remote Authentication Authorization Accounting (AAA) server to validate the users account information before granting access. The remote server can also control user rights or permissions based on their defined roles. Systems such as RADIUS, DIAMETER, and TACACS+ typically provide this functionality for network elements. Systems such as domain controllers provide this functionality for network management workstations.\n\nThe use of a centralized AAA server provides for centralized management of all network element SA’s accounts and privileges. This eliminates the need for an SA to have an individual account on each network element. This reduces the chance that an account will be compromised since the centralized server can be better protected than each network element. This also reduces the number of accounts in the network that can be easily accessed and compromised. A network consists of manu network elements that cannot be individually protected. An SA account on each multiplies the chance that an account can be compromised.  Additionally, the use of a centralized AAA server supports proper password management when a SA is required to manage multiple devices. If the SA had to change his/her password on each device, the chance that a password is not changed (device missed) is greater.\n\nNOTE: This requirement supports, and is supported by, the Network Infrastructure STIG requirements that AAA servers are to be implemented in the enclave’s management network. In general the DSN system should integrate with the AAA service that already exists in the enclave’s management network if possible. \n\nThis requirement is primarily focused on a group of distributed devices such as those that comprise a network (e.g., LAN switches, routers, backbone transport devices, distributed media gateways, endpoints, etc). While a system/device that is itself centralized (e.g., a telecom switch or VoIP controller); is capable of comprehensive role based AAA services such that it can stand on its own; which can protected from external access much as a centralized AAA server would be, It is still best practice to integrate such a device with a centralized AAA server particularly if multiple SAs must have access from multiple locations such as different local or remote NOCs.\n",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "name": "mobileiron_core_v9.x_mdm",
+  "date": "2017-06-02",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "MobileIron Core v9.x MDM Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-70517",
+      "title": "All MobileIron Core MDM server cryptography supporting DoD functionality must be configured to use FIPS 140-2 validated encryption modules.",
+      "description": "Unapproved cryptographic algorithms cannot be relied upon to provide confidentiality or integrity, and DoD data could be compromised as a result. The most common vulnerabilities with cryptographic modules are those associated with poor implementation. FIPS 140-2 validation provides assurance that the relevant cryptography has been implemented correctly. FIPS 140-2 validation is also a strict requirement for use of cryptography in the Federal Government for protecting unclassified data.\n\nSFR ID: FCS",
+      "severity": "medium"
+    },
+    {
+      "id": "V-70519",
+      "title": "The MobileIron Core MDM server must be configured to leverage the MDM Platform user accounts and groups for MDM Server user identification and authentication.",
+      "description": "A comprehensive account management process that includes automation helps to ensure the accounts designated as requiring attention are consistently and promptly addressed. If an attacker compromises an account, the entire MDM server infrastructure is at risk. Providing automated support functions for the management of accounts will ensure only active accounts will be granted access with the proper authorization levels. These objectives are best achieved by configuring the MDM server to leverage an enterprise authentication mechanism (e.g., Microsoft Active Directory Kerberos). \n\nSFR ID: FIA",
+      "severity": "medium"
+    },
+    {
+      "id": "V-70521",
+      "title": "Before establishing a user session, the MobileIron Core MDM server must be configured to display an administrator-specified advisory notice and consent warning message regarding use of the MDM server.",
+      "description": "Note: The advisory notice and consent warning message is not required if the General Purpose OS or Network Device displays an advisory notice and consent warning message when the administrator logs on to the General Purpose OS or Network Device prior to accessing the MDM server or MDM Server platform.\n\nThe MDM server/server platform is required to display the DoD-approved system use notification message or banner before granting access to the system that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. This ensures the legal requirements for auditing and monitoring are met. \n\nThe approved DoD text must be used as specified in KS referenced in DoDI 8500.01.\n\nThe non-bracketed text below must be used without any changes as the warning banner. \n\n[A. Use this banner for desktops, laptops, and other devices accommodating banners of 1300 characters. The banner shall be implemented as a click-through banner at logon (to the extent permitted by the operating system), meaning it prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating “OK.”]\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. \nBy using this IS (which includes any device attached to this IS), you consent to the following conditions: \n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. \n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n\nSFR ID: FMT_SMF_EXT.1.1(2) Refinement d.",
+      "severity": "low"
+    },
+    {
+      "id": "V-70523",
+      "title": "The MobileIron Core MDM server must be configured to block mobile devices that do not have required OS type and version.",
+      "description": "Unapproved mobile device OS types and versions may have vulnerabilities and need to be prohibited to mitigate these risks to sensitive DoD data and DoD networks.\n\nSFR ID: FMT_SMF.1.1(2) Refinement f.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-70525",
+      "title": "The MobileIron Core MDM server must be configured to record within each audit record required information: a. date and time of the event; b. type of event; c. mobile device identity; and d. [no other audit relevant information].",
+      "description": "Audit records must contain basic data fields so they contain enough information to support identification and investigation of attempted or successful compromises. Failure to have these data fields in audit records makes it more difficult to identify or investigate attempted or successful compromises, potentially causing incidents to last longer than necessary.\n\nSFR ID: FAU_GEN.1.2(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-70527",
+      "title": "The MobileIron Core MDM server must be configured to block mobile devices that do not have required applications installed.",
+      "description": "The security baseline of managed mobile devices could be compromised if key required applications are not installed, including device monitoring and management applications. This requirement mitigates that risk.\n\nSFR ID: FMT_SMF.1.1(1) Refinement #28",
+      "severity": "low"
+    },
+    {
+      "id": "V-70529",
+      "title": "The MobileIron Core MDM server must be configured to enable an audit record for the following auditable events: any event selected in the ST under FAU_ALT_EXT.2.1.",
+      "description": "Failure to generate these audit records makes it more difficult to identify or investigate attempted or successful compromises, potentially causing incidents to last longer than necessary.\n\nSFR ID: FAU_GEN.1.1(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-70531",
+      "title": "The MobileIron Core MDM server must be configured with the Administrator roles: a. MD user. b. Server primary administrator. c. Security configuration administrator. d. Device user group administrator. e. Auditor.",
+      "description": "Having several roles for the MDM server supports separation of duties. This allows administrator-level privileges to be granted granularly, such as giving application management privileges to one group and security policy privileges to another group. This helps prevent administrators from intentionally or inadvertently altering other settings and configurations they may not understand or approve of, which can weaken overall security and increase the risk of compromise.\n\nSFR ID: FMT_SMR.1.1(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-70533",
+      "title": "The MobileIron Core MDM server or platform must be configured to initiate a session lock after a 15-minute period of inactivity.",
+      "description": "A session time-out lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence. Rather than relying on the user to manually lock their application session prior to vacating the vicinity, applications need to be able to identify when a user's application session has idled and take action to initiate the session lock.\n\nThe session lock is implemented at the point where session activity can be determined and/or controlled. This is typically at the operating system-level and results in a system lock but may be at the application-level where the application interface window is secured instead.\n\nSFR ID: FMT_SMF.1.1(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-70535",
+      "title": "The MobileIron Core MDM server platform must be protected by a DoD-approved firewall.",
+      "description": "Most information systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Unneeded services and processes provide additional threat vectors and avenues of attack to the information system. The MDM server is a critical component of the mobility architecture and must be configured to only those ports, protocols, and services (PPS) necessary to support functionality, all others must be expressly disabled or removed. A DoD-approved firewall implements the required network restrictions. A host-based firewall is appropriate where the MDM server runs on a standalone platform. Network firewalls or other architectures may be preferred where the MDM server runs in a cloud or virtualized solution.\n\nSFR ID: FMT_SMF.1.1(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-70537",
+      "title": "The firewall protecting the MobileIron Core MDM server platform must be configured to restrict all network traffic to and from all addresses with the exception of ports, protocols, and IP address ranges required to support MDM server and platform functions.",
+      "description": "Most information systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations. Since the MDM server is a critical component of the mobility architecture and must be configured to only those ports, protocols, and services (PPS) necessary to support functionality, all others must be expressly disabled or removed. A firewall installed on the MDM server provides a protection mechanism to ensure unwanted service requests do not reach the MDM server and outbound traffic is limited to only MDM server functionality.\n\nSFR ID: FMT_SMF.1.1(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-70539",
+      "title": "The MobileIron Core MDM server appliance must be configured to terminate the network connection associated with a communications session at the end of any transaction with an MDM agent or other server or after 10 minutes of inactivity.",
+      "description": "If communications sessions remain open for extended periods of time even when unused, there is the potential for an adversary to highjack the session and use it to gain access to the device or networks to which it is attached. Terminating sessions after a certain period of inactivity is a method for mitigating the risk of this vulnerability.\n\nSFR ID: FMT_SMF.1.1(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-70541",
+      "title": "The MobileIron Core MDM agent must be configured for the periodicity of reachability events for six hours or less.",
+      "description": "Mobile devices that do not enforce security policy or verify the status of the device are vulnerable to a variety of attacks. The key security function of MDM technology is to distribute mobile device security polices in such a manner that they are enforced on managed mobile devices. To accomplish this function, the MDM agent must verify the status and other key information of the managed device and report that status to the MDM server periodically.\n\nSFR ID: FMT_SMF_EXT.3.2",
+      "severity": "low"
+    }
+  ]
+}

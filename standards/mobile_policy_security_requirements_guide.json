@@ -1,0 +1,437 @@
+{
+  "name": "mobile_policy_security_requirements_guide",
+  "date": "2013-07-03",
+  "description": "The Mobile Policy Security Requirements Guide (SRG) is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the NIST 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailbox@mail.mil.",
+  "title": "Mobile Policy Security Requirements Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-35910",
+      "title": "The organization must define the maximum number of consecutive, unsuccessful login attempts to CMDs are permitted.",
+      "description": "Without proper lockout policies that define the maximum number of consecutive unsuccessful login attempts, unauthorized users could continually attempt to gain access to the mobile device. Allowing an unlimited number of login attempts to a mobile device could result in unauthorized access to data that is stored on the mobile device (e.g., contact lists, emails, calendar events, etc.) and unauthorized use of the mobile device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35911",
+      "title": "The organization must comply with DoD ports and protocol guidance within the information system deemed to be non-secure for remote access into DoD networks.",
+      "description": "Some networking protocols are considered less secure than others (e.g., Bluetooth, peer-to-peer, etc.). In its access control policy and security procedures addressing remote access to the information system, the organization, in order to protect and secure its network, must define those network protocols considered to be non-secure. Failure to define the non-secure network protocols could result in the organization's network being open to access by these non-secure protocols, which could result in unauthorized access to, modification of, or destruction of sensitive or classified data. \n\nFor mobile systems, several non-secure protocols are used routinely in the commercial world. Many of these must not be allowed on DoD networks and specified.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35912",
+      "title": "The organization must make a risk-based determination for applications before they are accredited by the DAA prior to distribution or installation on a CMD.",
+      "description": "CMD applications can be written and published very quickly without a thorough life cycle management process or security assessment. It is critical that all applications that reside on CMDs go through the same rigorous security evaluation as a typical COTS product, so as not to introduce malware or other risks to DoD information and networks. If an application is utilized that has not been approved for use, and a risk based determination has not been made by the appropriate approving authority, DoD has no way of knowing what type of risk the application may pose to DoD information systems or data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35913",
+      "title": "The organizations wireless metropolitan area network (WMAN) system accreditation must include a Transmission Security (TRANSEC) vulnerability analysis, if the WMAN system operates in a tactical environment.",
+      "description": "If a TRANSEC vulnerability analysis has not been completed, the system may not be designed or configured correctly to mitigate exposure of DoD data, or may be vulnerable to a wireless attack. The purpose of the analysis is to determine the jamming and exploitation risk of a WMAN system based on the design of the system\n\nIf the WMAN system is a tactical system or a commercial system operated in a tactical environment, the site WMAN system accreditation documentation must include a Transmission Security (TRANSEC) vulnerability analysis. The analysis must include a determination on whether the system has a low probability of exploitation (LPE) for the WMAN signal in space, and list recommended risk mitigation actions. \n\nNOTE: This check should only be reviewed during the initial system Certification and Accreditation (C&A). \n\nThis requirement originated in DTM 08-039, \"Commercial Wireless Metropolitan Area Network (WMAN) Systems and Technology.\"",
+      "severity": "low"
+    },
+    {
+      "id": "V-35919",
+      "title": "The organization must monitor for unauthorized wireless connections to the information system at an organization defined time period.",
+      "description": "DoD networks are at risk, and DoD data could be compromised if wireless scanning is not conducted to identify unauthorized WLAN clients and access points connected to, or attempting to, connect to the network. \n\nDoD components will ensure a Wireless Intrusion detection System (WIDS) is implemented that allows for monitoring of WLAN activity and the detection of WLAN-related policy violations on all unclassified and classified DoD wired and wireless LANs. \n\nThe WIDS shall be capable of monitoring Wi-Fi transmissions within all DoD LAN environments and detecting nearby unauthorized WLAN devices. WIDS are not required to monitor non-Wi-Fi transmissions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35920",
+      "title": "The organization must define a time period for monitoring of unauthorized wireless connections to information systems, including scans for unauthorized wireless access points.",
+      "description": "Wireless technologies include, but are not limited to, microwave, satellite, packet radio (UHF/VHF), Wi-Fi, and Bluetooth. Wireless networks present similar security risks to those of a wired network, and since the open airwaves are the communications medium for wireless technology, an entirely new set of risks are introduced. Implementing wireless computing and networking capabilities in accordance with the organization defined wireless policy, within organization-controlled boundaries, allowing only authorized and qualified personnel to configure wireless services, and conducting periodic scans for unauthorized wireless access points greatly reduces vulnerabilities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35921",
+      "title": "The organization must document and take appropriate action if an unauthorized wireless connection is discovered.",
+      "description": "Wireless technologies include, but are not limited to, microwave, satellite, packet radio (UHF/VHF), Wi-Fi, and Bluetooth. Wireless networks present similar security risks to those of a wired network, and since the open airwaves are the communications medium for wireless technology, an entirely new set of risks are introduced. Implementing wireless computing and networking capabilities in accordance with the organization defined wireless policy, within organization-controlled boundaries, allowing only authorized and qualified personnel to configure wireless services, and conducting monitoring and periodic scans for unauthorized wireless access points greatly reduces vulnerabilities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35922",
+      "title": "The organization must define the appropriate action(s) to be taken if an unauthorized wireless connection is discovered.",
+      "description": "Wireless technologies include, but are not limited to, microwave, satellite, packet radio (UHF/VHF), Wi-Fi, and Bluetooth. Wireless networks present similar security risks to those of a wired network, and since the open airwaves are the communications medium for wireless technology, an entirely new set of risks are introduced. Implementing wireless computing and networking capabilities in accordance with the organization defined wireless policy, within organization-controlled boundaries, allowing only authorized and qualified personnel to configure wireless services, and conducting monitoring and periodic scans for unauthorized wireless access points greatly reduces vulnerabilities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35924",
+      "title": "The organization must establish usage restrictions for wireless access.",
+      "description": "Wireless security has additional vulnerability because of transmission over an open medium accessible by all, yielding a broader threat profile. Without a methodology for the deployment and usage of wireless devices and access, security of the infrastructure and data cannot be assured. Wireless technologies include, but are not limited to, microwave, satellite, packet radio (UHF/VHF), Wi-Fi, and Bluetooth. Wireless networks present similar security risks to those of a wired network, and since the open airwaves are the communications medium for wireless technology, an entirely new set of risks are introduced. Implementing wireless computing and networking capabilities in accordance with the organization defined wireless policy, and allowing only authorized and qualified personnel to configure wireless services, greatly reduces vulnerabilities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35928",
+      "title": "The organization must confine Wi-Fi and Bluetooth communications to organization-controlled boundaries.",
+      "description": "Wireless technologies controlled by this requirement are only Wi-Fi, and Bluetooth. Wireless networks present similar security risks to those of a wired network, and since the open airwaves are the communications medium for wireless technology, an entirely new set of risks are introduced. Implementing wireless computing and networking capabilities in accordance with the organization defined wireless policy, within organization controlled boundaries, greatly reduces vulnerabilities. \n\nNote: Not to be used with Class 1 Bluetooth radios.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35929",
+      "title": "The organization concept of operations (CONOPS) or site security plan must include information that Bluetooth devices use only Class 2 or 3 standard radios.",
+      "description": "A key security control for DoD Bluetooth devices is to limit the broadcast area of the Bluetooth signal to the personal area of the user (approximately 30 feet or less). Class 1 radios broadcast at a higher power and are more vulnerable than Class 2 or 3 radios. The Class 1 radio signal is broadcast much farther; therefore, an adversary can be much farther away to intercept or monitor the transmission. \n\nClass 3 radios – have a range of up to 1 meter or 3 feet.\nClass 2 radios – most commonly found in mobile devices – have a range of 10 meters or 33 feet.\nClass 1 radios – used primarily in industrial use cases – have a range of 100 meters or 300 feet.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35930",
+      "title": "The organization concept of operations (CONOPS) or site security plan must include guidance that signal amplification, antenna configuration, or other techniques must not be modified in Bluetooth radios that could affect signal detection or interception.",
+      "description": "If Bluetooth radio modifications have been made, security personnel cannot predict potential vulnerabilities of the system due to lack of security analysis of the modified state.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35932",
+      "title": "The organization must obtain U.S. Forces Command (USFORSCOM) or host nation approval for the use of wireless equipment prior to operation of such equipment outside the United States and Possessions (USP).",
+      "description": "When using a wireless system outside of the US&P, host nation wireless spectrum regulations must be followed. Otherwise, the system could interfere with, or be disrupted by, host nation communications systems.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35933",
+      "title": "The organization must remove the wireless interface on computers with an embedded wireless system before the computer is used to transfer, receive, store, or process classified information.",
+      "description": "The majority of consumer based laptops have wireless network interface cards (NICs) integrated with the computer's motherboard. Although the system administrator may disable these embedded NICs, the user may purposely or accidentally enable the device. These devices may also inadvertently transmit ambient sound or electronic signals. Therefore, simply disabling the transmit capability is not an adequate solution for computers processing classified information. In addition, embedded wireless cards do not meet DoD security requirements for classified wireless usage.",
+      "severity": "high"
+    },
+    {
+      "id": "V-35934",
+      "title": "The organization must establish implementation guidance for wireless access.",
+      "description": "Wireless technologies include, but are not limited to, microwave, satellite, packet radio (UHF/VHF), Wi-Fi, and Bluetooth. Wireless networks present similar security risks to those of a wired network, and since the open airwaves are the communications medium for wireless technology, an entirely new set of risks are introduced. Implementing wireless computing and networking capabilities in accordance with the organization defined wireless policy, and allowing only authorized and qualified personnel to configure wireless services, greatly reduces vulnerabilities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35935",
+      "title": "The organization must ensure all wireless systems connected to a DoD network (including associated peripheral devices, operating system, applications, network/PC connection methods, and services) are approved by the approval authority prior to installation and use for processing DoD information.",
+      "description": "Unauthorized wireless systems expose DoD networks to attack. The DAA and appropriate commanders must be aware of all wireless systems used at the site. DAAs should ensure a risk assessment is conducted for each system, including associated services and peripherals, before approving. The DAA should accept risks only when required to meet mission requirements.\n\nThe intent of this requirement is to ensure the DAA has approved the use of the wireless system. This approval can be documented in several ways. The most common is the site security plan includes the wireless system and the DAA has signed the site security plan. If the command uses an enterprise wide site security plan including the wireless system being reviewed, and the site security plan applies to the site being reviewed, then the requirement has been met.",
+      "severity": "high"
+    },
+    {
+      "id": "V-35936",
+      "title": "The organizations wireless policy or wireless remote access policy must include information on locations CMD Wi-Fi access is approved or disapproved.",
+      "description": "If the policy does not include information on Wi-Fi security controls, it is more likely that the security controls will not be implemented properly. Without appropriate controls, Wi-Fi is vulnerable to a number of security breaches. These breaches could involve the interception of sensitive DoD information and the use of the device to connect to DoD networks.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35937",
+      "title": "The organization must have a written policy or training materials stating Bluetooth must be disabled on all applicable devices unless they employ FIPS 140-2 validated cryptographic modules for data in transit.",
+      "description": "Policy and training provide assurance that security requirements will be implemented in practice. Failure to use FIPS 140-2 validated cryptography makes data more vulnerable to security breaches as the data is unencrypted and in clear text.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35938",
+      "title": "The organization must maintain a SIPRNet connection approval package with the Classified Connection Approval Office (CCAO) when connecting a Secure WLAN (SWLAN) to SIPRNet.",
+      "description": "The CCAO approval process provides assurance that the SWLAN use is appropriate and does not introduce unmitigated risks into the SIPRNet.",
+      "severity": "high"
+    },
+    {
+      "id": "V-35939",
+      "title": "The organization must reasonably size and constrain the Wireless Metropolitan Area Network (WMAN) signals to their intended coverage area.",
+      "description": "Wireless signals can be intercepted more easily by an adversary than a wired signal due to the nature of the technology. DoD data may be at risk of exposure if the signals are not constrained to an area that is appropriately sized.\n\nThis requirement originated in DTM 08-039, \"Commercial Wireless Metropolitan Area Network (WMAN) Systems and Technology.\"",
+      "severity": "low"
+    },
+    {
+      "id": "V-35940",
+      "title": "The organizations WMAN system must not operate in the 3.30-3.65 GHz frequency band.",
+      "description": "The 3.30-3.65 GHz frequency band WMAN interferes with DoD radar systems. Therefore, this range must be avoided.\n\nThis requirement originated in DTM 08-039, \"Commercial Wireless Metropolitan Area Network (WMAN) Systems and Technology.\"",
+      "severity": "low"
+    },
+    {
+      "id": "V-35941",
+      "title": "The Incident Response Plan (IRP) and/or SOP must have the required procedures for reporting the results of WMAN intrusion scans.",
+      "description": "If scan results are not properly reported and acted on, the site could be vulnerable to wireless attack. \n\nThis requirement originated in DTM 08-039, \"Commercial Wireless Metropolitan Area Network (WMAN) Systems and Technology.\"",
+      "severity": "low"
+    },
+    {
+      "id": "V-35942",
+      "title": "The organization must only procure and deploy WPA2-Enterprise certified WLAN equipment and software for wireless systems that connect directly to DoD networks.",
+      "description": "The Wi-Fi Alliance WPA2-Enterprise certification means the WLAN equipment can support DoD security protocol and encryption requirements, most notably EAP-TLS and AES-CCMP. If the equipment has not been WPA-Enterprise certified, the equipment may not have the required security functionality to adequately protect DoD networks and information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35946",
+      "title": "The organization must authorize wireless access to the information system prior to connection.",
+      "description": "Wireless technologies include, but are not limited to, microwave, satellite, packet radio (UHF/VHF), Wi-Fi, and Bluetooth. Wireless networks present similar security risks to those of a wired network, and since the open airwaves are the communications medium for wireless technology, an entirely new set of risks are introduced. Implementing wireless computing and networking capabilities in accordance with the organization defined wireless policy, and allowing only authorized and qualified personnel to configure wireless services, greatly reduces vulnerabilities. For example, wireless networks use authentication protocols (e.g., EAP/TLS, PEAP), which provide credential protection and mutual authentication.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35947",
+      "title": "The organization must maintain a list of all DAA-approved wireless and non-wireless devices under their control that store, process, or transmit DoD information.",
+      "description": "Close tracking of authorized wireless devices will facilitate the search for rogue devices. Sites must maintain precise inventory control over wireless and handheld devices used to store, process, and transmit DoD data as these devices can be easily lost or stolen, leading to possible exposure of DoD data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35948",
+      "title": "The organization must include each wireless device connecting to a DoD network in the applicable site security plan or other appropriate DIACAP document.",
+      "description": "The DAA and site commander must be aware of all approved wireless devices used at the site or DoD data may be exposed to unauthorized individuals. Documentation of the enclave configuration must include all attached systems. If the current configuration cannot be determined, then it is difficult to apply security policies effectively. Security is particularly important for wireless technologies attached to the enclave network because these systems increase the potential for eavesdropping and other unauthorized access to network resources.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35949",
+      "title": "The organization must have a wireless remote access policy signed by the site DAA, Commander, Director, or other appropriate authority.",
+      "description": "Wireless clients, DoD data, and the DoD network could be compromised if operational policies for the use of wireless remote access are not documented by the site. \n\nA site's Remote Access Policy will be written and signed by the site DAA, Commander, Director, or other appropriate manager(s). The policy should include required security controls for the DoD-owned/operated wireless client (laptop or CMD):\n\n- Device unlock password requirements.\n- Anti-virus application.\n- Personal firewall.\n- Client software patches kept up to date - Internet browsing through enterprise Internet gateway.\n- Device security policy managed by centrally-managed policy manager.\n- Anti-spyware app (recommended).\n- Procedures after client is lost, stolen, or other security incident occurs.\n- Host-based Wireless Intrusion Detection and Prevention System (WIDPS)/monitor WIDPS.\n- Configuration requirements of wireless client - Home WLAN authentication requirements.\n- Home WLAN SSID requirements.\n- Separate WLAN access point required for home WLAN.\n- 8+-character authentication password required for home WLAN.\n- Use of third-party Internet portals (kiosks) (approved or not approved).\n- Use of personally-owned or contractor-owned client devices (approved or not approved).\n- Implementation of health check of client device before connection is allowed.\n- Places where remote access is approved (home, hotels, airport, etc.).\n\n- Roles and responsibilities:\n--Which users or groups of users are and are not authorized to use organization's WLANs.\n--Which parties are authorized and responsible for installing and configuring APs and other WLAN equipment.\n\n- WLAN infrastructure security:\n--Physical security requirements for WLANs and WLAN devices, including limitations on the service areas of WLANs.\n--Types of information that may and may not be sent over WLANs, including acceptable use guidelines.\n\n- WLAN client device security:\n--The conditions under which WLAN client devices are and are not allowed to be used and operated.\n--Standard hardware and software configurations that must be implemented on WLAN client devices to ensure the appropriate level of security.\n--Limitations on how and when WLAN client's device may be used, such as specific locations.\n\n- Guidelines on reporting losses of WLAN client devices and reporting WLAN security incidents.\n- Guidelines for the protection of WLAN client devices to reduce theft.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35950",
+      "title": "The organization must notify the Certified TEMPEST Technical Authority (CTTA) before a Secure WLAN (SWLAN) becomes operational and connected to the SIPRNet.",
+      "description": "A TEMPEST review must be completed or classified information may be at risk of exposure.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35953",
+      "title": "The organization must ensure the network access control solution supports wireless clients and solutions if wireless networking is implemented.",
+      "description": "Without a secure network access solution implemented, rogue and/or non-policy compliant devices can gain access to the network and its resources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35955",
+      "title": "The organization must have written policy or training material stating CMDs must not be used to receive, transmit, or process classified messages unless specifically approved by NSA for such purposes and NSA-approved transmission and storage methods are used.",
+      "description": "Wireless devices will not be used for processing classified data unless approved for such use as classified data could be compromised or exposed to unauthorized personnel.",
+      "severity": "high"
+    },
+    {
+      "id": "V-35956",
+      "title": "The organization must not permit operation of wireless devices in areas where classified information is electronically stored, processed, or transmitted unless operation is in accordance with DAA-approved CTTA restrictions at the site.",
+      "description": "The operation of electronic equipment and emanations must be controlled in and around areas where sensitive information is kept or processed. Ensure wireless devices are not operated in areas where classified information is electronically stored, processed, or transmitted unless:\n\n- Approved by the DAA in consultation with the Certified TEMPEST Technical Authority (CTTA).\n- The wireless equipment is separated from the classified data equipment at the minimum distance determined by the CTTA, and appropriate countermeasures, as determined by the CTTA, are implemented.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35958",
+      "title": "The organization must have a policy forbidding the use of wireless personal area network (PAN) devices, such as near-field communications (NFC), Bluetooth, and ZigBee, to send, receive, store, or process classified information.",
+      "description": "Classified data could be compromised since wireless PAN devices do not meet DoD encryption requirements for classified data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-35960",
+      "title": "The organization must have written policy or training material that states non-enterprise activated CMD are not permitted to connect to DoD networks.",
+      "description": "Non-enterprise activated CMDs are not authorized to connect to DoD networks or to DoD computers that will be connected to DoD networks, because they do not have required security controls. There is a significant risk of introducing malware on a DoD network if these types of devices are connected to a DoD network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-35961",
+      "title": "The organization must not permit non-enterprise activated CMDs to process or store DoD sensitive information, including DoD email.",
+      "description": "Non-enterprise activated CMDs are not authorized to process any information other than non-sensitive because they do not have required security controls to avoid tampering and malicious intent. There is a high risk of introducing malware and exfiltration of information if these types of devices store or process anything other than non-sensitive information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35962",
+      "title": "The organization must require that mobile devices used in facilities containing information systems processing, storing, or transmitting classified information, and the information stored on those devices, are subject to random reviews/inspections by organization defined security officials.",
+      "description": "The organization's access control procedures and security policies establish the requirement to control the use of various mobile devices and connected or imbedded capabilities. These policies and procedures are ineffective if there is no process in place ensuring the policies and procedures are being followed. A process of randomly inspecting or reviewing the various mobile devices, to include connected or imbedded capabilities, can be effective in ensuring compliance with the organization’s mobile device policies and procedures.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35963",
+      "title": "The organization must periodically conduct manual audits of CMDs to verify the CMD is not running unauthorized software or has otherwise not been modified in an unauthorized manner.",
+      "description": "The organization's access control procedures and security policies establish the requirement to control the use of various mobile devices and connected or imbedded capabilities. These policies and procedures are ineffective if there is no process in place ensuring the policies and procedures are being followed. A process of randomly inspecting or reviewing the various mobile devices, to include connected or imbedded capabilities, can be effective in ensuring compliance with the organization’s mobile device policies and procedures.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35964",
+      "title": "The organization, at the mobile device management (MDM) server site, must verify that local sites, where CMDs are provisioned, issued, and managed, are conducting annual self assessments.",
+      "description": "The security integrity of the CMD system depends on whether local sites, where CMDs are provisioned and issued, are complying with IA requirements. The risk of both malware being introduced on a handheld device, and of avenues of attack into the enclave being introduced via a CMD, are heightened if IA control procedures are not followed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35965",
+      "title": "The organization must store and maintain a configuration baseline of each CMD, including application software.",
+      "description": "An integrity baseline scan must be maintained, so the baseline can be compared to any subsequent scan to identify any anomalies or determine if there are any security vulnerability trends or compromises to the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35966",
+      "title": "The organization must maintain results and mitigation actions, from CMD integrity validation tool scans on site managed mobile devices, for 6 months (one year recommended).",
+      "description": "Scan results must be maintained, so auditors can verify mitigation actions have been completed, so a scan can be compared to a previous scan, and to determine if there are any security vulnerability trends.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35967",
+      "title": "The organization must ensure WIDS sensor scan results are saved for at least 6 months (one year recommended).",
+      "description": "If organizations do not maintain scan logs, it cannot be determined if intrusion detection findings are isolated and harmless events, or a more sustained, methodical attack on the system.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35968",
+      "title": "The organization must review MDM integrity scan results at least daily.",
+      "description": "If the organization does not review the integrity tool scans, an attacker may not be noticed by the administrator, and gain control of DoD data or compromise the system.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35970",
+      "title": "The organization must follow the incident handling policy if classified information is found on mobile devices.",
+      "description": "In spite of the best security policies, restrictive controls, and random review procedures, incidents of leakage of classified data to unclassified CMDs are bound to occur. In these instances, the organization must have a set of defined procedures to be implemented when classified data is discovered on CMD. Failure to have incident handling procedures defined could result in confusion in the proper handling of the incident by organization personnel, or, worst case, classified data being disclosed to unauthorized sources. This requirement applies to all CMDs.\n\nThis requirement also applies to sensitive DoD information stored on CMDs that are not authorized to connect to DoD networks or store/process sensitive DoD information. Sensitive DoD data or information is defined as any data/information that has not been approved for public release by the site/Command Public Affairs Officer (PAO).",
+      "severity": "high"
+    },
+    {
+      "id": "V-35971",
+      "title": "The organization must establish a standard operating procedure (SOP) for data spills on CMDs.",
+      "description": "When a data spill occurs on a CMD, classified or sensitive data must be protected to prevent disclosure. After a data spill, the CMD must either be wiped using approved procedures, or destroyed if no procedures are available, so classified or sensitive data is not exposed. If a data spill procedure is not published, the site may not use approved procedures to remediate after a data spill occurs and classified data could be exposed.\n\nThis requirement also applies to sensitive DoD information stored on mobile OS devices that are not authorized to connect to DoD networks or store/process sensitive DoD information. Sensitive DoD data or information is defined as any data/information that has not been approved for public release by the site/Command Public Affairs Officer (PAO).\n\nIn accordance with DoD policy, all components must establish Incident Handling and Response procedures. A CMI or \"data spill\" occurs when a classified email or document is inadvertently sent on an unclassified network and received on a wireless email device. Classified information may also be transmitted through some other form of file transfer, to include web browser downloads and files transferred through tethered connections. CMDs are not authorized for processing classified data.\n\nThe site's Incident Handling and Response procedures should reference National Security Agency/Central Security Service (NSA/CSS) Storage Device Declassification Manual 9-12, Section 5, for CMD destruction procedures.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35973",
+      "title": "The organization must have a CMD Personal Use Policy that specifies what types of personal files are permitted on the device.",
+      "description": "Malware can be introduced to a DoD enclave via personally-owned applications and personal website accounts. In addition, sensitive DoD data could be exposed, altered, or exfiltrated by the same malware. \n\nThe DoD component must publish a Personal Use Policy for DoD component managed or owned CMDs.\n\nThe policy will provide information on allowed personal use of DoD component mobile devices, including devices approved for connection to DoD networks and processing of sensitive data and for devices not approved for connection to DoD networks and processing of DoD data (for example, non-enterprise activated devices). The policy will be approved by the DAA based on a risk-based assessment. The assessment will consider costs to the Command that could result from additional wireless service charges from personal usage of the device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35974",
+      "title": "The organization must have a CMD Personal Use Policy that specifies restrictions on the use of personal email.",
+      "description": "Malware can be introduced to a DoD enclave via personally owned applications and personal web site accounts. In addition, sensitive DoD data could be exposed, altered, or exfiltrated by the same malware. \n\nThe DoD component must publish a Personal Use Policy for DoD component managed or owned CMDs.\n\nThe policy will provide information on allowed personal use of DoD component mobile devices, including devices approved for connection to DoD networks and processing of sensitive data; and for devices not approved for connection to DoD networks and processing of DoD data (for example, non-enterprise activated devices). The policy will be approved by the DAA based on a risk-based assessment. The assessment will consider costs to the Command that could result from additional wireless service charges from personal usage of the device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35975",
+      "title": "The organizations CMD Personal Use Policy must be approved by its DAA.",
+      "description": "Malware can be introduced on a DoD enclave via personally-owned applications and personal website accounts. In addition, sensitive DoD data could be exposed by the same malware. \n\nThe DoD component must publish a Personal Use Policy for DoD component managed or owned CMDs.\n\nThe policy will provide information on allowed personal use of DoD component mobile devices, including devices approved for connection to DoD networks and processing of sensitive data and for devices not approved for connection to DoD networks and processing of DoD data (for example, non-enterprise activated devices). The policy will be approved by the DAA based on a risk based assessment. The assessment will consider costs to the Command that could result from additional wireless service charges from personal usage of the device.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35976",
+      "title": "The organization must not use DoD-issued software certificates for Non-enterprise activated CMDs.",
+      "description": "If DoD issued certificates are utilized, the device may be able to connect to sites/systems that are otherwise prohibited without the certificate. Non-enterprise activated CMDs are not authorized to access DoD information. In addition, the certificate store will not be protected with AES encryption or be FIPS validated. DoD PKI certificates would be at risk of being compromised.",
+      "severity": "high"
+    },
+    {
+      "id": "V-35977",
+      "title": "The organization must explicitly specify in each sites physical security policy whether CMDs, containing cameras, are permitted at that site.",
+      "description": "CMDs with cameras are easily used to photograph sensitive information and areas if not addressed. Sites must establish, document, and train on how to mitigate this threat.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35979",
+      "title": "The organization must establish standard operating procedures for provisioning mobile devices.",
+      "description": "A trusted provisioning process must be the foundation for installation of the mobile operating system and applications on the device during provisioning (whether tethered or over-the-air (OTA)). Provisioning data includes operating system configuration, key material, and other initialization data. It may be sensitive and therefore must be adequately protected. An adversary within the general proximity of the mobile device can eavesdrop on OTA transactions, making them particularly vulnerable to attack if confidentiality protections are not in place. Proper use of cryptography provides strong assurance that provisioning data is protected against confidentiality attacks. \n\nIt may be possible for an adversary within the general proximity of the mobile device to hijack provisioning sessions and modify data transmitted during the provisioning process.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35980",
+      "title": "The organization must develop policy which ensures a CMD is wiped prior to issuance to DoD personnel.",
+      "description": "Malware may be installed on a device at some point between shipping from the factory and delivery to DoD. The malware could result in the compromise of sensitive DoD information or result in the introduction of malware within the DoD network.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35981",
+      "title": "Develop policy that states CMD software updates must only originate from DoD approved sources.",
+      "description": "Users must not accept over-the-air (OTA) wireless software updates from the wireless carrier or other non-DoD sources unless the updates have been tested and DoD approved. Unauthorized/unapproved software updates could include malware or cause a degradation of the security posture of the CMD and DoD network infrastructure. All software updates should be reviewed and/or tested by the CMD system administrator and originate from an approved DoD source. Wireless software updates should be pushed from the CMD management server, when this feature is available.\n\nOtherwise, the site administrator should verify the non-DoD source of the update has been approved by IT management.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35982",
+      "title": "The organizations DAA must approve the use of software PKI certificates on enterprise-activated CMDs prior to provisioning CMDs with DoD PKI digital certificates.",
+      "description": "S/MIME provides the user with the ability to digitally sign and encrypt email messages, to verify the digital signatures on received messages, and to decrypt messages received from others if those messages are encrypted. Digital signatures provide strong cryptographic assurance of the authenticity and integrity of the signed message, including attachments. This capability protects against the insertion of malicious mobile code and social engineering attacks in which an adversary masquerades as a known user, as well as other exploits. Encryption provides confidentiality for sensitive information, which is particularly valuable when messages are sent to or received from users external to DoD messaging infrastructure, as such messages would otherwise travel in the clear over the public Internet. The use of software certificates adds additional risk of compromise to the user's digital certificates and to the DoD PKI infrastructure.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35983",
+      "title": "The organization must develop policy to restrict CMD Instant Messaging (IM) client applications to connect to only security-compliant, DoD-controlled IM servers.",
+      "description": "Non-DoD IM servers can be located anywhere in the world and may be under an adversary's control. If a DoD CMD IM client connects to a non-DoD IM server, malware could be installed on the CMD from the server, or sensitive DoD data on the CMD could be transferred to the server. In addition, if malware is installed on the CMD, this could lead to hacker attacks on the DoD enclave the CMD connects to.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35984",
+      "title": "The organization must obtain approval from the DAA or Command IT Configuration Control Board prior to installing a software application on a mobile device.",
+      "description": "Core applications are applications included in the CMD operating system. Applications added by the wireless carrier are not considered core applications. A security risk analysis must be performed by the DAA or DAA approval must be obtained prior to a mobile OS application being used. Non-approved applications can contain malware. Approved applications should be reviewed and tested by the approving authority to ensure they do not contain malware, spyware, or have unexpected features (e.g., send private information to a web site, track user actions, connect to a non-DoD management server). \n\nThe DAA, DAA-designated Application Configuration Control Board, or other DAA-designated process has the responsibility to approve all third-party applications installed on mobile devices under the purview of the DAA. The application review and approval process must include an evaluation of what OS level permissions are required by the application and how the application shares data and memory space with other applications. The review process must also ensure approved applications do not contain malware or share data stored on the mobile OS device with non-DoD servers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35985",
+      "title": "The organization must perform a security risk analysis on a mobile operating system (OS) application by the DAA or DAA-authorized approval authority prior to the application being approved for use.",
+      "description": "Non-approved applications can contain malware. Approved applications should be reviewed and tested by the approving authority to ensure they do not contain malware, spyware, or have unexpected features (e.g., send private information to a web site, track user actions, connect to a non-DoD management server). Core applications are applications included in the CMD operating system. Applications added by the wireless carrier are not considered core applications. A security risk analysis must be performed by the DAA or DAA approved approval authority prior to a mobile OS application being approved for use.\n\nThe DAA, DAA designated Application Configuration Control Board, or other DAA designated process has the responsibility to approve all non-core applications installed on mobile devices under the purview of the DAA. The application review and approval process must include an evaluation of what OS level permissions are required by the application and how the application shares data and memory space with other applications. The review process must also ensure that approved applications do not contain malware or share data stored on the mobile OS device with non-DoD servers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35987",
+      "title": "The organization must develop procedures for ensuring mobile operating systems, mobile applications, and mobile device management agents on managed mobile devices are updated within an organization defined period after the updates/patches are available.",
+      "description": "Patches and fixes to an operating system (OS) or application are necessary elements in maintaining the security posture of a system. If one system has been compromised or exposed to a potential vulnerability, the entire infrastructure is at risk. Patches and fixes can be critical security flaws that have been identified and, without their application, may pose a significant risk to DoD data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-35988",
+      "title": "An authorization process must be developed and published that states the process to obtain approval before CMDs can connect to the organizations information system(s).",
+      "description": "In order to protect their information systems, organizations must have a process in place ensuring mobile devices adhere to implementation guidance, meet published usage restrictions, and are processed through an authorization process prior to connecting to the information system(s). Lacking such a process, organizations will experience an array of unauthorized mobile devices, with a myriad of configuration settings and no usage restrictions, connecting to their information systems. Such an environment would be unmanageable and could result in unauthorized access to, modification of, or destruction of sensitive or classified data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35990",
+      "title": "The organization must define locations the organization deems to be of significant risk to DoD information systems, in accordance with organizational policies and procedures.",
+      "description": "Given the continuous threat level in today's global environment, there are certain locations presenting significant risks to an organization's personnel, equipment, and data. To afford an increased level of awareness and security for its personnel, equipment, and data, an organization must identify those locations representing a higher level of risk. Failure of an organization to identify these locations could result in dangerous situations for its personnel, such as; damaged, stolen or compromised equipment; or unauthorized access to, modification of, or destruction of sensitive or classified data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35992",
+      "title": "The organization must apply organization defined inspection and preventative measures to mobile devices returning from locations the organization deems to be of significant risk to DoD information systems.",
+      "description": "Despite the implementation of viable countermeasures on mobile devices, upon return from a high risk location, each device should be treated as if it has been compromised. The mobile device should be meticulously inspected for the existence of malware or unauthorized access to, or modification, deletion or destruction of data stored on the mobile device. The inspection is intended to isolate the compromise of the mobile device, thereby preventing promulgation to other organization information systems. If a mobile device has been compromised, organization personnel should initiate additional preventive measures to sanitize the mobile device. If sanitization is not possible, the mobile device should be destroyed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35993",
+      "title": "The organization must produce a written policy and training material that states CMDs that are classified as non-enterprise activated must not be used to send, receive, store, or process sensitive/FOUO or classified data and information or connect to DoD networks.",
+      "description": "Some CMDs are not authorized to store or process sensitive DoD data and information because they do not have required security controls to protect the data/information. There is a high risk that sensitive data will be exposed to unauthorized personnel with access to the device. Sensitive DoD data or information is defined as any data/information that has not been approved for public release by the site/Command Public Affairs Officer (PAO).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35994",
+      "title": "The organization must produce a written policy and training material that states CMDs classified as non-enterprise activated must not access DoD email systems.",
+      "description": "Some CMDs are not authorized to connect to DoD email systems because they do not have required security controls. There is a high risk of introducing malware on a DoD email system or of compromising sensitive DoD data if these types of devices are connected to a DoD email system. There is a high risk sensitive data will be exposed to unauthorized personnel with access to the device if DoD email was viewed, processed, or stored on the device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35995",
+      "title": "The organization must ensure users receive training before they are authorized to access a DoD network with a CMD.",
+      "description": "Improper use of wireless remote access to a DoD network can compromise both the wireless client and the network, as well as, expose DoD data to unauthorized individuals. Without adequate training, remote access users are more likely to engage in behaviors that make DoD networks and information vulnerable to security exploits.\n\nThe security personnel and the site wireless device administrator must ensure all wireless remote access users receive training before they are authorized to access a DoD network via a wireless remote access device.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35996",
+      "title": "The organization must ensure the MDM server administrator receives required training annually.",
+      "description": "The security posture of the MDM server could be compromised if the administrator is not trained to follow required procedures.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35997",
+      "title": "The organization must ensure all non-enterprise activated CMD users complete Operational Security (OPSEC) training that provides use guidelines and vulnerability mitigation techniques.",
+      "description": "Improper use of CMD devices can compromise both the CMD and the network, as well as, expose DoD data to unauthorized individuals. Without adequate OPSEC training, users are more likely to engage in behaviors that make DoD networks and information more vulnerable to security exploits.\n\nThe security personnel and the site CMD device administrators must ensure non-enterprise activated CMD users receive OPSEC training.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-35998",
+      "title": "The organization must verify each of its CMD users has completed annual CMD user training.",
+      "description": "Users are the first line of security controls for CMD systems. They must be trained in using CMD security controls or the system could be vulnerable to attack. All CMD users must receive security training on the device before they are issued a CMD. If training is not renewed on an annual basis, users may not be informed of new security procedures or may forget previously trained procedures, which could lead to an exposure of sensitive DoD information.",
+      "severity": "low"
+    },
+    {
+      "id": "V-35999",
+      "title": "The organization must execute its incident response plan or applicable Standard Operating Procedure (SOP) when a CMD is reported lost or stolen.",
+      "description": "If procedures for lost or stolen CMDs are not followed, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD information systems and data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-36000",
+      "title": "The organization must include procedures for lost or stolen CMDs in its Incident Response Plan or applicable Standard Operating Procedure (SOP).",
+      "description": "Sensitive DoD data could be stored in memory on a DoD operated CMDs and the data could be compromised if required actions are not followed when a CMD is lost or stolen. Without procedures for lost or stolen CMD, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA. \n\nThe site (location where CMDs are issued and managed and the site where the MDM server is located) must publish procedures to follow if a CMD has been lost or stolen.",
+      "severity": "low"
+    },
+    {
+      "id": "V-36001",
+      "title": "The organization must follow required procedures for the disposal of CMDs.",
+      "description": "If appropriate procedures are not followed prior to disposal of a CMD, an adversary may be able to obtain sensitive DoD information or learn aspects of the configuration of the device that might facilitate a subsequent attack.",
+      "severity": "low"
+    },
+    {
+      "id": "V-36002",
+      "title": "The organization must secure all wireless network devices, such as wireless Intrusion Detection System (IDS) and wireless routers, access points, gateways, and controllers to prevent tampering or theft, or must be located in a secure room with limited access.",
+      "description": "DoD data and the network could be exposed to attack if wireless network devices are not physically protected. The Network Security Officer (NSO) will ensure all wireless network devices (e.g., IDS, routers, servers, Remote Access System (RAS), firewalls, WLAN access points, etc.), wireless management, and email servers are located in a secure room with limited access or otherwise secured to prevent tampering or theft.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-36003",
+      "title": "The organization must ensure physical security controls are implemented for Secure WLAN (SWLAN) access points.",
+      "description": "If an adversary is able to gain physical access to a SWLAN device, he/she may be able to compromise the device in a variety of ways, some of which could enable the adversary to obtain classified data. Physical security controls greatly mitigate this risk.\n\nThe following physical security controls must be implemented for SWLAN access points:\n\n- Secure WLAN access points shall be physically secured, and methods shall exist to facilitate the detection of tampering. WLAN APs are part of a communications system and shall have controlled physical security, in accordance with DoDD 5200.08-R. SWLAN access points not within a location that provides limited access shall have controlled physical security with either fencing or inspection.\n\n- Either physical inventories or electronic inventories shall be conducted daily by viewing or polling the serial number or MAC address. Access points not stored in a COMSEC-approved security container shall be physically inventoried.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-36005",
+      "title": "The organization must not permit personnel to operate CMD without first signing a user agreement IAW DoD CIO Memorandum, Policy on Use of Department of Defense (DoD) Information Systems Standard Consent Banner and User Agreement, 9 May 2008.",
+      "description": "Lack of user training and understanding of responsibilities to safeguard wireless technology is a significant vulnerability to the enclave. Once policies are established, users must be trained to these requirements or the risk to the network remains. User agreements are particularly important for mobile and remote users since there is a high risk of loss, theft, or compromise. Thus, this signed agreement is a good best practice to help ensure the site is confirming the user is aware of the risks and proper procedures.",
+      "severity": "low"
+    }
+  ]
+}

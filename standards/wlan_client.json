@@ -1,0 +1,65 @@
+{
+  "name": "wlan_client",
+  "date": "2014-08-26",
+  "description": "This STIG contains the technical security controls for the operation of a WLAN client in the DoD environment.",
+  "title": "WLAN Client Security Technical Implementation Guide (STIG)",
+  "version": "6",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-14002",
+      "title": "A device’s wired network interfaces (e.g., Ethernet) must be disconnected or otherwise disabled when wireless connections are in use.",
+      "description": "If a client device supports simultaneous use of wireless and wired connections, then this increases the probability that an adversary who can access the device using its wireless interface can then route traffic through the device’s wired interface to attack devices on the wired network or obtain sensitive DoD information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14202",
+      "title": "FIPS 140-2 validated encryption modules must be used to encrypt unclassified sensitive data at rest on the wireless device (e.g., laptop, PDA, smartphone).",
+      "description": "If a wireless device is lost or stolen without DAR encryption, sensitive DoD data could be compromised.  Most known security breaches of cryptography result from improper implementation, not flaws in the cryptographic algorithms themselves.   FIPS 140-2 validation provides assurance that cryptography is implemented correctly, and is required for Federal Government uses of cryptography in non-classified applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30257",
+      "title": "WLAN EAP-TLS implementation must use certificate-based PKI authentication to connect to DoD networks.",
+      "description": "DoD certificate-based PKI authentication is strong, two-factor authentication that relies on carefully evaluated cryptographic modules.  Implementations of EAP-TLS that are not integrated with certificate-based PKI could have security vulnerabilities.  For example, an implementation that uses a client certificate on laptop without a second factor could enable an adversary with access to the laptop to connect to the WLAN without a PIN or password.  Systems that do not use the certificate-based PKI are also much more likely to be vulnerable to weaknesses in the underlying public key infrastructure (PKI) that supports EAP-TLS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3503",
+      "title": "WLAN-capable devices must not use wireless peer-to-peer networks to connect to other devices.",
+      "description": "WLANs may be configured into a peer-to-peer (also known as ad hoc) network that permits devices to communicate directly rather than through an access point.  It is difficult to ensure required IA mechanisms are in place for such networks, because they inherently are not subject to centralized management.  Consequently, there is a significant risk an adversary will defeat or circumvent authentication or encryption controls (if they even exist) on a peer-to-peer or ad hoc WLANs.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3512",
+      "title": "NSA Type1 products and required procedures must be used to protect classified data at rest (DAR) on wireless devices used on a classified WLAN or WMAN. ",
+      "description": "NSA Type 1 products provide a high level of assurance that cryptography is implemented correctly and meets the standards for storage of classified information.  Use of cryptography that is not Type 1 certified violates policy and increases the risk that classified data will be compromised. ",
+      "severity": "high"
+    },
+    {
+      "id": "V-3515",
+      "title": "The WLAN must use AES-CCMP to protect data-in-transit.",
+      "description": "AES-CCMP provides all required WLAN security services for data in transit. The other encryption protocol available for IEEE 802.11i compliant robust security networks and WPA2 certified solutions is the Temporal Key Integrity Protocol (TKIP). TKIP relies on the RC4 cipher, which has known vulnerabilities. Some WLANs also rely on Wireless Equivalent Privacy (WEP), which also uses RC4, and is easily cracked in minutes on active WLANs. Use of protocols other than AES-CCMP places DoD WLANs at greater risk of security breaches than other available approaches.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3692",
+      "title": "WLAN must use EAP-TLS.",
+      "description": "EAP-TLS provides strong cryptographic mutual authentication and key distribution services not found in other EAP methods, and thus provides significantly more protection against attacks than other methods. Additionally, EAP-TLS supports two-factor user authentication on the WLAN client, which provides significantly more protection than methods that rely on a password or certificate alone. EAP-TLS also can leverage DoD CAC in its authentication services, providing additional security and convenience.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-4632",
+      "title": "Laptops with WLAN interfaces must have the WLAN card radio set to OFF as the default setting.  ",
+      "description": "Laptop computers with wireless interfaces particularly susceptible to the Windows XP wireless vulnerabilities.  If a user has an active wireless interface with security disabled, a hacker could connect to the laptop without the user being aware of the connection.  Most laptop vendors provide a software utility to manage WLAN connections for the embedded wireless interfaces.  The utility usually provides a feature that allows a laptop user to turn off the WLAN radio.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7072",
+      "title": "WLAN clients must not be configured to connect to other WLAN devices without the user initiating a request to establish such a connection.",
+      "description": "Many WLAN clients have the capability to automatically connect to particular WLANs when they are available.  This behavior means the user may not know to which WLAN they are connected or even be aware that a WLAN connection is active.  This increases the probability that these open connections may be used for nefarious purposes, especially if an adversary is able to set up WLAN infrastructure to masquerade as the user’s preferred WLAN.  Once the WLAN client is breached, the adversary may be able to obtain DoD sensitive information or use the client device to attack other systems.",
+      "severity": "low"
+    }
+  ]
+}

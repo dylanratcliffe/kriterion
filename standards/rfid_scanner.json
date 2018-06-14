@@ -1,0 +1,35 @@
+{
+  "name": "rfid_scanner",
+  "date": "2014-03-18",
+  "description": "This STIG contains the technical security controls for the operation of a RFID Scanner in the DoD environment.",
+  "title": "RFID Scanner Security Technical Implementation Guide (STIG)",
+  "version": "6",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-14034",
+      "title": "If a wireless connection (e.g. WLAN, Bluetooth) is used between the RFID scanner and RFID workstation, security requirements must be followed.",
+      "description": "Sensitive data stored on the RFID scanner and transmitted to the workstation could be compromised.",
+      "severity": "low"
+    },
+    {
+      "id": "V-18620",
+      "title": "Sensitive or Personally Identifiable Information (PII) must not be transferred between an RFID tag and RFID scanner unless the information is encrypted using a FIPS 140-2 validated encryption module.  ",
+      "description": "Sensitive or PII info could be compromised if it is not encrypted because adversaries often can intercept wireless signals transmitted between an RFID interrogator and tag.  Using FIPS 140-2 validated encryption modules provides assurance that the implementation of the cryptography is correct.  ",
+      "severity": "low"
+    },
+    {
+      "id": "V-18625",
+      "title": "PDA and Smartphones that are connected to DoD Windows computers via a USB connection must be compliant with requirements.",
+      "description": "PDAs with flash memory can introduce malware to a PC when they are connected for provisioning of the PDA or to transfer data between the PC and PDA, particularly if the PDA is seen by the PC as a mass storage device and autorun in enabled.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18856",
+      "title": "Removable memory cards (e.g., MicroSD) must use a FIPS 140-2 validated encryption module to bind the card to a particular device such that the data on the card is not readable on any other device.",
+      "description": "Memory card used to transfer files between PCs and PDAs is a migration path for the spread of malware on DoD computers and handheld devices.  These risks are mitigated by the requirements listed in this check.",
+      "severity": "medium"
+    }
+  ]
+}

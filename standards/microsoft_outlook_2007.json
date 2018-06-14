@@ -1,0 +1,479 @@
+{
+  "name": "microsoft_outlook_2007",
+  "date": "2015-09-17",
+  "description": "None",
+  "title": "Microsoft Outlook 2007",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-17173",
+      "title": "Disable user name and password syntax from being used in URLs",
+      "description": "The Uniform Resource Locator (URL) standard allows user authentication to be included in URL strings in the form http://username:password@example.com. A malicious user might use this URL syntax to create a hyperlink that appears to open a legitimate Web site but actually opens a deceptive (spoofed) Web site. For example, the URL http://www.wingtiptoys.com@example.com appears to open http://www.wingtiptoys.com but actually opens http://example.com. To protect users from such attacks, Internet Explorer usually blocks any URLs using this syntax.\n\nThis functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a Web page). If user names and passwords in URLs are allowed, users could be diverted to dangerous Web pages, which could pose a security risk.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17174",
+      "title": "Enable IE Bind to Object functionality for instances of IE launched from Outlook",
+      "description": "Internet Explorer performs a number of safety checks before initializing an ActiveX control. It will not initialize a control if the kill bit for the control is set in the registry, or if the security settings for the zone in which the control is located do not allow it to be initialized.\nThis functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a Web page). A security risk could occur if potentially dangerous controls are allowed to load.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17175",
+      "title": "Evaluate Saved from URL mark when launched from OutLook",
+      "description": "Typically, when Internet Explorer loads a Web page from a UNC share that contains a Mark of the Web (MOTW) comment that indicates the page was saved from a site on the Internet, Internet Explorer runs the page in the Internet security zone instead of the less restrictive Local Intranet security zone. This functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a Web page). If Internet Explorer does not evaluate the page for a MOTW, potentially dangerous code could be allowed to run.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17183",
+      "title": "Block navigation to URL embedded in Office products to protect against attack by malformed URL. ",
+      "description": "To protect users from attacks, Internet Explorer usually does not attempt to load malformed URLs. This functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a Web page). If Internet Explorer attempts to load a malformed URL, a security risk could occur in some cases.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17184",
+      "title": "Block pop-ups for links that invoke instances of IE from within Outlook.",
+      "description": "The Pop-up Blocker feature in Internet Explorer can be used to block most unwanted pop-up and pop-under windows from appearing. This functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a Web page). If the Pop-up Blocker is disabled, disruptive and potentially dangerous pop-up windows could load and present a security risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17470",
+      "title": "Do not permit download of content from safe zones - Outlook",
+      "description": "By default, Outlook 2007 automatically downloads content from sites that are considered \"safe,\" as defined in the Security tab of the Internet Options dialog box in Internet Explorer. This configuration could allow users to inadvertently download Web beacons that reveal their identity to spammers and other malicious people.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17546",
+      "title": "Access restriction settings for published calendars in Outlook. ",
+      "description": "By default, users can share their calendars with others by publishing them to the Microsoft Office Online Calendar Sharing Services and to a server that supports the World Wide Web Distributed Authoring and Versioning (WebDAV) protocol. Office Online allows users to choose whether to restrict access to their calendars to people they invite, or allow unrestricted access to anyone who knows the URL to reach the calendar. DAV access restrictions can only be achieved through server and folder permissions, and might require the assistance of a server administrator to set up and maintain. \nIf a calendar is visible to anyone on Office Online or third-party DAV servers, sensitive information might be revealed contained in calendar appointments.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17558",
+      "title": "Disable the feature of adding recipients of sent eMail to the 'save sender's list. ",
+      "description": "Sometimes users will send e-mail messages to request that they be taken off a mailing list. If the e-mail recipient is then automatically added to the Safe Senders List, future e mail messages from that address will no longer be sent to the users Junk E-mail folder, even if it would otherwise be considered junk.\nBy default, recipients of outgoing messages are not added automatically to individual users' Safe Senders Lists. However, users can change this configuration in the Outlook 2007 user interface.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17559",
+      "title": "Do not allow Active X One-Off forms to be used in Outlook. ",
+      "description": "By default, third-party ActiveX controls are not allowed to run in one-off forms in Outlook. You can change this behavior so that Safe Controls (Microsoft Forms 2.0 controls and the Outlook Recipient and Body controls) are allowed in one-off forms, or so that all ActiveX controls are allowed to run.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17562",
+      "title": "Do not allow Scripts in One-Off Outlook forms. ",
+      "description": "Malicious code can be included within Outlook forms, and such code could be executed when users open the form.\nBy default, Outlook 2007 does not run scripts in forms in which the script and the layout are contained within the message.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17564",
+      "title": "Block IE Trusted Zones from being assumed 'trusted' for EMail Download purposes. ",
+      "description": "Malicious users can send HTML e-mail messages with embedded Web beacons, which are pictures and other content from external servers that can be used to track whether specific recipients open the message. Viewing an e-mail message that contains a Web beacon provides confirmation that the recipient's e-mail address is valid, which leaves the recipient vulnerable to additional spam and harmful e-mail.\nTo reduce the risk from Web beacons, Outlook 2007 disables external content in e-mail messages by default, unless the content is considered \"safe\" as determined by the check boxes in the Automatic Download section of the Trust Center. Depending on how these options are configured, safe content can include content in messages from addresses defined in the Safe Senders and Safe Recipients Lists used by the Junk E-mail filter, content from SharePoint discussion boards, and content from Web sites in the Trusted sites zone in Internet Explorer.\nBy default, Outlook considers trusted sites from Internet Explorer safe, and automatically downloads content from them, which could potentially include Web beacons.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17566",
+      "title": "All installed trusted COM addins can be trusted. ",
+      "description": "All installed trusted COM addins can be trusted.  Because the add-ins are controlled and known by the admins, they should always be presumed trusted. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17567",
+      "title": "Set the Object Model Prompt behavior for programmatic access of the UserProperties.Find Method",
+      "description": "If an untrusted application accesses address information, the application could gain access to sensitive data and potentially change that data.\nBy default, when an untrusted application attempts to access address information using the UserProperties.Find method, Outlook 2007 relies on the setting configured in the \"Programmatic Access\" section of the Trust Center. This setting determines whether Outlook will warn users about programmatic access attempts: \n•\tOnly when antivirus software is out of date or not running (the default setting)\n•\tEvery time\n•\tNot at all\nIf the \"Not at all\" option is selected, Outlook will silently grant programmatic access to any program that requests it, which could allow a malicious program to gain access to sensitive information.\nNote   This described default functionality assumes that you have not followed the recommendation to enable the \"Outlook Security Mode\" Group Policy setting to ensure that Outlook security settings are configured by Group Policy. If Group Policy security settings are used for Outlook, the \"Programmatic Access\" section of the Trust Center is not used. In this situation, the default is to prompt users based on computer security, which is the equivalent of the \"Only when antivirus software is out of date or not running\" option in the Trust Center, and the user experience is not affected.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17568",
+      "title": "Configure Outlook Object Model Prompt behavior for programmatic address book accesses.  ",
+      "description": "If an untrusted application accesses the address book, the application could gain access to sensitive data and potentially change that data.\nBy default, when an untrusted application attempts to access the address book programmatically, Outlook 2007 relies on the setting configured in the \"Programmatic Access\" section of the Trust Center. This setting determines whether Outlook will warn users about programmatic access attempts: \n•\tOnly when antivirus software is out of date or not running (the default setting)\n•\tEvery time\n•\tNot at all\nIf the \"Not at all\" option is selected, Outlook will silently grant programmatic access to any program that requests it, which could allow a malicious program to gain access to sensitive information.\nNote   This described default functionality assumes that you have not followed the recommendation to enable the \"Outlook Security Mode\" Group Policy setting to ensure that Outlook security settings are configured by Group Policy. If Group Policy security settings are used for Outlook, the \"Programmatic Access\" section of the Trust Center is not used. In this situation, the default is to prompt users based on computer security, which is the equivalent of the \"Only when antivirus software is out of date or not running\" option in the Trust Center, and the user experience is not affected.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17569",
+      "title": "Allow Users to demote an EMail Level 1 attachment to Level 2.",
+      "description": "Outlook 2007 uses two levels of security to restrict access to files attached to e-mail messages or other items. Files with specific extensions can be categorized as Level 1 (users cannot view the file) or Level 2 (users can open the file after saving it to disk). Users can freely open files of types that are not categorized as Level 1 or Level 2.\nBy default, Outlook does not allow users to demote file types from Level 1 to Level 2. If this setting is Enabled, users can create a list of Level 1 file types to demote to Level 2 by adding the file types to the following registry key:\nHKEY_CURRENT_USER\\Software\\Microsoft\\Office\\Outlook\\12.0\\Security\\Level1Remove\nIf users can demote Level 1 files to Level 2, they will be able to access potentially dangerous files after saving them to disk, which could allow malicious code to affect their computers or compromise the security of sensitive information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17570",
+      "title": "Configure Object Model Prompt behavior for accessing User Property Formula. ",
+      "description": "A custom form in Outlook could be used to gain access to sensitive address book data and potentially to change that data.\nBy default, when a user tries to bind an address information field to a combination or formula custom field in a custom form, Outlook 2007 relies on the setting configured in the \"Programmatic Access\" section of the Trust Center. This setting determines whether Outlook will warn users about programmatic access attempts: \n•\tOnly when antivirus software is out of date or not running (the default setting)\n•\tEvery time\n•\tNot at all\nIf the \"Not at all\" option is selected, Outlook will silently grant programmatic access to any program that requests it, which could allow a malicious program to gain access to sensitive information.\nNote   This described default functionality assumes that you have not followed the recommendation to enable the \"Outlook Security Mode\" Group Policy setting to ensure that Outlook security settings are configured by Group Policy. If Group Policy security settings are used for Outlook, the \"Programmatic Access\" section of the Trust Center is not used. In this situation, the default is to prompt users based on computer security, which is the equivalent of the \"Only when antivirus software is out of date or not running\" option in the Trust Center, and the user experience is not affected.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17571",
+      "title": "Configure Object Model Prompt behavior for the SaveAs method.  ",
+      "description": "If an untrusted application uses the Save As command to programmatically save an item, the application could add malicious data to a user's inbox, a public folder, or an address book.\nBy default, when an untrusted application attempts to use the Save As command, Outlook 2007 relies on the setting configured in the \"Programmatic Access\" section of the Trust Center. This setting determines whether Outlook will warn users about programmatic access attempts: \n•\tOnly when antivirus software is out of date or not running (the default setting)\n•\tEvery time\n•\tNot at all\nIf the \"Not at all\" option is selected, Outlook will silently grant programmatic access to any program that requests it, which could allow a malicious program to gain access to sensitive information.\nNote   This described default functionality assumes that you have not followed the recommendation to enable the \"Outlook Security Mode\" Group Policy setting to ensure that Outlook security settings are configured by Group Policy. If Group Policy security settings are used for Outlook, the \"Programmatic Access\" section of the Trust Center is not used. In this situation, the default is to prompt users based on computer security, which is the equivalent of the \"Only when antivirus software is out of date or not running\" option in the Trust Center, and the user experience is not affected.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17572",
+      "title": "Configure Object Model Prompt behavior for programmatic access of user address data. \n",
+      "description": "If an untrusted application accesses the recipient fields, the application could gain access to sensitive data and potentially change that data. This could result in mail being sent to the wrong party.\nBy default, when an untrusted application attempts to access recipient fields, Outlook 2007 relies on the setting configured in the \"Programmatic Access\" section of the Trust Center. This setting determines whether Outlook will warn users about programmatic access attempts: \n•\tOnly when antivirus software is out of date or not running (the default setting)\n•\tEvery time\n•\tNot at all\nIf the \"Not at all\" option is selected, Outlook will silently grant programmatic access to any program that requests it, which could allow a malicious program to gain access to sensitive information.\nNote   This described default functionality assumes that you have not followed the recommendation to enable the \"Outlook Security Mode\" Group Policy setting to ensure that Outlook security settings are configured by Group Policy. If Group Policy security settings are used for Outlook, the \"Programmatic Access\" section of the Trust Center is not used. In this situation, the default is to prompt users based on computer security, which is the equivalent of the \"Only when antivirus software is out of date or not running\" option in the Trust Center, and the user experience is not affected.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17573",
+      "title": "Configure Object Model Prompt behavior for Meeting and Task Responses. ",
+      "description": "If an untrusted application programmatically responds to tasks or meeting requests, that application could impersonate a user response to the tasks or meeting requests with false information.\nBy default, when an untrusted application attempts to respond to tasks or meeting requests programmatically, Outlook 2007 relies on the setting configured in the \"Programmatic Access\" section of the Trust Center. This setting determines whether Outlook will warn users about programmatic access attempts: \n•\tOnly when antivirus software is out of date or not running (the default setting)\n•\tEvery time\n•\tNot at all\nIf the \"Not at all\" option is selected, Outlook will silently grant programmatic access to any program that requests it, which could allow a malicious program to gain access to sensitive information.\nNote   This described default functionality assumes that you have not followed the recommendation to enable the \"Outlook Security Mode\" Group Policy setting to ensure that Outlook security settings are configured by Group Policy. If Group Policy security settings are used for Outlook, the \"Programmatic Access\" section of the Trust Center is not used. In this situation, the default is to prompt users based on computer security, which is the equivalent of the \"Only when antivirus software is out of date or not running\" option in the Trust Center, and the user experience is not affected.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17574",
+      "title": "Configure Object Model Prompt for programmatic email send behavior. ",
+      "description": "If an untrusted application programmatically sends e-mail, that application could send mail that includes malicious code, impersonate a user, or launch a denial-of-service attack by sending a large volume of mail to a user or group of users.\nBy default, when an untrusted application attempts to send mail programmatically, Outlook 2007 relies on the setting configured in the \"Programmatic Access\" section of the Trust Center. This setting determines whether Outlook will warn users about programmatic access attempts: \n•\tOnly when antivirus software is out of date or not running (the default setting)\n•\tEvery time\n•\tNot at all\nIf the \"Not at all\" option is selected, Outlook will silently grant programmatic access to any program that requests it, which could allow a malicious program to gain access to sensitive information.\nNote   This described default functionality assumes that you have not followed the recommendation to enable the \"Outlook Security Mode\" Group Policy setting to ensure that Outlook security settings are configured by Group Policy. If Group Policy security settings are used for Outlook, the \"Programmatic Access\" section of the Trust Center is not used. In this situation, the default is to prompt users based on computer security, which is the equivalent of the \"Only when antivirus software is out of date or not running\" option in the Trust Center, and the user experience is not affected.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17575",
+      "title": "Configure trusted add-ins behavior for eMail. ",
+      "description": "The Outlook object model includes entry points to access Outlook data, save data to specified locations, and send e-mail messages, all of which can be used by malicious application developers. To help protect these entry points, the Object Model Guard warns users and prompts them for confirmation when untrusted code, including add-ins, attempts to use the object model to obtain e-mail address information, store data outside of Outlook, execute certain actions, and send e-mail messages. \nTo reduce excessive security warnings when add-ins are used, administrators can specify a list of trusted add-ins that can access the Outlook object model silently, without raising prompts. This trusted add-in list should be treated with care, because a malicious add-in could access and forward sensitive information if added to the list.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17585",
+      "title": "Configure Dial-up and Hang up Options for Outlook. ",
+      "description": "By default, users can connect to their e-mail servers using dial-up networking if their accounts are configured appropriately. Dial-up connections are often used by mobile users who need to connect to the Internet from remote locations. Remote connections are generally not subject to the same restrictions as enterprise network environments, which can make them more vulnerable to attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17586",
+      "title": "Configure Outlook Dial-up options to Warn user before allowing switch in dial-up access.  ",
+      "description": "By default, users can connect to their e-mail servers using dial-up networking if their accounts are configured appropriately. Dial-up connections are often used by mobile users who need to connect to the Internet from remote locations. Remote connections are generally not subject to the same restrictions as enterprise network environments, which can make them more vulnerable to attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17587",
+      "title": "Disable the \"remember password\" for internet e-mail accounts - Outlook. ",
+      "description": "As a security precaution, password caching for eMail Internet protocols such as POP3 or IMAP may lead to password discovery and evantually to data loss.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17601",
+      "title": "Prompting behavior when closing a Level 1 attachment in Outlook. ",
+      "description": "To protect users from viruses and other harmful files, Outlook 2007 uses two levels of security, designated Level 1 and Level 2, to restrict users' access to files attached to e-mail messages or other items. Outlook completely blocks access to Level 1 files by default, and requires users to save Level 2 files to disk before opening them. Potentially harmful files can be classified into these two levels by file type extension, with all other file types considered safe.\nBy default, when a user closes an item to which a level 1 file has been attached, Outlook warns the user that the message contains a potentially unsafe attachment and that the user might not be able to access the attachment when opening the item later. (Such a sequence of events might occur when a user closes a draft message that they intend to resume editing at some future time.) If this configuration is changed, Outlook will not display the warning when the user closes the item but will still block the unsafe attachment if the user opens the message later. This functionality can cause users to lose access to important data.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17602",
+      "title": "Promping behavior for Level 1 attachments on Sending - Outlook. ",
+      "description": "To protect users from viruses and other harmful files, Outlook 2007 uses two levels of security, designated Level 1 and Level 2, to restrict access to files attached to e-mail messages or other items. Outlook completely blocks access to Level 1 files by default, and requires users to save Level 2 files to disk before opening them. Potentially harmful files can be classified into these two levels by file type extension, with all other file types considered safe.\nBy default, when users attempt to send an item to which a level 1 file has been attached, Outlook warns them that the message contains a potentially unsafe attachment and that the recipient might not be able to access it. If this configuration is changed, Outlook will not display the warning when users send such items, which can cause users to lose access to important data.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17604",
+      "title": "Do not provide Continue Option on Encryption Warning dialog box - Outlook. ",
+      "description": "By default, if Outlook 2007 users see an encryption-related dialog box when attempting to send a message, they can choose to dismiss the warning and send the message anyway. If users send messages after seeing an encryption error, it is likely that recipients will not be able to read them.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17610",
+      "title": "Disable download full text of articles as HTML attachments in Outlook. ",
+      "description": "Many RSS feeds use messages that contain a brief summary of a larger message or an article with a link to the full content. Users can configure Outlook 2007 to automatically download the linked content as message attachments for individual RSS feeds. If a feed is frequently updated or typically contains very large messages and is not AutoArchived regularly, downloading full articles can cause the affected message store to become very large, which can affect the performance of Outlook.\nBy default, Outlook does not automatically download the full text of RSS entries when retrieving feeds.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17613",
+      "title": "Enable links in Email Messages - Outlook. ",
+      "description": "Outlook 2007's Junk E-mail Filter evaluates each incoming message for possible spam or phishing content. Suspicious message detection is always turned on. \nBy default, Outlook handles suspicious messages in two ways:\n•\tIf the Junk E-mail Filter does not consider a message to be spam but does consider it to be phishing, the message is left in the Inbox but any links in the message are disabled and users cannot use the Reply and Reply All functionality. In addition, any attachments in the suspicious message are blocked. \n•\tIf the Junk E-mail Filter considers the message to be both spam and phishing, the message is automatically sent to the Junk E-mail folder. Any message sent to the Junk E-mail folder is converted to plain text format and all links are disabled. In addition, the Reply and Reply All functionality is disabled and any attachments in the message are blocked. The InfoBar alerts users to this change in functionality. If users are certain that a message is legitimate, they can click the InfoBar and enable the links in the message.\nUsers can change the way Outlook handles phishing messages in the Junk E-mail Options dialog box by clearing the Disable links and other functionality in phishing messages (Recommended) check box. If this check box is cleared, Outlook will not disable links in suspected phishing messages unless they are classified as junk e-mail, which could allow users to disclose confidential information to malicious Web sites.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17615",
+      "title": "Enable RPC encryption between Outook and Exchange server. ",
+      "description": "By default, the remote procedure call (RPC) communication channel between an Outlook 2007 client computer and an Exchange server is not encrypted. If a malicious person is able to eavesdrop on the network traffic between Outlook and the server, they might be able to access confidential information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17624",
+      "title": "Hide Junk Mail UI configuration for Outlook. ",
+      "description": "The Junk E-mail Filter in Outlook 2007 is designed to intercept the most obvious junk e-mail, or spam, and send it to users' Junk E-mail folders. The filter evaluates each incoming message based on several factors, including the time when the message was sent and the content of the message. The filter does not single out any particular sender or message type, but instead analyzes each message based on its content and structure to discover whether or not it is probably spam. \nBy default, the Junk E-mail Filter in Outlook 2007 is enabled. If this configuration is changed, users can receive large amounts of junk e-mail in their Inboxes, which could make it difficult for them to work with business-related e-mail messages.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17630",
+      "title": "Include the Internet with Safe Zones for Picture Download - Outlook",
+      "description": "Malicious e-mail senders can send HTML e-mail messages with embedded Web beacons, which are pictures and other content from external servers that can be used to track whether recipients open the messages. Viewing e-mail messages that contain Web beacons provides confirmation that the recipient's e-mail address is valid, which leaves the recipient vulnerable to additional spam and harmful e-mail.\nBy default, Outlook 2007 does not download external content in HTML e-mail messages from untrusted senders via the Internet. If this configuration is changed, Outlook will display external content in all HTML e-mail messages received from the Internet, which could include Web beacons.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17634",
+      "title": "Configure the \"include Intranet\" with Safe Zones for automatic picture downloads. ",
+      "description": "Malicious e-mail senders can send HTML e-mail messages with embedded Web beacons, which are pictures and other content from external servers that can be used to track whether recipients open the messages. Viewing e-mail messages with Web beacons in them provides confirmation that the recipient's e-mail address is valid, which leaves the recipient vulnerable to additional spam and harmful e-mail.\nBy default, Outlook 2007 does not download external content in HTML e-mail messages from untrusted senders over the local intranet. If this configuration is changed, Outlook will display external content in all HTML e-mail messages received via the local intranet, which could include Web beacons.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17671",
+      "title": "Disable the ability to displaly level 1 attachments in Outlook. ",
+      "description": "To protect users from viruses and other harmful files, Outlook 2007 uses two levels of security, designated Level 1 and Level 2, to restrict access to files attached to e-mail messages or other items. Potentially harmful files can be classified into these two levels by file type extension, with all other file types considered safe.\nBy default, Outlook completely blocks access to Level 1 files, and requires users to save Level 2 files to disk before opening them. If this configuration is changed, users will be able to open and execute potentially dangerous attachments, which can affect their computers or compromise the confidentiality, integrity, or availability of data.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17672",
+      "title": "Display external content and pictures in HTML eMail - Outlook. ",
+      "description": "Malicious e-mail senders can send HTML e-mail messages with embedded Web beacons, which are pictures and other content from external servers that can be used to track whether specific recipients open the message. Viewing an e-mail message that contains a Web beacon provides confirmation that the recipient's e-mail address is valid, which leaves the recipient vulnerable to additional spam and harmful e-mail.\nBy default, Outlook does not download external content in HTML e-mail and RSS items unless the content is considered safe. Content that Outlook 2007 can be configured to consider safe includes:\n•\tContent in e-mail messages from senders and to recipients defined in the Safe Senders and Safe Recipients lists. \n•\tContent from Web sites in Internet Explorer's Trusted Sites security zone. \n•\tContent in RSS items.\n•\tContent from SharePoint Discussion Boards.\nUsers can control what content is considered safe by changing the options in the Automatic Download section of the Trust Center. If Outlook's default blocking configuration is overridden, in the Trust Center or by some other method, Outlook will display external content in all HTML e-mail messages, including any that include Web beacons.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17673",
+      "title": "Disable the \"do not allow creating, replying or forwarding of signatures' feature - Outlook",
+      "description": "By default, Outlook 2007 users can create and use signatures in e-mail messages. Users can add signatures to messages manually, and can also configure Outlook to automatically append signatures to new messages, to replies and forwards, or to all three. Signatures typically include details such as the user's name, title, phone numbers, and office location. If your organization has policies that govern the distribution of this kind of information, using signatures might cause some users to inadvertently violate these policies.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17674",
+      "title": "Do not allow folders in non-default stores to be set as folder home pages - Outlook. ",
+      "description": "Outlook 2007 allows users to designate Web pages as home pages for personal or public folders. When a user clicks on a folder, Outlook displays the home page the user has assigned to it. Although this feature provides the opportunity to create powerful public folder applications, scripts can be included on Web pages that access the Outlook object model, which exposes users to security risks.\nBy default, Outlook does not allow users to define folder home pages for folders in non-default stores. If this configuration is changed, users can create and access dangerous folder home pages for Outlook data files (.pst) and other non-default stores, which can compromise the security of the users' data.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17675",
+      "title": "Do not allow Outlook Object Model scripts to run for public folders - Outlook. ",
+      "description": "In Outlook 2007, folders can be associated with custom forms or folder home pages that include scripts that access the Outlook object model. These scripts can add functionality to the folders and items contained within, but dangerous scripts can pose security risks.\nBy default, Outlook allows scripts included in custom forms or folder home pages for public folders to execute. If users inadvertently run dangerous scripts when using public folders, their computers or data could be at risk. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17676",
+      "title": "Do not allow Outlook Object Model scripts to run for shared folders - Outlook. ",
+      "description": "In Outlook 2007, folders can be associated with custom forms or folder home pages that include scripts that access the Outlook object model. These scripts can add functionality to the folders and items contained within, but dangerous scripts can pose security risks.\nBy default, Outlook does not allow scripts included in custom forms or folder home pages for shared folders to execute. If this configuration is changed, users can inadvertently run dangerous scripts when using shared folders, which can put their computers or data at risk. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17677",
+      "title": "Do not check eMail address against address of certificates being used - Outlook",
+      "description": "By default, when a user digitally signs a message, Outlook 2007 compares the user's e-mail address with the certificate used for signing. The user's e-mail address must appear in either the Subject field or the Subject Alternative Name field of the certificate, or Outlook will not allow the user to sign the message with that certificate.\nIf this configuration is changed, users can send messages signed with certificates that do not match their e-mail addresses, which could cause problems when the recipient attempts to read the message or verify the signature.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17678",
+      "title": "Do not include Internet Calendar Integration in Outlook. ",
+      "description": "The Internet Calendar feature in Outlook 2007 enables users to publish calendars online (using the webcal:// protocol) and subscribe to calendars that others have published. When users subscribe to an Internet calendar, Outlook queries the calendar at regular intervals and downloads any changes as they are posted.\nBy default, Outlook allows users to subscribe to Internet calendars. If your organization has policies that govern the use of external resources such as Internet calendars, this feature might enable users to violate those policies.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17733",
+      "title": "Attachments using generated name for secure temporary folders - Outlook. ",
+      "description": "The Secure Temporary Files folder is used to store attachments when they are opened in e-mail. By default, Outlook 2007 generates a random name for the Secure Temporary Files folder and saves it in the Temporary Internet Files folder. You can use this setting to designate a specific path and folder to use as the Secure Temporary Files folder. This configuration is not recommended, because it means that all users will have temporary Outlook files in the same predictable location, which is not as secure. If the name of this folder is well known, a malicious user or malicious code might target this location to try and gain access to attachments.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17734",
+      "title": "Require user Authentication with Exchange Server - Outlook",
+      "description": "Exchange Server supports the Kerberos authentication protocol and NTLM for authentication. The Kerberos protocol is the more secure authentication method and is supported on Windows 2000 Server and later versions. NTLM authentication is supported in pre-Windows 2000 environments.\nBy default, Outlook 2007 will attempt to authenticate using the Kerberos authentication protocol. If it cannot (because no Windows 2000 or later domain controllers are available), it will authenticate using NTLM.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17736",
+      "title": "Automatically configure user profile based on Active Directory primary SMTP address - Outlook",
+      "description": "By default, if a user is joined to a domain in an Active Directory environment and does not have an e-mail account configured, Outlook 2007 populates the e-mail address field of the New Account Wizard with the primary SMTP address of the user who is currently logged on to Active Directory. The user can change the address to configure a different account, or click Next to use the default settings from Active Directory. \nIf users are allowed to change this address, they could incorrectly configure their environment or misrepresent their identity.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17738",
+      "title": "Automatically download Internet Calendar appointment attachments. ",
+      "description": "Files attached to Internet Calendar appointments could contain malicious code that could be used to compromise a computer.\nBy default, Outlook 2007 does not download attachments when retrieving Internet Calendar appointments.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17739",
+      "title": "Disable automatic download content for email from people in Safe Senders and Safe reciipeint lists.  ",
+      "description": "Malicious e-mail senders can send HTML e-mail messages with embedded Web beacons, or pictures and other content from external servers that can be used to track whether specific recipients have opened a message. Viewing an e-mail message that contains a Web beacon provides confirmation that the recipient's e-mail address is valid, which leaves the recipient vulnerable to additional spam and harmful e-mail. To help protect users from Web beacons, Outlook 2007 can be configured to automatically block the display of external content in e-mail messages. However, because this configuration could block desirable content from display, Outlook can also be configured to automatically display external content in any messages sent by people who are listed in users' Safe Senders Lists or Safe Recipients Lists.\nBy default, Outlook 2007 automatically displays external content in e-mail messages from people listed in users' Safe Senders Lists or Safe Recipients Lists, and automatically blocks external content in other messages. If a malicious sender is accidentally added to a user's Safe Senders List or Safe Recipients List, Outlook will display external content in all e-mail messages from the malicious sender, which could include Web beacons.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17748",
+      "title": "Junk email protection level for outlook ",
+      "description": "The Junk E-mail Filter in Outlook 2007 is designed to intercept the most obvious junk e-mail, or spam, and send it to users' Junk E-mail folders. The filter evaluates each incoming message based on several factors, including the time when the message was sent and the content of the message. The filter does not single out any particular sender or message type, but instead analyzes each message based on its content and structure to discover whether or not it is probably spam. \nBy default, users can choose from four levels of junk e-mail filtering:\n•\tNo Automatic Filtering. Outlook does not evaluate incoming messages by content.  Outlook continues to evaluate messages by using the domain names and e-mail addresses in the users' Blocked Senders Lists, and continues to move messages from  blocked senders to users' Junk E-mail folders. \n•\tLow. Outlook only moves the most obvious spam messages to users' Junk E-mail folders.  This level is the default setting.\n•\tHigh. Outlook intercepts most junk e-mail, but might incorrectly classify some legitimate messages as junk. Users are advised to check their Junk E-mail folders often. \n•\tSafe Lists Only. Outlook moves all incoming messages to users' Junk E-mail folders except messages from someone on users' Safe Senders Lists and messages sent to mailing lists on users' Safe Recipients Lists.\nIf users choose an inappropriate setting, they might miss important messages or accumulate large amounts of junk e-mail in their Inboxes.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17753",
+      "title": "Make Outlook the default email, calendar, and contacts program. ",
+      "description": "By default, Outlook 2007 is made the default program for E-mail, contacts, and calendar services when it is installed, although users can designate other programs as the default programs for these services. If another application is used to provide these services and your organization does not ensure the security of that application, it could be exploited to gain access to sensitive information or launch other malicious attacks.\nIf your organization has policies that govern the use of personal information management software, allowing users to change the default configuration could enable them to violate such policies.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17755",
+      "title": "Enable messages formats are set to use SMime - Outlook.",
+      "description": "E-mail typically travels over open networks and is passed from server to server. Messages are therefore vulnerable to interception, and attackers might read or alter their contents. It is therefore important to have a mechanism for signing messages and providing end-to-end encryption.\nOutlook 2007 supports three formats for encrypting and signing messages: S/MIME, Exchange, and Fortezza. By default, Outlook only uses S/MIME to encrypt and sign messages. If your organization has policies that mandate the use of specific encryption formats, allowing users to choose freely between these formats could cause them to violate such policies.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17756",
+      "title": "Enable the Missing Root Certificates warning - Outlook. ",
+      "description": "When Outlook 2007 accesses a certificate, it validates that it can trust the certificate by examining the root certificate of the issuing CA. If the root certificate can be trusted, then certificates issued by the CA can also be trusted.\nIf Outlook cannot find the root certificate, it cannot validate that any certificates issued by that CA can be trusted. An attacker may compromise a root certificate and then remove the certificate in an attempt to conceal the attack.\nBy default, users are not prompted with a warning or an error when a root certificate cannot be located.\nBy default, Outlook displays a warning message when a CRL is not available.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17760",
+      "title": "Configure Outlook Security Mode to use Policy settings. - Outlook.",
+      "description": "If users can configure security themselves, they might choose levels of security that leave their computers vulnerable to attack.\nBy default, Outlook 2007 users can configure security for themselves, and Outlook ignores any security-related settings that are configured in Group Policy.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17761",
+      "title": "Disable Plain Text Options for outbound email - Outlook",
+      "description": "If outgoing mail is formatted in certain ways, for example if attachments are encoded in UUENCODE format, attackers might manipulate the messages for their own purposes. If UUENCODE formatting is used, an attacker could manipulate the encoded attachment to bypass content filtering software.\nBy default, Outlook 2007 automatically wraps plain text messages at 76 characters and uses the standard MIME format to encode attachments in plain text messages. However, these settings can be altered to allow e-mail to be read in plain text e-mail programs that use a non-standard line length or that cannot process MIME attachments.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17762",
+      "title": "Prevent publishing to a Web Distributed and Authoring (DAV) server - Outlook. ",
+      "description": "By default, Outlook 2007 users can share their calendars with others by publishing them to a server that supports the World Wide Web Distributed Authoring and Versioning (WebDAV) protocol. Unlike the Microsoft Office Online Calendar Sharing Service, which allows users to manage other people's access to their calendars, DAV access restrictions can only be accomplished through server and folder permissions, and might require the assistance of the server administrator to set up and maintain. If these permissions are not managed properly, unauthorized people could access sensitive information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17763",
+      "title": "Prevent publishing calendars to Office Online. - Outlook ",
+      "description": "By default, Outlook 2007 users can share their calendars with selected others by publishing them to the Microsoft Office Outlook Calendar Sharing Service. Users can control who can view their calendar and at what level of detail. If your organization has policies that govern access to external resources such as Office Online, allowing users to publish their calendars might enable them to violate those policies.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17766",
+      "title": "Prevent users from customizing attachment security settings - Outlook",
+      "description": "All installed trusted COM addins can be trusted.  Exchange Settings for the addins still override if present and this option is selected.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17770",
+      "title": "Read EMail as plain text - Outlook. ",
+      "description": "Outlook 2007 can display e-mail messages and other items in three formats: plain text, Rich Text Format (RTF), and HTML. By default, Outlook displays e-mail messages in whatever format they were received in. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17771",
+      "title": "Read signed email as plain text. ",
+      "description": "Outlook 2007 can display e-mail messages and other items in three formats: plain text, Rich Text Format (RTF), and HTML. By default, Outlook displays digitally signed e-mail messages in the format they were received in. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17774",
+      "title": "Do not Remove file extensions blocked as level 1. ",
+      "description": "Malicious code is often spread through e-mail. Some viruses have the ability to send copies of themselves to other people in the victim's Address Book or Contacts list, and such potentially harmful files can affect the computers of unwary recipients.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17775",
+      "title": "Do not remove file extensions blocked as level 2 - Outlook. ",
+      "description": "Malicious code is often spread through e-mail. Some viruses have the ability to send copies of themselves to other people in the victim's Address Book or Contacts list, and such potentially harmful files can affect the computers of unwary recipients.\nOutlook 2007 uses two levels of security to restrict users' access to files attached to e-mail messages or other items. Files with specific extensions can be categorized as Level 1 (users cannot view the file) or Level 2 (users can open the file after saving it to disk). Users can freely open files of types that are not categorized as Level 1 or Level 2.\nBy default, Outlook classifies a number of potentially harmful file types as Level 1. (See Attachment file types restricted by Outlook 2007 for the complete list.) Outlook does not classify any file types as Level 2 by default, so this setting is not particularly useful in isolation. Typically, if there are extensions on the Level 2 list they would have been added by using the \"Add file extensions to block as Level 2\" setting, through which they can be removed.\nThe combined lists of blocked and restricted file extensions that Outlook uses are actually built by combining various policies together. If a machine policy classifies an extension as Level 2, this setting could be used to remove the extension from the list in some situations. As with Level 1 extensions, though, removing restrictions on potentially dangerous extensions can make it easier for users to open dangerous files, which can significantly reduce security.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17776",
+      "title": "Restrict level of calendar details that a user can publish - Outlook.",
+      "description": "By default, Outlook 2007 users can share their calendars with selected others by publishing them to the Microsoft Office Outlook Calendar Sharing Service. Users can choose from three levels of detail:\n•\tAvailability only. Authorized visitors will see the user's time marked as Free, Busy, ntative, or Out of Office, but will not be able to see the subjects or details of calendar items.\n•\tLimited details. Authorized visitors can see the user's availability and the subjects of calendar items only. They will not be able to view the details of calendar items. Optionally, users can allow visitors to see the existence of private items.\n•\tFull details. Authorized visitors can see the full details of calendar items. Optionally, users can allow visitors to see the existence of private items and to access attachments within calendar items.\nIf users are allowed to publish limited or full details, sensitive information in their calendars could become exposed to parties who are not authorized to have that information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17777",
+      "title": "Restrict upload method for publishing calendars to Office Online - Outlook. ",
+      "description": "By default, when users publish their calendar to Microsoft Office Online using the Microsoft Office Outlook Calendar Sharing Service, Outlook 2007 updates the calendars online at regular intervals unless they click Advanced and select Single Upload: Updates will not be uploaded from the Published Calendar Settings dialog box. If your organization has policies that govern the use of external resources such as Microsoft Office Online, allowing Outlook to publish calendar updates automatically might violate those policies.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17778",
+      "title": "Configure \"retrieving Certificate Revokation List\" (CRL) data - Outlook",
+      "description": "Certificate revocation lists (CRLs) are lists of digital certificates that have been revoked by their controlling certificate authorities (CAs), typically because the certificates were issued improperly or their associated private keys were compromised.\nBy default, when Outlook 2007 handles a certificate that includes a URL from which a CRL can be downloaded, Outlook will retrieve the CRL from the provided URL if Outlook is online. If this configuration is changed, Outlook might improperly trust a revoked certificate, which could put users' computers and data at risk.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17787",
+      "title": "Run in FIPS compliant mode - Outlook. ",
+      "description": "Outlook 2007 can run in a mode that complies with Federal Information Processing Standards (FIPS), a set of standards published by the National Institute of Standards and Technology (NIST) for use by non-military United States government agencies and by government contractors.\nBy default, Outlook does not run in FIPS-compliant mode. Organizations that do business with the U.S. government but do not run Outlook in FIPS-compliant mode risk violating the government's rules regarding the handling of sensitive information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17790",
+      "title": "No S/Mime interoperability with external clients for message handling. ",
+      "description": "In some situations, administrators might wish to use an external program, such as an add-in, to handle S/MIME message decryption. If your organization works with encrypted messages that the decryption functionality in Outlook 2007 cannot handle appropriately, this setting can be used to configure Outlook to hand S/MIME messages off to an external program for decryption. If no external program has been authorized, however, misconfiguring this setting could allow unauthorized and potentially dangerous programs to handle encrypted messages, which could compromise security.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17791",
+      "title": "Configure S/Mime password setting - default S/Mime password time",
+      "description": "Key Management Server (KMS) was a product that could be integrated with certain versions of Microsoft Exchange Server prior to Exchange 2000 SP2. Users must supply a password to use certificates issued by KMS to sign or decrypt e-mail messages. When Outlook 2007 prompts users for the correct password, they can specify a length of time in minutes for Outlook to cache the password. Users will not be prompted to continually reenter the password during the specified time period. \nBy default, Outlook remembers KMS passwords for 30 minutes, which users can change to any number of minutes up to 300. The longer the period of time a user specifies, the greater the chance that an unauthorized person can use the user's computer to access sensitive information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17792",
+      "title": "Enable the feature and configure the maximum S/Mime password time setting. ",
+      "description": "Key Management Server (KMS) was a product that could be integrated with certain versions of Microsoft Exchange Server prior to Exchange 2000 SP2. Users must supply a password to use certificates issued by KMS to sign or decrypt e-mail messages. When Outlook 2007 prompts users for the correct password, they can specify a length of time in minutes for Outlook to cache the password. Users will not be prompted to continually reenter the password during the specified time period. \nBy default, Outlook remembers KMS passwords for 30 minutes, which users can change to any number of minutes up to 300. The longer the period of time a user specifies, the greater the chance that an unauthorized person can use the user's computer to access sensitive information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17795",
+      "title": "Enable security feature to never automatically send  s/Mime receipt requests. ",
+      "description": "Incoming signed or encrypted messages might include S/MIME receipt requests. S/MIME receipts provide confirmation that messages are received unaltered, and can include information about who opened the message and when it was opened.\nBy default, when users open messages with attached receipt requests, Outlook 2007 prompts them to decide whether to send a receipt to the sender with information about the identity of the user who opened the message and the time it was opened. If Outlook cannot send the receipt, the user is still allowed to open the message.\nIn some situations, allowing Outlook to automatically send receipt requests could cause sensitive information to be divulged to unauthorized people.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17798",
+      "title": "Create settings to Always warn on untrusted macros - Outlook. ",
+      "description": "To protect users from dangerous code, the Outlook 2007 default configuration disables all macros that are not trusted, including unsigned macros, macros with expired or invalid signatures, and macros with valid signatures from publishers who are not on users' Trusted Publishers lists. The default configuration also allows macros that are signed by trusted publishers to run automatically without notifying users, which could allow dangerous code to run",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17800",
+      "title": "Configure to send all signed messages as clear signed messages - Outlook. ",
+      "description": "By default, when users sign e-mail messages with their digital signature and send them, Outlook 2007 uses the signature's private key to encrypt the digital signature but sends the messages as clear text, unless they are encrypted separately. If users change this functionality by clearing the Send clear text signed message when sending signed messages option in the E-mail Security section of the Trust Center, any recipients who are unable to access or use the sender's digital certificate will not be able to read the e-mail messages.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17801",
+      "title": "Set Control Item property prompt for data, to automatically deny. ",
+      "description": "When a control on a custom Outlook 2007 form is bound directly to any of the Address Information fields, the form code can indirectly retrieve the value of the Address Information field by obtaining the Value property of the control. If the custom form was created by a malicious or inexperienced user, sensitive information could be exposed to unauthorized parties.\nBy default, Outlook prompts users when they bind a control to an Address Information field.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17802",
+      "title": "Set custom Outlook Object Model (OOM) action execution prompt - Outlook. ",
+      "description": "Custom actions add functionality to Outlook 2007 that can be triggered as part of a rule. Among other possible features, custom actions can be created that reply to messages in ways that circumvent the Outlook model's programmatic send protections.\nBy default, when Outlook or another program initiates a custom action using the Outlook object model, users are prompted to allow or reject the action. If this configuration is changed, malicious code can use the Outlook object model to compromise sensitive information or otherwise cause data and computing resources to be at risk.\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17803",
+      "title": "Set security feature to always warn about invalid signature - Outlook. ",
+      "description": "By default, if users open e-mail messages that include invalid digital signatures, Outlook 2007 displays a warning dialog box. Users can decide whether they want to be warned about invalid signatures in the future.\n If users are not notified about invalid signatures, they might be prevented from detecting a fraudulent signature sent by a malicious person.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17806",
+      "title": "RSS feed synchronization with Common Feed List - Outlook. ",
+      "description": "The Common Feed list is a hierarchical set of RSS feeds to which clients such as Outlook 2007, the Feeds list in Internet Explorer 7, and the Feed Headlines Sidebar gadget in Windows Vista can subscribe.\nIf Outlook subscribes to a very large feed list, performance and availability can be affected, especially if Outlook is configured to download full RSS message bodies or if the feed list is not AutoArchived regularly. \nBy default, Outlook maintains its own list of feeds and does not automatically subscribe to RSS feeds that are added to the Common Feed List.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17807",
+      "title": "Trust EMail from senders in receiver's contact list - Outlook. ",
+      "description": "By default, e-mail addresses in users' Contacts list are treated as safe senders for purposes of filtering junk e-mail. If this configuration is changed, e-mail from users' Contacts might be misclassified as junk and cause important information to be lost.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17808",
+      "title": "Enable the \"turn off RSS Feeds\" feature in Outlook. ",
+      "description": "By default, users can subscribe to RSS feeds from within Outlook 2007 and read RSS items like e-mail messages. If your organization has policies that govern the use of external resources such as RSS feeds, allowing users to subscribe to the RSS feed in Outlook might enable them to violate those policies.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17812",
+      "title": "Disable the feature that uses Unicode when dragging eMail message to file system - Outlook. ",
+      "description": "By default, when users drag e-mail messages from Outlook 2007 to a Windows Explorer window or to their Desktop, Outlook creates a .msg file using the native character encoding format for the configured locale (the so-called \"ANSI\" format). If this setting is Enabled, Outlook uses the Unicode character encoding standard to create the message file, which preserves special characters in the message. \nHowever, Unicode text is vulnerable to homograph attacks, in which characters are replaced by different but similar-looking characters. For example, the Cyrillic letter ? (U+0430) appears identical to the Latin letter a (U+0061) in many typefaces, but is actually a different character. Homographs can be used in \"phishing\" attacks to convince victims to visit fraudulent Web sites and enter sensitive information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17944",
+      "title": "Disable User Entries to Server List - Outlook",
+      "description": "If users are able to manually enter the addresses of servers that are not approved by the organization, they could use servers that do not meet your organization's information security requirements, which could cause sensitive information to be at risk.\nBy default, when users create a meeting workspace, they can choose a server from a default list provided by administrators or manually enter the address of a server that is not listed.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-41493",
+      "title": "Text in Outlook that represents Internet and network paths must not be automatically turned into hyperlinks.",
+      "description": "The ability of Outlook to automatically turn text that represents Internet and network paths into hyperlinks would allow users to click on those hyperlinks in email messages and access malicious or otherwise harmful websites.",
+      "severity": "medium"
+    }
+  ]
+}

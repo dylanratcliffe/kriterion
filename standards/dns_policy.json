@@ -1,0 +1,155 @@
+{
+  "name": "dns_policy",
+  "date": "2017-10-02",
+  "description": "The DNS Policy Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "DNS Policy Security Technical Implementation Guide",
+  "version": "4",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-13032",
+      "title": "A name server is not protected by equivalent or better physical access controls than the clients it supports.",
+      "description": "If an adversary can compromise a name server, then the adversary can redirect most network traffic sent to the hosts defined on that name server.  Therefore, the security of the name server is as critical as the security of the hosts it protects.  It is understood that different hosts require different levels of physical security.  Nevertheless, the name server should not have weaker physical access controls than the computers it supports because this would, in effect, reduce the security of those hosts as well.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13034",
+      "title": "The DNS log archival requirements do not meet or exceed the log archival requirements of the operating system on which the DNS software resides.",
+      "description": "Name servers are dedicated to the DNS function and, as a result, the most critical security and operations events on those name servers will appear in the DNS logs.  Different sites may have different policies regarding archival, but the DNS logs should be maintained in an equivalent (or better) manner as the operating system logs.  Therefore, if operating system logs are stored for a year, then DNS logs should be stored for at least a year.  If operating system logs are written to read-only media, then the DNS logs should be written to read-only media as well.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13035",
+      "title": "DNS logs are not reviewed daily or a real-time log analysis or network management tool is not employed to immediately alert an administrator of critical DNS system messages.",
+      "description": "If a responsible administrator does not review DNS logs daily, then there is the potential that an attack or other security issue can go unnoticed for a day or more, which is unacceptable in DOD environments.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13036",
+      "title": "A list of personnel authorized to administer each zone and name server is not maintained.",
+      "description": "If an organization does not document who is responsible for the DNS function, then there is a significant potential that unauthorized individuals will obtain privileged access to name servers. During a security breach, it will be difficult to assign accountability for improper transactions if it is not known who is responsible for this function.\n\nThe roles of the SA and the web administrator or web master are generally understood but are often used interchangeably. The SA is responsible for the OS, while the web administrator or web master usually manages the website(s). In some cases, the SA is also the web administrator/web master, which is why guidance tends to be written in a certain fashion. The application development group should refer to the supporting organization for the application when application issues arise from meeting web server requirements. \n",
+      "severity": "low"
+    },
+    {
+      "id": "V-13037",
+      "title": "A patch and DNS software upgrade log; to include the identity of the administrator, date and time each patch or upgrade was implemented,  is not maintained.",
+      "description": "DNS software has a history of vulnerabilities and new ones may be discovered at any time.  To ensure that attackers cannot take advantage of known DNS vulnerabilities applicable software patches and patches must be applied.  Patch and DNS software upgrade documentation must be maintained to ensure the DNS name servers are protected from these vulnerabilities and current with required patches and software upgrades.",
+      "severity": "low"
+    },
+    {
+      "id": "V-13038",
+      "title": "Operating procedures do not require that DNS configuration, keys, zones, and resource record data are backed up on any day on which there are changes.",
+      "description": "If a name servers configuration, keys, zones, and resource record information is not backed up on any day in which there are changes, there is a risk that an organization cannot quickly recover from the loss of the server.  In addition, forensic analysis of security incidents is considerably more difficult if there is not reliable evidence of when changes may have occurred.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13039",
+      "title": "Configuration change logs and justification for changes are not maintained.",
+      "description": "If changes are made to the configuration without documentation, it is often difficult to determine the root cause of an operational problem or understand the circumstances in which a security breach occurred.  Without adequate configuration change records, it is also more difficult for the IAO and other oversight personnel to track major activity, which is critical to information assurance.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13040",
+      "title": "Written procedures for the replacement of cryptographic keys used to secure DNS transactions does not exist. ",
+      "description": "Without adequate TSIG supersession procedures, there is the potential that an unauthorized person may be able to compromise the key.  Once in possession of the key, that individual might be able to update DNS records by configuring a machine to masquerade as a zone partner.  Since name servers are configured to accept updates signed by a valid key, there may be no other administrative or technical controls to prevent this type of security breach.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13041",
+      "title": "The IAO has not established written procedures for the process of updating zone records, who is authorized to submit and approve update requests, how the DNS administrator verifies the identity of the person from whom he/she received the request, and how the DNS administrator documents any changes made. ",
+      "description": "If the procedures for updating zone records are inadequate, then this increases the probability that adversary  perhaps even an insider will be able to modify the DNS records using weaknesses in administrative processes rather than weaknesses in technical controls.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13042",
+      "title": "An authoritative master name server does not have at least one and preferably two or more active slave servers for each of its zones. The slave server does not reside on a separate host.",
+      "description": "A critical component of securing an information system is ensuring its availability.  The best way to ensure availability is to eliminate any single point of failure in the system itself and in the network architecture that supports it.\n\nFortunately, the inherent design of DNS supports a high-availability environment.  Master and slave servers regularly communicate zone information, so if any name server is disabled at any time, another can immediately provide the same service.  The task for the network architect is to ensure that a disaster or outage cannot simultaneously impact both the master and all of its slave servers.  If a disaster occurs, the DNS protocols cannot prevent total loss of name resolution services for hosts within affected zones.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-13043",
+      "title": "Name servers authoritative for a zone are not located on separate network segments if the host records described in the zone are themselves located across more than one network segment.",
+      "description": "A critical component of securing an information system is ensuring its availability.  The best way to ensure availability is to eliminate any single point of failure in the system itself and in the network architecture that supports it.\n\nFortunately, the inherent design of DNS supports a high-availability environment.  Master and slave servers regularly communicate zone information, so if any name server is disabled at any time, another can immediately provide the same service.  The task for the network architect is to ensure that a disaster or outage cannot simultaneously impact both the master and all of its slave servers.  If a disaster occurs, the DNS protocols cannot prevent total loss of name resolution services for hosts within affected zones.\n\nThe solution is to disperse name servers in such a way as to avoid single points of failure.  At minimum, authoritative name servers for the same zone should be on different network segments in order that at least one name server is available in the event that a router or switch fails.  This fault tolerance should also extend to wide area data communications lines.  For example, if a site has multiple leased lines connecting the network on which the name server resides to a larger network such as the NIPRNet, routing protocols should be configured such that if one of the lines fails, another one will still be available to support the name server.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-13044",
+      "title": "A zone includes hosts located in more than one building or site, yet at least one of the authoritative name servers supporting the zone is not as geographically and topologically distributed as the most remote host.\n\n",
+      "description": "When authoritative name servers are co-located in the same facility, the loss of the facility likely leads to the loss of access to all servers defined in their zones (i.e., nobody can resolve their names).  If one or more of the hosts in the supported zones are located at a different site, they would be effectively down even though they would otherwise be fully operational.  This scenario can only be prevented with geographic dispersal of name servers.  Organizations should also be prepared for greater disasters, such as the destruction of a building, an entire campus, or in the case of a hurricane, an entire city.  In situations in which all the hosts defined on an authoritative name server are located in the same building as the name server, then loss of DNS will not impact availability of service simply because the computing infrastructure is already down.  On the other hand, if all the authoritative name servers for a zone reside in a single building, but hosts defined within the zone are located elsewhere, then the loss of the DNS will impact service.  The loss of service occurs because users (and other infrastructure devices and servers) will not be able to resolve host names for servers/services that are otherwise still operational at an unaffected site.\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13045",
+      "title": "Private IP space is used within an Enclave without the use of split DNS to prevent private IPs from leaking into the public DNS system. ",
+      "description": "DNS operators should assume that any data placed in the DNS would be available to anyone connected to the Internet. Split DNS shall not be considered a mitigating factor or technique to deny DNS information to an attacker. Split DNS will continue to be required in one situation only: to prevent address space that is private (e.g., 10.0.0.0/24) or is otherwise concealed by some form of Network Address Translation from leaking into the public DNS system.",
+      "severity": "low"
+    },
+    {
+      "id": "V-13046",
+      "title": "The DNS database administrator has not documented the owner of each zone (or group of related records) and the date the zone was created, last modified, or verified.  This documentation will preferably reside in the zone file itself through comments, but if this is not feasible, the DNS database administrator will maintain a separate database for this purpose.",
+      "description": "A zone file should contain adequate documentation that would allow an IAO or newly assigned administrator to quickly learn the scope and structure of that zone.  In particular, each record (or related set of records, such as a group of LAN workstations) should be accompanied by a notation of the date the record was created, modified, or validated and record the owner’s name, title, and organizational affiliation.  The owner of a record is an individual with the authority to request that the record be modified or deleted.\n\nIf an organization cannot identify who is responsible for a host record, then there is no assurance that it is valid.  If invalid records are in a zone, then an adversary could potentially use their existence for improper purposes. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-13047",
+      "title": "The name server software on production name servers is not BIND, Windows 2003 or later DNS, or alternatives with equivalent security functionality and support, configured in a manner to satisfy the general security requirements listed in the STIG. ",
+      "description": "If an organization runs DNS name server software other than BIND,  Windows 2003 DNS or later, or an equivalent alternative, such as Infoblox running BIND; it cannot benefit from assurance testing of those implementations of DNS.  As a result, there may be unknown vulnerabilities associated with the alternative product for which there are no compensating controls.  Moreover, there is no detailed security implementation guidance for other name server implementations, which makes it considerably harder to conduct reviews or self assessments.  An incomplete review means that an organization operates at a lower level of assurance than could have been realized with one of the approved products.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13048",
+      "title": "Hosts outside an enclave can directly query or request a zone transfer from a name server that resides on the internal network (i.e., not in a DMZ).",
+      "description": "If external hosts are able to query a name server on the internal network, then there is the potential that an external adversary can obtain information about internal hosts that could assist the adversary in a network attack.  External hosts should never be able to learn about the internal network in this manner.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13050",
+      "title": "The DNS architecture is not documented to include specific roles for each DNS server, the security controls in place, and what networks are able to query each server.",
+      "description": "Without current and accurate documentation, any changes to the network infrastructure may\njeopardize the network’s integrity. To assist in the management, auditing, and security of the\nnetwork, facility drawings and topology maps are a necessity; and those addressing critical network assets, such as the DNS server, are especially important. Topology maps (documentation) are important because they show the overall layout of the network infrastructure and where devices are\nphysically located. They also show the relationship and inter-connectivity between devices and\nwhere possible intrusive attacks (wire taps) could take place.\nAdditionally,  documentation along with diagrams of the network topology are required to be submitted to the Connection Approval Process (CAP) for approval to connect to the NIPRNet or SIPRNet. Depending on the command, service, or activity, additional approval may be required.",
+      "severity": "low"
+    },
+    {
+      "id": "V-13051",
+      "title": "The DNS server software is either installed on or enabled on an operating system that is no longer supported by the vendor.",
+      "description": null,
+      "severity": "high"
+    },
+    {
+      "id": "V-13052",
+      "title": "The SA has not subscribed to ISC's mailing list \"bind announce\" for updates on vulnerabilities and software notifications. ",
+      "description": "Whether running the latest version or software or an earlier version, the administrator should be aware of the vulnerabilities, exploits, security fixes, and patches for the version that is in operation in the enterprise.",
+      "severity": "low"
+    },
+    {
+      "id": "V-13053",
+      "title": "The contents of zones are not reviewed at least annually.",
+      "description": "DNS administrators must review the contents of their zones at least as often as annually for content or aggregation of content that may provide an adversary information that can potentially compromise operational security. This specifically includes names that provide an outsider some indication as to the function of the referenced system unless the function is obvious in the context of other standard DNS information (e.g., naming a DNS server as dns.zone.mil or an SMTP mail server as mail.zone.mil is not an OPSEC violation given that the functions of these servers are easily identifiable during DNS queries). The DNS administrator is the final adjudicator of the sensitivity of DNS information, in concert with the OPSEC processes of the organization, but should make a conscious decision to include such information based on operational need. NIST guidance includes specific guidelines that HINFO, RP and LOC records not be included in the zone.",
+      "severity": "low"
+    },
+    {
+      "id": "V-13313",
+      "title": "The underlying operating system of the DNS server is not in compliance with the appropriate OS STIG.",
+      "description": "A vulnerability in the underlying operating system of a DNS server could potentially impact not only the DNS server but the entire network infrastructure to include the Global Information Grid (GIG). ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13314",
+      "title": "A zone or name server does not have a backup administrator.",
+      "description": "If there is no backup DNS administrator, then there is nobody to assist during a security emergency when the primary administrator is unavailable.  In some cases, a backup administrator can also detect problems introduced by the first administrator before these problems are allowed to propagate.  Personnel redundancy is as important as technology redundancy for the DNS availability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14763",
+      "title": "The name server software on production name servers is not BIND, Windows 2003 or later DNS, or alternatives with equivalent vendor support, configured in a manner to satisfy the general security requirements listed in the STIG. The only currently approved alternative is CISCO CSS DNS.",
+      "description": "If an organization runs DNS name server software other than BIND, Windows 2003 DNS or later, or an equivalent alternative, it cannot benefit from assurance testing of those implementations of DNS. As a result, there may be unknown vulnerabilities associated with the alternative products for which there are no compensating controls. Moreover, there is no detailed security implementation guidance for other name server implementations, which makes it considerably harder to conduct reviews or self assessments. An incomplete review means that an organization operates at a lower level of assurance than could have been realized with one of the approved products.  Those products without vendor support can not be maintained at relevant security patch levels to assure the product has no vulnerabilities.",
+      "severity": "high"
+    },
+    {
+      "id": "V-4027",
+      "title": "Servers do not employ Host Based Intrusion Detection (HIDS).",
+      "description": "Servers without a HID may allow unauthorized access to go undetected and limit the ability of security personnel to stop malicious or unauthorized use of the device. In order to ensure that an attempted or existing attack goes unnoticed, the data from the HID must be monitored continuously.",
+      "severity": "medium"
+    }
+  ]
+}

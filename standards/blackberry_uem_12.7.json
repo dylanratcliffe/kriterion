@@ -1,0 +1,59 @@
+{
+  "name": "blackberry_uem_12.7",
+  "date": "2017-11-27",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "BlackBerry UEM 12.7 Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-78445",
+      "title": "The BlackBerry UEM 12.7 server must be configured to display the required DoD warning banner upon administrator logon.",
+      "description": "Note: The advisory notice and consent warning message is not required if the general purpose OS or network device displays an advisory notice and consent warning message when the administrator logs on to the general purpose OS or network device prior to accessing The BlackBerry UEM 12.7 server or MDM server platform.\n\nBefore granting access to the system, The BlackBerry UEM 12.7 server/server platform is required to display the DoD-approved system use notification message or banner that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. This ensures the legal requirements for auditing and monitoring are met.\n\nThe approved DoD text must be used as specified in the KS referenced in DoDI 8500.01.\n\nThe non-bracketed text below must be used without any changes as the warning banner. \n\n[A. Use this banner for desktops, laptops, and other devices accommodating banners of 1300 characters. The banner shall be implemented as a click-through banner at logon (to the extent permitted by the operating system), meaning it prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating “OK.”]\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. \nBy using this IS (which includes any device attached to this IS), you consent to the following conditions: \n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. \n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n\nSFR ID: FMT_SMF.1.1(2) d",
+      "severity": "low"
+    },
+    {
+      "id": "V-78447",
+      "title": "The BlackBerry UEM 12.7 server must be configured to have at least one user in the following Administrator roles: UEM Security Administrator, Auditor, and one or more Site Custom Administrator or UEM predefined enterprise/help desk roles.",
+      "description": "Having several administrative roles for MDM server supports separation of duties. This allows administrator-level privileges to be granted granularly, such as giving application management privileges to one group and security policy privileges to another group. This helps prevent administrators from intentionally or inadvertently altering other settings and configurations they may not understand or approve of, which can weaken overall security and increase the risk of compromise.\n\n- Server primary administrator: Responsible for server installation, initial configuration, and maintenance functions. Responsible for the setup and maintenance of security configuration administrator and auditor accounts. Responsible for the maintenance of applications in the MAS. (Called \"Security Administrator\" in UEM)\n- Security configuration administrator: Responsible for security configuration of the server, defining device user groups, setup and maintenance of device user group administrator accounts, and defining privileges of device user group administrators. (UEM Enterprise Administrator, Help Desk Administrator or custom roles can be used for this role)\n- Device user group administrator: Responsible for maintenance of mobile device accounts, including setup, change of account configurations, and account deletion. Responsible for defining which apps user groups or individual users have access to in the MAS. Can only perform administrative functions assigned by the security configuration administrator. (UEM Enterprise Administrator, Help Desk Administrator or custom roles can be used for this role)\n- Auditor: Responsible for reviewing and maintaining server and mobile device audit logs. (These is no predefined role in UEM)\n\nSFR ID: FMT_SMR.1.1(1)",
+      "severity": "medium"
+    },
+    {
+      "id": "V-78449",
+      "title": "The BlackBerry UEM 12.7 server must be configured to leverage the MDM platform user accounts and groups for MDM server user identification and authentication.",
+      "description": "A comprehensive account management process that includes automation helps to ensure the accounts designated as requiring attention are consistently and promptly addressed. If an attacker compromises an account, the entire MDM server infrastructure is at risk. Providing automated support functions for the management of accounts will ensure only active accounts will be granted access with the proper authorization levels. These objectives are best achieved by configuring the BlackBerry UEM 12.7 server to leverage an enterprise authentication mechanism (e.g., Microsoft Active Directory Kerberos).\n\nSFR ID: FIA",
+      "severity": "medium"
+    },
+    {
+      "id": "V-78451",
+      "title": "The BlackBerry UEM 12.7 server must configure the MDM Agent/platform to enable the DoD required device enrollment restrictions allowed for enrollment [specific device model] (if function is not automatically implemented during MDM server install).",
+      "description": "Good configuration management of a mobile device is a key capability for maintaining the mobile device’s security baseline. Restricting network access to only authorized devices is a key configuration management attribute. Device type is a key way to specify mobile devices that can be adequately secured.\n\nSFR ID: FMT_SMF.1.1(2) b,\nFIA_ENR_EXT.1.2",
+      "severity": "medium"
+    },
+    {
+      "id": "V-78453",
+      "title": "The BlackBerry UEM 12.7 server or platform must be configured to initiate a session lock after a 15-minute period of inactivity.",
+      "description": "A session time-out lock is a temporary action taken when a user (a MDM system administrator) stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence. Rather than relying on the user to manually lock their application session prior to vacating the vicinity, applications need to be able to identify when a user's application session has idled and take action to initiate the session lock.\n\nThe session lock is implemented at the point where session activity can be determined and/or controlled. This is typically at the operating system level and results in a system lock but may be at the application level where the application interface window is secured instead.\n\nSFR ID: FMT_SMF.1.1(2) b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-78455",
+      "title": "The BlackBerry UEM server platform must be protected by a DoD-approved firewall.",
+      "description": "Most information systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Unneeded services and processes provide additional threat vectors and avenues of attack to the information system. The BlackBerry UEM server is a critical component of the mobility architecture and must be configured to enable only those ports, protocols, and services (PPS) necessary to support functionality. All others must be expressly disabled or removed. A DoD-approved firewall implements the required network restrictions. A host-based firewall is appropriate where the BlackBerry UEM server runs on a standalone platform. Network firewalls or other architectures may be preferred where the BlackBerry UEM server runs in a cloud or virtualized solution.\n\nSFR ID: FMT_SMF.1.1(2) b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-78457",
+      "title": "The firewall protecting the BlackBerry UEM server platform must be configured to restrict all network traffic to and from all addresses with the exception of ports, protocols, and IP address ranges required to support BlackBerry UEM server and platform functions.",
+      "description": "Most information systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations. Since BlackBerry UEM server is a critical component of the mobility architecture and must be configured to enable only those ports, protocols, and services (PPS) necessary to support functionality, all others must be expressly disabled or removed. A firewall installed on the BlackBerry UEM server provides a protection mechanism to ensure unwanted service requests do not reach the BlackBerry UEM server and outbound traffic is limited to only BlackBerry UEM server functionality.\n\nSFR ID: FMT_SMF.1.1(2) b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-78459",
+      "title": "The firewall protecting the BlackBerry UEM server platform must be configured so that only DoD-approved ports, protocols, and services are enabled. (See the DoD Ports, Protocols, Services Management [PPSM] Category Assurance Levels [CAL] list for DoD-approved ports, protocols, and services).",
+      "description": "All ports, protocols, and services used on DoD networks must be approved and registered via the DoD PPSM process. This is to ensure that a risk assessment has been completed before a new port, protocol, or service is configured on a DoD network and has been approved by proper DoD authorities. Otherwise, the new port, protocol, or service could cause a vulnerability to the DoD network, which could be exploited by an adversary.\n\nSFR ID: FMT_SMF.1.1(2) b",
+      "severity": "medium"
+    }
+  ]
+}

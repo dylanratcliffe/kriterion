@@ -1,0 +1,263 @@
+{
+  "name": "wman_access_point",
+  "date": "2017-12-07",
+  "description": "This STIG contains the technical security controls for the operation of a WMAN Access Point in the DoD environment.",
+  "title": "WMAN Access Point Security Technical Implementation Guide (STIG)",
+  "version": "6",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-14207",
+      "title": "WMAN systems must require strong authentication from the user or WMAN subscriber device to WMAN network.\n",
+      "description": "Broadband systems not compliant with authentication requirements could allow a hacker to gain access to the DoD network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14671",
+      "title": "Network devices must authenticate all NTP messages received from NTP servers and peers.",
+      "description": "Since NTP is used to ensure accurate log file time stamp information, NTP could pose a security risk if a malicious user were able to falsify NTP information. To launch an attack on the NTP infrastructure, a hacker could inject time that would be accepted by NTP clients by spoofing the IP address of a valid NTP server. To mitigate this risk, the time messages must be authenticated by the client before accepting them as a time source. \n\nTwo NTP-enabled devices can communicate in either client-server mode or peer-to-peer mode (aka \"symmetric mode\"). The peering mode is configured manually on the device and indicated in the outgoing NTP packets. The fundamental difference is the synchronization behavior: an NTP server can synchronize to a peer with better stratum, whereas it will never synchronize to its client regardless of the client's stratum. From a protocol perspective, NTP clients are no different from the NTP servers. The NTP client can synchronize to multiple NTP servers, select the best server and synchronize with it, or synchronize to the averaged value returned by the servers.\n\nA hierarchical model can be used to improve scalability. With this implementation, an NTP client can also become an NTP server providing time to downstream clients at a higher stratum level and of decreasing accuracy than that of its upstream server. To increase availability, NTP peering can be used between NTP servers. In the event the device loses connectivity to its upstream NTP server, it will be able to choose time from one of its peers. \n\nThe NTP authentication model is opposite of the typical client-server authentication model. NTP authentication enables an NTP client or peer to authenticate time received from their servers and peers. It is not used to authenticate NTP clients because NTP servers do not care about the authenticity of their clients, as they never accept any time from them.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14717",
+      "title": "The network device must not allow SSH Version 1 to be used for administrative access.",
+      "description": "SSH Version 1 is a protocol that has never been defined in a standard. Since SSH-1 has inherent design flaws which make it vulnerable to attacks, e.g., man-in-the-middle attacks, it is now generally considered obsolete and should be avoided by explicitly disabling fallback to SSH-1.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14886",
+      "title": "Wireless access points and bridges must be placed in dedicated subnets outside the enclave’s perimeter.",
+      "description": "If an adversary is able to compromise an access point or controller that is directly connected to an enclave network, then the adversary can easily surveil and attack other devices from that beachhead. A defense-in-depth approach requires an additional layer of protection exist between the WLAN and the enclave network. This is particularly important for wireless networks, which may be vulnerable to attack from outside physical perimeter of the facility or base given the inherent nature of radio communications to penetrate walls, fences, and other physical boundaries.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15432",
+      "title": "Network devices must use two or more authentication servers for the purpose of granting administrative access.",
+      "description": "The use of Authentication, Authorization, and Accounting (AAA) affords the best methods for controlling user access, authorization levels, and activity logging.  By enabling AAA on the routers in conjunction with an authentication server such as TACACS+ or RADIUS, the administrators can easily add or remove user accounts, add or remove command authorizations, and maintain a log of user activity.\n\nThe use of an authentication server provides the capability to assign router administrators to tiered groups that contain their privilege level that is used for authorization of specific commands.   For example, user mode would be authorized for all authenticated administrators while configuration or edit mode should only be granted to those administrators that are permitted to implement router configuration changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15434",
+      "title": "The emergency administration account must be set to an appropriate authorization level to perform necessary administrative functions when the authentication server is not online.",
+      "description": "The emergency administration account is to be configured as a local account on the network devices. It is to be used only when the authentication server is offline or not reachable via the network. The emergency account must be set to an appropriate authorization level to perform necessary administrative functions during this time.",
+      "severity": "high"
+    },
+    {
+      "id": "V-17821",
+      "title": "The network devices OOBM interface must be configured with an OOBM network address.",
+      "description": "The OOBM access switch will connect to the management interface of the managed network device. The management interface of the managed network device will be directly connected to the OOBM network. An OOBM interface does not forward transit traffic; thereby, providing complete separation of production and management traffic. Since all management traffic is immediately forwarded into the management network, it is not exposed to possible tampering. The separation also ensures that congestion or failures in the managed network do not affect the management of the device. If the OOBM interface does not have an IP address from the managed network address space, it will not have reachability from the NOC using scalable and normal control plane and forwarding mechanisms.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17822",
+      "title": "The network devices management interface must be configured with both an ingress and egress ACL.",
+      "description": "The OOBM access switch will connect to the management interface of the managed network device. The management interface can be a true OOBM interface or a standard interface functioning as the management interface. In either case, the management interface of the managed network device will be directly connected to the OOBM network.\n\nAn OOBM interface does not forward transit traffic; thereby, providing complete separation of production and management traffic. Since all management traffic is immediately forwarded into the management network, it is not exposed to possible tampering. The separation also ensures that congestion or failures in the managed network do not affect the management of the device. If the device does not have an OOBM port, the interface functioning as the management interface must be configured so that management traffic does not leak into the managed network and that production traffic does not leak into the management network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18598",
+      "title": "The WMAN system must not operate in the 3.30-3.65 GHz frequency band.",
+      "description": "DoD RADAR systems operate in the 3.30-3.65 GHz frequency band.  If the WMAN system operates in the same band, it could potentially interfere with RADAR operations and undermine the mission the RADAR supports. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-18600",
+      "title": "If the WMAN system is a tactical system or a commercial system operated in a tactical environment, the site WMAN system DIACAP must include a Transmission Security (TRANSEC) vulnerability analysis.   ",
+      "description": "If the TRANSEC analysis has not been completed, the system may not be designed or configured correctly to mitigate exposure of DoD data or may be vulnerable to a wireless attack.",
+      "severity": "low"
+    },
+    {
+      "id": "V-18601",
+      "title": "An appropriate WMAN coverage area must be reasonably sized and constrained to the areas intended for WMAN signals.",
+      "description": "Wireless signals could be intercepted more easily by an adversary if the coverage area is not appropriately sized.  If an adversary is able to intercept wireless signals, it is possible to obtain information about the location and intensity of DoD operations.  If DoD data is not encrypted in transit, then the adversary will be able to capture it.",
+      "severity": "low"
+    },
+    {
+      "id": "V-18602",
+      "title": "When a WMAN system is implemented, the network enclave must enforce strong authentication from user to DoD enclave (wired network).  For “User to Enclave” authentication, the enclave must enforce network authentication requirements found in USCYBERCOM CTO 07-15Rev1 (or subsequent updates) (e.g. CAC authentication).\n\nNote:  User authentication to the enclave must be a separate process from authentication to the WMAN system.  If the WMAN vendor implements CAC authentication for the User or WMAN subscriber device to WMAN network, the user may only need to enter their PIN once to authenticate to both the WMAN system and the enclave.\n",
+      "description": "Without strong user authentication to the network a hacker may be able to gain access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18603",
+      "title": "Site WMAN systems that transmit unclassified data must implement required data encryption controls.\n",
+      "description": "Sensitive DoD data could be exposed to a hacker.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18604",
+      "title": "A WMAN system transmitting classified data must implement required data encryption controls.",
+      "description": "If not compliant, classified data could be compromised.",
+      "severity": "high"
+    },
+    {
+      "id": "V-18605",
+      "title": "The WMAN site must perform periodic wireless IDS screening in all areas where WMAN coverage exists to prevent unauthorized access, jamming, or electromagnetic interference.  ",
+      "description": "WMAN systems could be at risk of wireless hacker attack if periodic wireless IDS screening is not performed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18606",
+      "title": "The WMAN site must implement required procedures for reporting the results of WMAN intrusion scans.\n",
+      "description": "If scan results are not properly reported and acted on, then the site could be vulnerable to wireless attack.",
+      "severity": "low"
+    },
+    {
+      "id": "V-18617",
+      "title": "A site must use a WMAN system in compliance with Committee on National Security Systems Policy (CNSSP) 300: the Department or Agency Certified TEMPEST Technical Authority (CTTA) has evaluated the system to determine its TEMPEST vulnerability and provided this information to the DAA.",
+      "description": "Sensitive or classified information could be compromised via a TEMPEST vulnerability.",
+      "severity": "low"
+    },
+    {
+      "id": "V-19903",
+      "title": "Site WMAN systems must implement strong authentication from the user or WMAN subscriber device to WMAN network.",
+      "description": "Broadband systems not compliant with authentication requirements could allow a hacker to gain\naccess to the DoD network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19904",
+      "title": "Site WMAN systems must implement strong authentication from the user or WMAN subscriber device to WMAN network.",
+      "description": "Broadband systems not compliant with authentication requirements could allow a hacker to gain\naccess to the DoD network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-23747",
+      "title": "Network devices must use at least two NTP servers to synchronize time.",
+      "description": "Without synchronized time, accurately correlating information between devices becomes difficult, if not impossible. If logs cannot be successfully compared between each of the routers, switches, and firewalls, it will be very difficult to determine the exact events that resulted in a network breach incident. NTP provides an efficient and scalable method for network devices to synchronize to an accurate time source.",
+      "severity": "low"
+    },
+    {
+      "id": "V-28784",
+      "title": "A service or feature that calls home to the vendor must be disabled.",
+      "description": "Call home services or features will routinely send data such as configuration and diagnostic information to the vendor for routine or emergency analysis and troubleshooting.  The risk that transmission of sensitive data sent to unauthorized persons could result in data loss or downtime due to an attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3012",
+      "title": "Network devices must be password protected.",
+      "description": "Network access control mechanisms interoperate to prevent unauthorized access and to enforce the organization's security policy. Access to the network must be categorized as administrator, user, or guest so the appropriate authorization can be assigned to the user requesting access to the network or a network device. Authorization requires an individual account identifier that has been approved, assigned, and configured on an authentication server. Authentication of user identities is accomplished through the use of passwords, tokens, biometrics, or in the case of multi-factor authentication, some combination thereof. Lack of authentication enables anyone to gain access to the network or possibly a network device providing opportunity for intruders to compromise resources within the network infrastructure.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3013",
+      "title": "Network devices must display the DoD-approved logon banner warning.",
+      "description": "All network devices must present a DoD-approved warning banner prior to a system administrator logging on. The banner should warn any unauthorized user not to proceed. It also should provide clear and unequivocal notice to both authorized and unauthorized personnel that access to the device is subject to monitoring to detect unauthorized usage. Failure to display the required logon warning banner prior to logon attempts will limit DoD's ability to prosecute unauthorized access and also presents the potential to give rise to criminal and civil liability for systems administrators and information systems managers. In addition, DISA's ability to monitor the device's usage is limited unless a proper warning banner is displayed.\n\nDoD CIO has issued new, mandatory policy standardizing the wording of \"notice and consent\" banners and matching user agreements for all Secret and below DoD information systems, including stand-alone systems by releasing DoD CIO Memo, \"Policy on Use of Department of Defense (DoD) Information Systems Standard Consent Banner and User Agreement\", dated 9 May 2008. The banner is mandatory and deviations are not permitted except as authorized in writing by the Deputy Assistant Secretary of Defense for Information and Identity Assurance. Implementation of this banner verbiage is further directed to all DoD components for all DoD assets via USCYBERCOM CTO 08-008A.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3014",
+      "title": "The network devices must timeout management connections for administrative access after 10 minutes or less of inactivity.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled between the managed network device and a PC or terminal server when the later has been left unattended. In addition quickly terminating an idle session will also free up resources committed by the managed network device as well as reduce the risk of a management session from being hijacked. Setting the timeout of the session to 10 minutes or less increases the level of protection afforded critical network components.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3043",
+      "title": "The network device must use different SNMP community names or groups for various levels of read and write access.",
+      "description": "Numerous vulnerabilities exist with SNMP; therefore, without unique SNMP community names, the risk of compromise is dramatically increased. This is especially true with vendors default community names which are widely known by hackers and other networking experts. If a hacker gains access to these devices and can easily guess the name, this could result in denial of service, interception of sensitive information, or other destructive actions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3056",
+      "title": "Group accounts must not be configured for use on the network device.",
+      "description": "Group accounts configured for use on a network device do not allow for accountability or repudiation of individuals using the shared account.  If group accounts are not changed when someone leaves the group, that person could possibly gain control of the network device.  Having group accounts does not allow for proper auditing of who is accessing or changing the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3057",
+      "title": "Authorized accounts must be assigned the least privilege level necessary to perform assigned duties.",
+      "description": "By not restricting authorized accounts to their proper privilege level, access to restricted functions may be allowed before authorized personnel are trained or experienced enough to use those functions. Network disruptions or outages may occur due to mistakes made by inexperienced persons using accounts with greater privileges than necessary.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3058",
+      "title": "Unauthorized accounts must not be configured for access to the network device.",
+      "description": "A malicious user attempting to gain access to the network device may compromise an account that may be unauthorized for use.  The unauthorized account may be a temporary or inactive account that is no longer needed to access the device.  Denial of Service, interception of sensitive information, or other destructive actions could potentially take place if an unauthorized account is configured to access the network device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3069",
+      "title": "Management connections to a network device must be established using secure protocols with FIPS 140-2 validated cryptographic modules.",
+      "description": "Administration and management connections performed across a network are inherently dangerous because anyone with a packet sniffer and access to the right LAN segment can acquire the network device account and password information.  With this intercepted information they could gain access to the router and cause denial of service attacks, intercept sensitive information, or perform other destructive actions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3070",
+      "title": "Network devices must log all attempts to establish a management connection for administrative access.",
+      "description": "Audit logs are necessary to provide a trail of evidence in case the network is compromised.  Without an audit trail that provides a when, where, who and how set of information, repeat offenders could continue attacks against the network indefinitely.  With this information, the network administrator can devise ways to block the attack and possibly identify and prosecute the attacker.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3143",
+      "title": "Network devices must not have any default manufacturer passwords.",
+      "description": "Network devices not protected with strong password schemes provide the opportunity for anyone to crack the password thus gaining access to the device and causing network outage or denial of service. Many default vendor passwords are well-known; hence, not removing them prior to deploying the network devices into production provides an opportunity for a malicious user to gain unauthorized access to the device.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3160",
+      "title": "Network devices must be running a current and supported operating system with all IAVMs addressed.",
+      "description": "Network devices not running the latest tested and approved versions of software are vulnerable to network attacks. Running the most current, approved version of system and device software helps the site maintain a stable base of security fixes and patches, as well as enhancements to IP security. Viruses, denial of service attacks, system weaknesses, back doors and other potentially harmful situations could render a system vulnerable, allowing unauthorized access to DoD assets.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3175",
+      "title": "The network device must require authentication prior to establishing a management connection for administrative access.",
+      "description": "Network devices with no password for administrative access via a management connection provide the opportunity for anyone with network access to the device to make configuration changes enabling them to disrupt network operations resulting in a network outage.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3196",
+      "title": "The network device must use SNMP Version 3 Security Model with FIPS 140-2 validated cryptography for any SNMP agent configured on the device.",
+      "description": "SNMP Versions 1 and 2 are not considered secure. Without the strong authentication and privacy that is provided by the SNMP Version 3 User-based Security Model (USM), an unauthorized user can gain access to network management information used to launch an attack against the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3210",
+      "title": "The network device must not use the default or well-known SNMP community strings public and private.",
+      "description": "Network devices may be distributed by the vendor pre-configured with an SNMP agent using the well-known SNMP community strings public for read only and private for read and write authorization. An attacker can obtain information about a network device using the read community string \"public\". In addition, an attacker can change a system configuration using the write community string \"private\".",
+      "severity": "high"
+    },
+    {
+      "id": "V-3966",
+      "title": "In the event the authentication server is unavailable, the network device must have a single local account of last resort defined.",
+      "description": "Authentication for administrative access to the device is required at all times. A single account of last resort can be created on the device's local database for use in an emergency such as when the authentication server is down or connectivity between the device and the authentication server is not operable. The console or local account of last resort logon credentials must be stored in a sealed envelope and kept in a safe.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3967",
+      "title": "The network devices must time out access to the console port at 10 minutes or less of inactivity.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition quickly terminating an idle session will also free up resources committed by the managed network device. Setting the timeout of the session to 10 minutes or less increases the level of protection afforded critical network components.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3969",
+      "title": "Network devices must only allow SNMP read-only access.",
+      "description": "Enabling write access to the device via SNMP provides a mechanism that can be exploited by an attacker to set configuration variables that can disrupt network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-4582",
+      "title": "The network device must require authentication for console access.",
+      "description": "Network devices with no password for administrative access via the console provide the opportunity for anyone with physical access to the device to make configuration changes enabling them to disrupt network operations resulting in a network outage.",
+      "severity": "high"
+    },
+    {
+      "id": "V-5611",
+      "title": "The network devices must only allow management connections for administrative access from hosts residing in the management network.",
+      "description": "Remote administration is inherently dangerous because anyone with a sniffer and access to the right LAN segment could acquire the device account and password information. With this intercepted information they could gain access to the infrastructure and cause denial of service attacks, intercept sensitive information, or perform other destructive actions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-5613",
+      "title": "The network device must be configured for a maximum number of unsuccessful SSH logon attempts set at 3 before resetting the interface.",
+      "description": "An attacker may attempt to connect to the device using SSH by guessing the authentication method and authentication key or shared secret. Setting the authentication retry to 3 or less strengthens against a Brute Force attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7011",
+      "title": "The auxiliary port must be disabled unless it is connected to a secured modem providing encryption and authentication.",
+      "description": "The use of POTS lines to modems connecting to network devices provides clear text of authentication traffic over commercial circuits that could be captured and used to compromise the network.  Additional war dial attacks on the device could degrade the device and the production network.\n\nSecured modem devices must be able to authenticate users and must negotiate a key exchange before full encryption takes place.  The modem will provide full encryption capability (Triple DES) or stronger.  The technician who manages these devices will be authenticated using a key fob and granted access to the appropriate maintenance port, thus the technician will gain access to the managed device (router, switch, etc.).  The token provides a method of strong (two-factor) user authentication.  The token works in conjunction with a server to generate one-time user passwords that will change values at second intervals.  The user must know a personal identification number (PIN) and possess the token to be allowed access to the device.",
+      "severity": "low"
+    }
+  ]
+}

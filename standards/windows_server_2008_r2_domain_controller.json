@@ -1,0 +1,1985 @@
+{
+  "name": "windows_server_2008_r2_domain_controller",
+  "date": "2017-12-05",
+  "description": "The Windows Server 2008 R2 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  The requirements were developed from DoD consensus, as well as the Windows Server 2008 R2 Security Guide and security templates published by Microsoft Corporation.  Comments or proposed revisions to this document should be sent via e-mail to the following address:  disa.stig_spt@mail.mil.",
+  "title": "Windows Server 2008 R2 Domain Controller Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-1070",
+      "title": "The Automated Information System (AIS) will be physically secured in an access controlled area.",
+      "description": "Inadequate physical protection can undermine all other security precautions utilized to protect the system. This can jeopardize the confidentiality, availability, and integrity of the system.  Physical security of the AIS is the first line protection of any system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1072",
+      "title": "Shared user accounts will not be permitted on the system.",
+      "description": "Shared accounts do not provide individual accountability for system access and resource usage.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1073",
+      "title": "Systems must be at supported service pack (SP) or release levels.",
+      "description": "Systems at unsupported service packs or releases will not receive security updates for new vulnerabilities and leaves them subject to exploitation.  Systems must be maintained at a service pack level supported by the vendor with new security updates.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1074",
+      "title": "The Windows 2008 R2 system must use an anti-virus program.",
+      "description": "Malicious software can establish a base on individual desktops and servers. Employing an automated mechanism to detect this type of software will aid in elimination of the software from the operating system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1075",
+      "title": "The shutdown option will not be available from the logon dialog box.",
+      "description": "Displaying the shutdown button may allow individuals to shut down a system anonymously.  Only authenticated users should be allowed to shut down the system.  Preventing display of this button in the logon dialog box ensures that individuals who shut down the system are authorized and tracked in the systems Security event log.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1076",
+      "title": "System information backups will be created, updated, and protected.",
+      "description": "Recovery of a damaged or compromised system in a timely basis is difficult without a system information backup.  A system backup will usually include sensitive information such as user accounts that could be used in an attack.  As a valuable system resource, the system backup should be protected and stored in a physically secure location.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1077",
+      "title": "Permissions for event logs must conform to minimum requirements.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks. Audit logs are necessary to provide a trail of evidence in case the system or network is compromised. Event logs may be susceptible to tampering if proper permissions are not applied.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1081",
+      "title": "Local volumes will be formatted using NTFS.",
+      "description": "This is a category 1 finding because the ability to set access permissions and audit critical directories and files is only available by using the NTFS file system.  The capability to assign access permissions to file objects is a DoD policy requirement.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-1089",
+      "title": "The required legal notice must be configured to display before console logon.",
+      "description": "Failure to display the logon banner prior to a logon attempt will negate legal proceedings resulting from unauthorized access to system resources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1090",
+      "title": "Caching of logon credentials must be limited.",
+      "description": "The default Windows configuration caches the last logon credentials for users who log on interactively to a system.  This feature is provided for system availability reasons, such as the user's machine being disconnected from the network or domain controllers being unavailable.  Even though the credential cache is well-protected, if a system is attacked, an unauthorized individual may isolate the password to a domain user account using a password-cracking program and gain access to the domain.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1093",
+      "title": "Anonymous enumeration of shares will be restricted.",
+      "description": "This is a Category 1 finding because it allows anonymous logon users (null session connections) to list all account names and enumerate all shared resources, thus providing a map of potential points to attack the system.\n\nBy default, Windows allows anonymous users to list account names and enumerate share names.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1097",
+      "title": "The system must lockout accounts after 3 invalid logon attempts within a specified time period.",
+      "description": "The account lockout feature, when enabled, prevents brute-force password attacks on the system.  The higher this value is, the less effective the account lockout feature will be in protecting the local system.  The number of bad logon attempts should be reasonably small to minimize the possibility of a successful password attack, while allowing for honest errors made during a normal user logon.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1098",
+      "title": "The reset period for the account lockout counter must be configured to 15 minutes or greater on Windows 2008 R2.",
+      "description": "The account lockout feature, when enabled, prevents brute-force password attacks on the system. This parameter specifies the period of time that must pass after failed logon attempts before the counter is reset to \"0\". The smaller this value is, the less effective the account lockout feature will be in protecting the local system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1099",
+      "title": "Windows 2008 R2 account lockout duration must be configured to 15 minutes or greater.",
+      "description": "The account lockout feature, when enabled, prevents brute-force password attacks on the system. This parameter specifies the period of time that an account will remain locked after the specified number of failed logon attempts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1102",
+      "title": "Unauthorized accounts must not have the Act as part of the operating system user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Act as part of the operating system\" user right can assume the identity of any user and gain access to resources that user is authorized to access.  Any accounts with this right can take complete control of a system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1104",
+      "title": "The maximum password age must be configured to 60 days or less.",
+      "description": "The longer passwords are in use, the greater the opportunity for someone to gain unauthorized knowledge of them.  Scheduled changing of passwords hinders the ability of unauthorized system users to crack passwords and gain access to a system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1105",
+      "title": "The minimum password age must be configured to at least 1 day.",
+      "description": "Permitting passwords to be changed in immediate succession within the same day allows users to cycle passwords through their history database.  This enables users to effectively negate the purpose of mandating periodic password changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1107",
+      "title": "The password history must be configured to 24 passwords remembered.",
+      "description": "A system is more vulnerable to unauthorized access when users can recycle the same password several times without being required to change it to a unique password on a regularly scheduled basis.  This enables users to effectively negate the purpose of mandating periodic password changes.  The default value is 24 for Windows domain systems.  DoD has decided this is the appropriate value for all Windows systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1112",
+      "title": "Outdated or unused accounts must be removed from the system or disabled.",
+      "description": "Outdated or unused accounts provide penetration points that may go undetected.  Inactive accounts must be deleted if no longer necessary or, if still required, disabled until needed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1113",
+      "title": "The built-in guest account must be disabled.",
+      "description": "A system faces an increased vulnerability threat if the built-in guest account is not disabled.  This account is a known account that exists on all Windows systems and cannot be deleted.  This account is initialized during the installation of the operating system with no password assigned.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1114",
+      "title": "The built-in guest account will be renamed.",
+      "description": "A system faces an increased vulnerability threat if the built-in guest account is not renamed or disabled.  The built-in guest account is a known user account on all Windows systems, and as initially installed, does not require a password.  This can allow access to system resources by unauthorized users.  This account is a member of the group Everyone and has all the rights and permissions associated with that group and could provide access to system resources to unauthorized users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1115",
+      "title": "The built-in administrator account will be renamed.",
+      "description": "The built-in administrator account is a well-known account.  Renaming the account to an unidentified name improves the protection of this account and the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1119",
+      "title": "Booting into alternate non STIG compliant operating systems will not be permitted.",
+      "description": "Allowing other operating systems to run on a secure system, can allow users to circumvent security.  If more than one operating system is installed on a computer each must be configured to be compliant with STIG guidance.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1120",
+      "title": "File Transfer Protocol (FTP) servers must be configured to prevent anonymous logons.",
+      "description": "The FTP service allows remote users to access shared files and directories. Allowing anonymous FTP connections makes user auditing difficult.\n\nUsing accounts that have administrator privileges to log on to FTP risks that the user ID and password will be captured on the network and give administrator access to an unauthorized user.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1121",
+      "title": "File Transfer Protocol (FTP) servers must be configured to prevent access to the system drive.",
+      "description": "The FTP service allows remote users to access shared files and directories.  Access outside of the specific directories of shared data could provide access to system resources and compromise the system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1122",
+      "title": "The system will be configured with a password-protected screen saver.",
+      "description": "The system should be locked when unattended.  Unattended systems are susceptible to unauthorized use.  The screen saver should be set at a maximum of 15 minutes and password protected.  This protects critical and sensitive data from exposure to unauthorized personnel with physical access to the computer.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1127",
+      "title": "Only administrators responsible for the system must have Administrator rights on the system.",
+      "description": "An account that does not have Administrator duties must not have Administrator rights. Such rights would allow the account to bypass or modify required security restrictions on that machine and make it vulnerable to attack.\n\nSystem administrators must log on to systems only using accounts with the minimum level of authority necessary. \n\nStandard user accounts must not be members of the built-in Administrators group.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1128",
+      "title": "Security configuration tools or equivalent processes will be used to configure platforms for security compliance.",
+      "description": "Security configuration tools, such as Security Templates and Group Policy, allow system administrators to consolidate all security-related system settings into a single configuration file.  These settings can then be applied consistently to any number of Windows machines.  The Security Configuration tools can use the same configuration file to check platforms for compliance with security policy.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1130",
+      "title": "ACLs for system files and directories will conform to minimum requirements.",
+      "description": "Failure to properly configure ACL file and directory permissions allows the possibility of unauthorized and anonymous modification to the operating system and installed applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1135",
+      "title": "Non-administrative user accounts or groups will only have print permissions of Printer Shares.",
+      "description": "Improperly configured share permissions on printers can permit the addition of unauthorized print devices on the network.  Windows shares are a means by which files, folders, printers, and other resources can be published for network users to remotely access.  Regular users cannot create shares on their local machines; only Administrators and Power Users have that ability.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1136",
+      "title": "Users will be forcibly disconnected when their logon hours expire.",
+      "description": "Users should not be permitted to remain logged on to the network after they have exceeded their permitted logon hours.  In many cases, this indicates that a user forgot to log off before leaving for the day.  However, it may also indicate that a user is attempting unauthorized access at a time when the system may be less closely monitored.  This protects critical and sensitive network data from exposure to unauthorized personnel with physical access to the computer.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1140",
+      "title": "Users with Administrative privilege will be documented and have separate accounts for administrative duties and normal operational tasks.",
+      "description": "Using a privileged account to perform routine functions makes the computer vulnerable to attack by any virus or Trojan Horse inadvertently introduced during a session that has been granted full privileges.\n\nThe rule of least privilege should always be enforced.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1141",
+      "title": "Unencrypted passwords must not be sent to third-party SMB Servers.",
+      "description": "Some non-Microsoft SMB servers only support unencrypted (plain text) password authentication.  Sending plain text passwords across the network, when authenticating to an SMB server, reduces the overall security of the environment.  Check with the vendor of the SMB server to see if there is a way to support encrypted password authentication.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1145",
+      "title": "Automatic logons must be disabled.",
+      "description": "Allowing a system to automatically log on when the machine is booted could give access to any unauthorized individual who restarts the computer.  Automatic logon with administrator privileges would give full access to an unauthorized individual.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1150",
+      "title": "The built-in Windows password complexity policy must be enabled.",
+      "description": "The use of complex passwords increases their strength against attack. The built-in Windows password complexity policy requires passwords to contain at least 3 of the 4 types of characters (numbers, upper- and lower-case letters, and special characters), as well as preventing the inclusion of user names or parts of.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1151",
+      "title": "The print driver installation privilege will be restricted to administrators.",
+      "description": "Allowing users to install drivers can introduce malware or cause the instability of a system.  This capability should be restricted to the Administrators and Print Operators groups.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1152",
+      "title": "Anonymous access to the registry must be restricted.",
+      "description": "The registry is integral to the function, security, and stability of the Windows system.  Some processes may require anonymous access to the registry.  This must be limited to properly protect the system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1153",
+      "title": "The LanMan authentication level will be set to Send NTLMv2 response only\\refuse LM & NTLM.",
+      "description": " The Kerberos v5 authentication protocol is the default for authentication of users who are logging on to domain accounts.\n\nThe Windows NTLM protocol is retained in later Windows versions  for compatibility with clients and servers that are running earlier versions.  It is also used to authenticate logons to stand-alone computers that are running later versions.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-1154",
+      "title": "The Ctrl+Alt+Del security attention sequence for logons will be enabled.",
+      "description": "Disabling the Ctrl+Alt+Del security attention sequence can compromise system security.  Because only Windows responds to the Ctrl+Alt+Del security sequence, you can be assured that any passwords you enter following that sequence are sent only to Windows.  If you eliminate the sequence requirement, malicious programs can request and receive your Windows password.  Disabling this sequence also suppresses a custom logon banner.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1155",
+      "title": "The Deny access to this computer from the network user right on domain controllers must be configured to prevent unauthenticated access. ",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high level capabilities.\n\nThe \"Deny Access from the Network\" right defines the accounts that are prevented from logging on from the network.  \n\nThe Guests group must be assigned this right to prevent unauthenticated access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1157",
+      "title": "The Smart Card removal option will be configured to Force Logoff or Lock Workstation.",
+      "description": "Determines what should happen when the smart card for a logged-on user is removed from the smart card reader.\n\nThe options are:\n- No Action\n- Lock Workstation\n- Force Logoff",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1162",
+      "title": "The Windows SMB server will perform SMB packet signing when possible.",
+      "description": "If this policy is enabled, it causes the Windows Server Message Block (SMB) server to perform SMB packet signing.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1163",
+      "title": "Outgoing secure channel traffic will be encrypted when possible.",
+      "description": "Requests sent on the secure channel are authenticated, and sensitive information (such as passwords) is encrypted, but not all information is encrypted.  If this policy is enabled, outgoing secure channel traffic should be encrypted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1164",
+      "title": "Outgoing secure channel traffic will be signed when possible.",
+      "description": "Requests sent on the secure channel are authenticated, and sensitive information (such as passwords) is encrypted, but the channel is not integrity checked.  If this policy is enabled, all outgoing secure channel traffic should be signed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1165",
+      "title": "The computer account password will not be prevented from being reset.",
+      "description": "Computer account passwords are changed automatically on a regular basis. Enabling this policy to disable automatic password changes can make the system more vulnerable to malicious access. Frequent password changes can be a significant safeguard for your system. If this policy is disabled, a new password for the computer account will be generated every 30 days.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-1166",
+      "title": "The Windows SMB client will be enabled to perform SMB packet signing when possible.",
+      "description": "If this policy is enabled, it causes the Windows Server Message Block (SMB) client to perform SMB packet signing when communicating with an SMB server that is enabled or required to perform SMB packet signing.  This policy is defined by default in Local Computer Policy, where it is enabled by default.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1168",
+      "title": "Members of the Backup Operators group will have separate accounts for backup duties and normal operational tasks.",
+      "description": "Backup Operators are able to read and write to any file in the system, regardless of the rights assigned to it.  Backup and restore rights permit users to circumvent the file access restrictions present on NTFS disk drives for the purpose of backup and restore.  Members of the Backup Operators group should have special logon accounts for performing their backup duties.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1171",
+      "title": "Ejection of removable NTFS media is not restricted to Administrators.",
+      "description": "Removable hard drives can be formatted and ejected by others who are not members of the Administrators Group, if they are not properly configured.  Formatting and ejecting removable NTFS media should only be done by administrators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1172",
+      "title": "Users will be warned in advance that their passwords will expire.",
+      "description": "This setting configures the system to display a warning to users telling them how many days are left before their password expires.  By giving the user advanced warning, the user has time to construct a sufficiently strong password.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1173",
+      "title": "The default permissions of Global system objects will be increased.",
+      "description": "Windows system maintains a global list of shared system resources such as DOS device names, mutexes, and semaphores. Each type of object is created with a default DACL that specifies who can access the objects with what permissions. If this policy is enabled, the default DACL is stronger, allowing non-admin users to read shared objects, but not modify shared objects that they did not create.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1174",
+      "title": "The amount of idle time required before suspending a session must be properly set.",
+      "description": "Open sessions can increase the avenues of attack on a system.  This setting is used to control when a computer disconnects an inactive SMB session.  If client activity resumes, the session is automatically re-established.  This protects critical and sensitive network data from exposure to unauthorized personnel with physical access to the computer.",
+      "severity": "low"
+    },
+    {
+      "id": "V-11806",
+      "title": "The system will be configured to prevent the display of the last user name on the logon screen.",
+      "description": "The user name of the last user to log onto a system will not be displayed.  This eliminates half of the Userid/Password equation that an unauthorized person would need to log on.",
+      "severity": "low"
+    },
+    {
+      "id": "V-12780",
+      "title": "The Synchronize directory service data user right must be configured to include no accounts or groups (blank).",
+      "description": "A Windows account with the \"Synchronize directory service data\" right has the ability to read all information in the AD database. This bypasses the object access permissions that would otherwise restrict access to the data. The scope of access granted by this right is too broad for secure usage. Specific object permissions or other group membership assignments could be used to provide access on an appropriate scale.",
+      "severity": "high"
+    },
+    {
+      "id": "V-14224",
+      "title": "The system will have a backup administrator account.",
+      "description": "This check verifies that a backup administrator account has been created to ensure system availability in the event that no administrators are able or available to access the system.  The built-in administrator account may be used for this purpose.  The IAO will ensure the backup administrator account is stored in a secure location. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14225",
+      "title": "Administrator passwords will be changed as required.",
+      "description": "This check verifies that the passwords for the default and backup administrator accounts are changed at least annually or when any member of the administrative team leaves the organization.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14226",
+      "title": "Audit data must be retained for at least one year.",
+      "description": " Audit records are essential for investigating system activity after the fact. Retention periods for audit data are determined based on the sensitivity of the data handled by the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14228",
+      "title": "Auditing Access of Global System Objects must be turned off.",
+      "description": "This setting prevents the system from setting up a default system access control list for certain system objects, which could create a very large number of security events, filling the security log in Windows and making it difficult to identify actual issues.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14229",
+      "title": "Audit of Backup and Restore Privileges will be turned off.",
+      "description": "This policy setting stops the system from generating audit events for every file backed up or restored which could fill the Security log in Windows. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14230",
+      "title": "Audit policy using subcategories will be enabled.",
+      "description": "This policy setting allows administrators to enable the more precise auditing capabilities present in Windows Vista and 2008 forward.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14232",
+      "title": "IPSec Exemptions will be limited.",
+      "description": "This check verifies that Windows is configured to limit IPSec exemptions.",
+      "severity": "low"
+    },
+    {
+      "id": "V-14234",
+      "title": "User Account Control approval mode for the built-in Administrator will be enabled.",
+      "description": "This check verifies whether the built-in Administrator account runs in Admin Approval Mode.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14235",
+      "title": "User Account Control will, at a minimum, prompt administrators for consent.",
+      "description": "This check verifies whether logged on administrator is prompted for consent when attempting to complete a task that requires raised privileges.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14236",
+      "title": "User Account Control will automatically deny standard user requests for elevation.",
+      "description": "This check verifies whether the logged on user is automatically denied elevation when attempting to complete a task that requires raised privileges.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14237",
+      "title": "User Account Control will be configured to detect application installations and prompt for elevation.",
+      "description": "This check verifies whether Windows responds to application installation requests by prompting for credentials.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14239",
+      "title": "User Account Control will only elevate UIAccess applications that are installed in secure locations",
+      "description": "This check verifies whether Windows only allows applications installed in a secure location, such as the Program Files or the Windows\\System32 folders, on the file system to run with elevated privileges.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14240",
+      "title": "User Account Control will run all administrators in Admin Approval Mode, enabling UAC.",
+      "description": "This check verifies that UAC has not been disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14241",
+      "title": "User Account Control will switch to the secure desktop when prompting for elevation.",
+      "description": "This check verifies that the elevation prompt is only used in secure desktop mode.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14242",
+      "title": "User Account Control will virtualize file and registry write failures to per-user locations.",
+      "description": "This check verifies that non UAC-compliant applications will run in virtualized file and registry entries allowing them to run.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14243",
+      "title": "Administrator accounts must not be enumerated during elevation.",
+      "description": "Enumeration of administrator accounts when elevating can provide part of the logon information to an unauthorized user. This setting configures the system to always require users to enter a username and password to elevate a running application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14247",
+      "title": "Passwords will not be saved in the Remote Desktop Client.",
+      "description": "This check verifies that the system is configured to prevent users from saving passwords in the Remote Desktop Client.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14249",
+      "title": "Local drives will be prevented from sharing with Remote Desktop Session Hosts (Remote Desktop Services Role).",
+      "description": "This check verifies that the system is configured to prevent users from sharing the local drives on their client computers to Remote Desktop Session Hosts that they access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14256",
+      "title": "Web publishing and online ordering wizards will be prevented from downloading a list of providers.",
+      "description": "This check verifies that the system is configured to prevent Windows from downloading a list of providers for the Web publishing and online ordering wizards.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14259",
+      "title": "Printing over HTTP will be prevented.",
+      "description": "This check verifies that the system is configured to prevent the client computer’s ability to print over HTTP, which allows the computer to print to printers on the intranet as well as the Internet.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14260",
+      "title": "Downloading print driver packages over HTTP will be prevented.",
+      "description": "This check verifies that the system is configured to prevent the computer from downloading print driver packages over HTTP.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14261",
+      "title": "Windows will be prevented from using Windows Update to search for drivers.",
+      "description": "This check verifies that the system is configured to prevent Windows from searching Windows Update for device drivers when no local drivers for a device are present.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14268",
+      "title": "Zone information will be preserved when saving attachments.",
+      "description": "This check verifies that file attachments are marked with their zone of origin allowing Windows to determine risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14269",
+      "title": "Mechanisms for removing zone information from file attachments will be hidden.",
+      "description": "This check verifies that users cannot manually remove zone information from saved file attachments.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14270",
+      "title": "The system will notify antivirus when file attachments are opened.",
+      "description": "This check verifies that antivirus programs are notified when a user opens a file attachment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14271",
+      "title": "Application account passwords will meet DoD requirements for length, complexity and changes.",
+      "description": "Setting application accounts to expire may cause applications to stop functioning. The site will have a policy that application account passwords manually generated and entered by a system administrator are changed at least annually or when a system administrator with knowledge of the password leaves the organization. Application/service account passwords will be at least 15 characters and follow complexity requirements for all passwords.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14783",
+      "title": "Separate, NSA-approved (Type 1) cryptography must be used to protect the directory data-in-transit for directory service implementations at a classified confidentiality level when replication data traverses a network cleared to a lower level than the data.",
+      "description": "Commercial-grade encryption does not provide adequate protection when the classification level of directory data in transit is higher than the level of the network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14797",
+      "title": "Anonymous access to the root DSE of a non-public directory must be disabled.\n",
+      "description": "Allowing anonymous access to the root DSE data on a directory server provides potential attackers with a number of details about the configuration and data contents of a directory. For example, the namingContexts attribute indicates the directory space contained in the directory; the supportedLDAPVersion attribute indicates which versions of the LDAP protocol the server supports; and the supportedSASLMechanisms attribute indicates the names of supported authentication mechanisms. An attacker with this information may be able to select more precisely targeted attack tools or higher value targets.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-14798",
+      "title": "Directory data (outside the root DSE) of a non-public directory must be configured to prevent anonymous access. \n\n",
+      "description": "To the extent that anonymous access to directory data (outside the root DSE) is permitted, read access control of the data is effectively disabled. If other means of controlling access (such as, network restrictions) are compromised, there may be nothing else to protect the confidentiality of sensitive directory data.\n\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-14820",
+      "title": "Domain Controller PKI certificates must be issued by the DoD PKI or an approved External Certificate Authority (ECA).",
+      "description": "A PKI implementation depends on the practices established by the Certificate Authority (CA) to ensure the implementation is secure. Without proper practices, the certificates issued by a CA have limited value in authentication functions. The use of multiple CAs from separate PKI implementations results in interoperability issues. If servers and clients do not have a common set of root CA certificates, they are not able to authenticate each other.",
+      "severity": "high"
+    },
+    {
+      "id": "V-14831",
+      "title": "The directory service must be configured to terminate LDAP-based network connections to the directory server after five (5) minutes of inactivity.\n",
+      "description": "The failure to terminate inactive network connections increases the risk of a successful attack on the directory server. The longer an established session is in progress, the more time an attacker has to hijack the session, implement a means to passively intercept data, or compromise any protections on client access. For example, if an attacker gains control of a client computer, an existing (already authenticated) session with the directory server could allow access to the directory. The lack of confidentiality protection in LDAP-based sessions increases exposure to this vulnerability. \n",
+      "severity": "low"
+    },
+    {
+      "id": "V-15488",
+      "title": "Active directory user accounts, including administrators, must be configured to require the use of a Common Access Card (CAC), PIV-compliant hardware token, or Alternate Logon Token (ALT) for user authentication.",
+      "description": "Smart cards such as the Common Access Card (CAC) support a two-factor authentication technique.  This provides a higher level of trust in the asserted identity than use of the username and password for authentication.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15505",
+      "title": "The HBSS McAfee Agent must be installed.",
+      "description": "The McAfee Agent is the client side distributed component of McAfee ePolicy Orchestrator (McAfee ePO) which provides a secure communication channel between the ePO server and managed point products.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15666",
+      "title": "Windows Peer-to-Peer networking services will be turned off. ",
+      "description": "This check verifies Microsoft Peer-to-Peer Networking Service is turned off.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15667",
+      "title": "Network Bridges will be prohibited in Windows.",
+      "description": "This check verifies the Network Bridge cannot be installed and configured.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15672",
+      "title": "Event Viewer Events.asp links will be turned off.",
+      "description": "This check verifies that Events.asp hyperlinks in Event Viewer are turned off.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15674",
+      "title": "The Internet File Association service will be turned off.",
+      "description": "This check verifies that unhandled file associations will not use the Microsoft Web service to find an application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15676",
+      "title": "The Order Prints Online wizard will be turned off.",
+      "description": "This check verifies that the “Order Prints Online” task is not available in Windows Explorer.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15682",
+      "title": "Attachments must be prevented from being downloaded from RSS feeds.",
+      "description": "Attachments from RSS feeds may not be secure.  This setting will prevent attachments from being downloaded from RSS feeds.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15683",
+      "title": "Windows Explorer shell protocol will run in protected mode.",
+      "description": "This check verifies that the shell protocol runs in protected mode.  (This allows applications to only open limited folders.)",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15684",
+      "title": "Users will be notified if a web-based program attempts to install software. ",
+      "description": "This check verifies that users are notified if a web-based program attempts to install software. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15685",
+      "title": "Users will be prevented from changing installation options.",
+      "description": "This check verifies that users are prevented from changing installation options.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15686",
+      "title": "Non-administrators will be prevented from applying vendor signed updates.",
+      "description": "This check verifies that users are prevented from applying vendor signed updates.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15687",
+      "title": "Users will not be presented with Privacy and Installation options on first use of Windows Media Player.",
+      "description": "This check verifies that users are not presented with Privacy and Installation options on first use of Windows Media Player.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15696",
+      "title": "The Mapper I/O network protocol driver will be disabled.",
+      "description": "This check verifies that the Mapper I/O network protocol driver is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15697",
+      "title": "The Responder network protocol driver will be disabled.",
+      "description": "This check verifies that the Responder network protocol driver is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15698",
+      "title": "The configuration of wireless devices using Windows Connect Now will be disabled.",
+      "description": "This check verifies that the configuration of wireless devices using Windows Connect Now is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15699",
+      "title": "The Windows Connect Now wizards will be disabled.",
+      "description": "This check verifies that access to the Windows Connect Now wizards is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15700",
+      "title": "Remote access to the Plug and Play interface will be disabled for device installation.",
+      "description": "This check verifies that remote access to the Plug and Play interface is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15701",
+      "title": "A system restore point will be created when a new device driver is installed.",
+      "description": "This check verifies that a system restore point will be created when a new device driver is installed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15702",
+      "title": "An Error Report will not be sent when a generic device driver is installed.",
+      "description": "This check verifies that an Error Report will not be sent when a generic device driver is installed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15703",
+      "title": "Users will not be prompted to search Windows Update for device drivers.",
+      "description": "This check verifies that users will not be prompted to search Windows Update for device drivers.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15704",
+      "title": "Errors in handwriting recognition on Tablet PCs will not be reported to Microsoft.",
+      "description": "This check verifies that errors in handwriting recognition on Tablet PCs are not reported to Microsoft.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15705",
+      "title": "Users will be prompted for a password on resume from sleep (on battery).  (Applicable to Server 2008 R2 if the system is configured to sleep.) ",
+      "description": "This check verifies that the user is prompted for a password on resume from sleep (on battery).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15706",
+      "title": "The user will be prompted for a password on resume from sleep (Plugged In).  (Applicable on Server 2008 R2 if the system is configured to sleep.)",
+      "description": "This check verifies that the user is prompted for a password on resume from sleep (Plugged In).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15707",
+      "title": "Remote Assistance log files will be generated.",
+      "description": "This check verifies that Remote Assistance log files will be generated.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15709",
+      "title": "Game explorer information will not be downloaded from Windows Metadata Services.",
+      "description": "This check verifies that game information is not downloaded from Windows Metadata Services.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15713",
+      "title": "Windows Defender SpyNet membership will be disabled.",
+      "description": "This check verifies that SpyNet membership is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15718",
+      "title": "Windows Explorer heap termination on corruption will be disabled.",
+      "description": "This check verifies that heap termination on corruption is disabled.  This may prevent Windows Explorer from terminating immediately from certain legacy plug-in applications.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15722",
+      "title": "Windows Media Digital Rights Management will be prevented from accessing the Internet.",
+      "description": "This check verifies that Windows Media Digital Rights Management will be prevented from accessing the Internet.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15727",
+      "title": "Users will be prevented from sharing files in their profiles.",
+      "description": "This check verifies that users are prevented from sharing files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15823",
+      "title": "Software certificate installation files must be removed from Windows 2008 R2.",
+      "description": "Use of software certificates and their accompanying installation files for end users to access resources is less secure than the use of hardware-based certificates.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15991",
+      "title": "UIAccess applications will not be allowed to prompt for elevation without using the secure desktop.",
+      "description": "This check verifies whether User Interface Accessibility programs can automatically disable the secure desktop for elevation prompts for a standard user.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15997",
+      "title": "The system will be configured to prevent users from mapping local COM ports and redirecting data from the Remote Desktop Session Host to local COM ports. (Remote Desktop Services Role)",
+      "description": "This check verifies that the system is configured to prevent users from mapping local COM ports and redirecting data from the Remote Desktop Session Host to local COM ports.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15998",
+      "title": "The system will be configured to prevent users from mapping local LPT ports and redirecting data from the Remote Desktop Session Host to local LPT ports. (Remote Desktop Services Role)",
+      "description": "This check verifies that the system is configured to prevent users from mapping local LPT ports and redirecting data from the Remote Desktop Session Host to local LPT ports.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15999",
+      "title": "The system will be configured to prevent users from redirecting Plug and Play devices to the Remote Desktop Session Host. (Remote Desktop Services Role)",
+      "description": "This check verifies that the system is configured to prevent users from redirecting Plug and Play devices to the Remote Desktop Session Host.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16000",
+      "title": "The system will be configured to ensure smart card devices can be redirected to the Remote Desktop Session. (Remote Desktop Services Role)",
+      "description": "This check verifies that the system is configured to ensure smart card devices can be redirected to the Remote Desktop session.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16001",
+      "title": "The system will be configured to allow only the default client printer to be redirected in the Remote Desktop session. (Remote Desktop Services Role)",
+      "description": "This check verifies that the system is configured to allow only the default client printer to be redirected in the Remote Desktop session.",
+      "severity": "low"
+    },
+    {
+      "id": "V-16008",
+      "title": "Windows will elevate all applications in User Account Control, not just signed ones.",
+      "description": "This check verifies that Windows elevates all applications, not just signed ones.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16020",
+      "title": "The Windows Customer Experience Improvement Program will be disabled.",
+      "description": "This check verifies that the Windows Customer Experience Improvement Program is disabled so information is not passed to the vendor.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16021",
+      "title": "The Windows Help Experience Improvement Program will be disabled ",
+      "description": "This check verifies that the Windows Help Experience Improvement Program is disabled to prevent information from being passed to the vendor.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16048",
+      "title": "Windows Help Ratings feedback will be turned off.",
+      "description": "This check verifies that users cannot provide ratings feedback to Microsoft for Help content ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18010",
+      "title": "Unauthorized accounts must not have the Debug programs user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Debug programs\" user right can attach a debugger to any process or to the kernel, providing complete access to sensitive and critical operating system components.",
+      "severity": "high"
+    },
+    {
+      "id": "V-21950",
+      "title": "The service principal name (SPN) target name validation level will be turned off.",
+      "description": "If a service principle name (SPN) is provided by the client, it is validated against the server’s list of SPNs.  This setting can cause disruptions in file and printer services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21951",
+      "title": "Services using Local System that use negotiate when reverting to NTLM authentication will use the computer identity vs. authenticating anonymously.",
+      "description": "This setting ensures that services using Local System that use negotiate when reverting to NTLM authentication will use the computer identity vs. authenticating anonymously.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21952",
+      "title": "NTLM will be prevented from falling back to a Null session.",
+      "description": "This setting prevents NTLM from falling back to a Null (unauthenticated) session.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21953",
+      "title": "PKU2U authentication using online identities will be prevented.",
+      "description": "This setting prevents online identities from being used by PKU2U, which is a peer-to-peer authentication protocol.  Authentication will be centrally managed with Windows user accounts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21954",
+      "title": "Kerberos encryption types must be configured to prevent the use of DES encryption suites.",
+      "description": "Certain encryption types are no longer considered secure.  This setting configures a minimum encryption type for Kerberos, preventing the use of the DES encryption suites.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21955",
+      "title": "IPv6 source routing will be configured to highest protection.",
+      "description": "This check verifies Windows is configured to protect against IPv6 packet spoofing.",
+      "severity": "low"
+    },
+    {
+      "id": "V-21956",
+      "title": "IPv6 TCP data retransmissions must be configured to prevent resources from becoming exhausted.",
+      "description": "Configuring Windows to limit the number of times that IPv6 TCP retransmits unacknowledged data segments before aborting the attempt helps prevent resources from becoming exhausted.",
+      "severity": "low"
+    },
+    {
+      "id": "V-21960",
+      "title": "Domain users will be required to elevate when setting a network’s location.",
+      "description": "This policy requires domain users to elevate when setting a network’s location.",
+      "severity": "low"
+    },
+    {
+      "id": "V-21961",
+      "title": "All Direct Access traffic will be routed through the internal network.",
+      "description": "This setting ensures all traffic is routed through the internal network, allowing monitoring and preventing split tunneling.",
+      "severity": "low"
+    },
+    {
+      "id": "V-21963",
+      "title": "Windows Update will be prevented from searching for point and print drivers.",
+      "description": "This setting will prevent Windows from searching Windows Update for point and print drivers.  Only the local driver store and server driver cache will be searched.",
+      "severity": "low"
+    },
+    {
+      "id": "V-21964",
+      "title": "Device metadata retrieval from the Internet must be prevented.",
+      "description": "Some features may communicate with the vendor, sending system information or downloading data or components for the feature.  Turning off this capability will prevent potentially sensitive information from being sent outside the enterprise and uncontrolled updates to the system.  This setting will prevent Windows from retrieving device metadata from the Internet.",
+      "severity": "low"
+    },
+    {
+      "id": "V-21965",
+      "title": "Device driver searches using Windows Update will be prevented.",
+      "description": "This setting will prevent the system from searching Windows Update for device drivers.",
+      "severity": "low"
+    },
+    {
+      "id": "V-21967",
+      "title": "Microsoft Support Diagnostic Tool (MSDT) interactive communication with Microsoft will be prevented.",
+      "description": "This setting prevents the MSDT from communicating with and sending collected data to Microsoft, the default support provider.",
+      "severity": "low"
+    },
+    {
+      "id": "V-21969",
+      "title": "Access to Windows Online Troubleshooting Service (WOTS) will be prevented.",
+      "description": "This setting prevents users from searching troubleshooting content on Microsoft servers.  Only local content will be available.",
+      "severity": "low"
+    },
+    {
+      "id": "V-21970",
+      "title": "Responsiveness events will be prevented from being aggregated and sent to Microsoft.",
+      "description": "This setting prevents responsiveness events from being aggregated and sent to Microsoft.",
+      "severity": "low"
+    },
+    {
+      "id": "V-21971",
+      "title": "The Application Compatibility Program Inventory will be prevented from collecting data and sending the information to Microsoft.",
+      "description": "This setting will prevent the Program Inventory from collecting data about a system and sending the information to Microsoft.",
+      "severity": "low"
+    },
+    {
+      "id": "V-21973",
+      "title": "Autoplay will be turned off for non-volume devices.",
+      "description": "This setting will disable autoplay for non-volume devices (such as Media Transfer Protocol (MTP) devices).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21974",
+      "title": "Downloading of game update information will be turned off.",
+      "description": "This setting will prevent the system from downloading game update information from Windows Metadata Services.",
+      "severity": "low"
+    },
+    {
+      "id": "V-21975",
+      "title": "The system will be prevented from joining a homegroup.",
+      "description": "This setting will prevent a system from being joined to a homegroup.  Homegroups are a method of sharing data and printers on a home network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21978",
+      "title": "Windows Anytime Upgrade will be disabled.",
+      "description": "This setting will prevent Windows Anytime Upgrade from running.",
+      "severity": "low"
+    },
+    {
+      "id": "V-21980",
+      "title": "Explorer Data Execution Prevention will be enabled.",
+      "description": "This setting will prevent Data Execution Prevention from being turned off for Windows Explorer.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22692",
+      "title": "The default autorun behavior will be configured to prevent autorun commands.",
+      "description": "Allowing autorun commands to execute may introduce malicious code to a system.  Configuring this setting prevents autorun commands from executing.",
+      "severity": "high"
+    },
+    {
+      "id": "V-2372",
+      "title": "Reversible password encryption will be disabled.",
+      "description": "Storing passwords using reversible encryption is essentially the same as storing clear-text versions of the passwords. For this reason, this policy should never be enabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2373",
+      "title": "The Server Operators group must have the ability to schedule jobs by means of the AT command disabled.",
+      "description": "This policy controls the ability of members of the local Server Operators group to schedule AT jobs. If disabled, only administrators can schedule jobs that use AT commands. Unlike Scheduled Tasks which require you to specify the credential under which the task will run, AT jobs run under the authority of whatever account the AT service runs (SYSTEM by default). Non administrators who can schedule AT commands, thus have a means to elevate their privileges.  Although this setting is disabled, Server Operators will still be able to schedule jobs using Task Scheduler.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2374",
+      "title": "Autoplay will be disabled for all drives.",
+      "description": "Autoplay begins reading from a drive as soon as you insert media in the drive.  As a result, the setup file of programs and the music on audio media starts immediately.  By default, Autoplay is disabled on removable drives, such as the floppy disk drive (but not the CD-ROM drive), and on network drives.  If you enable this policy, you can also disable Autoplay on all drives.",
+      "severity": "high"
+    },
+    {
+      "id": "V-2376",
+      "title": "Kerberos user logon restrictions must be enforced.",
+      "description": "This policy setting determines whether the Kerberos Key Distribution Center (KDC) validates every request for a session ticket against the user rights policy of the target computer. The policy is enabled by default which is the most secure setting for validating access to target resources is not circumvented.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2377",
+      "title": "The Kerberos service ticket maximum lifetime must be limited to 600 minutes or less.",
+      "description": "This setting determines the maximum amount of time (in minutes) that a granted session ticket can be used to access a particular service.  Session tickets are used only to authenticate new connections with servers.  Ongoing operations are not interrupted if the session ticket used to authenticate the connection expires during the connection.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2378",
+      "title": "The Kerberos user ticket lifetime must be limited to 10 hours or less.",
+      "description": " In Kerberos, there are 2 types of tickets: Ticket Granting Tickets (TGTs) and Service Tickets.  Kerberos tickets have a limited lifetime so the time an attacker has to implement an attack is limited.  This policy controls how long TGTs can be renewed.  With Kerberos, the user’s initial authentication to the domain controller results in a TGT which is then used to request Service Tickets to resources.  Upon startup, each computer gets a TGT before requesting a service ticket to the domain controller and any other computers it needs to access.  For services that startup under a specified user account, users must always get a TGT first, then get Service Tickets to all computers and services accessed. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2379",
+      "title": "The Kerberos user ticket renewal maximum lifetime must be limited to 7 days or less.",
+      "description": "This setting determines the period of time (in days) during which a user's Ticket Granting Ticket (TGT) may be renewed. This security configuration limits the amount of time an attacker has to crack the TGT and gain access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2380",
+      "title": "The computer clock synchronization tolerance must be limited to 5 minutes or less.",
+      "description": "This setting determines the maximum time difference (in minutes) that Kerberos will tolerate between the time on a client's clock and the time on a server's clock while still considering the two clocks synchronous.  In order to prevent replay attacks, Kerberos uses timestamps as part of its protocol definition. For timestamps to work properly, the clocks of the client and the server need to be in sync as much as possible.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26070",
+      "title": "Standard user accounts must only have Read permissions to the Winlogon registry key.",
+      "description": "Permissions on the Winlogon registry key must only allow privileged accounts to change registry values. If standard users have this capability there is a potential for programs to run with elevated privileges when a privileged user logs on to the system.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-26283",
+      "title": "Anonymous enumeration of SAM accounts will not be allowed.",
+      "description": "This is a Category 1 finding as it allows anonymous logon users (null session connections) to list all account names, thus providing a list of potential points to attack the system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-26359",
+      "title": "The Windows dialog box title for the legal banner will be configured.",
+      "description": "Failure to display the logon banner prior to a logon attempt will negate legal proceedings resulting from unauthorized access to system resources.",
+      "severity": "low"
+    },
+    {
+      "id": "V-26469",
+      "title": "Unauthorized accounts must not have the Access Credential Manager as a trusted caller user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Access Credential Manager as a trusted caller\" user right may be able to retrieve the credentials of other accounts from Credential Manager.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26470",
+      "title": "Unauthorized accounts will not have the \"Access this computer from the network\" user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high level capabilities.\n\nAccounts with the \"Access this computer from the network\" right may access resources on the system and should be limited to those requiring it.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26472",
+      "title": "Unauthorized accounts must not have the Allow log on locally user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Allow log on locally\" user right can log on interactively to a system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26473",
+      "title": "The Allow log on through Remote Desktop Services user right must only be assigned to the Administrators group.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Allow log on through Remote Desktop Services\" user right can access a system through Remote Desktop. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26474",
+      "title": "Unauthorized accounts must not have the Back up files and directories user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Back up files and directories\" user right can circumvent file and directory permissions and could allow access to sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26476",
+      "title": "Unauthorized accounts must not have the Change the system time user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Change the system time\" user right can change the system time, which can impact authentication, as well as affect time stamps on event log entries.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26478",
+      "title": "Unauthorized accounts must not have the Create a pagefile user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Create a pagefile\" user right can change the size of a pagefile, which could affect system performance.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26479",
+      "title": "Unauthorized accounts must not have the Create a token object user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nThe \"Create a token object\" user right allows a process to create an access token. This could be used to provide elevated rights and compromise a system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-26480",
+      "title": "Unauthorized accounts must not have the Create global objects user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Create global objects\" user right can create objects that are available to all sessions, which could affect processes in other users' sessions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26481",
+      "title": "Unauthorized accounts must not have the Create permanent shared objects user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Create permanent shared objects\" user right could expose sensitive data by creating shared objects.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26482",
+      "title": "Unauthorized accounts must not have the Create symbolic links user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Create symbolic links\" right can create pointers to other objects which could potentially expose the system to attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26483",
+      "title": "The Deny log on as a batch job user right on domain controllers must be configured to prevent unauthenticated access. ",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high level capabilities.\n\nThe \"Deny log on as a batch job\" right defines accounts that are prevented from logging on to the system as a batch job, such as Task Scheduler.  \n\nThe Guests group must be assigned to prevent unauthenticated access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26484",
+      "title": "The Deny log on as a service user right must be configured to include no accounts or groups (blank).",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high level capabilities.\n\nThe \"Deny log on as a service\" right defines accounts that are denied log on as a service.  \n\nIncorrect configurations could prevent services from starting and result in a DoS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26485",
+      "title": "The Deny log on locally user right on domain controllers must be configured to prevent unauthenticated access. ",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high level capabilities.\n\nThe \"Deny log on locally\" right defines accounts that are prevented from logging on interactively.  \n\nThe Guests group must be assigned this right to prevent unauthenticated access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26486",
+      "title": "The Deny log on through Remote Desktop Services user right on domain controllers must be configured to prevent unauthenticated access. ",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high level capabilities.\n\nThe \"Deny log on through Remote Desktop Services\" right defines the accounts that are prevented from logging on using Remote Desktop Services.\n\nThe Guests group must be assigned this right to prevent unauthenticated access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26487",
+      "title": "Unauthorized accounts must not have the Enable computer and user accounts to be trusted for delegation user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nThe \"Enable computer and user accounts to be trusted for delegation\" user right allows the \"Trusted for Delegation\" setting to be changed.  This could potentially allow unauthorized users to impersonate other users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26488",
+      "title": "Unauthorized accounts must not have the Force shutdown from a remote system user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Force shutdown from a remote system\" user right can remotely shut down a system which could result in a DoS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26489",
+      "title": "Unauthorized accounts must not have the Generate security audits user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nThe \"Generate security audits\" user right specifies users and processes that can generate Security Log audit records, which must only be the system service accounts defined.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26490",
+      "title": "Unauthorized accounts must not have the Impersonate a client after authentication user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nThe \"Impersonate a client after authentication\" user right allows a program to impersonate another user or account to run on their behalf.  An attacker could potentially use this to elevate privileges.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26492",
+      "title": "Unauthorized accounts must not have the Increase scheduling priority user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Increase scheduling priority\" user right can change a scheduling priority causing performance issues or a DoS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26493",
+      "title": "Unauthorized accounts must not have the Load and unload device drivers user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nThe \"Load and unload device drivers\" user right allows device drivers to dynamically be loaded on a system by a user.  This could potentially be used to install malicious code by an attacker.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26494",
+      "title": "Unauthorized accounts must not have the Lock pages in memory user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nThe \"Lock pages in memory\" user right allows physical memory to be assigned to processes, which could cause performance issues or a DoS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26496",
+      "title": "Unauthorized accounts must not have the Manage auditing and security log user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Manage auditing and security log\" user right can manage the security log and change auditing configurations.  This could be used to clear evidence of tampering.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26497",
+      "title": "Unauthorized accounts must not have the Modify an object label user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Modify an object label\" user right can change the integrity label of an object.  This could potentially be used to execute code at a higher privilege.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26498",
+      "title": "Unauthorized accounts must not have the Modify firmware environment values user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Modify firmware environment values\" user right can change hardware configuration environment variables.  This could result in hardware failures or a DoS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26499",
+      "title": "Unauthorized accounts must not have the Perform volume maintenance tasks user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Perform volume maintenance tasks\" user right can manage volume and disk configurations.  They could potentially delete volumes, resulting in, data loss or a DoS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26500",
+      "title": "Unauthorized accounts must not have the Profile single process user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Profile single process\" user right can monitor non-system processes performance.  An attacker could potentially use this to identify processes to attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26501",
+      "title": "Unauthorized accounts must not have the Profile system performance user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Profile system performance\" user right can monitor system processes performance.  An attacker could potentially use this to identify processes to attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26503",
+      "title": "Unauthorized accounts must not have the Replace a process level token user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nThe \"Replace a process level token\" user right allows one process or service to start another process or service with a different security access token.  A user with this right could use this to impersonate another account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26504",
+      "title": "Unauthorized accounts must not have the Restore files and directories user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Restore files and directories\" user right can circumvent file and directory permissions and could allow access to sensitive data.  It could also be used to overwrite more current data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26506",
+      "title": "Unauthorized accounts must not have the Take ownership of files or other objects user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Take ownership of files or other objects\" user right can take ownership of objects and make changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26529",
+      "title": "The system will be configured to audit \"Account Logon -> Credential Validation\" successes.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nCredential validation records events related to validation tests on credentials for a user account logon. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26530",
+      "title": "The system will be configured to audit \"Account Logon -> Credential Validation\" failures.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nCredential validation records events related to validation tests on credentials for a user account logon. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26531",
+      "title": "Windows Server 2008 R2 domain controllers must be configured to audit Account Management - Computer Account Management successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nComputer Account Management records events such as the  creating, changing, deleting, renaming, disabling, or enabling computer accounts.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26533",
+      "title": "The system will be configured to audit \"Account Management -> Other Account Management Events\" successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nOther Account Management records events such as the access of a password hash or the Password Policy Checking API being called.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26534",
+      "title": "The system will be configured to audit \"Account Management -> Other Account Management Events\" failures.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nOther Account Management records events such as the access of a password hash or the Password Policy Checking API being called.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26535",
+      "title": "The system will be configured to audit \"Account Management -> Security Group Management\" successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nSecurity Group Management records events such as the creating, deleting or changing of security groups, including changes in group members.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26536",
+      "title": "The system will be configured to audit \"Account Management -> Security Group Management\" failures.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nSecurity Group Management records events such as the creating, deleting or changing of security groups, including changes in group members.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26537",
+      "title": "The system will be configured to audit \"Account Management -> User Account Management\" successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nUser Account Management records events such as the  creating, changing, deleting, renaming, disabling, or enabling user accounts.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26538",
+      "title": "The system will be configured to audit \"Account Management -> User Account Management\" failures.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nUser Account Management records events such as the  creating, changing, deleting, renaming, disabling, or enabling user accounts.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26539",
+      "title": "The system will be configured to audit \"Detailed Tracking -> Process Creation\" successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nProcess creation records events related to the creation of a process and the source.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26540",
+      "title": "The system will be configured to audit \"Logon/Logoff -> Logoff\" successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nLogoff records user logoffs.  If this is an interactive logon, it is recorded on the local system.  If it is to a network share, it is recorded on the system accessed.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26541",
+      "title": "The system will be configured to audit \"Logon/Logoff -> Logon\" successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nLogon records user logons.  If this is an interactive logon, it is recorded on the local system.  If it is to a network share, it is recorded on the system accessed.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26542",
+      "title": "The system will be configured to audit \"Logon/Logoff -> Logon\" failures.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nLogon records user logons.  If this is an interactive logon, it is recorded on the local system.  If it is to a network share, it is recorded on the system accessed.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26543",
+      "title": "The system will be configured to audit \"Logon/Logoff -> Special Logon\" successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nSpecial Logon records special logons which have administrative privileges and can be used to elevate processes.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26546",
+      "title": "The system will be configured to audit \"Policy Change -> Audit Policy Change\" successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAudit Policy Change records events related to changes in audit policy.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26547",
+      "title": "The system will be configured to audit \"Policy Change -> Audit Policy Change\" failures.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAudit Policy Change records events related to changes in audit policy.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26548",
+      "title": "The system will be configured to audit \"Policy Change -> Authentication Policy Change\" successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAuthentication Policy Change records events related to changes in authentication policy including Kerberos policy and Trust changes.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26549",
+      "title": "The system will be configured to audit \"Privilege Use -> Sensitive Privilege Use\" successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nSensitive Privilege Use records events related to use of sensitive privilege such as Act as part of the operating system or Debug programs.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26550",
+      "title": "The system will be configured to audit \"Privilege Use -> Sensitive Privilege Use\" failures.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nSensitive Privilege Use records events related to use of sensitive privilege such as Act as part of the operating system or Debug programs.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26551",
+      "title": "The system will be configured to audit \"System -> IPSec Driver\" successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nIPSec Driver records events related to the IPSec Driver such as dropped packets.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26552",
+      "title": "The system will be configured to audit \"System -> IPSec Driver\" failures.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nIPSec Driver records events related to the IPSec Driver such as dropped packets.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26553",
+      "title": "The system will be configured to audit \"System -> Security State Change\" successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nSecurity State Change records events related to changes in the security state such as startup and shutdown of the system.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26555",
+      "title": "The system will be configured to audit \"System -> Security System Extension\" successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nSecurity System Extension records events related to extension code being loaded by the security subsystem.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26556",
+      "title": "The system will be configured to audit \"System -> Security System Extension\" failures.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nSecurity System Extension records events related to extension code being loaded by the security subsystem.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26557",
+      "title": "The system will be configured to audit \"System -> System Integrity\" successes.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nSystem Integrity records events related to violations of integrity to the security subsystem.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26558",
+      "title": "The system will be configured to audit \"System -> System Integrity\" failures.\n",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nSystem Integrity records events related to violations of integrity to the security subsystem.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26575",
+      "title": "The 6to4 IPv6 transition technology will be disabled.\n",
+      "description": "IPv6 transition technologies which tunnel packets through other protocols do not provide visibility.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26576",
+      "title": "The IP-HTTPS IPv6 transition technology will be disabled.",
+      "description": "IPv6 transition technologies which tunnel packets through other protocols do not provide visibility.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26577",
+      "title": "The ISATAP IPv6 transition technology will be disabled.",
+      "description": "IPv6 transition technologies which tunnel packets through other protocols do not provide visibility.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26578",
+      "title": "The Teredo IPv6 transition technology will be disabled.",
+      "description": "IPv6 transition technologies which tunnel packets through other protocols do not provide visibility.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26579",
+      "title": "The Application event log must be configured to a minimum size requirement.",
+      "description": "Inadequate log size will cause the log to fill up quickly.  This may prevent audit events from being recorded properly and require frequent attention by administrative personnel.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26580",
+      "title": "The Security event log must be configured to a minimum size requirement.",
+      "description": "Inadequate log size will cause the log to fill up quickly.  This may prevent audit events from being recorded properly and require frequent attention by administrative personnel.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26581",
+      "title": "The Setup event log must be configured to a minimum size requirement.",
+      "description": "Inadequate log size will cause the log to fill up quickly.  This may prevent audit events from being recorded properly and require frequent attention by administrative personnel.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26582",
+      "title": "The System event log must be configured to a minimum size requirement.",
+      "description": "Inadequate log size will cause the log to fill up quickly.  This may prevent audit events from being recorded properly and require frequent attention by administrative personnel.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26600",
+      "title": "The Fax service will be disabled.\n",
+      "description": "Unnecessary Services increase the attack surface of a system.  Some of these services may not support required levels of authentication or encryption.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26602",
+      "title": "The Microsoft FTP service must not be installed unless required.\n",
+      "description": "Unnecessary Services increase the attack surface of a system.  Some of these services may not support required levels of authentication or encryption.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26604",
+      "title": "The Peer Networking Identity Manager service will be disabled.\n",
+      "description": "Unnecessary Services increase the attack surface of a system.  Some of these services may not support required levels of authentication or encryption.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26605",
+      "title": "The Simple TCP/IP Services service will be disabled.\n",
+      "description": "Unnecessary Services increase the attack surface of a system.  Some of these services may not support required levels of authentication or encryption.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26606",
+      "title": "The Telnet service will be disabled.\n",
+      "description": "Unnecessary Services increase the attack surface of a system.  Some of these services may not support required levels of authentication or encryption.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26683",
+      "title": "PKI certificates associated with user accounts must be issued by the DoD PKI or an approved External Certificate Authority (ECA).\n",
+      "description": "A PKI implementation depends on the practices established by the Certificate Authority (CA) to ensure the implementation is secure.  Without proper practices, the certificates issued by a CA have limited value in authentication functions.",
+      "severity": "high"
+    },
+    {
+      "id": "V-27109",
+      "title": "File Replication Service (FRS) directory data files must have proper access control permissions.",
+      "description": "Improper access permissions for directory data files could allow unauthorized users to read, modify, or delete directory data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-27119",
+      "title": "The Active Directory SYSVOL directory must have the proper access control permissions.",
+      "description": "Improper access permissions for directory data files could allow unauthorized users to read, modify, or delete directory data.\n\nThe SYSVOL directory contains public files (to the domain) such as policies and logon scripts.  Data in shared subdirectories are replicated to all domain controllers in a domain.",
+      "severity": "high"
+    },
+    {
+      "id": "V-28504",
+      "title": "Windows will be prevented from sending an error report when a device driver requests additional software during installation.",
+      "description": "Sending error reports to vendors can disclose information about a system to an outside organization.",
+      "severity": "low"
+    },
+    {
+      "id": "V-2907",
+      "title": "System files will be monitored for unauthorized changes.",
+      "description": "Comparing system files against a baseline on a regular basis will detect  the possibility of introduction of malicious code on the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2908",
+      "title": "Unencrypted remote access will not be permitted to system services.",
+      "description": "This is a category 1 finding because when unencrypted access to system services is permitted, an intruder can intercept user identification and passwords that are being transmitted in clear text.  This could give an intruder unlimited access to the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-30016",
+      "title": "Unauthorized accounts will not have the \"Add workstations to domain” user right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high level capabilities.\n\nAccounts with the \"Add workstations to domain” right may add computers to a domain.  This could result in unapproved or incorrectly configured systems being added to a domain.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32272",
+      "title": "The DoD Root CA certificates must be installed in the Trusted Root Store.",
+      "description": "To ensure secure DoD websites and DoD-signed code are properly validated, the system must trust the DoD Root Certificate Authorities (CAs). The DoD root certificates will ensure that the trust chain is established for server certificates issued from the DoD CAs.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32274",
+      "title": "The DoD Interoperability Root CA cross-certificates must be installed in the Untrusted Certificates Store on unclassified systems.",
+      "description": "To ensure users do not experience denial of service when performing certificate-based authentication to DoD websites due to the system chaining to a root other than DoD Root CAs, the DoD Interoperability Root CA cross-certificates must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32282",
+      "title": "Standard user accounts must only have Read permissions to the Active Setup\\Installed Components registry key.",
+      "description": "Permissions on the Active Setup\\Installed Components registry key must only allow privileged accounts to add or change registry values.  If standard user accounts have this capability there is a potential for programs to run with elevated privileges when a privileged user logs on to the system. ",
+      "severity": "high"
+    },
+    {
+      "id": "V-3245",
+      "title": "File share ACLs will be reconfigured to remove the Everyone group.",
+      "description": "By default, the Everyone group is given full control to new file shares. When a share is created, permissions should be reconfigured to give the minimum access to those accounts that require it.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3289",
+      "title": "Servers will have a host-based Intrusion Detection System.",
+      "description": "A properly configured Host-based Intrusion Detection System provides another level of defense against unauthorized access to critical servers.  With proper configuration and logging enabled, such a system can stop and/or alert for many attempts to gain unauthorized access to resources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3337",
+      "title": "Anonymous SID/Name translation must not be allowed.",
+      "description": "Allowing anonymous SID/Name translation can provide sensitive information for accessing a system. Only authorized users must be able to perform such translations.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3338",
+      "title": "Named pipes that can be accessed anonymously must be configured with limited values on domain controllers.",
+      "description": "This is a Category 1 finding due to the potential for gaining unauthorized system access. Pipes are internal system communications processes. They are identified internally by ID numbers that vary between systems. To make access to these processes easier, these pipes are given names that do not vary between systems. This setting controls which of these pipes may be accessed anonymously.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3339",
+      "title": "Unauthorized remotely accessible registry paths must not be configured.",
+      "description": "The registry is integral to the function, security, and stability of the Windows system.  Some processes may require remote access to the registry.  This setting controls which registry paths are accessible from a remote computer.  These registry paths must be limited, as they could give unauthorized individuals access to the registry.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3340",
+      "title": "Network shares that can be accessed anonymously will not be allowed.",
+      "description": "This is a Category 1 finding because the potential for gaining unauthorized system access. Any shares listed can be accessed by any network user.  This could lead to the exposure or corruption of sensitive data.  Enabling this setting is very dangerous.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3343",
+      "title": "Solicited Remote Assistance will not be allowed.",
+      "description": "This setting controls whether or not solicited remote assistance is allowed from this computer.  Solicited assistance is help that is specifically requested by the user.  This is a Category 1 finding because it may allow unauthorized parties access to the resources on the computer.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3344",
+      "title": "The use of local accounts with blank passwords will be restricted to console logons only.",
+      "description": "This is a Category 1 finding because no accounts with blank passwords should exist on a system.  The password policy should prevent this from occurring.  However, if a local account with a blank password does exist, enabling this setting will limit the account to local console logon only.",
+      "severity": "high"
+    },
+    {
+      "id": "V-33663",
+      "title": "The system must be configured to audit DS Access - Directory Service Access successes.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAudit directory service access records events related to users accessing an Active Directory object.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-33664",
+      "title": "The system must be configured to audit DS Access - Directory Service Access failures.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAudit directory service access records events related to users accessing an Active Directory object.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-33665",
+      "title": "The system must be configured to audit DS Access - Directory Service Changes successes.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAudit directory service changes records events related to changes made to objects in Active Directory Domain Services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-33666",
+      "title": "The system must be configured to audit DS Access - Directory Service Changes failures.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred as well as detecting attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAudit directory service changes records events related to changes made to objects in Active Directory Domain Services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-33673",
+      "title": "Active Directory Group Policy objects must have proper access control permissions.",
+      "description": "When directory service database objects do not have appropriate access control permissions, it may be possible for malicious users to create, read, update, or delete the objects and degrade or destroy the integrity of the data.  When the directory service is used for identification, authentication, or authorization functions, a compromise of the database objects could lead to a compromise of all systems relying on the directory service.\n\nFor Active Directory (AD), the Group Policy objects require special attention.  In a distributed administration model (i.e., help desk), Group Policy objects are more likely to have access permissions changed from the secure defaults.  If inappropriate access permissions are defined for Group Policy Objects, this could allow an intruder to change the security policy applied to all domain client computers (workstations and servers).",
+      "severity": "high"
+    },
+    {
+      "id": "V-3372",
+      "title": "A system must be logged on to before removing from a docking station.",
+      "description": "This setting controls the ability to undock the system without having to log on.  Since the removal of a computer should be controlled, users should have to log on before undocking the computer to ensure that they have the appropriate rights to undock the system.  In addition to software security settings, physical security should be in place to prevent unauthorized removal of computers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3373",
+      "title": "The maximum age for machine account passwords will be set to requirements.",
+      "description": "This setting controls the maximum password age that a machine account may have.  This setting should be set to no more than 30 days, ensuring the machine changes its password monthly.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3374",
+      "title": "The system will be configured to require a strong session key.",
+      "description": "This setting controls the required strength of a session key. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3376",
+      "title": "The system will be configured to prevent the storage of passwords and credentials ",
+      "description": "This setting controls the storage of passwords and credentials for network authentication on the local system.  Such credentials should never be stored on the local machine as that may lead to account compromise. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3377",
+      "title": "The system will be configured to prevent anonymous users from having the same rights as the Everyone group.",
+      "description": "This setting helps define the permissions that anonymous users have.  If this setting is enabled then anonymous users have the same rights and permissions as the built-in Everyone group.  Anonymous users should not have these permissions or rights.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3378",
+      "title": "The system will be configured to use the Classic security model.",
+      "description": "Windows includes two network-sharing security models—Classic and Guest only. With the classic model, local accounts must be password protected; otherwise, anyone can use guest user accounts to access shared system resources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3379",
+      "title": "The system will be configured to prevent the storage of the LAN Manager hash of passwords.",
+      "description": "This setting controls whether or not a LAN Manager hash of the password is stored in the SAM the next time the password is changed.  The LAN Manager hash is a weak encryption algorithm and there are several tools available that use this hash to retrieve account passwords.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3380",
+      "title": "The system will be configured to force users to log off when their allowed logon hours expire.",
+      "description": "This setting controls whether or not users are forced to log off when their allowed logon hours expire.  If logon hours are set for users, then this should be enforced.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3381",
+      "title": "The system will be configured to the required LDAP client signing level.",
+      "description": "This setting controls the signing requirements for LDAP clients.  This setting should be set to Negotiate signing or Require signing depending on the environment and type of LDAP server in use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3382",
+      "title": "The system will be configured to meet the minimum session security requirement for NTLM SSP based clients.",
+      "description": "Windows has implemented a variety of security support providers for use with RPC sessions.  In a homogenous Windows environment, all of the options should be enabled and testing should be performed in a heterogeneous environment to determine the maximum-security level that provides reliable functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3383",
+      "title": "The system will be configured to use FIPS-compliant algorithms for encryption, hashing, and signing.",
+      "description": "This setting ensures that the system uses algorithms that are FIPS-compliant for encryption, hashing, and signing.  FIPS-compliant algorithms meet specific standards established by the U.S. Government and should be the algorithms used for all OS encryption functions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3385",
+      "title": "The system must be configured to require case insensitivity for non-Windows subsystems.",
+      "description": "This setting controls the behavior of non-Windows subsystems when dealing with the case of arguments or commands.  Case sensitivity could lead to the access of files or commands that must be restricted.  To prevent this from happening, case insensitivity restrictions must be required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3449",
+      "title": "Remote Desktop Services will limit users to one remote session.",
+      "description": "This setting limits users to one remote session.  It is possible, if this setting is disabled, for users to establish multiple sessions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3453",
+      "title": "Remote Desktop Services will always prompt a client for passwords upon connection.",
+      "description": "This setting controls the ability of users to supply passwords automatically as part of their Remote Desktop session.  Disabling this setting would allow anyone to use the stored credentials in a connection item to connect to the host.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3454",
+      "title": "Remote Desktop Services will be configured with the client connection encryption set to the required level.",
+      "description": "Remote connections must be encrypted to prevent interception of data or sensitive information.  Selecting “High Level” will ensure encryption of Remote Desktop Services sessions in both directions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3455",
+      "title": "Remote Desktop Services will be configured to use session-specific temporary folders. ",
+      "description": "This setting controls the use of per session temporary folders or of a communal temporary folder. If this setting is enabled, only one temporary folder is used for all remote desktop sessions. If a communal temporary folder is used, it might be possible for users to access other users’ temporary folders. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3456",
+      "title": "Remote Desktop Services will delete temporary folders when a session is terminated.",
+      "description": "This setting controls the deletion of the temporary folders when the session is terminated.  Temporary folders should always be deleted after a session is over to prevent hard disk clutter and potential leakage of information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3469",
+      "title": "The system will be configured to enable the background refresh of Group Policy.",
+      "description": "If this setting is enabled, then Group Policy settings are not refreshed while a user is currently logged on.  This could lead to instances when a user does not have the latest changes to a policy applied and is therefore operating in an insecure context.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3470",
+      "title": "The system will be configured to prevent unsolicited remote assistance offers.",
+      "description": "This setting controls whether unsolicited offers of help to this computer are allowed.  The list of users allowed to offer remote assistance to this system is accessed by pressing the Helpers button.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3472",
+      "title": "If the time service is configured, it will use an authorized time server.",
+      "description": "The Windows Time Service controls time synchronization settings.  Time synchronization is essential for authentication and auditing purposes.  If the Windows Time Service is used, it should synchronize with a secure, authorized time source.   Domain joined systems are automatically configured to synchronize with domain controllers.  If an NTP server is configured it should synchronize with a secure, authorized time source.  ",
+      "severity": "low"
+    },
+    {
+      "id": "V-3479",
+      "title": "The system will be configured to use Safe DLL Search Mode.",
+      "description": "The default search behavior, when an application calls a function in a Dynamic Link Library (DLL), is to search the current directory followed by the directories contained in the systems path environment variable.  An unauthorized DLL inserted into an applications working directory could allow malicious code to be run on the system.  Creating the following registry key and setting the appropriate value forces the system to search the %Systemroot% for the DLL before searching the current directory or the rest of the path.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3480",
+      "title": "Media Player must be configured to prevent automatic checking for updates.",
+      "description": "Uncontrolled system updates can introduce issues to a system. The automatic check for updates performed by Windows Media Player must be disabled to ensure a constant platform and to prevent the introduction of unknown\\untested software on the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3481",
+      "title": "Media Player will be configured to prevent automatic Codec downloads.",
+      "description": "The Windows Media Player uses software components, referred to as Codecs, to play back media files.  By default, when an unknown file type is opened with the Media Player it will search the Internet for the appropriate Codec and automatically download it.  To ensure platform consistency and to protect against new vulnerabilities associated with media types, all Codecs must be installed by the System Administrator.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3487",
+      "title": "Services will be documented and unnecessary services will not be installed or will be disabled.",
+      "description": "Unnecessary services increase the attack surface of a system.  Some services may be run under the local System account, which generally has more permissions than required by the service.  Compromising a service could allow an intruder to obtain system permissions and open the system to a variety of attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3491",
+      "title": "Audit logs will be reviewed on a daily basis.",
+      "description": "To be of value, audit logs from servers and other critical systems will be reviewed on a daily basis to identify security breaches and potential weaknesses in the security structure.  This can be done with the use of monitoring software or other utilities for this purpose.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-34974",
+      "title": "The Windows Installer Always install with elevated privileges must be disabled.",
+      "description": "Standard user accounts must not be granted elevated privileges.  Enabling Windows Installer to elevate privileges when installing applications can allow malicious persons and applications to gain full control of a system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-36451",
+      "title": "Administrative accounts must not be used with applications that access the Internet, such as web browsers, or with potential Internet sources, such as email.",
+      "description": "Using applications that access the internet or have potential internet sources using administrative privileges exposes a system to compromise.  If a flaw in an application is exploited while running as a privileged user, the entire system could be compromised.  Web browsers and email are common attack vectors for introducing malicious code and must not be run with an administrative user account.\n\nSince administrative user accounts may generally change or work around technical restrictions for running a web browser or other applications, it is essential that policy requires administrative users not access the internet or use applications, such as email.\n\nThe policy should define specific exceptions for local service administration.  These exceptions may include HTTP(S)-based tools that are used for the administration of the local system, services, or attached devices.\n\nTechnical means such as application whitelisting can be used to enforce the policy to ensure compliance.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3666",
+      "title": "The system will be configured to meet the minimum session security requirement for NTLM SSP based servers.",
+      "description": "Windows has implemented a variety of security support providers for use with RPC sessions.  In a homogenous Windows environment, all of the options should be enabled and testing should be performed in a heterogeneous environment to determine the maximum-security level that provides reliable functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3828",
+      "title": "Security-related Software Patches will be applied.",
+      "description": "Major software vendors release security patches and hot fixes to their products when security vulnerabilities are discovered.  It is essential that these updates be applied in a timely manner to prevent unauthorized persons from exploiting identified vulnerabilities.\n\nThe Severity code may be elevated to a Category I if patches deemed Critical have not been applied.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39325",
+      "title": "Active Directory Group Policy objects must be configured with proper audit settings.",
+      "description": "When inappropriate audit settings are configured for directory service database objects, it may be possible for a user or process to update the data without generating any tracking data.  The impact of missing audit data is related to the type of object.  A failure to capture audit data for objects used by identification, authentication, or authorization functions could degrade or eliminate the ability to track changes to access policy for systems or data. \n\nFor Active Directory (AD), there are a number of critical object types in the domain naming context of the AD database for which auditing is essential.  This includes Group Policy objects.  Because changes to these objects can significantly impact access controls or the availability of systems, the absence of auditing data makes it impossible to identify the source of changes that impact the confidentiality, integrity, and availability of data and systems throughout an AD domain.  The lack of proper auditing can result in insufficient forensic evidence needed to investigate an incident and prosecute the intruder.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39326",
+      "title": "The Active Directory Domain object must be configured with proper audit settings.",
+      "description": "When inappropriate audit settings are configured for directory service database objects, it may be possible for a user or process to update the data without generating any tracking data.  The impact of missing audit data is related to the type of object.  A failure to capture audit data for objects used by identification, authentication, or authorization functions could degrade or eliminate the ability to track changes to access policy for systems or data. \n\nFor Active Directory (AD), there are a number of critical object types in the domain naming context of the AD database for which auditing is essential.  This includes the Domain object.  Because changes to these objects can significantly impact access controls or the availability of systems, the absence of auditing data makes it impossible to identify the source of changes that impact the confidentiality, integrity, and availability of data and systems throughout an AD domain.  The lack of proper auditing can result in insufficient forensic evidence needed to investigate an incident and prosecute the intruder.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39327",
+      "title": "The Active Directory Infrastructure object must be configured with proper audit settings.",
+      "description": "When inappropriate audit settings are configured for directory service database objects, it may be possible for a user or process to update the data without generating any tracking data.  The impact of missing audit data is related to the type of object.  A failure to capture audit data for objects used by identification, authentication, or authorization functions could degrade or eliminate the ability to track changes to access policy for systems or data. \n\nFor Active Directory (AD), there are a number of critical object types in the domain naming context of the AD database for which auditing is essential.  This includes the Infrastructure object.  Because changes to these objects can significantly impact access controls or the availability of systems, the absence of auditing data makes it impossible to identify the source of changes that impact the confidentiality, integrity, and availability of data and systems throughout an AD domain.  The lack of proper auditing can result in insufficient forensic evidence needed to investigate an incident and prosecute the intruder.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39328",
+      "title": "The Active Directory Domain Controllers Organizational Unit (OU) object must be configured with proper audit settings.",
+      "description": "When inappropriate audit settings are configured for directory service database objects, it may be possible for a user or process to update the data without generating any tracking data.  The impact of missing audit data is related to the type of object.  A failure to capture audit data for objects used by identification, authentication, or authorization functions could degrade or eliminate the ability to track changes to access policy for systems or data. \n\nFor Active Directory (AD), there are a number of critical object types in the domain naming context of the AD database for which auditing is essential.  This includes the Domain Controller OU object.  Because changes to these objects can significantly impact access controls or the availability of systems, the absence of auditing data makes it impossible to identify the source of changes that impact the confidentiality, integrity, and availability of data and systems throughout an AD domain.  The lack of proper auditing can result in insufficient forensic evidence needed to investigate an incident and prosecute the intruder.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39329",
+      "title": "The Active Directory AdminSDHolder object must be configured with proper audit settings.",
+      "description": "When inappropriate audit settings are configured for directory service database objects, it may be possible for a user or process to update the data without generating any tracking data.  The impact of missing audit data is related to the type of object.  A failure to capture audit data for objects used by identification, authentication, or authorization functions could degrade or eliminate the ability to track changes to access policy for systems or data. \n\nFor Active Directory (AD), there are a number of critical object types in the domain naming context of the AD database for which auditing is essential.  This includes the AdminSDHolder object.  Because changes to these objects can significantly impact access controls or the availability of systems, the absence of auditing data makes it impossible to identify the source of changes that impact the confidentiality, integrity, and availability of data and systems throughout an AD domain.  The lack of proper auditing can result in insufficient forensic evidence needed to investigate an incident and prosecute the intruder.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39330",
+      "title": "The Active Directory RID Manager$ object must be configured with proper audit settings.",
+      "description": "When inappropriate audit settings are configured for directory service database objects, it may be possible for a user or process to update the data without generating any tracking data.  The impact of missing audit data is related to the type of object.  A failure to capture audit data for objects used by identification, authentication, or authorization functions could degrade or eliminate the ability to track changes to access policy for systems or data. \n\nFor Active Directory (AD), there are a number of critical object types in the domain naming context of the AD database for which auditing is essential.  This includes the RID Manager$ object.  Because changes to these objects can significantly impact access controls or the availability of systems, the absence of auditing data makes it impossible to identify the source of changes that impact the confidentiality, integrity, and availability of data and systems throughout an AD domain.  The lack of proper auditing can result in insufficient forensic evidence needed to investigate an incident and prosecute the intruder.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39332",
+      "title": "The Active Directory Domain Controllers Organizational Unit (OU) object must have the proper access control permissions.",
+      "description": "When Active Directory (AD) objects do not have appropriate access control permissions, it may be possible for malicious users to create, read, update, or delete the objects and degrade or destroy the integrity of the data.  When the directory service is used for identification, authentication, or authorization functions, a compromise of the database objects could lead to a compromise of all systems that rely on the directory service.\n\nThe Domain Controllers OU object requires special attention as the Domain Controllers are central to the configuration and management of the domain.  Inappropriate access permissions defined for the Domain Controllers OU could allow an intruder or unauthorized personnel to make changes which could lead to the compromise of the domain.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39333",
+      "title": "Domain created Active Directory Organizational Unit (OU) objects must have proper access control permissions.",
+      "description": "When Active Directory (AD) objects do not have appropriate access control permissions, it may be possible for malicious users to create, read, update, or delete the objects and degrade or destroy the integrity of the data.  When the directory service is used for identification, authentication, or authorization functions, a compromise of the database objects could lead to a compromise of all systems that rely on the directory service.\n\nAD Organizational Unit (OU) objects require special attention.  In a distributed administration model (i.e., help desk), OU objects are more likely to have access permissions changed from the secure defaults.  Inappropriate access permissions defined for OU objects could allow an intruder or unauthorized personnel to add or delete accounts in the OU.  This could result in unauthorized access to data or a Denial of Service to authorized users.",
+      "severity": "high"
+    },
+    {
+      "id": "V-40175",
+      "title": "The antivirus program must be configured to update signature files on a daily basis.",
+      "description": "Virus scan programs are a primary line of defense against the introduction of viruses and malicious code that can destroy data and even render a computer inoperable. Using a virus scan program provides the ability to detect malicious code before extensive damage occurs. Updated virus scan data files help protect a system, as constantly changing malware is identified by the antivirus software vendors.",
+      "severity": "high"
+    },
+    {
+      "id": "V-40237",
+      "title": "The US DoD CCEB Interoperability Root CA cross-certificate must be installed in the Untrusted Certificates Store on unclassified systems.",
+      "description": "To ensure users do not experience denial of service when performing certificate-based authentication to DoD websites due to the system chaining to a root other than DoD Root CAs, the US DoD CCEB Interoperability Root CA cross-certificate must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-4108",
+      "title": "The system must generate an audit event when the audit log reaches a percentage of full threshold.",
+      "description": "Audit records may be lost if the security log becomes full.  When the audit log reaches a given percent full, an audit event is written to the security log.  An event is recorded as a success audit under the category of System.  This option may be especially useful if the audit logs are set to be cleared manually.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4110",
+      "title": "The system will be configured to prevent IP source routing.",
+      "description": "Protects against IP source routing spoofing.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4111",
+      "title": "The system will be configured to prevent ICMP redirects from overriding OSPF generated routes.",
+      "description": "When disabled, forces ICMP to be routed via shortest path first.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4112",
+      "title": "The system will be configured to disable the Internet Router Discover Protocol (IRDP).",
+      "description": "Enables or disables the Internet Router Discovery Protocol (IRDP) used to detect and configure Default Gateway addresses on the computer.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4113",
+      "title": "The system will be configured to limit how often keep-alive packets are sent.",
+      "description": "Controls how often TCP sends a keep-alive packet in attempting to verify that an idle connection is still intact.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4116",
+      "title": "The system must be configured to ignore NetBIOS name release requests except from WINS servers.",
+      "description": "Configuring the system to ignore name release requests, except from WINS servers, prevents a denial of service (DoS) attack.  The DoS consists of sending a NetBIOS name release request to the server for each entry in the server's cache, causing a response delay in the normal operation of the servers WINS resolution capability.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4407",
+      "title": "Domain Controllers must require LDAP signing.",
+      "description": "Unsigned network traffic is susceptible to man-in-the-middle attacks where an intruder captures packets between the server and the client and modifies them before forwarding them to the client.  In the case of an LDAP server, this means that an attacker can cause a client to make decisions based on false records from the LDAP directory.  You can lower the risk of an attacker pulling this off in a corporate network by implementing strong physical security measures to protect the network infrastructure.  Furthermore, implementing Internet Protocol security (IPSec) authentication header mode (AH), which performs mutual authentication and packet integrity for Internet Protocol (IP) traffic, can make all types of man-in-the-middle attacks extremely difficult.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-4408",
+      "title": "The domain controller must be configured to allow reset of machine account passwords.",
+      "description": "Enabling this setting on all domain controllers in a domain prevents domain members from changing their computer account passwords. If these passwords are weak or compromised, the inability to change them may leave these computers vulnerable.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-4438",
+      "title": "The system must limit how many times unacknowledged TCP data is retransmitted.",
+      "description": "In a SYN flood attack, the attacker sends a continuous stream of SYN packets to a server, and the server leaves the half-open connections open until it is overwhelmed and no longer able to respond to legitimate requests. \n",
+      "severity": "low"
+    },
+    {
+      "id": "V-4442",
+      "title": "The system will be configured to have password protection take effect within a limited time frame when the screen saver becomes active.",
+      "description": "Allowing more than several seconds for password protection to take effect when a screen saver becomes active makes the computer vulnerable to a potential attack from someone walking up to the console to attempt to access the system.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4443",
+      "title": "Unauthorized remotely accessible registry paths and sub-paths must not be configured.",
+      "description": "The registry is integral to the function, security, and stability of the Windows system.  Some processes may require remote access to the registry.  This setting controls which registry paths and sub-paths are accessible from a remote computer.  These registry paths must be limited, as they could give unauthorized individuals access to the registry.",
+      "severity": "high"
+    },
+    {
+      "id": "V-4444",
+      "title": "Users must be required to enter a password to access private keys stored on the computer.",
+      "description": "Configuring this setting so that users must provide a password (distinct from their domain password) every time they use a key makes it more difficult for an attacker to access locally stored user keys, even if the attacker takes control of the user's computers and determines their logon password. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-4445",
+      "title": "Optional Subsystems will not be permitted to operate on the system.",
+      "description": "The POSIX subsystem is an Institute of Electrical and Electronic Engineers (IEEE) standard that defines a set of operating system services. The POSIX Subsystem is required if the server supports applications that use that subsystem. \nThe subsystem introduces a security risk relating to processes that can potentially persist across logins. That is, if a user starts a process and then logs out, there is a potential that the next user who logs in to the system could access the previous users process. This is dangerous because the process started by the first user may retain that users system privileges; anything the second user does with that process will be performed with the privileges of the first user. \n",
+      "severity": "low"
+    },
+    {
+      "id": "V-4447",
+      "title": "The Remote Desktop Session Host will require secure RPC communications.",
+      "description": "Allowing unsecure RPC communication exposes the server to man in  the middle attacks and data disclosure attacks. A man in the middle attack occurs when an intruder captures packets between a client and server and modifies them before allowing the packets to be exchanged. Usually the attacker will modify the information in the packets in an attempt to cause either the client or server to reveal sensitive information. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-4448",
+      "title": "Group Policy objects will be reprocessed even if they have not changed.",
+      "description": "Enabling this setting and then selecting the \"Process even if the Group Policy objects have not changed\" option ensures that the policies will be reprocessed even if none have been changed. This way, any unauthorized changes are forced to match the domain-based group policy settings again. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57633",
+      "title": "Windows Server 2008 R2 must be configured to audit Policy Change - Authorization Policy Change successes.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks. Audit logs are necessary to provide a trail of evidence in case the system or network is compromised. Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAuthorization Policy Change records events related to changes in user rights, such as Create a token object.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57637",
+      "title": "The operating system must employ a deny-all, permit-by-exception policy to allow the execution of authorized software programs.",
+      "description": "Utilizing a whitelist provides a configuration management method for allowing the execution of only authorized software. Using only authorized software decreases risk by limiting the number of potential vulnerabilities.\n\nThe organization must identify authorized software programs and only permit execution of authorized software. The process used to identify software programs that are authorized to execute on organizational information systems is commonly referred to as whitelisting.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6831",
+      "title": "Outgoing secure channel traffic will be encrypted or signed.",
+      "description": "Requests sent on the secure channel are authenticated, and sensitive information (such as passwords) is encrypted, but not all information is encrypted.  If this policy is enabled, outgoing secure channel traffic will be encrypted and signed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6832",
+      "title": "The Windows SMB client will be enabled to always perform SMB packet signing.",
+      "description": "If this policy is enabled, it causes the Windows Server Message Block (SMB) client to perform SMB packet signing when communicating with an SMB server that is enabled or required to perform SMB packet signing.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6833",
+      "title": "The Windows SMB server will be enabled to always perform SMB packet signing.",
+      "description": "If this policy is enabled, it causes the Windows Server Message Block (SMB) server to always perform SMB packet signing.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6834",
+      "title": "Anonymous access to Named Pipes and Shares will be restricted.",
+      "description": "This is a Category 1 finding because of the potential for gaining unauthorized system access. \n\nPipes are internal system communications processes.  They are identified internally by ID numbers that vary between systems.  To make access to these processes easier, these pipes are given names that do not vary between systems.  \n\nWhen this setting is disabled, Network shares can be accessed by any network user.  This could lead to the exposure or corruption of sensitive data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6836",
+      "title": "For systems utilizing a logon ID as the individual identifier, passwords will, at a minimum, be 14 characters.",
+      "description": "Information systems not protected with strong password schemes including passwords of minimum length provide the opportunity for anyone to crack the password, thus, gaining access to the system and causing the device, information, or the local network to be compromised or a denial of service. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6840",
+      "title": "System mechanisms will be implemented to enforce automatic expiration of passwords.",
+      "description": "Passwords that do not expire increase the exposure of a password with greater probability of being discovered or cracked. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7002",
+      "title": "DoD information system access will require the use of a password. ",
+      "description": "The lack of password protection enables anyone to gain access to the information system, which opens a backdoor opportunity for intruders to compromise the system as well as other resources within the same administrative domain.",
+      "severity": "high"
+    },
+    {
+      "id": "V-72753",
+      "title": "WDigest Authentication must be disabled.",
+      "description": "When the WDigest Authentication protocol is enabled, plain text passwords are stored in the Local Security Authority Subsystem Service (LSASS) exposing them to theft.  This setting will prevent WDigest from storing credentials in memory.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73519",
+      "title": "The Server Message Block (SMB) v1 protocol must be disabled on the SMB server.",
+      "description": "SMBv1 is a legacy protocol that uses the MD5 algorithm as part of SMB. MD5 is known to be vulnerable to a number of attacks such as collision and preimage attacks as well as not being FIPS compliant.\n\nDisabling SMBv1 support may prevent access to file or print sharing resources with systems or devices that only support SMBv1. File shares and print services hosted on Windows Server 2003 are an example, however Windows Server 2003 is no longer a supported operating system. Some older network attached devices may only support SMBv1.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73523",
+      "title": "The Server Message Block (SMB) v1 protocol must be disabled on the SMB client.",
+      "description": "SMBv1 is a legacy protocol that uses the MD5 algorithm as part of SMB. MD5 is known to be vulnerable to a number of attacks such as collision and preimage attacks as well as not being FIPS compliant.\n\nDisabling SMBv1 support may prevent access to file or print sharing resources with systems or devices that only support SMBv1. File shares and print services hosted on Windows Server 2003 are an example, however Windows Server 2003 is no longer a supported operating system. Some older network attached devices may only support SMBv1.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75915",
+      "title": "Orphaned security identifiers (SIDs) must be removed from user rights on Windows 2008 R2.",
+      "description": "Accounts or groups given rights on a system may show up as unresolved SIDs for various reasons including deletion of the accounts or groups.  If the account or group objects are reanimated, there is a potential they may still have rights no longer intended.  Valid domain accounts or groups may also show up as unresolved SIDs if a connection to the domain cannot be established for some reason.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-78057",
+      "title": "Windows Server 2008 R2 must be configured to audit Logon/Logoff - Account Lockout successes.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks. Audit logs are necessary to provide a trail of evidence in case the system or network is compromised. Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAccount Lockout events can be used to identify potentially malicious logon attempts.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-78059",
+      "title": "Windows Server 2008 R2 must be configured to audit Logon/Logoff - Account Lockout failures.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks. Audit logs are necessary to provide a trail of evidence in case the system or network is compromised. Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAccount Lockout events can be used to identify potentially malicious logon attempts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-78061",
+      "title": "Windows Server 2008 R2 must be configured to audit System - Other System Events successes.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks. Audit logs are necessary to provide a trail of evidence in case the system or network is compromised. Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAudit Other System Events records information related to cryptographic key operations and the Windows Firewall service.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-78063",
+      "title": "Windows Server 2008 R2 must be configured to audit System - Other System Events failures.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks. Audit logs are necessary to provide a trail of evidence in case the system or network is compromised. Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAudit Other System Events records information related to cryptographic key operations and the Windows Firewall service.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8316",
+      "title": "Active Directory data files must have proper access control permissions.",
+      "description": "Improper access permissions for directory data related files could allow unauthorized users to read, modify, or delete directory data or audit trails.",
+      "severity": "high"
+    },
+    {
+      "id": "V-8317",
+      "title": "Data files owned by users must be on a different logical partition from the directory server data files.",
+      "description": "When directory service data files, especially for directories used for identification, authentication, or authorization, reside on the same logical partition as user-owned files, the directory service data may be more vulnerable to unauthorized access or other availability compromises.  Directory service and user-owned data files sharing a partition may be configured with less restrictive permissions in order to allow access to the user data. \n\nThe directory service may be vulnerable to a denial of service attack when user-owned files on a common partition are expanded to an extent preventing the directory service from acquiring more space for directory or audit data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8322",
+      "title": "Time synchronization must be enabled on the domain controller.",
+      "description": "When a directory service using multi-master replication (such as AD) executes on computers that do not have synchronized time, directory data may be corrupted or updated invalidly.\n\nThe lack of synchronized time could lead to audit log data that is misleading, inconclusive, or unusable. In cases of intrusion, this may invalidate the audit data as a source of forensic evidence in an incident investigation.\n\nIn AD, the lack of synchronized time could prevent clients from logging on or accessing server resources as a result of Kerberos requirements related to time variance.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8324",
+      "title": "The time synchronization tool must be configured to enable logging of  time source switching.",
+      "description": "When a time synchronization tool executes, it may switch between time sources according to network or server contention. If switches between time sources are not logged, it may be difficult or impossible to detect malicious activity or availability problems.",
+      "severity": "low"
+    },
+    {
+      "id": "V-8326",
+      "title": "The directory server supporting (directly or indirectly) system access or resource authorization must run on a machine dedicated to that function.",
+      "description": "Executing application servers on the same host machine with a directory server may substantially weaken the security of the directory server. Web or database server applications usually require the addition of many programs and accounts increasing the attack surface of the computer. \n\nSome applications require the addition of privileged accounts providing potential sources of compromise. Some applications (such as MS Exchange) may require the use of network ports or services conflicting with the directory server. In this case, non-standard ports might be selected and this could interfere with intrusion detection or prevention services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-8327",
+      "title": "Windows services that are critical for directory server operation must be configured for automatic startup.",
+      "description": "Active Directory (AD) is dependent on several Windows services. If one or more of these services is not configured for automatic startup, AD functions may be partially or completely unavailable until the services are manually started. This could result in a failure to replicate data or to support client authentication and authorization requests.",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "name": "iis_7.0_web_site",
+  "date": "2017-12-21",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "IIS 7.0 WEB SITE STIG",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-13620",
+      "title": "A private web-site must utilize certificates from a trusted DoD CA.",
+      "description": "The use of a DoD PKI certificate ensures clients the private web site they are connecting to is legitimate, and is an essential part of the DoD defense-in-depth strategy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13686",
+      "title": "Remote authors or content providers will only use secure encrypted logons and connections to upload files to the Document Root directory.",
+      "description": "Logging in to a web server via a telnet session or using HTTP or FTP in order to upload documents to the web site is a risk if proper encryption is not utilized to protect the data being transmitted. A secure shell service or HTTPS needs to be installed and in use for these purposes.",
+      "severity": "high"
+    },
+    {
+      "id": "V-13688",
+      "title": "Log files must consist of the required data fields.",
+      "description": "Log files are a critical component to the successful management of an IS used within the DoD.  By generating log files with useful information web administrators can leverage them in the event of a disaster, malicious attack, or other site specific needs.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13689",
+      "title": "Access to the web-site log files must be restricted.",
+      "description": "A major tool in exploring the web-site use, attempted use, unusual conditions, and problems are the access and error logs. In the event of a security incident, these logs can provide the SA and the web manager with valuable information. Failure to protect log files could enable an attacker to modify the log file data or falsify events to mask an attacker's activity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13694",
+      "title": "Public web servers must use TLS if authentication is required.",
+      "description": "Transport Layer Security (TLS) is optional for a public web server.  However, if authentication is being performed, then the use of the TLS protocol is required.\n\nWithout the use of TLS, the authentication data would be transmitted unencrypted and would become vulnerable to disclosure.  Using TLS along with DoD PKI certificates for encryption of the authentication data protects the information from being accessed by all parties on the network.  To further protect the authentication data, the web server must use a FIPS 140-2 approved TLS version and all non-FIPS-approved SSL versions must be disabled.\n\nFIPS 140-2 approved TLS versions include TLS V1.0 or greater.  NIST SP 800-52 specifies the preferred configurations for government systems.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13702",
+      "title": "The Content Location header must not contain proprietary IP addresses.",
+      "description": "When using static HTML pages, a Content-Location header is added to the response.  The Internet Information Server (IIS) Content-Location may reference the IP address of the server, rather than the Fully Qualified Domain Name (FQDN) or Hostname. This header may expose internal IP addresses that are usually hidden or masked behind a Network Address Translation (NAT) firewall or proxy server. There is a value that can be modified in the IIS metabase to change the default behavior from exposing IP addresses, to sending the FQDN instead.",
+      "severity": "low"
+    },
+    {
+      "id": "V-13703",
+      "title": "The website must have a unique application pool.",
+      "description": "Application pools isolate sites and applications to address reliability, availability, and security issues. Sites and applications may be grouped according to configurations, although each site will be associated with a unique application pool. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13704",
+      "title": "The application pool must have a recycle time set.",
+      "description": "Application pools can be periodically recycled to avoid unstable states possibly leading to application crashes, hangs, or memory leaks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13705",
+      "title": "The maximum number of requests an application pool can process must be set.",
+      "description": "IIS application pools can be periodically recycled to avoid unstable states possibly leading to application crashes, hangs, or memory leaks. By default, application pool recycling is overlapped, which means the worker process to be shut down is kept running until after a new worker process is started. After a new worker process starts, new requests are passed to it. The old worker process shuts down after it finishes processing its existing requests, or after a configured time-out, whichever comes first. This way of recycling ensures uninterrupted service to clients.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13706",
+      "title": "The amount of virtual memory an application pool uses must be set.",
+      "description": "IIS application pools can be periodically recycled to avoid unstable states possibly leading to application crashes, hangs, or memory leaks. By default, application pool recycling is overlapped, which means the worker process to be shut down is kept running until after a new worker process is started. After a new worker process starts, new requests are passed to it. The old worker process shuts down after it finishes processing its existing requests, or after a configured time-out, whichever comes first. This way of recycling ensures uninterrupted service to clients.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13707",
+      "title": "The amount of private memory an application pool uses must be set.",
+      "description": "IIS application pools can be periodically recycled to avoid unstable states possibly leading to application crashes, hangs, or memory leaks. By default, application pool recycling is overlapped, which means the worker process to be shut down is kept running until after a new worker process is started. After a new worker process starts, new requests are passed to it. The old worker process shuts down after it finishes processing its existing requests, or after a configured time-out, whichever comes first. This way of recycling ensures uninterrupted service to clients.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13708",
+      "title": "The Idle Timeout monitor must be enabled.",
+      "description": "The idle time-out attribute controls the amount of time a worker process will remain idle before it shuts down. A worker process is idle if it is not processing requests and no new requests are received.\n\nThe purpose of this attribute is to conserve system resources; the default value for idle time-out is 20 minutes.\n\nBy default, the World Wide Web (WWW) service establishes an overlapped recycle, in which the worker process to be shut down is kept running until after a new worker process is started.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13709",
+      "title": "The maximum queue length for HTTP.sys must be managed.",
+      "description": "In order to determine the possible causes of client connection errors and to conserve system resources, it is important to both log errors and manage those settings controlling requests to the application pool.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13710",
+      "title": "An application pool’s pinging monitor must be enabled.",
+      "description": "Windows Process Activation Service (WAS) manages application pool configurations and may flag a worker process as unhealthy and shut it down. An application pool’s pinging monitor must be enabled to confirm worker processes are functional. A lack of response from the worker process might mean the worker process does not have a thread to respond to the ping request, or it is hanging for some other reason. The ping interval and ping response time may need adjustment to gain access to timely information about application pool health without triggering false, unhealthy conditions; for example, instability caused by an application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13711",
+      "title": "An application pool’s rapid fail protection must be enabled.",
+      "description": "Rapid fail protection is a feature that interrogates the health of worker processes associated with web sites and web applications. It can be configured to perform a number of actions such as shutting down and restarting worker processes that have reached failure thresholds.  By not setting rapid fail protection the web server could become unstable in the event of a worker process crash potentially leaving the web server unusable.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13712",
+      "title": "An application pool’s rapid fail protection settings must be managed.",
+      "description": "Windows Process Activation Service (WAS) manages application pool configuration and may flag a worker process as unhealthy and shut it down.  The rapid fail protection must be set to a suitable value.  A lack of response from the worker process might mean the worker process does not have a thread to respond to the ping request, or that it is hanging for some other reason. The ping interval and ping response time may need adjustment to gain access to timely information about application pool health without triggering false, unhealthy conditions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13713",
+      "title": "The application pool identity must be defined for each web-site.",
+      "description": "The Worker Process Identity is the user defined to run an application pool. The IIS 7 worker processes, by default runs under the NetworkService account. Creating a custom identity for each application pool will better track issues occurring within each web-site. When a custom identity is used, the rights and privileges must not exceed those associated with the NetworkService security principal.",
+      "severity": "high"
+    },
+    {
+      "id": "V-15334",
+      "title": "Web sites must utilize ports, protocols, and services according to PPSM guidelines.",
+      "description": "Failure to comply with DoD ports, protocols, and services (PPS) requirements can result\nin compromise of enclave boundary protections and/or functionality of the AIS.\n\nThe IAM will ensure web servers are configured to use only authorized PPS in accordance with the Network Infrastructure STIG, DoD Instruction 8551.1, Ports, Protocols, and Services Management (PPSM), and the associated Ports, Protocols, and Services (PPS) Assurance Category Assignments List.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-2226",
+      "title": "Web content directories must not be anonymously shared.",
+      "description": "Anonymously shared directories are exposed to unnecessary risk. Any unnecessary exposure increases the risk that an intruder could exploit this access and compromise the web content or cause web server performance problems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2228",
+      "title": "All interactive programs must be placed in unique designated folders.",
+      "description": "CGI & ASP scripts represent one of the most common and exploitable means of compromising a web server.  All CGI & ASP program files must be segregated into their own unique folder to simplify the protection of these files. ASP scripts must be placed into a unique folder only containing other ASP scripts. JAVA and other technology-specific scripts must also be placed into their own unique folders. The placement of CGI, ASP, or equivalent scripts to special folders gives the Web Manager or the SA control over what goes into those folders and to facilitate access control at the folder level.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2229",
+      "title": "All interactive programs must have restrictive access controls.",
+      "description": "CGI is a programming standard for interfacing external applications with information servers, such as HTTP or web servers. CGI, represented by all upper case letters, should not be confused with the .cgi file extension. The .cgi file extension does represent a CGI script, but CGI scripts may be written in a number of programming languages (e.g., PERL, C, PHP, and JavaScript), each having their own unique file extension.\n\nThe use of CGI scripts represent one of the most common and exploitable means of compromising a web server. By definition, CGI scripts are executable by the operating system of the host server. While access control is provided via the web service, the execution of CGI programs is not limited unless the SA or the Web Manager takes specific measures. CGI programs can access and alter data files, launch other programs, and use the network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2230",
+      "title": "Backup interactive scripts must be removed from the web site.",
+      "description": "Copies of backup files will not execute on the server, but they can be read by the anonymous user if special precautions are not taken. Such backup copies contain the same sensitive information as the actual script being executed and, as such, are useful to malicious users. Techniques and systems exist today to search web servers for such files and are able to exploit the information contained in them.",
+      "severity": "low"
+    },
+    {
+      "id": "V-2240",
+      "title": "Web sites must limit the number of simultaneous requests.",
+      "description": "Resource exhaustion can occur when an unlimited number of concurrent requests are allowed on a web-site, facilitating a Denial of Service attack. Mitigating this kind of attack will include limiting the number of concurrent HTTP/HTTPS requests per IP address and may include, where feasible, limiting parameter values associated with keepalive (i.e., a parameter used to limit the amount of time a connection may be inactive). ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2245",
+      "title": "Each readable web document directory must contain a default, home, index, or equivalent document.",
+      "description": "The goal is to control the web users experience in navigating any portion of the web document root directories. Ensuring all web content directories have at least the equivalent of an index.html file is a significant factor to accomplish this end. Also, enumeration techniques, such as URL parameter manipulation, rely upon being able to obtain information about the web server’s directory structure by locating directories with default pages. This practice helps ensure the anonymous web user will not obtain directory browsing information or an error message revealing the server type and version.",
+      "severity": "low"
+    },
+    {
+      "id": "V-2249",
+      "title": "Web server/site administration must be performed over a secure path.",
+      "description": "Logging into a web server remotely using an unencrypted protocol or service when performing updates and maintenance is a major risk.  Data, such as user account, is transmitted in plaintext and can easily be compromised.  When performing remote administrative tasks, a protocol or service that encrypts the communication channel must be used.\n\nAn alternative to remote administration of the web server is to perform web server administration locally at the console.  Local administration at the console implies physical access to the server.",
+      "severity": "high"
+    },
+    {
+      "id": "V-2250",
+      "title": "Web-site logging must be enabled.",
+      "description": "A major tool in exploring the web site use, attempted use, unusual conditions, and problems are reported in the access and error logs. In the event of a security incident, these logs can provide the SA and the web manager with valuable information. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2254",
+      "title": "Only web sites that have been fully reviewed and tested will exist on a production web server.",
+      "description": "In the case of a production web server, areas for content development and testing will not exist, as this type of content is only permissible on a development web site. The process of developing on a functional production web site entails a degree of trial and error and repeated testing. This process is often accomplished in an environment where debugging, sequencing, and formatting of content are the main goals. The opportunity for a malicious user to obtain files that reveal business logic and login schemes is high in this situation. The existence of such immature content on a web server represents a significant security risk that is totally avoidable.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2258",
+      "title": "Access to the web content and script directories must be restricted.",
+      "description": "Excessive permission for the anonymous web user account is a common fault contributing to the compromise of a web server. If this account is able to upload and execute files on the web server, the organization or owner of the server will no longer have control of the asset.",
+      "severity": "high"
+    },
+    {
+      "id": "V-2260",
+      "title": "A web site must not contain a robots.txt file.",
+      "description": "Search engines are constantly at work on the Internet.  Search engines are augmented by agents, often referred to as spiders or bots, which endeavor to capture and catalog web-site content.  In turn, these search engines make the content they obtain and catalog available to any public web user. \n\nTo request that a well behaved search engine not crawl and catalog a site, the web site may contain a file called robots.txt.  This file contains directories and files that the web server SA desires not be crawled or cataloged, but this file can also be used, by an attacker or poorly coded search engine, as a directory and file index to a site.  This information may be used to reduce an attacker’s time searching and traversing the web site to find files that might be relevant.  If information on the web site needs to be protected from search engines and public view, other methods must be used.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2262",
+      "title": "A private web server must utilize an approved TLS version.",
+      "description": "Transport Layer Security (TLS) encryption is a required security setting for a private web server. Encryption of private information is essential to ensuring data confidentiality. If private information is not encrypted, it can be intercepted and easily read by an unauthorized party. A private web server must use a FIPS 140-2 approved TLS version, and all non-FIPS-approved SSL versions must be disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2263",
+      "title": "A private web server must have a valid server certificate.",
+      "description": "This check verifies the server certificate is actually a DoD-issued certificate used by the organization being reviewed. This is used to verify the authenticity of the web site to the user. If the certificate is not issued by the DoD or if the certificate has expired, then there is no assurance the use of the certificate is valid. The entire purpose of using a certificate is, therefore, compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2267",
+      "title": "Unapproved script mappings in IIS 7 must be removed.",
+      "description": "IIS 7 will either allow or deny script execution based on file extension. The ability to control script execution is controlled through two features with IIS 7, Request Filtering and Handler Mappings.\n\nFor Handler Mappings, the ISSO must document and approve all allowable file extensions the web site allows (white list) and denies (black list) by the web-site. The white list and black list will be compared to the Handler Mappings in IIS 7. Handler Mappings at the site level take precedence over Handler Mappings at the server level.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-26011",
+      "title": "Debug must be turned off on a production website.",
+      "description": "Setting compilation debug to false ensures detailed error information does not inadvertently display during live application usage, mitigating the risk of application information being display to users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-26026",
+      "title": "The production web-site must utilize SHA2 encryption for Machine Key.",
+      "description": "The Machine Key element of the ASP.NET web.config specifies the algorithm and keys that\nASP.NET will use for encryption.  The Machine Key feature can be managed to specify hashing and encryption settings for application services such as view state, forms authentication, membership and roles, and anonymous identification. Ensuring a strong encryption method can mitigate the risk of data tampering in crucial functional areas such as forms authentication cookies or view state.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26031",
+      "title": "The production web-site must be configured to prevent detailed HTTP error pages from being sent to remote clients.",
+      "description": "HTTP error pages contain information that could enable an attacker to gain access to an information system. Failure to prevent the sending of HTTP error pages with full information to remote requesters exposes internal configuration information to potential attackers.",
+      "severity": "low"
+    },
+    {
+      "id": "V-26034",
+      "title": "The production web-site must configure the Global .NET Trust Level.",
+      "description": "An application's trust level determines the permissions granted by the ASP.NET Code Access Security (CAS) policy.  An application with full trust permissions may access all resource types on a server and perform privileged operations, while applications running with partial trust have varying levels of operating permissions and access to resources. The CAS determines the permissions granted to the application on the server. Setting a level of trust compatible with the applications will limit the potential harm a compromised application could cause to a system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26041",
+      "title": "The web-site must limit the number of bytes accepted in a request.",
+      "description": "By setting limits on web requests, it ensures availability of web services and mitigates the risk of buffer overflow type attacks.  The maxAllowedContentLength Request Filter limits the number of bytes the server will accept in a request.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26042",
+      "title": "The production web-site must limit the MaxURL.",
+      "description": "Request filtering replaces URLScan in IIS, enabling administrators to create a more granular rule set with which to allow or reject inbound web content.   By setting limits on web requests, it helps to ensure availability of web services and may also help mitigate the risk of buffer overflow type attacks.  The MaxURL Request Filter limits the number of bytes the server will accept in a URL.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26043",
+      "title": "The production web-site must configure the Maximum Query String limit.",
+      "description": "By setting limits on web requests, it helps to ensure availability of web services and may also help mitigate the risk of buffer overflow type attacks.  The Maximum Query String Request Filter describes the upper limit on allowable query string lengths.  Upon exceeding the configured value, IIS will generate a Status Code 404.15.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26044",
+      "title": "The web-site must not allow non-ASCII characters in URLs.",
+      "description": "By setting limits on web requests, it ensures availability of web services and mitigates the risk of buffer overflow type attacks.  The allow high-bit characters Request Filter enables rejection of requests containing non-ASCII characters.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26045",
+      "title": "The web-site must not allow double encoded URL requests.",
+      "description": "Request filtering enables administrators to create a more granular rule set with which to allow or reject inbound web content.   By setting limits on web requests, it ensures availability of web services and mitigates the risk of buffer overflow type attacks.  When the allow double escaping option is disabled it prevents attacks that rely on double-encoded requests.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26046",
+      "title": "The production web-site must filter unlisted file extensions in URL requests.",
+      "description": "Request filtering enables administrators to create a more granular rule set to allow or reject inbound web content.   By setting limits on web requests it helps to ensure availability of web services and may also help mitigate the risk of buffer overflow type attacks.  The allow unlisted property of the File Extensions Request Filter enables rejection of requests containing specific file extensions not defined in the File Extensions filter.  Tripping this filter will cause IIS to generate a Status Code 404.7.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3333",
+      "title": "The web document (home) directory must be in a separate partition from the web server’s system files.",
+      "description": "The web document (home) directory is accessed by multiple anonymous users when the web server is in production.  By locating the web document (home) directory on the same partition as the web server system file the risk for unauthorized access to these protected files is increased.  Additionally, having the web document (home) directory path on the same drive as the system folders also increases the potential for a drive space exhaustion attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3963",
+      "title": "Indexing Services must only index web content.",
+      "description": "The indexing service can be used to facilitate a search function for web-sites. Enabling indexing may facilitate a directory traversal exploit and reveal unwanted information to a malicious user. Indexing must be limited to web document directories only.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6373",
+      "title": "The required DoD banner page must be displayed to authenticated users accessing a DoD private website.",
+      "description": "A consent banner will be in place to make prospective entrants aware that the website they are about to enter is a DoD web site and their activity is subject to monitoring. The document, DoDI 8500.01, establishes the policy on the use of DoD information systems. It requires the use of a standard Notice and Consent Banner and standard text to be included in user agreements. The requirement for the banner is for websites with security and access controls. These are restricted and not publicly accessible. If the website does not require authentication/authorization for use, then the banner does not need to be present. A manual check of the document root directory for a banner page file (such as banner.html) or navigation to the website via a browser can be used to confirm the information provided from interviewing the web staff.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6531",
+      "title": "A private web-sites authentication mechanism must use client certificates.\n",
+      "description": "A DoD private web-site must utilize PKI as an authentication mechanism for web users. Information systems residing behind web servers requiring authorization based on individual identity shall use the identity provided by certificate-based authentication to support access control decisions. Not using client certificates allows an attacker unauthenticated access to private web-sites.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6724",
+      "title": "All web-sites must be assigned a default Host header.",
+      "description": "In order to reduce the possibility of DNS rebinding attacks and IP-based scans, all web-sites allowing HTTP/HTTPS over ports 80/443 will be assigned default Host headers.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6755",
+      "title": "Directory Browsing must be disabled.",
+      "description": "The Directory Browsing feature can be used to facilitate a directory traversal exploit. Directory browsing must be disabled.",
+      "severity": "medium"
+    }
+  ]
+}

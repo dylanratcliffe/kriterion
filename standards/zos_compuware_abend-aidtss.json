@@ -1,0 +1,53 @@
+{
+  "name": "zos_compuware_abend-aidtss",
+  "date": "2015-09-25",
+  "description": "None",
+  "title": "z/OS Compuware Abend-AID for TSS STIG",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-16932",
+      "title": "Compuware Abend-AID installation data sets will be properly protected.",
+      "description": "Compuware Abend-AID installation data sets have the ability to use privileged functions and/or have access to sensitive data.  Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17067",
+      "title": "Compuware Abend-AID STC data sets will be properly protected.",
+      "description": "Compuware Abend-AID STC data sets have the ability to use privileged functions and/or have access to sensitive data.  Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17452",
+      "title": "Compuware Abend-AID Started Task name will be properly identified and/or defined to the system ACP.",
+      "description": "Compuware Abend-AID requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17454",
+      "title": "Compuware Abend-AID Started task will be properly defined to the Started Task Table for Top Secret.",
+      "description": "Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources.  Improper control of product resources could potentially compromise the operating system, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17947",
+      "title": "Compuware Abend-AID resources will be properly defined and protected.",
+      "description": "Compuware Abend-AID can run with sensitive system privileges, and potentially can circumvent system controls.  Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data.  Many utilities assign resource controls that can be granted to system programmers only in greater than read authority.  Resources are also granted to certain non systems personnel with read only authority.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18014",
+      "title": "Compuware Abend-AID external security options will be specified properly.",
+      "description": "Compuware Abend-AID offers external security interfaces that are controlled by parameters specified in FDBDPARM DD statement of the started task procedures.  These interfaces provide security controls for Abend-AID.  Without proper controls to ensure that security is active, the integrity of the Compuware Abend-AID System and the confidentiality of data stored on the system may be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21592",
+      "title": "Compuware Abend-AID user data sets must be properly protected.",
+      "description": "Compuware Abend-AID user data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    }
+  ]
+}

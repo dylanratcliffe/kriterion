@@ -1,0 +1,443 @@
+{
+  "name": "oracle_weblogic_server_12c",
+  "date": "2018-01-02",
+  "description": "Developed by Oracle in coordination with DISA for use in the DoD.",
+  "title": "Oracle WebLogic Server 12c Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-56205",
+      "title": "Oracle WebLogic must utilize cryptography to protect the confidentiality of remote access management sessions.",
+      "description": "Remote management access is accomplished by leveraging common communication protocols and establishing a remote connection to the application server via a network for the purposes of managing the application server. If cryptography is not used, then the session data traversing the remote connection could be intercepted and compromised. \n\nTypes of management interfaces utilized by an application server include web-based HTTPS interfaces as well as command line-based management interfaces. All application server management interfaces must utilize cryptographic encryption.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56207",
+      "title": "Oracle WebLogic must use cryptography to protect the integrity of the remote access session.",
+      "description": "Encryption is critical for protection of remote access sessions. If encryption is not being used for integrity, malicious users may gain the ability to modify the application server configuration. The use of cryptography for ensuring integrity of remote access sessions mitigates that risk.\n\nApplication servers utilize a web management interface and scripted commands when allowing remote access. Web access requires the use of SSL 3.0 or TLS 1.0 and scripted access requires using ssh or some other form of approved cryptography. Application servers must have a capability to enable a secure remote admin capability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56209",
+      "title": "Oracle WebLogic must employ automated mechanisms to facilitate the monitoring and control of remote access methods.",
+      "description": "Remote network access is accomplished by leveraging common communication protocols and establishing a remote connection. \n\nApplication servers provide remote management access and need to provide the ability to facilitate the monitoring and control of remote user sessions. This includes the capability to directly trigger actions based on user activity or pass information to a separate application or entity that can then perform automated tasks based on the information. \n\nExamples of automated mechanisms include but are not limited to: automated monitoring of log activity associated with remote access or process monitoring tools. \n\nThe application server must employ mechanisms that allow for monitoring and control of web-based and command line-based administrative remote sessions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56211",
+      "title": "Oracle WebLogic must ensure remote sessions for accessing security functions and security-relevant information are audited.",
+      "description": "Auditing must be utilized in order to track system activity, assist in diagnosing system issues and provide evidence needed for forensic investigations post security incident. \n\nRemote access by administrators requires that the admin activity be audited. \n\nApplication servers provide a web- and command line-based remote management capability for managing the application server. Application servers must ensure that all actions related to administrative functionality such as application server configuration are logged.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56213",
+      "title": "Oracle WebLogic must support the capability to disable network protocols deemed by the organization to be non-secure except for explicitly identified components in support of specific operational requirements.",
+      "description": "Some networking protocols may not meet organizational security requirements to protect data and components. \n\nApplication servers natively host a number of various features such as management interfaces, httpd servers, and message queues. These features all run on TCPIP ports. This creates the potential that the vendor may choose to utilize port numbers or network services that have been deemed unusable by the organization. The application server must have the capability to both reconfigure and disable the assigned ports without adversely impacting application server operation capabilities. For a list of approved ports and protocols, reference the DoD ports and protocols web site at https://iase.disa.mil/ppsm/Pages/index.aspx.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56215",
+      "title": "Oracle WebLogic must automatically audit account creation.",
+      "description": "Application servers require user accounts for server management purposes, and if the creation of new accounts is not logged, there is limited or no capability to track or alarm on account creation. This could result in the circumvention of the normal account creation process and introduce a persistent threat. Therefore, an audit trail that documents the creation of application user accounts must exist.\n\nAn application server could possibly provide the capability to utilize either a local or centralized user registry. A centralized, enterprise user registry such as AD or LDAP is more likely to already contain provisions for automated account management, whereas a localized user registry will rely upon either the underlying OS or built-in application server user management capabilities. Either way, application servers must create a log entry when accounts are created.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56217",
+      "title": "Oracle WebLogic must automatically audit account modification.",
+      "description": "Once an attacker establishes initial access to a system, they often attempt to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply modify an existing account.\n\nApplication servers have the capability to contain user information in a local user store, or they can leverage a centralized authentication mechanism like LDAP. Either way, the mechanism used by the application server must automatically log when user accounts are modified.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56219",
+      "title": "Oracle WebLogic must provide access logging that ensures users who are granted a privileged role (or roles) have their privileged activity logged.",
+      "description": "In order to be able to provide a forensic history of activity, the application server must ensure users who are granted a privileged role or those who utilize a separate distinct account when accessing privileged functions or data have their actions logged.\n\nIf privileged activity is not logged, no forensic logs can be used to establish accountability for privileged actions that occur on the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56221",
+      "title": "Oracle WebLogic must limit the number of failed login attempts to an organization-defined number of consecutive invalid attempts that occur within an organization-defined time period.",
+      "description": "Anytime an authentication method is exposed so as to allow for the login to an application, there is a risk that attempts will be made to obtain unauthorized access.\n\nBy limiting the number of failed login attempts that occur within a particular time period, the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced. Limits are imposed by locking the account once the number of failed attempts has been exceeded.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56223",
+      "title": "Oracle WebLogic must enforce the organization-defined time period during which the limit of consecutive invalid access attempts by a user is counted.",
+      "description": "By limiting the number of failed login attempts, the risk of unauthorized system access via automated user password guessing, otherwise known as brute-forcing, is reduced. Best practice requires a time period be applied in which the number of failed attempts is counted (Example: 5 failed attempts within 5 minutes). Limits are imposed by locking the account.\n\nApplication servers provide a management capability that allows a user to login via a web interface or a command shell. Application servers also utilize either a local user store or a centralized user store such as an LDAP server. As such, the authentication method employed by the application server must be able to limit the number of consecutive invalid access attempts within the specified time period regardless of access method or user store utilized.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56225",
+      "title": "Oracle WebLogic must automatically lock accounts when the maximum number of unsuccessful login attempts is exceeded for an organization-defined time period or until the account is unlocked by an administrator.",
+      "description": "Anytime an authentication method is exposed so as to allow for the utilization of an application interface, there is a risk that attempts will be made to obtain unauthorized access.\n\nBy locking the account when the pre-defined number of failed login attempts has been exceeded, the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced.\n\nSpecifying a time period in which the account is to remain locked serves to obstruct the operation of automated password guessing tools while allowing a valid user to reinitiate login attempts after the expiration of the time period without administrative assistance.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56227",
+      "title": "Oracle WebLogic must protect against an individual falsely denying having performed a particular action.",
+      "description": "Non-repudiation of actions taken is required in order to maintain application integrity. Examples of particular actions taken by individuals include creating information, sending a message, approving information (e.g., indicating concurrence or signing a contract), and receiving a message. \n\nNon-repudiation protects individuals against later claims by an author of not having authored a particular document, a sender of not having transmitted a message, a receiver of not having received a message, or a signatory of not having signed a document. \n\nTypical application server actions requiring non-repudiation will be related to application deployment among developer/users and administrative actions taken by admin personnel.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56229",
+      "title": "Oracle WebLogic must compile audit records from multiple components within the system into a system-wide (logical or physical) audit trail that is time-correlated to within an organization-defined level of tolerance.",
+      "description": "Audit generation and audit records can be generated from various components within the application server. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records (e.g., auditable events, time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked).\n\nThe events occurring must be time-correlated in order to conduct accurate forensic analysis. In addition, the correlation must meet a certain tolerance criteria. For instance, DoD may define that the time stamps of different audited events must not differ by any amount greater than ten seconds. It is also acceptable for the application server to utilize an external auditing tool that provides this capability.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56231",
+      "title": "Oracle WebLogic must generate audit records for the DoD-selected list of auditable events.",
+      "description": "Audit records can be generated from various components within the application server. The list of audited events is the set of events for which audits are to be generated. \n\nThis set of events is typically a subset of the list of all events for which the system is capable of generating audit records (e.g., auditable events, time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked).\n\nThe DoD-required auditable events are events that assist in intrusion detection and forensic analysis. Failure to capture them increases the likelihood that an adversary can breach the system without detection.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56233",
+      "title": "Oracle WebLogic must produce process events and severity levels to establish what type of HTTPD-related events and severity levels occurred.",
+      "description": "Information system auditing capability is critical for accurate forensic analysis. Audit record content that may be necessary to satisfy the requirement of this control includes time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nApplication servers must log all relevant log data that pertains to application server functionality. Examples of relevant data include, but are not limited to Java Virtual Machine (JVM) activity, HTTPD/Web server activity and application server-related system process activity.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56235",
+      "title": "Oracle WebLogic must produce audit records containing sufficient information to establish what type of JVM-related events and severity levels occurred.",
+      "description": "Information system auditing capability is critical for accurate forensic analysis. Audit record content that may be necessary to satisfy the requirement of this control, includes: time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nApplication servers must log all relevant log data that pertains to application server functionality. Examples of relevant data include, but are not limited to, Java Virtual Machine (JVM) activity, HTTPD activity and application server-related system process activity.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56237",
+      "title": "Oracle WebLogic must produce process events and security levels to establish what type of Oracle WebLogic process events and severity levels occurred.",
+      "description": "Information system auditing capability is critical for accurate forensic analysis. Audit record content that may be necessary to satisfy the requirement of this control, includes: time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nApplication servers must log all relevant log data that pertains to application server functionality. Examples of relevant data include, but are not limited to, Java Virtual Machine (JVM) activity, HTTPD activity and application server-related system process activity.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56239",
+      "title": "Oracle WebLogic must produce audit records containing sufficient information to establish when (date and time) the events occurred.",
+      "description": " Information system auditing capability is critical for accurate forensic analysis. Audit record content that may be necessary to satisfy the requirement of this control includes time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nIn addition to logging event information, application servers must also log the corresponding dates and times of these events. Examples of event data include, but are not limited to, Java Virtual Machine (JVM) activity, HTTPD activity and application server-related system process activity.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56241",
+      "title": "Oracle WebLogic must produce audit records containing sufficient information to establish where the events occurred.",
+      "description": "Information system auditing capability is critical for accurate forensic analysis. Audit record content that may be necessary to satisfy the requirement of this control includes time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked. \n\nWithout sufficient information establishing where the audit events occurred, investigation into the cause of events is severely hindered. \n\nIn addition to logging relevant data, application servers must also log information to indicate the location of these events. Examples of relevant data include, but are not limited to, Java Virtual Machine (JVM) activity, HTTPD activity and application server-related system process activity.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56243",
+      "title": "Oracle WebLogic must produce audit records containing sufficient information to establish the sources of the events.",
+      "description": "Information system auditing capability is critical for accurate forensic analysis. Audit record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application specific events, success/fail indications, filenames involved, access control or flow control rules invoked. \n\nWithout information establishing the source of activity, the value of audit records from a forensics perspective is questionable. \n\nExamples of activity sources include, but are not limited to, application process sources such as one process affecting another process, user-related activity, and activity resulting from remote network system access (IP addresses).",
+      "severity": "low"
+    },
+    {
+      "id": "V-56245",
+      "title": "Oracle WebLogic must produce audit records that contain sufficient information to establish the outcome (success or failure) of application server and application events.",
+      "description": " Information system auditing capability is critical for accurate forensic analysis. Audit record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application specific events, success/fail indications, filenames involved, access control or flow control rules invoked.\n\nSuccess and failure indicators ascertain the outcome of a particular application server event of function. As such, they also provide a means to measure the impact of an event and help authorized personnel to determine the appropriate response.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56247",
+      "title": "Oracle WebLogic must produce audit records containing sufficient information to establish the identity of any user/subject or process associated with the event.",
+      "description": "Information system auditing capability is critical for accurate forensic analysis. Audit record content that may be necessary to satisfy the requirement of this control, includes: time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked. \n\nApplication servers have differing levels of logging capabilities which can be specified by setting a verbosity level. The application server must, at a minimum, be capable of establishing the identity of any user or process that is associated with any particular event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56249",
+      "title": "Oracle WebLogic must provide the ability to write specified audit record content to an audit log server.",
+      "description": " Information system auditing capability is critical for accurate forensic analysis. Audit record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application specific events, success/fail indications, filenames involved, access control or flow control rules invoked. \n\nCentralized management of audit records and logs provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records. Application servers and their related components are required to be capable of writing logs to centralized audit log servers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56251",
+      "title": "Oracle WebLogic must provide a real-time alert when organization-defined audit failure events occur.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Audit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded. Notification of the failure event will allow administrators to take actions so that logs are not lost.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56253",
+      "title": "Oracle WebLogic must alert designated individual organizational officials in the event of an audit processing failure.",
+      "description": " Audit processing failures include, but are not limited to, failures in the application server log capturing mechanisms or audit storage capacity being reached or exceeded. In some instances, it is preferred to send alarms to individuals rather than to an entire group. Application servers must be able to trigger an alarm and send that alert to designated individuals in the event there is an application server audit processing failure.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56255",
+      "title": "Oracle WebLogic must notify administrative personnel as a group in the event of audit processing failure.",
+      "description": " Audit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded. To ensure flexibility and ease of use, application servers must be capable of notifying a group of administrative personnel upon detection of an application audit log processing failure.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56257",
+      "title": "Oracle WebLogic must use internal system clocks to generate time stamps for audit records.",
+      "description": "Without the use of an approved and synchronized time source, configured on the systems, events cannot be accurately correlated and analyzed to determine what is transpiring within the application server. \n\nIf an event has been triggered on the network, and the application server is not configured with the correct time, the event may be seen as insignificant, when in reality the events are related and may have a larger impact across the network. Synchronization of system clocks is needed in order to correctly correlate the timing of events that occur across multiple systems. Determining the correct time a particular event occurred on a system, via time stamps, is critical when conducting forensic analysis and investigating system events. \nApplication servers must utilize the internal system clock when generating time stamps and audit records.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56259",
+      "title": "Oracle WebLogic must synchronize with internal information system clocks which, in turn, are synchronized on an organization-defined frequency with an organization-defined authoritative time source.",
+      "description": "Determining the correct time a particular application event occurred on a system is critical when conducting forensic analysis and investigating system events. \n\nSynchronization of system clocks is needed in order to correctly correlate the timing of events that occur across multiple systems. To meet that requirement the organization will define an authoritative time source and frequency to which each system will synchronize its internal clock. \n\nApplication servers must defer accurate timekeeping services to the operating system upon which the application server is installed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56261",
+      "title": "Oracle WebLogic must protect audit information from any type of unauthorized read access.",
+      "description": "If audit data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity is difficult, if not impossible, to achieve. In addition, access to audit records provides information an attacker could potentially use to his or her advantage.\n\nApplication servers contain admin interfaces that allow reading and manipulation of audit records. Therefore, these interfaces should not allow for unfettered access to those records. Application servers also write audit data to log files which are stored on the OS, so appropriate file permissions must also be used to restrict access.\n\nAudit information includes all information (e.g., audit records, audit settings, transaction logs, and audit reports) needed to successfully audit information system activity. Application servers must protect audit information from unauthorized read access.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56263",
+      "title": "Oracle WebLogic must protect audit tools from unauthorized access.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. \n\nDepending upon the log format and application, system and application log tools may provide the only means to manipulate and manage application and system log data. \n\nIt is, therefore, imperative that access to audit tools be controlled and protected from unauthorized access. \n\nApplication servers provide a web and/or a command line-based management functionality for managing the application server audit capabilities. In addition, subsets of audit tool components may be stored on the file system as jar or xml configuration files. The application server must ensure that in addition to protecting any web based audit tools, any file system-based tools are protected as well.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56265",
+      "title": "Oracle WebLogic must protect audit tools from unauthorized modification.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. \n\nDepending upon the log format and application, system and application log tools may provide the only means to manipulate and manage application and system log data. \n\nIt is, therefore, imperative that access to audit tools be controlled and protected from unauthorized modification. If an attacker were to modify audit tools, he could also manipulate logs to hide evidence of malicious activity. \n\nApplication servers provide a web- and/or a command line-based management functionality for managing the application server audit capabilities. In addition, subsets of audit tool components may be stored on the file system as jar or xml configuration files. The application server must ensure that in addition to protecting any web-based audit tools, any file system-based tools are protected as well.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56267",
+      "title": "Oracle WebLogic must protect audit tools from unauthorized deletion.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. \n\nDepending upon the log format and application, system and application log tools may provide the only means to manipulate and manage application and system log data. \n\nIt is, therefore, imperative that access to audit tools be controlled and protected from unauthorized modification. If an attacker were to delete audit tools the application server administrators would have no way of managing or viewing the logs. \n\nApplication servers provide a web- and/or a command line-based management functionality for managing the application server audit capabilities. In addition, subsets of audit tool components may be stored on the file system as jar, class, or xml configuration files. The application server must ensure that in addition to protecting any web-based audit tools, any file system-based tools are protected from unauthorized deletion as well.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56269",
+      "title": "Oracle WebLogic must limit privileges to change the software resident within software libraries (including privileged programs).",
+      "description": "Application servers have the ability to specify that the hosted applications utilize shared libraries. The application server must have a capability to divide roles based upon duties wherein one project user (such as a developer) cannot modify the shared library code of another project user. The application server must also be able to specify that non-privileged users cannot modify any shared library code at all.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56271",
+      "title": "Oracle WebLogic must adhere to the principles of least functionality by providing only essential capabilities.",
+      "description": " Application servers provide a myriad of differing processes, features and functionalities. Some of these processes may be deemed to be unnecessary or too insecure to run on a production DoD system. Application servers must provide the capability to disable or deactivate functionality and services that are deemed to be non-essential to the server mission or can adversely impact server performance, for example, disabling dynamic JSP reloading on production application servers as a best practice.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56273",
+      "title": "Oracle WebLogic must prohibit or restrict the use of unauthorized functions, ports, protocols, and/or services.",
+      "description": "Application servers provide numerous processes, features, and functionalities that utilize TCP/IP ports. Some of these processes may be deemed to be unnecessary or too insecure to run on a production system. The application server must provide the capability to disable or deactivate network-related services that are deemed to be non-essential to the server mission, for example, disabling a protocol or feature that opens a listening port that is prohibited by DoD ports and protocols. For a list of approved ports and protocols reference the DoD ports and protocols web site at https://iase.disa.mil/ppsm/Pages/index.aspx.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56275",
+      "title": "Oracle WebLogic must utilize automated mechanisms to prevent program execution on the information system.",
+      "description": "The application server must provide a capability to halt or otherwise disable the automatic execution of deployed applications until such time that the application is considered part of the established application server baseline. Deployment to the application server should not provide a means for automatic application start-up should the application server itself encounter a restart condition.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56277",
+      "title": "Oracle WebLogic must uniquely identify and authenticate users (or processes acting on behalf of users).",
+      "description": "To assure accountability and prevent unauthorized access, application server users must be uniquely identified and authenticated. \n\nThe application server must uniquely identify and authenticate application server users or processes acting on behalf of users. This is typically accomplished via the use of a user store which is either local (OS-based) or centralized (LDAP) in nature.",
+      "severity": "high"
+    },
+    {
+      "id": "V-56279",
+      "title": "Oracle WebLogic must authenticate users individually prior to using a group authenticator.",
+      "description": "To assure individual accountability and prevent unauthorized access, application server users (and any processes acting on behalf of application server users) must be individually identified and authenticated. \n\nA group authenticator is a generic account used by multiple individuals. Use of a group authenticator alone does not uniquely identify individual users. \n\nApplication servers must ensure that individual users are authenticated prior to authenticating via role or group authentication. This is to ensure that there is non-repudiation for actions taken.",
+      "severity": "high"
+    },
+    {
+      "id": "V-56281",
+      "title": "Oracle WebLogic must enforce minimum password length.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nPassword length is one of several factors that helps to determine strength and how long it takes to crack a password. The shorter the password is, the lower the number of possible combinations that need to be tested before the password is compromised. \n\nApplication servers either provide a local user store, or they integrate with enterprise user stores like LDAP. When the application server provides the user store and enforces authentication, the application server must enforce minimum password length.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56283",
+      "title": "Oracle WebLogic must enforce password complexity by the number of upper-case characters used.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nUse of a complex password helps to increase the time and resources required to compromise the password. \n\nApplication servers either provide a local user store, or they integrate with enterprise user stores like LDAP. When the application server provides the user store and enforces authentication, the application server must enforce the organization's password complexity requirements, which includes the requirement to use a specific number of upper-case characters.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56285",
+      "title": "Oracle WebLogic must enforce password complexity by the number of lower-case characters used.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nUse of a complex password helps to increase the time and resources required to compromise the password. \n\nApplication servers either provide a local user store, or they integrate with enterprise user stores like LDAP. When the application server provides the user store and enforces authentication, the application server must enforce the organization's password complexity requirements, which include the requirement to use a specific number of lower-case characters.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56287",
+      "title": "Oracle WebLogic must enforce password complexity by the number of numeric characters used.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nUse of a complex password helps to increase the time and resources required to compromise the password. \n\nApplication servers provide either a local user store or they integrate with enterprise user stores like LDAP. When the application server provides the user store and enforces authentication, the application server must enforce the organization's password complexity requirements that include the requirement to use a specific number of numeric characters when passwords are created or changed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56289",
+      "title": "Oracle WebLogic must enforce password complexity by the number of special characters used.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nUse of a complex password helps to increase the time and resources required to compromise the password. \n\nApplication servers either provide a local user store, or they integrate with enterprise user stores like LDAP. When the application server provides the user store and enforces authentication, the application server must enforce the organization's password complexity requirements that include the requirement to use a specific number of special characters.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56291",
+      "title": "Oracle WebLogic must encrypt passwords during transmission.",
+      "description": "Passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission. \n\nApplication servers have the capability to utilize either certificates (tokens) or user IDs and passwords in order to authenticate. When the application server transmits or receives passwords, the passwords must be encrypted.",
+      "severity": "high"
+    },
+    {
+      "id": "V-56293",
+      "title": "Oracle WebLogic must utilize encryption when using LDAP for authentication.",
+      "description": "Passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission. \n\nApplication servers have the capability to utilize LDAP directories for authentication. If LDAP connections are not protected during transmission, sensitive authentication credentials can be stolen. When the application server utilizes LDAP, the LDAP traffic must be encrypted.",
+      "severity": "high"
+    },
+    {
+      "id": "V-56295",
+      "title": "Oracle WebLogic, when utilizing PKI-based authentication, must validate certificates by constructing a certification path with status information to an accepted trust anchor.",
+      "description": "A trust anchor is an authoritative entity represented via a public key and associated data. It is used in the context of public key infrastructures, X.509 digital certificates, and DNSSEC. \n\nWhen there is a chain of trust, usually the top entity to be trusted becomes the trust anchor; it can be, for example, a Certification Authority (CA). A certification path starts with the subject certificate and proceeds through a number of intermediate certificates up to a trusted root certificate, typically issued by a trusted CA. \n\nPath validation is necessary for a relying party to make an informed trust decision when presented with any certificate not already explicitly trusted. \n\nStatus information for certification paths includes, certificate revocation lists or online certificate status protocol responses.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56297",
+      "title": "Oracle WebLogic must map the PKI-based authentication identity to the user account.",
+      "description": "The cornerstone of the PKI is the private key used to encrypt or digitally sign information. The key by itself is a cryptographic value that does not contain specific user information. \n\nApplication servers must provide the capability to utilize and meet requirements of the DoD Enterprise PKI infrastructure for application authentication.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56299",
+      "title": "Oracle WebLogic must use cryptographic modules that meet the requirements of applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance when encrypting stored data.",
+      "description": "Encryption is only as good as the encryption modules utilized. Unapproved cryptographic module algorithms cannot be verified and cannot be relied upon to provide confidentiality or integrity, and DoD data may be compromised due to weak algorithms. \n\nFIPS 140-2 is the current standard for validating cryptographic modules, and NSA Type-X (where X=1, 2, 3, 4) products are NSA-certified hardware-based encryption modules. \n\nApplication servers must provide FIPS-compliant encryption modules when storing encrypted data and configuration settings.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56301",
+      "title": "Oracle WebLogic must utilize FIPS 140-2 approved encryption modules when authenticating users and processes.",
+      "description": "Encryption is only as good as the encryption modules utilized. Unapproved cryptographic module algorithms cannot be verified and cannot be relied upon to provide confidentiality or integrity, and DoD data may be compromised due to weak algorithms. \n\nFIPS 140-2 is the current standard for validating cryptographic modules, and NSA Type-X (where X=1, 2, 3, 4) products are NSA-certified hardware-based encryption modules. \n\nApplication servers must provide FIPS-compliant encryption modules when authenticating users and processes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56303",
+      "title": "Oracle WebLogic must employ cryptographic encryption to protect the integrity and confidentiality of nonlocal maintenance and diagnostic communications.",
+      "description": "Nonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the Internet) or an internal network. \n\nApplication servers provide an HTTP-oriented remote management capability that is used for managing the application server as well as uploading and deleting applications that are hosted on the application server. Application servers need to ensure the communication channels used to remotely access the system utilize cryptographic mechanisms such as TLS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56305",
+      "title": "Oracle WebLogic must employ strong identification and authentication techniques when establishing nonlocal maintenance and diagnostic sessions.",
+      "description": "Nonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the Internet) or an internal network. \n\nApplication servers will typically utilize an HTTP interface for providing both local and remote maintenance and diagnostic sessions. In these instances, an acceptable strong identification and authentication technique consists of utilizing two-factor authentication via secured HTTPS connections. If the application server also provides maintenance and diagnostic access via a fat client or other client-based connection, then that client must also utilize two-factor authentication and use FIPS-approved encryption modules for establishing transport connections.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56307",
+      "title": "Oracle WebLogic must terminate the network connection associated with a communications session at the end of the session or after a DoD-defined time period of inactivity.",
+      "description": " If communications sessions remain open for extended periods of time even when unused, there is the potential for an adversary to hijack the session and use it to gain access to the device or networks to which it is attached. Terminating sessions after a certain period of inactivity is a method for mitigating the risk of this vulnerability.\n\nThe application server must provide a mechanism for timing out or otherwise terminating inactive web sessions.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56309",
+      "title": "Oracle WebLogic must establish a trusted communications path between the user and organization-defined security functions within the information system.",
+      "description": "Without a trusted communication path, the application server is vulnerable to a man-in-the-middle attack.\n\nApplication server user interfaces are used for management of the application server so the communications path between client and server must be trusted or management of the server may be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56313",
+      "title": "Oracle WebLogic must utilize NSA-approved cryptography when protecting classified compartmentalized data.",
+      "description": "Cryptography is only as strong as the encryption modules/algorithms employed to encrypt the data. \n\nUse of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. Encryption modules/algorithms are the mathematical procedures used for encrypting data.\n\nNSA has developed Type 1 algorithms for protecting classified information. The Committee on National Security Systems (CNSS) National Information Assurance Glossary (CNSS Instruction No. 4009) defines Type 1 products as:\n\n\"Cryptographic equipment, assembly or component classified or certified by NSA for encrypting and decrypting classified and sensitive national security information when appropriately keyed. Developed using established NSA business processes and containing NSA-approved algorithms. Used to protect systems requiring the most stringent protection mechanisms.\"\n\nAlthough persons may have a security clearance, they may not have a \"need to know\" and are required to be separated from the information in question. The application server must employ NSA-approved cryptography to protect classified information from those individuals who have no \"need to know\" or when encryption of compartmentalized data is required by data classification.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56315",
+      "title": "Oracle WebLogic must protect the integrity and availability of publicly available information and applications.",
+      "description": " The purpose of this control is to ensure organizations explicitly address the protection needs for public information and applications, with such protection likely being implemented as part of other security controls.\n\nApplication servers must protect the integrity of publicly available information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56317",
+      "title": "Oracle WebLogic must separate hosted application functionality from Oracle WebLogic management functionality.",
+      "description": "Application server management functionality includes functions necessary to administer the application server and requires privileged access via one of the accounts assigned to a management role. \n\nThe separation of application server administration functionality from hosted application functionality is either physical or logical and is accomplished by using different computers, different central processing units, different instances of the operating system, network addresses, network ports, or combinations of these methods, as appropriate.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56321",
+      "title": "Oracle WebLogic must ensure authentication of both client and server during the entire session.",
+      "description": "This control focuses on communications protection at the session, versus packet level. \n\nAt the application layer, session IDs are tokens generated by web applications to uniquely identify an application user's session. Web applications utilize session tokens or session IDs in order to establish application user identity. Proper use of session IDs addresses man-in-the-middle attacks, including session hijacking or insertion of false information into a session. \n\nApplication servers must provide the capability to perform mutual authentication. Mutual authentication is when both the client and the server authenticate each other.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56323",
+      "title": "Oracle WebLogic must terminate user sessions upon user logout or any other organization- or policy-defined session termination events such as idle time limit exceeded.",
+      "description": " If communications sessions remain open for extended periods of time even when unused, there is the potential for an adversary to hijack the session and use it to gain access to the device or networks to which it is attached. Terminating sessions after a logout event or after a certain period of inactivity is a method for mitigating the risk of this vulnerability. When a user management session becomes idle, or when a user logs out of the management interface, the application server must terminate the session.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56327",
+      "title": "Oracle WebLogic must be configured to perform complete application deployments.",
+      "description": " Failure to a known secure state helps prevent a loss of confidentiality, integrity, or availability in the event of a failure of the information system or a component of the system.\n\nWhen an application is deployed to the application server, if the deployment process does not complete properly and without errors, there is the potential that some application files may not be deployed or may be corrupted and an application error may occur during runtime.\n\nThe application server must be able to perform complete application deployments. A partial deployment can leave the server in an inconsistent state. Application servers may provide a transaction rollback function to address this issue.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56329",
+      "title": "Oracle WebLogic must protect the confidentiality of applications and leverage transmission protection mechanisms, such as TLS and SSL VPN, when deploying applications.",
+      "description": "Preventing the disclosure of transmitted information requires that applications take measures to employ some form of cryptographic mechanism in order to protect the information during transmission. This is usually achieved through the use of Transport Layer Security (TLS), SSL VPN, or IPSEC tunnel. \n\nIf the application server does not protect the application files that are created before and during the application deployment process, there is a risk that the application could be compromised prior to deployment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56333",
+      "title": "Oracle WebLogic must protect the integrity of applications during the processes of data aggregation, packaging, and transformation in preparation for deployment.",
+      "description": "Information can be subjected to unauthorized changes (e.g., malicious and/or unintentional modification) at information aggregation or protocol transformation points. It is therefore imperative the application take steps to validate and assure the integrity of data while at these stages of processing. \n\nThe application server must ensure the integrity of data that is pending transfer for deployment is maintained. If the application were to simply transmit aggregated, packaged, or transformed data without ensuring the data was not manipulated during these processes, then the integrity of the data and the application itself may be called into question.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56337",
+      "title": "Oracle WebLogic must protect against or limit the effects of HTTP types of Denial of Service (DoS) attacks.",
+      "description": "Employing increased capacity and bandwidth combined with service redundancy can reduce the susceptibility to some DoS attacks. When utilizing an application server in a high risk environment (such as a DMZ), the amount of access to the system from various sources usually increases, as does the system's risk of becoming more susceptible to DoS attacks. \n\nThe application server must be able to be configured to withstand or minimize the risk of DoS attacks. This can be partially achieved if the application server provides configuration options that limit the number of allowed concurrent HTTP connections.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56341",
+      "title": "Oracle WebLogic must limit the use of resources by priority and not impede the host from servicing processes designated as a higher-priority.",
+      "description": "Priority protection helps the application server prevent a lower-priority application process from delaying or interfering with any higher-priority application processes. If the application server is not capable of managing application resource requests, the application server could become overwhelmed by a high volume of low-priority resource requests which can cause an availability issue.\n\nThis requirement only applies to Mission Assurance Category 1 systems and does not apply to information systems with a Mission Assurance Category of 2 or 3.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56343",
+      "title": "Oracle WebLogic must fail securely in the event of an operational failure.",
+      "description": " Fail secure is a condition achieved by the application server in order to ensure that in the event of an operational failure, the system does not enter into an unsecure state where intended security properties no longer hold.\n\nAn example of secure failure is when an application server is configured for secure LDAP (LDAPS) authentication. If the application server fails to make a successful LDAPS connection it does not try to use unencrypted LDAP instead.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56347",
+      "title": "Oracle WebLogic must employ approved cryptographic mechanisms when transmitting sensitive data.",
+      "description": "Preventing the disclosure of transmitted information requires that application servers take measures to employ approved cryptography in order to protect the information during transmission over the network. This is usually achieved through the use of Transport Layer Security (TLS), SSL VPN, or IPSEC tunnel. \n\nIf data in transit is unencrypted, it is vulnerable to disclosure. If approved cryptographic algorithms are not used, encryption strength cannot be assured. \n\nThe application server must utilize approved encryption when transmitting sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56351",
+      "title": "Oracle WebLogic must identify potentially security-relevant error conditions.",
+      "description": "The structure and content of error messages need to be carefully considered by the organization and development team. The extent to which the application server is able to identify and handle error conditions is guided by organizational policy and operational requirements. Adequate logging levels and system performance capabilities need to be balanced with data protection requirements. \n\nApplication servers must have the capability to log at various levels which can provide log entries for potential security-related error events.\n\nAn example is the capability for the application server to assign a criticality level to a failed login attempt error message, a security-related error message being of a higher criticality.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56377",
+      "title": "Oracle WebLogic must only generate error messages that provide information necessary for corrective actions without revealing sensitive or potentially harmful information in error logs and administrative messages.",
+      "description": "Any application providing too much information in error logs and in administrative messages to the screen risks compromising the data and security of the application and system. The structure and content of error messages needs to be carefully considered by the organization and development team. \n\nThe application server must not log sensitive information such as passwords, private keys, or other sensitive data. This requirement pertains to logs that are generated by the application server and application server processes, not the applications that may reside on the application server. Those errors are out of the scope of these requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56379",
+      "title": "Oracle WebLogic must restrict error messages so only authorized personnel may view them.",
+      "description": "If the application provides too much information in error logs and administrative messages to the screen, this could lead to compromise. The structure and content of error messages need to be carefully considered by the organization and development team. The extent to which the information system is able to identify and handle error conditions is guided by organizational policy and operational requirements. \n\nApplication servers must protect the error messages that are created by the application server. All application server users' accounts are used for the management of the server and the applications residing on the application server. All accounts are assigned to a certain role with corresponding access rights. The application server must restrict access to error messages so only authorized personnel may view them. Error messages are usually written to logs contained on the file system. The application server will usually create new log files as needed and must take steps to ensure that the proper file permissions are utilized when the log files are created.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56381",
+      "title": "Oracle WebLogic must provide system notifications to a list of response personnel who are identified by name and/or role.",
+      "description": "Incident response applications are, by their nature, designed to monitor, detect, and alarm on defined events occurring on the system or on the network. A large part of their functionality is the accurate and timely notification of events. \n\nApplication servers can act as a resource for incident responders by providing information and notifications needed for support personnel to respond to application server incidents. Notifications can be made more efficient by the utilization of groups containing the members who would be responding to a particular alarm or event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56383",
+      "title": "Oracle WebLogic must be integrated with a tool to monitor audit subsystem failure notification information that is sent out (e.g., the recipients of the message and the nature of the failure).",
+      "description": " It is critical that, when a system is at risk of failing to process audit logs, it detects and takes action to mitigate the failure. As part of the mitigation, the system must send a notification to designated individuals that auditing is failing, log the notification message and the individuals who received the notification. When the system is not capable of notification and notification logging, an external software package, such as Oracle Diagnostic Framework, must be used.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56385",
+      "title": "Oracle WebLogic must be managed through a centralized enterprise tool.",
+      "description": "The application server can host multiple applications which require different functions to operate successfully but many of the functions are capabilities that are needed for all the hosted applications and should be managed through a common interface. Examples of enterprise wide functions are automated rollback of changes, failover and patching.\n\nThese functions are often outside the domain of the application server and so the application server must be integrated with a tool, such as Oracle Enterprise Manager, which is specific built to handle these requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-56387",
+      "title": "Oracle WebLogic must be integrated with a tool to implement multi-factor user authentication.",
+      "description": "Multifactor authentication is defined as: using two or more factors to achieve authentication. \n\nFactors include: \n(i) something a user knows (e.g., password/PIN); \n(ii) something a user has (e.g., cryptographic identification device, token); or \n(iii) something a user is (e.g., biometric). A CAC meets this definition.\n\nImplementing a tool, such as Oracle Access Manager, will implement multi-factor authentication to the application server and tie the authenticated user to a user account (i.e. roles and privileges) assigned to the authenticated user.",
+      "severity": "medium"
+    }
+  ]
+}

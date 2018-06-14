@@ -1,0 +1,269 @@
+{
+  "name": "keyboard_video_and_mouse_switch",
+  "date": "2015-12-09",
+  "description": "The Keyboard Video and Mouse Switch (KVM) STIG includes the computing requirements for KVM switches operating to support the DoD. The Keyboard Video and Mouse Switch STIG must also be applied for each site using KVM switches. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "Keyboard Video and Mouse Switch STIG",
+  "version": "2",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-6675",
+      "title": "Written user agreements for all users authorized to use the KVM or A/B switch must be maintained.",
+      "description": "A written user agreement allows the ISSO to be certain the end user that will be using the equipment has been presented with the documentation that explains their duties and responsibilities in relation to the equipment and they have acknowledged that they have read the documentation and understand it. Though there is no guarantee the user will perform as required, it will lessen the problems caused by uninformed users.\n\n The ISSO will maintain written user agreements for all users authorized to use the KVM or A/B switch.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6676",
+      "title": "A SFUG, or an equivalent document, that describes the correct uses of the switch and user responsibilities, must be maintained and distributed.",
+      "description": "The SFUG (Security Features User Guide) or an equivalent document describes the user’s security responsibilities including any site-specific requirements. This gives the user a single reference source for both initial indoctrination and for later review. The distribution of the SFUG will lessen the vulnerabilities created by user ignorance of policy or procedures required by the site. By keeping this document current the user will have the current policies and procedures available. The ISSO will maintain and distribute to the users a SFUG, or an equivalent document, that describes the correct uses of the switch and the user’s responsibilities.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6677",
+      "title": "The KVM switch must be physically protected in accordance with the requirements of the highest classification for any IS connected to the KVM switch.",
+      "description": "If the KVM switch is not physically protected in accordance with the requirements of the highest classification for any IS connected to the KVM switch, the KVM switch can be tampered with leading to the compromise of sensitive data or a denial of service caused by the disruption of the systems the KVM switch is connected.\n\nThe ISSO or SA will ensure the KVM switch is physically protected in accordance with the requirements of the highest classification for any IS connected to the KVM switch.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-6678",
+      "title": "Smart (intelligent or programmable) keyboard must not be used in conjunction with a KVM switch when the KVM switch is connected to ISs of different classification and/or sensitivity levels.",
+      "description": "In an environment where the KVM switch is connected to ISs of different classification and/or sensitivity levels, a smart (intelligent or programmable) keyboard can transfer sensitive data from one system to another leading to the compromise of data.\n\nThe ISSO or SA will ensure a smart (intelligent or programmable) keyboard is not used in conjunction with a KVM switch when the switch is connected to ISs of different classification and/or sensitivity levels.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6679",
+      "title": "A wireless keyboard or mouse that is compliance with the current Wireless Keyboard and Mouse STIG must be attached to a KVM switch.",
+      "description": "Signals from a wireless device can be intercepted and decoded which can lead to the compromise of sensitive data.\n\nThe ISSO or SA will ensure wireless keyboards or mice attached to KVM switches are in compliance with the current Wireless Keyboard and Mouse STIG.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6680",
+      "title": "The desktop background of information systems attached to a KVM switch must be labeled with the proper classification banners.",
+      "description": "Without the banners to identify the information system the KVM switch is currently active on, the user could enter a command to the wrong information system and create a denial of service or the user could enter data into the wrong system creating either a security incident (data entered to a system of the wrong classification) or a compromise of sensitive data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6681",
+      "title": "A KVM switch with configurable features must have the configuration protected from modification with a DoD compliant password.",
+      "description": "If the KVM switch is configurable, some features that are available such as auto toggling between attached ISs are not permitted. If the configuration is not protected by a password it can be modified by any user allowing features that are not permitted. This can lead to the compromise of sensitive data.\n\nIf the KVM switch has configurable features, the ISSO or SA will ensure the configuration is protected from modification with a DoD compliant password.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6682",
+      "title": "The KVM switch feature for automatically toggling between ISs must be disabled.",
+      "description": "The feature that automatically toggles between connected ISs or active ISs can cause a screen to be automatically displayed that contains sensitive information. This can lead to the compromise of sensitive data.\n\nThe ISSO or SA will ensure the feature for automatically toggling between ISs is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6683",
+      "title": "A hot key feature must not be enabled other than the menu feature that allows the user to select the IS to be used from the displayed menu.",
+      "description": "There are many \"hot key\" features that could be used. Since each vender has a different set of features and it is impractical to review all features from all venders for potential vulnerabilities, no features other than the ability to bring up a menu of the ISs available on the KVM switch to allow the user to select which IS they wish to display will be enabled. Additional features will be approved if requested and time is available to review the feature and its implementation.\n\nThe ISSO or SA will ensure the only “hot key” feature enabled is the menu feature that allows the user to select the IS to be used from the displayed menu.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6684",
+      "title": "A machine-readable or a paper-document backup must be maintained for the configuration of the KVM switch.",
+      "description": "Without a backup of the KVM switch's configuration, you can have a denial of service if the configuration cannot be restored quickly in the event it is lost or a faulty switch needs to be replaced.\n\nThe ISSO or SA will ensure a machine-readable or a paper-document backup is maintained for the configuration of the KVM switch.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6685",
+      "title": "A written description of the KVM switch, the ISs attached to the KVM switch, and the classification level of each IS attached to the KVM switch must be maintained.",
+      "description": "Without a written description of the KVM switch, the ISs attached to the KVM switch, and the classification level of each IS attached to the KVM switch, tampering with the KVM switch by adding or moving connections cannot be verified and the physical configuration cannot be reproduced if needed. This can lead to a denial of service or a compromise of sensitive data if a connection is removed, moved, or added.\n\nThe ISSO will maintain a written description of the KVM switch, the ISs attached to the KVM switch, and the classification level of each IS attached to the KVM switch.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6686",
+      "title": "The KVM switch must be configured to force the change of the configuration password every 90 days or there is no policy and procedure in place to change the configuration password every 90 days.",
+      "description": "The longer the time between password changes the greater the chance the password will become compromised. A compromised password can allow a malicious user to change the configuration of the KVM switch creating a denial of service or a compromise of sensitive data.\n\nThe ISSO will ensure the KVM switch is configured to force the change of the configuration password every 90 days or there is a policy and procedure in place to change the configuration password every 90 days.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6687",
+      "title": "The KVM switch has the ability to support a RAS connection, this feature must be disabled or the connectors on the KVM switch supporting this feature must be blocked with a tamper evident seal.",
+      "description": "KVM switches that support Dialup Remote Access Services (RAS) do not support a robust identification and authorization process or robust auditing; therefore this feature will not be used. Tamper evident seals over the port(s) that support this feature will serve as an indicator that this feature may not been used for unauthorized access to the KVM switch.\n\nThe ISSO has not ensured, if the KVM switch has the ability to support a RAS connection, this feature is disabled and the connectors on the KVM switch supporting this feature are blocked with a tamper evident seal.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6698",
+      "title": "Written permission from the AO responsible for each IS attached to a KVM switch that is attached to ISs of different classification levels must be maintained.",
+      "description": "The AO responsible for an IS attached to a KVM switch that has other ISs attached of differing classifications levels must approve of the use of the KVM switch. The AO is the only individual that may be cognizant of the nature of the data accessible from the IS and what requirements have been placed on its access. There may be a need to have the system isolated from KVM switches even though they are approved for use in spanning classification levels.\n\nWhen the ISs are of different classification levels, the ISSM will maintain written permission from all AOs responsible for all ISs connected to a KVM switch.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6699",
+      "title": "KVM or A/B switches must be approved prior to being connected to ISs of different classification levels.",
+      "description": "Only KVM switches that have been tested and verified to prevent the transfer of data from one IS to another will be used when the ISs connected to the switch are of differing classification levels. The switch will be operated in the approved port configuration only. When the KVM switch is attached to ISs of different classification levels, the ISSO will ensure only approved KVM or A/B switches are used.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6700",
+      "title": "A KVM switch must not be cascaded while being attached to ISs of different classification levels.",
+      "description": "Cascading KVM switches, connecting one switch to another switch, can make it difficult to determine which system is currently connected to the keyboard, video monitor, and mouse by simple observation. In situations where the ISs are of differing classification levels this could lead to the compromise of sensitive or classified data or a denial of service caused by a privileged command being given to the wrong system.\n\nWhen the KVM switch is attached to ISs of different classification levels, the ISSO or SA will ensure no KVM switches are cascaded.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6701",
+      "title": "Tamper evident seals must be attached to the KVM switch and all IS cables at their attachment points where the KVM switch is attached to ISs of different classification levels.",
+      "description": "Tamper evident seals are designed to break if tampered with or show evidence of tampering. They are used to indicate a cabinet has been opened or a cable has been removed, moved or added. For KVM switches attached to ISs of differing classification levels it is necessary to be aware of any potential tampering with the connections. Switching the cables for two ISs could lead to the compromise of sensitive data. Removal of a cable could lead to a denial of service until it is reattached.\n\nThe ISSO or SA will ensure tamper evident seals are attached to the KVM switch and all IS cables at their attachment points.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6702",
+      "title": "A KVM switch must not be used to switch a peripheral other than a keyboard, video monitor, or mouse in an environment where the KVM switch is attached to ISs of different classification levels..",
+      "description": "Peripheral devices, other than keyboards, video monitors, and mice, can contain persistent memory and allow data to move between ISs of differing classification levels creating an unacceptable situation. This includes the ability to switch a smart card reader. If the switch has the ability to switch other peripheral devices and the feature is not disabled it will be assumed it is being used.\n\nWhen the KVM switch is attached to ISs of different classification levels, the ISSO or SA will ensure the KVM switch’s ability to switch peripheral devices other than the keyboard, video, and mouse is disabled.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6703",
+      "title": "Peripherals other than a keyboard, video monitor, or mouse must not be attached to a KVM switch that is attached to ISs of different classification levels.",
+      "description": "It will be assumed that any peripheral other than a keyboard, video monitor, or mouse attached to a KVM switch is intended to be used regardless of the current configuration of the KVM switch. This peripheral can contain persistent memory that can be used to move data between ISs of different classification levels compromising either the data that was moved and the IS to which the data was moved.\n\nWhen the KVM switch is attached to ISs of different classification levels, the ISSO, the SA, and the user will ensure no peripherals other than the keyboard, video, or mouse is connected to the KVM.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6704",
+      "title": "A KVM switch, which is attached to ISs of different classification levels, must have connections for peripherals, other than the keyboard, video monitor, or mouse, blocked with tamper evident seals.",
+      "description": "It will be assumed that KVM switches that can switch peripherals other than the keyboard, video monitor, and mouse, that are attached to ISs of differing classification levels, and that do not have the connectors for the additional peripherals blocked with tamper evident seals, have been tampered with and have been used to transfer data between ISs of different classifications levels until proven otherwise. If data is transferred between ISs of different classification levels the data has been compromised and the receiving IS has been compromised. \n\nWhen the KVM switch is attached to ISs of different classification levels, the ISSO or SA will ensure the connectors for additional peripherals are blocked with tamper evident seals.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6705",
+      "title": "A network attached KVM switch used to administer ISs must be attached to an out-of-band network.",
+      "description": "If a network attached KVM switch is attached to an out-of-band network there is less opportunity for a malicious user to compromise the interface and create a denial of service by issuing disruptive commands to a server.\n\nThe ISSO or SA will ensure a network attached KVM switch used to administer ISs is connected to an out-of-band network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6706",
+      "title": "The network attached KVM switch must not be attached to a network that is not at the same classification level as the ISs attached.",
+      "description": "If a network attached KVM switch is attached to a network of a different classification level than the ISs attached to the KVM switch, this could lead to a compromise of sensitive data either on the network or on the ISs.\n\nThe ISSO will ensure network attached KVM switches are only connected to a network at the same classification level as the ISs attached.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6707",
+      "title": "The network-facing component of a network attached KVM switch must be compliant with the current Network Infrastructure STIG.",
+      "description": "If the network facing components of a network attached KVM switch are not in compliance with the Network Infrastructure STIG the KVM switch could expose the network to vulnerabilities that could lead to a denial of service caused by the disruption of the network or a compromise of sensitive data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6708",
+      "title": "The KVM switch must be configured to require the user to login to the KVM switch to access the ISs attached.",
+      "description": "Without identification and authentication of the user accessing the network attached KVM switch anyone can access the ISs attached and if they have knowledge of a valid user id and password for the IS, disrupt the system causing a denial of service or access sensitive data compromising that data.\n\nThe ISSO will ensure the KVM switch is configured to require the user to login to the KVM switch to access the ISs attached. PKI authentication is acceptable and preferred to password authentication.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6709",
+      "title": "The KVM switch must be configured to require DoD compliant passwords.",
+      "description": "Strong passwords are harder to guess or discover via brute force making the system more secure from malicious tampering.\n\nThe ISSO will ensure the KVM switch is configured to require DoD compliant passwords.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6710",
+      "title": "Group or shared user ids must not be used on a network attached KVM switch.",
+      "description": "Usage of group or shared user ids makes it impossible to attribute an action to the originating user. In the case of a malicious action this could make prosecution impossible.\n\nThe ISSO will ensure group or shared user ids are not used.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6711",
+      "title": "The network attached KVM switch must be configured to restrict a users access only to the systems they require.",
+      "description": "Users accessing ISs they do not need access to can lead to the compromise of sensitive data.\n\nThe ISSO will ensure the KVM switch is configured to restrict a user’s access to only the systems they require.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6712",
+      "title": "The network attached KVM switch must display an Electronic Notice and Consent Banner complaint with requirements of CJSCM 6510.01.",
+      "description": "The warning banner notifies the user they are accessing a DoD system and they consent to having their actions monitored. Without this banner it is difficult to prosecute individuals who violate the usage restrictions of the IS.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6713",
+      "title": "The KVM switch must be configured to use encrypted communications with FIPS 140-2 validated cryptography.",
+      "description": "Because all administrative traffic contains sensitive data such as unencrypted passwords, it will be encrypted to protect it from interception. The KVM switch will be configured to require encryption for all communications via the network. NIST FIPS 140-2 validated cryptography will be used.\n\nThe ISSO or SA will ensure the KVM switch is configured to use encrypted communications using FIPS 140-2 validated cryptography.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6714",
+      "title": "The KVM switch must be configured to encapsulate and send USB connections other than KVM connections.",
+      "description": "Some network attached KVM switched can encapsulate USB connections other than the keyboard, video monitor, and mouse connections. This connection could be a disk drive connection and could allow the transfer of data between the ISs attached to the KVM switch and the client system attached via IP to the KVM switch leading to a compromise of sensitive data.\n The ISSO or SA will ensure the KVM switch is not configured to encapsulate and send USB connections other than KVM connections.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6715",
+      "title": "Unused USB ports on the KVM switch must be blocked with tamper evident seals on a KVM switch that can encapsulate and send the USB protocol over the network to the client.",
+      "description": "By blocking the unused USB ports on a network attached KVM switch that can encapsulate USB over IP with tamper evident seals there will be an indication if someone has attached an unauthorized USB connection to the KVM switch. When a seal is found to have been tampered with or broken, it should be investigated.\n\nThe ISSO will ensure any open USB ports on the KVM switch are blocked with tamper evident seals.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6716",
+      "title": "A network attached KVM switch must not be configured to control the power supplied to the ISs attached to the KVM switch or the connectors on the KVM switch that support this feature are not blocked with tamper evident seals.",
+      "description": "If a network attached KVM switch can control the power to the ISs attached to it and the KVM switch is compromised, a denial of service can be caused by powering off all the ISs attached to the KVM switch without accessing the individual ISs.\n\nThe ISSO will ensure any feature that allows the KVM switch to directly control the power supplied to the ISs is not configured or used, and any connectors on the KVM switch used to support this feature are blocked with a tamper evident seal.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6717",
+      "title": "A network attached KVM switch must not be attached to ISs of different classification levels.",
+      "description": "Because of the problems inherent in the spanning of networks of different classification levels, network attached KVM switches will not be attached to ISs of different classification levels. This can lead to the compromise of sensitive data.\n\nThe ISSO will ensure the network attached KVM switches are not attached to ISs of different classification levels.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6718",
+      "title": "There must be user agreements documenting the use of A/B switches.",
+      "description": "A signed user agreement is proof that the user has been informed of his security responsibilities when using an A/B switch.\n\nThe ISSO will maintain written user agreements for all users authorized to use an A/B switch.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6719",
+      "title": "There must be user documentation describing the correct usage and user responsibilities for an A/B switch.",
+      "description": "The Security Features Users Guide (SFUG) gives the user a single source to find security policy and guidance as to the user’s responsibility for security. The general policies and user responsibilities as apply to A/B switches and any local security policies will be placed in the SFUG or similar document.\n\nThe ISSO will maintain and distribute to the users a SFUG that describes the correct uses of an A/B switch and the user’s responsibilities.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6720",
+      "title": "The A/B switch must be physically protected in accordance with the requirements of the highest classification of any IS connected to the A/B switch.",
+      "description": "If the A/B switch is not located in an area that has the same physical security as required by the IS of the highest classification level, this can lead to a compromise of sensitive data.\n The ISSO or SA will ensure the A/B switch is physically protected in accordance with the requirements of the highest classification for any IS connected to the A/B switch.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6757",
+      "title": "An A/B switch must not be used to share a peripheral device between two or more users.",
+      "description": "When using an A/B switch to switch a peripheral between two or more users the risk always exists where the peripheral is connected to the wrong IS. An example would be a scanner shared between two systems using an A/B switch. If the user presses the scan button when the A/B switch is pointed to a different IS than the user intended, the document would be scanned into the wrong system. This could lead to the compromise of sensitive data.\n\nThe ISSO or SA will ensure an A/B switch is not used to share a peripheral device between two or more users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6758",
+      "title": "The A/B switch must be properly marked and labeled.",
+      "description": "Failure to correctly mark switch positions and cable connections can lead to the A/B switch connecting the wrong device to the wrong system for the current intended use. This can lead to a denial of access to a peripheral by an IS or the access of the wrong peripheral by an IS compromising sensitive data.\n\nThe ISSO or SA will ensure the A/B switch, cables, switch positions, and connectors are labeled in accordance with this STIG.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6759",
+      "title": "A/B switches connecting information systems of differing classification levels must be on the NIAP CCEVS Products Lists.",
+      "description": "An A/B switch not found on the approved KVM and A/B switch lists has not been tested to verify that it does not leak data between systems. This can lead to the compromise of sensitive data or the compromise of the ISs attached to the A/B switch.\n\nThe organization will ensure only approved A/B switches are used with ISs of differing classification levels.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6760",
+      "title": "Tamper evident seals must be attached to the A/B switch and all IS cables at their attachment points for A/B switches attached to devices or ISs that have different classification levels.",
+      "description": "Without the presences of tamper evident seals the A/B switch or its connections can be tampered with and the tampering will go undetected. This can lead to the compromise of sensitive data or the compromise of an IS.\n\nWhen an A/B switch is attached to ISs of different classification levels, the ISSO or SA will ensure tamper evident seals are attached to the A/B switch and all IS cables at their attachment points.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6761",
+      "title": "A/B switches must not be cascaded when connected to devices or ISs which are at different classification levels.",
+      "description": "When A/B switches are cascaded it is difficult to verify the currently selected connection is the correct selection. When A/B switches are used with ISs of differing classification levels this can lead to the compromise of sensitive data.\n\nWhen A/B switches are attached to ISs of different classification levels the ISSO or SA will ensure that A/B switches are not cascaded.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6762",
+      "title": "An A/B switch must not be used to switch a peripheral device that has persistent memory or devices that support removable media between two or more ISs of different classification levels.",
+      "description": "If the peripheral device attached to an A/B switch, which is connected to ISs of differing classification levels, can be written to and read from this can lead to the compromise of sensitive or classified data and/or the compromise of the ISs.\n\nThe ISSO or SA will ensure A/B switches are not used to switch a peripheral device that has persistent memory or devices that support removable media between two or more ISs of different classification levels.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6763",
+      "title": "Input or output devices including, but not limited to, scanners, printers, or plotters must not be attached to an A/B switches that spans classification levels.",
+      "description": "Input devices attached to A/B switches that are in turn attached to ISs of different classification levels could input data to the wrong IS compromising sensitive or classified data and/or the IS involved.\n\nOutput from output devices attached to A/B switches that are in turn attached to ISs of different classification levels could be picked up by an individual other than the one the data was intended, leading to a compromise of sensitive or classified data.\n\nThe ISSO will ensure input and output devices including but not limited to scanners, printers, or plotters are not attached to A/B switches that span classification levels.",
+      "severity": "high"
+    }
+  ]
+}

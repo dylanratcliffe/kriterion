@@ -1,0 +1,149 @@
+{
+  "name": "mcafee_move_2.63.6.1_multi-platform_client",
+  "date": "2016-04-05",
+  "description": "The McAfee MOVE 2.6/3.6.1 Multi-Platform Client STIG is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the NIST 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "McAfee MOVE 2.6/3.6.1 Multi-Platform Client STIG",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-42933",
+      "title": "All other antivirus products must be removed from the virtual machine while the McAfee AV Client is running.",
+      "description": "Organizations should deploy antivirus software on all hosts for which satisfactory antivirus software is available. Antivirus software should be installed as soon after OS installation as possible and then updated with the latest signatures and antivirus software patches (to eliminate any known vulnerabilities in the antivirus software itself). To support the security of the host, the antivirus software should be configured and maintained properly so it continues to be effective at detecting and stopping malware. Antivirus software is most effective when its signatures are fully up-to-date. Accordingly, antivirus software should be kept current with the latest signature and software updates to improve malware detection.\n\nMcAfee MOVE AV Client will not function properly with other antivirus products installed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42935",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client policies must be configured with, and managed by, the HBSS ePO server.",
+      "description": "Organizations should use centrally managed antivirus software that is controlled and monitored regularly by antivirus administrators, who are also typically responsible for acquiring, testing, approving, and delivering antivirus signature and software updates throughout the organization. Users should not be able to disable or delete antivirus software from their hosts, nor should they be able to alter critical settings. Antivirus administrators should perform continuous monitoring to confirm that hosts are using current antivirus software and that the software is configured properly. Implementing all of these recommendations should strongly support an organization in having a strong and consistent antivirus deployment across the organization.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42936",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured to enable malware protection.",
+      "description": "Antivirus software should be installed as soon after OS installation as possible and then updated with the latest signatures and antivirus software patches (to eliminate any known vulnerabilities in the antivirus software itself). The antivirus software should then perform a complete scan of the host to identify any potential infections. To support the security of the host, the antivirus software should be configured and maintained properly so it continues to be effective at detecting and stopping malware. Antivirus software is most effective when its signatures are fully up-to-date. Accordingly, antivirus software should be kept current with the latest signature and software updates to improve malware detection.",
+      "severity": "high"
+    },
+    {
+      "id": "V-42937",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured with the IP address of the primary Offload Scan Server used by all virtual machines using this policy.",
+      "description": "Organizations should use centrally managed antivirus software that is controlled and monitored regularly by antivirus administrators, who are also typically responsible for acquiring, testing, approving, and delivering antivirus signature and software updates throughout the organization.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42939",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured with the IP address of the secondary Offload Scan Server used by all virtual machines using this policy.",
+      "description": "Organizations should use centrally managed antivirus software that is controlled and monitored regularly by antivirus administrators, who are also typically responsible for acquiring, testing, approving, and delivering antivirus signature and software updates throughout the organization.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42940",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured with a scan timeout of 180 seconds or more.",
+      "description": "This setting configures the amount of time to wait for a scan to complete, in seconds. The default setting is 45 seconds. This is the duration for which a McAfee MOVE AV Agent will wait for scan response of a file from the Offload Scan Server. Typically, file scans are very fast. However, file scans may take longer time due to large file size, file type or heavy load on the offload scan server. In such case that the file scan takes longer than the scan timeout limit, the file access is allowed and a scan timeout event is generated. Setting the timeout too low may result in scans of a file terminating before the scan is completed, resulting in malware potentially going undetected.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42942",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured to cache scan results for files smaller than 40MB.",
+      "description": "This setting configures the maximum file size (in MB) up to which scan results should be cached. The default setting is 40MB. Files smaller than this threshold are copied completely to the Offload Scan Server and scanned. If the file is found to be clean, its scan result is cached based on its SHA 1 checksum for faster future access. Files larger than this size threshold are transferred in chunks that are requested by the Offload Scan Server and scanned and setting that threshold higher could impact the performance of the scan processes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42943",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured to expire cached scan results after a time period of no more than 24 hours.",
+      "description": "Antivirus software should be installed as soon after OS installation as possible and then updated with the latest signatures and antivirus software patches (to eliminate any known vulnerabilities in the antivirus software itself). The antivirus software should then perform a complete scan of the host to identify any potential infections. To support the security of the host, the antivirus software should be configured and maintained properly so it continues to be effective at detecting and stopping malware. Antivirus software is most effective when its signatures are fully up-to-date. Accordingly, antivirus software should be kept current with the latest signature and software updates to improve malware detection.\n\nThe scan cache retains files previously scanned and determined to be clean. Since a cache scan result is not invalidated when a new antivirus signature (DAT) is received, and a cached file will only be re-scanned after the cached result expires, caching files past a 24 hour period allows for newly discovered malware to go undetected in those cached files.  Cached files should expire after no more than 24 hours in order to be scanned with new antivirus signatures every day.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42944",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured to scan when writing to disk.",
+      "description": "Antivirus software is the most commonly used technical control for malware threat mitigation. Real-time scanning of files as they are written to disk is a crucial first line of defense from malware attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42945",
+      "title": "The McAfee MOVE AV [Multi-Platform] General policy must be configured to scan when reading from disk.",
+      "description": "Antivirus software is the most commonly used technical control for malware threat mitigation. Real-time scanning of files as they are read from disk is a crucial first line of defense from malware attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42946",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured to scan all file types.",
+      "description": "When scanning for malware, excluding specific file types will increase the risk of a malware-infected file going undetected. By configuring antivirus software to scan all file types, the scanner has a higher success rate at detecting and eradicating malware.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42947",
+      "title": "If the McAfee MOVE AV [Multi-Platform] Client General policy is configured with path or file exclusions, those exclusions must be formally documented and approved by the ISSO/ISSM.",
+      "description": "When scanning for malware, excluding specific file types will increase the risk of a malware-infected file going undetected. By configuring antivirus software to scan all file types, the scanner has a higher success rate at detecting and eradicating malware. The excluding files, paths, and processes from being scanned expands the potential for malware to be allowed onto the information system. While it is recognized that some file types might need to be excluded for operational reasons and/or because there is protection afforded to those files through a different mechanism, allowing those exclusions should always be vetted, documented, and approved before applying.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42948",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured to report malware detections to the client event log.",
+      "description": "Forensic identification is the practice of identifying infected hosts by looking for evidence of recent infections. The evidence may be very recent (only a few minutes old) or not so recent (hours or days old); the older the information is, the less accurate it is likely to be. The most obvious sources of evidence are those that are designed to identify malware activity, such as antivirus software, content filtering (e.g., anti-spam measures), IPS, and SIEM technologies. The logs of security applications might contain detailed records of suspicious activity, and might also indicate whether a security compromise occurred or was prevented. While logging is imperative to forensic analysis, logs could grow to the point of impacting disk space on the system. In order to avoid the risk of logs growing to the size of impacting the operating system, the log size and number of log files will be restricted, but must also be large enough to retain forensic value.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42949",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured to send malware detection events to the HBSS ePO server.",
+      "description": "Forensic identification is the practice of identifying infected hosts by looking for evidence of recent infections. The evidence may be very recent (only a few minutes old) or not so recent (hours or days old); the older the information is, the less accurate it is likely to be. The most obvious sources of evidence are those that are designed to identify malware activity, such as antivirus software, content filtering (e.g., anti-spam measures), IPS, and SIEM technologies. The logs of security applications might contain detailed records of suspicious activity, and might also indicate whether a security compromise occurred or was prevented. While logging is imperative to forensic analysis, logs could grow to the point of impacting disk space on the system. In order to avoid the risk of logs growing to the size of impacting the operating system, the log size and number of log files will be restricted, but must also be large enough to retain forensic value.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42950",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured to delete files automatically as first action.",
+      "description": "Malware incident containment has two major components:  stopping the spread of malware and preventing further damage to hosts. Disinfecting a file is generally preferable to quarantining it because the malware is removed and the original file restored; however, many infected files cannot be disinfected. The primary goal of eradication is to remove malware from infected hosts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42951",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured to enable the quarantine.",
+      "description": "Malware incident containment has two major components:  stopping the spread of malware and preventing further damage to hosts. Disinfecting a file is generally preferable to quarantining it because the malware is removed and the original file restored; however, many infected files cannot be disinfected. Accordingly, antivirus software should be configured to attempt to disinfect infected files and to either quarantine or delete files that cannot be disinfected. By enabling the quarantine, organizations will have the ability to submit copies of unknown malware to their security software vendors for analysis and will able to conduct internal forensic evaluation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42952",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured with the location of SYSTEM_DRIVE\\quarantine to ensure consistency across all systems.",
+      "description": "The quarantine on each system represents a potential danger should the files contained within the quarantine inadvertently be executed.\n\nTo better manage the quarantine on all systems, the quarantine should always be configured the same across all systems, which will allow management to better control access to those locations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42953",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured to automatically delete quarantined data after a time period of no more than 28 days.",
+      "description": "The quarantine on each system represents a potential danger should the files contained within the quarantine inadvertently be executed. Deleting the quarantine contents on a regular basis will alleviate the ability of malware from being executed. An organization's incident response policy should also contain steps in removing quarantined items after their forensic value has been depleted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42954",
+      "title": "The self-protection feature of the McAfee MOVE AV [Multi-Platform] Client, designed to prevent malicious attacks on McAfee MOVE AV Multi-Platform software components, must be enabled.",
+      "description": "The self-protection feature defends files, services, and registry keys on virtual machines and will ensure uninterrupted protection.",
+      "severity": "high"
+    },
+    {
+      "id": "V-42955",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured to deny access to files if first action fails.",
+      "description": "Malware incident containment has two major components:  stopping the spread of malware and preventing further damage to hosts. Disinfecting a file is generally preferable to quarantining it because the malware is removed and the original file restored; however, many infected files cannot be disinfected. The primary goal of eradication is to remove malware from infected hosts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42956",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured with the listening port of the primary Offload Scan Server used by all virtual machines using this policy.",
+      "description": "Organizations should use centrally managed antivirus software that is controlled and monitored regularly by antivirus administrators, who are also typically responsible for acquiring, testing, approving, and delivering antivirus signature and software updates throughout the organization.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42957",
+      "title": "The McAfee MOVE AV [Multi-Platform] Client General policy must be configured with the listening port of the secondary Offload Scan Server used by all virtual machines using this policy.",
+      "description": "Organizations should use centrally managed antivirus software that is controlled and monitored regularly by antivirus administrators, who are also typically responsible for acquiring, testing, approving, and delivering antivirus signature and software updates throughout the organization.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-42958",
+      "title": "If the McAfee MOVE AV [Multi-Platform] Client General policy is configured with process exclusions, those exclusions must be formally documented and approved by the ISSO/ISSM.",
+      "description": "When scanning for malware, excluding specific file types will increase the risk of a malware-infected file going undetected. By configuring antivirus software to scan all file types, the scanner has a higher success rate at detecting and eradicating malware. The excluding files, paths, and processes from being scanned expands the potential for malware to be allowed onto the information system. While it is recognized that some file types might need to be excluded for operational reasons and/or because there is protection afforded to those files through a different mechanism, allowing those exclusions should always be vetted, documented, and approved before applying.",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "name": "general_mobile_device_policy_non-enterprise_activated",
+  "date": "2013-07-03",
+  "description": "This STIG provides policy, training, and operating procedure security controls for the use of mobile devices (smartphone and tablets) that are not authorized to be connected to a DoD network or store or process sensitive or classified DoD data/information. Non-enterprise activated refers to any device that is operated under the use conditions found in Section 2.1 of the STIG overview document.  See section 1.1 of the STIG overview document for additional information. ",
+  "title": "General Mobile Device Policy (Non-Enterprise Activated) Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-13982",
+      "title": "All users of mobile devices or wireless devices must sign a user agreement before the mobile or wireless device is issued to the user and the user agreement used at the site must include required content. ",
+      "description": "Lack of user training and understanding of responsibilities to safeguard wireless technology is a significant vulnerability to the enclave. Once policies are established, users must be trained to these requirements or the risk to the network remains.\n\nUser agreements are particularly important for mobile and remote users since there is a high risk of loss, theft, or compromise. Thus, this signed agreement is a good best practice to help ensure the site is confirming the user is aware of the risks and proper procedures. \n",
+      "severity": "low"
+    },
+    {
+      "id": "V-15782",
+      "title": "Personnally owned or contractor owned CMDs must not be used to transmit, receive, store, or process DoD information or connect to DoD networks. ",
+      "description": "The use of unauthorized personally-owned CMDs to receive, store, process, or transmit DoD data could expose sensitive DoD data to unauthorized people. The DoD CIO currently prohitibits the use of personally owned or contractor owned CMDs (Bring Your Own Device – BYOD).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24953",
+      "title": "Site physical security policy must include a statement outlining whether CMDs with digital cameras (still and video) are permitted or prohibited on or in this DoD facility.",
+      "description": "Mobile devices with cameras are easily used to photograph sensitive information and areas if not addressed. Sites must establish, document, and train on how to mitigate this threat. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-24955",
+      "title": "A data spill (Classified Message Incident (CMI)) procedure or policy must be published for site CMDs.",
+      "description": "When a data spill occurs on a CMD, classified or sensitive data must be protected to prevent disclosure. After a data spill, the CMD must either be wiped using approved procedures, or destroyed if no procedures are available, so classified or sensitive data is not exposed. If a data spill procedure is not published, the site may not use approved procedures to remediate after a data spill occurs and classified data could be exposed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24957",
+      "title": "If a data spill (Classified Message Incident (CMI)) occurs on a wireless email device or system at a site, the site must follow required data spill procedures. ",
+      "description": "If required procedures are not followed after a data spill, classified data could be exposed to unauthorized personnel.",
+      "severity": "high"
+    },
+    {
+      "id": "V-24958",
+      "title": "Required procedures must be followed for the disposal of CMDs. ",
+      "description": "If appropriate procedures are not followed prior to disposal of a CMD, an adversary may be able to obtain sensitive DoD information or learn aspects of the configuration of the device that might facilitate a subsequent attack.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24960",
+      "title": "Mobile operating system (OS) based CMDs and systems must not be used to send, receive, store, or process classified messages unless specifically approved by NSA for such purposes and NSA approved transmission and storage methods are used.",
+      "description": "DoDD 8100.2 states wireless devices will not be used for classified data unless approved for such use. Classified data could be exposed to unauthorized personnel.",
+      "severity": "high"
+    },
+    {
+      "id": "V-24961",
+      "title": "Mobile device users must complete training on required content before being provided mobile devices or allowed access to DoD networks with a mobile device.",
+      "description": "Users are the first line of security controls for CMD systems. They must be trained in using CMD security controls or the system could be vulnerable to attack.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24962",
+      "title": "The site Incident Response Plan or other procedure must include procedures to follow when a mobile operating system (OS) based mobile device is reported lost or stolen. ",
+      "description": "Sensitive DoD data could be stored in memory on a DoD operated mobile operating system (OS) based CMD and the data could be compromised if required actions are not followed when a CMD is lost or stolen. Without procedures for lost or stolen mobile operating system (OS) based CMD devices, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24969",
+      "title": "Required actions must be followed at the site when a CMD has been lost or stolen. ",
+      "description": "If procedures for lost or stolen CMDs are not followed, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA.",
+      "severity": "low"
+    },
+    {
+      "id": "V-28317",
+      "title": "Mobile users must complete required training annually.\n\n",
+      "description": "Users are the first line of security controls for CMD systems. They must be trained in using CMD security controls or the system could be vulnerable to attack. If training is not renewed on an annual basis, users may not be informed of new security procedures or may forget previously trained procedures, which could lead to an exposure of sensitive DoD information.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30413",
+      "title": "Smartphones and tablets classified as non-enterprise activated must not be connected to a DoD network. ",
+      "description": "Some smartphones and tablets, including some models of Windows 7, Android, iOS, and BlackBerry smartphones and tablets, are not authorized to connect to DoD networks or to DoD PCs that will be connected to DoD networks, because they do not have required security controls. There is a high risk of introducing malware on a DoD network if these types of devices are connected to a DoD network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-30414",
+      "title": "A written policy and training material must exist that states smartphones/tablets that are classified as non-enterprise activated must not be used to send, receive, store, or process sensitive/FOUO data and information. ",
+      "description": "Some mobile devices, including some models of Windows 7, Android, iOS, and BlackBerry smartphones and tablets, are not authorized to store or process sensitive DoD data and information because they do not have required security controls to protect the data/information. There is a high risk sensitive data will be exposed to unauthorized personal with access to the device.\n\nSensitive DoD data or information is defined as any data/information that has not been approved for public release by the site/Command Public Affairs Officer (PAO).\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30415",
+      "title": "A written policy and training material must exist that states smartphones/tablets classified as non-enterprise activated must not access DoD email systems. ",
+      "description": "Some mobile devices, including some models of Windows 7, Android, iOS, and BlackBerry smartphones and tablets, are not authorized to connect to DoD email systems, because they do not have required security controls. There is a high risk of introducing malware on a DoD email system or compromising sensitive DoD data if these types of devices are connected to a DoD email system. There is a high risk sensitive data will be exposed to unauthorized personal with access to the device if DoD email was viewed, processed, or stored on the device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30416",
+      "title": "The site must have a Personal Use Policy for site/Command managed or owned mobile devices (smartphones and tablets) approved by the site DAA. ",
+      "description": "Malware can be introduced on a DoD enclave via personally owned applications and personal web site accounts.  In addition, sensitive DoD data could be exposed by the same malware.  ",
+      "severity": "low"
+    },
+    {
+      "id": "V-8283",
+      "title": "All wireless/mobile systems (including associated peripheral devices, operating system, applications, network/PC connection methods, and services) must be approved by the approval authority prior to installation and use for processing DoD information. \n\n",
+      "description": "Unauthorized wireless systems expose DoD networks to attack. The DAA and appropriate commanders must be aware of all wireless systems used at the site. DAAs should ensure a risk assessment for each system including associated services and peripherals, is conducted before approving. Accept risks only when needed to meet mission requirements.",
+      "severity": "high"
+    },
+    {
+      "id": "V-8284",
+      "title": "The site IAO must maintain a list of all DAA-approved wireless and non-wireless PED devices that store, process, or transmit DoD information. ",
+      "description": "The site must maintain a list of all DAA-approved wireless and non-wireless CMDs. Close tracking of authorized wireless devices will facilitate the search for rogue devices. Sites must keep good inventory control over wireless and handheld devices used to store, process, and transmit DoD data since these devices can be easily lost or stolen leading to possible exposure of DoD data.",
+      "severity": "low"
+    }
+  ]
+}

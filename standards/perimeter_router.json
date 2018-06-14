@@ -1,0 +1,803 @@
+{
+  "name": "perimeter_router",
+  "date": "2017-12-07",
+  "description": "Perimeter Router Security Technical Implementation Guide",
+  "title": "Perimeter Router Security Technical Implementation Guide ",
+  "version": "8",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-14632",
+      "title": "The ISSO/NSO will ensure the route to the AG network adheres to the PPS CAL boundary 13 and 14 policies and is in compliance with all perimeter filtering defined in the perimeter and router sections of the Network STIG.",
+      "description": "The enclave perimeter requirement for filtering, to include JTF-GNO PPS filtering rules, and monitoring traffic will be enforced for any traffic from the AG.  All traffic entering the enclave from the AG must enter through the firewall and be monitored by internal IDS.  All traffic leaving the enclave, regardless of the destination--AG or NIPRNet addresses, will be filtered by the premise router's egress filter to verify that the source IP address belongs to the enclave.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14637",
+      "title": "Router advertisements must be suppressed on all external-facing IPv6-enabled interfaces.",
+      "description": "Many of the known attacks in stateless autoconfiguration are defined in RFC 3756 were present in IPv4 ARP attacks. IPSec AH was originally suggested as mitigation for the link local attacks, but has since been found to have bootstrapping problems and to be very administrative intensive. Due to first requiring an IP address in order to set up the IPSec security association creates the chicken-before-the-egg dilemma. There are solutions being developed (Secure Neighbor Discovery and Cryptographic Generated Addressing) to secure these threats but are not currently available at the time of this writing. \n\nTo mitigate these vulnerabilities, links that have no hosts connected such as the interface connecting to external gateways will be configured to suppress router advertisements.\n\nDisable (or do not configure) all IPv6 Neighbor Discovery functions across tunnels including the Neighbor Unreachability Detection (NUD) function. Note: this is applicable only when the inner IP layer is IPv6 since IPv4 does not have the Neighbor Discovery functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14666",
+      "title": "Each eBGP neighbor must be authenticated with a unique password.",
+      "description": "If the same passwords are used between eBGP neighbors, the chance of a hacker compromising any of the BGP sessions increases. It is possible that a malicious user exists in one autonomous system who would know the password used for the eBGP session. This user would then be able to hijack BGP sessions with other trusted neighbors.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14667",
+      "title": "Network devices must be configured with rotating keys used for authenticating IGP peers that have a duration of 180 days or less.",
+      "description": "If the keys used for routing protocol authentication are guessed, the malicious user could create havoc within the network by advertising incorrect routes and redirecting traffic. Changing the keys frequently reduces the risk of them eventually being guessed. When configuring authentication for routing protocols that provide key chains, configure two rotating keys with overlapping expiration dates, both with 180-day or less expirations.",
+      "severity": "low"
+    },
+    {
+      "id": "V-14668",
+      "title": "FTP servers on the device must be disabled.",
+      "description": "The additional services enabled on a router increases the risk for an attack since the router will listen for these services. In addition, these services provide an unsecured method for an attacker to gain access to the router.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14669",
+      "title": "Network devices must have BSDr commands disabled.",
+      "description": "Berkeley Software Distribution (BSD) \"r\" commands allow users to execute commands on remote systems using a variety of protocols. The BSD \"r\" commands (e.g., rsh, rlogin, rcp, rdump, rrestore, and rdist) are designed to provide convenient remote access without passwords to services such as remote command execution (rsh), remote login (rlogin), and remote file copy (rcp and rdist). The difficulty with these commands is they use address-based authentication. An attacker who convinces a server that he is coming from a \"trusted\" machine can essentially get complete and unrestricted access to a system. The attacker can convince the server by impersonating a trusted machine and using IP address, by confusing DNS so that DNS thinks that the attacker's IP address maps to a trusted machine's name, or by any of a number of other methods.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14670",
+      "title": "The network element must ensure  that ICMPv6 unreachable notifications and redirects are disabled on all external facing interfaces.",
+      "description": "The Internet Control Message Protocol version 6 (ICMPv6) supports IPv6 traffic by relaying information about paths, routes, and network conditions. Routers automatically send ICMPv6 messages under a wide variety of conditions. ICMPv6 messages are commonly used by attackers for network mapping and diagnosis: Host unreachable, and Redirect.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14671",
+      "title": "Network devices must authenticate all NTP messages received from NTP servers and peers.",
+      "description": "Since NTP is used to ensure accurate log file time stamp information, NTP could pose a security risk if a malicious user were able to falsify NTP information. To launch an attack on the NTP infrastructure, a hacker could inject time that would be accepted by NTP clients by spoofing the IP address of a valid NTP server. To mitigate this risk, the time messages must be authenticated by the client before accepting them as a time source. \n\nTwo NTP-enabled devices can communicate in either client-server mode or peer-to-peer mode (aka \"symmetric mode\"). The peering mode is configured manually on the device and indicated in the outgoing NTP packets. The fundamental difference is the synchronization behavior: an NTP server can synchronize to a peer with better stratum, whereas it will never synchronize to its client regardless of the client's stratum. From a protocol perspective, NTP clients are no different from the NTP servers. The NTP client can synchronize to multiple NTP servers, select the best server and synchronize with it, or synchronize to the averaged value returned by the servers.\n\nA hierarchical model can be used to improve scalability. With this implementation, an NTP client can also become an NTP server providing time to downstream clients at a higher stratum level and of decreasing accuracy than that of its upstream server. To increase availability, NTP peering can be used between NTP servers. In the event the device loses connectivity to its upstream NTP server, it will be able to choose time from one of its peers. \n\nThe NTP authentication model is opposite of the typical client-server authentication model. NTP authentication enables an NTP client or peer to authenticate time received from their servers and peers. It is not used to authenticate NTP clients because NTP servers do not care about the authenticity of their clients, as they never accept any time from them.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14672",
+      "title": "The network device must use its loopback or OOB management interface address as the source address when originating authentication services traffic.",
+      "description": "Using a loopback address as the source address offers a multitude of uses for security, access, management, and scalability of routers. It is easier to construct appropriate ingress filters for router management plane traffic destined to the network management subnet since the source addresses will be from the range used for loopback interfaces instead of a larger range of addresses used for physical interfaces. Log information recorded by authentication and syslog servers will record the router's loopback address instead of the numerous physical interface addresses. TACACS+, RADIUS messages sent to management servers should use the loopback address as the source address.",
+      "severity": "low"
+    },
+    {
+      "id": "V-14673",
+      "title": "The network device must use its loopback or OOB management interface address as the source address when originating syslog traffic.",
+      "description": "Using a loopback address as the source address offers a multitude of uses for security, access, management, and scalability of routers. It is easier to construct appropriate ingress filters for router management plane traffic destined to the network management subnet since the source addresses will be from the range used for loopback interfaces instead of a larger range of addresses used for physical interfaces. Log information recorded by authentication and syslog servers will record the router's loopback address instead of the numerous physical interface addresses. Syslog messages sent to management servers should use the loopback address as the source address.",
+      "severity": "low"
+    },
+    {
+      "id": "V-14674",
+      "title": "The network device must use its loopback or OOB management interface address as the source address when originating NTP traffic.",
+      "description": "Using a loopback address as the source address offers a multitude of uses for security, access, management, and scalability of routers. It is easier to construct appropriate ingress filters for router management plane traffic destined to the network management subnet since the source addresses will be from the range used for loopback interfaces instead of a larger range of addresses used for physical interfaces. Log information recorded by authentication and syslog servers will record the router's loopback address instead of the numerous physical interface addresses. NTP messages sent to management servers should use the loopback address as the source address.",
+      "severity": "low"
+    },
+    {
+      "id": "V-14675",
+      "title": "The network device must use its loopback or OOB management interface address as the source address when originating SNMP traffic.",
+      "description": "Using a loopback address as the source address offers a multitude of uses for security, access, management, and scalability of routers. It is easier to construct appropriate ingress filters for router management plane traffic destined to the network management subnet since the source addresses will be from the range used for loopback interfaces instead of a larger range of addresses used for physical interfaces. Log information recorded by authentication and syslog servers will record the router's loopback address instead of the numerous physical interface addresses. SNMP messages sent to management servers should use the loopback address as the source address.",
+      "severity": "low"
+    },
+    {
+      "id": "V-14676",
+      "title": "The network device must use its loopback or OOB management interface address as the source address when originating IP Flow/NetFlow traffic.",
+      "description": "Using a loopback address as the source address offers a multitude of uses for security, access, management, and scalability of routers. It is easier to construct appropriate ingress filters for router management plane traffic destined to the network management subnet since the source addresses will be from the range used for loopback interfaces instead of a larger range of addresses used for physical interfaces. Log information recorded by authentication and syslog servers will record the router's loopback address instead of the numerous physical interface addresses. NetFlow messages sent to management servers should use the loopback address as the source address.",
+      "severity": "low"
+    },
+    {
+      "id": "V-14677",
+      "title": "The network device must use its loopback or OOB management interface address as the source address when originating TFTP or FTP traffic.",
+      "description": "Using a loopback address as the source address offers a multitude of uses for security, access, management, and scalability of network devices. It is easier to construct appropriate ingress filters for management plane traffic destined to the network management subnet since the source addresses will be from the range used for loopback interfaces instead of a larger range of addresses used for physical interfaces. Log information recorded by authentication and syslog servers will record the router's loopback address instead of the numerous physical interface addresses. TFTP and FTP messages sent to management servers should use the loopback address as the source address.",
+      "severity": "low"
+    },
+    {
+      "id": "V-14681",
+      "title": "The network device must use its loopback interface address as the source address for all iBGP peering sessions.",
+      "description": "Using a loopback address as the source address offers a multitude of uses for security, access, management, and scalability. It is easier to construct appropriate filters for control plane traffic. Log information recorded by authentication and syslog servers will record the router's loopback address instead of the numerous physical interface addresses.",
+      "severity": "low"
+    },
+    {
+      "id": "V-14683",
+      "title": "The system administrator will ensure the undetermined transport packet is blocked at the perimeter in an IPv6 enclave by the router.",
+      "description": "One of the fragmentation weaknesses known in IPv6 is the undetermined transport packet.  This is a packet that contains an undetermined protocol due to fragmentation.  Depending on the length of the IPv6 extension header chain, the initial fragment may not contain the layer four port information of the packet.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14685",
+      "title": "The network element must be configured to ensure the routing header extension type 0, 1, and 3-255 are rejected in an IPv6 enclave. ",
+      "description": "The Routing header is used by an IPv6 source to specify a list of intermediate nodes that a packet has to traverse on the path to its destination.  If the packet cannot take the path, it is returned to the source node in an ICMPv6 unreachable error message.  This header supports a function very similar to the IPv4 packet Loose Source Routing.  The routing header can be used maliciously to send a packet through a path where less robust security is in place, than through the presumably preferred path by routing protocols. Use of the routing extension header has few legitimate uses other than as implemented by Mobile IPv6.  The Routing header is identified by a Next Header value of 43 and should be filtered by type using an ACL. \n\nThe Type 0 Routing Header (RFC 5095) is dangerous because it allows attackers to spoof source addresses and get traffic in response, rather than to the real owner of the address. Secondly, a packet with an allowed destination address could be sent through a Firewall only to bounce to a different node once inside using the Routing Header functionality. If the Type 0 Routing Header must be used, it must be used in conjunction with either the IPsec AH or the IPsec Encapsulation Security Payload (ESP) headers.  The Routing Header is identified by a Next Header value of 43 (0x2B) and can be filtered by type using an ACL similar to: deny ipv6 any routing-type 0 log.\n\nThe Type 1 Routing Header is defined by an abandoned specification called “Nimrod Routing”. Assuming that most implementations will not recognize the Type 1 Routing Header, it must be dropped. When IETF standards explicitly require nodes to gracefully rejected invalid or deprecated options, in the case of Routing Headers, however, under certain conditions the specification allows a node to “ignore the Routing Header and proceed to the next header in the packet” [RFC 2460, section 4.4 para 2]. This allows a spurious data channel of arbitrary size and must not be allowed. \n\nThe Type 3 through 255 Routing Header values in the routing type field are currently undefined and should also be dropped inbound and outbound. The Routing Header is identified by a Next Header value of 43 (0x2B). To drop all types including type 2 Mobile IPv6 (MIPv6) a filter can be defined to drop the Routing Header 43 (0x2B). If MIPv6 is required a permit will be required for Routing Header 43 (0x2B) Type 2, and then drop the remaining Routing Headers 43 (0x2B).\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14686",
+      "title": "The network element can permit inbound ICMPv6 messages Packet-too-big (type 2), Time Exceeded (type 3), Parameter Problem (type 4), Echo Reply (type 129), and Neighbor Discovery (type 135-136). Remaining ICMPv6 messages must be blocked inbound. ",
+      "description": "Scanning will usually be the major stage of an information gathering process a malicious computer attacker will launch against a targeted network. With this stage the malicious computer attacker will try to determine what the characteristics of the targeted network are. Techniques, such as host detection, service detection, network topology mapping, and operating system fingerprinting are often used. The data collected will be used to identify those Hosts (if any) that are running a network service, which may have a known vulnerability. This vulnerability may allow the malicious computer attacker to execute a remote exploit in order to gain unauthorized access to those systems. This unauthorized access may become the focal point to the whole targeted network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14687",
+      "title": "The network element can permit outbound ICMPv6 messages Packet-too-big (type 2), Echo Request (type 128), and  Neighborhood Discovery (type 135-136).  Remaining ICMPv6 messages must be blocked outbound.",
+      "description": "Scanning will usually be the major stage of an information gathering process a malicious computer attacker will lunch against a targeted network. With this stage the malicious computer attacker will try to determine what the characteristics of the targeted network are. Techniques, such as host detection, service detection, network topology mapping, and operating system fingerprinting are often used. The data collected will be used to identify those Hosts (if any) that are running a network service, which may have a known vulnerability. This vulnerability may allow the malicious computer attacker to execute a remote exploit in order to gain unauthorized access to those systems. This unauthorized access may become the focal point to the whole targeted network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14688",
+      "title": "The administrator must bind the egress ACL filtering packets leaving the network to the internal interface on an inbound direction. ",
+      "description": "Access lists are used to separate data traffic into that which it will route (permitted packets) and that which it will not route (denied packets).  Secure configuration of routers makes use of access lists for restricting access to services on the router itself as well as for filtering traffic passing through the router.  Inbound versus Outbound; it should be noted that some operating systems default access-lists are applied to the outbound queue.  The more secure solution is to apply the access-list to the inbound queue for 3 reasons:\n• The router can protect itself before damage is inflicted.\n• The input port is still known, and can be filtered upon.\n• It is more efficient to filter packets before routing them.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14689",
+      "title": "Inbound IP packets with a local host loopback address (127.0.0.0/8) must be blocked, denied, or dropped at the perimeter device.",
+      "description": "This type of IP address spoofing occurs when someone outside the network uses a local host address to gain access to systems or devices on the internal network. If the intruder is successful, they can intercept data, passwords, etc., and use that information to perform destructive acts on or to the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-14690",
+      "title": "Inbound IP packets using link-local address space (169.254.0.0/16) must be blocked, denied, or dropped at the perimeter device.",
+      "description": "This type of IP address spoofing occurs when someone outside the network uses a link-local address to gain access to systems or devices on the internal network. If the intruder is successful, they can intercept data, passwords, etc., and use that information to perform destructive acts on or to the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-14691",
+      "title": "Inbound packets using IP addresses specified in the RFC5735 and RFC6598, along with network address space allocated by IANA, but not assigned by the RIRs for ISP and other end-customer use must be blocked, denied, or dropped at the perimeter device.",
+      "description": "This type of IP address spoofing occurs when someone outside the network uses an address that should not be routed or has not been officially assigned to an ISP for use by the RIR to gain access to systems or devices on the internal network. If the intruder is successful, they can intercept data, passwords, etc., and use that information to perform destructive acts on or to the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-14692",
+      "title": "Inbound IP packets using RFC 1918 address space (10.0.0.0/8, 172.16.0.0 /12, and 192.168.0 /16) must be blocked, denied, or dropped at the perimeter device.",
+      "description": "This type of IP address spoofing occurs when someone outside the network uses an RFC1918 address to gain access to systems or devices on the internal network. If the intruder is successful, they can intercept data, passwords, etc., and use that information to perform destructive acts on or to the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-14693",
+      "title": "The network device must be configured to ensure IPv6 Site Local Unicast addresses are not defined in the enclave, (FEC0::/10). Note that this consist of all addresses that begin with FEC, FED, FEE and FEF.",
+      "description": "As currently defined, site local addresses are ambiguous and can be present in multiple sites.  The address itself does not contain any indication of the site to which it belongs.  The use of site-local addresses has the potential to adversely affect network security through leaks, ambiguity and potential misrouting, as documented in section 2 of RFC3879.  RFC3879 formally deprecates the IPv6 site-local unicast prefix defined in RFC3513, i.e., 1111111011 binary or FEC0::/10.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14694",
+      "title": "The network element will be configured to ensure IPv6 Site Local Unicast addresses are blocked on the ingress inbound and egress outbound filters, (FEC0::/10). Note that this consist of all addresses that begin with FEC, FED, FEE and FEF.",
+      "description": "As currently defined, site local addresses are ambiguous and can be present in multiple sites.  The address itself does not contain any indication of the site to which it belongs.  The use of site-local addresses has the potential to adversely affect network security through leaks, ambiguity and potential misrouting, as documented in section 2 of RFC3879.  RFC3879 formally deprecates the IPv6 site-local unicast prefix defined in RFC3513, i.e., 1111111011 binary or FEC0::/10.\n\nDrop all inbound and outbound IPv6 packets with an address FEC0::/10 as its source address. Note that this consists of all addresses that begin with FEC, FED, FEE, or FEF. \n\nDrop all inbound and outbound IPv6 packets with an address FEC0::/10 as its destination address. Note that this consists of all addresses that begin with FEC, FED, FEE, or FEF.",
+      "severity": "high"
+    },
+    {
+      "id": "V-14695",
+      "title": "Network devices must be configured to restrict the acceptance of any inbound IP packets with a local host loopback address, (0:0:0:0:0:0:0:1 or ::1/128).",
+      "description": "The unicast address 0:0:0:0:0:0:0:1, also defined ::1/128 is called the loopback address.  A node could use it to send an IPv6 packet to itself.  It should never be assigned to any physical interface.  It is treated as having link-local scope, and may be thought of as the link-local unicast address of a virtual interface to an imaginary link that goes nowhere. The loopback address must not be used as the source address in IPv6 packets that are sent outside of a single node.  An IPv6 packet with a destination address of loopback must never be sent outside of a single node and must never be forwarded by an IPv6 router.  A packet received on an interface with destination address of loopback must be dropped.",
+      "severity": "high"
+    },
+    {
+      "id": "V-14696",
+      "title": "Network devices must be configured to restrict the acceptance of any IP packets from the unspecified address, (0:0:0:0:0:0:0:0 or ::/128).",
+      "description": "The address 0:0:0:0:0:0:0:0, also defined ::/128 is called the unspecified address.  It must never be assigned to any node.  It indicates the absence of an address.  One example of its use is in the Source Address field of any IPv6 packets sent by an initializing host before it has learned its own address.\nThe unspecified address must not be used as the destination address of IPv6 packets or in IPv6 Routing Headers.  A router must never forward an IPv6 packet with a source address of unspecified.",
+      "severity": "high"
+    },
+    {
+      "id": "V-14697",
+      "title": "The network device must block IPv6 multicast addresses used as a source address.",
+      "description": "IPv6 multicast addresses should never be a source address.  They should only be destination addresses.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14698",
+      "title": "The IAO/NSO will ensure IPv6 addresses with embedded IPv4-compatible IPv6 addresses are blocked on the ingress and egress filters, (0::/96).",
+      "description": "The IPv6 transition mechanisms include a technique for hosts and routers to dynamically tunnel IPv6 packets over IPv4 routing infrastructure.  IPv6 nodes that use this technique are assigned special IPv6 unicast addresses that carry a global IPv4 address in the low-order 32 bits.  IPv4-compatible IPv6 addresses should never appear as a source or destination address.  These addresses begin with 0000 and have ‘0000’ in the 16 bit field preceding the IPv4 address. RFC 4291 deprecated the IPv4-compatible addresses.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14699",
+      "title": "The IAO/NSO will ensure that IPv6 addresses with embedded IPv4-mapped IPv6 addresses are blocked on the ingress and egress filters, (0::FFFF/96).",
+      "description": "The IPv6 transition mechanisms include a technique for hosts and routers to dynamically tunnel IPv6 packets over IPv4 routing infrastructure.  IPv6 nodes that use this technique are assigned special IPv6 unicast addresses that carry a global IPv4 address in the low-order 32 bits.  IPv4-mapped IPv6 addresses should never appear as a source or destination address.  These addresses begin with 0000 and have ‘FFFF’ in the 16 bit field preceding the IPv4 address.  There is little use for the IPv4-mapped addresses and there has been some confusion for what their intended use was.  There were three revisions of IPv6 Basic API specification (RFC 2133, 2553, and 3493).  Under the current usage of the API, no packets should appear on the wire with these addresses so blocking them is the policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14703",
+      "title": "The network device must block IPv6 Unique Local Unicast Addresses on the enclaves perimeter ingress and egress filter.",
+      "description": "The IANA has assigned the FC00::/7 prefix to Unique Local Unicast addresses.  Unique Local Address (ULA) is a routable address that is not intended to be on the Internet.  Site border routers and firewalls should be configured to block any packets with ULA source or destination addresses outside of the site.  This will ensure that packets with Local IPv6 destination addresses will not be forwarded outside of the site via a default route.\n\nDrop all inbound IPv6 packets with an address FC00::/7 as its source address. Note that includes any address beginning with FC or FD.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14707",
+      "title": "The network element must be configured from accepting any outbound IP packet that contains an illegitimate address in the source address field via egress ACL or by enabling Unicast Reverse Path Forwarding in an IPv6 enclave.",
+      "description": "Unicast Reverse Path Forwarding (uRPF) provides a mechanism for IP address spoof protection.  When uRPF is enabled on an interface, the router examines all packets received as input on that interface to make sure that the source address and source interface appear in the routing table and match the interface on which the packet was received.  If the packet was received from one of the best reverse path routes, the packet is forwarded as normal.  If there is no reverse path route on the same interface from which the packet was received, it might mean that the source address was modified.  If Unicast RPF does not find a reverse path for the packet, the packet is dropped.\n\nIf internal nodes automatically configure an address based on a prefix from a bogus Router Advertisement a dangerous situation may exist. An internal host may contact an internal server which responds with a packet that could be routed outside of the network via default routing (because the routers do not recognize the destination address as an internal address).  \n\nTo prevent this, filtering should be applied to network interfaces between internal host LANs and internal server LANs to insure that source addresses have valid prefixes. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14717",
+      "title": "The network device must not allow SSH Version 1 to be used for administrative access.",
+      "description": "SSH Version 1 is a protocol that has never been defined in a standard. Since SSH-1 has inherent design flaws which make it vulnerable to attacks, e.g., man-in-the-middle attacks, it is now generally considered obsolete and should be avoided by explicitly disabling fallback to SSH-1.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15288",
+      "title": "ISATAP tunnels must terminate at an interior router.",
+      "description": "ISATAP is an automatic tunnel mechanism that does not provide authentication such as IPSec.  As a result of this limitation, ISATAP is thought of as a tool that is used inside the enclave among trusted hosts, which would limit it to internal attacks.  ISATAP is a service versus a product, and is readily available to most users.  If a user knows the ISATAP router IP address, they can essentially get onto the IPv6 intranet.  To control the vulnerability of this tunnel mechanism, it is critical to control the use of protocol 41 and use IPv4 filters to control what IPv4 nodes can send protocol 41 packets to an ISATAP router interface.  Although the ISATAP tunneling mechanism is similar to other automatic tunneling mechanisms, such as IPv6 6to4 tunneling, ISATAP is designed for transporting IPv6 packets between sites within an enclave, not between enclaves.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15293",
+      "title": "The IAO/NSO will ensure the ingress filter drops unexpected protocol 41 packets at the 6to4 site router before sensor inspection.",
+      "description": "6to4 is an automated tunneling mechanism that provides v6 capability to a dual-stack node or v6 capable site that has only IPv4 connectivity to the site.  One key difference between automatic 6to4 tunnels and manually configured tunnels is that the tunnel is not point-to-point; it is point-to-multipoint.  Basic 6to4 implementation can be used to connect single nodes too.  In 6to4 tunnel implementations, tunnels are not defined in pairs as in manual tunnels. The tunnel destination is determined by the IPv4 address of the border router extracted from the IPv6 address that starts with the prefix 2002::/16, where the format is 2002:IPv4-address in hex::/48. 6to4 traffic takes an asymmetric routing path, outbound traffic and return traffic may take different paths.  Although the 6to4 site can select the relay it wants to use, it has no control of the return relay used.  See diagram in the STIG. Ensuring reliable operations from relays and knowing who is managing the relay are important and are concerns to preventing against denial of service attacks.  6to4 site routers are not capable of identifying bogus traffic injected from malicious 6to4 relay manufacturing packets. Specifying the exact IPv4 address of the 6to4 relay on the 6to4 router can mitigate these vulnerabilities. \n\n6to4 tunnels are required to discard unexpected protocol 41 packets and inspect IPv6 traffic at the decapsulator end-point.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15294",
+      "title": "Teredo packets must be blocked inbound to the enclave and outbound from the enclave.",
+      "description": "Teredo (RFC 4380) is a tunneling mechanism that allows computers to encapsulate IPv6 packets inside IPv4 to traverse IPv4-only networks.  It relies on UDP to allow the tunnel to traverse NAT devices. Teredo uses UDP port 3544 to communicate with Teredo relays which access the packet, decapsulated the packet, and route it to the appropriate IPv6 network.  While Teredo was proposed by Microsoft, Linux versions do exist.\n\nBy allowing Teredo tunneling mechanism to be uncontrolled, it can pass malicious IPv6 packets over IPv4 without further inspection of the packet by router and firewall ACLs.",
+      "severity": "high"
+    },
+    {
+      "id": "V-15295",
+      "title": "The IAO/NSO will ensure in NAT-PT architecture there is no tunneled IPv4 in IPv6 traffic.",
+      "description": "Network Address Translation with Protocol Translation (NAT-PT), defined in [RFC2766], is a service that can be used to translate data sent between IP-heterogeneous nodes. NAT-PT translates a IPv4 datagram into a semantically equivalent IPv6 datagram or vice versa. For this service to work it has to be located in the connection point between the IPv4 network and the IPv6 network. The PT-part of the NAT-PT handles the interpretation and translation of the semantically equivalent IP header, either from IPv4 to IPv6 or from IPv6 to IPv4. Like NAT, NATPT also uses a pool of addresses which it dynamically assigns to the translated datagrams.\n\nThe NAT-PT architecture is not one of the preferred DoD IPv6 transition paradigms due to the deprecation of NAT-PT within the DoD community.  However, as described in the \"DoD IPv6 Guidance for Information Assurance (IA) Milestone Objective 3 (MO3) Requirements, some services/agencies may chose to implement this transition mechanism within an enclave.  The following sub-sections provide guidelines for the use of NAT-PT within a controlled enclave.\n\nIn addition to the single point of failure, the reduced performance of an application level gateway, coupled with limitations on the kinds of applications that work, decreases the overall value and utility of the network. NAT-PT also inhibits the ability to deploy security at the IP layer.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15296",
+      "title": "Interfaces supporting IPv4 in NAT-PT Architecture must not receive IPv6 traffic.",
+      "description": "Network Address Translation with Protocol Translation (NAT-PT), defined in [RFC2766], is a service that can be used to translate data sent between IP-heterogeneous nodes. NAT-PT translates IPv4 datagrams into a semantically equivalent IPv6 datagram or vice versa. For this service to work it has to be located in the connection point between the IPv4 network and the IPv6 network. The PT-part of the NAT-PT handles the interpretation and translation of the semantically equivalent IP header, either from IPv4 to IPv6 or from IPv6 to IPv4. Like NAT, NATPT also uses a pool of addresses which it dynamically assigns to the translated datagrams.\n\nThe NAT-PT architecture is not one of the preferred DoD IPv6 transition paradigms due to the deprecation of NAT-PT within the DoD community. However, as described in the \"DoD IPv6 Guidance for Information Assurance (IA) Milestone Objective 3 (MO3) Requirements, some services/agencies may choose to implement this transition mechanism within an enclave. The following sub-sections provide guidelines for the use of NAT-PT within a controlled enclave.\n\nIn addition to the single point of failure, the reduced performance of an application level gateway, coupled with limitations on the kinds of applications that work, decreases the overall value and utility of the network. NAT-PT also inhibits the ability to deploy security at the IP layer.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15432",
+      "title": "Network devices must use two or more authentication servers for the purpose of granting administrative access.",
+      "description": "The use of Authentication, Authorization, and Accounting (AAA) affords the best methods for controlling user access, authorization levels, and activity logging.  By enabling AAA on the routers in conjunction with an authentication server such as TACACS+ or RADIUS, the administrators can easily add or remove user accounts, add or remove command authorizations, and maintain a log of user activity.\n\nThe use of an authentication server provides the capability to assign router administrators to tiered groups that contain their privilege level that is used for authorization of specific commands.   For example, user mode would be authorized for all authenticated administrators while configuration or edit mode should only be granted to those administrators that are permitted to implement router configuration changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15434",
+      "title": "The emergency administration account must be set to an appropriate authorization level to perform necessary administrative functions when the authentication server is not online.",
+      "description": "The emergency administration account is to be configured as a local account on the network devices. It is to be used only when the authentication server is offline or not reachable via the network. The emergency account must be set to an appropriate authorization level to perform necessary administrative functions during this time.",
+      "severity": "high"
+    },
+    {
+      "id": "V-17754",
+      "title": "IPSec tunnels used to transit management traffic must be restricted to only the authorized management packets based on destination and source IP address.",
+      "description": "The Out-of-Band Management (OOBM) network is an IP network used exclusively for the transport of OAM&P data from the network being managed to the OSS components located at the NOC. Its design provides connectivity to each managed network device enabling network management traffic to flow between the managed NEs and the NOC.  This allows the use of paths separate from those used by the network being managed. Traffic from the managed network to the management network and vice-versa must be secured via IPSec encapsulation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17814",
+      "title": "Gateway configuration at the remote VPN end-point is a not a mirror of the local gateway ",
+      "description": "The IPSec tunnel end points may be configured on the OOBM gateway routers connecting the managed network and the NOC. They may also be configured on a firewall or VPN concentrator located behind the gateway router. In either case, the crypto access-list used to identify the traffic to be protected must be a mirror (both IP source and destination address) of the crypto access list configured at the remote VPN peer.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17815",
+      "title": "IGP instances configured on the OOBM gateway router do not peer only with their appropriate routing domain.",
+      "description": "If the gateway router is not a dedicated device for the OOBM network, several safeguards must be implemented for containment of management and production traffic boundaries. Since the managed network and the management network are separate routing domains, separate IGP routing instances must be configured on the router—one for the managed network and one for the OOBM network. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17816",
+      "title": "The routes from the two IGP domains are redistributed to each other.",
+      "description": "If the gateway router is not a dedicated device for the OOBM network, several safeguards must be implemented for containment of management and production traffic boundaries. Since the managed network and the management network are separate routing domains, separate IGP routing instances must be configured on the router—one for the managed network and one for the OOBM network. In addition, the routes from the two domains must not be redistributed to each other.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17817",
+      "title": "Traffic from the managed network is able to access the OOBM gateway router",
+      "description": "If the gateway router is not a dedicated device for the OOBM network, several safeguards must be implemented for containment of management and production traffic boundaries. It is imperative that hosts from the managed network are not able to access the OOBM gateway rouiter.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17818",
+      "title": "Traffic from the managed network will leak into the management network via the gateway router interface connected to the OOBM backbone.",
+      "description": "If the gateway router is not a dedicated device for the OOBM network, several safeguards must be implemented for containment of management and production traffic boundaries such as using interface ACLs or filters at the boundaries between the two networks. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17819",
+      "title": "Management network traffic must not leak onto the managed network.",
+      "description": "If the gateway router is not a dedicated device for the OOBM network, several safeguards must be implemented for containment of management and production traffic boundaries. To provide separation, access control lists or filters must be configured to block any traffic from the management network destined for the managed network's production address spaces.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17821",
+      "title": "The network devices OOBM interface must be configured with an OOBM network address.",
+      "description": "The OOBM access switch will connect to the management interface of the managed network device. The management interface of the managed network device will be directly connected to the OOBM network. An OOBM interface does not forward transit traffic; thereby, providing complete separation of production and management traffic. Since all management traffic is immediately forwarded into the management network, it is not exposed to possible tampering. The separation also ensures that congestion or failures in the managed network do not affect the management of the device. If the OOBM interface does not have an IP address from the managed network address space, it will not have reachability from the NOC using scalable and normal control plane and forwarding mechanisms.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17822",
+      "title": "The network devices management interface must be configured with both an ingress and egress ACL.",
+      "description": "The OOBM access switch will connect to the management interface of the managed network device. The management interface can be a true OOBM interface or a standard interface functioning as the management interface. In either case, the management interface of the managed network device will be directly connected to the OOBM network.\n\nAn OOBM interface does not forward transit traffic; thereby, providing complete separation of production and management traffic. Since all management traffic is immediately forwarded into the management network, it is not exposed to possible tampering. The separation also ensures that congestion or failures in the managed network do not affect the management of the device. If the device does not have an OOBM port, the interface functioning as the management interface must be configured so that management traffic does not leak into the managed network and that production traffic does not leak into the management network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17823",
+      "title": "The management interface must be configured as passive for the IGP instance deployed in the managed network.",
+      "description": "The OOBM access switch will connect to the management interface of the managed network devices. The management interface can be a true OOBM interface or a standard interface functioning as the management interface. In either case, the management interface of the managed network devices will be directly connected to the OOBM network.\n\nAn OOBM interface does not forward transit traffic; thereby, providing complete separation of production and management traffic. Since all management traffic is immediately forwarded into the management network, it is not exposed to possible tampering. The separation also ensures that congestion or failures in the managed network do not affect the management of the device. If the device does not have an OOBM port, the interface functioning as the management interface must be configured so that management traffic, both data plane and control plane, does not leak into the managed network and that production traffic does not leak into the management network.",
+      "severity": "low"
+    },
+    {
+      "id": "V-17829",
+      "title": "The gateway router for the managed network is not configured with an ACL or filter on the egress interface to block all outbound management traffic. ",
+      "description": "The management network must still have its own subnet in order to enforce control and access boundaries provided by Layer 3 network nodes such as routers and firewalls. Management traffic between the managed network elements and the management network is routed via the same links and nodes as that used for production or operational traffic. Safeguards must be implemented to ensure that the management traffic does not leak past the managed network’s premise equipment such as using egress ACLs.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17834",
+      "title": "An inbound ACL is not configured for the management network sub-interface of the trunk link to block non-management traffic.\n\n",
+      "description": "If the management systems reside within the same layer 2 switching domain as the managed network elements, then separate VLANs will be deployed to provide separation at that level. In this case, the management network still has its own subnet while at the same time it is defined as a unique VLAN. Inter-VLAN routing or the routing of traffic between nodes residing in different subnets requires a router or multi-layer switch (MLS). Access control lists must be used to enforce the boundaries between the management network and the network being managed. All physical and virtual (i.e. MLS SVI) routed interfaces must be configured with ACLs to prevent the leaking of unauthorized traffic from one network to the other. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17835",
+      "title": "Traffic entering the tunnels is not restricted to only the authorized management packets based on destination address. ",
+      "description": "Similar to the OOBM model, when the production network is managed in-band, the management network could also be housed at a NOC that is located locally or remotely at a single or multiple interconnected sites. NOC interconnectivity as well as connectivity between the NOC and the managed networks’ premise routers would be enabled using either provisioned circuits or VPN technologies such as IPSec tunnels or MPLS VPN services. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17836",
+      "title": "Management traffic is not classified and marked at the nearest upstream MLS or router when management traffic must traverse several nodes to reach the management network.",
+      "description": "When network congestion occurs, all traffic has an equal chance of being dropped. \nPrioritization of network management traffic must be implemented to ensure that even during periods of severe network congestion, the network can be managed and monitored. Quality of Service (QoS) provisioning categorizes network traffic, prioritizes it according to its relative importance, and provides priority treatment through congestion avoidance techniques. Implementing QoS within the network makes network performance more predictable and bandwidth utilization more effective. Most important, since the same bandwidth is being used to manage the network, it provides some assurance that there will be bandwidth available to troubleshoot outages and restore availability when needed. \n\nWhen management traffic must traverse several nodes to reach the management network, management traffic should be classified and marked at the nearest upstream MLS or router. In addition, all core routers within the managed network must be configured to provide preferred treatment based on the QoS markings. This will ensure that management traffic receives preferred treatment (per-hop behavior) at each forwarding device along the path to the management network. traffic.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-17837",
+      "title": "The core router within the managed network has not been configured to provide preferred treatment for management traffic that must traverse several nodes to reach the management network.",
+      "description": "When network congestion occurs, all traffic has an equal chance of being dropped. \nPrioritization of network management traffic must be implemented to ensure that even during periods of severe network congestion, the network can be managed and monitored. Quality of Service (QoS) provisioning categorizes network traffic, prioritizes it according to its relative importance, and provides priority treatment through congestion avoidance techniques. Implementing QoS within the network makes network performance more predictable and bandwidth utilization more effective. Most important, since the same bandwidth is being used to manage the network, it provides some assurance that there will be bandwidth available to troubleshoot outages and restore availability when needed. \n\nWhen management traffic must traverse several nodes to reach the management network, management traffic should be classified and marked at the nearest upstream MLS or router. In addition, all core routers within the managed network must be configured to provide preferred treatment based on the QoS markings. This will ensure that management traffic receives preferred treatment (per-hop behavior) at each forwarding device along the path to the management network. traffic.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-18522",
+      "title": "Server VLAN interfaces must be protected by restrictive ACLs using a deny-by-default security posture.",
+      "description": "Protecting data sitting in a server VLAN is necessary and can be accomplished using access control lists on VLANs provisioned for servers.  Without proper access control of traffic entering or leaving the server VLAN, potential threats such as a denial of service, data corruption, or theft could occur, resulting in the inability to complete mission requirements by authorized users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18608",
+      "title": "IPv6 6-to-4 addresses with a prefix of 2002::/16 must be filtered at the perimeter.",
+      "description": "\"6-to-4\" is a tunneling IPv6 transition mechanism [RFC 3056]. The guidance is the default case, which assumes that 6-to-4 is not being used as an IPv6 transition mechanism. If 6-to-4 is implemented, reference addition 6-to-4 guidance defined in the STIG.\n\nDrop all inbound IPv6 packets containing a source address of type 2002::/16. This assumes the 6-to-4 transition mechanism is not being used.\n\nDrop all inbound IPv6 packets containing a destination address of type 2002::/16. This assumes the 6-to-4 transition mechanism is not being used.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18610",
+      "title": "The IAO/NSO will ensure IPv6 6bone address space is blocked on the ingress and egress filter, (3FFE::/16).",
+      "description": "The decommissioned 6bone allocation (3FFE::/16), RFC 3701 must be blocked. It is no longer a trusted source. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18633",
+      "title": "The network device must drop all inbound and outbound IPv4 and IPv6 packets being tunneled with outdated protocols.",
+      "description": "There are a number of outdated tunneling schemes that should be blocked to avoid importing IPv6 packets. DoD IPv6 IA Guidance for MO3 (S0-C7-2) has identified the following to be blocked at the perimeter:\n\nSource Demand Routing Protocol (SDRP)\nAX.25 \nIP-within-IP Encapsulation Protocol\nEtherIP protocol\nEncapsulation Header Protocol\nPPTP",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18635",
+      "title": "Tunnel entry point and the tunnel exit point must contain filters for expected tunnel protocol traffic with source and destination addresses and deny the remaining traffic by default.",
+      "description": "Tunnel endpoints that do not have the same controls as the network perimeter requirements become an unprotect entry point into the enclave.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18636",
+      "title": "Tunnel endpoints must be explicitly defined as auto configuration tunnels are not permitted.",
+      "description": "IPv6-in-IPv4 tunnels require explicit configuration (on the tunnel exit point node) of both the tunnel exit point IP address and the corresponding tunnel entry point address . These are the outer IP layer destination and source addresses respectively. \n\nUnfortunately, the other three tunnel types (4-in-4, 4-in-6, and 6-in-6) have no such requirement built into the standards.  The tunnel exit point address will likely need to be configured for these tunnel types (i.e. nodes are not expected to simply accept tunneling by default) and there MAY be a configuration option to allow the tunnel entry point address to be declared as well. Administrators should attempt to specify both addresses regardless of the IP versions being tunneled if the capability is available for the implementation.\n\nThere are no requirements in the GRE tunnel standards to check or restrict IP addresses of the tunnel end points (outer IP layer), so it is purely up to the software implementer. The tunnel exit point address will likely need to be configured for these tunnels (i.e. nodes are not expected to simply accept GRE tunneling by default) and there MAY be a configuration option to allow the tunnel entry point address to be declared as well. Administrators should attempt to specify both addresses if the capability is available for the implementation.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18640",
+      "title": "Tunneled packets must be filtered at the tunnel exit point.",
+      "description": "Once a tunnel has been terminated, the inner packet is no different than any other packet.  Therefore, the inner packet must be filtered at the tunnel exit point network.  In fact, some packets are more dangerous tunneled such as attacks against Neighbor Discovery where a required 255 count in the hop limit field could potentially be delivered.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-18647",
+      "title": "Tunnel end-points must implement filters in accordance with mitigations defined in PPS Vulnerability Assessments.",
+      "description": "Allowing unknown traffic into the enclave creates high risk and potential compromise by an intruder. Protocols used by applications the PPSM has reviewed and determined to require additional mitigation is necessary to protect the GIG.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18648",
+      "title": "Tunnel entry and exit points must be in a deny-by-default security posture.",
+      "description": "Having tunnels in a permit any any posture allow traffic to enter and exit the enclave without control from the Information Assurance team or SA.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19188",
+      "title": "The network device must have control plane protection enabled.",
+      "description": "The Route Processor (RP) is critical to all network operations as it is the component used to build all forwarding paths for the data plane via control plane processes. It is also instrumental with ongoing network management functions that keep the routers and links available for providing network services. Hence, any disruption to the RP or the control and management planes can result in mission critical network outages. \n\nIn addition to control plane and management plane traffic that is in the router's receive path, the RP must also handle other traffic that must be punted to the RP--that is, the traffic must be fast or process switched. This is the result of packets that must be fragmented, require an ICMP response (TTL expiration, unreachable, etc.) have IP options, etc. A DoS attack targeting the RP can be perpetrated either inadvertently or maliciously involving high rates of punted traffic resulting in excessive RP CPU and memory utilization. To maintain network stability, the router must be able to securely handle specific control plane and management plane traffic that is destined to it, as well as other punted traffic. \n\nUsing the ingress filter on forwarding interfaces is a method that has been used in the past to filter both forwarding path and receiving path traffic. However, this method does not scale well as the number of interfaces grows and the size of the ingress filters grow. Control plane policing can be used to increase security of routers and multilayer switches by protecting the RP from unnecessary or malicious traffic. Filtering and rate limiting the traffic flow of control plane packets can be implemented to protect routers against reconnaissance and DoS attacks allowing the control plane to maintain packet forwarding and protocol states despite an attack or heavy load on the router or multilayer switch.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19189",
+      "title": "The administrator must ensure that multicast routers are configured to establish\nboundaries for Admin-local or Site-local scope multicast traffic.",
+      "description": "A scope zone is an instance of a connected region of a given scope. Zones of the same scope cannot overlap while zones of a smaller scope will fit completely within a zone of a larger scope. For example, Admin-local scope is smaller than Site-local scope, so the administratively configured boundary fits within the bounds of a site. According to RFC 4007 IPv6 Scoped Address Architecture (section 5), scope zones are also required to be \"convex from a routing perspective\"-that is, packets routed within a zone must not pass through any links that are outside of the zone. This requirement forces each zone to be one contiguous island rather than a series of separate islands. As stated in the DoD IPv6 IA Guidance for MO3, \"One should be able to identify all interfaces of a zone by drawing a closed loop on their network diagram, engulfing some routers and passing through some routers to include only some of their interfaces.\"\n\nAdministrative scoped multicast addresses are locally assigned and are to be used exclusively by the enterprise network or enclave. Hence, administrative scoped multicast traffic must not cross the perimeter of the enclave in either direction. Admin-local scope could be used to contain multicast traffic to a portion of an enclave or within a site. This can make it more difficult for a malicious user to access sensitive traffic if the traffic is restricted to links that the user does not have access to. Admin-local scope is encouraged for any multicast traffic within a network that is intended for network management as well as control plane traffic that must reach beyond link-local destinations.",
+      "severity": "low"
+    },
+    {
+      "id": "V-23747",
+      "title": "Network devices must use at least two NTP servers to synchronize time.",
+      "description": "Without synchronized time, accurately correlating information between devices becomes difficult, if not impossible. If logs cannot be successfully compared between each of the routers, switches, and firewalls, it will be very difficult to determine the exact events that resulted in a network breach incident. NTP provides an efficient and scalable method for network devices to synchronize to an accurate time source.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25037",
+      "title": "The IAO will ensure that the router or firewall software has been upgraded to mitigate the risk of DNS cache poisoning attack caused by a flawed PAT implementation using a predictable source port allocation method for DNS query traffic.",
+      "description": "DNS cache poisoning is an attack technique that allows an attacker to introduce forged DNS information into the cache of a caching name server. There are inherent deficiencies in the DNS protocol and defects in implementations that facilitate DNS cache poisoning.\nName servers vulnerable to cache poisoning attacks are due to their use of insufficiently randomized transaction IDs and UDP source ports in the DNS queries that they produce, which may allow an attacker to more easily forge DNS answers that can poison DNS caches. To exploit these vulnerabilities an attacker must be able to cause a vulnerable DNS server to perform recursive DNS queries. Therefore, DNS servers that are only authoritative, or servers where recursion is not allowed, are not affected.\n\nThe DNS protocol specification includes a transaction ID field of 16 bits. If the specification is correctly implemented and the transaction ID is randomly selected with a strong random number generator, an attacker will require, on average, 32,768 attempts to successfully predict the ID. Some flawed implementations may use a smaller number of bits for this transaction ID, meaning that fewer attempts will be needed. Furthermore, there are known errors with the randomness of transaction IDs that are generated by a number of implementations. \n\nSome current implementations allocate an arbitrary source port at startup (and sometimes selected at random) and reuse this source port for all outgoing queries. With other implementations, the source port for outgoing queries is fixed at the traditional assigned DNS server UDP port number 53. Because attacks against these vulnerabilities all rely on an attacker's ability to predict, the implementation of per-query source port randomization in the server presents a practical mitigation against these attacks within the boundaries of the current protocol specification. Randomized source ports can be used to gain approximately 16 additional bits of randomness in the data that an attacker must guess. Randomizing the ports adds a significant amount of attack resiliency. \n\nRouters, firewalls, proxies, and other gateway devices that perform NAT—more specifically Port Address Translation (PAT)—often rewrite source ports in order to track connection state. A flawed implementation of a PAT device using a predictiable source port allocation method can reduce any effectiveness of source port randomization implemented by name servers and stub resolvers. Henceforth, it is imperative that the router or firewall software has been upgraded or patched to reduce an attacker’s opportunity for launching a DNS cache poisoning attack.\n\nNote: Regular NAT (allocating one public IP address for each private IP address) is not affected by this problem because it only rewrites layer 3 information and does not modify layer 4 header information of packets traversing the NAT device.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-28784",
+      "title": "A service or feature that calls home to the vendor must be disabled.",
+      "description": "Call home services or features will routinely send data such as configuration and diagnostic information to the vendor for routine or emergency analysis and troubleshooting.  The risk that transmission of sensitive data sent to unauthorized persons could result in data loss or downtime due to an attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3000",
+      "title": "The network device must log all interface access control lists (ACL) deny statements.",
+      "description": "Auditing and logging are key components of any security architecture.  It is essential for security personnel to know what is being done, attempted to be done, and by whom in order to compile an accurate risk assessment.  Auditing the actions on network devices provides a means to recreate an attack, or identify a configuration mistake on the device.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3008",
+      "title": "The IAO will ensure IPSec VPNs are established as tunnel type VPNs when transporting management traffic across an ip backbone network.",
+      "description": "Using dedicated paths, the OOBM backbone connects the OOBM gateway routers located at the premise of the managed networks and at the NOC.  Dedicated links can be deployed using provisioned circuits (ATM, Frame Relay, SONET, T-carrier, and others or VPN technologies such as subscribing to MPLS Layer 2 and Layer 3 VPN services) or implementing a secured path with gateway-to-gateway IPsec tunnel.  The tunnel mode ensures that the management traffic will be logically separated from any other traffic traversing the same path.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3012",
+      "title": "Network devices must be password protected.",
+      "description": "Network access control mechanisms interoperate to prevent unauthorized access and to enforce the organization's security policy. Access to the network must be categorized as administrator, user, or guest so the appropriate authorization can be assigned to the user requesting access to the network or a network device. Authorization requires an individual account identifier that has been approved, assigned, and configured on an authentication server. Authentication of user identities is accomplished through the use of passwords, tokens, biometrics, or in the case of multi-factor authentication, some combination thereof. Lack of authentication enables anyone to gain access to the network or possibly a network device providing opportunity for intruders to compromise resources within the network infrastructure.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3013",
+      "title": "Network devices must display the DoD-approved logon banner warning.",
+      "description": "All network devices must present a DoD-approved warning banner prior to a system administrator logging on. The banner should warn any unauthorized user not to proceed. It also should provide clear and unequivocal notice to both authorized and unauthorized personnel that access to the device is subject to monitoring to detect unauthorized usage. Failure to display the required logon warning banner prior to logon attempts will limit DoD's ability to prosecute unauthorized access and also presents the potential to give rise to criminal and civil liability for systems administrators and information systems managers. In addition, DISA's ability to monitor the device's usage is limited unless a proper warning banner is displayed.\n\nDoD CIO has issued new, mandatory policy standardizing the wording of \"notice and consent\" banners and matching user agreements for all Secret and below DoD information systems, including stand-alone systems by releasing DoD CIO Memo, \"Policy on Use of Department of Defense (DoD) Information Systems Standard Consent Banner and User Agreement\", dated 9 May 2008. The banner is mandatory and deviations are not permitted except as authorized in writing by the Deputy Assistant Secretary of Defense for Information and Identity Assurance. Implementation of this banner verbiage is further directed to all DoD components for all DoD assets via USCYBERCOM CTO 08-008A.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3014",
+      "title": "The network devices must timeout management connections for administrative access after 10 minutes or less of inactivity.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled between the managed network device and a PC or terminal server when the later has been left unattended. In addition quickly terminating an idle session will also free up resources committed by the managed network device as well as reduce the risk of a management session from being hijacked. Setting the timeout of the session to 10 minutes or less increases the level of protection afforded critical network components.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3020",
+      "title": "Network devices must have DNS servers defined if it is configured as a client resolver.",
+      "description": "The susceptibility of IP addresses to spoofing translates to DNS host name and IP address mapping vulnerabilities. For example, suppose a source host wishes to establish a connection with a destination host and queries a DNS server for the IP address of the destination host name. If the response to this query is the IP address of a host operated by an attacker, the source host will establish a connection with the attacker's host, rather than the intended target. The user on the source host might then provide logon, authentication, and other sensitive data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3021",
+      "title": "Network devices must only allow SNMP access from addresses belonging to the management network.",
+      "description": "Detailed information about the network is sent across the network via SNMP.  If this information is discovered by attackers it could be used to trace the network, show the networks topology, and possibly gain access to network devices.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3022",
+      "title": "The administrator must ensure SNMP is blocked at all external interfaces.",
+      "description": "SNMP information can be used to trace the network and reveal networks topology that could enable malicious users to gain access to network devices.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3026",
+      "title": "Internet Control Message Types (ICMP) must be blocked inbound from external untrusted networks (e.g., ISP and other non-DoD networks).",
+      "description": "Using ICMP messages for information gathering is a process allowing malicious computer attackers to launch attacks against a targeted network. In this stage the malicious attacker will try to determine what the characteristics of the targeted network. Techniques, such as host detection, service detection, network topology mapping, and operating system fingerprinting are often used. The data collected will be used to identify those hosts running network services, which may have a known vulnerability. This vulnerability may allow the malicious attacker to exploit vulnerabilities in the network or gain unauthorized access to those systems. This unauthorized access may become the focal point to the whole targeted network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3027",
+      "title": "Internet Control Message Types (ICMP) must be blocked outbound to external untrusted networks (e.g., ISP and other non-DoD networks).",
+      "description": "Using ICMP messages for information gathering is a process allowing malicious computer attackers to launch attacks against a targeted network. In this stage the malicious attacker will try to determine what the characteristics of the targeted network. Techniques, such as host detection, service detection, network topology mapping, and operating system fingerprinting are often used. The data collected will be used to identify those hosts running network services, which may have a known vulnerability. This vulnerability may allow the malicious attacker to exploit vulnerabilities in the network or gain unauthorized access to those systems. This unauthorized access may become the focal point to the whole targeted network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3028",
+      "title": "Outbound ICMP Time Exceed messages must be blocked to prevent network discovery by unauthorized users.",
+      "description": "The trace route tool will display routes and trip times on an IP network.  An attacker can use trace route responses to create a map of the subnets and hosts behind the perimeter router, just as they could do with pings.  The traditional trace route relies on TTL - time exceeded responses from routers along the path and an ICMP port-unreachable message from the target host. In some Operating Systems such as UNIX, trace route will use UDP port 33400 and increment ports on each response.  Since blocking these UDP ports alone will not block trace route capabilities along with blocking potentially legitimate traffic on a network, it is unnecessary to block them explicitly.  Because trace routes typically rely on ICMP Type 11 - Time exceeded message, the time exceeded message will be the target for implicitly or explicitly blocking outbound from the trusted network.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3034",
+      "title": "Network devices must authenticate all IGP peers.",
+      "description": "A rogue router could send a fictitious routing update to convince a site's premise router to send traffic to an incorrect or even a rogue destination. This diverted traffic could be analyzed to learn confidential information of the site's network, or merely used to disrupt the network's ability to effectively communicate with other networks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3035",
+      "title": "BGP connections must be restricted to authorized IP addresses of neighbors from trusted Autonomous Systems.",
+      "description": "Advertisement of routes by an autonomous system for networks that do not belong to any of its trusted peers pulls traffic away from the authorized network. This causes DoS on the network that allocated the block of addresses and may cause DoS on the network that is inadvertently advertising it as the originator. It is also possible that a misconfigured or compromised router within the network could re-distribute IGP routes into BGP thereby leaking internal routes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3043",
+      "title": "The network device must use different SNMP community names or groups for various levels of read and write access.",
+      "description": "Numerous vulnerabilities exist with SNMP; therefore, without unique SNMP community names, the risk of compromise is dramatically increased. This is especially true with vendors default community names which are widely known by hackers and other networking experts. If a hacker gains access to these devices and can easily guess the name, this could result in denial of service, interception of sensitive information, or other destructive actions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3056",
+      "title": "Group accounts must not be configured for use on the network device.",
+      "description": "Group accounts configured for use on a network device do not allow for accountability or repudiation of individuals using the shared account.  If group accounts are not changed when someone leaves the group, that person could possibly gain control of the network device.  Having group accounts does not allow for proper auditing of who is accessing or changing the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3057",
+      "title": "Authorized accounts must be assigned the least privilege level necessary to perform assigned duties.",
+      "description": "By not restricting authorized accounts to their proper privilege level, access to restricted functions may be allowed before authorized personnel are trained or experienced enough to use those functions. Network disruptions or outages may occur due to mistakes made by inexperienced persons using accounts with greater privileges than necessary.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30577",
+      "title": "The administrator must ensure that Protocol Independent Multicast (PIM) is disabled on all interfaces that are not required to support multicast routing.",
+      "description": "A scope zone is an instance of a connected region of a given scope. Zones of the same scope cannot overlap while zones of a smaller scope will fit completely within a zone of a larger scope. For example, Admin-local scope is smaller than Site-local scope, so the administratively configured boundary fits within the bounds of a site. According to RFC 4007 IPv6 Scoped Address Architecture (section 5), scope zones are also required to be “convex from a routing perspective”—that is, packets routed within a zone must not pass through any links that are outside of the zone. This requirement forces each zone to be one contiguous island rather than a series of separate islands. As stated in the DoD IPv6 IA Guidance for MO3, “One should be able to identify all interfaces of a zone by drawing a closed loop on their network diagram, engulfing some routers and passing through some routers to include only some of their interfaces.” Hence, it is imperative that the network has documented their multicast topology and thereby knows which interfaces are enabled for multicast.  Once, this is done, the zones can be scoped as required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30578",
+      "title": "The administrator must ensure that a PIM neighbor filter is bound to all interfaces that have PIM enabled.",
+      "description": "Protocol Independent Multicast (PIM) is a routing protocol used to build multicast distribution tress for forwarding multicast traffic across the network infrastructure. PIM traffic must be limited to only known PIM neighbors by configuring and binding a PIM neighbor filter to those interfaces that have PIM enabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30579",
+      "title": "The administrator must ensure that boundaries are established at the enclave perimeter for all administrative scoped multicast traffic.",
+      "description": "A scope zone is an instance of a connected region of a given scope. Zones of the same scope cannot overlap while zones of a smaller scope will fit completely within a zone of a larger scope. For example, Admin-local scope is smaller than Site-local scope, so the administratively configured boundary fits within the bounds of a site. According to RFC 4007 IPv6 Scoped Address Architecture (section 5), scope zones are also required to be “convex from a routing perspective”—that is, packets routed within a zone must not pass through any links that are outside of the zone. This requirement forces each zone to be one contiguous island rather than a series of separate islands. As stated in the DoD IPv6 IA Guidance for MO3, “One should be able to identify all interfaces of a zone by drawing a closed loop on their network diagram, engulfing some routers and passing through some routers to include only some of their interfaces.”\n\nAdministrative scoped multicast addresses are locally assigned and are to be used exclusively by the enterprise network or enclave. Hence, administrative scoped multicast traffic must not cross the perimeter of the enclave in either direction. Admin-local scope could be used to contain multicast traffic to a portion of an enclave or within a site. This can make it more difficult for a malicious user to access sensitive traffic if the traffic is restricted to links that the user does not have access to. Admin-local scope is encouraged for any multicast traffic within a network that is intended for network management as well as control plane traffic that must reach beyond link-local destinations.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3058",
+      "title": "Unauthorized accounts must not be configured for access to the network device.",
+      "description": "A malicious user attempting to gain access to the network device may compromise an account that may be unauthorized for use.  The unauthorized account may be a temporary or inactive account that is no longer needed to access the device.  Denial of Service, interception of sensitive information, or other destructive actions could potentially take place if an unauthorized account is configured to access the network device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30594",
+      "title": "The administrator must ensure the perimeter router is configured to drop all inbound and outbound IPv6 packets containing a Hop-by-Hop header with invalid option type values.",
+      "description": "These options are intended to be for the Destination Options header only. The optional and extensible natures of the IPv6 extension headers require higher scrutiny since many implementations do not always drop packets with headers that it can’t recognize and hence could cause a DoS on the target device. In addition, the type, length, value (TLV) formatting provides the ability for headers to be very large. According to the DoD IPv6 IA Guidance for MO3, headers which may be valid but serve no intended use should not be allowed into or out of any network (S0-C2-opt-3).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30617",
+      "title": "Network devices must have a maximum hop limit of at least 32.",
+      "description": "The Neighbor Discovery protocol allows a hop limit value to be advertised by routers in a Router Advertisement message to be used by hosts instead of the standardized default value. If a very small value was configured and advertised to hosts on the LAN segment, communications would fail due to hop limit reaching zero before the packets sent by a host reached its destination.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30618",
+      "title": "The administrator must ensure the perimeter router is configured to drop all inbound and outbound IPv6 packets containing a Destination Option header with invalid option type values.",
+      "description": "These options are intended to be for the Hop-by-Hop header only. The optional and extensible natures of the IPv6 extension headers require higher scrutiny since many imiplementtions do not always drop packets with headers that it can’t recognize and hence could cause a DoS on the target device. In addition, the type, lengthe, value (TLV) formatting provides the ability for headers to be very large. According to  the DoD IPv6 IA Guidance for MO3, headers which may be valid but serve no intended use should not be allowed into or out of any network (S0-C2-opt-3).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3062",
+      "title": "Network devices must be configured to ensure passwords are not viewable when displaying configuration information.",
+      "description": "Many attacks on information systems and network devices are launched from within the network. Hence, it is imperative that all passwords are encrypted so they cannot be intercepted by viewing the console or printout of the configuration.",
+      "severity": "high"
+    },
+    {
+      "id": "V-30646",
+      "title": "The administrator must ensure the perimeter router is configured to drop all inbound and outbound IPv6 packets containing an extension header with the Endpoint Identification option.",
+      "description": "The optional and extensible natures of the IPv6 extension headers require higher scrutiny since many implementations do not always drop packets with headers that it can’t recognize and hence could cause a DoS on the target device. In addition, the type, length, value (TLV) formatting provides the ability for headers to be very large. According to the DoD IPv6 IA Guidance for MO3, headers which may be valid but serve no intended use should not be allowed into or out of any network (S0-C2-opt-3). This option type is associated with the Nimrod Routing system and has no defining RFC document.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30648",
+      "title": "The administrator must ensure the perimeter router is configured to drop all inbound and outbound IPv6 packets containing the NSAP address option.",
+      "description": "The optional and extensible natures of the IPv6 extension headers require higher scrutiny since many implementations do not always drop packets with headers that it can’t recognize and hence could cause a DoS on the target device. In addition, the type, length, value (TLV) formatting provides the ability for headers to be very large. According to the DoD IPv6 IA Guidance for MO3, headers which may be valid but serve no intended use should not be allowed into or out of any network (S0-C2-opt-3). This option type from RFC 1888 (OSI NSAPs and IPv6) has been deprecated by RFC 4048.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30657",
+      "title": "The administrator must ensure the perimeter router is configured to drop all inbound and outbound IPv6 packets containing a Hop-by-Hop or Destination Option extension header with an undefined option type.\n\n",
+      "description": "The optional and extensible natures of the IPv6 extension headers require higher scrutiny since many implementations do not always drop packets with headers that it can’t recognize and hence could cause a DoS on the target device. In addition, the type, length, value (TLV) formatting provides the ability for headers to be very large. According to the DoD IPv6 IA Guidance for MO3, extension headers with an unknown option type value should not be allowed into or out of any network (S0-C2-opt-3).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30660",
+      "title": "The administrator must ensure the 6-to-4 router is configured to drop any IPv4 packets with protocol 41 received from the internal network. ",
+      "description": "The 6to4 specific filters accomplish the role of endpoint verification and provide assurance that the tunnels are being used properly. This primary guidance assumes that only the designated 6to4 router is allowed to form tunnel packets. If they are being formed inside an enclave and passed to the 6to4 router, they are suspicious and must be dropped. In accordance with DoD IPv6 IA Guidance for MO3 (S5-C7-8), packets as such must be dropped and logged as a security event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3069",
+      "title": "Management connections to a network device must be established using secure protocols with FIPS 140-2 validated cryptographic modules.",
+      "description": "Administration and management connections performed across a network are inherently dangerous because anyone with a packet sniffer and access to the right LAN segment can acquire the network device account and password information.  With this intercepted information they could gain access to the router and cause denial of service attacks, intercept sensitive information, or perform other destructive actions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3070",
+      "title": "Network devices must log all attempts to establish a management connection for administrative access.",
+      "description": "Audit logs are necessary to provide a trail of evidence in case the network is compromised.  Without an audit trail that provides a when, where, who and how set of information, repeat offenders could continue attacks against the network indefinitely.  With this information, the network administrator can devise ways to block the attack and possibly identify and prosecute the attacker.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3072",
+      "title": "The running configuration must be synchronized with the startup configuration after changes have been made and implemented.",
+      "description": "If the running and startup router configurations are not synchronized properly and a router malfunctions, it will not restart with all of the recent changes incorporated.  If the recent changes were security related, then the routers would be vulnerable to attack.",
+      "severity": "low"
+    },
+    {
+      "id": "V-30736",
+      "title": "The administrator must ensure the 6-to-4 router is configured to drop any outbound IPv6 packets from the internal network with a source address that is not within the 6to4 prefix 2002:V4ADDR::/48 where V4ADDR is the designated IPv4 6to4 address for the enclave.",
+      "description": "An automatic 6to4 tunnel allows isolated IPv6 domains to be connected over an IPv4 network and allows connections to remote IPv6 networks. The key difference between this deployment and manually configured tunnels is that the routers are not configured in pairs and thus do not require manual configuration because they treat the IPv4 infrastructure as a virtual non-broadcast link, using an IPv4 address embedded in the IPv6 address to find the remote end of the tunnel. In other words, the tunnel destination is determined by the IPv4 address of the external interface of the 6to4 router that is concatenated to the 2002::/16 prefix in the format 2002: V4ADDR::/48.  Hence, the imbedded V4ADDR of the 6to4 prefix must belong to the same ipv4 prefix as configured on the external-facing interface of the 6to4 router. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-30744",
+      "title": "L2TPv3 sessions must be authenticated prior to transporting traffic.",
+      "description": "L2TPv3 sessions can be used to transport layer-2 protocols across an IP backbone. These protocols were intended for link-local scope only and are therefore less defended and not as well-known. As stated in DoD IPv6 IA Guidance for MO3 (S4-C7-1), the L2TP tunnels can also carry IP packets that are very difficult to filter because of the additional encapsulation. Hence, it is imperative that L2TP sessions are authenticated prior to transporting traffic.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3077",
+      "title": "Link Layer Discovery Protocols (LLDPs) must be disabled on all external facing interfaces.",
+      "description": "LLDPs are primarily used to obtain protocol addresses of neighboring devices and discover platform capabilities of those devices. Use of SNMP with the LLDP Management Information Base (MIB) allows network management applications to learn the device type and the SNMP agent address of neighboring devices; thereby, enabling the application to send SNMP queries to those devices. LLDPs are also media- and protocol-independent as they run over the data link layer; therefore, two systems that support different network-layer protocols can still learn about each other. Allowing LLDP messages to reach external network nodes is dangerous as it provides an attacker a method to obtain information of the network infrastructure that can be useful to plan an attack. Examples of LLDPs are Cisco Discovery Protocol (CDP), Link Layer Discovery Protocol (LLDP), and Link Layer Discovery Protocol – Media Endpoint Discovery (LLDP-MED).",
+      "severity": "low"
+    },
+    {
+      "id": "V-3079",
+      "title": "Network devices must have the Finger service disabled.",
+      "description": "The Finger service supports the UNIX Finger protocol, which is used for querying a host about the users that are logged on. This service is not necessary for generic users. If an attacker were to find out who is using the network, they may use social engineering practices to try to elicit classified DoD information.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3081",
+      "title": "IP source routing must be disabled.",
+      "description": "Source routing is a feature of IP, whereby individual packets can specify routes. This feature is used in several different network attacks by bypassing perimeter and internal defense mechanisms.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3084",
+      "title": "ICMP unreachable notifications, mask replies, and redirects must be disabled on all external interfaces.",
+      "description": "The Internet Control Message Protocol (ICMP) supports IP traffic by relaying information about paths, routes, and network conditions. Routers automatically send ICMP messages under a wide variety of conditions. Three ICMP messages are commonly used by attackers for network mapping and diagnosis: Host unreachable, Redirect, and Mask Reply.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3085",
+      "title": "Network devices must have HTTP service for administrative access disabled.",
+      "description": "The additional services the router is enabled for increases the risk for an attack since the router will listen for these services. In addition, these services provide an unsecured method for an attacker to gain access to the router. Most recent software versions support remote configuration and monitoring using the World Wide Web's HTTP protocol. In general, HTTP access is equivalent to interactive access to the router. The authentication protocol used for HTTP is equivalent to sending a clear-text password across the network, and, unfortunately, there is no effective provision in HTTP for challenge-based or one-time passwords. This makes HTTP a relatively risky choice for use across the public Internet. Any additional services that are enabled increase the risk for an attack since the router will listen for these services. The HTTPS server may be enabled for administrative access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31285",
+      "title": "Network devices must authenticate all BGP peers within the same or between autonomous systems (AS).",
+      "description": "As specified in RFC 793, TCP utilizes sequence checking to ensure proper ordering of received packets. RFC 793 also specifies that RST (reset) control flags should be processed immediately, without waiting for out of sequence packets to arrive. RFC 793 also requires that sequence numbers are checked against the window size before accepting data or control flags as valid. A router receiving an RST segment will close the TCP session with the BGP peer that is being spoofed; thereby, purging all routes learned from that BGP neighbor. A RST segment is valid as long as the sequence number is within the window. The TCP reset attack is made possible due to the requirements that Reset flags should be processed immediately and that a TCP endpoint must accept out of order packets that are within the range of a window size. This reduces the number of sequence number guesses the attack must make by a factor equivalent to the active window size. Each sequence number guess made by the attacker can be simply incremented by the receiving connections window size. The BGP peering session can protect itself against such an attack by authenticating each TCP segment. The TCP header options include an MD5 signature in every packet and are checked prior to the acceptance and processing of any TCP packet--including RST flags.\n\nOne way to create havoc in a network is to advertise bogus routes to a network. A rogue router could send a fictitious routing update to convince a BGP router to send traffic to an incorrect or rogue destination. This diverted traffic could be analyzed to learn confidential information of the site's network, or merely used to disrupt the network's ability to effectively communicate with other networks. An autonomous system can advertise incorrect information by sending BGP updates messages to routers in a neighboring AS. A malicious AS can advertise a prefix originated from another AS and claim that it is the originator (prefix hijacking). Neighboring autonomous systems receiving this announcement will believe that the malicious AS is the prefix owner and route packets to it.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3143",
+      "title": "Network devices must not have any default manufacturer passwords.",
+      "description": "Network devices not protected with strong password schemes provide the opportunity for anyone to crack the password thus gaining access to the device and causing network outage or denial of service. Many default vendor passwords are well-known; hence, not removing them prior to deploying the network devices into production provides an opportunity for a malicious user to gain unauthorized access to the device.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3160",
+      "title": "Network devices must be running a current and supported operating system with all IAVMs addressed.",
+      "description": "Network devices not running the latest tested and approved versions of software are vulnerable to network attacks. Running the most current, approved version of system and device software helps the site maintain a stable base of security fixes and patches, as well as enhancements to IP security. Viruses, denial of service attacks, system weaknesses, back doors and other potentially harmful situations could render a system vulnerable, allowing unauthorized access to DoD assets.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3164",
+      "title": "The network device must not accept any outbound IP packets that contain an illegitimate address in the source address field by enabling Unicast Reverse Path Forwarding (uRPF) Strict mode or via egress ACL.",
+      "description": "When Unicast Reverse Path Forwarding (uRPF) provides an IP address spoof protection capability. When uRPF is enabled in strict mode, the packet must be received on the interface that the router would use to forward the return packet. ",
+      "severity": "high"
+    },
+    {
+      "id": "V-3165",
+      "title": "TCP intercept features must be provided by the network device by implementing a filter to rate limit and protect publicly accessible servers from any TCP SYN flood attacks from an outside network.",
+      "description": "The TCP SYN attack involves transmitting a volume of connections that cannot be completed at the destination.  This attack causes the connection queues to fill up, thereby denying service to legitimate TCP users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3175",
+      "title": "The network device must require authentication prior to establishing a management connection for administrative access.",
+      "description": "Network devices with no password for administrative access via a management connection provide the opportunity for anyone with network access to the device to make configuration changes enabling them to disrupt network operations resulting in a network outage.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3196",
+      "title": "The network device must use SNMP Version 3 Security Model with FIPS 140-2 validated cryptography for any SNMP agent configured on the device.",
+      "description": "SNMP Versions 1 and 2 are not considered secure. Without the strong authentication and privacy that is provided by the SNMP Version 3 User-based Security Model (USM), an unauthorized user can gain access to network management information used to launch an attack against the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3210",
+      "title": "The network device must not use the default or well-known SNMP community strings public and private.",
+      "description": "Network devices may be distributed by the vendor pre-configured with an SNMP agent using the well-known SNMP community strings public for read only and private for read and write authorization. An attacker can obtain information about a network device using the read community string \"public\". In addition, an attacker can change a system configuration using the write community string \"private\".",
+      "severity": "high"
+    },
+    {
+      "id": "V-3966",
+      "title": "In the event the authentication server is unavailable, the network device must have a single local account of last resort defined.",
+      "description": "Authentication for administrative access to the device is required at all times. A single account of last resort can be created on the device's local database for use in an emergency such as when the authentication server is down or connectivity between the device and the authentication server is not operable. The console or local account of last resort logon credentials must be stored in a sealed envelope and kept in a safe.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3967",
+      "title": "The network devices must time out access to the console port at 10 minutes or less of inactivity.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition quickly terminating an idle session will also free up resources committed by the managed network device. Setting the timeout of the session to 10 minutes or less increases the level of protection afforded critical network components.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3968",
+      "title": "The administrator must bind the ingress ACL filtering packets entering the network to the external interface on an inbound direction.",
+      "description": "Access lists are used to separate data traffic into that which it will route (permitted packets) and that which it will not route (denied packets).  Secure configuration of routers makes use of access lists for restricting access to services on the router itself as well as for filtering traffic passing through the router.  Inbound versus Outbound; it should be noted that some operating systems default access-lists are applied to the outbound queue.  The more secure solution is to apply the access-list to the inbound queue for 3 reasons:\n•The router can protect itself before damage is inflicted.\n•The input port is still known, and can be filtered upon.\n•It is more efficient to filter packets before routing them.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3969",
+      "title": "Network devices must only allow SNMP read-only access.",
+      "description": "Enabling write access to the device via SNMP provides a mechanism that can be exploited by an attacker to set configuration variables that can disrupt network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3982",
+      "title": "L2TP must not pass into the private network of an enclave.",
+      "description": "Unlike GRE (a simple encapsulating header) L2TP is a full-fledged communications protocol with control channel, data channels, and a robust command structure. In addition to PPP, other link layer types (called pseudowires) can be and are defined for delivery in L2TP by separate RFC documents. Further complexity is created by the capability to define vender-specific parameters beyond those defined in the L2TP specifications.\n\nThe endpoint devices of an L2TP connection can be an L2TP Access Concentrator (LAC) in which case it inputs/outputs the layer 2 protocol to/from the L2TP tunnel. Otherwise it is an L2TP Network Server (LNS), in which case it inputs/outputs the layer 3 (IP) protocol to/from the L2TP tunnel. The specifications describe three reference models: LAC-LNS, LAC-LAC, and LNS-LNS, the first of which is the most common case. The LAC-LNS model allows a remote access user to reach his home network or ISP from a remote location. The remote access user either dials (or otherwise connects via layer 2) to a LAC device which tunnels his connection home to an awaiting LNS. The LAC could also be located on the remote user's laptop which connects to an LNS at home using some generic internet connection. The other reference models may be used for more obscure scenarios.\n\nAlthough the L2TP protocol does not contain encryption capability, it can be operated over IPSEC which would provide authentication and confidentiality. A remote user in the LAC-LNS model would most likely obtain a dynamically assigned IP address from the home network to ultimately use through the tunnel back to the home network. Secondly, the outer IP source address used to send the L2TP tunnel packet to the home network is likely to be unknown or highly variable. Thirdly, since the LNS provides the remote user with a dynamic IP address to use, the firewall at the home network would have to be dynamically updated to accept this address in conjunction with the outer tunnel address. Finally, there is also the issue of authentication of the remote user prior to divulging an acceptable IP address. As a result of all of these complications, the strict filtering rules applied to the IP-in-IP and GRE tunneling cases will likely not be possible in the L2TP scenario.\n\nIn addition to the difficulty of enforcing addresses and endpoints (as explained above), the L2TP protocol itself is a security concern if allowed through a security boundary. In particular: \n\n1) L2TP potentially allows link layer protocols to be delivered from afar. These protocols were intended for link-local scope only, are less defended, and not as well-known \n2) The L2TP tunnels can carry IP packets that are very difficult to see and filter because of the additional layer 2 overhead\n3) L2TP is highly complex and variable (vender-specific variability) and therefore would be a viable target that is difficult to defend. It is better left outside of the main firewall where less damage occurs if the L2TP-processing node is compromised.\n4) Filtering cannot be used to detect and prevent other unintended layer 2 protocols from being tunneled. The strength of the application layer code would have to be relied on to achieve this task.\n5) Regardless of whether the L2TP is handled inside or outside of the main network, a secondary layer of IP filtering is required, therefore bringing it inside doesn't save resources.\n\nTherefore, it is not recommended to allow unencrypted L2TP packets across the security boundary into the network's protected areas. Reference the Backbone Transport STIG for additional L2TP guidance and use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-4582",
+      "title": "The network device must require authentication for console access.",
+      "description": "Network devices with no password for administrative access via the console provide the opportunity for anyone with physical access to the device to make configuration changes enabling them to disrupt network operations resulting in a network outage.",
+      "severity": "high"
+    },
+    {
+      "id": "V-4584",
+      "title": "The network device must log all messages except debugging and send all log data to a syslog server.",
+      "description": "Logging is a critical part of router security. Maintaining an audit trail of system activity logs (syslog) can help identify configuration errors, understand past intrusions, troubleshoot service disruptions, and react to probes and scans of the network. Syslog levels 0-6 are the levels required to collect the necessary information to help in the recovery process.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4622",
+      "title": "The ISSO/NSO will ensure premise router interfaces that connect to an AG (i.e., ISP) are configured with an ingress ACL that only permits packets with destination addresses within the sites address space.",
+      "description": "Any enclave with one or more AG connections will have to take additional steps to ensure that neither their network nor the NIPRNet is compromised.  Without verifying the destination address of traffic coming from the site’s AG, the premise router could be routing transit data from the Internet into the NIPRNet.  This could also make the premise router vulnerable to a DoS attack as well as provide a backdoor into the NIPRNet.  The DOD enclave must ensure that the premise router’s ingress packet filter for any interface connected to an AG is configured to only permit packets with a destination address belonging to the DOD enclave’s address block.",
+      "severity": "high"
+    },
+    {
+      "id": "V-4623",
+      "title": "The ISSO/NSO will ensure the premise router does not have a routing protocol session with a peer router belonging to an AS (Autonomous System) of the AG service provider. A static route is the only acceptable route to an AG. ",
+      "description": "The premise router will not use a routing protocol to advertise NIPRNet addresses to the AG. Most ISPs use Border Gateway Protocol (BGP) to share route information with other autonomous systems (AS), that is, any network under a different administrative control and policy than that of the local site.  If BGP is configured on the premise router, no BGP neighbors will be defined as peer routers from an AS belonging to any AG.  The only method to be used to reach the AG will be through a static route.",
+      "severity": "high"
+    },
+    {
+      "id": "V-4624",
+      "title": "The IAO/NSO will ensure the AG network service provider IP addresses are not redistributed into or advertised to the NIPRNet or any router belonging to any other Autonomous System (AS) i.e. to another AG device in another AS. ",
+      "description": "Unsolicited traffic that may inadvertently attempt to enter the NIPRNet by traversing the enclave's premise router can be avoided by not redistributing NIPRNet routes into the AG.",
+      "severity": "low"
+    },
+    {
+      "id": "V-5611",
+      "title": "The network devices must only allow management connections for administrative access from hosts residing in the management network.",
+      "description": "Remote administration is inherently dangerous because anyone with a sniffer and access to the right LAN segment could acquire the device account and password information. With this intercepted information they could gain access to the infrastructure and cause denial of service attacks, intercept sensitive information, or perform other destructive actions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-5612",
+      "title": "The network devices must be configured to timeout after 60 seconds or less for incomplete or broken SSH sessions.",
+      "description": "An attacker may attempt to connect to the device using SSH by guessing the authentication method, encryption algorithm, and keys. Limiting the amount of time allowed for authenticating and negotiating the SSH session reduces the window of opportunity for the malicious user attempting to make a connection to the network device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-5613",
+      "title": "The network device must be configured for a maximum number of unsuccessful SSH logon attempts set at 3 before resetting the interface.",
+      "description": "An attacker may attempt to connect to the device using SSH by guessing the authentication method and authentication key or shared secret. Setting the authentication retry to 3 or less strengthens against a Brute Force attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-5646",
+      "title": "The network device must drop half-open TCP connections through filtering thresholds or timeout periods.",
+      "description": "A TCP connection consists of a three-way handshake message sequence. A connection request is transmitted by the originator, an acknowledgement is returned from the receiver, and then an acceptance of that acknowledgement is sent by the originator.\n\nAn attacker's goal in this scenario is to cause a denial of service to the network or device by initiating a high volume of TCP packets, then never sending an acknowledgement, leaving connections in a half-opened state. Without the device having a connection or time threshold for these half-opened sessions, the device risks being a victim of a denial of service attack. Setting a TCP timeout threshold will instruct the device to shut down any incomplete connections. Services such as SSH, BGP, SNMP, LDP, etc. are some services that may be prone to these types of denial of service attacks. If the router does not have any BGP connections with BGP neighbors across WAN links, values could be set to even tighter constraints.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-5731",
+      "title": "The SA will utilize ingress and egress ACLs to restrict traffic destined to the enclave perimeter in accordance with the guidelines contained in DoD Instruction 8551.1 for all ports and protocols required for operational commitments. ",
+      "description": "Vulnerability assessments must be reviewed by the SA and protocols must be approved by the IA staff before entering the enclave.\n\nAccess Control Lists (ACLs) are the first line of defense in a layered security approach.  They permit authorized packets and deny unauthorized packets based on port or service type.  They enhance the posture of the network by not allowing packets to even reach a potential target within the security domain.  The list provided are highly susceptible ports and services that should be blocked or limited as much as possible without adversely affecting customer requirements.   Auditing packets attempting to penetrate the network but are stopped by an ACL will allow network administrators to broaden their protective ring and more tightly define the scope of operation.\n\nIf the perimeter is in a Deny-by-Default posture and what is allowed through the filter is IAW DoD Instruction 8551.1, and if the permit rule is explicitly defined with explicit ports and protocols allowed, then all requirements related to PPS being blocked would be satisfied. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7011",
+      "title": "The auxiliary port must be disabled unless it is connected to a secured modem providing encryption and authentication.",
+      "description": "The use of POTS lines to modems connecting to network devices provides clear text of authentication traffic over commercial circuits that could be captured and used to compromise the network.  Additional war dial attacks on the device could degrade the device and the production network.\n\nSecured modem devices must be able to authenticate users and must negotiate a key exchange before full encryption takes place.  The modem will provide full encryption capability (Triple DES) or stronger.  The technician who manages these devices will be authenticated using a key fob and granted access to the appropriate maintenance port, thus the technician will gain access to the managed device (router, switch, etc.).  The token provides a method of strong (two-factor) user authentication.  The token works in conjunction with a server to generate one-time user passwords that will change values at second intervals.  The user must know a personal identification number (PIN) and possess the token to be allowed access to the device.",
+      "severity": "low"
+    }
+  ]
+}

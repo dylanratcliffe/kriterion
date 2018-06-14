@@ -1,0 +1,155 @@
+{
+  "name": "blackberry_enterprise_server_version_5.x,_part_2",
+  "date": "2016-09-08",
+  "description": "BlackBerry Enterprise Server (version 5.x) STIG, Part 2 in XCCDF format.\nPart 1:  BES architecture and training requirements.\nPart 2:  BES configuration requirements.\nPart 3:  BES IT Policy configuration requirements.\n",
+  "title": "BlackBerry Enterprise Server (version 5.x), Part 2 Security Technical Implementation Guide",
+  "version": "2",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-11877",
+      "title": "The Device Transport Key must be configured on the BES for AES encryption. ",
+      "description": "AES encryption provides a higher level of security for BlackBerry data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-14022",
+      "title": "The BlackBerry wireless email system must be set up with the required system components and software installed on the handheld device. ",
+      "description": "The wireless email server architecture must comply with the DoD environment because approval of the BES is contingent on installation with the correct settings.  DoD enclaves could be at risk of penetration or DoD data could be compromised if BES is not installed as required.",
+      "severity": "high"
+    },
+    {
+      "id": "V-16341",
+      "title": "An Application White List software configuration must be assigned to all BES user accounts.",
+      "description": "The primary BlackBerry malware control is to set up one or more Application White List software configurations on the BES.  Every user and group account must be assigned at least one Application White List software configuration.  In an Application White List, the use of all non-core applications is denied unless an application is expressly allowed.",
+      "severity": "high"
+    },
+    {
+      "id": "V-16343",
+      "title": "The BES must be configured to disable the capability of the BES to proxy a user’s authentication to back-office application, web, and content servers. Users must authenticate directly to back-office servers using a USCYBERCOM CTO 07-15Rev1 authorized method.\n",
+      "description": "User authentication credentials should not be proxied by the BES, because the BES would then be saving DoD user authentication credentials in its database.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18394",
+      "title": "The BES must be configured to convert HTML and RTF formatted email into text format before sending to a BlackBerry smartphone and prevent the BES from sending email messages with inline images to BlackBerry smartphones. ",
+      "description": "HTML email and inline images in email can contain malware or links to web sites with malware.",
+      "severity": "low"
+    },
+    {
+      "id": "V-19192",
+      "title": "The BES host-based or appliance firewall must be configured as required.",
+      "description": "BlackBerry user could get access to unauthorized network resources (application and content servers, etc.) if the BES firewall is not set up as required.",
+      "severity": "high"
+    },
+    {
+      "id": "V-19201",
+      "title": "The BES must be configured to accept only trusted connections to back-office enclave application or web push servers. Push servers are set up to push content to BlackBerry users (e.g., Remedy ticket notification system).\t\n",
+      "description": "Only authorized servers should be able to push content to BlackBerry devices.",
+      "severity": "low"
+    },
+    {
+      "id": "V-19202",
+      "title": "Non-core applications used on the BlackBerry must be approved.",
+      "description": "Unapproved applications could include malware or introduce other vulnerabilities to the BlackBerry system and enclave.",
+      "severity": "low"
+    },
+    {
+      "id": "V-19203",
+      "title": "An Application Control Policy must be assigned to each application listed in any Application White List software configuration assigned to user accounts on the BES.\n\nNote:  This check applies to BES 4.1.x only.  On BES 5, an application control policy is automatically assigned when an application is selected for a software configuration. ",
+      "description": "Applications must only have access to BlackBerry resources (e.g., microphone, address book, browser, email messages, etc.) they need for their function; otherwise, sensitive data could be exposed to unauthorized users or the BlackBerry system could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19206",
+      "title": "Security controls must be set up on the BES for connections to “back-office” servers.",
+      "description": "Strong access controls to back-office servers are required to ensure DoD data is not exposed to users of the BlackBerry system that are not authorized to access the server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19215",
+      "title": "The BlackBerry Bluetooth Smart Card Reader (SCR) used with site PCs must be compliant with requirements.\n",
+      "description": "Insecure Bluetooth configuration on the PC could make it vulnerable to compromise via a Bluetooth attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19224",
+      "title": "Required security controls must be used when BlackBerry Wi-Fi is used by the site to connect to a DoD Wi-Fi network. Required security controls are in Table 2, BlackBerry STIG Configuration Tables. ",
+      "description": "If BlackBerry Wi-Fi controls are not implemented, DoD data can be compromised.",
+      "severity": "low"
+    },
+    {
+      "id": "V-19226",
+      "title": "BlackBerry accounts must not be assigned to the default IT policy installed on the BES or any other non-STIG compliant IT policy. Accounts will only be assigned a STIG compliant IT policy.",
+      "description": "The BlackBerry default policy installed on the BES does not include many DoD-required security policies for data encryption, authentication, and access control. DoD enclaves are at risk of data exposure and hacker attack if users are assigned to a non-STIG compliant IT policy.",
+      "severity": "high"
+    },
+    {
+      "id": "V-22042",
+      "title": "Each Application White List software configuration assigned to each user account must be configured with top-level default “disallow” for all applications.  Applications must be specifically allowed at a lower level.",
+      "description": "The primary BlackBerry malware control is to set up an Application White List where the use of all applications is denied unless an application is expressly allowed. Otherwise, malware could be installed on the BlackBerry.",
+      "severity": "high"
+    },
+    {
+      "id": "V-22055",
+      "title": "Application repositories set up on the BES must be DoD-approved.",
+      "description": "A DoD application repository must contain only authorized applications and only approved and unaltered versions of those applications. If DoD-approved application repositories are not used, the integrity of applications in the repository would be unknown.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22056",
+      "title": "All user and or group accounts must have an Access Control Rule assigned to the account. \n\t\n",
+      "description": "The BES MDS Connection Service  allows BlackBerry users to search the enclave for files and documents of interest to the user without any authentication requirements to the enclave.  Access control requirements of the network can be bypassed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22102",
+      "title": "The BlackBerry Administration Server (BAS) must be configured for Active Directory authentication with a CTO 07-15Rev1 compliant administrator password. ",
+      "description": "The BAS provides the administrator interface for the BES. CTO 07-15Rev1 requires administrator accounts use either CAC authentication or use complex passwords to ensure storing access control is enforced.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22164",
+      "title": "The key store password for the certificate that the BlackBerry Administration Service (BAS) and BlackBerry Web Desktop Manager (BWDM) use must be changed from the default. ",
+      "description": "The key store password protects the server digital authentication certificates from unauthorized use.  ",
+      "severity": "low"
+    },
+    {
+      "id": "V-22165",
+      "title": "The BlackBerry Administration Service must be configured to disable a user from creating an activation password via BWDM. ",
+      "description": "The overall security posture of the BlackBerry system is dependent on strict configuration management controls, including ensuring only authorized BlackBerry devices are being used and authorized devices are provisioned as required. Users must be prohibited from performing the following administrative tasks using the BlackBerry Web Desktop Manager: \n-Specify an enterprise activation password for a BlackBerry device.\n-Specify a new device password and lock a device.\n-Delete all device data and deactivate a device.\n-Assign a new device to a user account.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-22703",
+      "title": "All Access Control Rules assigned to user and group accounts must be configured to deny access to all file shares.  ",
+      "description": "The BES MDS Connection Service allows BlackBerry users to search the enclave for files and documents of interest to the user without any authentication requirements to the enclave. Access control requirements of the network can be bypassed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25430",
+      "title": "BlackBerry Web Desktop Manager must be configured to disable a user’s capability to perform self-service tasks.",
+      "description": "The overall security posture of the BlackBerry system is dependent on strict configuration management controls, including ensuring only authorized BlackBerry devices are being used and authorized devices are provisioned as required. When this configuration is not set as required, users may have the capability to activate unauthorized BlackBerry devices.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25431",
+      "title": "BlackBerry Web Desktop Manager must be configured to permit users to activate new BlackBerry devices only. ",
+      "description": "The overall security posture of the BlackBerry system is dependent on strict configuration management controls, including ensuring only authorized BlackBerry devices are being used and authorized devices are provisioned as required. When this configuration is not set as required, users may have the capability to activate unauthorized BlackBerry devices.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25548",
+      "title": "The server PKI digital certificate installed on the BES to support BAS and BWDM authentication must be a DoD PKI issued certificate. A self signed certificate will not be used.",
+      "description": "When a self-signed PKI certificate is used, a rogue BES can impersonate the DoD BES during SA connections to the BlackBerry Administration Service (BAS) or when a BlackBerry user uses BlackBerry Web Desktop Manager (BWDM) to connect to the BAS.  In addition, DoDI 8520-02 requires PKI certificates come from a trusted DoD PKI.",
+      "severity": "low"
+    },
+    {
+      "id": "V-7078",
+      "title": "The BlackBerry MDS Integration Service must not be installed on a production BES.",
+      "description": "The BlackBerry Enterprise Service MDS Integration Service is a software development platform and should not be installed on a production BES. The service, if not properly configured, can allow unsecured connections between the BlackBerry and BES and between the BES and back-office run-time application servers.",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,0 +1,599 @@
+{
+  "name": "microsoft_ie_version_6",
+  "date": "2014-12-17",
+  "description": "None",
+  "title": "Microsoft IE Version 6 ",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-16879",
+      "title": "The Download signed ActiveX controls property is not set properly for the Lockdown Zone.",
+      "description": "This policy setting allows you to manage whether users may download signed ActiveX controls from a page in the zone.  If you enable this policy, users can download signed controls without user intervention. If you select Prompt in the drop-down box, users are queried whether to download controls signed by publishers who aren't trusted. Code signed by trusted publishers is silently downloaded.  If you disable the policy setting, signed controls cannot be downloaded.  If you do not configure this policy setting, users are queried whether to download controls signed by publishers who aren't trusted.  Code signed by trusted publishers is silently downloaded.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32808",
+      "title": "Check for publishers certificate revocation is enforced.",
+      "description": "Check for publisher's certificate revocation options should be enforced to ensure all PKI signed objects are validated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3427",
+      "title": "Internet Explorer is not configured to require consistent security zone settings to all users.",
+      "description": "This setting enforces consistent security zone settings to all users of the computer.  Security Zones control browser behavior at various web sites and it is desirable to maintain a consistent policy for all users of a machine.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3428",
+      "title": "Internet Explorer is configured to Allow Users to Change Policies.",
+      "description": "This setting prevents users from changing the Internet Explorer policies on the machine.  Policy changes should be made by Administrators only, so this setting should be Enabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3429",
+      "title": "Internet Explorer is configured to Allow Users to Add/Delete Sites.",
+      "description": "This setting prevents users from adding sites to various security zones.  Users should not be able to add sites to different zones, as this could allow them to bypass security controls of the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3430",
+      "title": "Internet Explorer is not configured to disable making Proxy Settings Per Machine.",
+      "description": "This setting controls whether or not the Internet Explorer proxy settings are configured on a per-user or per-machine basis.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3431",
+      "title": "Internet Explorer is configured to allow Automatic Install of components.",
+      "description": "This setting controls the ability of Internet Explorer to automatically install components if it goes to a site that requires components that are not currently installed.  The System Administrator should install all components on the system.  If additional components are necessary, the user should inform the SA and have the SA install the components.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3432",
+      "title": "Internet Explorer is configured to automatically check for updates.",
+      "description": "This setting determines whether or not Internet Explorer will periodically check the Microsoft web sites to determine if there are updates to Internet Explorer available.  The SA should manually install all updates on a system so that configuration control is maintained.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3433",
+      "title": "Internet Explorer is configured to notify users when programs are modified through the software distribution channel.",
+      "description": "Microsoft Internet Explorer now supports a software distribution channel that may be used to update software installed on a machine. If this setting is enabled, users will not be notified when programs are modified through the software distribution channel. This allows administrators to update workstations without user intervention.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6227",
+      "title": "The installed version of IE must be a supported version.",
+      "description": "Unsupported versions are no longer being evaluated or updated for security related issues.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6228",
+      "title": "The IE home page is not set to blank or a trusted site.",
+      "description": "By setting this parameter appropriately, a malicious web site will not be automatically loaded into a browser which may contain mobile code.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6229",
+      "title": "IE Local zone security parameter is set incorrectly.",
+      "description": "The Local zone must be set to custom level so the other required settings for the zone can take effect.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6230",
+      "title": "The IE Trusted sites zone security parameter is set incorrectly.",
+      "description": "The Trusted sites zone must be set to custom level so the other required settings for the zone can take effect.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6231",
+      "title": "The IE Internet zone security parameter is set incorrectly.",
+      "description": "The Internet zone must be set to custom level so the other required settings for the zone can take effect.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6232",
+      "title": "The IE Restricted sites zone security parameter is set incorrectly.",
+      "description": "The Restricted sites zone must be set to custom level so the other required settings for the zone can take effect.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6233",
+      "title": "The IE Local zone includes parameter is not set correctly.",
+      "description": "This parameter controls which sites are by default in the local zone.  Since this is the least restrictive zone these settings ensure that sites are not included in this zone by default.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6234",
+      "title": "The IE third party cookies parameter is not set correctly.",
+      "description": "This parameter ensures that third party cookies are blocked.  Third party cookies come from a site other than the site being browsed. Since these cross sites, the storing unwanted data or allowing data to be retrieved later via the cookie is of greater concern for malicious activity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6236",
+      "title": "The IE signature checking parameter is not set correctly.",
+      "description": "This parameter will ensure digital signatures are checked on downloaded programs.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6237",
+      "title": "The IE save encrypted pages to disk parameter is not set correctly.",
+      "description": "This parameter ensures pages using SSL or TLS are not cached to the local drive.  This ensures sensitive data from a web site does not remain on the machine that is not properly protected.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6238",
+      "title": "The Internet Explorer SSL/TLS parameter must be set correctly.",
+      "description": "This parameter ensures SSL and TLS are able to be used from the browser.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6239",
+      "title": "The IE warning of invalid certificates parameter is not set correctly",
+      "description": "This parameter warns users if the certifcate being presented by the web site is invalid.  Since server certificates are used to validate the identity of the web server it is critical to warn the user of a potential issue with the certificate being presented by the web server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6240",
+      "title": "The IE changing zones parameter is not set correctly.",
+      "description": "This parameter warns the user when changing between zones.  This conveys important information to the user so the user is reminded that the zone has changed and the possiblity the type of data to be entered in the site has changed.  Also the user expected actions have also changed based upon what happens when a mobile code technology is encountered.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6241",
+      "title": "The IE form redirect parameter is not set correctly.",
+      "description": "This parameter warns the user that input from the form is being redirected to another web site.  Since the form may contain sensitive data the user must be warned that the data is not being directed to the site the user was using.  This enables the user to make a decision if the data on the form is appropriate for inclusion into the new web site.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6242",
+      "title": "Users can change the advanced settings in IE.",
+      "description": "Since most of the IE settings can be changed through the GUI, it is important to ensure that user's cannot change these settings.  Some settings will restrict users from visiting certain sites or will restrict the functionality of sites.  It is important that access to changing the settings is removed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6243",
+      "title": "The Download signed ActiveX controls property is not set properly for the Internet Zone.",
+      "description": "Active X controls can contain potentially malicious code and must only be allowed to be downloaded from trusted sites.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6244",
+      "title": "The Download unsigned ActiveX controls property is not set properly for the Internet Zone.",
+      "description": "Active X controls can contain potentially malicious code and must only be allowed to be downloaded from trusted sites and they must be digitally signed.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6245",
+      "title": "The Initialize and script ActiveX controls not marked as safe property is not set properly for the Internet Zone.",
+      "description": "ActiveX controls that are not marked safe scripting should not be executed.  Although this is not a complete security measure for a control to be marked safe for scripting, if a control is not marked safe, it should not be initialized and executed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6246",
+      "title": "The Script ActiveX controls marked safe for scripting property is not set properly for the Internet Zone.",
+      "description": "ActiveX controls that are not marked safe for scripting should not be executed.  Although this is not a complete security measure for a control to be marked safe for scripting, if a control is not marked safe, it should not be initialized and executed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6248",
+      "title": "The Font download control is not set properly for the Internet Zone.",
+      "description": "Download of fonts can sometimes contain malicious code.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6249",
+      "title": "The Java Permissions is not set properly for the Internet Zone.",
+      "description": "Java must have level of protections based upon the site being browsed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6250",
+      "title": "The Access data sources across domains is not set properly for the Internet Zone.",
+      "description": "Access to data sources across multiple domains must be controlled based upon the site being browsed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6251",
+      "title": "The Display mixed content is not set properly for the Internet Zone.",
+      "description": "Display mixed content must have level of protection based upon the site being browsed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6252",
+      "title": "The Don't prompt for client certificate selection when no certificate or only one certificate exists is not set properly for the Internet Zone.",
+      "description": "Client certificates should not be presented to web sites without the user's acknowledgement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6253",
+      "title": "The Allow Drag and drop or copy and paste files is not set properly for the Internet Zone.",
+      "description": "Drag and Drop or copy and paste files must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6254",
+      "title": "The Installation of desktop items is not set properly for the Internet Zone.",
+      "description": "Installation of items must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6255",
+      "title": "The Launching programs and files in IFRAME is not set properly for the Internet Zone.",
+      "description": "Launching of programs in IFRAME must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6256",
+      "title": "The Navigate sub-frames across different domains is not set properly for the Internet Zone.",
+      "description": "Frames that navigate across different domains are a security concern because the user may think they are accessing pages on one site while they are actually accessing pages on another site.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6257",
+      "title": "The Software channel permissions is not set properly for the Internet Zone.",
+      "description": "Software Channel permissions must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6258",
+      "title": "The Submit non-encrypted form data is not set properly for the Internet Zone.",
+      "description": "The user needs to be prompted before sending information from a browser that is not encrypted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6259",
+      "title": "The Userdata persistence is not set properly for the Internet Zone.",
+      "description": "Userdata persistence must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6260",
+      "title": "The Allow paste operations via script is not set properly for the Internet Zone.",
+      "description": "Allow paste operations via script must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6261",
+      "title": "The Scripting of Java applets is not set properly for the Internet Zone.",
+      "description": "Java Applets must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6262",
+      "title": "The user Authentication - Logon is not set properly for the Internet Zone.",
+      "description": "Care must be taken with user credentials and how automatic logons are performed and how default Windows credentials are passed to web sites.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6263",
+      "title": "The Download signed ActiveX controls property is not set properly for the Local Zone.",
+      "description": "Active X controls can contain potentially malicious code and must only be allowed to be downloaded from trusted sites.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6264",
+      "title": "The Download unsigned ActiveX controls property is not set properly for the Local Zone.",
+      "description": "ActiveX controls can contain potentially malicious code and must only be allowed to be downloaded from trusted sites and they must be digitally signed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6265",
+      "title": "The Initialize and script ActiveX controls not marked as safe property is not set properly for the Local Zone.",
+      "description": "ActiveX controls that are not marked safe for scripting should not be executed.  Although this is not a \ncomplete security measure for a control to be marked safe for scripting, if a control is not marked \nsafe, it should not be initialized and executed.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6266",
+      "title": "The Script ActiveX controls marked safe for scripting property is not set properly for the Local Zone.",
+      "description": "ActiveX controls that are not marked safe for scripting should not be executed.  Although this is not a \ncomplete security measure for a control to be marked safe for scripting, if a control is not marked \nsafe, it should not be initialized and executed.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6267",
+      "title": "The Java Permissions is not set properly for the Local Zone.",
+      "description": "Java must have level of protection based upon the site being browsed.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6268",
+      "title": "The Access data sources across domains is not set properly for the Local Zone.",
+      "description": "The user must know when data access crosses sources to ensure the data is being received from a source that is known.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6271",
+      "title": "The Don't prompt for client certificate selection when no certificate or only one certificate exists is not set properly for the Local Zone.",
+      "description": "Client certificates should not be presented to web sites without the user's acknowledgement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6272",
+      "title": "The Installation of desktop items is not set properly for the Local Zone.",
+      "description": "Installation of items must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6273",
+      "title": "The Launching programs and files in IFRAME is not set properly for the Local Zone.",
+      "description": "Launching of programs in IFRAME must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6274",
+      "title": "The Software channel permissions is not set properly for the Local Zone.",
+      "description": "Software channel permissions must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6275",
+      "title": "The Allow paste operations via script is not set properly for the Local Zone.",
+      "description": "The Allow paste operations via script must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6276",
+      "title": "The User Authentication - Logon is not set properly for the Local Zone.",
+      "description": "Care must be taken with user credentials and how automatic logons are performed and how default Windows credentials are passed to web sites.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6277",
+      "title": "The Download signed ActiveX controls property is not set properly for the Trusted Sites Zone.",
+      "description": "ActiveX controls can contain potentially malicious code and must only be allowed to be downloaded from trusted sites and they must be digitally signed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6278",
+      "title": "The Download unsigned ActiveX controls property is not set properly for the Trusted Sites Zone.",
+      "description": "ActiveX controls can contain potentially malicious code and must only be allowed to be downloaded from trusted sites and they must be digitally signed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6279",
+      "title": "The Initialize and script ActiveX controls not marked as safe property is not set properly for the Trusted Sites Zone.",
+      "description": "ActiveX controls that are not marked safe for scripting should not be executed.  Although this is not a \ncomplete security measure for a control to be marked safe for scripting, if a control is not marked \nsafe, it should not be initialized and executed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6280",
+      "title": "The ActiveX controls marked safe for scripting property is not set properly for the Trusted Sites Zone.",
+      "description": "ActiveX controls that are not marked safe for scripting should not be executed.  Although this is not a \ncomplete security measure for a control to be marked safe for scripting, if a control is not marked \nsafe, it should not be initialized and executed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6281",
+      "title": "The Java Permissions is not set properly for the Trusted Sites Zone.",
+      "description": "Java must have level of protection based upon the site being browsed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6282",
+      "title": "The Access data sources across domains is not set properly for the Trusted Sites Zone.",
+      "description": "Access data sources across domains must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6283",
+      "title": "The Don't prompt for client certificate selection when no certificate or only one certificate exists is not set properly for the Trusted Sites Zone.",
+      "description": "Client certificates should not be presented to web sites without the user's acknowledgement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6284",
+      "title": "The Installation of desktop items is not set properly for the Trusted Sites Zone.",
+      "description": "Installation of items must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6285",
+      "title": "The Launching programs and files in IFRAME is not set properly for the Trusted Sites Zone.",
+      "description": "Launching of programs in IFRAME must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6286",
+      "title": "The Software channel permissions is not set properly for the Trusted Sites Zone.",
+      "description": "The Software channel permissions must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6287",
+      "title": "The Allow paste operations via script is not set properly for the Trusted Sites Zone.",
+      "description": "Allow paste operations via script must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6288",
+      "title": "The User Authentication - Logon is not set properly for the Trusted Sites Zone.",
+      "description": "Care must be taken with user credentials and how automatic logons are performed and how default Windows credentials are passed to web sites.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6289",
+      "title": "The Download signed ActiveX controls property is not set properly for the Restricted Sites Zone.",
+      "description": "ActiveX controls can contain potentially malicious code and must only be allowed to be downloaded from  trusted sites.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6290",
+      "title": "The Download unsigned ActiveX controls property is not set properly for the Restricted Sites Zone.",
+      "description": "ActiveX controls can contain potentially malicious code and must only be allowed to be downloaded from  trusted sites and they must be digitally signed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6291",
+      "title": "The Initialize and script ActiveX controls not marked as safe property is not set properly for the Restricted Sites Zone.",
+      "description": "ActiveX controls that are not marked safe for scripting should not be executed.  Although this is not a \ncomplete security measure for a control to be marked safe for scripting, if a control is not marked \nsafe, it should not be initialized and executed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6292",
+      "title": "Run ActiveX controls and plug-ins property is not set properly for the Restricted Sites Zone.",
+      "description": "ActiveX controls that are not marked safe for scripting should not be executed.  Although this is not a \ncomplete security measure for a control to be marked safe for scripting, if a control is not marked \nsafe, it should not be initialized and executed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6293",
+      "title": "The Script ActiveX controls marked safe for scripting property is not set properly for the Restricted Sites Zone.",
+      "description": "ActiveX controls that are not marked safe for scripting should not be executed.  Although this is not a \ncomplete security measure for a control to be marked safe for scripting, if a control is not marked \nsafe, it should not be initialized and executed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6294",
+      "title": "The File download control is not set properly for the Restricted Sites Zone.",
+      "description": "Files should not be able to be downloaded from sites that are considered restricted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6295",
+      "title": "The Font download control is not set properly for the Restricted Sites Zone.",
+      "description": "Download of fonts can sometimes contain malicious code.    Files should not be downloaded from restricted sites.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6297",
+      "title": "The Access data sources across domains is not set properly for the Restricted Sites Zone.",
+      "description": "The restricted zones is used for MS Outlook.  This zone must be set properly to ensure Outlook is secured.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6298",
+      "title": "The Allow  META REFRESH is not set properly for the Restricted Site Zone.",
+      "description": "Allow  META REFRESH  must have level of protection based upon the site being browsed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6299",
+      "title": "The Display mixed content is not set properly for the Restricted Sites Zone.",
+      "description": "Mixed content poses a risk when coming from a restricted site. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6300",
+      "title": "The Don’t prompt for client certificate selection when no certificate or only one certificate exists is not set properly for the Restricted Sites Zone.",
+      "description": "Client certificates should not be presented to web sites without the user's acknowledgement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6301",
+      "title": "The Drag and drop or copy and paste files is not set properly for the Restricted Sites Zone.",
+      "description": "Drag and Drop of files must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6302",
+      "title": "The Installation of desktop items is not set properly for the Restricted Sites Zone.",
+      "description": "Installation of items must have level of protection based upon the site being accessed. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6303",
+      "title": "The Launching programs and files in IFRAME is not set properly for the Restricted Sites Zone.",
+      "description": "Launching of programs in IFRAME must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6304",
+      "title": "The Navigate sub-frames across different domains is not set properly for the Restricted Sites Zone.",
+      "description": "Frames that navigate across different domains are a security concern because the user may think they are accessing pages on one site while they are actually accessing pages on another site.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6305",
+      "title": "The Software channel permissions is not set properly for the Restricted Sites Zone.",
+      "description": "Software channel permissions must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6306",
+      "title": "The Submit non-encrypted form data is not set properly for the Restricted Sites Zone.",
+      "description": "Submit non-encrypted form data must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6307",
+      "title": "The Userdata persistence is not set properly for the Restricted Sites Zone.",
+      "description": "No perseistant data should exist and be used in the Restricted sites zone. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6308",
+      "title": "The Active scripting is not set properly for the Restricted Sites Zone.",
+      "description": "Active Scripting must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6309",
+      "title": "The Allow paste operations via script is not set properly for the Restricted Sites Zone.",
+      "description": "The Allow paste operations via script must have level of protection based upon the site being browsed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6310",
+      "title": "The Scripting of Java applets is not set properly for the Restricted Sites Zone.",
+      "description": "The Scripting of Java applets must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6311",
+      "title": "The User Authentication – Logon is not set properly for the Restricted Sites Zone.",
+      "description": "Care must be taken with user credentials and how automatic logons are performed and how default Windows credentials are passed to web sites.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6312",
+      "title": "The Microsoft Java VM is installed.",
+      "description": "This software is no longer being support and should be removed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6313",
+      "title": "The Cipher setting for DES 56/56 is not set properly.",
+      "description": "This cipher setting controls the behavior of the  DES 56/56 encryption algorthm.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6314",
+      "title": "The Cipher setting for Null is not set properly.",
+      "description": "This controls the behavior of the Null cipher.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6315",
+      "title": "The Cipher setting for Triple DES is not set properly.",
+      "description": "This enables the Triple Des cipher.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6316",
+      "title": "The Hash setting for SHA is not set properly.",
+      "description": "This ensures that the Hash value for SHA is enabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6317",
+      "title": "IE is not capable to use 128-bit encryption.",
+      "description": "IE must be enabled to use 128 bit encryption.  This will lead to stronger encryption when supported by the web server for SSL connections.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6319",
+      "title": "The Error Reporting tool for IE is installed or enabled.",
+      "description": "An error reporting tool may send sensitive data to a vendor.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7006",
+      "title": "The IE search parameter is not set correctly.",
+      "description": "This parameter ensures automatic searches are not performed from the address bar.  When a web site is not found and searching is performed, potentially malicious or unsuited sites may be displayed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7007",
+      "title": "The Java Permissions is not set properly for the Restricted Sites Zone.",
+      "description": "Java must have level of protection based upon the site being browsed.",
+      "severity": "medium"
+    }
+  ]
+}

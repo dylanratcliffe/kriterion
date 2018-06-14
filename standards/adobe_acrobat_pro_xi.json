@@ -1,0 +1,167 @@
+{
+  "name": "adobe_acrobat_pro_xi",
+  "date": "2018-01-03",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Adobe Acrobat Pro XI Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-75263",
+      "title": "Adobe Acrobat Pro XI Enhanced Security for standalone mode must be enabled.",
+      "description": "Enhanced Security (ES) is a sandbox capability that restricts access to system resources. ES can be configured in two modes: Standalone mode is when Acrobat opens the desktop PDF client. ES Browser mode is when a PDF is opened via the browser plugin. When Enhanced Security is enabled and a PDF file tries to complete a restricted action from an untrusted location, a security warning must appear.\n\nEnhanced Security “hardens” the application against risky actions. It prevents cross domain access, prohibits script and data injection, blocks stream access to XObjects, silent printing, and execution of high privilege JavaScript.\n\nSatisfies: SRG-APP-000112, SRG-APP-000431",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75265",
+      "title": "Adobe Acrobat Pro XI Enhanced Security for browser mode must be enabled.",
+      "description": "Enhanced Security (ES) is a sandbox capability that restricts access to system resources and prevents PDF cross domain access. ES can be configured in two modes: Standalone mode is when Acrobat opens the desktop PDF client. ES Browser mode is when a PDF is opened via the browser plugin. When Enhanced Security is enabled and a PDF file tries to complete a restricted action from an untrusted location, a security warning must appear.\n\nEnhanced Security “hardens” the application against risky actions. It prevents cross domain access, prohibits script and data injection, blocks stream access to XObjects, silent printing, and execution of high privilege JavaScript.\n\nSatisfies: SRG-APP-000112, SRG-APP-000431",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75267",
+      "title": "Adobe Acrobat Pro XI PDF file attachments must be blocked.",
+      "description": "Acrobat Pro allows for files to be attached to PDF documents. Attachments represent a potential security risk because they can contain malicious content, open other dangerous files, or launch applications.\n\nThis feature prevents users from opening or launching file types other than PDF or FDF and disables the menu option to re-enable.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75269",
+      "title": "Adobe Acrobat Pro XI access to unknown websites must be restricted.",
+      "description": "Acrobat provides the ability for the user to store a list of websites with an associated behavior of allow, ask, or block. Websites that are not in this list are unknown. PDF files can contain URLs that will initiate connections to unknown websites in order to share or get information. That access must be restricted.",
+      "severity": "low"
+    },
+    {
+      "id": "V-75271",
+      "title": "Adobe Acrobat Pro XI access to websites must be blocked.",
+      "description": "PDF files can contain URLs that initiate connections to websites in order to share or get information. Any Internet access introduces a security risk as malicious websites can transfer harmful content or silently gather data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-75273",
+      "title": "Adobe Acrobat Pro XI must be configured to block Flash Content.",
+      "description": "Flash has a long history of vulnerabilities.  Although Flash is no longer provided with Acrobat, if the system has Flash installed, a malicious PDF could execute code on the system.  Configuring Flash to run from a privileged location limits the execution capability of untrusted Flash content that may be embedded in the PDF.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75275",
+      "title": "The Adobe Acrobat Pro XI send and Track plugin for Outlook must be disabled.",
+      "description": "When enabled, the Adobe Send and Track button appears in Outlook. When an email is composed it enables the ability to send large files as public links through Outlook. The attached files can be uploaded to the Adobe Document Cloud and public links to the files are inserted in the email body.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75277",
+      "title": "Adobe Acrobat Pro XI privileged file and folder locations must be disabled.",
+      "description": "Privileged Locations are the primary method Acrobat uses to allow users and admins to specify trusted content that should be exempt from security restrictions, such as when Enhanced Security is enabled.\n\nA Privileged Location may be a file, folder, or a host. If the user is allowed to set a Privileged Location, they could bypass security protections.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75279",
+      "title": "Adobe Acrobat Pro XI FIPS mode must be enabled.",
+      "description": "Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data. The application must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.\n\nSatisfies: SRG-APP-000416, SRG-APP-000514",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75281",
+      "title": "Adobe Acrobat Pro XI periodic downloading of Adobe European certificates must be disabled.",
+      "description": "By default, the user can update Adobe European certificates from an Adobe server through the GUI.\n\nWhen updating Adobe European certificates is disabled, it prevents the automatic download and installation of certificates and disables and locks the end user's ability to download those certificates.",
+      "severity": "low"
+    },
+    {
+      "id": "V-75285",
+      "title": "Adobe Acrobat Pro XI Protected Mode must be enabled.",
+      "description": "Protected Mode is a “sandbox” that is essentially a read-only mode.\n\nWhen enabled, Acrobat allows the execution environment of untrusted PDF's and the processes the PDF may invoke but also presumes all PDFs are potentially malicious and confines processing to a restricted sandbox.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75287",
+      "title": "Adobe Acrobat Pro XI Protected View must be enabled.",
+      "description": "Protected View is a “super-sandbox” that is essentially a read-only mode. When enabled, Acrobat strictly confines the execution environment of untrusted PDF's and the processes the PDF may invoke. Acrobat also assumes all PDFs are potentially malicious and confines processing to a restricted sandbox.\n\nWhen the PDF is opened, the user is presented with the option to trust the document. When the user chooses to trust the document, all features are enabled, this action assigns trust to the document and adds the document to the users’ list of Privileged Locations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75289",
+      "title": "The Adobe Acrobat Pro XI latest security-related software updates must be installed.",
+      "description": "Security flaws with software applications are discovered daily. Vendors are constantly updating and patching their products to address newly discovered security vulnerabilities. Organizations (including any contractor to the organization) are required to promptly install security-relevant software updates (e.g., patches, service packs, and hot fixes). Flaws discovered during security assessments, continuous monitoring, incident response activities, or information system error handling must also be addressed expeditiously.\n\nThis requirement will apply to software patch management solutions that are used to install patches across the enclave and also to applications that are not part of that patch management solution. For example, many browsers today provide the capability to install their own patch software. Patch criticality, as well as system criticality, will vary. Therefore, the tactical situations regarding the patch management process will also vary. This means that the time period used must be a configurable parameter. Time frames for application of security-relevant software updates may be dependent upon the Information Assurance Vulnerability Management (IAVM) process.\n\nThe application will be configured to check for and install security-relevant software updates within an identified time period from the availability of the update. The specific time period will be defined by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).",
+      "severity": "high"
+    },
+    {
+      "id": "V-75293",
+      "title": "Adobe Acrobat Pro XI Default Handler changes must be disabled.",
+      "description": "Acrobat Pro allows users to change the version of Acrobat Pro that is used to read PDF files. This is a risk if multiple versions of Acrobat are installed on the system and the other version has dissimilar security configurations or known vulnerabilities. When the Default PDF Handler is disabled, the end users will not be able to change the default PDF viewer.",
+      "severity": "low"
+    },
+    {
+      "id": "V-75295",
+      "title": "Adobe Acrobat Pro XI must disable the ability to store files on Acrobat.com.",
+      "description": "Adobe Acrobat Pro XI provides the ability to store PDF files on Adobe.com servers. Allowing users to store files on non-DoD systems introduces risk of data compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75297",
+      "title": "Adobe Acrobat Pro XI certified document trust must be disabled.",
+      "description": "Certified document trust elevates signed PDF files to a privileged location and bypasses privileged view security protections. Disabling certified documents disables and locks the end user's ability to elevate certified documents as a privileged location.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75299",
+      "title": "Adobe Acrobat Pro XI privileged host locations must be disabled.",
+      "description": "Privileged Locations are the primary method Acrobat uses to allow users and admins to specify trusted content that should be exempt from security restrictions, such as when Enhanced Security is enabled.\n\nA Privileged Location may be a file, folder, or a host. If the user is allowed to set a Privileged Location, they could bypass security protections.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75301",
+      "title": "Adobe Acrobat Pro XI privileged site locations must be disabled.",
+      "description": "Privileged Locations are the primary method Acrobat uses to allow users and admins to specify trusted content that should be exempt from security restrictions, such as when Enhanced Security is enabled.\n\nA Privileged Location may be a file, folder, or a host. If the user is allowed to set a Privileged Location, they could bypass security protections.",
+      "severity": "low"
+    },
+    {
+      "id": "V-75303",
+      "title": "Adobe Acrobat Pro XI Periodic downloading of Adobe certificates must be disabled.",
+      "description": "By default, the user can update Adobe certificates from an Adobe server through the GUI.\n\nWhen updating Adobe certificates is disabled, it prevents the automatic download and installation of certificates and disables and locks the end user's ability to download those certificates.",
+      "severity": "low"
+    },
+    {
+      "id": "V-75305",
+      "title": "Adobe Acrobat Pro XI SharePoint and Office365 Access must be disabled.",
+      "description": "Both SharePoint and Office365 configurations are shared in one setting. Disabling this setting removes the user’s ability to use both SharePoint and Office365 cloud features and functions. If the user is allowed to store files on public cloud services, there is a risk of data compromise.",
+      "severity": "low"
+    },
+    {
+      "id": "V-75307",
+      "title": "The Adobe Acrobat Pro XI Welcome Screen must be disabled.",
+      "description": "The Adobe Welcome screen can be distracting. It provides marketing material and also has online links to the Adobe quick tips website, tutorials, blogs, and community forums.\n\nWhen the Adobe Welcome screen is disabled, the Welcome screen will not be populated on application startup.",
+      "severity": "low"
+    },
+    {
+      "id": "V-75309",
+      "title": "Adobe Acrobat Pro XI Webmail must be disabled.",
+      "description": "Acrobat Pro XI provides a Webmail capability. This allows users to send PDFs as email attachments using any mail account that supports SMTP/IMAP protocols. In addition to existing desktop email clients, users can now configure these mail accounts by providing User Name, Password, IMAP and SMTP details. The capability allows users to utilize Gmail and Yahoo mail accounts to send PDF files directly from within the Acrobat application. This capability allows the user to by-pass existing email protections provided by DoD email services.",
+      "severity": "low"
+    },
+    {
+      "id": "V-75311",
+      "title": "Adobe Acrobat Pro XI third-party web connectors must be disabled.",
+      "description": "Third-party connectors include services such as Dropbox and Google Drive. When third-party web connectors are disabled, it prevents access to third-party services for file storage. Allowing access to online storage services introduces the risk of data loss or data exfiltration.",
+      "severity": "low"
+    },
+    {
+      "id": "V-75313",
+      "title": "Adobe Acrobat Pro XI Adobe Cloud Synchronization must be disabled.",
+      "description": "By default, Adobe online services are tightly integrated in Adobe Acrobat. When the Adobe Cloud synchronization is disabled it prevents the synchronization of desktop preferences across devices on which the user is signed in with an Adobe ID (including phones).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75315",
+      "title": "Adobe Acrobat Pro XI Adobe Repair Installation must be disabled.",
+      "description": "When Repair Installation is disabled the user does not have the option (Help Menu) or ability to repair an Adobe Acrobat Pro XI install. Ability to repair includes the risk that established security settings could be overwritten.",
+      "severity": "low"
+    },
+    {
+      "id": "V-79057",
+      "title": "An unsupported Adobe Acrobat Pro version must not be installed.",
+      "description": "Failure to install the most current Adobe Acrobat Pro version leaves a system vulnerable to exploitation. Current versions correct known security and system vulnerabilities. \n\nIf the Adobe Acrobat Pro installation is not at the most current version and patch level, this is a Category 1 finding since new vulnerabilities will not be patched.\n\nAdobe Acrobat Pro XI is End of Life. Reference the following URL: http://www.adobe.com/support/products/enterprise/eol/. Click on \"Adobe enterprise products and technical support periods\".\n",
+      "severity": "high"
+    }
+  ]
+}

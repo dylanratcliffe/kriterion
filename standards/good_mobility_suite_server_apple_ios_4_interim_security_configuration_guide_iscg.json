@@ -1,0 +1,209 @@
+{
+  "name": "good_mobility_suite_server_apple_ios_4_interim_security_configuration_guide_iscg",
+  "date": "2011-11-07",
+  "description": "This ISCG provides technical security controls required for the use of the Good Mobility Suite with Apple iOS 4 devices (iPhone, iPad, and iPod touch) in the DoD environment.",
+  "title": "Good Mobility Suite Server (Apple iOS 4) Interim Security Configuration Guide (ISCG)",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-24972",
+      "title": "The required smartphone management server or later version must be used.",
+      "description": "Earlier versions of the smartphone management server may have security vulnerabilities or have not implemented required security features. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24973",
+      "title": "The host server where the smartphone management server is installed must be hardened according to the appropriate Application STIG (SQL, Apache Web Server, Apache Tomcat, IIS, etc.). ",
+      "description": "Wireless email services are installed on a Windows Server. The server must be compliant with the Windows STIG and applicable Application STIGs to ensure the system is not vulnerable to attack resulting in a Denial of Service or compromise of the wireless email server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24974",
+      "title": "The smartphone management server email system must be set up with the required system components in the required network architecture. ",
+      "description": "The wireless email server architecture must comply with the DoD environment because approval of the smartphone management server is contingent on installation with the correct settings. DoD enclaves could be at risk of penetration or DoD data could be compromised if the smartphone management server is not installed as required.",
+      "severity": "high"
+    },
+    {
+      "id": "V-24975",
+      "title": "The smartphone management server host-based or appliance firewall must be installed and configured as required.",
+      "description": "A smartphone user could get access to unauthorized network resources (application and content servers, etc.) if the smartphone management server host firewall is not set up as required.",
+      "severity": "high"
+    },
+    {
+      "id": "V-24976",
+      "title": "Security controls must be implemented on the smartphone management server for connections to back-office servers and applications.",
+      "description": "The secure connection from the smartphone to the smartphone management server can be used by the smartphone user to connect to back-office servers and applications located on the enclave network.  These connections bypass network authentication controls setup on the enclave.  Strong access controls to back-office servers are required to ensure DoD data is not exposed to users of the smartphone system that are not authorized to access the back-office servers and applications.",
+      "severity": "high"
+    },
+    {
+      "id": "V-24977",
+      "title": "The smartphone management server must be configured to control HTML and RTF formatted email.\n",
+      "description": "HTML email and inline images in email can contain malware or links to web sites with malware.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24978",
+      "title": "Smartphone user accounts must not be assigned to the default security/IT policy. ",
+      "description": "The smartphone default security/IT policy on the smartphone management server does not include most DoD required security policies for data encryption, authentication, and access control. DoD enclaves are at risk of data exposure and hacker attack if users are assigned the default (or other non-STIG compliant) security/IT policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24987",
+      "title": "“Re-challenge for CAC PIN every” must be set.",
+      "description": "A user’s CAC PIN or software certificate PIN is cached in memory on the device for a short period of time so a user does not have to re-enter his/her PIN every time the user’s digital certificates are required for an S/MIME operation. The cached memory is cleared after a set period of time to limit exposure of the digital certificates to unauthorized use.  Otherwise, a hacker may be able to gain access to the device while the PIN is still cached in memory and access the Good application and gain access to sensitive DoD information.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24988",
+      "title": "Handheld password must be set as required.",
+      "description": "Long used passwords are more susceptible to being compromised by a hacker, which could lead to a possible compromise of the iPhone/iPad and sensitive DoD data stored on the iPhone/iPad.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24989",
+      "title": "Previously used passwords must be disallowed for security/email client on smartphone.",
+      "description": "Previously used passwords are more susceptible to being compromised by a hacker, which could lead to a possible compromise of the smartphone and sensitive DoD data stored on the smartphone.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24990",
+      "title": "Password minimum length must be set as required for the smartphone security/email client.",
+      "description": "Short passwords can be easily determined by various password hacking tools, which could lead to unauthorized access to the smartphone and exposure to sensitive DoD data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24991",
+      "title": "Repeated password characters must be disallowed for the Good app.",
+      "description": "Repeated password characters reduces the strength of a password to withstand attacks by password hacking tools, which could lead to unauthorized access to the smartphone and exposure to sensitive DoD data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24992",
+      "title": "Maximum invalid password attempts must be set as required for the smartphone security/email client.",
+      "description": "A hacker with unlimited attempts can determine the password of a smartphone within a few minutes using password hacking tools, which could lead to unauthorized access to the smartphone and exposure to sensitive DoD data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24993",
+      "title": "Data must be wiped after maximum password attempts reached for the smartphone security/email client.",
+      "description": "A hacker with unlimited attempts can determine the password of a smartphone within a few minutes using password hacking tools, which could lead to unauthorized access to the smartphone and exposure to sensitive DoD data.\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24994",
+      "title": "Inactivity lock must be set as required for the smartphone security/email client.",
+      "description": "Sensitive DoD data could be exposed to unauthorized viewing or use if lost or stolen smartphone screen was not locked.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24995",
+      "title": "\"Do not allow data to be copied from the Good application\" must be checked.",
+      "description": "Sensitive data could be saved in the non-FIPS 140-2 validated area of memory on the smartphone, which would violate DoD policy and may expose sensitive DoD data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24998",
+      "title": "The Over-The-Air (OTA) device provisioning PIN must have expiration set.",
+      "description": "The time period that a device can be provisioned via Over-The-Air (OTA) provisioning needs to be controlled to ensure unauthorized people do not have the capability to setup rogue devices on the network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24999",
+      "title": "OTA Provisioning PIN reuse must not be allowed.",
+      "description": "The reuse of the OTA PIN can allow a hacker to provision an unauthorized device on the system.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25000",
+      "title": "The Good server must be configured to push an iPhone configuration profile to each managed iPhone.",
+      "description": "Sensitive DoD data could be compromised if a security profile is not installed on DoD iPhone/iPad/iPod touch devices.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25002",
+      "title": "A compliance rule must be set up in the server defining required smartphone hardware versions. ",
+      "description": "Older devices do not support required security features.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25004",
+      "title": "A compliance rule must be setup in the server implementing jailbreak detection on smartphones. Devices will be wiped if they have been jailbroken.",
+      "description": "DoD-required security policies can be bypassed on jailbroken smartphone .  Jailbroken devices can expose sensitive DoD data to unauthorized people and could lead to a network attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25030",
+      "title": "If access is enabled to the Good app contacts lists by the smartphone, the list of contact information must be limited. ",
+      "description": "Sensitive contact information could be exposed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25032",
+      "title": "Password access to the Good app on the smartphone must be enabled. ",
+      "description": "A hacker could gain access to sensitive data in the smartphone application and gain an attack vector to the enclave if the password access control/authentication feature of the application is not enabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25754",
+      "title": "The PKI digital certificate installed on the wireless email management server must be a DoD PKI-issued certificate. ",
+      "description": "When a self signed PKI certificate is used, a rogue wireless email management server can impersonate the DoD wireless email management server. DoDI 8520-02 requires PKI certificates come from a trusted DoD PKI.",
+      "severity": "low"
+    },
+    {
+      "id": "V-26135",
+      "title": "Password complexity must be set as required.",
+      "description": "Non-complex passwords can be easily determined by various password hacking tools, which could lead to unauthorized access to the smartphone and exposure to sensitive DoD data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26152",
+      "title": "S/MIME must be enabled on the Good server. ",
+      "description": "Sensitive DoD data could be exposed if the required setting is not configured on the Good server. If S/MIME support is not configured on the server, the user will not be able to view critical encrypted email or be able to encrypt email with sensitive DoD information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26560",
+      "title": "Either CAC or password authentication must be enabled for user access to the Good app on the smartphone.",
+      "description": "Sensitive DoD data is saved inside the Good app and could be exposed if strong authentication is not implemented. The Good application stores sensitive DoD information.  A hacker with access to the smartphone could easily gain access to the Good application if the required authentication control is not set.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26561",
+      "title": "“Require CAC to be present” must be set.",
+      "description": "Sensitive DoD data is saved inside the Good app and could be exposed if strong authentication is not implemented.  The Good applications stores sensitive DoD information.  A hacker with access to the smartphone could easily gain access to the Good application if the required authentication control is not set.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26562",
+      "title": "“Require both letters and numbers” must be set as required for the smartphone security/email client.",
+      "description": "Sensitive DoD data is saved inside the Good app and could be exposed if strong authentication is not implemented.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26563",
+      "title": "“Do not allow sequential numbers” must be set as required for the smartphone security/email client.",
+      "description": "Sensitive DoD data is saved inside the Good app and could be exposed if strong authentication is not implemented.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26564",
+      "title": "Authentication on system administration accounts for wireless management servers must be configured.",
+      "description": "CTO 07-15Rev1 requires administrator accounts use either CAC authentication or use complex passwords to ensure strong access control is enforced.",
+      "severity": "high"
+    },
+    {
+      "id": "V-26728",
+      "title": "A compliance rule must be set up on the server defining required Good client versions. ",
+      "description": "Older software versions do not support required security features.",
+      "severity": "low"
+    },
+    {
+      "id": "V-26729",
+      "title": "\"Do not allow data to be copied into the Good application\" must be checked in the Good security policy for the handheld.",
+      "description": "Malware could be copied into the secure Good sandbox on the smartphone, which would put sensitive data at risk of being compromised.",
+      "severity": "medium"
+    }
+  ]
+}

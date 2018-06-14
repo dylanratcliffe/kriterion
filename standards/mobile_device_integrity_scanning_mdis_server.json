@@ -1,0 +1,119 @@
+{
+  "name": "mobile_device_integrity_scanning_mdis_server",
+  "date": "2013-05-08",
+  "description": "This STIG provides technical security controls required for the use of a mobile MDIS server to audit the integrity of mobile devices in the DoD environment. The requirements listed in this benchmark apply to any DoD iOS implementation when iOS devices process sensitive DoD information, connect to a DoD network or network connected PC, or provide service to a DoD email system. The requirements can be implemented in an application server separate from the MDM server or included in the MDM server.  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailbox@mail.mil.",
+  "title": "Mobile Device Integrity Scanning (MDIS) Server Security Technical Implementation Guide (STIG)",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-24972",
+      "title": "The required mobile device management server version (or later) must be used. ",
+      "description": "Earlier versions of the MDM server may have security vulnerabilities or not have required security features implemented. Therefore, sensitive DoD data could be exposed if required security features are not implemented on site-managed mobile devices.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24973",
+      "title": "The host server where the mobile management server is installed must be hardened according to the appropriate Application STIG (SQL, Apache Tomcat, IIS, etc.). ",
+      "description": "The host server where the mobile management server is installed must be compliant with the Windows STIG and applicable application STIGs to ensure the system is not vulnerable to attack resulting in a Denial of Service or compromise of the management server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24975",
+      "title": "The host server where the mobile management server is installed must have a host-based or appliance firewall, which must be configured as required.\n",
+      "description": "A mobile device user could get access to unauthorized network resources (application and content servers, etc.) via the communications link between the mobile device and mobile management server if the server host firewall is not set up as required. HBSS is usually used to satisfy this requirement.",
+      "severity": "high"
+    },
+    {
+      "id": "V-25754",
+      "title": "The PKI digital certificate installed on mobile management servers for server authentication must be a DoD PKI-issued certificate.",
+      "description": "When a self-signed PKI certificate is used, a rogue mobile management server can impersonate the DoD mobile management server. DoDI 8520-02 requires PKI certificates come from a trusted DoD PKI.",
+      "severity": "low"
+    },
+    {
+      "id": "V-26564",
+      "title": "Authentication on system administration accounts for mobile management servers must be configured to support CTO 07-15 Rev 1 requirements.\n",
+      "description": "CTO 07-15 Rev 1 requires administrator accounts use either CAC authentication or use complex passwords to ensure strong access control is enforced. This is best enforced by requiring the server support AD authentication.",
+      "severity": "high"
+    },
+    {
+      "id": "V-32748",
+      "title": "The results and mitigation actions from MDIS server on site managed mobile OS devices must be maintained by the site for at least 6 months (1 year recommended). ",
+      "description": "Scan results must be maintained so auditors can verify mitigation actions have been completed, so a scan can be compared to a previous scan, and to determine if there are any security vulnerability trends for site-managed mobile OS devices.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32749",
+      "title": "Mitigation actions must be implemented based on integrity validation scan findings.  ",
+      "description": "If mitigation actions are not implemented after a scan finding, DoD data and the enclave could be at risk of being compromised because the security baseline of the device has been compromised.  The IAO should determine the appropriate mitigation action based on the scan finding report and any other analysis performed by site Information Assurance (IA) staff.  It is expected that the system administrator or IAO will approve all mitigation actions before they are implemented, including those implemented by the server (for example, device wipe).",
+      "severity": "high"
+    },
+    {
+      "id": "V-32753",
+      "title": "The MDIS server must alert when it identifies malicious code on managed mobile devices. ",
+      "description": "Detection of possible compromise of a DoD mobile device is a key security control to insure the compromise does not result in the exposure of sensitive DoD data or lead to a successful attack on the DoD network.  Alerting is required to ensure proper management oversight is provided to timely mitigation actions to reduce the effect of the compromise.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-32754",
+      "title": "The MDIS server must provide a near real-time alert when any compromise or potential compromise indicators occurs. ",
+      "description": "Detection of possible compromise of a DoD mobile device is a key security control to insure the compromise does not result in the exposure of sensitive DoD data or lead to a successful attack on the DoD network.  Timely alerting is required to ensure proper management oversight is provided to mitigation actions to reduce the effect of the compromise.  Compromise indicators include the following:\n-Unauthorized software on the device.\n-Jailbroken or rooted device.\n-Changes in file structure or files on the device.\n-Unexpected changes in applications installed on the device.\n-Integrity check failure of all operating system files, device drivers, and security enforcement mechanisms at device startup.",
+      "severity": "high"
+    },
+    {
+      "id": "V-32755",
+      "title": "The MDIS server must provide notifications regarding suspicious events to an organization defined list of response personnel, including the IAO and system administrator, who are identified by name and/or by role.",
+      "description": "Detection of possible compromise of a DoD mobile device is a key security control to insure the compromise does not result in the exposure of sensitive DoD data or lead to a successful attack on the DoD network.  Timely alerting is required to ensure proper management oversight is provided to mitigation actions to reduce the effect of the compromise.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32758",
+      "title": "The MDIS server must verify the integrity of all operating system files, device drivers, and security enforcement mechanisms at startup and at least every six hours thereafter, using one or more DoD-approved cryptographic mechanisms that compare attributes of the operating system configuration to a known good baseline.",
+      "description": "Detection of possible compromise of a DoD mobile device is a key security control to insure the compromise does not result in the exposure of sensitive DoD data or lead to a successful attack on the DoD network.  Analysis has determined scans must be performed at least every 6 hours.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-32759",
+      "title": "The MDIS agent must not be capable of being disabled or controlled by the user or other mobile device application. \n",
+      "description": "The integrity of the device security baseline would be compromised if the MDIS agent could be disabled by the user or an application.\n\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-32761",
+      "title": "The MDIS server must base recommended mitigations for findings on the identified risk level of the finding. ",
+      "description": "Detection of possible compromise of a DoD mobile device is a key security control to insure the compromise does not result in the exposure of sensitive DoD data or lead to a successful attack on the DoD network. Since the MDIS is an automated capability, the server must be able to determine the severity of the finding and provide a recommended mitigation to ensure timely action to mitigate the finding.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32762",
+      "title": "The MDIS agent must operate separate and independent of the management of the mobile devices security policy. \n",
+      "description": "One of the key capabilities of the MDIS feature is the capability to determine if the device has been compromised. To ensure integrity of the feature, the MDIS must not be modified by any device management feature, and must be able to monitor the compliance of device management.",
+      "severity": "high"
+    },
+    {
+      "id": "V-32763",
+      "title": "The MDIS server must identify changes in file structure and files on the mobile device. ",
+      "description": "Detection of possible compromise of a DoD mobile device is a key security control to insure the compromise does not result in the exposure of sensitive DoD data or lead to a successful attack on the DoD network.  File structure changes are a key indicator of possible device compromise.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-32764",
+      "title": "The MDIS server must identify unexpected changes in applications installed on the mobile device. ",
+      "description": "Detection of possible compromise of a DoD mobile device is a key security control to insure the compromise does not result in the exposure of sensitive DoD data or lead to a successful attack on the DoD network.  Application changes are a key indicator of possible device compromise.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-32765",
+      "title": "The MDIS server must have the capability to maintain change history of individual devices.",
+      "description": "Scan results must be maintained so auditors can verify mitigation actions have been completed, so a scan can be compared to a previous scan, and to determine if there are any security vulnerability trends for site managed mobile OS devices.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-33231",
+      "title": "The master AES encryption key used to encrypt data between the management server and the agent on the mobile device must be changed every 30 days or less. ",
+      "description": "There are two primary methods for generating the encryption key used to encrypt data between the management server and the server agent installed on the mobile device.  The first method is to use a shared secret and the second is to generate the master encryption key based on PKI key generation.  When a shared secret is used, if the master encryption key is not rotated periodically, and it is compromised, all future data sent between the mobile management server and the agent located on the mobile device would be compromised. Limiting the compromise to no more than a specific period of data is a security best practice.",
+      "severity": "low"
+    }
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "name": "a10_networks_adc_ndm",
+  "date": "2016-04-15",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "A10 Networks ADC NDM Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-68031",
+      "title": "The A10 Networks ADC must limit the number of concurrent sessions to one (1) for each administrator account and/or administrator account type.",
+      "description": "Device management includes the ability to control the number of administrators and management sessions that manage a device. Limiting the number of allowed administrators and sessions per administrator is helpful in limiting risks related to DoS attacks.\n\nThis requirement addresses concurrent sessions for administrative accounts and does not address concurrent sessions by a single administrator via multiple administrative accounts. The maximum number of concurrent sessions should be defined based upon mission needs and the operational environment for each system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68033",
+      "title": "The A10 Networks ADC must enforce the limit of three consecutive invalid logon attempts.",
+      "description": "By limiting the number of failed logon attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced.\n\nThe A10 Networks ADC must be configured to limit the consecutive invalid logon attempts. When someone attempts to log on, but fails repeatedly, the failed logon attempts and associated \"user is disabled\" message will be logged. Note: The user will still be prompted up to five times, even when the account is disabled at three failed logon attempts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68035",
+      "title": "The A10 Networks ADC must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the device.",
+      "description": "Display of the DoD-approved use notification before granting access to the network device ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. System use notifications are required only for access via logon interfaces with human users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-68037",
+      "title": "The A10 Networks ADC must allow only the ISSM (or individuals or roles appointed by the ISSM) Root, Read Write, or Read Only privileges.",
+      "description": "Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent the auditing of critical events. Misconfigured audits may degrade the system's performance by overwhelming the audit log. Misconfigured audits may also make it more difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAdministrators with Root, Read Write, or Read Only privileges can view the audit and system logs.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68039",
+      "title": "The A10 Networks ADC must produce audit log records containing information (FQDN, unique hostname, management or loopback IP address) to establish the source of events.",
+      "description": "In order to compile an accurate risk assessment and provide forensic analysis, it is essential for security personnel to know the source of the event. The source may be a component, module, or process within the device or an external session, administrator, or device. Associating information about where the source of the event occurred provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured device.\n\nWhen the event log or system log is written to a syslog server, the hostname is included with each record.",
+      "severity": "low"
+    },
+    {
+      "id": "V-68041",
+      "title": "The A10 Networks ADC must have command auditing enabled.",
+      "description": "Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.\n\nOrganizations consider limiting the additional audit information to only that information explicitly needed for specific audit requirements. The additional information required is dependent on the type of information (i.e., sensitivity of the data and the environment within which it resides). At a minimum, the organization must audit full-text recording of privileged commands.",
+      "severity": "low"
+    },
+    {
+      "id": "V-68043",
+      "title": "The A10 Networks ADC must alert the ISSO and SA (at a minimum) in the event of an audit processing failure.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without this notification, the security personnel may be unaware of an impending failure of the audit capability and system operation may be adversely affected. Audit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded.\n\nSince the A10 Networks ADC can monitor connectivity to servers, it can be configured to perform a health check of the Syslog servers. When connectivity is lost or the health check fails for another reason, it can send an SNMP trap notifying authorized personnel.",
+      "severity": "low"
+    },
+    {
+      "id": "V-68045",
+      "title": "The A10 Networks ADC must back up audit records at least every seven days onto a different system or system component than the system or component being audited.",
+      "description": "Protection of log data includes assuring log data is not accidentally lost or deleted. Regularly backing up audit records to a different system or onto separate media than the system being audited helps to assure, in the event of a catastrophic system failure, the audit records will be retained. This helps to ensure a compromise of the information system being audited does not also result in a compromise of the audit records.\n\nThere are two ways to meet this requirement; either by configuring the device to send the audit and event log to the syslog servers or by scheduling periodic exports of the audit and event logs.",
+      "severity": "low"
+    },
+    {
+      "id": "V-68047",
+      "title": "The A10 Networks ADC must disable management protocol access to all interfaces except the management interface.",
+      "description": "In order to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable unused or unnecessary physical and logical ports/protocols on information systems.\n\nNetwork devices are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services); however, doing so increases risk over limiting the services provided by any one component.\n\nTo support the requirements and principles of least functionality, the network device must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality of life issues.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68049",
+      "title": "The A10 Networks ADC must not have any shared accounts (other than the emergency administration account).",
+      "description": "To assure accountability and prevent unauthenticated access, organizational administrators must be uniquely identified and authenticated for all network management accesses to prevent potential misuse and compromise of the system. This means that there must be no shared accounts. The only exception is for the emergency administration account. Note: The number of emergency administration accounts is restricted to at least one, but no more than operationally required as determined by the ISSO.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68051",
+      "title": "The A10 Networks ADC must not use the default admin account.",
+      "description": "To assure accountability and prevent unauthenticated access, organizational administrators must be uniquely identified and authenticated for all network management accesses to prevent potential misuse and compromise of the system.\n\nThe use of a default password for any account, especially one for administrative access, can quickly lead to a compromise of the device and subsequently, the entire enclave or system. The \"admin\" account is intended solely for the initial setup of the device and must be disabled when the device is initially configured. The default password for this account must immediately be changed at the first logon of an authorized administrator.\n\nThe ACOS device comes with one admin account, \"admin\", by default. The \"admin\" account has global Read Write privileges. The admin account, and other admin accounts with global Read Write privileges, can configure additional admin accounts. Since this account, if misused, can easily compromise the device, it must be disabled.",
+      "severity": "high"
+    },
+    {
+      "id": "V-68053",
+      "title": "The A10 Networks ADC must implement replay-resistant authentication mechanisms for network access to privileged accounts.",
+      "description": "A replay attack may enable an unauthorized user to gain access to the application. Authentication sessions between the authenticator and the application validating the user credentials must not be vulnerable to a replay attack. An authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message. Techniques used to address this include protocols using nonces (e.g., numbers generated for a specific one-time use) or challenges (e.g., TLS, WS_Security). Additional techniques include time-synchronous or challenge-response one-time authenticators.\n\nOf the three authentication protocols for device management on the A10 Networks ADC, none are inherently replay-resistant. If LDAP or TACACS+ is selected, TLS must also be used. If RADIUS is used, the device must be a FIPS mode platform.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68055",
+      "title": "The A10 Networks ADC must prohibit the use of unencrypted protocols for network access to privileged accounts.",
+      "description": "Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.\n\nNetwork devices can accomplish this by making direct function calls to encryption modules or by leveraging operating system encryption capabilities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68057",
+      "title": "The A10 Networks ADC must terminate management sessions after 10 minutes of inactivity except to fulfill documented and validated mission requirements.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element. \n\nTerminating network connections associated with communications sessions includes, for example, de-allocating associated TCP/IP address/port pairs at the operating system level, or de-allocating networking assignments at the application level if multiple application sessions are using a single, operating system-level network connection. This does not mean that the device terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.",
+      "severity": "high"
+    },
+    {
+      "id": "V-68059",
+      "title": "The A10 Networks ADC must reveal error messages only to authorized individuals (ISSO, ISSM, and SA).",
+      "description": "Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state. Additionally, sensitive account information must not be revealed through error messages to unauthorized personnel or their designated representatives.\n\nIn the A10 Networks ADC, the audit log is maintained in a separate file separate from the system log. Access to the audit log is role-based. The audit log messages that are displayed for an admin depend upon that administrator’s role (privilege level). Administrators with Root, Read Write, or Read Only privileges who view the audit log can view all the messages, for all system partitions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68061",
+      "title": "The A10 Networks ADC must generate alerts to the administrators and ISSO when accounts are created.",
+      "description": "Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply create a new account. Notification of account creation is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail which documents the creation of accounts and notifies administrators and Information System Security Officers (ISSO). Such a process greatly reduces the risk that accounts will be surreptitiously created and provides logging that can be used for forensic purposes.\n\nThe A10 Networks ADC records in the audit log when an account is created. This appears as the command that created the account and contains the keyword \"admin\". These messages must be forwarded to the ISSO and administrators. Configuring the device to forward all audit log messages to an actively monitored syslog server or SNMP management station meets this requirement.",
+      "severity": "high"
+    },
+    {
+      "id": "V-68063",
+      "title": "The A10 Networks ADC must generate alerts to the administrators and ISSO when accounts are modified.",
+      "description": "Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply modify an existing account. Notification of account modification is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail which documents the modification of device administrator accounts and notifies administrators and Information System Security Officers (ISSO). Such a process greatly reduces the risk that accounts will be surreptitiously modified and provides logging that can be used for forensic purposes.\n\nThe A10 Networks ADC records in the audit log when an account is modified. This appears as the command that created the account and contains the keyword \"admin\". These messages must be forwarded to the ISSO and administrators. Configuring the device to forward all audit log messages to an actively monitored syslog server or SNMP management station meets this requirement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68065",
+      "title": "The A10 Networks ADC must generate alerts to the administrators and ISSO when accounts are disabled.",
+      "description": "When application accounts are disabled, administrator accessibility is affected. Accounts are utilized for identifying individual device administrators or for identifying the device processes themselves. \n\nIn order to detect and respond to events that affect administrator accessibility and device processing, devices must audit account disabling actions and, as required, notify the appropriate individuals so they can investigate the event. Such a capability greatly reduces the risk that device accessibility will be negatively affected for extended periods of time and also provides logging that can be used for forensic purposes.\n\nThe A10 Networks ADC records in the audit log when an account is disabled. This appears as the command that created the account and contains the keyword \"admin\". These messages must be forwarded to the ISSO and administrators. Configuring the device to forward all audit log messages to an actively monitored syslog server or SNMP management station meets this requirement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68067",
+      "title": "The A10 Networks ADC must generate alerts to the administrators and ISSO when accounts are removed.",
+      "description": "When application accounts are removed, administrator accessibility is affected. Accounts are utilized for identifying individual device administrators or for identifying the device processes themselves. \n\nIn order to detect and respond to events that affect administrator accessibility and device processing, devices must audit account removal actions and, as required, notify the appropriate individuals so they can investigate the event. Such a capability greatly reduces the risk that device accessibility will be negatively affected for extended periods of time and also provides logging that can be used for forensic purposes.\n\nThe A10 Networks ADC records in the audit log when an account is removed. This appears as the command that created the account and contains the keyword \"admin\". These messages must be forwarded to the ISSO and administrators. Configuring the device to forward all audit log messages to an actively monitored syslog server or SNMP management station meets this requirement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68069",
+      "title": "When anyone who has access to the emergency administration account no longer requires access to it or leaves the organization, the password for the emergency administration account must be changed.",
+      "description": "A shared/group account credential is a shared form of authentication that allows multiple individuals to access the network device using a single account. If shared/group account credentials are not terminated when individuals leave the group, the user that left the group can still gain access even though they are no longer authorized. There may also be instances when specific user actions need to be performed on the network device without unique administrator identification or authentication. Examples of credentials include passwords and group membership certificates.\n\nGroup accounts are not allowed except for the emergency administration account, which is an account can be created on the device's local database for use in an emergency, such as when the authentication server is down or connectivity between the device and the authentication server is not operable. This account is also referred to as the account of last resort since the emergency administration account is strictly intended to be used only as a last resort and immediate administrative access is absolutely necessary.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68071",
+      "title": "The A10 Networks ADC must notify System Administrators (SAs) and Information System Security Officers (ISSMs) when accounts are created, or enabled when previously disabled.",
+      "description": "Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply enable a new or disabled account. Notification of account enabling is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail which documents the creation of application user accounts and notifies SAs and ISSMs. Such a process greatly reduces the risk that accounts will be surreptitiously enabled and provides logging that can be used for forensic purposes.\n\nIn order to detect and respond to events that affect network administrator accessibility and device processing, network devices must audit account enabling actions and, as required, notify the appropriate individuals so they can investigate the event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68073",
+      "title": "The A10 Networks ADC must automatically lock the account until the locked account is released by an administrator when three unsuccessful logon attempts in 15 minutes are exceeded.",
+      "description": "By limiting the number of failed logon attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced. Limits are imposed by locking the account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68075",
+      "title": "The A10 Networks ADC must send Emergency messages to the Console, Syslog, and Monitor.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability and system operation may be adversely affected. \n\nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less).",
+      "severity": "low"
+    },
+    {
+      "id": "V-68077",
+      "title": "The A10 Networks ADC must compare internal information system clocks at least every 24 hours with an authoritative time server.",
+      "description": "Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. Sources outside of the configured acceptable allowance (drift) may be inaccurate. Additionally, unnecessary synchronization may have an adverse impact on system performance and may indicate malicious activity. Synchronizing internal information system clocks provides uniformity of time stamps for information systems with multiple system clocks and systems connected over a network.",
+      "severity": "low"
+    },
+    {
+      "id": "V-68079",
+      "title": "The A10 Networks ADC must synchronize internal information system clocks to the authoritative time source when the time difference is greater than one second.",
+      "description": "Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. \n\nSynchronizing internal information system clocks provides uniformity of time stamps for information systems with multiple system clocks and systems connected over a network. Organizations should consider setting time periods for different types of systems (e.g., financial, legal, or mission-critical systems). Organizations should also consider endpoints that may not have regular access to the authoritative time server (e.g., mobile, teleworking, and tactical endpoints). This requirement is related to the comparison done every 24 hours in CCI-001891 because a comparison must be done in order to determine the time difference.\n\nThe organization-defined time period will depend on multiple factors, most notably the granularity of time stamps in audit logs. For example, if time stamps only show to the nearest second, there is no need to have accuracy of a tenth of a second in clocks.",
+      "severity": "low"
+    },
+    {
+      "id": "V-68081",
+      "title": "The A10 Networks ADC must be configured to synchronize internal information system clocks with the primary and secondary time sources located in different geographic regions using redundant authoritative time sources.",
+      "description": "The loss of connectivity to a particular authoritative time source will result in the loss of time synchronization (free-run mode) and increasingly inaccurate time stamps on audit events and other functions. \n\nMultiple time sources provide redundancy by including a secondary source. Time synchronization is usually a hierarchy; clients synchronize time to a local source while that source synchronizes its time to a more accurate source. The network device must utilize an authoritative time server and/or be configured to use redundant authoritative time sources. This requirement is related to the comparison done in CCI-001891.\n\nDoD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DoD network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68083",
+      "title": "The A10 Networks ADC must record time stamps for audit records that can be mapped to Coordinated Universal Time (UTC) or Greenwich Mean Time (GMT).",
+      "description": "If time stamps are not consistently applied and there is no common time reference, it is difficult to perform forensic analysis.\n\nTime stamps generated by the application include date and time. Time is commonly expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68085",
+      "title": "The A10 Networks ADC must authenticate Network Time Protocol sources.",
+      "description": "If Network Time Protocol is not authenticated, an attacker can introduce a rogue NTP server. This rogue server can then be used to send incorrect time information to network devices, which will make log timestamps inaccurate and affected scheduled actions. NTP authentication is used to prevent this tampering by authenticating the time source.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68087",
+      "title": "Operators of the A10 Networks ADC must not use the Telnet client built into the device.",
+      "description": "If unsecured protocols (lacking cryptographic mechanisms) are used for sessions, the contents of those sessions will be susceptible to manipulation, potentially allowing alteration and hijacking of maintenance sessions. Telnet is an unsecure protocol; use SSH instead. \n\nNote: This requirement does not refer to the device accepting incoming Telnet connections (server), but instead being used as an originator of Telnet requests (client). This is the exec level command \"telnet\".",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68089",
+      "title": "The A10 Networks ADC must not use SNMP Versions 1 or 2.",
+      "description": "SNMP Versions 1 and 2 are not considered secure. Without the strong authentication and privacy that is provided by the SNMP Version 3 User-based Security Model (USM), an unauthorized user can gain access to network management information used to launch an attack against the network. SNMP Versions 1 and 2 cannot authenticate the source of a message nor can they provide encryption. Without authentication, it is possible for unauthorized users to exercise SNMP network management functions. It is also possible for unauthorized users to eavesdrop on management information as it passes from managed systems to the management system.\n\nThe A10 Networks ADC platforms support SNMPv3. The SNMP service is disabled by default and all traps are disabled by default. SNMP and SNMP trap are disabled on all data interfaces. Use the enable-management command to enable SNMP on the management interface. The OID for A10 Networks A10 Thunder Series and AX Series objects is 1.3.6.1.4.1.22610. Note: A10 Networks devices do not support SNMP “write” commands; this reduces the risk of the device configuration being modified by SNMP.",
+      "severity": "high"
+    },
+    {
+      "id": "V-68091",
+      "title": "The A10 Networks ADC must off-load audit records onto a different system or media than the system being audited.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68093",
+      "title": "The A10 Networks ADC must not use the default enable password.",
+      "description": "To assure accountability and prevent unauthenticated access, organizational administrators must be uniquely identified and authenticated for all network management accesses to prevent potential misuse and compromise of the system.\n\nThe use of a default password for any account, especially one for administrative access, can quickly lead to a compromise of the device and subsequently, the entire enclave or system. The \"admin\" account is intended solely for the initial setup of the device and must be disabled when the device is initially configured. The default password for this account must immediately be changed at the first logon of an authorized administrator.\n\nThe default enable password on the A10 is blank password, which can immediately be guessed and lead to a compromise. This password must be immediately set.",
+      "severity": "high"
+    },
+    {
+      "id": "V-68095",
+      "title": "The A10 Networks ADC must only allow the use of secure protocols that implement cryptographic mechanisms to protect the integrity of maintenance and diagnostic communications for nonlocal maintenance sessions.",
+      "description": "This requires the use of secure protocols instead of their unsecured counterparts, such as SSH instead of telnet, SCP instead of FTP, and HTTPS instead of HTTP. If unsecured protocols (lacking cryptographic mechanisms) are used for sessions, the contents of those sessions will be susceptible to manipulation, potentially allowing alteration and hijacking of maintenance sessions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68097",
+      "title": "The A10 Networks ADC must restrict management connections to the management network.",
+      "description": "Remote administration is inherently dangerous because anyone with a sniffer and access to the right LAN segment could acquire the device account and password information. With this intercepted information they could gain access to the infrastructure and cause denial of service attacks, intercept sensitive information, or perform other destructive actions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68099",
+      "title": "The A10 Networks ADC must use DoD-approved PKI rather than proprietary or self-signed device certificates.",
+      "description": "For user certificates, each organization obtains certificates from an approved, shared service provider, as required by OMB policy. For federal agencies operating a legacy public key infrastructure cross-certified with the Federal Bridge Certification Authority at medium assurance or higher, this Certification Authority will suffice.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68101",
+      "title": "The A10 Networks ADC must use automated mechanisms to alert security personnel to threats identified by authoritative sources (e.g., CTOs) and IAW CJCSM 6510.01B.",
+      "description": "By immediately displaying an alarm message, potential security violations can be identified more quickly even when administrators are not logged into the network device. An example of a mechanism to facilitate this would be through the use of SNMP traps or a Syslog server where messages are sent to an SNMP console or Syslog server that is monitored by the CNDSP.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-68103",
+      "title": "The A10 Networks ADC must employ centrally managed authentication server(s).",
+      "description": "The use of authentication servers or other centralized management servers for providing centralized authentication services is required for network device management. Maintaining local administrator accounts for daily usage on each network device without centralized management is not scalable or feasible. Without centralized management, it is likely that credentials for some network devices will be forgotten, leading to delays in administration, which itself leads to delays in remediating production problems and in addressing compromises in a timely fashion.\n\nYou can configure the device to use remote servers for Authentication, Authorization, and Accounting (AAA) for administrative sessions. The device supports RADIUS, TACACS+, and LDAP servers.",
+      "severity": "medium"
+    }
+  ]
+}

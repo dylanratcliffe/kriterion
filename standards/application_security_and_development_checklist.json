@@ -1,0 +1,959 @@
+{
+  "name": "application_security_and_development_checklist",
+  "date": "2014-12-22",
+  "description": "None",
+  "title": "Application Security and Development Checklist",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-16773",
+      "title": "The Program Manager will provide an Application Configuration Guide to the application hosting\nproviders to include a list of all potential hosting enclaves and connection rules and requirements. ",
+      "description": "The security posture of the enclave could be degraded if an Application Configuration Guide is not available and followed by application developers. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16775",
+      "title": "The Program Manager will ensure the system has been assigned specific MAC and confidentiality levels.",
+      "description": "The site security posture and mission completion could be adversely affected if site managed applications and data are not properly assigned with the MAC and confidentiality levels.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16776",
+      "title": "The Program Manager will ensure the development team follows a set of coding standards.",
+      "description": "Implementing coding standards provides many benefits to the development process.  These benefits include readability, consistency, and ease of integration.  \n\nCode conforming to a standard format is easier to read, especially if someone other than the original developer is examining the code.  In addition, formatted code can be debugged and corrected faster than unformatted code.\n\nIntroducing coding standards can help increase the consistency, reliability, and security of the application by ensuring common programming structures and tasks are handled by similar methods, as well as, reducing the occurrence of common logic errors.\n\nCoding standards also allow developers to quickly adapt to code which has been developed by various members of a development team.  Coding standards are useful in the code review process as well as in situations where a team member leaves and duties must then be assigned to another team member.  Coding standards often cover the use of white space characters, variable naming conventions, function naming conventions, and comment styles.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16777",
+      "title": "The Program Manager will ensure COTS IA and IA enabled products, comply with NIAP/NSA endorsed  protection profiles.\n\n",
+      "description": "The security posture of the enclave could be compromised if applications are not at the approved NIAP/NSA protection profile.  GOTS, or COTS IA and IA enabled IT products, must be in compliance with NIAP/NSA protection profiles in order to protect classified information when the information transits networks which are at a lower classification level than the information being transported.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16778",
+      "title": "The Program Manager will document and obtain DAA risk acceptance for all public domain, shareware, freeware, and other software products/libraries with both (1) no source code to review, repair, and extend, and (2) limited or no warranty,  when such products are required for mission accomplishment.",
+      "description": "The security posture of the enclave could be compromised if untested or unwarranted software is used due to the risk of software failure, hidden vulnerabilities, or other malware embedded in the application.  The Program Manager and IAO must get DAA approval prior to using this type of software for risk acceptance.  Public domain software is shareware.  There cannot be any assurance the products integrity or security mechanisms exist without conducting a code review or vulnerability analysis. Failure to properly authorize shareware, before it is installed or used, on corporate AISs could result in the compromise of sensitive corporate resources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16779",
+      "title": "The Program Manager and designer will ensure the application is registered with the DoD Ports and Protocols Database.\n\n",
+      "description": "Failure to register the  applications usage of ports, protocols, and services with the DoD PPS Database may result in a Denial of Service (DoS) because of enclave boundary protections at other end points within the network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16780",
+      "title": "The Program Manager will ensure all levels of program management, designers, developers, and testers receive the appropriate security training pertaining to their job function. ",
+      "description": "Well trained IT personnel are the first line of defense against attacks or disruptions to the information system. Lack of sufficient training can lead to security oversights thereby, leading to compromise or failure to take necessary actions to prevent disruptions to operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16781",
+      "title": "The Program Manager will  ensure a vulnerability management process is in place to include ensuring a mechanism is in place to notify users, and users are provided with a means of obtaining security updates for the application.\n\n",
+      "description": "If there is no mechanism (e.g., e-mail list, patch server) to provide updates for an application that is already deployed, security flaws can never be addressed.  Also, if there is no comprehensive vulnerability management process or policy for the systematic identification and mitigation of software vulnerabilities, security vulnerabilities may go unnoticed, unreported, or unmitigated.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16782",
+      "title": "The Program Manager will ensure a security incident response process for the application is established that defines reportable incidents and outlines a standard operating procedure for incident response to include Information Operations Condition (INFOCON).\n\n",
+      "description": "Without a plan, training, and assistance, users will not know what actions needs to be taken in the event of system attack or system/application compromise. This could result in additional compromise and theft, or degraded system capability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16783",
+      "title": "The Program Manager will ensure procedures are implemented to assure physical handling and storage of information is in accordance with the data’s sensitivity.\n\n",
+      "description": "Failure to have proper workplace security procedures can lead to the loss or compromise of classified or sensitive information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16784",
+      "title": "The designer will ensure the user interface services are physically or logically separated from data storage and management services.",
+      "description": "If user interface services are compromised, this may lead to the compromise of data storage and management services if they are not logically or physically separated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16785",
+      "title": "The designer will ensure the application supports detection and/or prevention of communication session hijacking. \n",
+      "description": "Session tokens can be compromised by various methods. Using predictable session tokens can allow an attacker to hijack a session in progress. Session sniffing can be used to capture a valid session token or session id, and the attacker uses this session information to gain immediate unauthorized access to the server which is a loss of confidentially and potentially a loss of integrity. Also, the Man-in-the-Middle (MITM) attack can be accomplished over an TLS connection with a session in progress.\n\nAny vulnerability associated with a DoD Information system or system enclave, the exploitation of which, by a risk factor, will directly and immediately result in loss of Confidentiality, Availability or Integrity of the system\nassociated data.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-16786",
+      "title": "The designer will ensure the application installs with unnecessary functionality disabled by default.\n",
+      "description": "If functionality is enabled that is not required for operation of the application, this functionality may be exploited without knowledge because the functionality is not required by anyone.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16787",
+      "title": "The designer will ensure the application follows the secure failure design principle.\n",
+      "description": "The secure design principle ensures the application follows a secure predictable path in the application code. If all possible code paths are not accounted for, the application may allow access to unauthorized users. Applications should perform checks on the validity of data, user permissions, and resource existence before performing a function. Secure failure is defined if a check fails for any reason, the application remains in a secure state.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-16788",
+      "title": "The designer will ensure the application uses encryption to implement key exchange and authenticate endpoints prior to establishing a communication channel for key exchange.\n",
+      "description": "If the application does not use encryption and authenticate endpoints prior to establishing a communication channel and prior to transmitting encryption keys, these keys may be intercepted, and could be used to decrypt the traffic of the current session, leading to potential loss or compromise of DoD data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16789",
+      "title": "The designer will ensure private keys are accessible only to administrative users.",
+      "description": "If private keys are accessible to non-administrative users, these users could potentially read and use the private keys to unencrypt stored or transmitted sensitive data used by the application.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16790",
+      "title": "The designer will ensure the application does not connect to a database using administrative credentials or other privileged database accounts.",
+      "description": "If the application uses administrative credentials or other privileged database accounts to access the database, an attacker that has already compromised the application though another vulnerability can drop, add, and modify the data in the database or the database structure.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16791",
+      "title": "The designer will ensure transaction based applications implement transaction rollback and transaction journaling.",
+      "description": "Transaction based systems must have transaction rollback and transaction journaling, or technical equivalents implemented to ensure the system can recover from an attack or faulty transaction data. Otherwise,  a denial of service condition could result. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-16792",
+      "title": "The designer will ensure sensitive data held in memory is cryptographically protected when not in use, if required by the information owner, and classified data held in memory is always cryptographically protected when not in use.\n",
+      "description": "Sensitive or classified data in memory must be encrypted to protect data from the possibility of an attacker causing an application crash then analyzing a memory dump of the application for sensitive or classified information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16793",
+      "title": "The designer will ensure the application properly clears or overwrites all memory blocks used to process sensitive data, if required by the information owner, and clears or overwrites all memory blocks used for classified data.\n",
+      "description": "Sensitive and classified data in memory should be cleared or overwritten to protect data from the possibility of an attacker causing the application to crash and analyzing a memory dump of the application for sensitive information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16794",
+      "title": "The designer will ensure the application uses mechanisms assuring the integrity of all transmitted information (including labels and security parameters).",
+      "description": "Data is subject to manipulation and other integrity related attacks whenever that data is transferred across a network.  To protect data integrity during transmission, the application must implement mechanisms to ensure the integrity of all transmitted information.  All transmitted information means that the protections are not restricted to just the data itself.  Protection mechanisms must be extended to include data labels, security parameters or metadata if data protection requirements specify.  Modern web application data transfer methods can be complex and are not necessarily just point to point in nature.  Service Oriented Architecture (SOA) and RESTFUL web services allow for XML based application data to be transmitted in a manner similar to network traffic wherein the application data is transmitted along multiple servers hops.  In such cases, point to point protection methods like TLS or SSL may not be the best choice for ensuring data integrity and alternative data integrity protection methods like XML Integrity Signature protections where the XML payload itself is signed may be required as part of the application design.   Overall application design and architecture must always be taken into account when establishing data integrity protection mechanisms.  Custom-developed solutions that provide a file transfer capability should implement data integrity checks for incoming and outgoing files.  Transmitted information requires mechanisms to ensure the data integrity (e.g. digital signatures, SSL, TLS or cryptographic hashing).  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16795",
+      "title": "The designer will ensure the application does not display account passwords as clear text.\n",
+      "description": "Passwords being displayed in clear text can be easily seen by casual observers. Password masking should be employed so any casual observers cannot see passwords on the screen as they are being typed.",
+      "severity": "high"
+    },
+    {
+      "id": "V-16796",
+      "title": "The designer will ensure the application transmits account passwords in an approved encrypted format.\n",
+      "description": "Passwords transmitted in clear text or with an unapproved format are vulnerable to network protocol analyzers. These passwords acquired with the network protocol analyzers can be used to immediately access the application.",
+      "severity": "high"
+    },
+    {
+      "id": "V-16797",
+      "title": "The designer will ensure the application stores account passwords in an approved encrypted format.\n",
+      "description": "Passwords stored without encryption or with weak, unapproved, encryption can easily be read and unencrypted. These passwords can then be used for immediate access to the application.",
+      "severity": "high"
+    },
+    {
+      "id": "V-16798",
+      "title": "The designer will ensure the application protects access to authentication data by restricting access to authorized users and services.\n",
+      "description": "If authentication is not properly restricted using access controls list, unauthorized users of the server where the authentication data is stored may be able to use the authentication data to access unauthorized servers or services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16799",
+      "title": "The designer will ensure the application installs with unnecessary accounts disabled, or deleted, by default.\n",
+      "description": "Unnecessary accounts should be disabled to limit the number of entry points for attackers to gain access to the system.  Removing unnecessary accounts also limits the number of users and passwords the system administrator must maintain.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16800",
+      "title": "The designer will ensure users’ accounts are locked after three consecutive unsuccessful logon attempts within one hour.\n",
+      "description": "If user accounts are not locked after a set number of unsuccessful logins, attackers can infinitely retry user password combinations providing immediate access to the application.",
+      "severity": "high"
+    },
+    {
+      "id": "V-16801",
+      "title": "The designer will ensure locked users’ accounts can only be unlocked by the application administrator.\n",
+      "description": "User accounts should only be unlocked by the user contacting an administrator, and making a formal request to have the account reset.  Accounts that are automatically unlocked after a set time limit, allow potential attackers to retry possible user password combinations without knowledge of the user or the administrator.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16802",
+      "title": "The designer will ensure the application provides a capability to automatically terminate a session and log out after a system defined session idle time limit is exceeded.\n",
+      "description": "In the event a user does not log out of the application, the application should automatically terminate the session and log out; otherwise, subsequent users of a shared system could continue to use the previous user's session to the application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16803",
+      "title": "The designer and IAO will ensure application resources are protected with permission sets which allow only an application administrator to modify application resource configuration files.\n",
+      "description": "If application resources are not protected with permission sets that allow only an application administrator to modify application resource configuration files, unauthorized users can modify configuration files allowing these users to capture data within the application, or turn off encryption, or change any configurable option in the application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16804",
+      "title": "The designer will ensure the application does not rely solely on a resource name to control access to a resource.\n",
+      "description": "Application access control decisions should be based on authentication of users. Resource names alone can be spoofed allowing access control mechanisms to be bypassed giving immediate access to the application.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-16806",
+      "title": "The designer will ensure the web application assigns the character set on all web pages.\n",
+      "description": "For web applications, setting the character set on the web page reduces the possibility of receiving unexpected input that uses other character set encodings by the web application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16807",
+      "title": "The designer will ensure the application is not vulnerable to SQL Injection, uses prepared or parameterized statements, does not use concatenation or replacement to build SQL queries, and does not directly access the tables in a database.",
+      "description": "SQL Injection can be used to bypass user login to gain immediate access to the application and can also be used to elevate privileges with an existing user account.",
+      "severity": "high"
+    },
+    {
+      "id": "V-16808",
+      "title": "The designer will ensure the application is not vulnerable to integer arithmetic issues.\n",
+      "description": "Integer overflows occur when an integer has not been properly checked and is used in memory allocation, copying, and concatenation.  Also, when incrementing integers past their maximum possible value, it could potentially become a very small or negative number. Integer overflows can lead to infinite looping when loop index variables are compromised and cause a denial of service.  If the integer is used in data references, the data can become corrupt. Also, using the integer in memory allocation can cause buffer overflows, and a denial of service.  Integers used in access control mechanisms can potentially trigger buffer overflows, which can be used to execute arbitrary code. ",
+      "severity": "high"
+    },
+    {
+      "id": "V-16809",
+      "title": "The designer will ensure the application does not contain format string vulnerabilities.\n",
+      "description": "Format string vulnerabilities usually occur when unvalidated input is entered and is directly written into  the format string used to format data in the print style family of C/C++ functions. If an attacker can manipulate a format string, this may result in a buffer overflow causing a denial of service for the application. Format string vulnerabilities may lead to information disclosure vulnerabilities. Format string vulnerabilities may be used to execute arbitrary code. ",
+      "severity": "high"
+    },
+    {
+      "id": "V-16810",
+      "title": "The designer will ensure the application does not allow command injection.\n",
+      "description": "A command injection attack, is an attack on a vulnerable application where improperly validated input is passed to a command shell setup in the application. A command injection allows an attacker to execute their own commands with the same privileges as the application executing. Command injection allows immediate access to the system where the application is executing.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-16811",
+      "title": "The designer will ensure the application does not have cross site scripting (XSS) vulnerabilities.  \n",
+      "description": "XSS vulnerabilities exist when an attacker uses a trusted website to inject malicious scripts into applications with improperly validated input. \n",
+      "severity": "high"
+    },
+    {
+      "id": "V-16812",
+      "title": "The designer will ensure the application has no canonical representation vulnerabilities.\n",
+      "description": "Canonical representation issues arise when the name of a resource is used to control resource access.  There are multiple methods of representing resource names on a computer system.  An application relying solely on a resource name to control access may incorrectly make an access control decision if the name is specified in an unrecognized format.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16813",
+      "title": "The designer will ensure the application does not use hidden fields to control user access privileges or as a part of a security mechanism.\n",
+      "description": "Using hidden fields to pass data in forms is very common. However, hidden fields can be easily manipulated by users.  Hidden fields used to control access decisions can lead to a complete compromise of access control  mechanism allowing immediate anonymous user access.  ",
+      "severity": "high"
+    },
+    {
+      "id": "V-16814",
+      "title": "The designer will ensure the application does not disclose unnecessary information to users.\n",
+      "description": "Applications should not disclose information not required for the transaction.  (e.g., a web application should not divulge the fact there is a SQL server database and/or its version) This provides attackers additional information which they can use to find other attack avenues, or tailor specific attacks, on the application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16815",
+      "title": "The designer will ensure the application is not vulnerable to race conditions.\n\n",
+      "description": "A race condition occurs when an application receives two or more actions on the same resource in an unanticipated order which causes a conflict. Sometimes, the resource is locked by different users or functions within the application creating a deadlock situation. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16816",
+      "title": "The designer will ensure the application supports the creation of transaction logs for access and changes to the data. \n",
+      "description": "Without required logging and access control, security issues related to data changes will not be identified. This could lead to security compromises such as data misuse, unauthorized changes, or unauthorized access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16817",
+      "title": "The designer will ensure the application has a capability to notify the user of important login information.",
+      "description": "Attempted logons must be controlled to prevent password guessing exploits and unauthorized access attempts. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-16818",
+      "title": "The designer will ensure the application has a capability to display the user’s time and date of the last change in data content.\n",
+      "description": "Without access control mechanisms in place, the data is not secure. The time and date display of data content change provides an indication that the data may have been accessed by unauthorized persons, and It may have been compromised, misused, or changed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16819",
+      "title": "The designer will ensure development of new mobile code includes measures to mitigate the risks identified. \n",
+      "description": "New mobile code types may introduce unknown vulnerabilities if a risk assessment is not completed prior to the use of mobile code. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16820",
+      "title": "The Release Manager will ensure the access privileges to the configuration management (CM) repository are reviewed every 3 months.\n",
+      "description": "Incorrect access privileges to the CM repository can lead to malicious code or unintentional code being introduced into the application.",
+      "severity": "low"
+    },
+    {
+      "id": "V-16822",
+      "title": "The Release Manager will develop an SCM plan describing the configuration control and change management process of objects developed and the roles and responsibilities of the organization.\n\n",
+      "description": "Software Configuration Management (SCM) is very important in tracking code releases, baselines, and managing access to the configuration management repository. The SCM plan identifies what should be under configuration management control. Without an SCM plan, code releases can be tracked and vulnerabilities can be inserted intentionally or unintentionally into the code base of the application.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16823",
+      "title": "The Release Manager will establish a Configuration Control Board (CCB), that meets at least every release cycle, for managing the CM process.",
+      "description": "Software Configuration Management (SCM) is very important in tracking code releases, baselines, and managing access to the configuration management repository. The SCM plan identifies what should be under configuration management control. Without an SCM plan code, and a CCB, releases can be tracked and vulnerabilities can be inserted intentionally or unintentionally into the code base of the application.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16824",
+      "title": "The Test Manager will ensure at least one tester is designated to test for security flaws in addition to functional testing.\n",
+      "description": "If there is no person designated to test for security flaws, vulnerabilities can potentially be missed during testing.",
+      "severity": "low"
+    },
+    {
+      "id": "V-16825",
+      "title": "The Test Manager will ensure the changes to the application are assessed for IA and accreditation impact prior to implementation.\n",
+      "description": "IA assessment of proposed changes is necessary to ensure security integrity is maintained within the application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16826",
+      "title": "The Test Manager will ensure tests plans and procedures are created and executed prior to each release of the application or updates to system patches.\n",
+      "description": "Without test plans and procedures for application releases or updates, unexpected results may occur which could lead to a denial of service to the application or components.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16827",
+      "title": "The Test Manager will ensure test procedures are created and at least annually executed to ensure system initialization, shutdown, and aborts are configured to ensure the system remains in a secure state.\n",
+      "description": "Secure state assurance cannot be accomplished without testing the system state at least annually to ensure the system remains in a secure state upon intialization, shutdown and abort.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16828",
+      "title": "The Test Manager will ensure code coverage statistics are maintained for each release of the application.\n",
+      "description": "Code coverage statistics describes the how much of the source code has been executed based on the test procedures.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-16829",
+      "title": "The Test Manager will ensure a code review is performed before the application is released.\n",
+      "description": "A code review is a systematic evaluation of computer source code conducted for the purposes of identifying and remediating security flaws.  Examples of security flaws include but are not limited to format string exploits, memory leaks, buffer overflows or race conditions.  The code review is usually conducted during the application development phase, this allows discovered security issues to be corrected prior to release.  A code review can also be performed after the development phase, however, in all instances identified errors must go back to development for correction so conducting the code review during development is the logical and preferred action.  Automated code review tools are to be used whenever reviewing application source code.   These tools are often incorporated into many Integrated Development Environments (IDE) so code reviews can be conducted during all stages of the development life cycle.  Periodically reviewing code during the development phase makes transition to a production environment easier as flaws are continually identified and addressed during the development phase rather than en masse at the end of the development effort.\n  \nCode review processes and the tools used to conduct the code review analysis will vary depending upon application architecture and the development languages utilized.  \n\nIn addition to automated testing, manual code reviews may also be used to validate or augment automated code review results.  Larger projects will have a large code base and will require the use of automated code review tools in order to achieve complete code review coverage.  \n\nA manual code review may consist of a peer review wherein other programmers on the team manually examine source code and automated code review results for known flaws that introduce security bugs into the application.\n\nAs with any testing, there is no single best approach and the tests must be tailored to the application architecture.  Use of automated tools along with manual review of code and testing results is considered a best practice when conducting code reviews. This method is the most likely way to ensure the maximum number of errors are caught and addressed prior to implementing the application in a production environment.   \n\nFor a list of tools that can be used for source code review, please reference http://samate.nist.gov/index.php/Source_Code_Security_Analyzers.html.\nPlease note that reference to these tools does not imply that they have been tested and approved for use by DISA.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16830",
+      "title": "The Test Manager will ensure flaws found during a code review are tracked in a defect tracking system.\n",
+      "description": "If flaws are not tracked they may possibly be forgotten to be included in a release.  Tracking flaws in the configuration management repository will help identify code elements to be changed, as well as the requested change.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16831",
+      "title": "The IAO will ensure active vulnerability testing is performed.",
+      "description": "Use of automated scanning tools accompanied with manual testing/validation which confirms or expands on the automated test results is an accepted best practice when performing application security testing.  Automated scanning tools expedite and help to standardize security testing, they can incorporate known attack methods and procedures, test for libraries and other software modules known to be vulnerable to attack and utilize a test method known as \"fuzz testing\".  Fuzz testing is a testing process where the application is provided invalid, unexpected, or random data. Poorly designed and coded applications will become unstable or crash. Properly designed and coded applications will reject improper and unexpected data input from application clients and remain stable.   \n\nMany vulnerability scanning tools provide automated fuzz testing capabilities for the testing of web applications.  All of these tools help to identify a wide range of application vulnerabilities including, but not limited to; buffer overflows, cross-site scripting flaws, denial of service format bugs and SQL injection, all of which can lead to a successful compromise of the system or result in a denial of service.  \n\nDue to changes in the production environment, it is a good practice to schedule periodic active testing of production web applications.  Ideally, this will occur prior to deployment and after updates or changes to the application production environment. \n\nIt is imperative that automated scanning tools are configured properly to ensure that all of the application components that can be tested are tested.  In the case of web applications, some of the application code base may be accessible on the web site and could potentially be corrected by a knowledgeable system administrator.  Active testing is different from code review testing in that active testing does not require access to the application source code base. A code review requires complete code base access and is normally performed by the development team.\n\nIf vulnerability testing is not conducted, there is the distinct potential that security vulnerabilities could be unknowingly introduced into the application environment.\n\nThe following website provides an overview of fuzz testing and examples:\n\nhttp://www.owasp.org/index.php/Fuzzing\n\nThe following website provides information on web application vulnerability scanner tools.  Reference the “Related Links” section at the bottom of the page for a list of available commercial and open source tools.  \n\nhttp://samate.nist.gov/index.php/Web_Application_Vulnerability_Scanners.html\nPlease note that reference to these tools does not imply that they have been tested and approved for use by DISA.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16832",
+      "title": "The Test Manager will ensure security flaws are fixed or addressed in the project plan.\n",
+      "description": "If security flaws are not tracked, they may possibly be forgotten to be included in a release.  Tracking flaws in the project plan will help identify code elements to be changed as well as the requested change.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16833",
+      "title": "The IAO will ensure if an application is designated critical, the application is not hosted on a general purpose machine.\n",
+      "description": "Critical applications should not be hosted on a multi-purpose server with other applications. Applications that share resources are susceptible to the other shared application security defects.  Even if the critical application is designed and deployed securely, an application that is not designed and deployed securely, can cause resource issues and possibly crash effecting the critical application. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16834",
+      "title": "The IAO shall ensure if a DoD STIG or NSA guide is not available, a third-party product will be configured by the following in descending order as available: 1) commercially accepted practices, (2) independent testing results, or (3) vendor literature.",
+      "description": "Not all COTS products are covered by a STIG.  Those products not covered by a STIG, should be minimally configured to vendors recommendation guidelines.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16835",
+      "title": "The IAO will ensure at least one application administrator has registered to receive update notifications, or security alerts, when automated alerts are available.\n",
+      "description": "Administrators should register for updates to all COTS and custom developed software, so when security flaws are identified, they can be tracked for testing and updates of the application can be applied.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16836",
+      "title": "The IAO will ensure the system and installed applications have current patches, security updates, and configuration settings.\n",
+      "description": "Due to viruses, worms, Trojans, and other malicious software, in addition to inevitable\nweaknesses in code, the necessity to patch critical vulnerabilities is paramount. As part of the\ngeneral practice of performing application or system administration, it is imperative that security vulnerabilities from the vendor are monitored and patches are tested and applied.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16837",
+      "title": "The IAO will ensure the application is decommissioned when maintenance or support is no longer available.",
+      "description": "When maintenance no longer exists for an application, there are no individuals responsible for providing security updates.  The application is no longer supported, and should be decommissioned.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-16838",
+      "title": "Procedures are not in place to notify users when an application is decommissioned.\n",
+      "description": "When maintenance no longer exists for an application, there are no individuals responsible for making security updates.  The application should maintain procedures for decommissioning.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-16839",
+      "title": "The IAO will ensure protections against DoS attacks are implemented.\n",
+      "description": "Known threats documented in the threat model should be mitigated, to prevent DoS type attacks.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16840",
+      "title": "The IAO will ensure the system alerts an administrator when low resource conditions are encountered.\n",
+      "description": "In order to prevent DoS type attacks, applications should be monitored when resource conditions reach a predefined threshold indicating there may be attack occurring.",
+      "severity": "low"
+    },
+    {
+      "id": "V-16841",
+      "title": "The IAO will review audit trails periodically based on system documentation recommendations or immediately upon system security events. \n",
+      "description": "Without access control the data is not secure. It can be compromised, misused, or changed by unauthorized access at any time.",
+      "severity": "low"
+    },
+    {
+      "id": "V-16842",
+      "title": "The IAO will report all suspected violations of IA policies in accordance with DoD information system IA procedures.\n",
+      "description": "All potential sources are monitored for suspected violations of IA policies.  If there are not policies regarding the reporting of IA violations, some IA violations may not be tracked or dealt with in a proper manner.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16843",
+      "title": "The IAO will ensure, for classified systems, application audit trails are continuously and automatically monitored, and alerts are provided immediately when unusual or inappropriate activity is detected.\n",
+      "description": "For critical and classified systems, an automated, continuous on-line monitoring and audit trail creation capability must be deployed with the capability to immediately alert personnel of any unusual or inappropriate activity with potential IA implications, and with a user configurable capability to automatically disable the system if serious IA violations are detected. This protects the system from serious data compromises. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-16844",
+      "title": "The IAO will ensure back-up copies of the application software are stored in a fire-rated container and not collocated with operational software.\n",
+      "description": "Inadequate back-up software or improper storage of back-up software can result in extended outages of the information system in the event of a fire or other situation that results in destruction of the operating copy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16845",
+      "title": "The IAO will ensure procedures are in place to assure the appropriate physical and technical protection of the backup and restoration of the application.\n",
+      "description": "Protection of backup and restoration assets is essential for the successful restore of operations after a catastrophic failure or damage to the system or data files. Failure to follow proper procedures may result in the permanent loss of system data and/or the loss of system capability resulting in failure of the customers mission.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16846",
+      "title": "The IAO will ensure a disaster recovery plan exists in accordance with DoD policy based on the Mission Assurance Category (MAC).",
+      "description": "Well thought out recovery plans are essential for system recovery and/or business restoration in the event of catastrophic failure or disaster.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16847",
+      "title": "The IAO will ensure an account management process is implemented, verifying only authorized users can gain access to the application, and individual accounts designated as inactive, suspended, or terminated are promptly removed. \n",
+      "description": "A comprehensive account management process will ensure that only authorized users can gain access to applications and that individual accounts designated as inactive, suspended, or terminated are promptly deactivated. Such a process greatly reduces the risk that accounts will be misused, hijacked, or data compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16848",
+      "title": "The IAO will ensure passwords generated for users are not predictable and comply with the organization's password policy.\n",
+      "description": "Predictable passwords may allow an attacker to gain immediate access to new user accounts which would result in a loss of integrity.\n\nAny vulnerability associated with a DoD Information system or system enclave, the exploitation of which, by a risk factor, will directly and immediately result in loss of Confidentiality, Availability or Integrity of the system\nassociated data.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-16849",
+      "title": "The IAO will ensure the application's users do not use shared accounts. \n",
+      "description": "Group or shared accounts for application access may be used only in conjunction with an individual authenticator. Group accounts do not allow for proper auditing of who is accessing the application and security incidents cannot be attributed to specific individuals. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16850",
+      "title": "The IAO will ensure connections between the DoD enclave and the Internet or other public or commercial wide area networks require a DMZ.\n",
+      "description": "In order to protect DoD data and systems, all remote access to DoD information systems must be mediated through a managed access control point, such as a remote access server in a DMZ.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19687",
+      "title": "The IAO will ensure web servers are on logically separate network segments from the application and database servers if it is a tiered application. \n",
+      "description": "Web servers should be on logically separated network segments from the application and database servers in order to provide different levels and types of defenses for each type of server.  Failure to comply would result in an immediate loss of confidentiality.\n\nThis requirement to this STIG was added at the request of the DoD DMZ PM.  The goal is to ensure this requirement is addressed as the application is being developed.  This requirement and severity was previously approved by the DSAWG in the Internet-NIPRNet DoD DMZ Inrecrement 1, Phase 1 STIG.\n \n\nAny vulnerability associated with a DoD Information system or system enclave, the exploitation of which, by a risk factor, will directly and immediately result in loss of Confidentiality, Availability or Integrity of the system\nassociated data.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-19688",
+      "title": "The designer and the IAO will ensure physical operating system separation and physical application separation is employed between servers of different data types in the web tier of Increment 1/Phase 1 deployment of the DoD DMZ for Internet-facing applications.\n",
+      "description": "Restricted and unrestricted data residing on the same server may allow unauthorized access which would result in a loss of integrity and possibly the availability of the data.\n \nThis requirement to this STIG was added at the request of the DoD DMZ PM.  The goal is to ensure this requirement is addressed as the application is being developed.  This requirement and severity was previously approved by the DSAWG in the Internet-NIPRNet DoD DMZ Increment 1, Phase 1 STIG.\n\n*This requirement does not apply to SIPRNet DMZs.  \n\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-19689",
+      "title": "The designer will ensure web services are designed and implemented to recognize and react to the attack patterns associated with application-level DoS attacks.\n",
+      "description": "Because of potential denial of service, web services should be designed to recognize potential attack patterns.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19690",
+      "title": "The designer will ensure the web service design includes redundancy of critical functions.\n",
+      "description": "Because of potential denial of service, web services should be designed to be redundant.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19691",
+      "title": "The designer will ensure web service design of critical functions is implemented using different algorithms to prevent similar attacks from forming a complete application level DoS.",
+      "description": "Denial of service attacks could occur if web services use the same algorithm for all critical features.  An algorithm is defined as: an effective method expressed as a finite list of well-defined instructions. Combining a large array of varying, unrelated functionality into a single web service increases the chances that the service may become susceptible to a DoS attack which could affect not only the individual service, but the entire application as well.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19692",
+      "title": "The designer will ensure web services are designed to prioritize requests to increase availability of the system.\n",
+      "description": "Because of potential denial of service, web services should be designed to prioritize web service requests.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19693",
+      "title": "The designer will ensure execution flow diagrams are created and used to mitigate deadlock and recursion issues.\n",
+      "description": "To prevent web services from becoming deadlocked, an execution flow diagram should be documented.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19694",
+      "title": "The IAO will ensure an XML firewall is deployed to protect web services. \n",
+      "description": "Web Services are vulnerable to many types of attacks.  XML based firewalls can be used to prevent common attacks.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19695",
+      "title": "The designer will ensure web services provide a mechanism for detecting resubmitted SOAP messages.\n",
+      "description": "SOAP messages should be designed so duplicate messages are detected. \nReplay attacks may lead to a loss of confidentiality and potentially a loss of availability\n\nAny vulnerability associated with a DoD Information system or system enclave, the exploitation of which, by a risk factor, will directly and immediately result in loss of Confidentiality, Availability or Integrity of the system\nassociated data.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-19696",
+      "title": "The designer and IAO will ensure digital signatures exist on UDDI registry entries to verify the publisher.\n",
+      "description": "UDDI registries must provide digital signatures for verification of integrity of the publisher of each web service contained within the registry. Users publishing to the UDDI repository could potentially setup  multiple fraudulent web services without a digital signature associated with each web service.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19697",
+      "title": "The designer and IAO will ensure UDDI versions are used supporting digital signatures of registry entries.\n\n",
+      "description": "UDDI repositories must provide the capability to support digital signatures. Without the capability to support digital signatures, web service users cannot verify the integrity of the UDDI registry.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19698",
+      "title": "The designer and IAO will ensure UDDI publishing is restricted to authenticated users.\n\n",
+      "description": "Ficticious or false entries could result if someone other than an authenticated user is able to create or modify the UDDI registry. The data integrity would be questionable if anonymous users are able to write to the repository.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19699",
+      "title": "The IAO will ensure web service inquiries to UDDI provide read-only access to the registry to anonymous users.\n",
+      "description": "If modification of UDDI registries are allowed by anonymous users, UDDI registries can be corrupted, or potentially be hijacked.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19700",
+      "title": "The IAO will ensure if the UDDI registry contains sensitive information and read access to the UDDI registry is granted only to authenticated users.\n",
+      "description": "If a UDDI registry contains sensitive data, the repository should require authentication to read the UDDI data repository. If the repository does not require authentication, the UDDI data repository will be accessed by anonymous users.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19701",
+      "title": "The designer will ensure SOAP messages requiring integrity, sign the following message elements:\n-Message ID\n-Service Request\n-Timestamp\n-SAML Assertion (optionally included in messages)\n",
+      "description": "Digitally signed SOAP messages provide message integrity and authenticity of the signer of the message independent of the transport layer. Service requests may be intercepted and changed in transit and the data integrity may be at risk if the SOAP message is not digitally signed. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19702",
+      "title": "The designer will ensure when using WS-Security, messages use timestamps with creation and expiration times.\n",
+      "description": "The lack of timestamps could lead to the eventual replay of the message, leaving the application susceptible to replay events which may result in an immediate loss of confidentiality. \n\nAny vulnerability associated with a DoD Information system or system enclave, the exploitation of which, by a risk factor, will directly and immediately result in loss of Confidentiality, Availability or Integrity of the system\nassociated data.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-19703",
+      "title": "The designer will ensure validity periods are verified on all messages using WS-Security or SAML assertions. \n",
+      "description": "When using WS-Security in SOAP messages, the application should check the validity of the timestamps with creation and expiration times. Unvalidated timestamps may lead to a replay event and provide immediate unauthorized access of the application.  Unauthorized access results in an immediate loss of confidentiality. \n\nAny vulnerability associated with a DoD Information system or system enclave, the exploitation of which, by a risk factor, will directly and immediately result in loss of Confidentiality, Availability or Integrity of the system\nassociated data.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-19704",
+      "title": "The designer shall ensure each unique asserting party provides unique assertion ID references for each SAML assertion.\n",
+      "description": "SAML assertion identifiers should be unique across a server implementation.  Duplicate SAML assertion identifiers could lead to unauthorized access to a web service.\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19705",
+      "title": "The designer shall ensure encrypted assertions, or equivalent confidentiality protections, when assertion data is passed through an intermediary, and confidentiality of the assertion data is required to pass through the intermediary.\n",
+      "description": "The confidentially of the data in a message as the message is passed through an intermediary web service may be required to be restricted by the intermediary web service.  The intermediary web service may leak or distribute the data contained in a message if not encrypted or protected.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19706",
+      "title": "The designer will ensure the application is compliant with all DoD IT Standards Registry (DISR) IPv6 profiles.\n",
+      "description": "If the application has not been upgraded to execute on an IPv6-only network, there is a possibility the application will not execute properly, and as a result, a denial of service could occur.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19707",
+      "title": "The designer will ensure supporting application services and interfaces have been designed, or upgraded for, IPv6 transport. \n",
+      "description": "If the application's supporting services (e.g., software update, security update, driver updating, and automatic patching services) have not been updated to retrieve updates over a IPv6  network connection,  there is a possibility the application will not execute properly, and as a result, a denial of service could occur.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19708",
+      "title": "The designer will ensure the application is compliant with IPv6 multicast addressing and features an IPv6 network configuration options as defined in RFC 4038.\n",
+      "description": "If the application has not been updated to IPv6 multicast features, there is a possibility the application will not execute properly and as a result, a denial of service could occur.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19709",
+      "title": "The designer will ensure the application is compliant with the IPv6 addressing scheme as defined in RFC 1884. \n",
+      "description": "If the application is not compliant with the IPv6 addressing scheme,  the entry of IPv6 formats that are 128 bits long or hexadecimal notation including colons, could result in buffer overflows compromising the application and creating additional attack vectors.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21498",
+      "title": "The designer will ensure the application is not vulnerable to XML Injection.\n",
+      "description": "XML injection results in an immediate loss of “integrity” of the data.\n\nAny vulnerability associated with a DoD Information system or system enclave, the exploitation of which, by a risk factor, will directly and immediately result in loss of Confidentiality, Availability or Integrity of the system\nassociated data. \n",
+      "severity": "high"
+    },
+    {
+      "id": "V-21500",
+      "title": "The designer will ensure the application does not have CSRF vulnerabilities.  \n",
+      "description": "Cross Site Request Forgery (CSRF) is an attack where an end user is previously authenticated to a specific website and the user through social engineering (e.g., e-mail or chat) launches a hyperlink which executes unwanted actions on a website. A CSRF attack may execute any web site request on behalf of the user leading to compromise of the user’s data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21519",
+      "title": "The Program Manager will ensure all products are supported by the vendor or the development team. ",
+      "description": "Unsupported software products should not be used because of the unknown potential vulnerabilities.\n\nAny vulnerability associated with a DoD Information system or system enclave, the exploitation of which, by a risk factor, will directly and immediately result in loss of Confidentiality, Availability or Integrity of the system\nassociated data. \n\nUnsupported software where there is no documented acceptance of DAA risk. \n",
+      "severity": "high"
+    },
+    {
+      "id": "V-22028",
+      "title": "The designer shall use the NotOnOrAfter condition when using the SubjectConfirmation element in a SAML assertion.\n",
+      "description": "When a SAML assertion is used with a <SubjectConfirmation> element, a begin and end time for the <SubjectConfirmation> should be set to prevent reuse of the message at a later time. Not setting a specific time period for the <SubjectConfirmation>, may grant immediate access to an attacker and results in an immediate loss of confidentiality.\n\nAny vulnerability associated with a DoD Information system or system enclave, the exploitation of which, by a risk factor, will directly and immediately result in loss of Confidentiality, Availability or Integrity of the system\nassociated data.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-22029",
+      "title": "The designer shall use both the <NotBefore> and <NotOnOrAfter> elements or <OneTimeUse> element when using the <Conditions> element in a SAML assertion.\n",
+      "description": "When a SAML assertion is used with a <Conditions> element, a begin and end time for the <Conditions> element should be set to prevent reuse of the message at a later time. Not setting a specific time period for the <Conditions> element, the possibility exists of granting immediate access or elevated privileges to an attacker which result in an immediate loss of confidentiality.\n\nAny vulnerability associated with a DoD Information system or system enclave, the exploitation of which, by a risk factor, will directly and immediately result in loss of Confidentiality, Availability or Integrity of the system\nassociated data.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-22030",
+      "title": "The designer will ensure the asserting party uses FIPS approved random numbers in the generation of SessionIndex in the SAML element AuthnStatement.\n",
+      "description": "A predictable SessionIndex could lead to an attacker computing a future SessionIndex, thereby, possibly compromising the application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22031",
+      "title": "The designer shall ensure messages are encrypted when the SessionIndex is tied to privacy data.\n",
+      "description": "When the SessionIndex is tied to privacy data (e.g., attributes containing privacy data) the message should be encrypted. If the message is not encrypted there is the possibility of compromise of privacy data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22032",
+      "title": "The designer shall ensure if a OneTimeUse element is used in an assertion, there is only one used in the Conditions element portion of an assertion.\n",
+      "description": "Multiple OneTimeUse elements used in a SAML assertion can lead to elevation of privileges, if the application does not process SAML assertions correctly.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47163",
+      "title": "The release manager must ensure application files are cryptographically hashed prior to deploying to DoD operational networks.",
+      "description": "When application code and binaries are transferred from one environment to another, there is the potential for malware to be introduced into either the application code or even the application binaries themselves.  Care must be taken to ensure that application code and binaries are validated for integrity prior to deployment into a production environment.   \n\nTo ensure file integrity, application files and/or application packages are cryptographically hashed using a strong hashing algorithm.  Comparing hashes after transferring the files makes it possible to detect changes in files that could indicate potential integrity issues with the application.\n\nCurrently, SHA256 is the DoD approved standard for cryptographic hash functions.   DoD application developers must use SHA256 when creating cryptographic hashes, however, some non-DoD vendors might still use MD5 or SHA1 when generating a checksum hash for their application packages.  It is important to use the same algorithms when validating the hash.  If a non DoD vendor uses SHA1 when hashing their files, you must use SHA1 to validate the hash.  Otherwise, the hashes will not match and a false positive indication of tampering will result.\n\nPrior to release of the application receiving an ATO/IATO for deployment into a DoD operational network, the application must be validated for integrity to ensure no tampering of source code or binaries has occurred.  Failure to validate the integrity of application code and/or application binaries prior to deploying an application into a production environment may compromise the operational network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6127",
+      "title": "The designer will ensure applications requiring user authentication are PK-enabled and are designed and implemented to support hardware tokens (e.g., CAC  for NIPRNet).",
+      "description": "Non PK-enabled applications can allow unauthorized persons or entities to intercept information.  A PK-enabled application gives assurance of the user accessing the application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6128",
+      "title": "The designer and IAO will ensure PK-enabled applications are designed and implemented to use approved credentials authorized under the DoD PKI program.\n\n",
+      "description": "Using unapproved PKI certificates could allow access by non-DoD and unauthorized  users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6129",
+      "title": "The designer will ensure the application using PKI validates certificates for expiration, confirms origin is from a DoD authorized CA, and verifies the certificate has not been revoked by CRL or OCSP, and CRL cache (if used) is updated at least daily.",
+      "description": "The application should not provide access to users or other entities using expired, revoked or improperly signed certificates because the identity cannot be verified.   ",
+      "severity": "high"
+    },
+    {
+      "id": "V-6130",
+      "title": "The designer will ensure the application has the capability to require account passwords that conform to DoD policy.",
+      "description": "Weak passwords can be guessed or easily cracked using various methods.  This can potentially lead to unauthorized access to the application. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6131",
+      "title": "The designer will ensure the application prevents the creation of duplicate accounts.\n",
+      "description": "Duplicate user accounts can create a situation where multiple users will  be mapped to a single account.  These duplicate user accounts may cause users to assume other users roles and privilege escalation. If user IDs are not unique and individual, user activity may not be accurately audited and unauthorized activity may not be seen by the audit system.   ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6132",
+      "title": "The IAO will ensure all user accounts are disabled which are authorized to have access to the application but have not authenticated within the past 35 days.\n",
+      "description": "Disabling inactive userids ensures access and privilege are available to only those who need it.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6133",
+      "title": "The IAO will ensure unnecessary built-in application accounts are disabled.\n",
+      "description": "Default passwords and properties of built-in accounts are often publicly available.  Anyone with necessary knowledge, internal or external, can compromise an application using built-in accounts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6134",
+      "title": "The IAO will ensure default passwords are changed.\n",
+      "description": "Default passwords can easily be compromised by attackers allowing immediate access to the applications.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6135",
+      "title": "The designer will ensure the appropriate cryptography is used to protect stored DoD information if required by the information owner.\n\n",
+      "description": "Application data needs to be properly protected.  Content of application data contains not only operationally sensitive data, but also personal data covered by the privacy act that needs to be protected internally and externally. Classifed data could be compromised if the required level of encryption is not utilized. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6136",
+      "title": "The designer will ensure data transmitted through a commercial or wireless network is protected using an appropriate form of cryptography.\n\n",
+      "description": "Unencrypted sensitive application data could be intercepted in transit.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6137",
+      "title": "The designer will ensure the application uses the Federal Information Processing Standard (FIPS) 140-2 validated cryptographic modules and random number generator if the application implements encryption, key exchange, digital signature, and hash functionality.\n\n\n",
+      "description": "Unapproved cryptographic module algorithms cannot be verified, and cannot be relied upon to provide confidentiality or integrity and DoD data may be compromised due to weak algorithms.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6138",
+      "title": "The designer will ensure the application design includes audits on all access to need-to-know information and key application events.\n\n",
+      "description": "Properly logged and monitored audit logs not only assist in combating threats, but also play a key role in diagnosis, forensics,  and recovery. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6139",
+      "title": "The designer will ensure the application has a capability to notify an administrator when audit logs are nearing capacity as specified in the system documentation.\n",
+      "description": "If an application audit log reaches capacity without warning, it will stop logging important system and security events.   It could also open the system up for a type of denial of service attack, if an application halts with a full log.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6140",
+      "title": "The designer and IAO will ensure the audit trail is readable only by the application and auditors and protected against modification and deletion by unauthorized individuals.",
+      "description": "Excessive permissions of audit records allow cover up of intrusion or misuse of the application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6141",
+      "title": "The designer will ensure access control mechanisms exist to ensure data is accessed and changed only by authorized personnel. \n",
+      "description": "If access control mechanisms are not in place, anonymous users could potentially make unauthorized read and modification requests to the application data which is an immediate loss of the integrity of the data.\n\nAny vulnerability associated with a DoD Information system or system enclave, the exploitation of which, by a risk factor, will directly and immediately result in loss of Confidentiality, Availability or Integrity of the system\nassociated data.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-6142",
+      "title": "The designer will ensure all access authorizations to data are revoked prior to initial assignment, allocation or reallocation to an unused state.",
+      "description": "DoD data may be compromised if applications do not protect residual data in objects when they are allocated to an unused state. Access authorizations to data should be revoked prior to initial assignment, allocation or reallocation to an unused state because subsequent use of the object could allow access to the residual data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6143",
+      "title": "The designer will ensure the application executes with no more privileges than necessary for proper operation.\n",
+      "description": "An application with unnecessary access privileges can give an attacker access to the underlying operating system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6144",
+      "title": "The designer will ensure the application provides a capability to limit the number of logon sessions per user and per application. ",
+      "description": "If a user account has been compromised, limiting the number of sessions will allow the administrator to detect if the account has been compromised by an indication that the maximum number of sessions has been exceeded.  Also, limiting the number of sessions affords an application the ability to prevent resources from becoming overloaded, and prevent a large scale DoS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6145",
+      "title": "If the application contains classified data, the Program Manager will ensure a Security Classification Guide exists containing data elements and their classification.\n\n",
+      "description": "Without a classification guide the marking, storage, and output media of classified material can be inadvertently mixed with unclassified material, leading to its possible loss or compromise. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6146",
+      "title": "The designer will ensure the application has the capability to mark sensitive/classified output when required.\n",
+      "description": "Failure to properly mark output could result in a disclosure of sensitive or classified data which is an immediate loss in confidentiality.\n\nAny vulnerability associated with a DoD Information system or system enclave, the exploitation of which, by a risk factor, will directly and immediately result in loss of Confidentiality, Availability or Integrity of the system\nassociated data.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-6147",
+      "title": "The Test Manager will ensure the application does not modify data files outside the scope of the application.\n",
+      "description": "Modifying data or files outside the scope of the application could lead to system instability in the event of an application problem.  Also, a problem with this application could effect the operation of another application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6148",
+      "title": "The designer will ensure threat models are documented and reviewed for each application release and updated as required by design and functionality changes or new threats are discovered.\n\n",
+      "description": "The lack of threat modeling will potentially leave unidentified threats for attackers to utilize to gain access to the application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6149",
+      "title": "The designer will ensure the application does not contain source code that is never invoked during operation, except for software components and libraries from approved third-party products.\n",
+      "description": "Unused libraries increase a program size without any benefits. and may expose an enclave to possible malware.  They can be used by a worm as program space, and increase the risk of a buffer overflow attack.  As code evaluations are performed, to identify potential vulnerabilities or to identify security enhancements, unused code will not be evaluated and therefore, adds additional unknown risk. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6150",
+      "title": "The Designer will ensure the application does not store configuration and control files in the same directory as user data.\n",
+      "description": "Application code and data require two very different security requirements, authentication and authorization (especially in file access).  Without proper authentication and authorization there is the potential for existing code to be changed.  These changes in code can lead to a Denial of Service (DoS) attack or allow malicious code to be placed within the application.  In addition, collocating application data and code complicates many issues such as backup, recovery, directory access privilege, and upgrades.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6151",
+      "title": "The IAO will ensure unnecessary services are disabled or removed.\n",
+      "description": "Unnecessary services and software increases the security risk by increasing the potential attack surface of the application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6152",
+      "title": "The designer will ensure the application is capable of displaying a customizable click-through banner at logon which prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating \"OK.”\n",
+      "description": "A logon banner is used to warn users against unauthorized entry and the possibility of legal action for unauthorized users, and advise all users that system use constitutes consent to monitoring, recording, and auditing, and that they have no expectation of privacy. Failure to display a logon warning banner without this type of information could adversely impact the ability to prosecute unauthorized users and users who abuse the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6153",
+      "title": "The designer will ensure the application removes authentication credentials on client computers after a session terminates. \n",
+      "description": "Leaving authentication credentials stored at the client level allows potential access to session information that can be used by subsequent users of a shared workstation and could also be exported and used on other workstation providing immediate unauthorized access to the application.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-6154",
+      "title": "The designer will ensure the application is organized by functionality and roles to support the assignment of specific roles to specific application functions. \n\n",
+      "description": "Without a least privilege policy, a user can gain access to information that he or she is not entitled to and can compromise confidentiality, integrity, and availability of the system. Also, minimizing privileges reduces the risk associated with hijacked accounts. Role based accounts can separate administrative and non-administrative rights in different roles.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6155",
+      "title": "The designer will ensure the application provides a capability to terminate a session and log out.\n",
+      "description": "If a user cannot log out of the application, subsequent users of a shared system could continue to use the previous user's session to the application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6156",
+      "title": "The designer will ensure the application does not contain embedded authentication data. \n",
+      "description": "Authentication data stored in code could potentially be read and used by anonymous users to gain access to a backend database or application server. This could lead to immediate access to a backend server.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-6157",
+      "title": "The designer will ensure the application does not contain invalid URL or path references.\n",
+      "description": "Resource information in code can easily advertise available vulnerabilities to unauthorized users.  By placing the references into configuration files, the files can be further protected by file permissions and will be separated for ease of updating.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6158",
+      "title": "The designer will ensure the application only embeds mobile code in e-mail which does not execute automatically when the user opens the e-mail body or attachment.\n",
+      "description": "The practice of opening e-mails with executable code renders the recipient vulnerable to Internet worms, malicious content, and other threats.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6159",
+      "title": "The designer will ensure unsigned Category 1A mobile code is not used in the application in accordance with DoD policy. ",
+      "description": "Use of un-trusted Level 1 and 2 mobile code technologies can introduce security vulnerabilities and malicious code into the client system.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6160",
+      "title": "The designer will ensure unsigned Category 2 mobile code executing in a constrained environment has no access to local system and network resources.\n",
+      "description": "Mobile code cannot conform to traditional installation and configuration safeguards, therefore, the use of local operating system resources and spawning of network connections introduce harmful and uncertain effects.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6161",
+      "title": "The designer will ensure signed Category 1A and Category 2 mobile code signature is validated before executing.",
+      "description": "Untrusted mobile code may contain malware or malicious code and digital signatures provide a source of the content which is crucial to authentication and trust of the data. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6162",
+      "title": "The designer will ensure uncategorized or emerging mobile code is not used in applications. \n",
+      "description": "Mobile code does not require any traditional software acceptance testing or security validation.  Mobile code needs to follow sound policy to maintain a reasonable level of trust.  Mobile code that does not fall into existing policy cannot be trusted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6163",
+      "title": "The Designer will ensure the application removes temporary storage of files and cookies when the application is terminated.\n",
+      "description": "If the application does not remove temporary data (e.g., authentication data, temporary files containing sensitive data, etc.) this temporary data could be used to re-authenticate the user or allow unauthorized access to sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6164",
+      "title": "The designer will ensure the application validates all input.\n",
+      "description": "Absence of input validation opens an application to improper manipulation of data. The lack of input validation can lead immediate access of application, denial of service, and corruption of data.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-6165",
+      "title": "The designer will ensure the application does not have buffer overflows, use functions known to be vulnerable to buffer overflows, and does not use signed values for memory allocation where permitted by the programming language.",
+      "description": "Buffer overflow attacks occur when improperly validated input is passed to an application overwriting of memory. Usually, buffer overflow errors stop execution of the application causing a minimum of denial of service and possibly a system call to a command shell giving the attacker access to the underlying operating system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6166",
+      "title": "The designer will ensure the application is not subject to error handling vulnerabilities.",
+      "description": "Unhandled exceptions leaves users with no means to properly respond to errors.  Mishandled exceptions can transmit information that can be used in future security breaches.   Properly handled errors allow applications to follow security procedures and guidelines in an informed manner.  If too much information is revealed in the error message, it can be used as the basis for an attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6167",
+      "title": "The designer will ensure application initialization, shutdown, and aborts are designed to keep the application in a secure state.\n",
+      "description": "An application could be compromised, providing an attack vector into the enclave if application initialization, shutdown, and aborts are not designed to keep the application in a secure state. \n\nIf an application fails without closing or shutting down processes or open sessions; authentication and validation mechanisms are in doubt.   Responsible application development practices must be applied to ensure the failed application is handled gracefully to prevent creation of security risks.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6168",
+      "title": "The designer will ensure applications requiring server authentication are PK-enabled. \n\n\n",
+      "description": "Applications not using PKI are at risk of containing many password vulnerabilities. PKI is the preferred method of authentication.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6169",
+      "title": "The Program Manager and Designer will ensure the use of new IPs, data services, and associated ports used by the application are submitted to the appropriate approving authority for that organization, which in turn are submitted through the DoD Ports, Protocols, and Services Management (DoD PPSM).  \n\n",
+      "description": "Failure to comply with DoD Ports, Protocols, and Services (PPS) Vulnerability Analysis and associated PPS mitigations may result in compromise of enclave boundary protections and/or functionality of the application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6170",
+      "title": "The Program Manager and designer will ensure any IA, or IA enabled, products used by the application are NIAP approved or in the NIAP approval process.\n\n",
+      "description": "IA or IA enabled products that have not been evaluated by NIAP may degrade the security posture of the enclave, if they do not operate as expected, be configured incorrectly, or have hidden security flaws. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-6171",
+      "title": "The IAO will ensure recovery procedures and technical system features exist so recovery is performed in a secure and verifiable manner.      \n\nThe IAO will document circumstances inhibiting a trusted recovery.     \n",
+      "description": "Without a disaster recovery plan, the application is susceptible to interruption in service due to damage within the processing site.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6172",
+      "title": "The IAO will ensure data backup is performed at required intervals in accordance with DoD policy.\n",
+      "description": "Without proper backups, the application is not protected from the loss of data or the operating environment in the event of hardware or software failure.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6173",
+      "title": "The IAO will ensure application audit trails are retained for at least 1 year for applications without SAMI data, and 5 years for applications including SAMI data.\n",
+      "description": "Log files are a requirement to trace intruder activity or to audit user activity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6174",
+      "title": "The IAO will ensure production database exports have database administration credentials and sensitive data removed before releasing the export.\n",
+      "description": "Production database exports are often used to populate development databases.  Test and development environments do not typically have the same rigid security protections that production environments do. When production data is used in test and development, the production database exports will need to be scrubbed to prevent information like passwords and other sensitive data from becoming available to development and test staff who may not have a need to know.  Sensitive data should not be included in database exports because of classification, privacy, and other types of data protection requirement issues.  Not all application developers have a need to know sensitive information such as HIPAA data, Privacy Act Data, production admin passwords or classified data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6197",
+      "title": "The Program Manager will ensure a System Security Plan (SSP) is established to describe the technical, administrative, and procedural IA program and policies governing the DoD information system, and identifying all IA personnel and specific IA requirements and objectives. ",
+      "description": "If the DAA, IAM, or IAO are not performing assigned functions in accordance with DoD\nrequirements, it could impact the overall security of the facility, personnel, systems, and data, which\ncould lead to degraded security. If the DAA and the IAM/IAO are not appointed in writing, there will\nbe no way to ensure they understand the responsibilities of the position and the appointment\ncriteria. The lack of a complete System Security Plan (SSP) could lead to ineffective secure\noperations and impede accreditation.  A System Identification Profile (SIP) and the DIACAP Implementation Plan (DIP) may be considered as sufficient proof of compliance as long as the documentation provides all of the information that is needed to meet the requirement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6198",
+      "title": "The Program Manager and IAO will ensure development systems, build systems, test systems, and all components comply with all appropriate DoD STIGs, NSA guides, and all applicable DoD policies. \nThe Test Manager will ensure both client and server machines are STIG compliant.\n\n",
+      "description": "Applications developed on a non STIG compliant platform may not function when deployed to a STIG compliant platform, and therefore cause a potential denial of service to the users and the application, or require lessening security requirements on the client side of the application. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7013",
+      "title": "The designer will create and update the Design Document for each release of the application.",
+      "description": "The detailed functional architecture must be documented to ensure all risks are assessed and mitigated to the maximum extent practical. Failure to do so may result in unexposed risk, and failure to mitigate the risk leading to failure or compromise of the system.",
+      "severity": "medium"
+    }
+  ]
+}
