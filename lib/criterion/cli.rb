@@ -1,11 +1,11 @@
 require 'cri'
 
-class Criterion
+class Kriterion
   class CLI
     def self.command
       @cmd ||= Cri::Command.define do
-        name        'criterion'
-        usage       'criterion <subcommand>'
+        name        'kriterion'
+        usage       'kriterion <subcommand>'
         summary     'Exposes Puppet\'s compliance information in a REST API'
 
         flag   :h,  :help,  'show help for this command' do |value, cmd|
@@ -24,4 +24,4 @@ class Criterion
   end
 end
 
-require 'criterion/cli/worker'
+require 'kriterion/cli/worker'

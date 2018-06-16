@@ -1,6 +1,6 @@
 require 'logger'
 
-module Criterion::Logs
+module Kriterion::Logs
   DEBUG = ::Logger::DEBUG
 
   def logger

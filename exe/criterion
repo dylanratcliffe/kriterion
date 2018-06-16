@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 
-require 'criterion/cli'
+require 'kriterion/cli'
 
 begin
-  Criterion::CLI.command.run(ARGV)
+  Kriterion::CLI.command.run(ARGV)
 rescue Interrupt
   $stderr.puts "Aborted!"
   exit(1)

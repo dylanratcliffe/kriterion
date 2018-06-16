@@ -1,6 +1,6 @@
 require 'json'
 
-class Criterion
+class Kriterion
   class ResourceStatus
     attr_reader :title
     attr_reader :file

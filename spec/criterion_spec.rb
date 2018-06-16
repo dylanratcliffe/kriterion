@@ -1,6 +1,6 @@
-RSpec.describe Criterion do
+RSpec.describe Kriterion do
   it "has a version number" do
-    expect(Criterion::VERSION).not_to be nil
+    expect(Kriterion::VERSION).not_to be nil
   end
 
   it "does something useful" do

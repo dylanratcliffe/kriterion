@@ -1,16 +1,16 @@
 require 'json'
 require 'mongo'
-require 'criterion/logs'
-include Criterion::Logs
+require 'kriterion/logs'
+include Kriterion::Logs
 
-class Criterion
+class Kriterion
   class API
     attr_reader :mongo
     attr_reader :standards_dir
 
     def initialize(opts)
       if opts[:debug]
-        logger.level = Criterion::Logs::DEBUG
+        logger.level = Kriterion::Logs::DEBUG
       end
 
       @mongo_hostname = opts[:mongo_hostname]

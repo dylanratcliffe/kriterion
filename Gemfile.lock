@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    criterion (0.1.0)
+    kriterion (0.1.0)
       cri (~> 2.10)
       mongo (~> 2.5)
 
@@ -47,7 +47,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.16)
-  criterion!
+  kriterion!
   nokogiri
   pry
   pry-byebug

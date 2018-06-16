@@ -1,7 +1,7 @@
 require 'json'
-require 'criterion/resource_status'
+require 'kriterion/resource_status'
 
-class Criterion
+class Kriterion
   class Report
     attr_reader :host
     attr_reader :time
@@ -48,7 +48,7 @@ class Criterion
       # We should initialise them now
       if @resource_statuses.is_a? Hash
         @resource_statuses = @resource_statuses.map do |ref, params|
-          Criterion::ResourceStatus.new(params)
+          Kriterion::ResourceStatus.new(params)
         end
       end
       return @resource_statuses

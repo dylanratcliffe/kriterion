@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-# Specify your gem's dependencies in criterion.gemspec
+# Specify your gem's dependencies in kriterion.gemspec
 gemspec
 
 group :development do
