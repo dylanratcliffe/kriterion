@@ -2,6 +2,7 @@ require 'json'
 require 'net/http'
 require 'mongo'
 require 'logger'
+require 'kriterion'
 require 'kriterion/report'
 require 'kriterion/logs'
 include Kriterion::Logs
@@ -30,8 +31,8 @@ class Kriterion
       @mongo          = Mongo::Client.new([ "#{@mongo_hostname}:#{@mongo_port}" ], :database => @mongo_database)
       # TODO: Work out how workers are going to get the list of standards frmo the API runner
       # TODO: Remove placeholder code
-      standards_dir   = File.expand_path(File.dirname __dir__,'standards')
-      @standards      = Kriterion.standards(standards_dir)
+      standards_dir   = File.expand_path('standards',Kriterion::ROOT)
+      @standards      = Kriterion.standards([standards_dir])
     end
 
     def process_report(report)
@@ -58,7 +59,6 @@ class Kriterion
 
     def run
       while true do
-        binding.pry
         # Connect and check if there is anythong on the queue
         # TODO: Change this so that they listen properly
         logger.debug "GET #{queue_uri}"
