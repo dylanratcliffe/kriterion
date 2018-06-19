@@ -30,13 +30,30 @@ class Kriterion
       @mongo          = Mongo::Client.new([ "#{@mongo_hostname}:#{@mongo_port}" ], :database => @mongo_database)
       # TODO: Work out how workers are going to get the list of standards frmo the API runner
       # TODO: Remove placeholder code
-      @standards      = ['puppet_enterprise']
+      standards_dir   = File.expand_path(File.dirname __dir__,'standards')
+      @standards      = Kriterion.standards(standards_dir)
     end
 
     def process_report(report)
       report = Kriterion::Report.new(report)
-      binding.pry
-      puts report
+
+      # Check if the report contains any relevant resources
+      relevant_resources = report.resources_with_tags(self.standards)
+
+      if relevant_resources.empty?
+        return nil
+      else
+        # Create a object to store all standards that have been affected by this
+        # report
+        affected_standards = {}
+        binding.pry
+        # Process the report
+        resources.each do |resource|
+          #
+        end
+        # Check if the standard is already in the database
+        mongo[:standards].find()
+      end
     end
 
     def run

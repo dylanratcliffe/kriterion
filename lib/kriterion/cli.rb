@@ -13,7 +13,8 @@ class Kriterion
           exit 0
         end
 
-        flag :d, :debug, 'Enable debug logging'
+        flag :d,  :debug, 'Enable debug logging'
+        flag nil, :trace, 'Print stacktraces'
 
         run do |opts, args, cmd|
           puts cmd.help

@@ -54,10 +54,6 @@ class Kriterion
       return @resource_statuses
     end
 
-    def relevant?
-      # This should return if the report is relevant based on resource tags
-    end
-
     # Returns resources that have given tags, expects an array of tags
     def resources_with_tags(tags)
       resource_statuses.select do |resource|
