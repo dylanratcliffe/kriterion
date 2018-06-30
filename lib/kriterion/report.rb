@@ -21,8 +21,7 @@ class Kriterion
     attr_reader :code_id
     attr_reader :cached_catalog_status
 
-    def initialize(json)
-      data                   = JSON.parse(json)
+    def initialize(data)
       @host                  = data['host']
       @time                  = data['time']
       @configuration_version = data['configuration_version']
