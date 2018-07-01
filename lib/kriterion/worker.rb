@@ -56,9 +56,9 @@ class Kriterion
         # Create a object to store all standards that have been affected by this
         # report
         affected_standards = {}
-        binding.pry
+
         # Process the report
-        resources.each do |resource|
+        relevant_resources.each do |resource|
           #
         end
         # Check if the standard is already in the database
