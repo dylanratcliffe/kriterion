@@ -14,6 +14,7 @@ class Kriterion
     attr_reader :queue
     attr_reader :queue_uri
     attr_reader :standards
+    attr_reader :backend
 
     def initialize(opts = {})
       if opts[:debug]
@@ -48,22 +49,32 @@ class Kriterion
       report = Kriterion::Report.new(report)
 
       # Check if the report contains any relevant resources
-      relevant_resources = report.resources_with_tags(self.standards.keys)
+      standard_names = self.standards.keys
+      relevant_resources = report.resources_with_tags(standard_names)
 
       if relevant_resources.empty?
         return nil
       else
-        # Create a object to store all standards that have been affected by this
-        # report
-        affected_standards = {}
-
         # Process the report
-        relevant_resources.each do |resource|
-          #
+        affected_standards = relevant_resources.group_by do |resource|
+          # Select the standard tag
+          stds = (resource.tags & standard_names)
+
+          if stds.length > 1
+            raise "Found a resource that was relevant to more than one standard. This is not yet supported"
+          else
+            stds[0]
+          end
         end
-        # Check if the standard is already in the database
-        binding.pry
-        backend.standards['foo']
+
+        affected_standards.each do |name,resources|
+          binding.pry
+          # Check if the standard has been populated
+          unless backend.standards[name]
+            details = backend.standard_details[name]
+
+          end
+        end
       end
     end
 
