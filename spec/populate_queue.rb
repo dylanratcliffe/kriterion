@@ -15,11 +15,11 @@ puts "Found files:\n#{files.join("\n")}"
 
 4.times do
   threads << Thread.new do
-    until queue.empty?
-      file    = file_queue.pop(true) rescue nil
+    until file_queue.empty?
+      file = file_queue.pop
       if file
-        http    = Net::HTTP.new(uri.host, uri.port)
-        request = Net::HTTP::Post.new(uri.request_uri)
+        http         = Net::HTTP.new(uri.host, uri.port)
+        request      = Net::HTTP::Post.new(uri.request_uri)
         puts "Uploading #{file}"
         request.body = URI.escape("value=#{File.read(file)}").gsub(';','%3B')
         http.request(request)
