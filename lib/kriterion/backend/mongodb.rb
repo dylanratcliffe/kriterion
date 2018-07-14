@@ -19,29 +19,44 @@ class Kriterion
         @hostname            = opts[:hostname]
         @port                = opts[:port]
         @database            = opts[:database]
-        @client              = Mongo::Client.new([ "#{@hostname}:#{@port}" ], :database => @database)
+        @client              = Mongo::Client.new(
+          ["#{@hostname}:#{@port}"], database: @database
+        )
         @standards_db        = @client[:standards]
         @standard_details_db = @client[:standard_details]
         # TODO: Work out how to set the mongo client logging level
       end
 
-      def set_standard(name, standard)
+      def standards
+        binding.pry
+      end
+
+      def standard(standard)
         # TODO: Complete this
+        binding.pry
       end
 
       def get_standard(name)
         # TODO: Complete this
-        standards_db.find(name)
+        result = standards_db.find(name: name)
+        raise "Found > 1 standards with name: #{name}" if result.count > 1
+        Kriterion::Standard.new(result.first)
       end
 
-      def set_standard_details(name, standard)
-        # TODO: Complete this
+      def add_standard(standard)
+        result = standards_db.insert_one(standard.to_h)
+        raise "Insertion of #{standard.name} failed" unless result.ok?
+        standard
       end
 
-      def get_standard_details(name)
-        # TODO: Complete this
-        standard_details_db.find(name)
-      end
+      # def set_standard_details(name, standard)
+      #   # TODO: Complete this
+      # end
+      #
+      # def get_standard_details(name)
+      #   # TODO: Complete this
+      #   standard_details_db.find(name)
+      # end
     end
   end
 end

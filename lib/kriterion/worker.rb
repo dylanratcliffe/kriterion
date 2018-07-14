@@ -4,6 +4,7 @@ require 'logger'
 require 'kriterion'
 require 'kriterion/report'
 require 'kriterion/logs'
+require 'kriterion/standard'
 include Kriterion::Logs
 
 require 'pry'
@@ -32,12 +33,16 @@ class Kriterion
       case backend_name
       when 'mongodb'
         require "kriterion/backend/mongodb"
-        @backend = Kriterion::Backend::MongoDB.new({
-                     hostname: opts[:mongo_hostname],
-                     port:     opts[:mongo_port],
-                     database: opts[:mongo_database],
-                   })
+        Kriterion::Backend.set(
+          Kriterion::Backend::MongoDB.new({
+            hostname: opts[:mongo_hostname],
+            port:     opts[:mongo_port],
+            database: opts[:mongo_database],
+          })
+        )
       end
+
+      @backend = Kriterion::Backend.get
 
       # TODO: Work out how workers are going to get the list of standards frmo the API runner
       # TODO: Remove placeholder code
@@ -49,7 +54,7 @@ class Kriterion
       report = Kriterion::Report.new(report)
 
       # Check if the report contains any relevant resources
-      standard_names = self.standards.keys
+      standard_names     = self.standards.keys
       relevant_resources = report.resources_with_tags(standard_names)
 
       if relevant_resources.empty?
@@ -68,12 +73,35 @@ class Kriterion
         end
 
         affected_standards.each do |name,resources|
-          binding.pry
-          # Check if the standard has been populated
-          unless backend.standards[name]
-            details = backend.standard_details[name]
+          standard = backend.get_standard(name)
+          unless standard
+            # If the standard doesn't yet exist in the backed, add it
+            standard = Kriterion::Standard.new(@standards[name])
+            logger.debug "Adding starndard #{standard.name} to backend"
+            backend.add_standard(standard)
+          end
+
+          resources.each do |resource|
+            # Get the section tag
+            section_tag = resource.tags.select { |t| standard.item_syntax.match(t) }
+
+            # Go thouh all sections and subsections and create them if required
+            sections = standard.item_syntax.match(section_tag).captures.reduce(standard) do |previous, current|
+              unless previous.section[current]
+                # Create that section
+                # TODO: Implement Kriterion::Section.add_section
+                previous.add_section(Kriterion::Section.new(@standards[name]['sections'][]))
+              end
+              current
+            end
+
+            section = sections.last
+
+            # TODO: Continue from here
 
           end
+
+          # Recalculate the compliance of a given standard once it is done
         end
       end
     end
