@@ -1,0 +1,34 @@
+{
+  "name": "cis_red_hat_enterprise_linux_7",
+  "date": "2016-02-06",
+  "description": "This document provides prescriptive guidance for establishing a secure configuration posture for Red Hat Enterprise Linux 7 systems running on x86 and x64 platforms. This document was tested against Red Hat Enterprise Linux 7.2. The guidance within broadly assumes that operations are being performed as the root user. Non-root users may not be able to access certain areas of the system, especially after remediation has been performed. It is advisable to verify root users path integrity and the integrity of any programs being run prior to execution of commands and scripts included in this benchmark.",
+  "title": "CIS Red Hat Enterprise Linux 7 Benchmark",
+  "version": "2.1.0",
+  "item_syntax": "^(\\d+)\\.?(\\d+)?\\.?(\\d+)?\\.?(\\d+)?\\.?(\\d+)?\\.?(\\d+)?\\.?(\\d+)?$",
+  "section_separator": ".",
+  "sections": [
+    {
+      "name": "1",
+      "title": "Initial Setup",
+      "description": "Items in this section are advised for all systems, but may be difficult or require extensive preparation after the initial setup of the system."
+    },
+    {
+      "name": "1.7",
+      "title": "Warning Banners",
+      "description": "Presenting a warning message prior to the normal user login may assist in the prosecution of trespassers on the computer system. Changing some of these login banners also has the side effect of hiding OS version information and other detailed system information from attackers attempting to target specific exploits at a system. Guidelines published by the US Department of Defense require that warning messages include at least the name of the organization that owns the system, the fact that the system is subject to monitoring and that such monitoring is in compliance with local statutes, and that use of the system implies consent to such monitoring. It is important that the organization's legal counsel review the content of all messages before any system modifications are made, as these warning messages are inherently site-specific. More information (including citations of relevant case law) can be found at http://www.justice.gov/criminal/cybercrime/ \n\n**Note:** The text provided in the remediation actions for these items is intended as an example only. Please edit to include the specific text for your organization as approved by your legal department."
+    },
+    {
+      "name": "1.7.1",
+      "title": "Command Line Warning Banners",
+      "description": "The `/etc/motd`, `/etc/issue`, and `/etc/issue.net` files govern warning banners forstandard command line logins for both local and remote users."
+    }
+  ],
+  "items": [
+    {
+      "id": "1.7.1.1",
+      "title": "Ensure message of the day is configured properly (Scored)",
+      "description": "The contents of the `/etc/motd` file are displayed to users after login and function as a message of the day for authenticated users.\n\nUnix-based systems have typically displayed information about the OS release and patch level upon logging in to the system. This information can be useful to developers who are developing software for a particular OS platform.",
+      "severity": "high"
+    }
+  ]
+}

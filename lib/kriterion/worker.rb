@@ -2,8 +2,9 @@ require 'json'
 require 'net/http'
 require 'logger'
 require 'kriterion'
-require 'kriterion/report'
 require 'kriterion/logs'
+require 'kriterion/report'
+require 'kriterion/section'
 require 'kriterion/standard'
 
 require 'pry'
@@ -93,16 +94,42 @@ class Kriterion
           section_tag = section_tag.first
 
           # Go though all sections and subsections and create them if required
-          section = standard.item_syntax.match(section_tag).captures.reduce(standard) do |previous, current|
-            unless previous.section[current]
-              # Create that section
-              # TODO: Implement Kriterion::Section.add_section
-              previous.add_section(Kriterion::Section.new(@standards[name]['sections'][]))
+          captures = standard.item_syntax.match(section_tag).captures - [nil]
+          section  = captures.reduce(standard) do |previous, current|
+            # If the section already exists return it
+            if previous.find_section(current)
+              previous.find_section(current)
+            else
+              # This is a new section that does not yet exist in the database,
+              # we therefore need to get the details and all them all in
+              current_section_name = if previous.is_a? Kriterion::Standard
+                                       current
+                                     elsif previous.is_a? Kriterion::Section
+                                       [
+                                         previous.name,
+                                         current
+                                       ].join(standard.section_separator)
+                                     end
+
+              # Get the details
+              current_section = @standards[name]['sections'].select do |s|
+                s['name'] == current_section_name
+              end[0]
+
+              if current_section.nil?
+                previous
+              else
+                # Create the new section object
+                current_section['standard'] = standard.name
+                current_section = Kriterion::Section.new(current_section)
+
+                backend.add_section(current_section)
+                current_section
+              end
             end
-            current
           end
 
-          backend.add_item(section, section_tag)
+          binding.pry
         end
 
 

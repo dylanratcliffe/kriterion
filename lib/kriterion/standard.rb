@@ -1,5 +1,7 @@
+require 'kriterion/object'
+
 class Kriterion
-  class Standard
+  class Standard < Kriterion::Object
     @@standards = []
 
     attr_accessor :name
@@ -30,9 +32,6 @@ class Kriterion
       @items             = data['items']
     end
 
-    def run
-    end
-
     def self.get(name)
       # Reload all standards
       Kriterion::Standard.reload_all!
@@ -52,27 +51,6 @@ class Kriterion
     def self.reload_all!
       backend = Kriterion::Backend.get
       @@standards = backend.standards
-    end
-
-    def to_h(mode = :basic)
-      raise 'Mode must be :basic or :full' unless %i[basic full].include? mode
-      hash = {}
-
-      instance_variables.each do |v|
-        hash[v.to_s.gsub(/^@/, '')] = instance_variable_get(v.to_s)
-      end
-
-      if mode == :basic
-        hash.reject do |k, _v|
-          %w[
-            compliance
-            sections
-            items
-          ].include? k
-        end
-      elsif mode == :full
-        hash
-      end
     end
   end
 end

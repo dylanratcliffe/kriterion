@@ -9,6 +9,5 @@ class Kriterion
     def self.get
       @@backend
     end
-
   end
 end

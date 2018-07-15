@@ -37,20 +37,7 @@ class Kriterion
       end
 
       def get_standard(name)
-        # TODO: Complete this
-        result = standards_db.find(name: name)
-        count  = result.count
-        case count
-        when 0
-          nil
-        when 1
-          standard = result.first
-          # Compile the regex from a lazy-compiled BSON regex back to a ruby one
-          standard['item_syntax'] = standard['item_syntax'].compile
-          Kriterion::Standard.new(standard)
-        else
-          raise "Found > 1 standards with name: #{name}"
-        end
+        sanitise_standard(find_standard(name))
       end
 
       def add_standard(standard)
@@ -59,6 +46,15 @@ class Kriterion
         standard
       end
 
+      def add_section(section)
+        query       = { name: section.standard }
+        instruction = {
+          '$addToSet' => {
+            sections: section.to_h
+          }
+        }
+        standards_db.update_one(query, instruction)
+      end
       # def set_standard_details(name, standard)
       #   # TODO: Complete this
       # end
@@ -67,6 +63,35 @@ class Kriterion
       #   # TODO: Complete this
       #   standard_details_db.find(name)
       # end
+
+      private
+
+      def find_standard(name)
+        result = standards_db.find(name: name)
+        count  = result.count
+        case count
+        when 0
+          nil
+        when 1
+          result.first
+        else
+          raise "Found > 1 standards with name: #{name}"
+        end
+      end
+
+      # Takes a result and sanities it to Kriterion::Standard object
+      def sanitise_standard(result)
+        return nil if result.nil?
+        # Compile the regex from a lazy-compiled BSON regex back to a ruby one
+        result['item_syntax'] = result['item_syntax'].compile
+        # Convert sections to objects
+        if result['sections']
+          result['sections'] = result['sections'].map do |s|
+            Kriterion::Section.new(s)
+          end
+        end
+        Kriterion::Standard.new(result)
+      end
     end
   end
 end
