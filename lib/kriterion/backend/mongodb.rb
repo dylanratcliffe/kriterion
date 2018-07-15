@@ -39,8 +39,18 @@ class Kriterion
       def get_standard(name)
         # TODO: Complete this
         result = standards_db.find(name: name)
-        raise "Found > 1 standards with name: #{name}" if result.count > 1
-        Kriterion::Standard.new(result.first)
+        count  = result.count
+        case count
+        when 0
+          nil
+        when 1
+          standard = result.first
+          # Compile the regex from a lazy-compiled BSON regex back to a ruby one
+          standard['item_syntax'] = standard['item_syntax'].compile
+          Kriterion::Standard.new(standard)
+        else
+          raise "Found > 1 standards with name: #{name}"
+        end
       end
 
       def add_standard(standard)

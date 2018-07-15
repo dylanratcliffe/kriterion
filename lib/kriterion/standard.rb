@@ -19,7 +19,11 @@ class Kriterion
       @description       = data['description']
       @title             = data['title']
       @version           = data['version']
-      @item_syntax       = data['item_syntax']
+      @item_syntax       = if data['item_syntax'].is_a? Regexp
+                             data['item_syntax']
+                           else
+                             Regexp.new(data['item_syntax'])
+                           end
       @section_separator = data['section_separator']
       @compliance        = data['compliance']
       @sections          = data['sections']
@@ -28,7 +32,6 @@ class Kriterion
 
     def run
     end
-
 
     def self.get(name)
       # Reload all standards
@@ -51,14 +54,25 @@ class Kriterion
       @@standards = backend.standards
     end
 
-    def to_h
+    def to_h(mode = :basic)
+      raise 'Mode must be :basic or :full' unless %i[basic full].include? mode
       hash = {}
 
-      self.instance_variables.each do |v|
-        hash[v.to_s.gsub(%r{^@},'')] = self.instance_variable_get(v.to_s)
+      instance_variables.each do |v|
+        hash[v.to_s.gsub(/^@/, '')] = instance_variable_get(v.to_s)
       end
 
-      hash
+      if mode == :basic
+        hash.reject do |k, _v|
+          %w[
+            compliance
+            sections
+            items
+          ].include? k
+        end
+      elsif mode == :full
+        hash
+      end
     end
   end
 end
