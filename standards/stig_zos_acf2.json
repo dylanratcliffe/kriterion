@@ -1,0 +1,1451 @@
+{
+  "name": "stig_zos_acf2",
+  "date": "2018-04-04",
+  "description": "None",
+  "title": "z/OS ACF2 STIG",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-1",
+      "title": "There are started task LOGONIDs with the NON-CNCL attribute specified In the associated LOGONID record that are not listed as trusted and have not been specifically approved.",
+      "description": "The NON-CNCL privilege exempts the started tasks from security checking.  This could result in the compromise of the confidentiality, integrity, and availability of the operating system, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100",
+      "title": "Non-existent or inaccessible LINKLIST libraries.",
+      "description": "LINKLIST libraries give a common access point for the general usage of modules.  Many of the subsystems installed on a domain rely upon these modules for proper execution.  If the list of libraries found in this LINKLIST is not properly maintained, the integrity of the operating environment is subject to compromise.",
+      "severity": "low"
+    },
+    {
+      "id": "V-101",
+      "title": "Non-standard SMF data collection options specified.",
+      "description": "SMF data collection is the basic unit of tracking of all system functions and actions.  Included in this tracking data are the audit trails from each of the ACPs.  If the control options for the recording of this tracking are not properly maintained, then accountability cannot be monitored, and its use in the execution of a contingency plan could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-102",
+      "title": "Required SMF data record types must be collected.",
+      "description": "SMF data collection is the basic unit of tracking of all system functions and actions.  Included in this tracking data are the audit records from each of the ACPs and system.  If the required SMF data record types are not being collected, then accountability cannot be monitored, and its use in the execution of a contingency plan could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-103",
+      "title": "An automated process is not in place to collect and retain SMF data.",
+      "description": "SMF data collection is the basic unit of tracking of all system functions and actions.  Included in this racking data is the audit trail from the ACP.  If the control options for the recording of this tracking are not properly maintained, then accountability cannot be monitored and its use in the execution of a contingency plan could be compromised.   Failure to collect SMF data in a timely fashion can result in the loss of critical system data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-104",
+      "title": "ACP database is not on a separate physical volume from its backup and recovery datasets.  ",
+      "description": "The ACP backup and recovery data files provide the only means of recovering the ACP database in the event of its damage.  In the case where this damage is to the physical volume on which it resides, and any of these recovery data files exist on this volume as well, then complete recovery of the ACP database would be extremely difficult, if even possible.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-105",
+      "title": "ACP database is not backed up on a scheduled basis.",
+      "description": "Loss of the ACP database would cause an interruption in the service of the operating system environment.  If regularly scheduled backups of this database are not processed, system recovery time could be unacceptably long.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-106",
+      "title": "System DASD backups are not performed on a regularly scheduled basis.",
+      "description": "If backups of the operating environment are not properly processed, implementation of a contingency plan would not include the data necessary to fully recover from any outage.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-107",
+      "title": "PASSWORD data set and OS passwords are utilized.",
+      "description": "All protection of system resources must come from the ACP.  If multiple protection mechanisms are in place, the accessibility of data, specifically under contingency plan execution, is subject to compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-108",
+      "title": "SYS1.PARMLIB is not limited to only system programmers.",
+      "description": "SYS1.PARMLIB contains the parameters which control system IPL, configuration characteristics, security facilities, and performance.  Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-109",
+      "title": "Access to SYS1.LINKLIB is not properly protected.",
+      "description": "This data set is automatically APF-authorized, contains system SVCs and the base PPT.  Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-110",
+      "title": "Write or greater access to SYS1.SVCLIB must be limited to system programmers only.",
+      "description": "This data set is automatically APF-authorized, contains system SVCs, and may also contain I/O appendages. Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-111",
+      "title": "Write or greater access to SYS1.IMAGELIB must be limited to system programmers only.\n  ",
+      "description": "SYS1.IMAGELIB is a partitioned data set containing universal character set (UCS), forms control buffer (FCB), and printer control information. Most IBM standard UCS images are included in SYS1.IMAGELIB during system installation. This data set should be protected as a z/OS system data set.",
+      "severity": "high"
+    },
+    {
+      "id": "V-112",
+      "title": "Write or greater access to SYS1.LPALIB must be limited to system programmers only. \n ",
+      "description": "SYS1.LPALIB is automatically APF-authorized during IPL processing and can contain SVCs. LPA modules, once loaded into the Link Pack Area, are capable of performing APF-authorized functions. This authorization allows a program to bypass various levels of security checking. Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-113",
+      "title": "Update and allocate access to all APF -authorized libraries are not limited to system programmers only.  ",
+      "description": "The Authorized Program List designates those libraries that can contain program modules which possess a significant level of security bypass capability.  Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-114",
+      "title": "Write or greater access to all LPA libraries must be limited to system programmers only.",
+      "description": "LPA modules, once loaded into the Link Pack Area, are capable of performing APF-authorized functions. This authorization allows a program to bypass various levels of security checking. Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-115",
+      "title": "Write or greater access to SYS1.NUCLEUS must be limited to system programmers only. ",
+      "description": "This data set contains a large portion of the system initialization (IPL) programs and pointers to the master and alternate master catalog. Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-116",
+      "title": "Write or greater access to libraries that contain PPT modules must be limited to system programmers only.",
+      "description": "Specific PPT designated program modules possess significant security bypass capabilities. Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-117",
+      "title": "Update and allocate access to LINKLIST libraries are not limited to system programmers only.  ",
+      "description": "The primary function of the LINKLIST is to serve as a single repository for commonly used system modules.  Failure to ensure that the proper set of libraries are designated for LINKLIST can impact system integrity, performance, and functionality.  For this reason, controls must be employed to ensure that the correct set of LINKLIST libraries are used.  Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-118",
+      "title": "The ACP security data sets and/or databases must be properly protected.",
+      "description": "The Access Control Program (ACP) database files contain all access control information for the operating system environment and system resources. Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-119",
+      "title": "Access greater than Read to the System Master Catalog must be limited to system programmers only.   ",
+      "description": "System catalogs are the basis for locating all files on the system. Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-120",
+      "title": "Update and allocate access to all system-level product installation libraries are not limited to system programmers only.  ",
+      "description": "System-level product installation libraries constitute the majority of the systems software libraries.  Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-121",
+      "title": "Update and allocate access to the JES2 System data sets (e.g., Spool, Checkpoint, and Initialization parameters) are not limited to system programmers only.  ",
+      "description": "The JES2 System data sets are a common repository for all jobs submitted to the system and the associated printout and configuration of the JES2 environment. Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-122",
+      "title": "Write or greater access to SYS1.UADS must be limited to system programmers only and read and update access must be limited to system programmer personnel and/or security personnel.",
+      "description": "SYS1.UADS is the data set where emergency USERIDs are maintained. This ensures that logon processing can occur even if the ACP is not functional. Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-123",
+      "title": "Update and allocate access to SMF collection files (i.e., SYS1.MANx) are not limited to system programmers and/or batch jobs that perform SMF dump processing.  ",
+      "description": "SMF data collection is the system activity journaling facility of the z/OS system.  With the proper parameter designations it serves as the basis to ensure individual user accountability.  SMF data is the primary source for cost charge back in DISA.  Unauthorized access could result in the compromise of logging and recording of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-124",
+      "title": "Update and allocate access to data sets used to backup and/or dump SMF collection files are not limited to system programmers and/or batch jobs that perform SMF dump processing.  ",
+      "description": "SMF backup data sets are those data sets to which SMF data has been offloaded in order to ensure a historical tracking of individual user accountability.  Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-125",
+      "title": "Access to SYSTEM DUMP data sets are not limited to system programmers only.  ",
+      "description": "System DUMP data sets are used to record system data areas and virtual storage associated with system task failures.  Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-126",
+      "title": "Update and allocate access to System backup files are not limited to system programmers and/or batch jobs that perform DASD backups.",
+      "description": "System backup data sets are necessary for recovery of DASD resident data sets.  Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-127",
+      "title": "Access to SYS(x).TRACE is not limited to system programmers only.",
+      "description": "SYS1.TRACE is used to trace and debug system problems.  Unauthorized access could result in a compromise of the integrity and availability of all system data and processes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-128",
+      "title": "Access to System page data sets (i.e., PLPA, COMMON, and LOCALx) are not limited to system programmers.",
+      "description": "Page data sets hold individual pages of virtual storage when they are paged out of real storage.  Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-129",
+      "title": "Write or greater access to Libraries containing EXIT modules must be limited to system programmers only.",
+      "description": "System exits have a wide range of uses and capabilities within any system. Exits may introduce security exposures within the system, modify audit trails, and alter individual user capabilities. Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-130",
+      "title": "The APPLDEF GSO record if used has supporting documentation indicating the reason it was used.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "low"
+    },
+    {
+      "id": "V-131",
+      "title": "The AUTHEXIT GSO record value is used to define an extended user authentication exit at TSO logon, for Operator Identification (OID) card usage.  DISA requires the use of NCPASS on all of its domains.  DISA sites require the use of AUTHEXIT for other non DISA sites this value is optional.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-132",
+      "title": "The AUTOERAS GSO record value must be set to indicate that ACF2 is controlling the automatic physical erasure of VSAM or non VSAM data sets. ",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data. The ACP provides the ability to set a number of these fields at the subsystem level. If no setting is found, the system-wide defaults will be used. The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment. In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-133",
+      "title": "The BACKUP GSO record value specifies a time field and Time(00:00 ) is not specified unless the database is shared and backed up on another system.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-134",
+      "title": "The BLPPGM GSO record value indicates that ACF2 does not control the programs authorized to use tape bypass label processing (BLP).",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-135",
+      "title": "The CLASMAP GSO record value translates an eight-character SAF resource class into a three character ACF2 resource type code.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-136",
+      "title": "The EXITS GSO record value specifies the module names of site written ACF2 exit routines.  ",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-138",
+      "title": "The LINKLST GSO record value if specified only contains trusted system datasets.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-140",
+      "title": "The MAINT GSO record value if specified will be restricted to production storage management user accounts and programs.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-141",
+      "title": "The NJE GSO record value indicates validation options that apply to jobs submitted through a network job entry subsystem (JES2, JES3, RSCS).",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-142",
+      "title": "The OPTS GSO record value will be set to the values specified.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "high"
+    },
+    {
+      "id": "V-143",
+      "title": "The PPGM GSO record value indicates protected programs that are only executed by privileged users.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-144",
+      "title": "The PSWD GSO record values must be set to the values specified in the checks portion below.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting guessing and brute-force attacks.  Password complexity is one factor of several that determine how long it takes to crack a password. The more complex the password is, the greater the number of possible combinations that need to be tested before the password is compromised.  Use of a complex password helps to increase the time and resources required to compromise the password. \n\nThe PSWD GSO record values specify the rules that ACF2 will apply when a user selects a new password. Improper setting of any of these fields, individually or in combination with another, can result in weakened passwords and compromise the security of the processing environment. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-145",
+      "title": "The PWPHRASE GSO record must be properly defined.",
+      "description": "Sites may opt to use passphrases in lieu of passwords for authentication.  A passphrase must nevertheless be constrained by certain complexity parameters to assure appropriate strength.  The GSO PWPHRASE record specifies the rules that ACF2 will apply when a user selects a new password phrase.\n\nThe system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-146",
+      "title": "The RESRULE GSO record value is set to NONE any other setting requires documentation justifying the change.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-147",
+      "title": "The RESVOLS GSO record value is set to Volmask(-).  Any other setting requires documentation justifying the change.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-148",
+      "title": "The RULEOPTS GSO record values are set to the values specified.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-149",
+      "title": "The SAFDEF GSO record baseline values are not are set to the values previously documented.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-150",
+      "title": "The SECVOLS GSO record value is set to VOLMASK(). Any local changes are justified and documented with the IAO.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-151",
+      "title": "The SYNCOPTS GSO record values are set to the values specified.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-152",
+      "title": "The TSO GSO record values must be set to the values specified.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15209",
+      "title": "Site does not maintain documented procedures to apply security related software patches to their system and does not maintain a log of when these patches were applied.",
+      "description": "Vendors' code may contain  vulnerabilities that may be exploited to cause denial of service or to violate the integrity of the system or data on the System. Most vendors develop patches to correct these vulnerabilities. These patches must be applied and documented. ",
+      "severity": "high"
+    },
+    {
+      "id": "V-153",
+      "title": "The TSOCRT GSO record values are set to the appropriate values.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-154",
+      "title": "The TSOKEYS GSO record values specified are not in accordance with security requirements.",
+      "description": "• (ACF0520:  CAT II) The IAO will ensure that the TSOKEYS GSO value is set to  KEYWORDS()....\n\nThe system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-155",
+      "title": "The TSOTWX GSO record values are set to the values specified.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-156",
+      "title": "The TSO2741 GSO record values specified are not in accordance with the proper security requirements.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-158",
+      "title": "There are LOGONIDs defined to ACF2 that do not have the required fields completed. ",
+      "description": "Within the LOGONID record, the users name and UID-string fields must be completed to ensure individual user accountability.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-159",
+      "title": "Interactive LOGONIDs defined to ACF2 must have the required fields completed.",
+      "description": "Improper assignments of attributes in the LOGONID record may allow users excessive privileges resulting in unauthorized access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-160",
+      "title": "There are batch jobs with restricted LOGONIDs that do not have the PGM(xxxxxxxx) and SUBAUTH attributes or the SOURCE(xxxxxxxx) attribute assigned to the corresponding LOGONIDs.",
+      "description": "Unauthorized jobs may be introduced into the system.  This could result in the compromise of the confidentiality, integrity, and availability of the operating system, ACP, or customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-161",
+      "title": "There are LOGONIDs assigned for started tasks that do not have the STC attribute specified in the associated LOGONID record.",
+      "description": "If a LOGONID for a started task does not have the STC attribute specified, this could result in system or application unavailability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-162",
+      "title": "There are LOGONIDs associated with started tasks that have the MUSASS requirement but do not have both the MUSASS and NO-SMC specified in corresponding LOGONID records.",
+      "description": "If the LOGONID does not have the MUSASS attribute specified, there is no individual accountability within the associated address space.\n\nIf NO-SMC is not specified the potential for VSAM data set corruption exists.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-163",
+      "title": "There are LOGONIDs associated with started tasks that have the MUSASS attribute and the requirement to submit jobs on behalf of its users but do not have the JOBFROM attribute as required.",
+      "description": "Individual accountability will be lost when submitting a job.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-166",
+      "title": "There are maintenance LOGONIDs that do not have corresponding GSO MAINT records.",
+      "description": "Users may execute programs without ACP security checking or auditing.  This could result in the compromise of the confidentiality, integrity, and availability of the operating system, ACP, and customer data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-167",
+      "title": "There are GSO MAINT records that do not have corresponding maintenance LOGONIDs.",
+      "description": "LOGONIDs could be intentionally created that correspond to the GSO MAINT records.  Then the maintenance programs could be used to gain unauthorized access to the system.  This could result in the compromise of the confidentiality, integrity, and availability of the operating system, ACP, and customer data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-168",
+      "title": "Emergency LOGONIDs must be properly defined.",
+      "description": "Emergency USERIDs are necessary in the event of a system outage for recovery purposes. It is critical that those USERIDs be defined with the appropriate access to ensure timely restoration of services..",
+      "severity": "medium"
+    },
+    {
+      "id": "V-169",
+      "title": "LOGONIDS with the REFRESH attribute must have the SUSPEND attribute specified. ",
+      "description": "Unauthorized users may be able to effect changes to ACP global system options.  This could result in the compromise of the confidentiality, integrity, and availability of the operating system, ACP, or customer data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-170",
+      "title": "There are no procedures to utilize the LOGONID with the REFRESH attribute.",
+      "description": "Individuals could effect unauthorized or inadvertent changes to ACP global system options.  This could result in the compromise of the confidentiality, integrity, and availability of the operating system, ACP, or customer data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-171",
+      "title": "LOGONIDs with the ACCOUNT, LEADER, or SECURITY attribute must be properly scoped.",
+      "description": "Individuals with these powerful attributes may have more extensive privileges than necessary to perform their job function.  There could be no separation of duties and/or principle of least privilege in effect.  This could result in the compromise of the confidentiality, integrity, and availability of the operating system, ACP, or customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-172",
+      "title": "There are LOGONIDs with the SECURITY attribute that do not have the RULEVLD and RSRCVLD attributes specified.",
+      "description": "Failure to assign the attribute bypasses security checking for the LOGONID and could result in the compromise of the confidentiality, integrity, and availability of the operating system, ACP, or customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-173",
+      "title": "The LOGONID with the ACCTPRIV attribute must be restricted to the IAO.",
+      "description": "Individuals with the ACCTPRIV could add or delete users in SYS1.UADS and jeopardize the availability of the operating system, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-174",
+      "title": "The LOGONIDs with the AUDIT or CONSULT attribute must be properly scoped.",
+      "description": "Individuals with these attributes have the ability to view security definitions for resources not in their scope.  This could result in the compromise of the confidentiality, integrity, and availability of the ACP, or customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-175",
+      "title": "Procedures are not in place to ensure all LOGONIDs with the READALL attribute are used and controlled.",
+      "description": "READALL allows the individual to view any file and violates the principle of least privilege.  This could result in the compromise of the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-176",
+      "title": "The number of users granted the special privilege TAPE-LBL or TAPE-BLP is not justified or limited.",
+      "description": "Tape Bypass Label Processing (BLP) is extremely sensitive, as it allows the circumvention of security access checking for the data.  This could result in compromise of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-177",
+      "title": "The special privileges must be assigned on an as-needed basis to LOGONIDs associated with STCs and LOGONIDs that need to execute TSO in batch.",
+      "description": "Users with this privilege can mount tape and DASD.  This could result in the compromise of the confidentiality, integrity, availability of the operating system, ACP, or customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-178",
+      "title": "The number of users granted the special privilege CONSOLE is not justified.",
+      "description": "Users with this privilege could intentionally or inadvertently issue console commands that could cause system resources and customer data to become unavailable.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-179",
+      "title": "The number of users granted the special privilege ALLCMDS is not justified.",
+      "description": "Users with this privilege may have access to restricted TSO commands and programs.  This could result in the compromise of the confidentiality, integrity, and availability of the operating system, ACP, or customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-180",
+      "title": "The number of users granted the special privilege PPGM is not justified.",
+      "description": "Users with this privilege may have access to powerful utilities and could intentionally or inadvertently compromise operating system integrity or destroy data on a large-scale basis.  Misuse of these utilities could result in the compromise of the confidentiality, integrity, and availability of the operating system, ACP, or customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-181",
+      "title": "The number of users granted the special privilege OPERATOR must be kept to a strictly controlled minimum.",
+      "description": "Users with this privilege can do anything from canceling jobs to disabling the entire system.  This could result in the compromise of the confidentiality, integrity, and availability of the operating system, ACP, or customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-182",
+      "title": "Memory and privileged program dumps must be protected in accordance with proper security requirements.",
+      "description": "Access to memory and privileged program dumps running Trusted Control Block (TCB) key 0-7 may hold passwords, encryption keys, or other sensitive data must not be made available. Failure to properly control access to these facilities could result in unauthorized personnel modifying sensitive z/OS lists. This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-183",
+      "title": "Sensitive Utility Controls will be properly defined and protected.",
+      "description": "Sensitive Utility Controls can run sensitive system privileges or controls, and potentially can circumvent system and security controls.  Failure to properly control access to these resources could result in the compromise of the confidentiality, integrity, and availability of the operating system environment, system services, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-184",
+      "title": "LOGONIDs must not be defined to SYS1.UADS for non-emergency use.",
+      "description": "SYS1.UADS is a dataset where LOGONIDs will be maintained with applicable password information when the ACP is not functional. If an unauthorized user has access to SYS1.UADS, they could enter their LOGONID and password into the SYS1.UADS dataset and could give themselves all special attributes on the system. This could enable the user to bypass all security and alter data. They could modify the audit trail information so no trace of their activity could be found.",
+      "severity": "high"
+    },
+    {
+      "id": "V-2",
+      "title": "The LOGONIDs specified In GSO MAINT records will have the JOB and MAINT attributes specified In the associated LOGONID record.",
+      "description": "If there is a LOGONID intended for maintenance purposes that does not have the MAINT and JOB attributes specified, then it cannot function as intended.  This could result in the inability to perform critical system maintenance tasks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-23",
+      "title": "The REFRESH attribute must be restricted.",
+      "description": "Unauthorized users may be able to effect changes to ACP system options.  This could result in the compromise of the confidentiality, integrity, and availability of the operating system, ACP, or customer data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-234",
+      "title": "All system PROCLIB data sets must be limited to system programmers only",
+      "description": "Unauthorized access to PROCLIB data sets referenced in the JES2 procedure can allow unauthorized modifications to STCs and other system level procedures.  This could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-23837",
+      "title": "z/OS Baseline reports are not reviewed and validated to ensure only authorized changes have been made within the z/OS operating system. This is a current DISA requirement for change management to system libraries.",
+      "description": "A product that generates reports validating changes, additions or removal from APF and LPA libraries, as well as changes to SYS1.PARMLIB PDS members, should be run against system libraries to provide a baseline analysis to allow monitoring of changes to these libraries. Failure to monitor and review these reports on a regular bases and validating any changes could threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.       ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-251",
+      "title": "Sensitive CICS transactions are not protected in accordance with security requirements.",
+      "description": "Sensitive CICS transactions offer the ability to circumvent transaction level controls for accessing resources under CICS.  These transactions must be protected so that only authorized users can access them.  Unauthorized use can result in the compromise of the confidentiality, integrity, and availability of the operating system or customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28603",
+      "title": "z/OS  USS Software owning Shared accounts do not meet strict security and creation restrictions. ",
+      "description": "Shared accounts by nature are a violation of proper audit trail and proper user authentication. If not properly controlled, could cause system corruption without an audit trail tracking session\nactivity to an individual user's identity.\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-29532",
+      "title": "IEASYMUP resource will be protected in accordance with proper security requirements.",
+      "description": "Failure to properly control access to the IEASYMUP resource could result in unauthorized\npersonnel modifying sensitive z/OS symbolic. This exposure may threaten the integrity and\navailability of the operating system environment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-297",
+      "title": "TSOAUTH resources must be restricted to authorized users.",
+      "description": "The TSOAUTH resource class controls sensitive privileges, such as OPER, ACCOUNT, MOUNT, TESTAUTH, CONSOLE, and PARMLIB. Several of these privileges offer the ability, or provide a facility, to modify sensitive operating system resources. Failure to properly control and restrict access to these privileges may result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-29952",
+      "title": "FTP Control cards will be properly stored in a secure PDS file. ",
+      "description": "FTP control cards carry unencrypted information such as userids, passwords and remote IP Addresses. Without a requirement to store this information separate from the JCL and in-stream JCL, it allows a security exposure by allowing read exposure to this information from anyone having access to the JCL libraries.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-302",
+      "title": "CICS System Initialization Table (SIT) parameter values must be specified in accordance with proper security requirements.",
+      "description": "The CICS SIT is used to define system operation and configuration parameters of a CICS system.  Several of these parameters control the security within a CICS region.  Failure to code the appropriate values could result in unexpected operations and degraded security.  This exposure may result in unauthorized access impacting the confidentiality, integrity, and availability of the CICS region, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31",
+      "title": "DFSMS resources must be protected in accordance with the proper security requirements.",
+      "description": "DFSMS provides data, storage, program, and device management functions for the operating system.  Some DFSMS storage administration functions allow a user to obtain a privileged status and effectively bypass all ACP data set and volume controls.  Failure to properly protect DFSMS resources may result in unauthorized access.  This exposure could compromise the availability and integrity of the operating system environment, system services, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-31561",
+      "title": "Production WebSphere MQ Remotes must utilize Certified Name Filters (CNF)",
+      "description": "IBM Websphere MQ can use a user ID associated with an ACP certificate as a channel user ID.  When an entity at one end of an SSL channel receives a certificate from a remote connection, the entity asks The ACP if there is a user ID associated with that certificate. The entity uses that user ID as the channel user ID. If there is no user ID associated with the certificate, the entity uses the user ID under which the channel initiator is running.  Without a validly defined Certificate Name Filter for the entity IBM Websphere MQ will set the channel user ID to the default.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3215",
+      "title": "Configuration files for the TCP/IP stack are not properly specified.",
+      "description": "The TCP/IP stack reads two configuration files to determine values for critical operational parameters.  These file names are specified in multiple locations and, depending on the process, are referenced differently.  Because system security is impacted by some of the parameter settings, specifying the file names explicitly in each location reduces ambiguity and ensures proper operations.  Inappropriate values could result in undesirable operations and degraded security.  This exposure may result in unauthorized access impacting data integrity or the availability of some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3216",
+      "title": "TCPIP.DATA configuration statements for the TCP/IP stack must be properly specified.",
+      "description": "During the initialization of TCP/IP servers and clients, the TCPIP.DATA configuration file provides information that is essential for proper operations of TCP/IP applications.  Inappropriate values could result in undesirable operations and degraded security.  This exposure may result in unauthorized access impacting data integrity or the availability of some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3217",
+      "title": "PROFILE.TCPIP configuration statements for the TCP/IP stack are not coded properly.",
+      "description": "The PROFILE.TCPIP configuration file provides system operation and configuration parameters for the TCP/IP stack.  Inappropriate values could result in undesirable operations and degraded security.  This exposure may result in unauthorized access impacting data integrity or the availability of some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3218",
+      "title": "The permission bits and user audit bits for HFS objects that are part of the Base TCP/IP component must be configured properly.",
+      "description": "HFS directories and files of the Base TCP/IP component provide the configuration, operational, and executable properties of IBMs TCP/IP system product.  Failure to properly secure these objects may lead to unauthorized access resulting in the compromise of the integrity and availability of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3219",
+      "title": "TCP/IP resources must be properly protected.",
+      "description": "The Communication Server access authorization is used to protect TCP/IP resources such as stack, network, port, and other SERVAUTH resources. These resources provide additional security checks for TCP/IP users. Failure to properly secure these TCP/IP resources could lead to unauthorized user access resulting in the compromise of some system services and possible compromise of data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3220",
+      "title": "Started tasks for the Base TCP/IP component must be defined in accordance with security requirements.",
+      "description": "The TCP/IP started tasks require special privileges and access to sensitive resources to provide its system services. Failure to properly define and control these TCP/IP started tasks could lead to unauthorized access. This exposure may result in the compromise of the integrity and availability of the operating system environment, Access Control Program (ACP) and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3221",
+      "title": "MVS data sets for the Base TCP/IP component are not properly protected,",
+      "description": "MVS data sets of the Base TCP/IP component provide the configuration, operational, and executable properties of IBMs TCP/IP system product.  Failure to properly secure these data sets may lead to unauthorized access resulting in the compromise of the integrity and availability of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3222",
+      "title": "PROFILE.TCPIP configuration statements for the TN3270 Telnet Server are not properly specified.",
+      "description": "The PROFILE.TCPIP configuration file provides system operation and configuration parameters for the TN3270 Telnet Server.  Several of these parameters have potential impact to system security.  Failure to code the appropriate values could result in unexpected operations and degraded security.  This exposure may result in unauthorized access impacting data integrity or the availability of some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3223",
+      "title": "VTAM session setup controls for the TN3270 Telnet Server are not properly specified. ",
+      "description": "After a connection from a Telnet client to the TN3270 Telnet Server has been established, the process of session setup with a VTAM application occurs.  A number of BEGINVTAM statements must be coded in a specific configuration to ensure adequate control to VTAM applications is maintained.  Failure to code the appropriate statements could result in unauthorized access to the host and application resources.  This exposure may impact data integrity or the availability of some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3224",
+      "title": "The warning banner for the TN3270 Telnet Server is not specified or properly specified.",
+      "description": "A logon banner can be used to inform users about the environment during the initial logon.  In the DISA environment, logon banners are used to warn users against unauthorized entry and the possibility of legal action for unauthorized users, and advise all users that system use constitutes consent to monitoring.  Failure to display a logon warning banner without this type of information could adversely impact the ability to prosecute unauthorized users and users who abuse the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3226",
+      "title": "SSL encryption options for the TN3270 Telnet Server will be specified properly for each statement that defines a SECUREPORT or within the TELNETGLOBALS.",
+      "description": "During the SSL connection process a mutually acceptable encryption algorithm is selected by the server and client.  This algorithm is used to encrypt the data that subsequently flows between the two.  However, the level or strength of encryption can vary greatly.  Certain configuration options can allow no encryption to be used and others can allow a relatively weak 40-bit algorithm to be used.  Failure to properly enforce adequate encryption strength could result in the loss of data privacy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3227",
+      "title": "SMF recording options for the TN3270 Telnet Server must be properly specified.",
+      "description": "The TN3270 Telnet Server can provide audit data in the form of SMF records.  The SMF data produced provides information about individual sessions.  This data includes the VTAM application, the remote and local IP addresses, and the remote and local IP port numbers.  Failure to collect and retain audit data may contribute to the loss of accountability and hamper security audit activities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3229",
+      "title": "The startup user account for the z/OS UNIX Telnet Server is not defined properly.",
+      "description": "The z/OS UNIX Telnet Server (i.e., otelnetd) requires a UID(0) to provide its system services.  After the user enters their userid and password, otelnetd switches to the security context of the users account.  Because the otelnetd account is only used until authentication is completed, there is no need to require a unique account for this function.  This limits the number of privileged accounts defined to the ACP and reduces the exposure potential.  Failure to properly define and control otelnetd could lead to unauthorized access resulting in the compromise of the integrity and availability of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3230",
+      "title": "Startup parameters for the z/OS UNIX Telnet Server are not specified properly.",
+      "description": "The z/OS UNIX Telnet Server (i.e., otelnetd) provides interactive access to the z/OS UNIX shell.  During the initialization process, startup parameters are read to define the characteristics of each otelnetd instance.  Some of these parameters have an impact on system security.  Failure to specify the appropriate command options could result in degraded security.  This exposure may result in unauthorized access impacting data integrity or the availability of some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3231",
+      "title": "The warning banner for the z/OS UNIX Telnet Server is not specified or not properly specified.",
+      "description": "A logon banner can be used to inform users about the environment during the initial logon.  Logon banners are used to warn users against unauthorized entry and the possibility of legal action for unauthorized users, and advise all users that system use constitutes consent to monitoring.  Failure to display a logon warning banner without this type of information could adversely impact the ability to prosecute unauthorized users and users who abuse the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3232",
+      "title": "HFS objects for the z/OS UNIX Telnet Server will be properly protected. ",
+      "description": "HFS directories and files of the z/OS UNIX Telnet Server provide the configuration and executable properties of this product.  Failure to properly secure these objects may lead to unauthorized access resulting in the compromise of the integrity and availability of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3233",
+      "title": "The FTP Server daemon is not defined with proper security parameters.",
+      "description": "The FTP Server daemon requires special privileges and access to sensitive resources to provide its system services.  Failure to properly define and control the FTP Server daemon could lead to unauthorized access.  This exposure may result in the compromise of the integrity and availability of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3234",
+      "title": "The startup parameters for the FTP  include the ANONYMOUS, ANONYMOUS=, or INACTIVE  keywords. The FTP daemon’s started task JCL does not specify the SYSTCPD and SYSFTPD DD statements for configuration files.",
+      "description": "During initialization, the FTP daemon reads JCL keywords and configuration files to determine values for critical operational parameters.  Because system security is impacted by some of these parameter settings, controlling these options through the configuration file only and explicitly specifying the file locations reduces ambiguity, enhances security auditing, and ensures proper operations.  Inappropriate values could result in undesirable operations and degraded security.  This exposure may result in unauthorized access impacting data integrity or the availability of some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3235",
+      "title": "FTP.DATA configuration statements for the FTP Server are not specified in accordance with requirements.",
+      "description": "The statements in the FTP.DATA configuration file specify the parameters and values that control the operation of the FTP Server components including the use of anonymous FTP.  Several of the parameters must have specific settings to provide a secure configuration.  Inappropriate values could result in undesirable operations and degraded security.  This exposure may result in unauthorized access impacting data integrity or the availability of some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3236",
+      "title": "User exits for the FTP Server must not be used without proper approval and documentation.",
+      "description": "Several user exit points in the FTP Server component are available to permit customization of its operating behavior.  These exits can be used to modify functions such as FTP command usage, client connection controls, post processing tasks, and SMF record modifications.  Without proper review and adequate documentation of these exit programs, undesirable operations and degraded security may result.  This exposure could lead to unauthorized access impacting data integrity or the availability of some system services, or contribute to the loss of accountability and hamper security audit activities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3237",
+      "title": "The warning banner for the FTP Server is not specified properely.",
+      "description": "A logon banner can be used to inform users about the environment during the initial logon.  In the DISA environment, logon banners are used to warn users against unauthorized entry and the possibility of legal action for unauthorized users, and advise all users that system use constitutes consent to monitoring.  Failure to display a logon warning banner without this type of information could adversely impact the ability to prosecute unauthorized users and users who abuse the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3238",
+      "title": "SMF recording options for the FTP Server must be configured to write SMF records for all eligible events.",
+      "description": "The FTP Server can provide audit data in the form of SMF records.  The SMF data produced by the FTP Server provides transaction information for both successful and unsuccessful FTP commands.  Failure to collect and retain audit data may contribute to the loss of accountability and hamper security audit activities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3239",
+      "title": "The permission bits and user audit bits for HFS objects that are part of the FTP Server component will be properly configured.\n",
+      "description": "HFS directories and files of the FTP Server provide the configuration and executable properties of this product.  Failure to properly secure these objects may lead to unauthorized access resulting in the compromise of the integrity and availability of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3240",
+      "title": "MVS data sets for the FTP Server are not properly protected.",
+      "description": "MVS data sets of the FTP Server provide the configuration and operational characteristics of this product.  Failure to properly secure these data sets may lead to unauthorized access resulting in the compromise of the integrity and availability of customer data and some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3241",
+      "title": "The TFTP Server program is not properly protected. ",
+      "description": "The Trivial File Transfer Protocol (TFTP) Server, known as tftpd, supports file transfer according to the industry standard Trivial File Transfer Protocol.  The TFTP Server does not perform any user identification or authentication, allowing any client to connect to the TFTP Server.  Due to this lack of security, the TFTP Server will not be used.  Failure to restrict the use of the TFTP Server may result in unauthorized access to the host.  This exposure may impact the integrity, availability, and privacy of application data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3242",
+      "title": "The Syslog daemon is not started at z/OS initialization.",
+      "description": "The Syslog daemon, known as SYSLOGD, is a z/OS UNIX daemon that provides a central processing point for log messages issued by other z/OS UNIX processes.  The messages may be of varying importance levels including general process information, diagnostic information, critical error notification, and audit-class information.  It is important that SYSLOGD be started during the initialization phase of the z/OS system to ensure that significant messages are not lost.  Failure to collect and retain audit data may contribute to the loss of accountability and hamper security audit activities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3243",
+      "title": "The Syslog daemon must be properly defined and secured.",
+      "description": "The Syslog daemon, known as syslogd, is a zOS UNIX daemon that provides a central processing point for log messages issued by other zOS UNIX processes. It is also possible to receive log messages from other network-connected hosts. Some of the IBM Communications Server components that may send messages to syslog are the FTP, TFTP, zOS UNIX Telnet, DNS, and DHCP servers. The messages may be of varying importance levels including general process information, diagnostic information, critical error notification, and audit-class information. Primarily because of the potential to use this information in an audit process, there is a security interest in protecting the syslogd process and its associated data. \n\nThe Syslog daemon requires special privileges and access to sensitive resources to provide its system services.  Failure to properly define and control the Syslog daemon could lead to unauthorized access.  This exposure may result in the compromise of the integrity and availability of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3244",
+      "title": "The permission bits and user audit bits for HFS objects that are part of the Syslog daemon component will be configured properly.",
+      "description": "HFS directories and files of the Syslog daemon provide the configuration and executable properties of this product.  Failure to properly secure these objects could lead to unauthorized access.  This exposure may result in the compromise of the integrity and availability of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3331",
+      "title": "The ACP audit logs must be reviewed on a regular basis .",
+      "description": "Each ACP has the ability to produce audit records, based on specific security-related events. Audit Trail, Monitoring, Analysis and Reporting provides automated, continuous on-line monitoring and audit trail creation capability, to alert personnel of any unusual or inappropriate activity with potential IA implications. Failure to perform audit log analysis would allow for unusual or inappropriate activity to continue without review and appropriate actions taken.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-33795",
+      "title": "Sensitive and critical system data sets exist on shared DASD.",
+      "description": "Any time a sensitive or critical system data set is allocated on a shared DASD device, it is critical to validate that it is properly protected on any additional systems that are sharing that device. Without proper review and adequate restrictions to access of these data sets on all systems sharing them, can lead to corruption, integrity and availability of the operating system, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-34",
+      "title": "System programs (e.g., exits, SVCs, etc.) must have approval of appropriate authority and/or documented correctly.",
+      "description": "Many vendor products and applications require or provide operating system exits, SVCs, I/O appendages, special PPT privileges, and APF authorization.  Without proper review, approval and adequate documentation of these system programs, the integrity and availability of the operating system, ACP, and customer data are subject to compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-36",
+      "title": "Dynamic lists must be protected in accordance with proper security requirements. ",
+      "description": "Dynamic lists provide a method of making z/OS system changes without interrupting the availability of the operating system.  Failure to properly control access to these facilities could result in unauthorized personnel modifying sensitive z/OS lists.  This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-36899",
+      "title": "The OPTS GSO record value must be set to the values specified.",
+      "description": "The system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any one of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during a migration process or contingency plan activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3716",
+      "title": "User accounts defined to the ACP do not uniquely identify system users.",
+      "description": "System users must be uniquely identified to the operating system.  To accomplish this, each user must have an individual account defined to the ACP.  If user accounts are not associated with specific individuals and are shared among multiple users, individual accountability is lost.  This could hamper security audit activities and lead to unauthorized user access of system resources and customer data.\n.  Scope of, ownership of and responsibility over users shall be based upon the specifics of appointment, role, responsibilities and level of authority.  Such as a domain/system level IAO is responsible for the Domain/system level users, whereas normally a application user would be the responsibility of the DoD AIS application security team unless SLA indicates otherwise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3895",
+      "title": "DFSMS control data sets must be protected in accordance with security requirements.",
+      "description": "DFSMS control data sets provide the configuration and operational characteristics of the system-managed storage environment.  Failure to properly protect these data sets may result in unauthorized access.  This exposure could compromise the availability and integrity of some system services and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3896",
+      "title": "SYS(x).Parmlib(IEFSSNxx) SMS configuration parameter settings are  not properly specified.\n",
+      "description": "Configuration properties of DFSMS are specified in various members of the system parmlib concatenation (e.g., SYS1.PARMLIB).  Statements within these PDS members provide the execution, operational, and configuration characteristics of the system-managed storage environment.  Missing or inappropriate configuration values may result in undesirable operations and degraded security.  This exposure could potentially compromise the availability and integrity of some system services and customer data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3897",
+      "title": "MVS data sets for the WebSphere Application Server are not protected in accordance with the proper security requirements.",
+      "description": "MVS data sets provide the configuration, operational, and executable properties of the WebSphere Application Server (WAS) environment.  Failure to properly protect these data sets may lead to unauthorized access.  This exposure could compromise the integrity and availability of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3898",
+      "title": "HFS objects for the WebSphere Application Server are not protected in accordance with the proper security requirements.",
+      "description": "HFS directories and files provide the configuration, operational, and executable properties of the WebSphere Application Server (WAS) environment.  Many of these objects are responsible for the security implementation of WAS.  Failure to properly protect these directories and files may lead to unauthorized access.  This exposure could potentially compromise the integrity and availability of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3899",
+      "title": "The CBIND Resource(s) for the WebSphere Application Server is(are) not protected in accordance with security requirements.",
+      "description": "SAF resources provide the ability to control access to functions and services of the WebSphere Application Server (WAS) environment.  Many of these resources provide operational and administrative support for WAS.  Failure to properly protect these resources may lead to unauthorized access.  This exposure could compromise the integrity and availability of application services and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3900",
+      "title": "Vendor-supplied user accounts for the WebSphere Application Server are defined to the ACP.",
+      "description": "Vendor-supplied user accounts are defined to the ACP with factory-set passwords during the installation of the WebSphere Application Server (WAS).  These user accounts are common to all WAS environments and have access to restricted resources and functions.  Failure to delete vendor-supplied user accounts from the ACP may lead to unauthorized access.  This exposure could compromise the integrity and availability of system services, applications, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3901",
+      "title": "The WebSphere Application Server plug-in is not specified in accordance with the proper security requirements.",
+      "description": "Requests processed by the WebSphere Application Server (WAS) are dependent on directives configured in the HTTP server httpd.conf file.  These directives specify critical files containing the WAS plug-in and WAS configuration.  These files provide the operational and security characteristics of WAS.  Failure to properly configure WAS-related directives could lead to undesirable operations and degraded security.  This exposure may compromise the availability and integrity of applications and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3903",
+      "title": "User timeout parameter values for WebSphere MQ queue managers are not specified in accordance with security requirements.\n",
+      "description": "Users signed on to a WebSphere MQ queue manager could leave their terminals unattended for long periods of time.  This may allow unauthorized individuals to gain access to WebSphere MQ resources and application data.  This exposure could compromise the availability, integrity, and confidentiality of some system services and application data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3904",
+      "title": "WebSphere MQ started tasks are not defined in accordance with the proper security requirements.",
+      "description": "Started tasks are used to execute WebSphere MQ queue manager services.  Improperly defined WebSphere MQ started tasks may result in inappropriate access to application resources and the loss of accountability.  This exposure could compromise the availability of some system services and application data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3905",
+      "title": "WebSphere MQ all update and alter access to MQSeries/WebSphere MQ product and system data sets are not properly restricted ",
+      "description": "MVS data sets provide the configuration, operational, and executable properties of WebSphere MQ.  Some data sets are responsible for the security implementation of WebSphere MQ.  Failure to properly protect these data sets may lead to unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-44",
+      "title": "CICS region logonid(s) must be defined and/or controlled in accordance with the security requirements.",
+      "description": "CICS is a transaction-processing product that provides programmers with the facilities to develop interactive applications. Improperly defined or controlled CICS userids (i.e., region, default, and terminal users) may provide an exposure and vulnerability within the CICS environment.  This could result in the compromise of the confidentiality, integrity, and availability of the CICS region, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-4850",
+      "title": "Allocate access to system user catalogs are not limited to system programmers only.  ",
+      "description": "System catalogs are the basis for locating all files on the system.  Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-54",
+      "title": "Surrogate users must be controlled in accordance with the proper requirements.",
+      "description": "Surrogate users have the ability to submit jobs on behalf of another user (the execution user) without specifying the execution user's password. Jobs submitted by surrogate users run with the identity of the execution user. Failure to properly control surrogate users could result in unauthorized personnel accessing sensitive resources. This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-5605",
+      "title": "Non-existent or inaccessible Link Pack Area (LPA) libraries.",
+      "description": " LPA libraries give a common access point for the general usage of modules.  Many of the subsystems installed on a domain rely upon these modules for proper execution.  If the list of libraries found in this LPA member is not properly maintained, the integrity of the operating environment is subject to compromise.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-5627",
+      "title": "The hosts identified by the NSINTERADDR statement will be properly protected.",
+      "description": "If the hosts identified by NSINTERADDR statement are not properly protected they can be stolen, damaged, or disturbed. Without adequate physical security, unauthorized users can access the host and the hosts' components. Therefore, they can interfere with the normal operations of the host. Improper control of hosts and the hosts' components could compromise network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65647",
+      "title": "NIST FIPS-validated cryptography must be used to protect passwords in the security database.",
+      "description": "Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. Cryptographic modules must adhere to the higher standards approved by the federal government since this provides assurance they have been tested and validated.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6893",
+      "title": "CICS startup JCL statement is not specified in accordance with the proper security requirements.",
+      "description": "The CICS SIT is used to define system operation and configuration parameters of a CICS system.  Several of these parameters control the security within a CICS region.  Failure to code the appropriate values could result in unexpected operations and degraded security.  This exposure may result in unauthorized access impacting the confidentiality, integrity, and availability of the CICS region, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6894",
+      "title": "Sensitive CICS transactions are not protected in accordance with the proper security requirements.",
+      "description": "Sensitive CICS transactions offer the ability to circumvent transaction level controls for accessing resources under CICS.  These transactions must be protected so that only authorized users can access them.  Unauthorized use can result in the compromise of the confidentiality, integrity, and availability of the operating system or customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6896",
+      "title": "Sensitive CICS transactions are not protected in accordance with the proper security requirements.",
+      "description": "Sensitive CICS transactions offer the ability to circumvent transaction level controls for accessing resources under CICS.  These transactions must be protected so that only authorized users can access them.  Unauthorized use can result in the compromise of the confidentiality, integrity, and availability of the operating system or customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6900",
+      "title": "All hardware components of the FEPs are not placed in secure locations where they cannot be stolen, damaged, or disturbed",
+      "description": "If components of the FEPs are not properly protected they can be stolen, damaged, or disturbed.  Without adequate physical security, unauthorized users can access the control panel, the operator console, and the diskette drive of the service subsystem.  Therefore, they can interfere with the normal operations of the FEPs.  Improper control of FEP components could compromise network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6901",
+      "title": "Procedures are not in place  to restrict access to FEP functions of the service subsystem from operator consoles (local and/or remote), and to restrict access to the diskette drive of the service subsystem.",
+      "description": "If components of the FEPs are not properly protected they can be stolen, damaged, or disturbed.  Without adequate physical security, unauthorized users can access the control panel, the operator console, and the diskette drive of the service subsystem.  Therefore, they can interfere with the normal operations of the FEPs.  Improper control of FEP components could compromise network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6902",
+      "title": "A documented procedure is not available instructing how to load and dump the FEP NCP (Network Control Program).",
+      "description": "If components of the FEPs are not properly protected they can be stolen, damaged, or disturbed.  Without adequate physical security, unauthorized users can access the control panel, the operator console, and the diskette drive of the service subsystem.  Therefore, they can interfere with the normal operations of the FEPs.  Improper control of FEP components could compromise network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6903",
+      "title": "An active log is not available to keep track of all hardware upgrades and software changes made to the FEP (Front End Processor).",
+      "description": "If components of the FEPs are not properly protected they can be stolen, damaged, or disturbed.  Without adequate physical security, unauthorized users can access the control panel, the operator console, and the diskette drive of the service subsystem.  Therefore, they can interfere with the normal operations of the FEPs.  Improper control of FEP components could compromise network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6904",
+      "title": "NCP (Net Work Control Program) Data set access authorization does not restricts UPDATE and/or ALLOCATE access to appropriate personnel.",
+      "description": "If components of the FEPs are not properly protected they can be stolen, damaged, or disturbed.  Without adequate physical security, unauthorized users can access the control panel, the operator console, and the diskette drive of the service subsystem.  Therefore, they can interfere with the normal operations of the FEPs.  Improper control of FEP components could compromise network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6905",
+      "title": "A password control is not in place to restrict access to the service subsystem via the operator consoles (local and/or remote) and a key-lock switch is not used to protect the modem supporting the remote console of the service subsystem.",
+      "description": "If components of the FEPs are not properly protected they can be stolen, damaged, or disturbed.  Without adequate physical security, unauthorized users can access the control panel, the operator console, and the diskette drive of the service subsystem.  Therefore, they can interfere with the normal operations of the FEPs.  Improper control of FEP components could compromise network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6919",
+      "title": "JES2 input sources are not controlled in accordance with the proper security requirements.",
+      "description": "JES2 input sources provide a variety of channels for job submission.  Failure to properly control the use of these input sources could result in unauthorized submission of work into the operating system.  This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6920",
+      "title": "JES2 input sources must be properly controlled.",
+      "description": "JES2 input sources provide a variety of channels for job submission. Failure to properly control the use of these input sources could result in unauthorized submission of work into the operating system. This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6921",
+      "title": "JES2 output devices are not controlled in accordance with the proper security requirements.",
+      "description": "JES2 output devices provide a variety of channels to which output can be processed.  Failure to properly control these output devices could result in unauthorized personnel accessing output.  This exposure may compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6922",
+      "title": "JES2 output devices must be properly controlled for Classified Systems.",
+      "description": "JES2 output devices provide a variety of channels to which output can be processed. Failure to properly control these output devices could result in unauthorized personnel accessing output. This exposure may compromise the confidentiality of customer data on a classified System..",
+      "severity": "medium"
+    },
+    {
+      "id": "V-69223",
+      "title": "All digital certificates in use must have a valid path to a trusted Certification authority.\n\n",
+      "description": "The origin of a certificate, the Certificate Authority (i.e., CA), is crucial in determining if the certificate should be trusted.  An approved CA establishes grounds for confidence at both ends of communications sessions in ongoing identities of other parties and in the validity of information transmitted.\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-69225",
+      "title": "Expired Digital Certificates must not be used.",
+      "description": "The longer and more often a key is used, the more susceptible it is to loss or discovery. This weakens the assurance provided to a relying Party that the unique binding between a key and its named subscriber is valid. Therefore, it is important that certificates are periodically refreshed. This is in accordance with DoD requirement.  Expired Certificate must not be in use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-69227",
+      "title": "Certificate Name Filtering must be implemented with appropriate authorization and documentation.",
+      "description": "Certificate name filtering is a facility that allows multiple certificates to be mapped to a single ACP userid.  Rather than matching a certificate stored in the ACP to determine the userid, criteria rules are used.  Depending on the filter criteria, a large number of client certificates could be mapped to a single userid.  Failure to properly control the use of certificate name filtering could result in the loss of individual identity and accountability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-69229",
+      "title": "The SSH daemon must be configured to only use the SSHv2 protocol.\n\n",
+      "description": "SSHv1 is not a DoD-approved protocol and has many well-known vulnerability exploits. Exploits of the SSH daemon could provide immediate root access to the system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6923",
+      "title": "JESSPOOL resources are not protected in accordance with security requirements.",
+      "description": "JES2 spool resources include all SYSOUT, SYSLOG, JESTRACE, and JESNEWS data sets.  Failure to properly control JES2 spool resources could result in unauthorized personnel accessing job output, system activity logs, and trace data containing userid and password information.  This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-69231",
+      "title": "The SSH daemon must be configured to use a FIPS 140-2 compliant cryptographic algorithm.",
+      "description": "Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. Cryptographic modules must adhere to the higher standards approved by the federal government since this provides assurance they have been tested and validated.",
+      "severity": "high"
+    },
+    {
+      "id": "V-69233",
+      "title": "The SSH daemon must be configured with the Department of Defense (DoD) logon banner.",
+      "description": "Failure to display the DoD logon banner prior to a logon attempt will negate legal proceedings resulting from unauthorized access to system resources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-69235",
+      "title": "SMF recording options for the SSH daemon must be configured to write SMF records for all eligible events.  ",
+      "description": "SMF data collection is the basic unit of tracking of all system functions and actions.  Included in this tracking data are the audit trails from each of the ACPs.  If the control options for the recording of this tracking are not properly maintained, then accountability cannot be monitored, and its use in the execution of a contingency plan could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-69237",
+      "title": "The SSH daemon must be configured to use SAF keyrings for key storage.",
+      "description": "The use of SAF Key Rings for key storage enforces organizational access control policies and assures the protection of cryptographic keys in storage. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6924",
+      "title": "JESNEWS resources are not protected in accordance with security requirements.",
+      "description": "JES2 spool resources include all SYSOUT, SYSLOG, JESTRACE, and JESNEWS data sets.  Failure to properly control JES2 spool resources could result in unauthorized personnel accessing job output, system activity logs, and trace data containing userid and password information.  This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6925",
+      "title": "JESTRACE and/or SYSLOG resources are not protected in accordance with security requirements.",
+      "description": "JES2 spool resources include all SYSOUT, SYSLOG, JESTRACE, and JESNEWS data sets.  Failure to properly control JES2 spool resources could result in unauthorized personnel accessing job output, system activity logs, and trace data containing userid and password information.  This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6926",
+      "title": "JES2 spool resources will be controlled in accordance with security requirements.",
+      "description": "JES2 spool resources include all SYSOUT, SYSLOG, JESTRACE, and JESNEWS data sets.  Failure to properly control JES2 spool resources could result in unauthorized personnel accessing job output, system activity logs, and trace data containing userid and password information.  This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6927",
+      "title": "JES2.** resource is not protected in accordance with security requirements.",
+      "description": "JES2 system commands are used to control JES2 resources and the operating system environment.  Failure to properly control access to JES2 system commands could result in unauthorized personnel issuing sensitive JES2 commands.  This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6928",
+      "title": "JES2 system commands are not protected in accordance with security requirements..",
+      "description": "JES2 system commands are used to control JES2 resources and the operating system environment.  Failure to properly control access to JES2 system commands could result in unauthorized personnel issuing sensitive JES2 commands.  This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6933",
+      "title": "SMS Program Resources must be properly defined and protected.",
+      "description": "DFSMS provides data, storage, program, and device management functions for the operating system.  Some DFSMS storage administration functions allow a user to obtain a privileged status and effectively bypass all ACP data set and volume controls.  Failure to properly protect DFSMS resources may result in unauthorized access.  This exposure could compromise the availability and integrity of the operating system environment, system services, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6936",
+      "title": "DFSMS control data sets are not properly protected.",
+      "description": "DFSMS control data sets provide the configuration and operational characteristics of the system-managed storage environment.  Failure to properly protect these data sets may result in unauthorized access.  This exposure could compromise the availability and integrity of some system services and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6937",
+      "title": "SYS(x).PARMLIB(IGDSMSxx), SMS parameter settings are not properly specified.\n",
+      "description": "Configuration properties of DFSMS are specified in various members of the system parmlib concatenation (e.g., SYS1.PARMLIB).  Statements within these PDS members provide the execution, operational, and configuration characteristics of the system-managed storage environment.  Missing or inappropriate configuration values may result in undesirable operations and degraded security.  This exposure could potentially compromise the availability and integrity of some system services and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6939",
+      "title": "DFSMS resource type(s) is(are) not defined to the GSO INFODIR record in accordance with security requirements.",
+      "description": "DFSMS provides data, storage, program, and device management functions for the operating system.  Some DFSMS storage administration functions allow a user to obtain a privileged status and effectively bypass all ACP data set and volume controls.  Failure to properly protect DFSMS resources may result in unauthorized access.  This exposure could compromise the availability and integrity of the operating system environment, system services, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6941",
+      "title": "DFMSM resource class(es) is(are) not defined to the GSO SAFDEF record in accordance with security requirements",
+      "description": "DFSMS provides data, storage, program, and device management functions for the operating system.  Some DFSMS storage administration functions allow a user to obtain a privileged status and effectively bypass all ACP data set and volume controls.  Failure to properly protect DFSMS resources may result in unauthorized access.  This exposure could compromise the availability and integrity of the operating system environment, system services, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6942",
+      "title": "DFSMS resource class(es) is(are) not defined to the GSO CLASMAP record in accordance with security requirements.",
+      "description": "DFSMS provides data, storage, program, and device management functions for the operating system.  Some DFSMS storage administration functions allow a user to obtain a privileged status and effectively bypass all ACP data set and volume controls.  Failure to properly protect DFSMS resources may result in unauthorized access.  This exposure could compromise the availability and integrity of the operating system environment, system services, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6944",
+      "title": "z/OS UNIX OMVS parameters in PARMLIB are not properly specified.",
+      "description": "Parameter settings in PARMLIB and /etc specify values for z/OS UNIX security controls.  The parameters impact HFS data access and operating system services.  Undesirable values can allow users to gain inappropriate privileges that could impact data integrity or the availability of some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6945",
+      "title": "z/OS UNIX BPXPRMxx security parameters in PARMLIB are not properly specified.",
+      "description": "Parameter settings in PARMLIB and /etc specify values for z/OS UNIX security controls.  The parameters impact HFS data access and operating system services.  Undesirable values can allow users to gain inappropriate privileges that could impact data integrity or the availability of some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6946",
+      "title": "z/OS UNIX HFS MapName files security parameters are not properly specified.",
+      "description": "Parameter settings in PARMLIB and /etc specify values for z/OS UNIX security controls.  The parameters impact HFS data access and operating system services.  Undesirable values can allow users to gain inappropriate privileges that could impact data integrity or the availability of some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6947",
+      "title": "z/OS UNIX security parameters for restricted network service(s) in /etc/inetd.conf are not properly specified.",
+      "description": "Parameter settings in PARMLIB and /etc specify values for z/OS UNIX security controls.  The parameters impact HFS data access and operating system services.  Undesirable values can allow users to gain inappropriate privileges that could impact data integrity or the availability of some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6949",
+      "title": "The VTAM USSTAB definitions are being used for unsecured terminals",
+      "description": "VTAM options and definitions are used to define VTAM operational capabilities.  They must be strictly controlled.  Unauthorized users could override or change start options or network definitions.  Failure to properly control VTAM resources could potentially compromise the network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6956",
+      "title": "The System datasets used to support the VTAM network are not properly secured.",
+      "description": "VTAM options and definitions are used to define VTAM operational capabilities.  They must be strictly controlled.  Unauthorized users could override or change start options or network definitions.  Failure to properly control VTAM resources could potentially compromise the network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6958",
+      "title": "WebSphere MQ channel security must be implemented in accordance with security requirements.",
+      "description": "WebSphere MQ Channel security can be configured to provide authentication, message privacy, and message integrity between queue managers.  Secure Sockets Layer (SSL) uses encryption techniques, digital signatures and digital certificates to provide message privacy, message integrity and mutual authentication between clients and servers.\n\nFailure to properly secure a WebSphere MQ channel may lead to unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of some system services, applications, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6959",
+      "title": "WebSphere MQ resource classes are not properly activated.",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6960",
+      "title": "Websphere MQ \"switch\" profiles are improperly defined to the MQADMIN class.",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6961",
+      "title": "z/OS UNIX security parameters in etc/profile are not properly specified.",
+      "description": "Parameter settings in PARMLIB and /etc specify values for z/OS UNIX security controls.  The parameters impact HFS data access and operating system services.  Undesirable values can allow users to gain inappropriate privileges that could impact data integrity or the availability of some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6962",
+      "title": "WebSphere MQ MQCONN Class resources are not protected in accordance with security.",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6963",
+      "title": "z/OS UNIX security parameters in /etc/rc not properly specified.",
+      "description": "Parameter settings in PARMLIB and /etc specify values for z/OS UNIX security controls.  The parameters impact HFS data access and operating system services.  Undesirable values can allow users to gain inappropriate privileges that could impact data integrity or the availability of some system services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6964",
+      "title": "WebSphere MQ dead letter and alias dead letter queues are not properly defined.",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6965",
+      "title": "WebSphere MQ queue resource defined to the MQQUEUE resource class are not protected in accordance with security requirements.",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6966",
+      "title": "WebSphere MQ Process resources are not protected in accordance with security requirements.",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6967",
+      "title": "WebSphere MQ Namelist resources are not protected in accordance with security requirements.",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6968",
+      "title": "BPX resource(s) is(are) not protected in accordance with security requirements.",
+      "description": "OS/390 UNIX ACP-defined resources consist of sensitive capabilities including SUPERUSER, daemon, and numerous file manipulation privileges.  Missing or inaccurate protection of these resources could allow a user to access sensitive data, modify or delete data and operating system controls, or issue commands that could negatively impact system availability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6969",
+      "title": "WebSphere MQ alternate user resources defined to MQADMIN resource class are not protected in accordance with security requirements.   ",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6970",
+      "title": "z/OS UNIX resources must be protected in accordance with security requirements.",
+      "description": "z/OS UNIX ACP-defined resources consist of sensitive capabilities including SUPERUSER, daemon, and numerous file manipulation privileges. Missing or inaccurate protection of these resources could allow a user to access sensitive data, modify or delete data and operating system controls, or issue commands that could negatively impact system availability.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6971",
+      "title": "WebSphere MQ context resources defined to the MQADMIN resource class are not protected in accordance with security requirements.",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6972",
+      "title": "z/OS UNIX SUPERUSER resource must be protected in accordance with guidelines.",
+      "description": "z/OS UNIX ACP-defined resources consist of sensitive capabilities including SUPERUSER, daemon, and numerous file manipulation privileges.  Missing or inaccurate protection of these resources could allow a user to access sensitive data, modify or delete data and operating system controls, or issue commands that could negatively impact system availability.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6973",
+      "title": "WebSphere MQ command resources defined to MQCMDS resource class are not protected in accordance with security requirements.",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6974",
+      "title": "z/OS UNIX MVS data sets or HFS objects are not properly protected.",
+      "description": "For the z/OS UNIX environment, there are MVS data sets that contain operating system components, MVS data sets that contain HFS file systems with operating system components, and MVS data sets that contain HFS file systems with application system and user data.  All of these MVS data sets require definitions in the ACP to enforce desired access controls.  In addition, the UNIX permission bits must be properly set on the HFS directories and files to enforce desired access controls.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6975",
+      "title": " WebSphere MQ RESLEVEL resources in the MQADMIN resource class are not protected in accordance with security requirements.",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6976",
+      "title": "z/OS UNIX MVS data sets WITH z/OS UNIX COMPONENTS are not properly protected",
+      "description": "For the z/OS UNIX environment, there are MVS data sets that contain operating system components, MVS data sets that contain HFS file systems with operating system components, and MVS data sets that contain HFS file systems with application system and user data.  All of these MVS data sets require definitions in the ACP to enforce desired access controls.  In addition, the UNIX permission bits must be properly set on the HFS directories and files to enforce desired access controls.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6977",
+      "title": "z/OS UNIX MVS data sets used as step libraries in /etc/steplib are not properly protected",
+      "description": "For the z/OS UNIX environment, there are MVS data sets that contain operating system components, MVS data sets that contain HFS file systems with operating system components, and MVS data sets that contain HFS file systems with application system and user data.  All of these MVS data sets require definitions in the ACP to enforce desired access controls.  In addition, the UNIX permission bits must be properly set on the HFS directories and files to enforce desired access controls.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6978",
+      "title": "z/OS UNIX HFS permission bits and audit bits for each directory will be properly protected or specified.",
+      "description": "For the z/OS UNIX environment, there are MVS data sets that contain operating system components, MVS data sets that contain HFS file systems with operating system components, and MVS data sets that contain HFS file systems with application system and user data.  All of these MVS data sets require definitions in the ACP to enforce desired access controls.  In addition, the UNIX permission bits must be properly set on the HFS directories and files to enforce desired access controls.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6979",
+      "title": "z/OS UNIX SYSTEM FILE SECURITY SETTINGS will be properly protected or specified.",
+      "description": "For the z/OS UNIX environment, there are MVS data sets that contain operating system components, MVS data sets that contain HFS file systems with operating system components, and MVS data sets that contain HFS file systems with application system and user data.  All of these MVS data sets require definitions in the ACP to enforce desired access controls.  In addition, the UNIX permission bits must be properly set on the HFS directories and files to enforce desired access controls.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6980",
+      "title": "WebSphere MQ channel security is not implemented in accordance with security requirements.",
+      "description": "WebSphere MQ channel security can be configured to provide authentication, message privacy, and message integrity between queue managers.  WebSphere MQ channels use SSL encryption techniques, digital signatures and digital certificates to provide message privacy, message integrity and mutual authentication between clients and servers.\n\nFailure to properly secure a WebSphere MQ channel may lead to unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of some system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6981",
+      "title": "z/OS UNIX MVS HFS directory(s) with \"other\" write permission bit set are not properly defined.",
+      "description": "For the z/OS UNIX environment, there are MVS data sets that contain operating system components, MVS data sets that contain HFS file systems with operating system components, and MVS data sets that contain HFS file systems with application system and user data.  All of these MVS data sets require definitions in the ACP to enforce desired access controls.  In addition, the UNIX permission bits must be properly set on the HFS directories and files to enforce desired access controls.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6985",
+      "title": "Attributes of z/OS UNIX user accounts are not defined properly",
+      "description": "User identifiers (ACF2 logonids, RACF userids, and Top Secret ACIDs), groups, and started tasks that use z/OS UNIX facilities are defined to an ACP with attributes including UID and GID.  If these attributes are not correctly defined, data access or command privilege controls could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6986",
+      "title": "z/OS UNIX each group is not defined with a unique GID.",
+      "description": "User identifiers (ACF2 logonids, RACF userids, and Top Secret ACIDs), groups, and started tasks that use z/OS UNIX facilities are defined to an ACP with attributes including UID and GID.  If these attributes are not correctly defined, data access or command privilege controls could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6987",
+      "title": "The user account for the z/OS UNIX kernel (OMVS) is not properly defined to the security database.",
+      "description": "User identifiers (ACF2 logonids, RACF userids, and Top Secret ACIDs), groups, and started tasks that use z/OS UNIX facilities are defined to an ACP with attributes including UID and GID.  If these attributes are not correctly defined, data access or command privilege controls could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6988",
+      "title": "The user account for the z/OS UNIX SUPERUSER userid must be properly defined.",
+      "description": "User identifiers (ACF2 logonids, RACF userids, and Top Secret ACIDs), groups, and started tasks that use z/OS UNIX facilities are defined to an ACP with attributes including UID and GID.  If these attributes are not correctly defined, data access or command privilege controls could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6989",
+      "title": "The user account for the z/OS UNIX (RMFGAT) must be properly defined.",
+      "description": "User identifiers (ACF2 logonids, RACF userids, and Top Secret ACIDs), groups, and started tasks that use z/OS UNIX facilities are defined to an ACP with attributes including UID and GID.  If these attributes are not correctly defined, data access or command privilege controls could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6991",
+      "title": "UID(0) is improperly assigned.",
+      "description": "User identifiers (ACF2 logonids, RACF userids, and Top Secret ACIDs), groups, and started tasks that use z/OS UNIX facilities are defined to an ACP with attributes including UID and GID.  If these attributes are not correctly defined, data access or command privilege controls could be compromised.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6992",
+      "title": "z/OS UNIX user accounts are not properly defined.",
+      "description": "User identifiers (ACF2 logonids, RACF userids, and Top Secret ACIDs), groups, and started tasks that use z/OS UNIX facilities are defined to an ACP with attributes including UID and GID.  If these attributes are not correctly defined, data access or command privilege controls could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6993",
+      "title": "The GSO UNIXOPTS record must not specify default settings for classified systems.",
+      "description": "Default profile settings allow a user to access UNIX System Services (OMVS) if a user does not have a valid OMVS group in the logonid record. Settings in the ACP impact the security level of z/OS UNIX. In classified systems user access will not be determined by default.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6994",
+      "title": "The GSO UNIXOPTS record  must specify CHOWNRES.",
+      "description": "Parameter settings in the ACP impact the security level of z/OS UNIX.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6995",
+      "title": "The CLASSMAP DEFINITIONS list does not include entires for the FACILITY, SURROGAT, and UNIXPRIV resource classes in accordance with security requirements.",
+      "description": "Parameter settings in the ACP impact the security level of z/OS UNIX.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6996",
+      "title": "The INFODIR record does not include entries for the FACILITY, SURROGAT, and UNIXPRIV resource classes in accordance with security requirements.",
+      "description": "Parameter settings in the ACP impact the security level of z/OS UNIX.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7050",
+      "title": "Attributes of z/OS UNIX user accounts used for account modeling must be defined in accordance with security requirements.",
+      "description": "User identifiers (ACF2 logonids, RACF userids, and Top Secret ACIDs) that use z/OS UNIX facilities are defined to an ACP with attributes defined in the STIG.  If these attributes are not correctly defined, data access or command privilege controls could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7091",
+      "title": "ACF2/CICS parameter data sets are not protected in accordance with the proper security requirements.",
+      "description": "CICS is a transaction-processing product that provides programmers with the facilities to develop interactive applications. Unauthorized access to ACF2/CICS parameter data sets (i.e., product, security) could result in the compromise of the confidentiality, integrity, and availability of the CICS region, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7119",
+      "title": "CICS default logonid(s) must be defined and/or controlled in accordance with the security requirements.",
+      "description": "CICS is a transaction-processing product that provides programmers with the facilities to develop interactive applications. Improperly defined or controlled CICS userids (i.e., region, default, and terminal users) may provide an exposure and vulnerability within the CICS environment.  This could result in the compromise of the confidentiality, integrity, and availability of the CICS region, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7120",
+      "title": "CICS logonid(s) do not have time-out limit set to 15 minutes.",
+      "description": "CICS is a transaction-processing product that provides programmers with the facilities to develop interactive applications. Improperly defined or controlled CICS userids (i.e., region, default, and terminal users) may provide an exposure and vulnerability within the CICS environment.  This could result in the compromise of the confidentiality, integrity, and availability of the CICS region, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-71223",
+      "title": "Libraries included in the system REXXLIB concatenation must be properly protected. ",
+      "description": "The libraries included in the system REXXLIB concatenation can contain program modules which possess a significant level of security bypass capability. Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-7482",
+      "title": "z/OS system commands must be properly protected.  ",
+      "description": "z/OS system commands provide a method of controlling the operating environment.  Failure to properly control access to z/OS system commands could result in unauthorized personnel issuing sensitive system commands.  This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7485",
+      "title": "CONSOLxx members must be properly configured.",
+      "description": "MCS consoles can be used to issue operator commands.  Failure to properly control access to MCS consoles could result in unauthorized personnel issuing sensitive operator commands.  This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7486",
+      "title": "MCS console userid(s) will be properly protected.",
+      "description": "MCS consoles can be used to issue operator commands.  Failure to properly control access to MCS consoles could result in unauthorized personnel issuing sensitive operator commands.  This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7487",
+      "title": "MCS consoles access authorization(s) for CONSOLE resource(s) must be properly protected.",
+      "description": "MCS consoles can be used to issue operator commands.  Failure to properly control access to MCS consoles could result in unauthorized personnel issuing sensitive operator commands.  This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7488",
+      "title": "Users that have access to the CONSOLE resource in the TSOAUTH resource class are not properly defined.",
+      "description": "MCS consoles can be used to issue operator commands.  Failure to properly control access to MCS consoles could result in unauthorized personnel issuing sensitive operator commands.  This exposure may threaten the integrity and availability of the operating system environment, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7516",
+      "title": "CICS system data sets are not properly protected.",
+      "description": "CICS is a transaction-processing product that provides programmers with the facilities to develop interactive applications. Unauthorized access to CICS system data sets (i.e., product, security, and application libraries) could result in the compromise of the confidentiality, integrity, and availability of the CICS region, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7545",
+      "title": "Unsupported system software is installed and active on the system.",
+      "description": "When a vendor drops support of System Software, they no longer maintain security vulnerability patches to the software. Without vulnerability patches, it is impossible to verify that the system does not contain code which could violate the integrity of the operating system environment. ",
+      "severity": "high"
+    },
+    {
+      "id": "V-7546",
+      "title": "Site must have a formal migration plan for removing or upgrading OS systems software prior to the date the vendor drops security patch support.",
+      "description": "Vendors' code may contain vulnerabilities that may be exploited to cause denial of service or to violate the integrity of the system or data on the System. Most vendors develop patches to correct these vulnerabilities. When vendors' products become unsupported, the creation of these patches cease leaving the system exposed to any future vulnerabilities not patched. Without a documented migration plan established to monitor system software versions and releases unsupported software may be allowed to run on the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7554",
+      "title": "Key ACF2/CICS parameters must be properly coded.",
+      "description": "The ACF2/CICS parameters define the security controls in effect for CICS regions.  Failure to code the appropriate values could result in degraded security.  This exposure may result in unauthorized access impacting the confidentiality, integrity, and availability of the CICS region, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7558",
+      "title": "Userids found inactive for more than 35 days are not suspended.",
+      "description": "Userid maintenance is critical in a C2 level of trust environment.  Userids left on the system for extended periods of time could be reassigned to a different user while retaining the access authorizations of the previous user.  The improper management of userids could result in the compromise of the operating system environment, ACP, and customer data. \nNote:  This vulnerability applies to interactive USERIDS assigned to individuals and not to BATCH, STC type USERIDS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-82",
+      "title": "A CMP (Change Management Process) is not being utilized on this system. ",
+      "description": " Without proper tracking of changes to the operating system software environment, its processing integrity and availability are subject to compromise.",
+      "severity": "low"
+    },
+    {
+      "id": "V-8271",
+      "title": "FTP / Telnet unencryted transmissions require Acknowledgement of Risk Letter(AORL) ",
+      "description": "In addition to the data transmission being in the clear, the user credentials are also passed in the clear, which violates the control IAIA-1.  As mitigation for this vulnerability, special consideration must be given to account maintenance and the types of user privileges associated with these accounts.  Interception of the above information could result in the compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-83",
+      "title": "LNKAUTH=APFTAB is not specified in the IEASYSxx member(s) in the currently active parmlib data set(s).",
+      "description": "Failure to specify LINKAUTH=APFTAB allows libraries other than those designated as APF to contain authorized modules which could bypass security and violate the integrity of the operating system environment.  This expanded authorization list inhibits the ability to control inclusion of these modules.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-84",
+      "title": "Inaccessible APF libraries defined.",
+      "description": "If a library designated by an APF entry does not exist on the volume specified, a library of the same name may be placed on this volume and inherit APF authorization.  This could allow the introduction of modules which bypass security and violate the integrity of the operating system environment.",
+      "severity": "low"
+    },
+    {
+      "id": "V-85",
+      "title": "Duplicated sensitive utilities and/or programs exist in APF libraries.",
+      "description": "Modules designated as sensitive utilities have the ability to significantly modify the operating system environment.  Duplication of these modules causes an exposure by making it extremely difficult to track modifications to them.  This could allow for the execution of invalid or trojan horse versions of these utilities.",
+      "severity": "low"
+    },
+    {
+      "id": "V-86",
+      "title": "The review of AC=1 modules in APF authorized libraries will be reviewed annually and documentation verifying the modules integrity is available.",
+      "description": "The review of AC=1 modules that reside in APF authorized libraries will be reviewed annually.  The IAO will maintain documentation identifying the integrity and justification of Vendor APF authorized libraries.  For non-vendor APF authorized libraries, the source and documentation identifying the integrity and justification that describes the AC=1 module process will be maintained by the IAO.  Sites have undocumented and/or unauthorized AC=1 modules have a possible risk to the confidentiality, integrity, and availability of the system and present a clear risk to the operating system, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90",
+      "title": "Inapplicable PPT entries have not been invalidated.",
+      "description": "If invalid or inapplicable PPT entries exist, a venue is provided for the introduction of trojan horse modules with security bypass capabilities.",
+      "severity": "medium"
+    }
+  ]
+}

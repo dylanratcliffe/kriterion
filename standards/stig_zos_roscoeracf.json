@@ -1,0 +1,53 @@
+{
+  "name": "stig_zos_roscoeracf",
+  "date": "2015-01-16",
+  "description": "None",
+  "title": "z/OS ROSCOE for RACF STIG",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-16932",
+      "title": "ROSCOE Install data sets are not properly protected.",
+      "description": "ROSCOE Install data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17067",
+      "title": "ROSCOE STC data sets are not properly protected.",
+      "description": "ROSCOE STC data sets provide the capability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17452",
+      "title": "ROSCOE Started Task name is not properly identified / defined to the system ACP.",
+      "description": "Products that require a started task will require that the started task be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.      ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17454",
+      "title": "ROSCOE Started task(s) must be properly defined to the STARTED resource class for RACF.",
+      "description": "Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources.  Improper control of product resources could potentially compromise the operating system, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17947",
+      "title": "ROSCOE resources must be properly defined and protected.",
+      "description": "ROSCOE can run with sensitive system privileges, and potentially can circumvent system controls.  Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality and integrity of customer data. Many utilities assign resource controls that can be granted to system programmers only in greater than read authority. Resources are also granted to certain non systems personnel with read only authority.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18011",
+      "title": "The Roscoe Resource Class will be defined or active in the ACP.",
+      "description": "Failure to use a robust ACP to control a product could potentially compromise the integrity and availability of the MVS operating system and user data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18014",
+      "title": "Product configuration/parameter values are not specified properly.",
+      "description": "Product configuration/parameters control the security and operational characteristics of products.  If these parameter values are improperly specified, security and operational controls may be weakened.  This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    }
+  ]
+}

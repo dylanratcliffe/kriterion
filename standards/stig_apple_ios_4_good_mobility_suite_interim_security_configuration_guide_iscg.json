@@ -1,0 +1,257 @@
+{
+  "name": "stig_apple_ios_4_good_mobility_suite_interim_security_configuration_guide_iscg",
+  "date": "2011-11-07",
+  "description": "This ISCG contains technical security controls required for the use of Apple iOS 4 devices (iPhone, iPad, and iPod touch) in the DoD environment when managed by the Good Mobility Suite.",
+  "title": "Apple iOS 4 (Good Mobility Suite) Interim Security Configuration Guide (ISCG)",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-18627",
+      "title": "The VPN client on wireless clients (PDAs, smartphones) used for remote access to DoD networks must be FIPS 140-2 validated.  ",
+      "description": "DoD data could be compromised if transmitted data is not secured with a compliant VPN.  FIPS validation provides a level of assurance that the encryption of the device has been securely implemented.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19897",
+      "title": "All wireless PDA clients used for remote access to DoD networks must have a VPN supporting AES encryption. ",
+      "description": "DoD data could be compromised if transmitted data is not secured with a compliant VPN.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19898",
+      "title": "All wireless PDA clients used for remote access to DoD networks must have a VPN supporting CAC authentication.  ",
+      "description": "DoD data could be compromised if transmitted data is not secured with a compliant VPN.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19899",
+      "title": "All wireless PDA client VPNs must have split tunneling disabled.   ",
+      "description": "DoD data could be compromised if transmitted data is not secured with a compliant VPN.  Split tunneling could allow connections from non-secure Internet sites to access data on the DoD network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24981",
+      "title": "Smartphone devices must have required operating system software version installed.",
+      "description": "Required security features are not available in earlier OS versions. In addition, there are known vulnerabilities in earlier versions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24982",
+      "title": "Smart Card Readers (SCRs) used with smartphones must have required software version installed.",
+      "description": "Required security features are not available in earlier software versions. In addition, there may be known vulnerabilities in earlier versions.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24983",
+      "title": "S/MIME must be installed on smartphones so users can sign/encrypt email.",
+      "description": "S/MIME provides the capability for users to send and receive S/MIME email messages from wireless email devices. S/MIME and digital signatures provide assurance the message is authentic and is required by DoD policy.  Without S/MIME users will not be able to read encrypted email and will not be able to encrypt email with sensitive information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24984",
+      "title": "If smartphone email auto signatures are used, the signature message must not disclose the email originated from a smartphone (e.g., “Sent From My Wireless Handheld”). ",
+      "description": "The disclaimer message may give information which may key an attacker in on the device. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-24985",
+      "title": "The Good Internet proxy must be enabled. ",
+      "description": "A DoD Internet proxy provides additional security over the carrier's browser.  When using the DoD Internet proxy for iOS device Internet connections, enclave Internet security controls will filter and monitor iOS device Internet connections.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24986",
+      "title": "All non-core applications on the smartphone must be approved by the DAA or the Command IT Configuration Control Board.  ",
+      "description": "Non-approved applications can contain malware.  Approved applications should be reviewed and tested by the approving authority to ensure they do not contain malware, spyware, or have unexpected features (e.g., send private information to a web site, track user actions, connect to a non-DoD management server).  The DAA or Command IT Configuration Control Board is responsible for setting up procedures to review, test, and approve smartphone applications.  It is expected the process will be similar to what is used to approve and manage applications on command PCs.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25003",
+      "title": "A compliance rule must be set up in the server defining required mobile OS software versions.",
+      "description": "Unapproved OS versions do not support required security features.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25006",
+      "title": "iPhones must be configured to require a password to remove the iPhone configuration profile.  ",
+      "description": "Sensitive DoD data could be compromised if a security profile is not installed on DoD iPhone/iPad/iPod Touch devices.  The profile should only be removed by the system administrator.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25007",
+      "title": "iPhones must be configured to require a password/passcode for device unlock.",
+      "description": "Sensitive DoD data could be compromised if a device unlock passcode is not set up on a DoD iPhone/iPad/iPod Touch device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25008",
+      "title": "The smartphone password complexity must be set to the required value. \n\n",
+      "description": "Sensitive DoD data could be compromised if a strong device unlock passcode is not set up on a DoD iPhone/iPad/iPod Touch device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25009",
+      "title": "Maximum passcode age must be set.",
+      "description": "Sensitive DoD data could be compromised if a strong device unlock passcode is not set up on a DoD iPhone/iPad/iPod Touch device and the passcode is not changed periodically.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25010",
+      "title": "The smartphone inactivity timeout must be set. ",
+      "description": "Sensitive DoD data could be compromised if the smartphone does not automatically lock after 15 minutes of inactivity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25011",
+      "title": "Passcode maximum failed attempts must be set to required value.",
+      "description": "A hacker with unlimited attempts can determine the password of an iPhone / iPad within a few minutes using password hacking tools, which could lead to unauthorized access to the iPhone / iPad and exposure to sensitive DoD data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25012",
+      "title": "Access to public application stores must be disabled.",
+      "description": "Strong configuration management of all applications installed on DoD device is required to ensure the security baseline of the system is maintained.  Otherwise, sensitive DoD data could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25013",
+      "title": "Users must not be allowed to download applications on smartphones without SA control.",
+      "description": "Strong configuration management of all applications installed on DoD device is required to ensure the security baseline of the system is maintained.  Otherwise, sensitive DoD data could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25014",
+      "title": "Smartphone cameras must be used only if documented approval is in the site physical security policy.",
+      "description": "This is an operational security issue.   DoD sensitive information could be compromised if cameras are allowed in areas not authorized by the site physical security plan.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25015",
+      "title": "iPhone screen capture must not be allowed.",
+      "description": "Sensitive data could be copied into an email and sent over a non-DoD email link. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25016",
+      "title": "The device minimum password/passcode length must be set. ",
+      "description": "Sensitive DoD data could be compromised if a device unlock password/passcode is not set to required length on a DoD smartphones.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25017",
+      "title": "Apple iOS Auto-Lock must be set.",
+      "description": "Sensitive DoD data could be compromised if the iOS device does not automatically lock after a set period of inactivity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25018",
+      "title": "The smartphone passcode history setting must be set.",
+      "description": "The passcode would be more susceptible to compromise if the user can select frequently used passcodes.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25019",
+      "title": "The smartphone Bluetooth radio must be disabled if not authorized for use.",
+      "description": "The Bluetooth radio can be used by a hacker to connect to the iOS device without the knowledge of the user.  Sensitive DoD data could be exposed and the hacker could use the device to attack the enclave.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25020",
+      "title": "The smartphone device Wi-Fi radio must be disabled as the default setting and is enabled only when Wi-Fi connectivity is required. \n",
+      "description": "The Wi-Fi radio can be used by a hacker to connect to the smartphone without the knowledge of the user. Sensitive DoD data could be exposed and the hacker could use the device to attack the enclave.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25021",
+      "title": "When connecting an iOS device to a PC with iTunes, the user must not download an iOS software update, if prompted to do so by iTunes (User Based Enforcement (UBE)).",
+      "description": "The security posture of the iOS system depends on strict configuration management control of all software installed on the device, including operating system version. Otherwise, the security posture of the device, and the DoD enclave the device connects to, could be compromised. All iOS updates should be installed by the SA or under the control of the SA.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25022",
+      "title": "All smartphones must display the required banner during device unlock/logon.",
+      "description": "DoD CIO memo requires all PDAs, BlackBerrys, and smartphones to have a consent banner displayed during logon/device unlock to ensure users understand their responsibilities to safeguard DoD data. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25033",
+      "title": "iOS Safari must be enabled or disabled based on system requirements.",
+      "description": "The Safari browser could be used to connect to web sites with malware.  The browser should be enabled if required by the iOS system and when properly configured.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25051",
+      "title": "Location services must be turned off on the smartphone during device provisioning.",
+      "description": "Smartphone location services allow applications to gather information about the location of the handheld device and possibly forward it to servers located on the Internet. This is an operational security issue for DoD smartphones devices.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25092",
+      "title": "The iOS device Wi-Fi setting \"Ask to Join Networks\" must be set to \"On\" at all times (User Based Enforcement (UBE)).",
+      "description": "The Wi-Fi radio can be used by a hacker to connect to the iOS device without the knowledge of the user. Sensitive DoD data could be exposed and the hacker could use the device to attack the enclave. This setting would allow the device Wi-Fi radio to automatically connect to a Wi-Fi network.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25093",
+      "title": "The Safari web browser AutoFill feature must be disabled on an iOS device (this is a User Based Enforcement (UBE) feature).",
+      "description": "When AutoFill is enabled, sensitive DoD information or personal information could automatically be sent to a non-DoD web site.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25755",
+      "title": "Access to online application purchases must be disabled.",
+      "description": "Strong configuration management of all applications installed on DoD devise is required to ensure the security baseline of the system is maintained. Otherwise, sensitive DoD data could be compromised.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25756",
+      "title": "Encrypted smartphone backups must be enabled.",
+      "description": "The act of connecting an iOS device to a PC can put it at risk of attack if the PC is compromised. The iOS device should sync to a minimum number of approved machines. It should not sync to laptops that travel with the device and it should always use encrypted backups.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25757",
+      "title": "The SA must change the iOS device profile passwords every 365 days or sooner.  ",
+      "description": "Sensitive DoD data could be compromised if a security profile is not installed on DoD iOS devices. The profile should only be removed by the SA. When a new profile is pushed to an iOS device, the old one remains on the device, unless the new one is an update of the old one. When two profiles are on a device, the device follows the most secure setting found in either the new or old profile, which may lead to unexpected behavior. The only way to disable a profile is to remove it by wiping the device or remove it using the profile password. The DoD will use the profile password, so a SA can remove old profiles. The profile password must be changed periodically to ensure it is not compromised. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-25842",
+      "title": "The site must set up local operating procedures for initial provisioning and subsequent software and application updates using the procedures published in the STIG/ISCG Overview document. ",
+      "description": "Strong configuration management of applications on a smartphone is a key malware control. Most smartphones must have individual commercial web portal (e.g., iTunes, Android Market, etc.) accounts and be connected to the commercial App Store to provision the smartphone. A DoD user can jailbreak a smartphone and bypass smartphone application and malware controls. To ensure strong configuration management of the security baseline of the smartphone, all software loading should be done by the SA.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26559",
+      "title": "The Personal Hotspot feature of the smartphone OS must be disabled if it does not meet DoD WLAN or Bluetooth security requirements and is not approved by the IAO. ",
+      "description": "The Wi-Fi radio and Bluetooth radio can be used by a hacker to connect to the smartphone without the knowledge of the user. Sensitive DoD data could be exposed and the hacker could use the device to attack the enclave. This setting would allow the device Wi-Fi radio to automatically connect to a Wi-Fi network.  The Bluetooth and Wi-Fi connections do not support DoD wireless encryption and authentication requirements.",
+      "severity": "low"
+    },
+    {
+      "id": "V-26753",
+      "title": "A “Restriction” policy must be manually added to each iOS device managed by the site during the provisioning/setup process.",
+      "description": "The restriction policy will stop the capability of the user from accessing the Apple store and other unauthorized services, which could allow the download of malware or unapproved apps, before the ISCG policy has been installed on the device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-27635",
+      "title": "Remote full device wipe must be enabled.",
+      "description": "Sensitive DoD data could be compromised if mobile OS device data could not be wiped when directed by the system administrator.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28297",
+      "title": "The smartphone password/passcode complexity (alphanumeric) must be set.",
+      "description": "Sensitive DoD data could be compromised if a strong device unlock password/passcode is not set up on a DoD smartphone.  The complexity of the password is a key factor in the strength of the password.  Complex passwords are harder to guess or obtain via a brute force attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-29894",
+      "title": "A security risk analysis must be performed on a mobile Operating System (OS) application by the DAA or DAA authorized approval authority prior to the application being approved for use.\n",
+      "description": "Non-approved applications can contain malware. Approved applications should be reviewed and tested by the approving authority to ensure they do not contain malware, spyware, or have unexpected features (e.g., send private information to a web site, track user actions, connect to a non-DoD management server).",
+      "severity": "high"
+    }
+  ]
+}

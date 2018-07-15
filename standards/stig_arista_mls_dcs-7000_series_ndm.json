@@ -1,0 +1,197 @@
+{
+  "name": "stig_arista_mls_dcs-7000_series_ndm",
+  "date": "2016-03-29",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "Arista MLS DCS-7000 Series NDM Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-60815",
+      "title": "The Arista Multilayer Switch must have a local infrequently used account to be used as an account of last resort with full access to the network device.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. Password complexity is one factor of several that determines how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that needs to be tested before the password is compromised.\n\nTypically, the account of last resort is a built-in account with full privileges to the network device. This account should only be used when the authentication mechanism is unreachable and configuration or maintenance actions must be taken.",
+      "severity": "high"
+    },
+    {
+      "id": "V-60833",
+      "title": "The Arista Multilayer Switch account of last resort must have a password with a length of 15 characters.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. Password complexity is one factor of several that determines how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that needs to be tested before the password is compromised.\n\nTypically, the account of last resort is a built-in account with full privileges to the network device. This account should only be used when the authentication mechanism is unreachable and configuration or maintenance actions must be taken.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60835",
+      "title": "The Arista Multilayer Switch must automatically audit account creation.",
+      "description": "Upon gaining access to a network device, an attacker will often first attempt to create a persistent method of reestablishing access. One way to accomplish this is to create a new account. Notification of account creation helps to mitigate this risk. Auditing account creation provides the necessary reconciliation that account management procedures are being followed. Without this audit trail, personnel without the proper authorization may gain access to critical network nodes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60837",
+      "title": "The Arista Multilayer Switch must automatically audit account modification.",
+      "description": "Since the accounts in the network device are privileged or system-level accounts, account management is vital to the security of the network device. Account management by a designated authority ensures access to the network device is being controlled in a secure manner by granting access to only authorized personnel with the appropriate and necessary privileges. Auditing account modification along with an automatic notification to appropriate individuals will provide the necessary reconciliation that account management procedures are being followed. If modifications to management accounts are not audited, reconciliation of account management procedures cannot be tracked.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60839",
+      "title": "The Arista Multilayer Switch must automatically audit account disabling actions.",
+      "description": "Account management, as a whole, ensures access to the network device is being controlled in a secure manner by granting access to only authorized personnel. Auditing account disabling actions will support account management procedures. When device management accounts are disabled, user or service accessibility may be affected. Auditing also ensures authorized active accounts remain enabled and available for use when required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60841",
+      "title": "The Arista Multilayer Switch must automatically audit account removal actions.",
+      "description": "Account management, as a whole, ensures access to the network device is being controlled in a secure manner by granting access to only authorized personnel. Auditing account removal actions will support account management procedures. When device management accounts are terminated, user or service accessibility may be affected. Auditing also ensures authorized active accounts remain enabled and available for use when required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60843",
+      "title": "The Arista Multilayer Switch must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the device.",
+      "description": "Display of the DoD-approved use notification before granting access to the network device ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60845",
+      "title": "The Arista Multilayer Switch must protect against an individual (or process acting on behalf of an individual) falsely denying having performed organization-defined actions to be covered by non-repudiation.",
+      "description": "This requirement supports non-repudiation of actions taken by an administrator and is required in order to maintain the integrity of the configuration management process. All configuration changes to the network device are logged, and administrators authenticate with two-factor authentication before gaining administrative access. Together, these processes will ensure the administrators can be held accountable for the configuration changes they implement.\n\nTo meet this requirement, the network device must log administrator access and activity.",
+      "severity": "low"
+    },
+    {
+      "id": "V-60847",
+      "title": "The Arista Multilayer Switch must generate audit records when successful/unsuccessful attempts to access privileges occur.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "low"
+    },
+    {
+      "id": "V-60849",
+      "title": "The Arista Multilayer Switch must produce audit log records containing sufficient information to establish what type of event occurred.",
+      "description": "It is essential for security personnel to know what is being done, what was attempted, where it was done, when it was done, and by whom it was done in order to compile an accurate risk assessment. Associating event types with detected events in the application and audit logs provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured network device. Without this capability, it would be difficult to establish, correlate, and investigate the events leading up to an outage or attack.",
+      "severity": "low"
+    },
+    {
+      "id": "V-60851",
+      "title": "The Arista Multilayer Switch must generate audit records containing the full-text recording of privileged commands.",
+      "description": "Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information. \n\nOrganizations consider limiting the additional audit information to only that information explicitly needed for specific audit requirements. The additional information required is dependent on the type of information (i.e., sensitivity of the data and the environment within which it resides). At a minimum, the organization must audit full-text recordings of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.",
+      "severity": "low"
+    },
+    {
+      "id": "V-60853",
+      "title": "The Arista Multilayer Switch must be configured to prohibit the use of all unnecessary and/or nonsecure functions, ports, protocols, and/or services, as defined in the PPSM CAL and vulnerability assessments.",
+      "description": "In order to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable unused or unnecessary physical and logical ports/protocols on information systems.\n\nNetwork devices are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the network device must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality of life issues.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60855",
+      "title": "The Arista Multilayer Switch must use multifactor authentication for local access to privileged accounts.",
+      "description": "Multifactor authentication is defined as: using two or more factors to achieve authentication.\n\nFactors include: \n(i) Something a user knows (e.g., password/PIN); \n(ii) Something a user has (e.g., cryptographic identification device, token); or \n(iii) Something a user is (e.g., biometric).\n\nTo assure accountability and prevent unauthenticated access, privileged users must utilize multifactor authentication to prevent potential misuse and compromise of the system. \n\nLocal access is defined as access to an organizational information system by a user (or process acting on behalf of a user) communicating through a direct connection without the use of a network.\n\nApplications integrating with the DoD Active Directory and utilizing the DoD CAC are examples of compliant multifactor authentication solutions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60857",
+      "title": "The Arista Multilayer Switch must terminate all network connections associated with a device management session at the end of the session, or the session must be terminated after 10 minutes of inactivity except to fulfill documented and validated mission requirements.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element.\n\nTerminating network connections associated with communications sessions includes, for example, de-allocating associated TCP/IP address/port pairs at the operating system level, or de-allocating networking assignments at the application level if multiple application sessions are using a single, operating system-level network connection. This does not mean that the device terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60859",
+      "title": "The Arista Multilayer Switch must reveal error messages only to authorized individuals (ISSO, ISSM, and SA).",
+      "description": "Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state. Additionally, sensitive account information must not be revealed through error messages to unauthorized personnel or their designated representatives.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60861",
+      "title": "The Arista Multilayer Switch must activate a system alert message, send an alarm, and/or automatically shut down when a component failure is detected.",
+      "description": "Predictable failure prevention requires organizational planning to address device failure issues. If components key to maintaining the device's security fail to function, the device could continue operating in an insecure state. If appropriate actions are not taken when a network device failure occurs, a denial of service condition may occur that could result in mission failure since the network would be operating without a critical security monitoring and prevention function. Upon detecting a failure of network device security components, the network device must activate a system alert message, send an alarm, or shut down.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60863",
+      "title": "The Arista Multilayer Switch must synchronize internal information system clocks to the authoritative time source when the time difference is greater than the organization-defined time period.",
+      "description": "Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. \n\nSynchronizing internal information system clocks provides uniformity of time stamps for information systems with multiple system clocks and systems connected over a network. Organizations should consider setting time periods for different types of systems (e.g., financial, legal, or mission-critical systems). Organizations should also consider endpoints that may not have regular access to the authoritative time server (e.g., mobile, teleworking, and tactical endpoints). This requirement is related to the comparison done every 24 hours in CCI-001891 because a comparison must be done in order to determine the time difference.\n\nThe organization-defined time period will depend on multiple factors, most notably the granularity of time stamps in audit logs. For example, if time stamps only show to the nearest second, there is no need to have accuracy of a tenth of a second in clocks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60865",
+      "title": "The Arista Multilayer Switch must be configured to synchronize internal information system clocks with the primary and secondary time sources located in different geographic regions using redundant authoritative time sources.",
+      "description": "The loss of connectivity to a particular authoritative time source will result in the loss of time synchronization (free-run mode) and increasingly inaccurate time stamps on audit events and other functions.\n\nMultiple time sources provide redundancy by including a secondary source. Time synchronization is usually a hierarchy; clients synchronize time to a local source while that source synchronizes its time to a more accurate source. The network device must utilize an authoritative time server and/or be configured to use redundant authoritative time sources. This requirement is related to the comparison done in CCI-001891.\n\nDoD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DoD network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60867",
+      "title": "The Arista Multilayer Switch must record time stamps for audit records that can be mapped to Coordinated Universal Time (UTC) or Greenwich Mean Time (GMT).",
+      "description": "If time stamps are not consistently applied and there is no common time reference, it is difficult to perform forensic analysis.\n\nTime stamps generated by the application include date and time. Time is commonly expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60869",
+      "title": "Arista Multilayer Switches used for nonlocal maintenance sessions must implement cryptographic mechanisms to protect the integrity of nonlocal maintenance and diagnostic communications.",
+      "description": "This requires the use of secure protocols instead of their unsecured counterparts, such as SSH instead of telnet, SCP instead of FTP, and HTTPS instead of HTTP.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60871",
+      "title": "Arista Multilayer Switches used for nonlocal maintenance sessions must implement cryptographic mechanisms to protect the confidentiality of nonlocal maintenance and diagnostic communications.",
+      "description": "This requires the use of secure protocols instead of their unsecured counterparts, such as SSH instead of telnet, SCP instead of FTP, and HTTPS instead of HTTP.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60873",
+      "title": "The Arista Multilayer Switch must generate audit records for privileged activities or other system-level access.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60875",
+      "title": "The Arista Multilayer Switch must generate audit records showing starting and ending time for administrator access to the system.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60877",
+      "title": "The Arista Multilayer Switch must generate audit records when concurrent logons from different workstations occur.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60879",
+      "title": "The Arista Multilayer Switch must generate audit records for all account creations, modifications, disabling, and termination events.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60881",
+      "title": "The Arista Multilayer Switch must, at a minimum, off-load audit records for interconnected systems in real time.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60883",
+      "title": "The Arista Multilayer Switch must protect the audit records of nonlocal accesses to privileged accounts and the execution of privileged functions.",
+      "description": "Auditing may not be reliable when performed by the network device to which the user being audited has privileged access. The privileged user may inhibit auditing or modify audit records. This control enhancement helps mitigate this risk by requiring that privileged access be further defined between audit-related privileges and other privileges, thus limiting the users with audit-related privileges. Reducing the risk of audit compromises by privileged users can also be achieved by performing audit activity on a separate information system or by using storage media that cannot be modified (e.g., write-once recording devices).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60885",
+      "title": "The Arista Multilayer Switch must employ AAA service to centrally manage authentication settings.",
+      "description": "The use of authentication servers or other centralized management servers for providing centralized authentication services is required for network device management. Maintaining local administrator accounts for daily usage on each network device without centralized management is not scalable or feasible. Without centralized management, it is likely that credentials for some network devices will be forgotten, leading to delays in administration, which itself leads to delays in remediating production problems and in addressing compromises in a timely fashion.",
+      "severity": "high"
+    },
+    {
+      "id": "V-60887",
+      "title": "The Arista Multilayer Switch must support organizational requirements to conduct backups of system-level information contained in the information system when changes occur or weekly, whichever is sooner.",
+      "description": "System-level information includes default and customized settings and security attributes, including ACLs that relate to the network device configuration, as well as software required for the execution and operation of the device. Information system backup is a critical step in ensuring system integrity and availability. If the system fails and there is no backup of the system-level information, a denial of service condition is possible for all who utilize this critical network component.\n\nThis control requires the network device to support the organizational central backup process for system-level information associated with the network device. This function may be provided by the network device itself; however, the preferred best practice is a centralized backup rather than each network device performing discrete backups.",
+      "severity": "low"
+    },
+    {
+      "id": "V-67195",
+      "title": "The Arista Multilayer Switch must be updated to one of the minimum approved versions of EOS.",
+      "description": "The Arista Multilayer Switch uses the EOS operating system. Updates to EOS contain new security-related features and security patches that address known vulnerabilities. Running a current DoD-approved software version improves the security posture of the network device.",
+      "severity": "low"
+    },
+    {
+      "id": "V-67197",
+      "title": "The Arista Multilayer Switch must use FIPS-compliant mechanisms for authentication to a cryptographic module.",
+      "description": "Unapproved mechanisms that are used for authentication to the cryptographic module are not verified and therefore cannot be relied upon to provide confidentiality or integrity, and DoD data may be compromised.\n\nNetwork devices utilizing encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules.\n\nFIPS 140-2 is the current standard for validating that mechanisms used to access cryptographic modules utilize authentication that meets DoD requirements.",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "stig_video_teleconference",
+  "date": "2015-01-05",
+  "description": "The Video Teleconference Security Technical Implementation Guide (STIG) provides technical guidance for video teleconferencing systems and endpoints implemented on DoD networks. The Video Services Policy STIG works with the Video Teleconference STIG requirements for evaluation on each video teleconferencing (VTC) system review, regardless of the VTC product or release level. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailbox@mail.mil. ",
+  "title": "Video Teleconference STIG",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-19624",
+      "title": "An Auto-answer feature is not properly disabled.",
+      "description": "The VTC STIG discusses the possibility of undesired or improper viewing of and/or listening to activities and conversations in the vicinity of a hardware based VTC endpoint, whether it is a conference room system or an office based executive or desktop system. If this was to occur, there could be inadvertent disclosure of sensitive or classified information to individuals without the proper clearance or need-to-know. This vulnerability could occur if the endpoint was set to automatically answer a voice, VTC, or collaboration call with audio and video capabilities enabled, or if the endpoint was compromised and remotely controlled. The stated requirements and mitigations involve muting the microphone(s) and disabling or covering the camera(s). These or similar vulnerabilities could exist in PC based communications/collaboration applications due to an auto answer feature or compromised application or platform. As such, the simplest mitigation would be to only operate the software that accesses the microphone and camera when they are needed for communication. This does not work well for a unified communications application that is used to enhance our communications/collaboration capabilities since the application would be running most, if not all of the time when the PC is operating. In this case, the microphone could be muted and camera disabled in software as a mitigation. However, this also may not work well due to the possibility of the communications/collaboration application, microphone, or camera could be remotely activated if the platform or a communications application is compromised. In this case positive physical controls may be required. We must also rely on our defense in depth strategy for protecting our PC applications, including our communications applications, from compromise. Physical disablement such as unplugging from the PC, using a physical mute switch, or covering a camera could work if using external devices. However, this mitigation would not work for embedded microphones and cameras as is the trend in laptops and monitors today. While it may not be easily feasible to physically disable an embedded microphone, the lens of an embedded camera can be covered. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19658",
+      "title": "A VVoIP or VTC hardware endpoint possessing a “PC Port” is not configured to block access to the endpoint configuration and communications traffic from the attached PC",
+      "description": "VVoIP or VTC hardware endpoint possessing a “PC Port” can provide an easy avenue to access and compromise the endpoint configuration and communications traffic. Through such unauthorized access an attacker could also compromise the core of the VVoIP or VTC system or gain information for an attack from another vector.  As such, VVoIP or VTC hardware endpoint must block access to its configuration and communications traffic from the PC port.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19659",
+      "title": "A VVoIP or VTC hardware endpoint possessing a “PC Port” does not tag its communications traffic using 802.1Q VLAN tagging or the PC port is not disabled.",
+      "description": "NOTE: the switch or endpoint will typically utilize 802.1Q trunking (VLAN tagging) but may use some other means to separate voice and data traffic. Typically when 802.1Q VLAN tagging is used, the phone firmware tags the VoIP frames/packets while the embedded switch passes all frames/packets without modification. This permits devices connected to the PC port to tag their packets and assign the proper VLAN to their traffic type. 802.1Q VLAN tagging enables the LAN to better maintain separation of the traffic and is therefore the preferred method.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19660",
+      "title": "A VVoIP or VTC endpoint that provides a PC data Port is not configured to disable the PC port (or the port is not physically blocked from use) if a PC or other device is not normally attached ",
+      "description": "Many IP hardware phones provide a separate data port for the connection of a PC to the phone so that only a single cable is required to provide data and voice connectivity to the end users desktop. Additionally, some IP hardware phones are only capable of providing basic layer 2 connectivity, acting like a hub and combining the data and voice network segments. While other IP phones offer enhanced Layer 2 connectivity providing the option to use VLAN technology, to place the phone and the data traffic on two different VLANs. To ensure logical separation of voice and data in order to maintain the security of the VoIP environment, only layer 2 enhanced or VLAN capable phones should be considered for use. Many attacks on DOD computer systems are launched from within the network by dissatisfied or disgruntled employees, therefore, it is imperative that any active IP Phone data ports be disabled the same as unused physical ports on a network switch. If unauthorized personnel gain access to the VoIP or data environment through an unsecured data port, they could cause disruptions, denial of service conditions, or access sensitive information. Disabling data ports on IP Phones prevents this type of unauthorized and unwanted activity. \n\nNOTE: It is not typical that the PC port will be used on all endpoints. For example, phones and VTC units in offices typically might be used, while phones in common areas such as a lobby, hallway, or kitchen, etc. will not. Phones and VTC units in conference rooms may or may not, depending upon site policy. In general, these PC ports are the most vulnerable to unauthorized use, and therefore should be disabled until actually required to be used by an authorized LAN user. The specific vulnerability addressed here is unauthorized access to the LAN and/or the endpoints’ configuration and communications traffic. \n",
+      "severity": "low"
+    },
+    {
+      "id": "V-21514",
+      "title": "Hardware based VVoIP or VTC endpoint web browser capabilities that permit the endpoint to browse the internet or intranet are NOT disabled.",
+      "description": "Permitting hardware based VVoIP or VTC endpoints to browse the internet or enterprise intranet freely opens the endpoint to the possibility of inadvertently downloading malicious code to the endpoint for which it may have no protection. VVoIP and VTC endpoints cannot typically support host based intrusion detection or anti-virus software. While the downloaded malicious  code might not effect the endpoint itself, the endpoint could be used by the malicious code as a launching pad into the network and attached workstations or servers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21515",
+      "title": "Hardware based VVoIP or IP-VTC endpoint contains a web server, the access to which is not restricted OR which is NOT disabled.",
+      "description": "Hardware based VVoIP and IP-VTC endpoints sometimes contain a web server for the implementation of various functions and features. In many cases these are used to configure the network settings or user preferences on the device. In some VVoIP phones, a user can access a missed call list, call history, or other information. If access to such a web server is not restricted to authorized entities, the device supporting it is subject to unauthorized access and compromise.",
+      "severity": "medium"
+    }
+  ]
+}

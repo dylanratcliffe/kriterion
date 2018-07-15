@@ -1,0 +1,1565 @@
+{
+  "name": "stig_red_hat_enterprise_linux_6",
+  "date": "2018-03-01",
+  "description": "The Red Hat Enterprise Linux 6 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "Red Hat Enterprise Linux 6 Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-38437",
+      "title": "Automated file system mounting tools must not be enabled unless needed.",
+      "description": "All filesystems that are required for the successful operation of the system should be explicitly listed in \"/etc/fstab\" by an administrator. New filesystems should not be arbitrarily introduced via the automounter.\n\nThe \"autofs\" daemon mounts and unmounts filesystems, such as user home directories shared via NFS, on demand. In addition, autofs can be used to handle removable media, and the default configuration provides the cdrom device as \"/misc/cd\". However, this method of providing access to removable media is not common, so autofs can almost always be disabled if NFS is not in use. Even if NFS is required, it is almost always possible to configure filesystem mounts statically by editing \"/etc/fstab\" rather than relying on the automounter. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-38438",
+      "title": "Auditing must be enabled at boot by setting a kernel parameter.",
+      "description": "Each process on the system carries an \"auditable\" flag which indicates whether its activities can be audited. Although \"auditd\" takes care of enabling this for all processes which launch after it does, adding the kernel argument ensures it is set for every process during boot.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38439",
+      "title": "The system must provide automated support for account management functions.",
+      "description": "A comprehensive account management process that includes automation helps to ensure the accounts designated as requiring attention are consistently and promptly addressed. Enterprise environments make user account management challenging and complex. A user management process requiring administrators to manually address account management functions adds risk of potential oversight.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38443",
+      "title": "The /etc/gshadow file must be owned by root.",
+      "description": "The \"/etc/gshadow\" file contains group password hashes. Protection of this file is critical for system security.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38444",
+      "title": "The systems local IPv6 firewall must implement a deny-all, allow-by-exception policy for inbound packets.",
+      "description": "In \"ip6tables\" the default policy is applied only after all the applicable rules in the table are examined for a match. Setting the default policy to \"DROP\" implements proper design for a firewall, i.e., any packets which are not explicitly permitted should not be accepted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38445",
+      "title": "Audit log files must be group-owned by root.",
+      "description": "If non-privileged users can write to audit logs, audit trails can be modified or destroyed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38446",
+      "title": "The mail system must forward all mail for root to one or more system administrators.",
+      "description": "A number of system services utilize email messages sent to the root user to notify system administrators of active or impending issues.  These messages must be forwarded to at least one monitored email address.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38447",
+      "title": "The system package management tool must verify contents of all files associated with packages.",
+      "description": "The hash on important files like system executables should match the information given by the RPM database. Executables with erroneous hashes could be a sign of nefarious activity on the system.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38448",
+      "title": "The /etc/gshadow file must be group-owned by root.",
+      "description": "The \"/etc/gshadow\" file contains group password hashes. Protection of this file is critical for system security.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38449",
+      "title": "The /etc/gshadow file must have mode 0000.",
+      "description": "The /etc/gshadow file contains group password hashes. Protection of this file is critical for system security.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38450",
+      "title": "The /etc/passwd file must be owned by root.",
+      "description": "The \"/etc/passwd\" file contains information about the users that are configured on the system. Protection of this file is critical for system security.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38451",
+      "title": "The /etc/passwd file must be group-owned by root.",
+      "description": "The \"/etc/passwd\" file contains information about the users that are configured on the system. Protection of this file is critical for system security.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38452",
+      "title": "The system package management tool must verify permissions on all files and directories associated with packages.",
+      "description": "Permissions on system binaries and configuration files that are too generous could allow an unauthorized user to gain privileges that they should not have. The permissions set by the vendor should be maintained. Any deviations from this baseline should be investigated.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38453",
+      "title": "The system package management tool must verify group-ownership on all files and directories associated with packages.",
+      "description": "Group-ownership of system binaries and configuration files that is incorrect could allow an unauthorized user to gain privileges that they should not have. The group-ownership set by the vendor should be maintained. Any deviations from this baseline should be investigated.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38454",
+      "title": "The system package management tool must verify ownership on all files and directories associated with packages.",
+      "description": "Ownership of system binaries and configuration files that is incorrect could allow an unauthorized user to gain privileges that they should not have. The ownership set by the vendor should be maintained. Any deviations from this baseline should be investigated.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38455",
+      "title": "The system must use a separate file system for /tmp.",
+      "description": "The \"/tmp\" partition is used as temporary storage by many programs. Placing \"/tmp\" in its own partition enables the setting of more restrictive mount options, which can help protect programs which use it.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38456",
+      "title": "The system must use a separate file system for /var.",
+      "description": "Ensuring that \"/var\" is mounted on its own partition enables the setting of more restrictive mount options. This helps protect system services such as daemons or other programs which use it. It is not uncommon for the \"/var\" directory to contain world-writable directories, installed by other software packages.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38457",
+      "title": "The /etc/passwd file must have mode 0644 or less permissive.",
+      "description": "If the \"/etc/passwd\" file is writable by a group-owner or the world the risk of its compromise is increased. The file contains the list of accounts on the system and associated information, and protection of this file is critical for system security.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38458",
+      "title": "The /etc/group file must be owned by root.",
+      "description": "The \"/etc/group\" file contains information regarding groups that are configured on the system. Protection of this file is important for system security.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38459",
+      "title": "The /etc/group file must be group-owned by root.",
+      "description": "The \"/etc/group\" file contains information regarding groups that are configured on the system. Protection of this file is important for system security.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38460",
+      "title": "The NFS server must not have the all_squash option enabled.",
+      "description": "The \"all_squash\" option maps all client requests to a single anonymous uid/gid on the NFS server, negating the ability to track file access by user ID.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38461",
+      "title": "The /etc/group file must have mode 0644 or less permissive.",
+      "description": "The \"/etc/group\" file contains information regarding groups that are configured on the system. Protection of this file is important for system security.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38463",
+      "title": "The system must use a separate file system for /var/log.",
+      "description": "Placing \"/var/log\" in its own partition enables better separation between log files and other files in \"/var/\".",
+      "severity": "low"
+    },
+    {
+      "id": "V-38464",
+      "title": "The audit system must take appropriate action when there are disk errors on the audit storage volume.",
+      "description": "Taking appropriate action in case of disk errors will minimize the possibility of losing audit records.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38465",
+      "title": "Library files must have mode 0755 or less permissive.",
+      "description": "Files from shared library directories are loaded into the address space of processes (including privileged ones) or of the kernel itself at runtime. Restrictive permissions are necessary to protect the integrity of the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38466",
+      "title": "Library files must be owned by a system account.",
+      "description": "Files from shared library directories are loaded into the address space of processes (including privileged ones) or of the kernel itself at runtime. Proper ownership is necessary to protect the integrity of the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38467",
+      "title": "The system must use a separate file system for the system audit data path.",
+      "description": "Placing \"/var/log/audit\" in its own partition enables better separation between audit files and other files, and helps ensure that auditing cannot be halted due to the partition running out of space.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38468",
+      "title": "The audit system must take appropriate action when the audit storage volume is full.",
+      "description": "Taking appropriate action in case of a filled audit storage volume will minimize the possibility of losing audit records.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38469",
+      "title": "All system command files must have mode 755 or less permissive.",
+      "description": "System binaries are executed by privileged users, as well as system services, and restrictive permissions are necessary to ensure execution of these programs cannot be co-opted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38470",
+      "title": "The audit system must alert designated staff members when the audit storage volume approaches capacity.",
+      "description": "Notifying administrators of an impending disk space problem may allow them to take corrective action prior to any disruption.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38471",
+      "title": "The system must forward audit records to the syslog service.",
+      "description": "The auditd service does not include the ability to send audit records to a centralized server for management directly.  It does, however, include an audit event multiplexor plugin (audispd) to pass audit records to the local syslog server.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38472",
+      "title": "All system command files must be owned by root.",
+      "description": "System binaries are executed by privileged users as well as system services, and restrictive permissions are necessary to ensure that their execution of these programs cannot be co-opted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38473",
+      "title": "The system must use a separate file system for user home directories.",
+      "description": "Ensuring that \"/home\" is mounted on its own partition enables the setting of more restrictive mount options, and also helps ensure that users cannot trivially fill partitions used for log or audit data storage.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38474",
+      "title": "The system must allow locking of graphical desktop sessions.",
+      "description": "The ability to lock graphical desktop sessions manually allows users to easily secure their accounts should they need to depart from their workstations temporarily.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38475",
+      "title": "The system must require passwords to contain a minimum of 15 characters.",
+      "description": "Requiring a minimum password length makes password cracking attacks more difficult by ensuring a larger search space. However, any security benefit from an onerous requirement must be carefully weighed against usability problems, support costs, or counterproductive behavior that may result.\n\nWhile it does not negate the password length requirement, it is preferable to migrate from a password-based authentication scheme to a stronger one based on PKI (public key infrastructure).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38476",
+      "title": "Vendor-provided cryptographic certificates must be installed to verify the integrity of system software.",
+      "description": "The Red Hat GPG keys are necessary to cryptographically verify packages are from Red Hat. ",
+      "severity": "high"
+    },
+    {
+      "id": "V-38477",
+      "title": "Users must not be able to change passwords more than once every 24 hours.",
+      "description": "Setting the minimum password age protects against users cycling back to a favorite password after satisfying the password reuse requirement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38478",
+      "title": "The Red Hat Network Service (rhnsd) service must not be running, unless using RHN or an RHN Satellite.",
+      "description": "Although systems management and patching is extremely important to system security, management by a system outside the enterprise enclave is not desirable for some environments. However, if the system is being managed by RHN or RHN Satellite Server the \"rhnsd\" daemon can remain on.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38479",
+      "title": "User passwords must be changed at least every 60 days.",
+      "description": "Setting the password maximum age ensures users are required to periodically change their passwords. This could possibly decrease the utility of a stolen password. Requiring shorter password lifetimes increases the risk of users writing down the password in a convenient location subject to physical compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38480",
+      "title": "Users must be warned 7 days in advance of password expiration.",
+      "description": "Setting the password warning age enables users to make the change at a practical time.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38481",
+      "title": "System security patches and updates must be installed and up-to-date.",
+      "description": "Installing software updates is a fundamental mitigation against the exploitation of publicly-known vulnerabilities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38482",
+      "title": "The system must require passwords to contain at least one numeric character.",
+      "description": "Requiring digits makes password guessing attacks more difficult by ensuring a larger search space.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38483",
+      "title": "The system package management tool must cryptographically verify the authenticity of system software packages during installation.",
+      "description": "Ensuring the validity of packages' cryptographic signatures prior to installation ensures the provenance of the software and protects against malicious tampering.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38484",
+      "title": "The operating system, upon successful logon, must display to the user the date and time of the last logon or access via ssh.",
+      "description": "Users need to be aware of activity that occurs regarding their account. Providing users with information regarding the date and time of their last successful login allows the user to determine if any unauthorized activity has occurred and gives them an opportunity to notify administrators.\n\nAt ssh login, a user must be presented with the last successful login date and time.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38486",
+      "title": "The operating system must conduct backups of system-level information contained in the information system per organization defined frequency to conduct backups that are consistent with recovery time and recovery point objectives.",
+      "description": "Operating system backup is a critical step in maintaining data assurance and availability. System-level information includes system-state information, operating system and application software, and licenses. Backups must be consistent with organizational recovery time and recovery point objectives.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38487",
+      "title": "The system package management tool must cryptographically verify the authenticity of all software packages during installation.",
+      "description": "Ensuring all packages' cryptographic signatures are valid prior to installation ensures the provenance of the software and protects against malicious tampering.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38488",
+      "title": "The operating system must conduct backups of user-level information contained in the operating system per organization defined frequency to conduct backups consistent with recovery time and recovery point objectives.",
+      "description": "Operating system backup is a critical step in maintaining data assurance and availability. User-level information is data generated by information system and/or application users. Backups shall be consistent with organizational recovery time and recovery point objectives.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38489",
+      "title": "A file integrity tool must be installed.",
+      "description": "The AIDE package must be installed if it is to be available for integrity checking.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38490",
+      "title": "The operating system must enforce requirements for the connection of mobile devices to operating systems.",
+      "description": "USB storage devices such as thumb drives can be used to introduce unauthorized software and other vulnerabilities. Support for these devices should be disabled and the devices themselves should be tightly controlled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38491",
+      "title": "There must be no .rhosts or hosts.equiv files on the system.",
+      "description": "Trust files are convenient, but when used in conjunction with the R-services, they can allow unauthenticated access to a system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-38492",
+      "title": "The system must prevent the root account from logging in from virtual consoles.",
+      "description": "Preventing direct root login to virtual console devices helps ensure accountability for actions taken on the system using the root account. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38493",
+      "title": "Audit log directories must have mode 0755 or less permissive.",
+      "description": "If users can delete audit logs, audit trails can be modified or destroyed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38494",
+      "title": "The system must prevent the root account from logging in from serial consoles.",
+      "description": "Preventing direct root login to serial port interfaces helps ensure accountability for actions taken on the systems using the root account.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38495",
+      "title": "Audit log files must be owned by root.",
+      "description": "If non-privileged users can write to audit logs, audit trails can be modified or destroyed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38496",
+      "title": "Default operating system accounts, other than root, must be locked.",
+      "description": "Disabling authentication for default system accounts makes it more difficult for attackers to make use of them to compromise a system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38497",
+      "title": "The system must not have accounts configured with blank or null passwords.",
+      "description": "If an account has an empty password, anyone could log in and run commands with the privileges of that account. Accounts with empty passwords should never be used in operational environments.",
+      "severity": "high"
+    },
+    {
+      "id": "V-38498",
+      "title": "Audit log files must have mode 0640 or less permissive.",
+      "description": "If users can write to audit logs, audit trails can be modified or destroyed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38499",
+      "title": "The /etc/passwd file must not contain password hashes.",
+      "description": "The hashes for all user account passwords should be stored in the file \"/etc/shadow\" and never in \"/etc/passwd\", which is readable by all users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38500",
+      "title": "The root account must be the only account having a UID of 0.",
+      "description": "An account has root authority if it has a UID of 0. Multiple accounts with a UID of 0 afford more opportunity for potential intruders to guess a password for a privileged account. Proper configuration of sudo is recommended to afford multiple system administrators access to root privileges in an accountable manner.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38501",
+      "title": "The system must disable accounts after excessive login failures within a 15-minute interval.",
+      "description": "Locking out user accounts after a number of incorrect attempts within a specific period of time prevents direct password guessing attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38502",
+      "title": "The /etc/shadow file must be owned by root.",
+      "description": "The \"/etc/shadow\" file contains the list of local system accounts and stores password hashes. Protection of this file is critical for system security. Failure to give ownership of this file to root provides the designated owner with access to sensitive information which could weaken the system security posture.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38503",
+      "title": "The /etc/shadow file must be group-owned by root.",
+      "description": "The \"/etc/shadow\" file stores password hashes. Protection of this file is critical for system security.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38504",
+      "title": "The /etc/shadow file must have mode 0000.",
+      "description": "The \"/etc/shadow\" file contains the list of local system accounts and stores password hashes. Protection of this file is critical for system security. Failure to give ownership of this file to root provides the designated owner with access to sensitive information which could weaken the system security posture.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38511",
+      "title": "IP forwarding for IPv4 must not be enabled, unless the system is a router.",
+      "description": "IP forwarding permits the kernel to forward packets from one network interface to another. The ability to forward packets between two networks is only appropriate for systems acting as routers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38512",
+      "title": "The operating system must prevent public IPv4 access into an organizations internal networks, except as appropriately mediated by managed interfaces employing boundary protection devices.",
+      "description": "The \"iptables\" service provides the system's host-based firewalling capability for IPv4 and ICMP.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38513",
+      "title": "The systems local IPv4 firewall must implement a deny-all, allow-by-exception policy for inbound packets.",
+      "description": "In \"iptables\" the default policy is applied only after all the applicable rules in the table are examined for a match. Setting the default policy to \"DROP\" implements proper design for a firewall, i.e., any packets which are not explicitly permitted should not be accepted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38514",
+      "title": "The Datagram Congestion Control Protocol (DCCP) must be disabled unless required.",
+      "description": "Disabling DCCP protects the system against exploitation of any flaws in its implementation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38515",
+      "title": "The Stream Control Transmission Protocol (SCTP) must be disabled unless required.",
+      "description": "Disabling SCTP protects the system against exploitation of any flaws in its implementation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38516",
+      "title": "The Reliable Datagram Sockets (RDS) protocol must be disabled unless required.",
+      "description": "Disabling RDS protects the system against exploitation of any flaws in its implementation.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38517",
+      "title": "The Transparent Inter-Process Communication (TIPC) protocol must be disabled unless required.",
+      "description": "Disabling TIPC protects the system against exploitation of any flaws in its implementation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38518",
+      "title": "All rsyslog-generated log files must be owned by root.",
+      "description": "The log files generated by rsyslog contain valuable information regarding system configuration, user authentication, and other such information. Log files should be protected from unauthorized access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38519",
+      "title": "All rsyslog-generated log files must be group-owned by root.",
+      "description": "The log files generated by rsyslog contain valuable information regarding system configuration, user authentication, and other such information. Log files should be protected from unauthorized access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38520",
+      "title": "The operating system must back up audit records on an organization defined frequency onto a different system or media than the system being audited.",
+      "description": "A log server (loghost) receives syslog messages from one or more systems. This data can be used as an additional log source in the event a system is compromised and its local logs are suspect. Forwarding log messages to a remote loghost also provides system administrators with a centralized place to view the status of multiple hosts within the enterprise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38521",
+      "title": "The operating system must support the requirement to centrally manage the content of audit records generated by organization defined information system components.",
+      "description": "A log server (loghost) receives syslog messages from one or more systems. This data can be used as an additional log source in the event a system is compromised and its local logs are suspect. Forwarding log messages to a remote loghost also provides system administrators with a centralized place to view the status of multiple hosts within the enterprise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38522",
+      "title": "The audit system must be configured to audit all attempts to alter system time through settimeofday.",
+      "description": "Arbitrary changes to the system time can be used to obfuscate nefarious activities in log files, as well as to confuse network services that are highly dependent upon an accurate system time (such as sshd). All changes to the system time should be audited.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38523",
+      "title": "The system must not accept IPv4 source-routed packets on any interface.",
+      "description": "Accepting source-routed packets in the IPv4 protocol has few legitimate uses. It should be disabled unless it is absolutely required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38524",
+      "title": "The system must not accept ICMPv4 redirect packets on any interface.",
+      "description": "Accepting ICMP redirects has few legitimate uses. It should be disabled unless it is absolutely required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38525",
+      "title": "The audit system must be configured to audit all attempts to alter system time through stime.",
+      "description": "Arbitrary changes to the system time can be used to obfuscate nefarious activities in log files, as well as to confuse network services that are highly dependent upon an accurate system time (such as sshd). All changes to the system time should be audited.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38526",
+      "title": "The system must not accept ICMPv4 secure redirect packets on any interface.",
+      "description": "Accepting \"secure\" ICMP redirects (from those gateways listed as default gateways) has few legitimate uses. It should be disabled unless it is absolutely required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38527",
+      "title": "The audit system must be configured to audit all attempts to alter system time through clock_settime.",
+      "description": "Arbitrary changes to the system time can be used to obfuscate nefarious activities in log files, as well as to confuse network services that are highly dependent upon an accurate system time (such as sshd). All changes to the system time should be audited.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38528",
+      "title": "The system must log Martian packets.",
+      "description": "The presence of \"martian\" packets (which have impossible addresses) as well as spoofed packets, source-routed packets, and redirects could be a sign of nefarious network activity. Logging these packets enables this activity to be detected.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38529",
+      "title": "The system must not accept IPv4 source-routed packets by default.",
+      "description": "Accepting source-routed packets in the IPv4 protocol has few legitimate uses. It should be disabled unless it is absolutely required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38530",
+      "title": "The audit system must be configured to audit all attempts to alter system time through /etc/localtime.",
+      "description": "Arbitrary changes to the system time can be used to obfuscate nefarious activities in log files, as well as to confuse network services that are highly dependent upon an accurate system time (such as sshd). All changes to the system time should be audited.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38531",
+      "title": "The operating system must automatically audit account creation.",
+      "description": "In addition to auditing new user and group accounts, these watches will alert the system administrator(s) to any modifications. Any unexpected users, groups, or modifications should be investigated for legitimacy.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38532",
+      "title": "The system must not accept ICMPv4 secure redirect packets by default.",
+      "description": "Accepting \"secure\" ICMP redirects (from those gateways listed as default gateways) has few legitimate uses. It should be disabled unless it is absolutely required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38533",
+      "title": "The system must ignore ICMPv4 redirect messages by default.",
+      "description": "This feature of the IPv4 protocol has few legitimate uses. It should be disabled unless it is absolutely required.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38534",
+      "title": "The operating system must automatically audit account modification.",
+      "description": "In addition to auditing new user and group accounts, these watches will alert the system administrator(s) to any modifications. Any unexpected users, groups, or modifications should be investigated for legitimacy.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38535",
+      "title": "The system must not respond to ICMPv4 sent to a broadcast address.",
+      "description": "Ignoring ICMP echo requests (pings) sent to broadcast or multicast addresses makes the system slightly more difficult to enumerate on the network.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38536",
+      "title": "The operating system must automatically audit account disabling actions.",
+      "description": "In addition to auditing new user and group accounts, these watches will alert the system administrator(s) to any modifications. Any unexpected users, groups, or modifications should be investigated for legitimacy.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38537",
+      "title": "The system must ignore ICMPv4 bogus error responses.",
+      "description": "Ignoring bogus ICMP error responses reduces log size, although some activity would not be logged.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38538",
+      "title": "The operating system must automatically audit account termination.",
+      "description": "In addition to auditing new user and group accounts, these watches will alert the system administrator(s) to any modifications. Any unexpected users, groups, or modifications should be investigated for legitimacy.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38539",
+      "title": "The system must be configured to use TCP syncookies when experiencing a TCP SYN flood.",
+      "description": "A TCP SYN flood attack can cause a denial of service by filling a system's TCP connection table with connections in the SYN_RCVD state. Syncookies can be used to track a connection when a subsequent ACK is received, verifying the initiator is attempting a valid connection and is not a flood source. This feature is activated when a flood condition is detected, and enables the system to continue servicing valid connection requests.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38540",
+      "title": "The audit system must be configured to audit modifications to the systems network configuration.",
+      "description": "The network environment should not be modified by anything other than administrator action. Any change to network parameters should be audited.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38541",
+      "title": "The audit system must be configured to audit modifications to the systems Mandatory Access Control (MAC) configuration (SELinux).",
+      "description": "The system's mandatory access policy (SELinux) should not be arbitrarily changed by anything other than administrator action. All changes to MAC policy should be audited.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38542",
+      "title": "The system must use a reverse-path filter for IPv4 network traffic when possible on all interfaces.",
+      "description": "Enabling reverse path filtering drops packets with source addresses that should not have been able to be received on the interface they were received on. It should not be used on systems which are routers for complicated networks, but is helpful for end hosts and routers serving small networks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38543",
+      "title": "The audit system must be configured to audit all discretionary access control permission modifications using chmod.",
+      "description": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38544",
+      "title": "The system must use a reverse-path filter for IPv4 network traffic when possible by default.",
+      "description": "Enabling reverse path filtering drops packets with source addresses that should not have been able to be received on the interface they were received on. It should not be used on systems which are routers for complicated networks, but is helpful for end hosts and routers serving small networks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38545",
+      "title": "The audit system must be configured to audit all discretionary access control permission modifications using chown.",
+      "description": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38547",
+      "title": "The audit system must be configured to audit all discretionary access control permission modifications using fchmod.",
+      "description": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38548",
+      "title": "The system must ignore ICMPv6 redirects by default.",
+      "description": "An illicit ICMP redirect message could result in a man-in-the-middle attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38549",
+      "title": "The system must employ a local IPv6 firewall.",
+      "description": "The \"ip6tables\" service provides the system's host-based firewalling capability for IPv6 and ICMPv6.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38550",
+      "title": "The audit system must be configured to audit all discretionary access control permission modifications using fchmodat.",
+      "description": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38551",
+      "title": "The operating system must connect to external networks or information systems only through managed IPv6 interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture.",
+      "description": "The \"ip6tables\" service provides the system's host-based firewalling capability for IPv6 and ICMPv6.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38552",
+      "title": "The audit system must be configured to audit all discretionary access control permission modifications using fchown.",
+      "description": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38553",
+      "title": "The operating system must prevent public IPv6 access into an organizations internal networks, except as appropriately mediated by managed interfaces employing boundary protection devices.",
+      "description": "The \"ip6tables\" service provides the system's host-based firewalling capability for IPv6 and ICMPv6.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38554",
+      "title": "The audit system must be configured to audit all discretionary access control permission modifications using fchownat.",
+      "description": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38555",
+      "title": "The system must employ a local IPv4 firewall.",
+      "description": "The \"iptables\" service provides the system's host-based firewalling capability for IPv4 and ICMP.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38556",
+      "title": "The audit system must be configured to audit all discretionary access control permission modifications using fremovexattr.",
+      "description": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38557",
+      "title": "The audit system must be configured to audit all discretionary access control permission modifications using fsetxattr.",
+      "description": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38558",
+      "title": "The audit system must be configured to audit all discretionary access control permission modifications using lchown.",
+      "description": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38559",
+      "title": "The audit system must be configured to audit all discretionary access control permission modifications using lremovexattr.",
+      "description": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38560",
+      "title": "The operating system must connect to external networks or information systems only through managed IPv4 interfaces consisting of boundary protection devices arranged in accordance with an organizational security architecture.",
+      "description": "The \"iptables\" service provides the system's host-based firewalling capability for IPv4 and ICMP.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38561",
+      "title": "The audit system must be configured to audit all discretionary access control permission modifications using lsetxattr.",
+      "description": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38563",
+      "title": "The audit system must be configured to audit all discretionary access control permission modifications using removexattr.",
+      "description": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38565",
+      "title": "The audit system must be configured to audit all discretionary access control permission modifications using setxattr.",
+      "description": "The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38566",
+      "title": "The audit system must be configured to audit failed attempts to access files and programs.",
+      "description": "Unsuccessful attempts to access files could be an indicator of malicious activity on a system. Auditing these events could serve as evidence of potential system compromise.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38567",
+      "title": "The audit system must be configured to audit all use of setuid and setgid programs.",
+      "description": "Privileged programs are subject to escalation-of-privilege attacks, which attempt to subvert their normal role of providing some necessary but limited capability. As such, motivation exists to monitor these programs for unusual activity.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38568",
+      "title": "The audit system must be configured to audit successful file system mounts.",
+      "description": "The unauthorized exportation of data to external media could result in an information leak where classified information, Privacy Act information, and intellectual property could be lost. An audit trail should be created each time a filesystem is mounted to help identify and guard against information loss.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38569",
+      "title": "The system must require passwords to contain at least one uppercase alphabetic character.",
+      "description": "Requiring a minimum number of uppercase characters makes password guessing attacks more difficult by ensuring a larger search space.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38570",
+      "title": "The system must require passwords to contain at least one special character.",
+      "description": "Requiring a minimum number of special characters makes password guessing attacks more difficult by ensuring a larger search space.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38571",
+      "title": "The system must require passwords to contain at least one lower-case alphabetic character.",
+      "description": "Requiring a minimum number of lower-case characters makes password guessing attacks more difficult by ensuring a larger search space.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38572",
+      "title": "The system must require at least eight characters be changed between the old and new passwords during a password change.",
+      "description": "Requiring a minimum number of different characters during password changes ensures that newly changed passwords should not resemble previously compromised ones. Note that passwords which are changed on compromised systems will still be compromised, however.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38573",
+      "title": "The system must disable accounts after three consecutive unsuccessful logon attempts.",
+      "description": "Locking out user accounts after a number of incorrect attempts prevents direct password guessing attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38574",
+      "title": "The system must use a FIPS 140-2 approved cryptographic hashing algorithm for generating account password hashes (system-auth).",
+      "description": "Using a stronger hashing algorithm makes password cracking attacks more difficult.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38575",
+      "title": "The audit system must be configured to audit user deletions of files and programs.",
+      "description": "Auditing file deletions will create an audit trail for files that are removed from the system. The audit trail could aid in system troubleshooting, as well as detecting malicious processes that attempt to delete log files to conceal their presence.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38576",
+      "title": "The system must use a FIPS 140-2 approved cryptographic hashing algorithm for generating account password hashes (login.defs).",
+      "description": "Using a stronger hashing algorithm makes password cracking attacks more difficult.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38577",
+      "title": "The system must use a FIPS 140-2 approved cryptographic hashing algorithm for generating account password hashes (libuser.conf).",
+      "description": "Using a stronger hashing algorithm makes password cracking attacks more difficult.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38578",
+      "title": "The audit system must be configured to audit changes to the /etc/sudoers file.",
+      "description": "The actions taken by system administrators should be audited to keep a record of what was executed on the system, as well as, for accountability purposes.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38579",
+      "title": "The system boot loader configuration file(s) must be owned by root.",
+      "description": "Only root should be able to modify important boot parameters.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38580",
+      "title": "The audit system must be configured to audit the loading and unloading of dynamic kernel modules.",
+      "description": "The addition/removal of kernel modules can be used to alter the behavior of the kernel and potentially introduce malicious code into kernel space. It is important to have an audit trail of modules that have been introduced into the kernel.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38581",
+      "title": "The system boot loader configuration file(s) must be group-owned by root.",
+      "description": "The \"root\" group is a highly-privileged group. Furthermore, the group-owner of this file should not have any access privileges anyway.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38582",
+      "title": "The xinetd service must be disabled if no network services utilizing it are enabled.",
+      "description": "The xinetd service provides a dedicated listener service for some programs, which is no longer necessary for commonly-used network services. Disabling it ensures that these uncommon services are not running, and also prevents attacks against xinetd itself.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38583",
+      "title": "The system boot loader configuration file(s) must have mode 0600 or less permissive.",
+      "description": "Proper permissions ensure that only the root user can modify important boot parameters.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38584",
+      "title": "The xinetd service must be uninstalled if no network services utilizing it are enabled.",
+      "description": "Removing the \"xinetd\" package decreases the risk of the xinetd service's accidental (or intentional) activation.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38585",
+      "title": "The system boot loader must require authentication.",
+      "description": "Password protection on the boot loader configuration ensures users with physical access cannot trivially alter important bootloader settings. These include which kernel to use, and whether to enter single-user mode.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38586",
+      "title": "The system must require authentication upon booting into single-user and maintenance modes.",
+      "description": "This prevents attackers with physical access from trivially bypassing security on the machine and gaining root access. Such accesses are further prevented by configuring the bootloader password.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38587",
+      "title": "The telnet-server package must not be installed.",
+      "description": "Removing the \"telnet-server\" package decreases the risk of the unencrypted telnet service's accidental (or intentional) activation.\n\nMitigation:  If the telnet-server package is configured to only allow encrypted sessions, such as with Kerberos or the use of encrypted network tunnels, the risk of exposing sensitive information is mitigated.",
+      "severity": "high"
+    },
+    {
+      "id": "V-38588",
+      "title": "The system must not permit interactive boot.",
+      "description": "Using interactive boot, the console user could disable auditing, firewalls, or other services, weakening system security.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38589",
+      "title": "The telnet daemon must not be running.",
+      "description": "The telnet protocol uses unencrypted network communication, which means that data from the login session, including passwords and all other information transmitted during the session, can be stolen by eavesdroppers on the network. The telnet protocol is also subject to man-in-the-middle attacks.\n\nMitigation:  If an enabled telnet daemon is configured to only allow encrypted sessions, such as with Kerberos or the use of encrypted network tunnels, the risk of exposing sensitive information is mitigated.",
+      "severity": "high"
+    },
+    {
+      "id": "V-38590",
+      "title": "The system must allow locking of the console screen in text mode.",
+      "description": "Installing \"screen\" ensures a console locking capability is available for users who may need to suspend console logins.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38591",
+      "title": "The rsh-server package must not be installed.",
+      "description": "The \"rsh-server\" package provides several obsolete and insecure network services. Removing it decreases the risk of those services' accidental (or intentional) activation.",
+      "severity": "high"
+    },
+    {
+      "id": "V-38592",
+      "title": "The system must require administrator action to unlock an account locked by excessive failed login attempts.",
+      "description": "Locking out user accounts after a number of incorrect attempts prevents direct password guessing attacks. Ensuring that an administrator is involved in unlocking locked accounts draws appropriate attention to such situations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38593",
+      "title": "The Department of Defense (DoD) login banner must be displayed immediately prior to, or as part of, console login prompts.",
+      "description": "An appropriate warning message reinforces policy awareness during the logon process and facilitates possible legal action against attackers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38594",
+      "title": "The rshd service must not be running.",
+      "description": "The rsh service uses unencrypted network communications, which means that data from the login session, including passwords and all other information transmitted during the session, can be stolen by eavesdroppers on the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-38595",
+      "title": "The system must be configured to require the use of a CAC, PIV compliant hardware token, or Alternate Logon Token (ALT) for authentication.",
+      "description": "Smart card login provides two-factor authentication stronger than that provided by a username/password combination. Smart cards leverage a PKI (public key infrastructure) in order to provide and verify credentials.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38596",
+      "title": "The system must implement virtual address space randomization.",
+      "description": "Address space layout randomization (ASLR) makes it more difficult for an attacker to predict the location of attack code he or she has introduced into a process's address space during an attempt at exploitation. Additionally, ASLR also makes it more difficult for an attacker to know the location of existing code in order to repurpose it using return oriented programming (ROP) techniques.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38597",
+      "title": "The system must limit the ability of processes to have simultaneous write and execute access to memory.",
+      "description": "ExecShield uses the segmentation feature on all x86 systems to prevent execution in memory higher than a certain address. It writes an address as a limit in the code segment descriptor, to control where code can be executed, on a per-process basis. When the kernel places a process's memory regions such as the stack and heap higher than this address, the hardware prevents execution in that address range.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38598",
+      "title": "The rexecd service must not be running.",
+      "description": "The rexec service uses unencrypted network communications, which means that data from the login session, including passwords and all other information transmitted during the session, can be stolen by eavesdroppers on the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-38599",
+      "title": "The FTPS/FTP service on the system must be configured with the Department of Defense (DoD) login banner.",
+      "description": "This setting will cause the system greeting banner to be used for FTP connections as well.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38600",
+      "title": "The system must not send ICMPv4 redirects by default.",
+      "description": "Sending ICMP redirects permits the system to instruct other systems to update their routing information. The ability to send ICMP redirects is only appropriate for systems acting as routers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38601",
+      "title": "The system must not send ICMPv4 redirects from any interface.",
+      "description": "Sending ICMP redirects permits the system to instruct other systems to update their routing information. The ability to send ICMP redirects is only appropriate for systems acting as routers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38602",
+      "title": "The rlogind service must not be running.",
+      "description": "The rlogin service uses unencrypted network communications, which means that data from the login session, including passwords and all other information transmitted during the session, can be stolen by eavesdroppers on the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-38603",
+      "title": "The ypserv package must not be installed.",
+      "description": "Removing the \"ypserv\" package decreases the risk of the accidental (or intentional) activation of NIS or NIS+ services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38604",
+      "title": "The ypbind service must not be running.",
+      "description": "Disabling the \"ypbind\" service ensures the system is not acting as a client in a NIS or NIS+ domain.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38605",
+      "title": "The cron service must be running.",
+      "description": "Due to its usage for maintenance and security-supporting tasks, enabling the cron daemon is essential.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38606",
+      "title": "The tftp-server package must not be installed unless required.",
+      "description": "Removing the \"tftp-server\" package decreases the risk of the accidental (or intentional) activation of tftp services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38607",
+      "title": "The SSH daemon must be configured to use only the SSHv2 protocol.",
+      "description": "SSH protocol version 1 suffers from design flaws that result in security vulnerabilities and should not be used.",
+      "severity": "high"
+    },
+    {
+      "id": "V-38608",
+      "title": "The SSH daemon must set a timeout interval on idle sessions.",
+      "description": "Causing idle users to be automatically logged out guards against compromises one system leading trivially to compromises on another.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38609",
+      "title": "The TFTP service must not be running.",
+      "description": "Disabling the \"tftp\" service ensures the system is not acting as a tftp server, which does not provide encryption or authentication.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38610",
+      "title": "The SSH daemon must set a timeout count on idle sessions.",
+      "description": "This ensures a user login will be terminated as soon as the \"ClientAliveCountMax\" is reached.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38611",
+      "title": "The SSH daemon must ignore .rhosts files.",
+      "description": "SSH trust relationships mean a compromise on one host can allow an attacker to move trivially to other hosts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38612",
+      "title": "The SSH daemon must not allow host-based authentication.",
+      "description": "SSH trust relationships mean a compromise on one host can allow an attacker to move trivially to other hosts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38613",
+      "title": "The system must not permit root logins using remote access programs such as ssh.",
+      "description": "Permitting direct root login reduces auditable information about who ran privileged commands on the system and also allows direct attack attempts on root's password.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38614",
+      "title": "The SSH daemon must not allow authentication using an empty password.",
+      "description": "Configuring this setting for the SSH daemon provides additional assurance that remote login via SSH will require a password, even in the event of misconfiguration elsewhere.",
+      "severity": "high"
+    },
+    {
+      "id": "V-38615",
+      "title": "The SSH daemon must be configured with the Department of Defense (DoD) login banner.",
+      "description": "The warning message reinforces policy awareness during the logon process and facilitates possible legal action against attackers. Alternatively, systems whose ownership should not be obvious should ensure usage of a banner that does not provide easy attribution.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38616",
+      "title": "The SSH daemon must not permit user environment settings.",
+      "description": "SSH environment options potentially allow users to bypass access restriction in some configurations.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38617",
+      "title": "The SSH daemon must be configured to use only FIPS 140-2 approved ciphers.",
+      "description": "Approved algorithms should impart some level of confidence in their implementation. These are also required for compliance.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38618",
+      "title": "The avahi service must be disabled.",
+      "description": "Because the Avahi daemon service keeps an open network port, it is subject to network attacks. Its functionality is convenient but is only appropriate if the local network can be trusted.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38619",
+      "title": "There must be no .netrc files on the system.",
+      "description": "Unencrypted passwords for remote FTP servers may be stored in \".netrc\" files. DoD policy requires passwords be encrypted in storage and not used in access scripts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38620",
+      "title": "The system clock must be synchronized continuously, or at least daily.",
+      "description": "Enabling the \"ntpd\" service ensures that the \"ntpd\" service will be running and that the system will synchronize its time to any servers specified. This is important whether the system is configured to be a client (and synchronize only its own clock) or it is also acting as an NTP server to other systems. Synchronizing time is essential for authentication services such as Kerberos, but it is also important for maintaining accurate logs and auditing possible security breaches.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38621",
+      "title": "The system clock must be synchronized to an authoritative DoD time source.",
+      "description": "Synchronizing with an NTP server makes it possible to collate system logs from multiple sources or correlate computer events with real time events. Using a trusted NTP server provided by your organization is recommended.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38622",
+      "title": "Mail relaying must be restricted.",
+      "description": "This ensures \"postfix\" accepts mail messages (such as cron job reports) from the local system only, and not from the network, which protects it from network attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38623",
+      "title": "All rsyslog-generated log files must have mode 0600 or less permissive.",
+      "description": "Log files can contain valuable information regarding system configuration. If the system log files are not protected, unauthorized users could change the logged data, eliminating their forensic value.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38624",
+      "title": "System logs must be rotated daily.",
+      "description": "Log files that are not properly rotated run the risk of growing so large that they fill up the /var/log partition. Valuable logging information could be lost if the /var/log partition becomes full.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38627",
+      "title": "The openldap-servers package must not be installed unless required.",
+      "description": "Unnecessary packages should not be installed to decrease the attack surface of the system.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38628",
+      "title": "The operating system must produce audit records containing sufficient information to establish the identity of any user/subject associated with the event.",
+      "description": "Ensuring the \"auditd\" service is active ensures audit records generated by the kernel can be written to disk, or that appropriate actions will be taken if other obstacles exist.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38629",
+      "title": "The graphical desktop environment must set the idle timeout to no more than 15 minutes.",
+      "description": "Setting the idle delay controls when the screensaver will start, and can be combined with screen locking to prevent access from passersby.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38630",
+      "title": "The graphical desktop environment must automatically lock after 15 minutes of inactivity and the system must require user reauthentication to unlock the environment.",
+      "description": "Enabling idle activation of the screen saver ensures the screensaver will be activated after the idle delay. Applications requiring continuous, real-time screen display (such as network management products) require the login session does not have administrator rights and the display station is located in a controlled-access area.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38631",
+      "title": "The operating system must employ automated mechanisms to facilitate the monitoring and control of remote access methods.",
+      "description": "Ensuring the \"auditd\" service is active ensures audit records generated by the kernel can be written to disk, or that appropriate actions will be taken if other obstacles exist.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38632",
+      "title": "The operating system must produce audit records containing sufficient information to establish what type of events occurred.",
+      "description": "Ensuring the \"auditd\" service is active ensures audit records generated by the kernel can be written to disk, or that appropriate actions will be taken if other obstacles exist.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38633",
+      "title": "The system must set a maximum audit log file size.",
+      "description": "The total storage for audit log files must be large enough to retain log information over the period required. This is a function of the maximum log file size and the number of logs retained.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38634",
+      "title": "The system must rotate audit log files that reach the maximum file size.",
+      "description": "Automatically rotating logs (by setting this to \"rotate\") minimizes the chances of the system unexpectedly running out of disk space by being overwhelmed with log data. However, for systems that must never discard log data, or which use external processes to transfer it and reclaim space, \"keep_logs\" can be employed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38636",
+      "title": "The system must retain enough rotated audit logs to cover the required log retention period.",
+      "description": "The total storage for audit log files must be large enough to retain log information over the period required. This is a function of the maximum log file size and the number of logs retained.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38637",
+      "title": "The system package management tool must verify contents of all files associated with the audit package.",
+      "description": "The hash on important files like audit system executables should match the information given by the RPM database. Audit executables  with erroneous hashes could be a sign of nefarious activity on the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38638",
+      "title": "The graphical desktop environment must have automatic lock enabled.",
+      "description": "Enabling the activation of the screen lock after an idle period ensures password entry will be required in order to access the system, preventing access by passersby.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38639",
+      "title": "The system must display a publicly-viewable pattern during a graphical desktop environment session lock.",
+      "description": "Setting the screensaver mode to blank-only conceals the contents of the display from passersby.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38640",
+      "title": "The Automatic Bug Reporting Tool (abrtd) service must not be running.",
+      "description": "Mishandling crash data could expose sensitive information about vulnerabilities in software executing on the local machine, as well as sensitive information from within a process's address space or registers.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38641",
+      "title": "The atd service must be disabled.",
+      "description": "The \"atd\" service could be used by an unsophisticated insider to carry out activities outside of a normal login session, which could complicate accountability. Furthermore, the need to schedule tasks with \"at\" or \"batch\" is not common.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38642",
+      "title": "The system default umask for daemons must be 027 or 022.",
+      "description": "The umask influences the permissions assigned to files created by a process at run time. An unnecessarily permissive umask could result in files being created with insecure permissions.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38643",
+      "title": "There must be no world-writable files on the system.",
+      "description": "Data in world-writable files can be modified by any user on the system. In almost all circumstances, files can be configured using a combination of user and group permissions to support whatever legitimate access is needed without the risk caused by world-writable files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38644",
+      "title": "The ntpdate service must not be running.",
+      "description": "The \"ntpdate\" service may only be suitable for systems which are rebooted frequently enough that clock drift does not cause problems between reboots. In any event, the functionality of the ntpdate service is now available in the ntpd program and should be considered deprecated.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38645",
+      "title": "The system default umask in /etc/login.defs must be 077.",
+      "description": "The umask value influences the permissions assigned to files when they are created. A misconfigured umask value could result in files with excessive permissions that can be read and/or written to by unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38646",
+      "title": "The oddjobd service must not be running.",
+      "description": "The \"oddjobd\" service may provide necessary functionality in some environments but it can be disabled if it is not needed. Execution of tasks by privileged programs, on behalf of unprivileged ones, has traditionally been a source of privilege escalation security issues.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38647",
+      "title": "The system default umask in /etc/profile must be 077.",
+      "description": "The umask value influences the permissions assigned to files when they are created. A misconfigured umask value could result in files with excessive permissions that can be read and/or written to by unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38648",
+      "title": "The qpidd service must not be running.",
+      "description": "The qpidd service is automatically installed when the \"base\" package selection is selected during installation. The qpidd service listens for network connections which increases the attack surface of the system. If the system is not intended to receive AMQP traffic then the \"qpidd\" service is not needed and should be disabled or removed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38649",
+      "title": "The system default umask for the csh shell must be 077.",
+      "description": "The umask value influences the permissions assigned to files when they are created. A misconfigured umask value could result in files with excessive permissions that can be read and/or written to by unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38650",
+      "title": "The rdisc service must not be running.",
+      "description": "General-purpose systems typically have their network and routing information configured statically by a system administrator. Workstations or some special-purpose systems often use DHCP (instead of IRDP) to retrieve dynamic network configuration information.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38651",
+      "title": "The system default umask for the bash shell must be 077.",
+      "description": "The umask value influences the permissions assigned to files when they are created. A misconfigured umask value could result in files with excessive permissions that can be read and/or written to by unauthorized users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38652",
+      "title": "Remote file systems must be mounted with the nodev option.",
+      "description": "Legitimate device files should only exist in the /dev directory. NFS mounts should not present device files to users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38653",
+      "title": "The snmpd service must not use a default password.",
+      "description": "Presence of the default SNMP password enables querying of different system aspects and could result in unauthorized knowledge of the system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-38654",
+      "title": "Remote file systems must be mounted with the nosuid option.",
+      "description": "NFS mounts should not present suid binaries to users. Only vendor-supplied suid executables should be installed to their default location on the local filesystem.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38655",
+      "title": "The noexec option must be added to removable media partitions.",
+      "description": "Allowing users to execute binaries from removable media such as USB keys exposes the system to potential compromise.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38656",
+      "title": "The system must use SMB client signing for connecting to samba servers using smbclient.",
+      "description": "Packet signing can prevent man-in-the-middle attacks which modify SMB packets in transit.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38657",
+      "title": "The system must use SMB client signing for connecting to samba servers using mount.cifs.",
+      "description": "Packet signing can prevent man-in-the-middle attacks which modify SMB packets in transit.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38658",
+      "title": "The system must prohibit the reuse of passwords within five iterations.",
+      "description": "Preventing reuse of previous passwords helps ensure that a compromised password is not reused by a user.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38659",
+      "title": "The operating system must employ cryptographic mechanisms to protect information in storage.",
+      "description": "The risk of a system's physical compromise, particularly mobile systems such as laptops, places its data at risk of compromise. Encrypting this data mitigates the risk of its loss if the system is lost.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38660",
+      "title": "The snmpd service must use only SNMP protocol version 3 or newer.",
+      "description": "Earlier versions of SNMP are considered insecure, as they potentially allow unauthorized access to detailed system management information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38661",
+      "title": "The operating system must protect the confidentiality and integrity of data at rest. ",
+      "description": "The risk of a system's physical compromise, particularly mobile systems such as laptops, places its data at risk of compromise. Encrypting this data mitigates the risk of its loss if the system is lost.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38662",
+      "title": "The operating system must employ cryptographic mechanisms to prevent unauthorized disclosure of data at rest unless otherwise protected by alternative physical measures.",
+      "description": "The risk of a system's physical compromise, particularly mobile systems such as laptops, places its data at risk of compromise. Encrypting this data mitigates the risk of its loss if the system is lost.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38663",
+      "title": "The system package management tool must verify permissions on all files and directories associated with the audit package.",
+      "description": "Permissions on audit binaries and configuration files that are too generous could allow an unauthorized user to gain privileges that they should not have. The permissions set by the vendor should be maintained. Any deviations from this baseline should be investigated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38664",
+      "title": "The system package management tool must verify ownership on all files and directories associated with the audit package.",
+      "description": "Ownership of audit binaries and configuration files that is incorrect could allow an unauthorized user to gain privileges that they should not have. The ownership set by the vendor should be maintained. Any deviations from this baseline should be investigated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38665",
+      "title": "The system package management tool must verify group-ownership on all files and directories associated with the audit package.",
+      "description": "Group-ownership of audit binaries and configuration files that is incorrect could allow an unauthorized user to gain privileges that they should not have. The group-ownership set by the vendor should be maintained. Any deviations from this baseline should be investigated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38667",
+      "title": "The system must have a host-based intrusion detection tool installed.",
+      "description": "Adding host-based intrusion detection tools can provide the capability to automatically take actions in response to malicious behavior, which can provide additional agility in reacting to network threats. These tools also often include a reporting capability to provide network awareness of system, which may not otherwise exist in an organization's systems management regime.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38668",
+      "title": "The x86 Ctrl-Alt-Delete key sequence must be disabled.",
+      "description": "A locally logged-in user who presses Ctrl-Alt-Delete, when at the console, can reboot the system. If accidentally pressed, as could happen in the case of mixed OS environment, this can create the risk of short-term loss of availability of systems due to unintentional reboot. In the GNOME graphical environment, risk of unintentional reboot from the Ctrl-Alt-Delete sequence is reduced because the user will be prompted before any action is taken.",
+      "severity": "high"
+    },
+    {
+      "id": "V-38669",
+      "title": "The postfix service must be enabled for mail delivery.",
+      "description": "Local mail delivery is essential to some system maintenance and notification tasks.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38670",
+      "title": "The operating system must detect unauthorized changes to software and information. ",
+      "description": "By default, AIDE does not install itself for periodic execution. Periodically running AIDE may reveal unexpected changes in installed files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38671",
+      "title": "The sendmail package must be removed.",
+      "description": "The sendmail software was not developed with security in mind and its design prevents it from being effectively contained by SELinux. Postfix should be used instead.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38672",
+      "title": "The netconsole service must be disabled unless required.",
+      "description": "The \"netconsole\" service is not necessary unless there is a need to debug kernel panics, which is not common.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38673",
+      "title": "The operating system must ensure unauthorized, security-relevant configuration changes detected are tracked.",
+      "description": "By default, AIDE does not install itself for periodic execution. Periodically running AIDE may reveal unexpected changes in installed files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38674",
+      "title": "X Windows must not be enabled unless required.",
+      "description": "Unnecessary services should be disabled to decrease the attack surface of the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38675",
+      "title": "Process core dumps must be disabled unless needed.",
+      "description": "A core dump includes a memory image taken at the time the operating system terminates an application. The memory image could contain sensitive data and is generally useful only for developers trying to debug problems.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38676",
+      "title": "The xorg-x11-server-common (X Windows) package must not be installed, unless required.",
+      "description": "Unnecessary packages should not be installed to decrease the attack surface of the system.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38677",
+      "title": "The NFS server must not have the insecure file locking option enabled.",
+      "description": "Allowing insecure file locking could allow for sensitive data to be viewed or edited by an unauthorized user.",
+      "severity": "high"
+    },
+    {
+      "id": "V-38678",
+      "title": "The audit system must provide a warning when allocated audit record storage volume reaches a documented percentage of maximum audit record storage capacity.",
+      "description": "Notifying administrators of an impending disk space problem may allow them to take corrective action prior to any disruption.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38679",
+      "title": "The DHCP client must be disabled if not needed.",
+      "description": "DHCP relies on trusting the local network. If the local network is not trusted, then it should not be used. However, the automatic configuration provided by DHCP is commonly used and the alternative, manual configuration, presents an unacceptable burden in many circumstances.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38680",
+      "title": "The audit system must identify staff members to receive notifications of audit log storage volume capacity issues.",
+      "description": "Email sent to the root account is typically aliased to the administrators of the system, who can take appropriate action.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38681",
+      "title": "All GIDs referenced in /etc/passwd must be defined in /etc/group",
+      "description": "Inconsistency in GIDs between /etc/passwd and /etc/group could lead to a user having unintended rights.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38682",
+      "title": "The Bluetooth kernel module must be disabled.",
+      "description": "If Bluetooth functionality must be disabled, preventing the kernel from loading the kernel module provides an additional safeguard against its activation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38683",
+      "title": "All accounts on the system must have unique user or account names",
+      "description": "Unique usernames allow for accountability on the system.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38684",
+      "title": "The system must limit users to 10 simultaneous system logins, or a site-defined number, in accordance with operational requirements.",
+      "description": "Limiting simultaneous user logins can insulate the system from denial of service problems caused by excessive logins. Automated login processes operating improperly or maliciously may result in an exceptional number of simultaneous login sessions.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38685",
+      "title": "Temporary accounts must be provisioned with an expiration date.",
+      "description": "When temporary accounts are created, there is a risk they may remain in place and active after the need for them no longer exists. Account expiration greatly reduces the risk of accounts being misused or hijacked.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38686",
+      "title": "The systems local firewall must implement a deny-all, allow-by-exception policy for forwarded packets.",
+      "description": "In \"iptables\" the default policy is applied only after all the applicable rules in the table are examined for a match. Setting the default policy to \"DROP\" implements proper design for a firewall, i.e., any packets which are not explicitly permitted should not be accepted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38687",
+      "title": "The system must provide VPN connectivity for communications over untrusted networks.",
+      "description": "Providing the ability for remote users or systems to initiate a secure VPN connection protects information when it is transmitted over a wide area network.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38688",
+      "title": "A login banner must be displayed immediately prior to, or as part of, graphical desktop environment login prompts.",
+      "description": "An appropriate warning message reinforces policy awareness during the logon process and facilitates possible legal action against attackers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38689",
+      "title": "The Department of Defense (DoD) login banner must be displayed immediately prior to, or as part of, graphical desktop environment login prompts.",
+      "description": "An appropriate warning message reinforces policy awareness during the logon process and facilitates possible legal action against attackers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38690",
+      "title": "Emergency accounts must be provisioned with an expiration date.\n",
+      "description": "When emergency accounts are created, there is a risk they may remain in place and active after the need for them no longer exists. Account expiration greatly reduces the risk of accounts being misused or hijacked.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38691",
+      "title": "The Bluetooth service must be disabled.",
+      "description": "Disabling the \"bluetooth\" service prevents the system from attempting connections to Bluetooth devices, which entails some security risk. Nevertheless, variation in this risk decision may be expected due to the utility of Bluetooth connectivity and its limited range.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38692",
+      "title": "Accounts must be locked upon 35 days of inactivity.",
+      "description": "Disabling inactive accounts ensures that accounts which may not have been responsibly removed are not available to attackers who may have compromised their credentials.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38693",
+      "title": "The system must require passwords to contain no more than three consecutive repeating characters.",
+      "description": "Passwords with excessive repeating characters may be more vulnerable to password-guessing attacks.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38694",
+      "title": "The operating system must manage information system identifiers for users and devices by disabling the user identifier after an organization defined time period of inactivity.",
+      "description": "Disabling inactive accounts ensures that accounts which may not have been responsibly removed are not available to attackers who may have compromised their credentials.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38695",
+      "title": "A file integrity tool must be used at least weekly to check for unauthorized file changes, particularly the addition of unauthorized system libraries or binaries, or for unauthorized modification to authorized system libraries or binaries.",
+      "description": "By default, AIDE does not install itself for periodic execution. Periodically running AIDE may reveal unexpected changes in installed files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38696",
+      "title": "The operating system must employ automated mechanisms, per organization defined frequency, to detect the addition of unauthorized components/devices into the operating system.",
+      "description": "By default, AIDE does not install itself for periodic execution. Periodically running AIDE may reveal unexpected changes in installed files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38697",
+      "title": "The sticky bit must be set on all public directories.",
+      "description": "Failing to set the sticky bit on public directories allows unauthorized users to delete files in the directory structure. \n\nThe only authorized public directories are those temporary directories supplied with the system, or those designed to be temporary file repositories. The setting is normally reserved for directories used by the system, and by users for temporary file storage - such as /tmp - and for directories requiring global read/write access.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38698",
+      "title": "The operating system must employ automated mechanisms to detect the presence of unauthorized software on organizational information systems and notify designated organizational officials in accordance with the organization defined frequency.",
+      "description": "By default, AIDE does not install itself for periodic execution. Periodically running AIDE may reveal unexpected changes in installed files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38699",
+      "title": "All public directories must be owned by a system account.",
+      "description": "Allowing a user account to own a world-writable directory is undesirable because it allows the owner of that directory to remove or replace any files that may be placed in the directory by other users.",
+      "severity": "low"
+    },
+    {
+      "id": "V-38700",
+      "title": "The operating system must provide a near real-time alert when any of the organization defined list of compromise or potential compromise indicators occurs. ",
+      "description": "By default, AIDE does not install itself for periodic execution. Periodically running AIDE may reveal unexpected changes in installed files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-38701",
+      "title": "The TFTP daemon must operate in secure mode which provides access only to a single directory on the host file system.",
+      "description": "Using the \"-s\" option causes the TFTP service to only serve files from the given directory. Serving files from an intentionally specified directory reduces the risk of sharing files which should remain private.",
+      "severity": "high"
+    },
+    {
+      "id": "V-38702",
+      "title": "The FTP daemon must be configured for logging or verbose mode.",
+      "description": "To trace malicious activity facilitated by the FTP service, it must be configured to ensure that all commands sent to the ftp server are logged using the verbose vsftpd log format. The default vsftpd log file is /var/log/vsftpd.log.",
+      "severity": "low"
+    },
+    {
+      "id": "V-43150",
+      "title": "The login user list must be disabled.",
+      "description": "Leaving the user list enabled is a security risk since it allows anyone with physical access to the system to quickly enumerate known user accounts without logging in.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-51337",
+      "title": "The system must use a Linux Security Module at boot time.",
+      "description": "Disabling a major host protection feature, such as SELinux, at boot time prevents it from confining system services at boot time. Further, it increases the chances that it will remain off during system operation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-51363",
+      "title": "The system must use a Linux Security Module configured to enforce limits on system services.",
+      "description": "Setting the SELinux state to enforcing ensures SELinux is able to confine potentially compromised processes to the security policy, which is designed to prevent them from causing damage to the system or further elevating their privileges. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-51369",
+      "title": "The system must use a Linux Security Module configured to limit the privileges of system services.",
+      "description": "Setting the SELinux policy to \"targeted\" or a more specialized policy ensures the system will confine processes that are likely to be targeted for exploitation, such as network or system services. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-51379",
+      "title": "All device files must be monitored by the system Linux Security Module.",
+      "description": "If a device file carries the SELinux type \"unlabeled_t\", then SELinux cannot properly restrict access to the device file. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-51391",
+      "title": "A file integrity baseline must be created.",
+      "description": "For AIDE to be effective, an initial database of \"known-good\" information about files must be captured and it should be able to be verified against the installed files. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-51875",
+      "title": "The operating system, upon successful logon/access, must display to the user the number of unsuccessful logon/access attempts since the last successful logon/access.",
+      "description": "Users need to be aware of activity that occurs regarding their account. Providing users with information regarding the number of unsuccessful attempts that were made to login to their account allows the user to determine if any unauthorized activity has occurred and gives them an opportunity to notify administrators. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-54381",
+      "title": "The audit system must switch the system to single-user mode when available audit storage volume becomes dangerously low.",
+      "description": "Administrators should be made aware of an inability to record audit records. If a separate partition or logical volume of adequate size is used, running low on space for audit records should never occur. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57569",
+      "title": "The noexec option must be added to the /tmp partition.",
+      "description": "Allowing users to execute binaries from world-writable directories such as \"/tmp\" should never be necessary in normal operation and can expose the system to potential compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58901",
+      "title": "The sudo command must require authentication.",
+      "description": "The \"sudo\" command allows authorized users to run programs (including shells) as other users, system users, and root. The \"/etc/sudoers\" file is used to configure authorized \"sudo\" users as well as the programs they are allowed to run. Some configuration options in the \"/etc/sudoers\" file allow configured users to run programs without re-authenticating. Use of these configuration options makes it easier for one compromised account to be used to compromise other accounts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72817",
+      "title": "Wireless network adapters must be disabled.",
+      "description": "The use of wireless networking can introduce many different attack vectors into the organization’s network. Common attack vectors such as malicious association and ad hoc networks will allow an attacker to spoof a wireless access point (AP), allowing validated systems to connect to the malicious AP and enabling the attacker to monitor and record network traffic. These malicious APs can also serve to create a man-in-the-middle attack or be used to create a denial of service to valid network resources.",
+      "severity": "medium"
+    }
+  ]
+}

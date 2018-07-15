@@ -1,0 +1,131 @@
+{
+  "name": "stig_multifunction_device_and_network_printers",
+  "date": "2017-12-07",
+  "description": "Multifunction Device and Network Printers (MFD) STIG includes the computing requirements for Multifunction Device and Network Printers operating to support the DoD. The Multifunction Device and Network Printers STIG must also be applied for each site using Multifunction Devices and Network Printers. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "Multifunction Device and Network Printers STIG",
+  "version": "2",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-6777",
+      "title": "A network protocol other than TCP/IP is enabled on a MFD or printer.",
+      "description": "The greater the number of protocols allowed active on the network the more vulnerabilities there will be available to be exploited.\nThe SA will ensure the only network protocol used is TCP/IP all others are disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6779",
+      "title": "A firewall or router rule is not used to block all ingress and egress traffic from the enclave perimeter to the MFD or printer.",
+      "description": "Access to the MFD or printer from outside the enclave network could lead to a denial of service caused by a large number of large print files being sent to the device.  Ability for the MFD or printer to access addresses outside the enclave network could lead to a compromise of sensitive data caused by forwarding a print file to a location outside of the enclave network.  This is good defence in depth practice.\nThe SA will ensure there is a firewall or router rule to block all ingress and egress traffic from the enclave perimeter to the MFD or printer.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6780",
+      "title": "A MFD or a printer device is not flash upgradeable or is not configured to use the most current firmware available.",
+      "description": "MFD devices or printers utilizing old firmware can expose the network to known vulnerabilities leading to a denial of service or a compromise of sensitive data.\nThe SA will ensure devices are flash upgradeable and are configured to use the most current firmware available",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6781",
+      "title": "The default passwords and SNMP community strings of all management services have not been  replaced with complex passwords.",
+      "description": "There are many known vulnerabilities in the SNMP protocol and if the default community strings and passwords are not modified an unauthorized individual could gain control of the MFD or printer.  This could lead to a denial of service or the compromise of sensitive data.\nThe SA will ensure the default passwords and SNMP community strings of all management services are replaced with complex passwords.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-6782",
+      "title": "The MFD does not maintain its configuration state (passwords, service settings etc) after a power down or reboot.",
+      "description": "If the MFD does not maintain it state over a power down or reboot, it will expose the network to all of the vulnerabilities that where mitigated by the modifications made to its configuration state.\nThe SA will ensure the MFD maintains its configuration state (passwords, service settings etc) after a power down or reboot.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6783",
+      "title": "Management protocols, with the exception of HTTPS and SNMPv3, must be disabled at all times except when necessary.",
+      "description": "Unneeded protocols expose the device and the network to unnecessary vulnerabilities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6784",
+      "title": "There is no restriction on where a MFD or a printer can be remotely managed.",
+      "description": "Since unrestricted access to the MFD or printer for management is not required the restricting the management interface to specific IP addresses decreases the exposure of the system to malicious actions.  If the MFD or printer is compromised it could lead to a denial of service or a compromise of sensitive data.\nThe SA will ensure devices can only be remotely managed by SA’s or printer administrators from specific IPs (SA workstations and print spooler).",
+      "severity": "high"
+    },
+    {
+      "id": "V-6790",
+      "title": "Print services for a MFD or printer are not restricted to Port 9100 and/or LPD (Port 515).\n\nWhere both Windows and non-Windows clients need services from the same device, both Port 9100 and LPD can be enabled simultaneously.\n",
+      "description": "Printer services running on ports other than the known ports for printing cannot be monitored on the network and could lead to a denial of service it the invalid port is blocked by a network administrator responding to an alert from the IDS for traffic on an unauthorized port.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6794",
+      "title": "A MFD or printer is not configured to restrict jobs to those from print spoolers.\n",
+      "description": "If MFDs or printers are not restricted to accept print jobs only from print spoolers that authenticate the user and log the job, a denial of service can be created by the MFD or printer accepting one or more large print jobs from an unauthorized user.\n\nThe SA will ensure MFDs and printers are configured to restrict jobs only to print spoolers, not directly from users.\n\nMobile device print jobs must be sent to a print spooler, they must not be sent directly from a mobile device to a MFD or printer that supports direct wireless printing (e.g., AirPrint, Wi-Fi Direct, etc.).\n\nThe configuration is accomplished by restricting access, by IP, to those of the print spooler and SAs.  If supported, IP restriction is accomplished on the device, or if not supported, by placing the device behind a firewall, switch or router with an appropriate discretionary access control list.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6796",
+      "title": "Print spoolers are  not configured to restrict access to authorized users and restrict users to managing their own individual jobs. ",
+      "description": "If unauthorized users are allowed access to the print spooler they can queue large print file creating a denial of service for other users.  If users are not restricted to manipulating only files they created, they could create ad denial of service by changing the print order of existing files or deleting other users files.\nThe SA will ensure print spoolers are configured to restrict access to authorized user and restrict users to managing their own individual jobs.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6797",
+      "title": "The devices and their spoolers do not have auditing enabled. ",
+      "description": "Without auditing the identification and prosecution of an individual that performs malicious actions is difficult if not impossible.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6798",
+      "title": "Implementation of an MFD and printer security policy for the protection of classified information. ",
+      "description": "Department of Defense Manual 5200.01, \"Protection of Classified Information\" provides policy, assigns responsibilities, and provides procedures for the designation, marking, protection, and dissemination of controlled unclassified information (CUI) and classified information.  DoDM 5200.01, Volume 3, Section 14 mandates that organizations identify equipment used for classified processing and develop security procedures to safeguard these devices.  \n\nThis requires that each organization have an MFD and printer security policy that lists the following safeguards: \na. Prevent unauthorized access to that information, including by repair or maintenance personnel.\nb. Ensure that repair procedures do not result in unauthorized dissemination of or access to classified information.\nc. Replace and destroy equipment parts in the appropriate manner when classified information cannot be removed.\nd. Ensure that appropriately knowledgeable, cleared personnel inspect equipment and associated media used to process classified information before the equipment is removed from protected areas to ensure there is no retained classified information.\ne. Ensure MFD and printers used to process classified information are certified and accredited in accordance with DoDD 8500.01E. \nf. Ensure that MFD and printers address issues concerning compromising emanations in accordance with DoDD 8500.01E.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6799",
+      "title": "The level of audit has not been established or the audit logs being collected for the devices and print spoolers are not being reviewed.",
+      "description": "If inadequate information is captured in the audit, the identification and prosecution of malicious user will be very difficult. If the audits are not regularly reviewed suspicious activity may go undetected for a long time.  Therefore, the level of auditing for MFDs, printers, and print spoolers must be defined and personnel identified to review the audit logs.   ",
+      "severity": "low"
+    },
+    {
+      "id": "V-6800",
+      "title": "MFDs with print, copy, scan, or fax capabilities must be prohibited on classified networks without the approval of the DAA.",
+      "description": "MFDs with print, copy, scan, or fax capabilities, if compromised, could lead to the compromise of classified data or the compromise of the network.  The IAO will ensure MFDs with copy, scan, or fax capabilities are not allowed on classified networks unless approved by the DAA.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6801",
+      "title": "A MFD device, with scan to hard disk functionality used, is not configured to clear the hard disk between jobs.",
+      "description": "If the MFD is compromised the un-cleared, previously used, space on the hard disk drive can be read which can lead to a compromise of sensitive data.\nThe SA will ensure the device is configured to clear the hard disk between jobs if scan to hard disk functionality is used.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6802",
+      "title": "Scan to a file share is enabled but the file shares do not have the appropriate discretionary access control list in place.",
+      "description": "Without appropriate discretionary access controls unauthorized individuals may read the scanned data.  This can lead to a compromise of sensitive data.\nThe SA will ensure file shares have the appropriate discretionary access control list in place if scan to a file share is enabled.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6803",
+      "title": "Auditing of user access and fax logs must be enabled when fax from the network is enabled.",
+      "description": "Without auditing the originator and destination of a fax cannot be determined. Prosecuting of an individual who maliciously compromises sensitive data via a fax will be hindered without audits.\n\nThe SA will ensure auditing of user access and fax logging is enabled if fax from the network is enabled.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6804",
+      "title": "MFDs must not allow scan to SMTP (email).",
+      "description": "The SMTP engines found on the MFDs reviewed when writing the MFD STIG did not have robust enough security features supporting scan to email. Because of the lack of robust security, scan to email will be disabled on MFD devices. Failure to disable this feature could lead to an untraceable and possibly undetectable compromise of sensitive data.\n\nThe SA will ensure MFDs do not allow scan to SMTP.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6805",
+      "title": "A MFD device does not have a mechanism to lock and prevent access to the hard drive.",
+      "description": "If the hard disk drive of a MFD can be removed from the MFD the data on the drive can be recovered and read.  This can lead to a compromise of sensitive data.\n\nThe IAO will ensure the device has a mechanism to lock and prevent access to the hard disk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6806",
+      "title": "The device is not configured to prevent non-printer administrators from altering the global configuration of the device.",
+      "description": "If unauthorized users can alter the global configuration of the MFD they can remove all security.  This can lead to the compromise of sensitive data or the compromise of the network the MFD is attached to.",
+      "severity": "high"
+    }
+  ]
+}

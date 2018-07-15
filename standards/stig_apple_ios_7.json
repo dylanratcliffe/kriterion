@@ -1,0 +1,185 @@
+{
+  "name": "stig_apple_ios_7",
+  "date": "2014-08-26",
+  "description": "This STIG contains technical security controls required for the use of Apple iOS 7 devices (iPhone and iPad) in the DoD environment when managed by an approved mobile management server. Comments or proposed revisions to this document should be sent via email to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailbox@mail.mil.",
+  "title": "Apple iOS 7 STIG",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-43205",
+      "title": "Apple iOS must lock the device after 15 minutes of inactivity.",
+      "description": "The device lock function prevents further access to the system by initiating a session lock after a period of inactivity or upon receiving a request from a user. The device lock is retained until the user re-establishes access using established identification and authentication procedures.\n\nA device lock is a temporary action taken when a user stops work but does not want to shut down because of the temporary nature of the hiatus. During the device lock a publicly viewable pattern is visible on the associated display, hiding what was previously visible on the screen. Once invoked, the device lock shall remain in place until the user re-authenticates. No other system activity aside from re-authentication can unlock the system.\n\nThe operating system must lock the device after the organizationally-defined time period. This prevents others from gaining access to the device when not in the user's possession and accessing sensitive DoD information. A device lock mitigates the risk that an adversary can access data on an unattended mobile device but only after the minimum, organizationally-defined period of inactivity.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43207",
+      "title": "Apple iOS must enforce a minimum length of 6 for the device unlock password.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting guessing and brute force attacks. The ability to crack a password is a function of how many attempts an adversary is permitted, how quickly an adversary can do each attempt, and the size of the password space. The longer the minimum length of the password is, the larger the password space.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43208",
+      "title": "Only DoD PKI issued or DoD approved server authentication certificates must be installed on DoD mobile operating system devices.",
+      "description": "If unauthorized device authentication certificates are installed on the device, there is the potential that the device may connect to a rogue device or network. Rogue devices can mimic the behavior of authorized equipment to trick the user into providing authentication credentials, which could then in turn be used to compromise DoD information and networks. Restricting device authentication certificates to an authorized list mitigates the risk of attaching to rogue devices and networks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43209",
+      "title": "Apple iOS must wipe all storage media after 10  consecutive, unsuccessful attempts to unlock the mobile device.",
+      "description": "Mobile devices present additional risks related to attempted unauthorized access. If they are lost, stolen, or misplaced, attempts can be made to unlock the device by guessing the password. Once unlocked, an adversary may be able to obtain sensitive data on the device. Wiping storage media renders all such data permanently inaccessible.\n\nThere are two acceptable methods to wipe the device. The first is to overwrite the data on the media several times, so it is not longer recoverable. In this case, the device should implement DoD 5220.22-M (E) (3pass), in which the media is overwritten three times. The second is to delete the locally stored encryption key on a device that encrypts all data stored on the device. In this case, the key must be wiped using a method complying with DoD 5220.22-M (ECE) (7 pass), in which all storage sectors containing the key are overwritten seven times. Alternative methods consistent with those described in NIST SP 800-88 (as revised) are acceptable.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43210",
+      "title": "Apple iOS must employ mobile device management services to centrally manage security relevant configuration and policy settings.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls. If these controls are not implemented, the system may be vulnerable to a variety of attacks. The use of mobile device management (MDM) allows an organization to assign values to security related parameters across all the devices it manages. This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls. It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43211",
+      "title": "Apple iOS must require a valid password be successfully entered before the mobile device data is unencrypted.",
+      "description": "Encryption is only effective if the decryption procedure is protected. If an adversary can easily access the private key (either directly or through a software application), sensitive DoD data is likely to be disclosed. Password protection is one method to reduce the likelihood of such an occurrence.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43212",
+      "title": "Apple iOS must disable voice-activated assistant functionality when the device is locked (Siri).",
+      "description": "On iOS devices, users can access the device's contact database or calendar to obtain phone numbers and other information using a human voice even when the mobile device is locked. Often this information is personally identifiable information (PII), which is considered sensitive. It could also be used by an adversary to profile the user or engage in social engineering to obtain further information from other unsuspecting users. Disabling access to the contact database and calendar in these situations mitigates the risk of this attack. The DAA may waive this requirement with written notice if the operational environment requires this capability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43213",
+      "title": "Apple iOS must disable voice-activated assistant functionality when the device is locked (Voice Dialing).",
+      "description": "On iOS devices, users can access the device's contact database or calendar to obtain phone numbers and other information using a human voice even when the mobile device is locked. Often this information is personally identifiable information (PII), which is considered sensitive. It could also be used by an adversary to profile the user or engage in social engineering to obtain further information from other unsuspecting users. Disabling access to the contact database and calendar in these situations mitigates the risk of this attack. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43215",
+      "title": "Apple iOS must have the cloud backup feature disabled.",
+      "description": "A cloud backup feature may gather user's information such as PII, or sensitive documents. With this feature enabled, sensitive information will be backed up to the manufacturer's servers and database. This data is stored at a location which has unauthorized employees accessing this data. This data is stored on a server which has an unknown location to the DoD. Disabling this feature mitigates the risk of a backup feature that stores sensitive data on a server which has the ability to be located in a country other than the United States.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43216",
+      "title": "Apple iOS must have cloud document syncing features disabled.",
+      "description": "A cloud document syncing feature may gather user's information, such as PII or sensitive documents. With this feature enabled, sensitive information will be backed up to the manufacturer's servers and database. This data is stored at a location which has unauthorized employees accessing this data. This data is stored on a server which has an unknown location to the DoD. Disabling this feature mitigates the risk of a backup feature that stores sensitive data on a server which has the ability to be located in a country other than the United States.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43217",
+      "title": "Apple iOS must have cloud keychain syncing features disabled.",
+      "description": "The iCloud Keychain is an iOS function that will store users' account names and passwords in iCloud, then sync this data between the users' Macs, iPhones, and iPads. An adversary may use any of the stored iCloud keychain passwords after unlocking one of the synchronized devices.  If a user is synchronizing devices, the user must protect all of the devices to prevent unauthorized use of the passcodes.   Moreover, the keychain being transmitted through the cloud opens the possibility that a well-resourced, sophisticated adversary could compromise the cloud-transmitted keychain. Not allowing the iCloud Keychain feature mitigates the risk of the encrypted set of passwords being compromised by being transmitted through the cloud or synchronized across multiple devices. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43218",
+      "title": "Apple iOS must not automatically upload new photos to iCloud.\n",
+      "description": "A cloud photo sharing feature may gather user's information such as PII, or sensitive photos. With this feature enabled, sensitive photos will be backed up to the manufacturer's servers and database. This data is stored at a location which has unauthorized employees accessing this data. This data is stored on a server which has an unknown location to the DoD. Disabling this feature mitigates the risk of a backup feature that stores sensitive data on a server which has the ability to be located in a country other than the United States.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43219",
+      "title": "Apple iOS must not create photo streams to share with other people, or subscribe to other peoples shared photo streams.\n\n",
+      "description": "A cloud photo stream is a shared photo folder that other users may access at any time. A cloud photo streaming feature may gather the user's sensitive photos. With this feature enabled, sensitive photos will be added to a shared folder and backed up to the manufacturer's servers and database. This data is stored at a location which has unauthorized employees accessing this data. This data is stored on a server which has an unknown location to the DoD. Disabling this feature mitigates the risk of a backup feature that stores sensitive data on a server which has the ability to be located in a country other than the United States.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43220",
+      "title": "Apple iOS must not display notifications while the device is locked. ",
+      "description": "If the mobile operating system were to display notifications or calendar information on the lock screen, an adversary may be able to gather sensitive data without needing to unlock the device. This adversary may use this gathered intelligence to plan future attacks and possibly a physical attack. By disabling notifications on the lock screen this prevents sensitive data from being displayed openly on the device’s lock screen.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43221",
+      "title": "Apple iOS must not display calendar information while the device is locked. ",
+      "description": "If the mobile operating system were to display notifications or calendar information on the lock screen, an adversary may be able to gather sensitive data without needing to unlock the device. This adversary may use this gathered intelligence to plan future attacks and possibly a physical attack. By disabling notifications on the lock screen this prevents sensitive data from being displayed openly on the device’s lock screen.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43222",
+      "title": "Apple iOS must not allow the device to be unlocked using a fingerprint.",
+      "description": "TouchID is a fingerprint reader that has been installed on the iPhone 5s. This fingerprint reader can be used to authenticate the user in order to unlock the mobile device. At this time, no biometric reader has been approved for DoD use on mobile devices. This technology would allow unauthorized users to have access to DoD sensitive data if compromised. By not permitting the use of TouchID, DoD users are forced to use passcodes that meet DoD passcode requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43223",
+      "title": "Apple iOS must not allow non-DoD applications to access DoD data.",
+      "description": "Managed apps have been approved for the handling of DoD sensitive information.  Unmanaged apps are provided for productivity and morale purposes, but are not approved to handle DoD sensitive information. Examples of unmanaged apps include apps for news services, travel guides, maps, and social networking. If a document were to be viewed in a managed app and the user had the ability to open this same document in an unmanaged app, this could lead to the compromise of sensitive DoD data. In some cases, the unmanaged apps are connected to cloud backup or social networks that would permit dissemination of DoD sensitive information to unauthorized individuals. Not allowing data to be opened within unmanaged apps mitigates the risk of compromising sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43224",
+      "title": "Apple iOS must encrypt iTunes backups.",
+      "description": "When syncing an iOS device to a computer running iTunes, iTunes will prompt the user to back up the iOS device. If the performed backup is not encrypted, this could lead to the unauthorized disclosure of DoD sensitive information if non-DoD personnel are able to access that machine. By forcing the backup to be encrypted, this greatly mitigates the risk of compromising sensitive data. iTunes backup and USB connections to  computers are not authorized, but this control provides defense-in-depth for cases in which a user violates policy either intentionally or inadvertently.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43225",
+      "title": "Apple iOS must have Airdrop disabled.",
+      "description": "An Airdrop feature is a way to send contact information or photos to other users with this same feature enabled. This feature enables a possible attack vector for adversaries to exploit. Once the attacker has gained access to the information broadcast by this feature, he/she may distribute this sensitive information very quickly and without DoD’s control or awareness. By disabling this feature, the risk of mass data exfiltration will be mitigated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43226",
+      "title": "An iOS app must display the DoD notice and consent banner exactly as specified at startup device unlock.",
+      "description": "To ensure notice of and consent to the terms of the DoD standard user agreement, the iOS device must contain an app that displays the DoD notice and consent banner. To best ensure the investigative and prosecutorial purposes of notice and consent are met, the wording of the banner must be exactly as specified.  Deviations from the wording have the potential to hinder DoD's ability to monitor or search the device.  Additional information is found in DoD Issuance DoDI 8500.01.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43227",
+      "title": "An iOS app must retain the notice and consent banner on the screen until the user executes a positive action to manifest agreement by selecting a box indicating acceptance.",
+      "description": "To ensure notice of and consent to the terms of the DoD standard user agreement, an iOS app must display a consent banner.  Additionally, the app must prevent further activity in the application unless and until the user executes a positive action to manifest agreement, such as by tapping an acceptance button in the app.  By preventing access to the system until the user accepts the conditions, legal requirements are met to protect the DoD and to remind users the device is designed and implemented for business use. Additional information is found in DoD Issuance DoDI 8500.01.",
+      "severity": "low"
+    },
+    {
+      "id": "V-43228",
+      "title": "Apple iOS must synchronize the internal clock at least once every 24 hours with an authoritative time server or the Global Positioning System.",
+      "description": "Determining the correct time a particular application event occurred on a system is critical when conducting forensic analysis and investigating system events. \n\nPeriodically synchronizing internal clocks with an authoritative time source is needed in order to correctly correlate the timing of events that occur across the enterprise. The two authoritative time sources for mobile operating systems are an authoritative time server which is synchronized with redundant United States Naval Observatory (USNO) time servers as designated for the appropriate DoD network (NIPRNet or SIPRNet) or the Global Positioning System (GPS).\n\nTimestamps generated by the audit system in mobile operating systems shall include both date and time. The time may be expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.",
+      "severity": "low"
+    },
+    {
+      "id": "V-43229",
+      "title": "Apple iOS must disable screen capture.",
+      "description": "By allowing the screen capture function, a user has the ability to capture a screen containing sensitive information and then transfer it to an application not authorized to store or process that type of information. For example, the unauthorized app may automatically perform cloud backup to non-DoD servers. If a screen capture containing sensitive information was copied to a location with inadequate protection, there is a risk that an adversary could obtain it. Disabling the screen capture function will mitigate the risk of leaking sensitive information.",
+      "severity": "low"
+    },
+    {
+      "id": "V-43230",
+      "title": "Apple iOS must not allow diagnostic data to be sent to an organization other than DoD.",
+      "description": "The sending of diagnostic data back to the manufacturer is prohibited in the DoD. Sending this data to an organization other than DoD is termed a “phone-home” vulnerability. This setting may enable the device manufacturer to gather sensitive location data or other information about the user’s practices. This data will be sent to the manufacturer's servers and database. This data is stored at a location which has unauthorized employees accessing this data. By disabling this feature the phone home risk will be mitigated.",
+      "severity": "low"
+    },
+    {
+      "id": "V-43231",
+      "title": "Apple iOS must limit advertisers tracking abilities.",
+      "description": "Advertisers tracking abilities refers to the advertisers ability to categorize the device and spam the user with ads that are most relevant to the users preferences. By not “Force limiting ad tracking”, advertising companies are able to gather information about the user and device’s browsing habits. If “Limit Ad Tracking” is not limited a database of browsing habits of DoD devices can be gathered and store under no supervision of the DoD. By limiting ad tracking, this setting does not completely mitigate the risk but it limits the amount of information gathering.",
+      "severity": "low"
+    },
+    {
+      "id": "V-43232",
+      "title": "Apple iOS must not allow DoD applications to access non-DoD data.",
+      "description": "Managed apps have been approved for the handling of DoD sensitive information.  Unmanaged apps are provided for productivity and morale purposes, but are not approved to handle DoD sensitive information.  Examples of unmanaged apps include apps for news services, travel guides, maps, and social networking. If a document containing malware (e.g., macros performing malicious functions) were obtained from an untrusted source and then ported to a managed app, it might eventually reach other DoD computing systems vulnerable to the malware. Preventing managed apps from opening documents from unmanaged apps greatly mitigates this risk. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-43233",
+      "title": "Apple iOS must disable automatic completion of Safari browser passcodes.",
+      "description": "The AutoFill functionality in the Safari web browser allows the user to complete a form that contains sensitive information, such as PII, without previous knowledge of the information. By allowing the use of an AutoFill functionality, an adversary who learns a user's iOS device passcode, or who otherwise is able to unlock the device, may be able to further breach other systems by relying on Auto-Fill feature to provide information unknown to the adversary.  By disabling the AutoFill functionality, the risk of an adversary gaining further information about the device's user or comprising other systems is significantly mitigated.  ",
+      "severity": "low"
+    },
+    {
+      "id": "V-43234",
+      "title": "The iOS app used to support the DoD notice and consent banner must either prevent access to a frequently used service or notify another device that acceptance of the user agreement has occurred.",
+      "description": "If a user is able to deny either that he or she has used the app or that he or she provided the requisite consent within the app, then the app will not properly support the investigative and prosecutorial purposes of notice and consent.  Without notice and consent, a user may be able to thwart otherwise authorized searches and seizures of the device.  If the app is tied to a frequently used service, then use of that service indicates that the consent message has been accepted.  If the app is not tied to a frequently used service, then it must notify an external device of consent transactions to enable DoD to determine which users have not periodically accepted the consent statement. Additional information is found in DoD Issuance DoDI 8500.01.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43820",
+      "title": "Apple iOS must disallow more than an organizationally-defined quantity of sequential numbers (e.g., 456) in the device unlock password.\n",
+      "description": "Password complexity or strength refers to how difficult it is to determine a password using a dictionary or brute-force attack. Passwords with sequential numbers (e.g., 456 or 987) are considered easier to crack than random patterns. Therefore, disallowing sequential numbers makes it more difficult for an adversary to discover the password.\n",
+      "severity": "medium"
+    }
+  ]
+}

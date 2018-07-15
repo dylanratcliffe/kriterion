@@ -1,0 +1,17 @@
+{
+  "name": "stig_zos_ibm_cics_transaction_serverracf",
+  "date": "2018-01-05",
+  "description": "None",
+  "title": "z/OS IBM CICS Transaction Server for RACF STIG",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-17982",
+      "title": "IBM CICS Transaction Server SPI command resources must be properly defined and protected.",
+      "description": "IBM CICS Transaction Server can run with sensitive system privileges, and potentially can circumvent system controls.  Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data.  Many utilities assign resource controls that can be granted to system programmers only in greater than read authority.  Resources are also granted to certain non systems personnel with read only authority.",
+      "severity": "medium"
+    }
+  ]
+}

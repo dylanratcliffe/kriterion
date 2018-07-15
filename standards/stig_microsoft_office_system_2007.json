@@ -1,0 +1,221 @@
+{
+  "name": "stig_microsoft_office_system_2007",
+  "date": "2015-10-02",
+  "description": "None",
+  "title": "Microsoft Office System 2007",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-17547",
+      "title": "ActiveX control initialization method to ensure save behavior. ",
+      "description": "ActiveX controls can adversely affect a computer directly. In addition, malicious code can be used to compromise an ActiveX control and attack a computer. To indicate the safety of an ActiveX control, developers can denote them as Safe For Initialization (SFI). SFI indicates that a control is safe to open and run, and that it is not capable of causing a problem for any computer, regardless of whether it has persisted data values or not. \nIf a control is not marked SFI, it is possible that the control could adversely affect a computer—or it could mean that the developers did not test the control in all situations and are not sure whether it might be compromised in the future.\nBy default, if a control is marked SFI, the application loads the control in safe mode and uses persisted values (if any). If the control is not marked SFI, the application loads the control in unsafe mode with persisted values (if any), or uses the default (first-time initialization) settings. In both situations, the Message Bar informs users that the controls have been disabled and prompts them to respond.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17560",
+      "title": "Do not allow a mix of policy and user locations for Office Products. ",
+      "description": "When Microsoft Office Access™ 2007, Excel® 2007, PowerPoint® 2007, and Word 2007 files are opened from trusted locations, all the content in the files is enabled and active. Users are not notified about any potential risks that might be contained in the files, such as unsigned macros, ActiveX controls, or links to content on the Internet.\nBy default, users can specify any location as a trusted location, and a computer can have a combination of user-created, OCT-created, and Group Policy–created trusted locations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17561",
+      "title": "Do not allow choice of output to include PNG (Portable Network Graphics)",
+      "description": "Excel 2007, PowerPoint 2007, and Word 2007 can save graphic files in Portable Network Graphics (PNG) format to improve the quality of the graphics when documents are saved as Web pages. The PNG graphic file format (.png) is used for a wide range of graphics, from small images (such as bullets and banners) to complex images (such as photographs), and can offer better image fidelity and smaller file sizes than some other formats. However, PNG graphics cannot be displayed by many earlier Web browsers, such as Microsoft Internet Explorer® version 5 or earlier.\nBy default, Office applications do not save graphics in the PNG format. To change this functionality, users can open the application's Options dialog box, click Advanced, click Web Options, and then select the Allow PNG as a graphics format check box.\nThis setting can be used to guard against theoretical future zero-day attacks that might target PNG files.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-17565",
+      "title": "Block Office from receiving updates from the Office Update Site. ",
+      "description": "Obtaining updates from the Office Update site allows users to ensure that their 2007 Microsoft Office installation is kept up to date. However, in many situations administrators will want users to obtain their updates from a local server at the time of their choosing, often by pushing out the updates using a tool such as SMS. This approach allows administrators to ensure greater availability by testing updates, and using a change and configuration management process to ensure that updates are implemented consistently throughout the organization.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17581",
+      "title": "Control Blogging entries created from inside Office products. ",
+      "description": "The blogging feature in Word 2007 enables users to compose blog entries and post them to their blogs directly from Word, without using any additional software.\nBy default, users can post blog entries to any compatible blogging service provider, including Windows Live Spaces, Blogger, a SharePoint or Community Server site, and others. If your organization has policies that govern the posting of blog entries, allowing users to access the blogging feature in Word 2007 might enable them to violate those policies.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17583",
+      "title": "Allow users with earlier versions of Office to read with browsers - System",
+      "description": "The Windows Rights Management Add-on for Internet Explorer provides a way for users who do not use the 2007 Office release to view, but not alter, files with restricted permissions. By default, IRM-enabled files are saved in a format that cannot be viewed by using the Windows Rights Management Add-on. If this setting is enabled, an embedded rights-managed HTML version of the content is saved with each IRM-enabled file, which can be viewed in Internet Explorer using the add-on. This configuration increases the size of rights-managed files, in some cases significantly.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17588",
+      "title": "Disable access to updates, add-ins, and patches on the Office Online Website - Office. ",
+      "description": "Having access to updates, add-ins, and patches on the Office Online Web site can help users ensure that their computers are up to date and equipped with the latest security patches. However, to ensure that updates are tested and applied in a consistent manner, many organizations prefer to roll out updates using a centralized mechanism such as Microsoft Systems Center or Windows Server Update Services.\nBy default, users are allowed to download updates, add-ins, and patches from the Office Online Web site to keep their 2007 Office applications running smoothly and securely. If your organization has policies that govern the use of external resources such as Office Online, allowing users to download updates might cause them to violate these policies.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17590",
+      "title": "Disable the ability for users to Disable Trust Bar notifications for Security messages - Office",
+      "description": "The Message Bar in 2007 Office applications is used to identify security issues, such as unsigned macros or potentially unsafe add-ins. When such issues are detected, the application disables the unsafe feature or content and displays the Message Bar at the top of the active window. The Message Bar informs the users about the nature of the security issue and, in some cases, provides the users with an option to enable the potentially unsafe feature or content, which could harm the user's computer.\nBy default, if a 2007 Office application detects a security issue, the Message Bar is displayed. However, this configuration can be modified by users in the Trust Center.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17605",
+      "title": "Always show Document Information Panel Beaconing UI - Office",
+      "description": "InfoPath 2007 can be used to create custom Document Information Panels that can be attached to Excel 2007 workbooks, PowerPoint 2007 presentations, and Word 2007 documents. \nA malicious user could insert a Web beacon into an InfoPath form that is used to create a custom Document Information Panel. Web beacons can be used to contact an external server when users open the form. Information could be gathered by the form, or information entered by users could be sent to an external server and cause them to be vulnerable to additional attacks.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17612",
+      "title": "Disable the \"Enable Customer Experience Improvement Program\" for Office. ",
+      "description": "When users choose to participate in the Customer Experience Improvement Program (CEIP), 2007 Office applications automatically send information to Microsoft about how the applications are used. This information is combined with other CEIP data to help Microsoft solve problems and to improve the products and features customers use most often. This feature does not collect users' names, addresses, or any other identifying information except the IP address that is used to send the data.\nBy default, users have the opportunity to opt into participation in the CEIP the first time they run an Office application. If your organization has policies that govern the use of external resources such as the CEIP, allowing users to opt in to the program might cause them to violate these policies.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17617",
+      "title": "Set encryption type for password protected Office 97 thru Office 2003 files - Office",
+      "description": "If unencrypted files are intercepted, sensitive information in the files can be compromised. To protect information confidentiality, Microsoft Office application files can be encrypted and password protected. Only users who know the correct password will be able to decrypt such files.\n\nBy default, Excel 2007, PowerPoint 2007, and Word 2007 use Office 97/2000 compatible encryption, a proprietary encryption method, to encrypt password-protected Office 97-2003 files.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17619",
+      "title": "Encryption type for password protected Open XML files - Office",
+      "description": "If unencrypted files are intercepted, sensitive information in the files can be compromised. To protect information confidentiality, 2007 Office application files can be encrypted and password protected. Only users who know the correct password will be able to decrypt such files.\nOn computers that run Windows Vista, the default cryptographic service provider (CSP) is Microsoft Enhanced RSA and AES Cryptographic Provider, AES-128, 128-bit. On computers that run Windows XP, the default CSP is Microsoft Enhanced RSA and AES Cryptographic Provider (Prototype), AES-128, 128-bit.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17627",
+      "title": "Configure the Help Improve Proofing Tools feature for Office. ",
+      "description": "The Help Improve Proofing Tools feature collects data about use of the Proofing Tools, such as additions to the custom dictionary, and sends it to Microsoft. After about six months, the feature stops sending data to Microsoft and deletes the data collection file from the user's computer. Although this feature does not intentionally collect personal information, some of the content that is sent could include items that were marked as spelling or grammar errors, such as proper names and account numbers. However, any numbers such as account numbers, street addresses, and phone numbers are converted to zeroes when the data is collected. Microsoft uses this information solely to improve the effectiveness of the Office Proofing Tools, not to identify users.\nBy default, this feature is enabled if users choose to participate in the Customer Experience Improvement Program (CEIP). If your organization has policies that govern the use of external resources such as the CEIP, allowing the use of the Help Improve Proofing Tools feature might cause them to violate these policies.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17653",
+      "title": "Enable the \"Disable Check for Solutions\" in Office. ",
+      "description": "Office Diagnostics collects relevant diagnostic information when Office applications crash and prompts users to transmit the data to Microsoft, directs them to a Web page that contains information about the crash and, if possible, advice about resolving the issue and preventing future crashes. Any data transmitted to Microsoft is anonymous and includes no personally identifiable information, in accordance with the Microsoft Office privacy statement. However, some organizations might have security policies that prevent information about their computers from being sent externally under any circumstances.\nBy default, when a 2007 Office application crashes, Office Diagnostics prompts users and then connects to Microsoft servers to transmit information about the crash.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17659",
+      "title": "Configure the \"disable hyperlink warnings\" for Office to Disable.  ",
+      "description": "Unsafe hyperlinks are links that might pose a security risk if users click them. Clicking an unsafe link could compromise the security of sensitive information or harm the computer.\nLinks that 2007 Office considers unsafe include links to executable files, TIFF files, and Microsoft Document Imaging (MDI) files. Other unsafe links are those that use protocols considered to be unsafe, including msn, nntp, mms, outlook, and stssync.\nBy default, 2007 Office applications notify users about unsafe hyperlinks and disable them until users enable them.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17660",
+      "title": "Disable inclusion of document properties for PDF and XPS output - Office. ",
+      "description": "By default, if the Microsoft Save as PDF or XPS Add-in for 2007 Microsoft Office Programs add-in is installed, document properties are saved as metadata when users save files using the PDF or XPS or Publish as PDF or XPS commands in Access 2007, Excel 2007, InfoPath 2007, PowerPoint 2007, and Word 2007, unless the Document properties option is unchecked in the Options dialog box. If this metadata contains sensitive information, saving it with the file could compromise security.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17661",
+      "title": "Disable the ability for Office users to use the Internet Fax Feature. ",
+      "description": "Excel 2007, PowerPoint 2007, and Word 2007 users can use the Internet Fax feature to send documents to fax recipients through an Internet fax service provider. If your organization has policies that govern the time, place, or manner in which faxes are sent, this feature could help users evade those policies.\nBy default, 2007 Office users can use the Internet Fax feature. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17662",
+      "title": "Disable Microsoft passport Service for content with restricted permissions - Office. ",
+      "description": "The Information Rights Management feature of the 2007 Microsoft Office release allows individuals and administrators to specify access permissions to Word 2007 documents, Excel 2007 workbooks, PowerPoint 2007 presentations, and Outlook 2007 e-mail messages. This capability helps prevent sensitive information from being printed, forwarded, or copied by unauthorized people. Users protect content using digital certificates obtained through Windows Rights Management Services (RMS) or by using a Windows Live ID (formerly Microsoft .NET Passport) account.\nBy default, when a user opens a rights-managed file created with a Windows Live ID, the application connects to a licensing server to verify the user's credentials and to download a license that defines the level of access the user has to the file. If your organization has policies that govern access to external services such as Windows Live ID, this capability could allow users to violate those policies.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17664",
+      "title": "Disable the Opt-In Wizard that enables first time users to opt into Internet–based Microsoft services. ",
+      "description": "By default, the Opt-in Wizard displays the first time users run a 2007 Microsoft Office application, which allows them to opt into Internet–based services that will help improve their Office experience, such as Microsoft Update, the Customer Experience Improvement Program, Office Diagnostics, and Online Help. If your organization has policies that govern the use of such external resources, allowing users to opt in to these services might cause them to violate the policies.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17665",
+      "title": "Configure the \"Disable Password to Open UI\" for password secured documents. ",
+      "description": "If 2007 Office users add passwords to documents, other users can be prevented from opening the documents. This capability can provide an extra level of protection to documents that are already protected by access control lists, or provide a means of securing documents that are not protected by file-level security.\nBy default, users can add passwords to Excel 2007 workbooks, PowerPoint 2007 presentations, and Word 2007 documents from the Save or Save As dialog box by clicking Tools, clicking General Options, and entering appropriate passwords to open or modify the documents. If this configuration is changed, users will not be able to enter passwords in the General Options dialog box, which means they will not be able to password protect documents.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17669",
+      "title": "Disable Smart Documents use of Manifests in Office",
+      "description": "An XML expansion pack is the group of files that constitutes a Smart Document in Excel 2007 and Word 2007. You package one or more components that provide the logic needed for a Smart Document by using an XML expansion pack. These components can include any type of file, including XML schemas, Extensible Stylesheet Language Transforms (XSLTs), dynamic-link libraries (DLLs), and image files, as well as additional XML files, HTML files, Word files, Excel files, and text files.\nThe key component to building an XML expansion pack is creating an XML expansion pack manifest file. By creating this file, you specify the locations of all files that make up the XML expansion pack, as well as information that instructs 2007 Office how to set up the files for your Smart Document. The XML expansion pack can also contain information about how to set up some files, such as how to install and register a COM object required by the XML expansion pack.\nXML expansion packs can be used to initialize and load malicious code, which might affect the stability of a computer and lead to data loss.\nBy default, 2007 Office applications can load an XML expansion pack manifest file with a Smart Document.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17670",
+      "title": "Disable the Office client from polling the Sharepoint server for published links. ",
+      "description": "By default, users of 2007 Office applications can see and use links to Microsoft Office SharePoint Server sites from those applications. Administrators configure published links to Office applications during initial deployment, and can add or change links as part of regular operations. These links appear on the My SharePoint Sites tab of the Open, Save, and Save As dialog boxes when opening and saving documents from these applications. Links can be targeted so that they only appear to users who are members of particular audiences.\nIf a malicious person gains access to the list of published links, they could modify the links to point to unapproved sites, which could make sensitive data vulnerable to exposure.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17731",
+      "title": "Always require users to connect to verify permissions - Office. ",
+      "description": "By default, users are not required to connect to the network to verify permissions. If users do not need their licenses confirmed when attempting to open 2007 Office documents, they might be able to access documents after their licenses have been revoked. Also, it is not possible to log the usage of files with restricted permissions if users' licenses are not confirmed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17740",
+      "title": "Disable Automatic receiving of small updates to improve reliability - Office. ",
+      "description": "Office Diagnostics is used to improve the user experience by periodically downloading a small file to the computer with updated help information about specific problems. If Office Diagnostics is enabled, it collects information about specific errors and the IP address of the computer. When new help information is available, that help information is downloaded to the computer that experienced the related problems. Office Diagnostics does not transmit any personally identifiable information to Microsoft other than the IP address of the computer requesting the update. \nBy default, users have the opportunity to opt into receiving updates from Office Diagnostics the first time they run a 2007 Office application. If your organization has policies that govern the use of external resources such as Office Diagnostics, allowing users to opt in to this feature might cause them to violate these policies.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17741",
+      "title": "Enable Automation Security to enforce macro level security in Office documents",
+      "description": "By default, when a separate program is used to launch Microsoft Office Excel 2007, PowerPoint 2007, or Word 2007 programmatically, any macros can run in the programmatically opened application without being blocked. This functionality could allow an attacker to use automation to run malicious code in Excel, PowerPoint, or Word.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17749",
+      "title": "Legacy format signatures should be enabled - Office",
+      "description": "By default, 2007 Office applications use the XML–based XMLDSIG format to attach digital signatures to documents, including Office 97-2003 binary documents. XMLDSIG signatures are not recognized by Office 2003 applications or previous versions. If an Office 2003 user opens an Excel, PowerPoint, or Word binary document with an XMLDSIG signature attached, the signature will be lost.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17750",
+      "title": "Disable Load controls in forms3 - Office",
+      "description": "ActiveX controls are Component Object Model (COM) objects and have unrestricted access to users' computers. ActiveX controls can access the local file system and change the registry settings of the operating system. If a malicious user repurposes an ActiveX control to take over a user's computer, the effect could be significant.\nTo help improve security, ActiveX developers can mark controls as Safe For Initialization (SFI), which means that the developer states that the controls are safe to open and run and not capable of causing harm to any computers. If a control is not marked SFI, the control could adversely affect a computer—or it's possible the developers did not test the control in all situations and are not sure whether their control might be compromised at some future date.\nSFI controls run in safe mode, which limits their access to the computer. For example, a worksheet control can both read and write files when it is in unsafe mode, but perhaps only read from files when it is in safe mode. This functionality allows the control to be used in very powerful ways when safety wasn't important, but the control would still be safe for use in a Web page.\nIf a control is not marked as SFI, it is marked Unsafe For Initialization (UFI), which means that it is capable of affecting a user's computer. If UFI ActiveX controls are loaded, they are always loaded in unsafe mode.\nThis setting allows administrators to control how ActiveX controls in UserForms should be initialized based upon whether they are SFI or UFI.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17759",
+      "title": "Disable \"Open documents as Read Write when browsing\" feature.  - Office",
+      "description": "By default, when users browse to an 2007 Office document on a Web server using Internet Explorer, the appropriate application opens the file in read-only mode. However, if the default configuration is changed, the document is opened as read/write. Users could potentially make changes to documents and resave them in situations where the Web server security is not configured to prevent such changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17765",
+      "title": "Prevent permissions change on 'rights managed' content - Office",
+      "description": "The Information Rights Management feature of the 2007 Office release allows individuals and administrators to specify access permissions to Word 2007 documents, Excel 2007 workbooks, PowerPoint 2007 presentations, InfoPath 2007 templates and forms, and Outlook 2007 e-mail messages. This functionality helps prevent sensitive information from being printed, forwarded, or copied by unauthorized people.\nThis setting can be used to prevent 2007 Office users from changing the IRM permissions of a document. If this setting is Enabled, users can open and edit documents for which they have the appropriate permissions, but they cannot create new rights-managed content, add IRM to existing documents, change existing IRM permissions, or remove IRM from documents. This configuration can prevent users from making effective use of IRM to protect documents\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17767",
+      "title": "Prevent upload of document templates to Office Online. ",
+      "description": "By default, 2007 Office users can share Excel 2007, PowerPoint 2007, and Word 2007 templates they create with other Microsoft Office users around the world by uploading them to the community area of the Microsoft Office Online Web site. If your organization has policies that govern the use of external resources such as Office Online, allowing users to upload templates might enable them to violate those policies.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17768",
+      "title": "Protect document metadata for password protected files - Office",
+      "description": "By default, when an Office Open XML document is protected with a password and saved, any metadata associated with the document is encrypted along with the rest of the document's contents. If this configuration is changed, potentially sensitive information such as the document author and hyperlink references could be exposed to unauthorized people. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17769",
+      "title": "Protect document metadata for rights managed Office Open XML fiiles - Office",
+      "description": "By default, when Information Rights Management (IRM) is used to restrict access to an Office Open XML document, any metadata associated with the document is not encrypted. This configuration could allow potentially sensitive information such as the document author and hyperlink references to be exposed to unauthorized people.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17773",
+      "title": "Do Not rely on Vector markup Language (VML) for displaying graphics in browsers. ",
+      "description": "When saving documents as Web pages, Excel 2007, PowerPoint 2007, and Word 2007 can save vector–based graphics in Vector Markup Language (VML), which enables Internet Explorer to display them smoothly at any resolution.\nBy default, when saving VML graphics, 2007 Office applications also save copies of the graphics in a standard raster file format (GIF or PNG) for use by browsers that cannot display VML. If the Rely on VML for displaying graphics in browsers check box in the Web Options dialog box is selected, applications will not save raster copies of VML graphics, which means those graphics will not display in non-Microsoft browsers.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17805",
+      "title": "Enable the feature to suppress external Signature Services Menu for Office. ",
+      "description": "By default, users can select Add Signature Services (from the Signature Line drop-down menu on the Insert tab of the Ribbon in Excel 2007, PowerPoint 2007, and Word 2007) to see a list of signature service providers on the Microsoft Office Web site. If your organization has policies that govern the use of external resources such as signature providers or Office Marketplace, allowing users to access the Add Signature Services menu item might enable them to violate those policies.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25884",
+      "title": "The most current Office 2007 Service Pack is not installed.",
+      "description": "Failure to install the most current Office Service Pack (SP) leaves a system vulnerable to exploitation. Current service packs correct known security and system vulnerabilities. If Microsoft Office installation is not at most current service pack this is a Category II finding. If Microsoft Office installation is at an unsupported service pack this will be upgraded to a Category I finding since new vulnerabilities may not be patched",
+      "severity": "medium"
+    }
+  ]
+}

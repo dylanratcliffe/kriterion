@@ -1,0 +1,443 @@
+{
+  "name": "stig_samsung_android_os_7_with_knox_2.x",
+  "date": "2017-10-18",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Samsung Android OS 7 with Knox 2.x Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-76515",
+      "title": "The Samsung Android 7 with Knox must be configured to enforce a minimum password length of six characters.",
+      "description": "Password strength is a measure of the effectiveness of a password in resisting guessing and brute force attacks. The ability to crack a password is a function of how many attempts an adversary is permitted, how quickly an adversary can do each attempt, and the size of the password space. The longer the minimum length of the password is, the larger the password space. Having a too-short minimum password length significantly reduces password strength, increasing the chance of password compromise and resulting device and data compromise.\n\nSFR ID: FMT_SMF_EXT.1.1 #1a",
+      "severity": "low"
+    },
+    {
+      "id": "V-76517",
+      "title": "The Samsung Android 7 with Knox must be configured to not allow passwords that include more than two repeating or sequential characters.",
+      "description": "Password strength is a measure of the effectiveness of a password in resisting guessing and brute force attacks. Passwords that contain repeating or sequential characters are significantly easier to guess than those that do not contain repeating or sequential characters. Therefore, disallowing repeating or sequential characters increases password strength and decreases risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #1b",
+      "severity": "low"
+    },
+    {
+      "id": "V-76519",
+      "title": "The Samsung Android 7 with Knox must be configured to lock the display after 15 minutes (or less) of inactivity.",
+      "description": "The screen lock timeout must be set to a value that helps protect the device from unauthorized access. Having a too-long timeout would increase the window of opportunity for adversaries who gain physical access to the mobile device through loss, theft, etc. Such devices are much more likely to be in an unlocked state when acquired by an adversary, thus granting immediate access to the data on the mobile device. The maximum timeout period of 15 minutes has been selected to balance functionality and security; shorter timeout periods may be appropriate depending on the risks posed to the mobile device.\n\nSFR ID: FMT_SMF_EXT.1.1 #2a, 2b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76521",
+      "title": "The Samsung Android 7 with Knox must be configured to not allow more than 10 consecutive failed authentication attempts.",
+      "description": "The more attempts an adversary has to guess a password, the more likely the adversary will enter the correct password and gain access to resources on the device. Setting a limit on the number of attempts mitigates this risk. Setting the limit at \"10\" or less gives authorized users the ability to make a few mistakes when entering the password but still provides adequate protection against dictionary or brute force attacks on the password.\n\nSFR ID: FMT_SMF_EXT.1.1 #2c, FIA_AFL_EXT.1.5",
+      "severity": "low"
+    },
+    {
+      "id": "V-76523",
+      "title": "The Samsung Android 7 with Knox must be configured to enforce an application installation policy by specifying one or more authorized application repositories, including [selection: DoD-approved commercial app repository, MDM server, mobile application store]. Disable Google Play.",
+      "description": "Forcing all applications to be installed from authorized application repositories can prevent unauthorized and malicious applications from being installed and executed on mobile devices. Allowing such installations and executions could cause a compromise of DoD data accessible by these unauthorized/malicious applications.\n\nSFR ID: FMT_SMF_EXT.1.1 #8a",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76525",
+      "title": "The Samsung Android 7 with Knox must be configured to enforce an application installation policy by specifying one or more authorized application repositories, including [selection: DoD-approved commercial app repository, MDM server, mobile application store]. Disable unknown sources.",
+      "description": "Forcing all applications to be installed from authorized application repositories can prevent unauthorized and malicious applications from being installed and executed on mobile devices. Allowing such installations and executions could cause a compromise of DoD data accessible by these unauthorized/malicious applications.\n\nSFR ID: FMT_SMF_EXT.1.1 #8a",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76527",
+      "title": "The Samsung Android 7 with Knox must be configured to enforce an application installation policy by specifying an application whitelist that restricts applications by either of the following characteristics: list of digital signatures, list of package names.",
+      "description": "The application whitelist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core and preinstalled applications or the MD must provide an alternate method of restricting user access/execution to core and pre-installed applications. Core application - any application integrated into the operating system (OS) by the OS or mobile device (MD) vendors. Pre-installed application - additional non-core applications included in the OS build by the OS vendor, MD vendor, or wireless carrier.\n\nRequiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications.\n\nThe application whitelist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core applications (included in the operating system (OS) by the OS vendor) and pre-installed applications (provided by the MD vendor and wireless carrier), or the MD must provide an alternate method of restricting user access/execution to core and pre-installed applications.\n\nSFR ID: FMT_SMF_EXT.1.1 #8b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76529",
+      "title": "The Samsung Android 7 with Knox whitelist must be configured to not include applications with the following characteristics: - Back up MD data to non-DoD cloud servers (including user and application access to cloud backup services).",
+      "description": "Requiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications. Applications with the listed characteristics have features that can cause the compromise of sensitive DoD data or have features with no known application in the DoD environment.\n\nApplication note: The application whitelist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core and preinstalled applications or the MD must provide an alternate method of restricting user access/execution to core and pre-installed applications. Core application – any application integrated into the operating system (OS) by the OS or mobile device (MD) vendors. Pre-installed application – additional non-core applications included in the OS build by the OS vendor, MD vendor, or wireless carrier.\n\nSFR ID: FMT_SMF_EXT.1.1 #8b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76531",
+      "title": "The Samsung Android 7 with Knox whitelist must be configured to not include applications with the following characteristics: - Transmit MD diagnostic data to non-DoD servers.",
+      "description": "Requiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications. Applications with the listed characteristics have features that can cause the compromise of sensitive DoD data or have features with no known application in the DoD environment.\n\nApplication note: The application whitelist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core and preinstalled applications or the MD must provide an alternate method of restricting user access/execution to core and pre-installed applications. Core application – any application integrated into the operating system (OS) by the OS or mobile device (MD) vendors. Pre-installed application – additional non-core applications included in the OS build by the OS vendor, MD vendor, or wireless carrier.\n\nSFR ID: FMT_SMF_EXT.1.1 #8b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76533",
+      "title": "The Samsung Android 7 with Knox whitelist must be configured to not include applications with the following characteristics: - Voice assistant application if available when MD is locked.",
+      "description": "Requiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications. Applications with the listed characteristics have features that can cause the compromise of sensitive DoD data or have features with no known application in the DoD environment.\n\nApplication note: The application whitelist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core and preinstalled applications or the MD must provide an alternate method of restricting user access/execution to core and pre-installed applications. Core application – any application integrated into the operating system (OS) by the OS or mobile device (MD) vendors. Pre-installed application – additional non-core applications included in the OS build by the OS vendor, MD vendor, or wireless carrier.\n\nSFR ID: FMT_SMF_EXT.1.1 #8b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76535",
+      "title": "The Samsung Android 7 with Knox whitelist must be configured to not include applications with the following characteristics: - Voice dialing application if available when MD is locked.",
+      "description": "Requiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications. Applications with the listed characteristics have features that can cause the compromise of sensitive DoD data or have features with no known application in the DoD environment.\n\nApplication note: The application whitelist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core and preinstalled applications or the MD must provide an alternate method of restricting user access/execution to core and pre-installed applications. Core application – any application integrated into the operating system (OS) by the OS or mobile device (MD) vendors. Pre-installed application – additional non-core applications included in the OS build by the OS vendor, MD vendor, or wireless carrier.\n\nSFR ID: FMT_SMF_EXT.1.1 #8b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76537",
+      "title": "The Samsung Android 7 with Knox whitelist must be configured to not include applications with the following characteristics: - Allows synchronization of data or applications between devices associated with user.",
+      "description": "Requiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications. Applications with the listed characteristics have features that can cause the compromise of sensitive DoD data or have features with no known application in the DoD environment.\n\nApplication note: The application whitelist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core and preinstalled applications or the MD must provide an alternate method of restricting user access/execution to core and pre-installed applications. Core application – any application integrated into the operating system (OS) by the OS or mobile device (MD) vendors. Pre-installed application – additional non-core applications included in the OS build by the OS vendor, MD vendor, or wireless carrier.\n\nSFR ID: FMT_SMF_EXT.1.1 #8b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76539",
+      "title": "The Samsung Android 7 with Knox whitelist must be configured to not include applications with the following characteristics: - Allows unencrypted (or encrypted but not FIPS 140-2 validated) data sharing with other MDs or printers.",
+      "description": "Requiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications. Applications with the listed characteristics have features that can cause the compromise of sensitive DoD data or have features with no known application in the DoD environment.\n\nApplication note: The application whitelist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core and preinstalled applications or the MD must provide an alternate method of restricting user access/execution to core and pre-installed applications. Core application – any application integrated into the operating system (OS) by the OS or mobile device (MD) vendors. Pre-installed application – additional non-core applications included in the OS build by the OS vendor, MD vendor, or wireless carrier.\n\nSFR ID: FMT_SMF_EXT.1.1 #8b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76541",
+      "title": "The Samsung Android 7 with Knox must be configured to disable all Bluetooth profiles except for HSP (Headset Profile), HFP (HandsFree Profile), and SPP (Serial Port Profile).",
+      "description": "Some Bluetooth profiles provide the capability for remote transfer of sensitive DoD data without encryption or otherwise do not meet DoD IT security policies and therefore should be disabled.\n\nSFR ID: FMT_SMF_EXT.1.1 #18h",
+      "severity": "low"
+    },
+    {
+      "id": "V-76543",
+      "title": "The Samsung Android 7 with Knox must be configured to not display the following notifications when the device is locked: All notifications.",
+      "description": "Many mobile devices display notifications on the lock screen so that users can obtain relevant information in a timely manner without having to frequently unlock the phone to determine if there are new notifications. However, in many cases, these notifications can contain sensitive information. When they are available on the lock screen, an adversary can see them merely by being in close physical proximity to the device. Configuring the Samsung Android 7 with Knox to not send notifications to the lock screen mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #19",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76545",
+      "title": "The Samsung Android 7 with Knox must be configured to enable encryption for information at rest on removable storage media or alternately, the use of removable storage media must be disabled.",
+      "description": "The Samsung Android 7 with Knox must ensure the data being written to the mobile device's removable media is protected from unauthorized access. If data at rest is unencrypted, it is vulnerable to disclosure. Even if the operating system enforces permissions on data access, an adversary can read removable media directly, thereby circumventing operating system controls. Encrypting the data ensures confidentiality is protected even when the operating system is not running.\n\nSFR ID: FMT_SMF_EXT.1.1 #21, #47f",
+      "severity": "high"
+    },
+    {
+      "id": "V-76547",
+      "title": "The Samsung Android 7 with Knox must be configured to disable authentication mechanisms providing user access to protected data other than a Password Authentication Factor and fingerprint authentication. Disable Trust Agents.",
+      "description": "Trust Agents allows a user to unlock a mobile device without entering a passcode when the mobile device is, for example, connected to a user selected Bluetooth device or in a user selected location. This technology would allow unauthorized users to have access to DoD sensitive data if compromised. By not permitting the use of non-password authentication mechanisms, users are forced to use passcodes that meet DoD passcode requirements.\n\nSFR ID: FMT_SMF_EXT.1.1 #23, FIA_UAU.5.1",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76549",
+      "title": "The Samsung Android 7 with Knox must be configured to disable developer modes.",
+      "description": "Developer modes expose features of the Samsung Android 7 with Knox that are not available during standard operation. An adversary may leverage a vulnerability inherent in a developer mode to compromise the confidentiality, integrity, and availability of DoD-sensitive information. Disabling developer modes mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #26",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76551",
+      "title": "The Samsung Android 7 with Knox must be configured to display the DoD advisory warning message at start-up or each time the user unlocks the device.",
+      "description": "The Samsung Android 7 with Knox is required to display the DoD-approved system use notification message or banner before granting access to the system that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Required banners help ensure that DoD can audit and monitor the activities of mobile device users without legal restriction.\n\nSystem use notification messages can be displayed when individuals first access or unlock the mobile device. The banner shall be implemented as a \"click-through\" banner at device unlock (to the extent permitted by the operating system). A \"click through\" banner prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating “OK.”\n\nThe approved DoD text must be used exactly as required in the KS referenced in DoDI 8500.01. For devices accommodating banners of 1300 characters, the banner text is: \n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. \nBy using this IS (which includes any device attached to this IS), you consent to the following conditions: \n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. \n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n\nFor devices with severe character limitations, the banner text is: \n\nI've read & consent to terms in IS user agreem't.\n\nThe administrator must configure the banner text exactly as written without any changes.\n\nSFR ID: FMT_SMF_EXT.1.1 #36",
+      "severity": "low"
+    },
+    {
+      "id": "V-76553",
+      "title": "The Samsung Android 7 with Knox must be configured to disable USB mass storage mode.",
+      "description": "USB mass storage mode enables the transfer of data and software from one device to another. This software can include malware. When USB mass storage is enabled on a mobile device, it becomes a potential vector for malware and unauthorized data exfiltration. Prohibiting USB mass storage mode mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #39a",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76555",
+      "title": "The Samsung Android 7 with Knox must be configured to not allow backup of [all applications, configuration data] to locally connected systems.",
+      "description": "Data on mobile devices is protected by numerous mechanisms, including user authentication, access control, and cryptography. When the data is backed up to an external system (either locally connected or cloud-based), many if not all of these mechanisms are no longer present. This leaves the backed up data vulnerable to attack. Disabling backup to external systems mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #40",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76557",
+      "title": "The Samsung Android 7 with Knox must be configured to not allow backup of [all applications, configuration data] to remote systems: Deselect Allow Google Backup.",
+      "description": "Backups to remote systems (including cloud backup) can leave data vulnerable to breach on the external systems, which often offer less protection than the Samsung Android 7 with Knox. Where the remote backup involves a cloud-based solution, the backup capability is often used to synchronize data across multiple devices. In this case, DoD devices may synchronize DoD-sensitive information to a user's personal device or other unauthorized computers that are vulnerable to breach. Disallowing remote backup mitigates this risk. Google Backup is a device wide control and, if enabled, will backup both personal and Knox data to personal Google cloud storage accounts.\n\nSFR ID: FMT_SMF_EXT.1.1 #40",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76559",
+      "title": "The Samsung Android 7 with Knox must be configured to not allow backup of [all applications, configuration data] to remote systems: Disable Allow Google Accounts Auto Sync.",
+      "description": "Backups to remote systems (including cloud backup) can leave data vulnerable to breach on the external systems, which often offer less protection than the Samsung Android 7 with Knox. Where the remote backup involves a cloud-based solution, the backup capability is often used to synchronize data across multiple devices. In this case, DoD devices may synchronize DoD-sensitive information to a user's personal device or other unauthorized computers that are vulnerable to breach. Disallowing remote backup mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #40",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76561",
+      "title": "The Samsung Android 7 with Knox must be configured to enable authentication of personal hotspot connections to the device using a preshared key.",
+      "description": "If there is no authentication required to establish personal hotspot connections, an adversary may be able to use that device to perform attacks on other devices or networks without detection. A sophisticated adversary may also be able to exploit unknown system vulnerabilities to access information and computing resources on the device. Requiring authentication to establish personal hotspot connections mitigates this risk.\n\nApplication note: If hotspot functionality is permitted, it must be authenticated via a preshared key. There is no requirement to enable hotspot functionality.\n\nSFR ID: FMT_SMF_EXT.1.1 #41a",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76563",
+      "title": "The Samsung Android 7 with Knox must be configured to disable exceptions to the access control policy that prevents groups of application processes from accessing all data stored by other groups of application processes.",
+      "description": "App data sharing gives apps the ability to access the data of other apps for enhanced user functionality. However, sharing also poses a significant risk that unauthorized users or apps will obtain access to DoD-sensitive information. To mitigate this risk, there are data sharing restrictions. If a user is allowed to make exceptions to the data sharing restriction policy, the user could enable unauthorized sharing of data, leaving it vulnerable to breach. Limiting the granting of exceptions to either the administrator or common application developer mitigates this risk.\n\nCopy/paste of data between applications in different application processes or groups of application processes is considered an exception to the access control policy and therefore, the Administrator must be able to enable/disable the feature. Other exceptions include allowing any data or application sharing between process groups.\n\nSFR ID: FMT_SMF_EXT.1.1 #42, FDP_ACF_EXT.1.2",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76565",
+      "title": "The Samsung Android 7 with Knox must be configured to disable automatic transfer of diagnostic data to an external device other than an MDM service with which the device has enrolled. Disable Google Crash Report.",
+      "description": "Many software systems automatically send diagnostic data to the manufacturer or a third-party. This data enables the developers to understand real-world field behavior and improve the product based on that information. Unfortunately, it can also reveal information about what DoD users are doing with the systems and what causes them to fail. An adversary embedded within the software development team or elsewhere could use the information acquired to breach Samsung Android 7 with Knox security. Disabling automatic transfer of such information mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1#47a",
+      "severity": "low"
+    },
+    {
+      "id": "V-76567",
+      "title": "The Samsung Android 7 with Knox must be configured to disable automatic transfer of diagnostic data to an external device other than an MDM service with which the device has enrolled. Disable Report Diagnostic Info.",
+      "description": "Many software systems automatically send diagnostic data to the manufacturer or a third-party. This data enables the developers to understand real-world field behavior and improve the product based on that information. Unfortunately, it can also reveal information about what DoD users are doing with the systems and what causes them to fail. An adversary embedded within the software development team or elsewhere could use the information acquired to breach Samsung Android 7 with Knox security. Disabling automatic transfer of such information mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1#47a",
+      "severity": "low"
+    },
+    {
+      "id": "V-76569",
+      "title": "The Samsung Android 7 with Knox must be configured to disable multi-user modes.",
+      "description": "Multi-user mode allows multiple users to share a mobile device by providing a degree of separation between user data. To date, no mobile device with multi-user mode features meets DoD requirements for access control, data separation, and non-repudiation for user accounts. In addition, the MDFPP does not include design requirements for multi-user account services. Disabling multi-user mode mitigates the risk of not meeting DoD multi-user account security policies.\n\nSFR ID: FMT_SMF_EXT.1.1 #47b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76571",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Enable CC mode.",
+      "description": "CC mode implements several security controls required by the Mobile Device Functional Protection Profile (MDFPP). If CC mode is not implemented, DoD data is more at risk of being compromised, and the mobile device is more at risk of being compromised if lost or stolen.\n\nCC mode implements the following controls:\n- enables the OpenSSL FIPS crypto library\n- sets the password failure settings to wipe the device to 5 (5 failed consecutive attempts will wipe the device)\n- disables ODIN mode (download mode)\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76573",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Install DoD root and intermediate PKI certificates on the device.",
+      "description": "DoD root and intermediate PKI certificates are used to verify the authenticity of PKI certificates of users and web services. If the root and intermediate certificates are not available, an adversary could falsely sign a certificate in such a way that it could not be detected. Providing access to the DoD root and intermediate PKI certificates greatly diminishes the risk of this attack.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76575",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Disable Allow New Admin Install.",
+      "description": "An application with administrator permissions (e.g., MDM agent) is allowed to configure policies on the device. If a user is allowed to install another MDM agent on the device, then this will allow another MDM administrator (assuming it has the proper Knox licenses) the ability to configure potentially conflicting policies on the device that may not meet DoD security requirements. Although an MDM cannot disable another MDM's policies or remove another MDM from the device, there is the potential of creating policies that could conflict with enterprise policies. Therefore, other applications requesting administrator permissions should be blocked from installation.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76577",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Configure application install blacklist.",
+      "description": "Blacklisting all applications is required so that only whitelisted applications can be installed on the device. Requiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist and blacklist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76581",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Disable USB host storage.",
+      "description": "The USB host storage feature allows the device to connect to select USB devices (e.g., USB flash drives, USB mouse, USB keyboard) using a micro USB to USB adapter cable. A user can copy sensitive DoD information to external USB storage unencrypted, resulting in compromise of DoD data. Disabling this feature mitigates the risk of compromising sensitive DoD data. USB host storage is automatically disabled in the Knox container.\n\nNote: USB host storage must be enabled in the personal space/container in order to use the DeX Station.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76583",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Disable S Voice.",
+      "description": "On Samsung Android 7 with Knox devices, users may be able to access the device's contact database or calendar to obtain phone numbers and other information using a human voice even when the mobile device is locked. Often this information is personally identifiable information (PII), which is considered sensitive. It could also be used by an adversary to profile the user or engage in social engineering to obtain further information from other unsuspecting users. Disabling access to the contact database and calendar in these situations mitigates the risk of this attack. The Authorizing Official (AO) may waive this requirement with written notice if the operational environment requires this capability.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76585",
+      "title": "The Samsung Android 7 with Knox must be configured to implement the management setting: Enable Container.",
+      "description": "The container must be enabled by the administrator/MDM or the container's protections will not apply to the mobile device. This will cause the mobile device's apps and data to be at significantly higher risk of compromise because they are not protected by encryption, isolation, etc.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76587",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Disable Admin Remove.",
+      "description": "DoD policy requires DoD mobile devices to be managed via a mobile device management service. If Admin Remove is not disabled the mobile device user can remove the administrator (MDM) from the device.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76589",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Enable Certificate Revocation Status (CRL) Check.",
+      "description": "A CRL allows a certificate issuer to revoke a certificate for any reason, including improperly issued certificates and compromise of the private keys. Checking the revocation status of the certificate mitigates the risk associated with using a compromised certificate.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76591",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Disable Manual Date Time Changes.",
+      "description": "Determining the correct time a particular application event occurred on a system is critical when conducting forensic analysis and investigating system events. \n\nPeriodically synchronizing internal clocks with an authoritative time source is needed in order to correctly correlate the timing of events that occur across the enterprise. The three authoritative time sources for Samsung Android 7 with Knox are an authoritative time server that is synchronized with redundant United States Naval Observatory (USNO) time servers as designated for the appropriate DoD network (NIPRNet or SIPRNet), or the Global Positioning System (GPS), or the wireless carrier.\n\nTime stamps generated by the audit system in Samsung Android 7 with Knox must include both date and time. The time may be expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76593",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Disable Move Files from Container to Personal.",
+      "description": "Allowing movement of files between the container and personal side will result in both personal data and sensitive DoD data being placed in the same space. This can potentially result in DoD data being transmitted to unauthorized recipients via personal email accounts or social applications, or transmission of malicious files to DoD accounts. Disabling this feature mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76595",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Container Account whitelist.",
+      "description": "Whitelisting of authorized email accounts (POP3, IMAP, EAS) prevents a user from configuring a personal email account that could be used to forward sensitive DoD data to unauthorized recipients.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76597",
+      "title": "The Samsung DeX Station multimedia dock must not be connected directly to a DoD network.",
+      "description": "If the Samsung DeX Station multimedia dock is connected to a DoD network, the Samsung smartphone connected to the DeX Station will be connected to the DoD network as well. The Samsung smartphone most likely has a number of personal apps installed that may include malware or have high risk behaviors (for example, off load data from the phone to third-party servers outside the United States). In addition, Smartphones do not generally meet security requirements for computer devices to connect directly to DD networks.\n\nNote: The Samsung DeX Station will not work unless \"USB host storage\" is enabled (see requirement KNOX-07-012600 for more information).\n\nSFR ID: FMT_MOF_EXT.1.2 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76599",
+      "title": "The Samsung Android 7 with Knox VPN client must be configured in one of the following configurations: 1. Disabled 2. Configured for container use only. 3. Configured for per app use for the personal side.",
+      "description": "The device VPN must be configured to disable access from the personal space/container since it is considered an untrusted environment. Therefore, apps located in the personal container on the device should not have the ability to access a DoD network. In addition, Smartphones do not generally meet security requirements for computer devices to connect directly to DoD networks.\n\nSFR ID: FMT_SMF_EXT.1.1 #3",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76601",
+      "title": "The Samsung Android 7 with Knox VPN client must be configured in one of the following configurations: 1. Disabled 2. Configured for container use only 3. Configured for per app use for the personal side",
+      "description": "The device VPN must be configured to disable access from the personal space/container since it is considered an untrusted environment. Therefore, apps located in the personal container on the device should not have the ability to access a DoD network. In addition, Smartphones do not generally meet security requirements for computer devices to connect directly to DoD networks.\n\nSFR ID: FMT_SMF_EXT.1.1 #3",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76603",
+      "title": "The Samsung Android 7 with Knox VPN client must be configured in one of the following configurations: 1. Disabled 2. Configured for container use only. 3. Configured for per app use for the personal side.",
+      "description": "The device VPN must be configured to disable access from the personal space/container since it is considered an untrusted environment. Therefore, apps located in the personal container on the device should not have the ability to access a DoD network. In addition, Smartphones do not generally meet security requirements for computer devices to connect directly to DoD networks.\n\nSFR ID: FMT_SMF_EXT.1.1 #3",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76605",
+      "title": "If a third-party VPN client is installed in the personal space/container, it must not be configured with a DoD network (work) VPN profile.",
+      "description": "The device VPN must be configured to disable access from the personal space/container since it is considered an untrusted environment. Therefore, apps located in the personal container on the device should not have the ability to access a DoD network. In addition, Smartphones do not generally meet security requirements for computer devices to connect directly to DoD networks.\n\nSFR ID: FMT_SMF_EXT.1.1 #3",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76607",
+      "title": "The Samsung Android 7 with Knox must be configured to disable Phone Visibility.",
+      "description": "Phone Visibility feature allows other devices to find your phone (Galaxy S8) and transfer files. Your phone will appear in the list of available devices when files are transferred via Transfer files to devices.\n\nThis feature can potentially result in unauthorized access to and compromise of sensitive DoD files. Disabling this feature will mitigate this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76609",
+      "title": "The Samsung Android 7 with Knox must be configured to disable authentication mechanisms providing user access to protected data other than a Password Authentication Factor. Disable Face Recognition.",
+      "description": "The Face Recognition feature allows users face to be registered and used to unlock the device. This technology would allow unauthorized users to have access to DoD sensitive data if compromised. By not permitting the use of non-password authentication mechanisms, users are forced to use passcodes that meet DoD passcode requirements.\n\nSFR ID: FMT_SMF_EXT.1.1 #23, FIA_UAU.5.1",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76611",
+      "title": "The Samsung Android 7 with Knox must be configured to disable authentication mechanisms providing user access to protected data other than a Password Authentication Factor. Disable Iris Scanner.",
+      "description": "The Iris Scanner allows a user to unlock a mobile device without entering a passcode when a registered user Iris is recognized. This technology would allow unauthorized users to have access to DoD sensitive data if compromised. By not permitting the use of non-password authentication mechanisms, users are forced to use passcodes that meet DoD passcode requirements.\n\nSFR ID: FMT_SMF_EXT.1.1 #23, FIA_UAU.5.1",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76613",
+      "title": "The Samsung Android 7 with Knox must be configured to Disable Bixby.",
+      "description": "On MOS devices, unauthorized users (may be able to) access the device's contact database or calendar to obtain phone numbers and other information using a human voice even when the mobile device is locked. Often this information is personally identifiable information (PII), which is considered sensitive. It could also be used by an adversary to profile the user or engage in social engineering to obtain further information from other unsuspecting users.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "low"
+    },
+    {
+      "id": "V-76615",
+      "title": "The Samsung Android 7 with Knox must be configured to Disable Smart Call.",
+      "description": "Smart Call feature provides Caller ID and spam protection. It lets the user know who is calling even when the number is not on the user's contact list by using an online service to do the lookup. Users can also upload their name and number into the online service.\n\nThis could allow potentially DoD-sensitive data such as names and telephone number to be compromised.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "low"
+    },
+    {
+      "id": "V-76617",
+      "title": "The Samsung Android 7 with Knox must be configured to Add the MDM Client application to the Battery optimizations modes Whitelist.",
+      "description": "Doze and App Standby are power-saving features that extend battery life by deferring background CPU and network activity.\n\nIf the MDM Client is put into Doze or App Standby mode, the MDM Administrator may not be able to administer the MDM.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "low"
+    },
+    {
+      "id": "V-76619",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Configure application disable list.",
+      "description": "Applications from various sources (including the vendor, the carrier, and Google) are installed on the device at the time of manufacture. Core apps are apps preinstalled by Google. Third-party preinstalled apps included apps from the vendor and carrier. Some of the applications can compromise DoD data or upload users' information to non-DoD-approved servers. A user must be blocked from using such applications that exhibit behavior that can result in compromise of DoD data or DoD user information. The site administrator must analyze all pre-installed applications on the device and block all applications not approved for DoD use by configuring the application disable list.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76621",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Configure minimum password complexity.",
+      "description": "Password strength is a measure of the effectiveness of a password in resisting guessing and brute force attacks. The ability to crack a password is a function of how many attempts an adversary is permitted, how quickly an adversary can do each attempt, and the size of the password space. A minimum level of complexity is needed to ensure a simple password or easily guessed password is not used. \n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76623",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Enable Audit Log.",
+      "description": "Audit logs enable monitoring of security-relevant events and subsequent forensics when breaches occur. They help identify attacks, so that breaches can either be prevented or limited in their scope. They facilitate analysis to improve performance and security. The Requirement Statement lists key events that the system must generate an audit record for.\n\nSFR ID: FAU_GEN.1.1 #8",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76625",
+      "title": "The Samsung Android 7 with Knox must use a NIAP certified container for work data and applications.",
+      "description": "When a DoD mobile device contains apps in the personal container that have not been vetted by the DoD for malware or risky behaviors, the personal container must be considered an untrusted environment. Therefore the data separation implementation between the personal data container and the work container must meet the requirements of Mobile Device Fundamentals Protection Profile (FDP_ACF_EXT.1.2) to insure sensitive DoD data in the work container is adequately separated.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "high"
+    },
+    {
+      "id": "V-76627",
+      "title": "Samsung Android 7 mobile device users must complete required training.",
+      "description": "The security posture of Samsung devices requires the device user to configure several required policy rules on their device. User Based Enforcement (UBE) is required for these controls. In addition, if the AO has approved the use of an unmanaged personal container, than the user must receive training on risks. If a user is not aware of their responsibilities and does not comply with UBE requirements, the security posture of the Samsung mobile device may become compromised and DoD sensitive data may become compromised.\n\nSFR ID: NA",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76629",
+      "title": "The Samsung Android 7 with Knox platform must implement the management setting Disable Nearby devices.",
+      "description": "The Nearby devices feature allows the user to share files with other devices that are connected on the same WiFi access point using the DLNA technology. Even though the user must allow requests from other devices, this feature can potentially result in unauthorized access to and compromise of sensitive DoD files. Disabling this feature will mitigate this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76631",
+      "title": "The Samsung Android 7 with Knox platform must implement the management setting: Disable Samsung WiFi Sharing.",
+      "description": "WiFi Tethering allows a device to act as an Access Point sharing its data connection with other wirelessly connected devices. Previously the device could only share its Mobile (Cellular) data connection. On the Device menus this is referred to as \"Mobile Hotspot\". The new feature is an optional configuration of WiFi Tethering/Mobile Hotspot, which allows the Device to share its WiFi connection with other wirelessly connected devices, instead of its Mobile (Cellular) connection.\n\nWiFi sharing grants the \"other\" device access to a corporate WiFi network, and may possibly bypass the network access control mechanisms. This risk can be partially mitigated by requiring the use of a pre-shared key for personal hotspots.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76633",
+      "title": "The Samsung Android 7 with Knox must be configured to not allow Container passwords that include more than two repeating or sequential characters.",
+      "description": "Password strength is a measure of the effectiveness of a password in resisting guessing and brute force attacks. Passwords that contain repeating or sequential characters are significantly easier to guess than those that do not contain repeating or sequential characters. Therefore, disallowing repeating or sequential characters increases password strength and decreases risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #1b",
+      "severity": "low"
+    },
+    {
+      "id": "V-76635",
+      "title": "The Samsung Android 7 with Knox must be configured to enforce a Container application installation policy by specifying an application whitelist that restricts applications by the following characteristics list of digital signatures, names.",
+      "description": "The application whitelist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core and preinstalled applications or the MD must provide an alternate method of restricting user access/execution to core and pre-installed applications. Core application - any application integrated into the operating system (OS) by the OS or mobile device (MD) vendors. Pre-installed application - additional non-core applications included in the OS build by the OS vendor, MD vendor, or wireless carrier.\n\nRequiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications.\n\nThe application whitelist, in addition to controlling the installation of applications on the MD, must control user access/execution of all core applications (included in the operating system (OS) by the OS vendor) and pre-installed applications (provided by the MD vendor and wireless carrier), or the MD must provide an alternate method of restricting user access/execution to core and pre-installed applications.\n\nSFR ID: FMT_SMF_EXT.1.1 #8b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76637",
+      "title": "The Samsung Android 7 with Knox must be configured to lock the container after 15 minutes (or less) of inactivity.",
+      "description": "The screen lock timeout must be set to a value that helps protect the device from unauthorized access. Having a too-long timeout would increase the window of opportunity for adversaries who gain physical access to the mobile device through loss, theft, etc. Such devices are much more likely to be in an unlocked state when acquired by an adversary, thus granting immediate access to the data on the mobile device. The maximum timeout period of 15 minutes has been selected to balance functionality and security; shorter timeout periods may be appropriate, depending on the risks posed to the mobile device.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76639",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Configure to enforce a minimum Container password length of 4 characters.",
+      "description": "Password strength is a measure of the effectiveness of a password in resisting guessing and brute-force attacks. The ability to crack a password is a function of how many attempts an adversary is permitted, how quickly an adversary can do each attempt, and the size of the password space. The longer the minimum length of the password is, the larger the password space. Having a too-short minimum password length significantly reduces password strength, increasing the chance of password compromise and resulting device and data compromise.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76641",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Disable sharing of calendar information outside the Container.",
+      "description": "Calendar events can include potentially DoD-sensitive data such as names, contacts, dates and times, and locations. If made available outside the container, this information will be accessible to personal applications, resulting in potential compromise of DoD data.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76643",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Configure to prohibit more than 10 consecutive failed Container authentication attempts.",
+      "description": "Users must not be able to override the system policy on the maximum number of consecutive failed authentication attempts because this could allow them to raise the maximum, thus giving adversaries more chances to guess/brute force passwords, which increases the risk of the mobile device being compromised. Therefore, only administrators should have the authority to set consecutive failed authentication attempt policies.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "low"
+    },
+    {
+      "id": "V-76645",
+      "title": "The Samsung Android 7 with Knox must be configured to disable sharing of contact information outside the Container.",
+      "description": "Contacts can include DoD-sensitive data and personally identifiable information (PII) of DoD employees, including names, numbers, addresses, and email addresses. If made available outside the container, this information will be accessible to personal applications, resulting in potential compromise of DoD data.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76647",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Disable sharing of notification details outside the Container when the container is locked.",
+      "description": "Application notifications can include DoD sensitive data. If made available outside the container, this information will be accessible to personal applications, resulting in potential compromise of DoD data.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76649",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Configure Container application install blacklist.",
+      "description": "Blacklisting all applications is required so only whitelisted applications can be installed on the device. Requiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist and blacklist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76651",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Disable Move Applications to Container.",
+      "description": "Applications determined to be acceptable for personal use outside the container might not be acceptable for use within the container. The Move Applications to Container feature allows users to install personal side applications into the container, resulting in potential compromise of DoD data. Disabling this feature mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76653",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Configure Container application disable list.",
+      "description": "Applications from various sources (including the vendor, the carrier, and Google) are installed on the device at the time of manufacture. Core apps are apps preinstalled by Google. Third-party preinstalled apps included apps from the vendor and carrier. Some of the applications can compromise DoD data or upload users' information to non-DoD-approved servers. A user must be blocked from using such applications that exhibit behavior that can result in compromise of DoD data or DoD user information. The site administrator must analyze all pre-installed applications on the device and block all applications not approved for DoD use by configuring the application disable list.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76655",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Disable automatic completion of Container browser text input.",
+      "description": "The auto-fill functionality in the web browser allows the user to complete a form that contains sensitive information, such as personally identifiable information (PII), without previous knowledge of the information. By allowing the use of auto-fill functionality, an adversary who learns a user's Samsung Android 7 with Knox device password, or who otherwise is able to unlock the device, may be able to further breach other systems by relying on the auto-fill feature to provide information unknown to the adversary. By disabling the auto-fill functionality, the risk of an adversary gaining further information about the device's user or compromising other systems is significantly mitigated.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76657",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Container Account blacklist.",
+      "description": "Blacklisting all email accounts is required so only whitelisted accounts can be configured.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-76659",
+      "title": "The Samsung Android 7 with Knox must implement the management setting: Configure minimum Container password complexity.",
+      "description": "Authentication mechanisms other than a Password Authentication Factor often provide convenience to users, but many of these mechanisms have known vulnerabilities. Configuring a minimum password complexity mitigates the risk associated with a weak authentication factor.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "stig_microsoft_skypebusiness_2016",
+  "date": "2016-12-21",
+  "description": "The Microsoft Skype for Business 2016 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "Microsoft Skype for Business 2016 STIG",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-70901",
+      "title": "The ability of Lync to store user passwords must be disabled.",
+      "description": "Skype for Business 2016 provides a single, unified client for real-time communications, including voice and video calls, Lync Meetings, presence, instant messaging, and persistent chat. These features require the ability to log into the service with a username and password. The Lync client could potentially be configured to store user passwords locally which would allow it to be susceptible to compromise and to be used maliciously.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-70903",
+      "title": "Session Initiation Protocol (SIP) security mode must be configured.",
+      "description": "Skype for Business 2016 provides a single, unified client for real-time communications, including voice and video calls, Lync Meetings, presence, instant messaging, and persistent chat, using the Session Initiation Protocol (SIP). SIP is widely used for controlling multimedia communication sessions, such as voice and video calls over Internet Protocol (IP) networks. By using TLS it would render a sniff/man in the middle attack very difficult to impossible to achieve within the time period in which a given conversation could be attacked. TLS authenticates all parties and encrypts all traffic. This does not prevent listening over the wire, but the attacker cannot read the traffic unless the encryption is broken.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-70905",
+      "title": "In the event a secure Session Initiation Protocol (SIP) connection fails, the connection must be restricted from resorting to the unencrypted HTTP.",
+      "description": "Skype for Business 2016 provides a single, unified client for real-time communications, including voice and video calls, Lync Meetings, presence, instant messaging, and persistent chat. The Lync client has a fall back option so that, in the event the Lync client cannot make a secure SIP connection to the Lync server, it will fall back to an unencrypted HTTP connection. In that event, all traffic will be unencrypted and in clear text. The configuration must be set to prevent HTTP being used for SIP connections in the event TLS or TCP fail.",
+      "severity": "medium"
+    }
+  ]
+}

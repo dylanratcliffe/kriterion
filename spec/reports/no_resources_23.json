@@ -718,7 +718,7 @@
       ],
       "evaluation_time": 0.096994052,
       "tags": [
-        "red_hat_enterprise_linux_7",
+        "stig_red_hat_enterprise_linux_7",
         "v-71969",
         "package",
         "ypserv",
@@ -759,7 +759,7 @@
       ],
       "evaluation_time": 0.078919809,
       "tags": [
-        "red_hat_enterprise_linux_7",
+        "stig_red_hat_enterprise_linux_7",
         "v-72301",
         "package",
         "tftp-server",
@@ -800,7 +800,7 @@
       ],
       "evaluation_time": 0.09941091,
       "tags": [
-        "red_hat_enterprise_linux_7",
+        "stig_red_hat_enterprise_linux_7",
         "v-71967",
         "package",
         "rsh-server",
@@ -841,7 +841,7 @@
       ],
       "evaluation_time": 0.104210706,
       "tags": [
-        "red_hat_enterprise_linux_7",
+        "stig_red_hat_enterprise_linux_7",
         "v-72299",
         "package",
         "vsftpd",
@@ -882,7 +882,7 @@
       ],
       "evaluation_time": 0.084759865,
       "tags": [
-        "red_hat_enterprise_linux_7",
+        "stig_red_hat_enterprise_linux_7",
         "v-72077",
         "package",
         "telnet-server",

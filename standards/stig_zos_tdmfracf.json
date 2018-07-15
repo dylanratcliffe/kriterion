@@ -1,0 +1,23 @@
+{
+  "name": "stig_zos_tdmfracf",
+  "date": "2015-01-15",
+  "description": "None",
+  "title": "z/OS TDMF for RACF STIG",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-16932",
+      "title": "Transparent Data Migration Facility (TDMF) installation data sets will be not properly protected.",
+      "description": "Transparent Data Migration Facility (TDMF) installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18014",
+      "title": "Transparent Data Migration Facility (TDMF) configuration/parameter/option values are not specified properly.",
+      "description": "Transparent Data Migration Facility (TDMF) configuration/parameter/option settings control the security and operational characteristics of product.  If these setting values are improperly specified, security and operational controls may be weakened.  This exposure may threaten the availability of the product applications, and compromise the confidentiality of system and customer data.",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "name": "stig_dbn-6300_idps",
+  "date": "2017-09-15",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "DBN-6300 IDPS Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-64977",
+      "title": "To help detect unauthorized data mining, the DBN-6300 must detect code injection attacks launched against data storage objects, including, at a minimum, databases, database records, queries, and fields.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to detect attacks that use unauthorized data mining techniques to attack databases may result in the compromise of information.\n\nSQL Injection attacks allow an attacker to inject code into a program or query or inject malware onto a computer to execute remote commands that can read or modify a database, or change data on a website. Web applications frequently access databases to store, retrieve, and update information. An attacker can construct inputs that the database will execute. This is most commonly referred to as a SQL injection attack. \n\nIDPS component(s) with the capability to detect code injections must be included in the IDPS implementation to detect unauthorized data mining. These components must include behavior-based anomaly detection algorithms to monitor for atypical database queries or accesses.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-64999",
+      "title": "In the event of a logging failure, caused by loss of communications with the central logging server, the DBN-6300 must queue audit records locally until communication is restored or until the audit records are retrieved manually or using automated synchronization tools.",
+      "description": "It is critical that when the IDPS is at risk of failing to process audit logs as required, it take action to mitigate the failure. \n \nAudit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded. Responses to audit failure depend upon the nature of the failure. \n \nThe DBN-6300 performs a critical security function; therefore, its continued operation is imperative. Since availability of the DBN-6300 is an overriding concern, shutting down the system in the event of an audit failure should be avoided, except as a last resort. The SYSLOG protocol does not support automated synchronization; however, this functionality may be provided by Network Management Systems (NMSs), which are not within the scope of this STIG.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65001",
+      "title": "In the event of a logging failure caused by the lack of log record storage capacity, the DBN-6300 must continue generating and storing audit records if possible, overwriting the oldest audit records in a first-in-first-out manner.",
+      "description": "It is critical that when the IDPS is at risk of failing to process audit logs as required, it takes action to mitigate the failure. \n \nThe DBN-6300 performs a critical security function, so its continued operation is imperative. Since availability of the IDPS is an overriding concern, shutting down the system in the event of an audit failure should be avoided, except as a last resort.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65003",
+      "title": "The DBN-6300 must generate log events for detection events based on anomaly analysis.",
+      "description": "Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n \nWhile auditing and logging are closely related, they are not the same. Logging is recording data about events that take place in a system, while auditing is the use of log records to identify security-relevant information such as system or user accesses. In short, log records are audited to establish an accurate history. Without logging, it would be impossible to establish an audit trail. \n \nThe IDPS must have the capability to capture and log detected security violations and potential security violations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65005",
+      "title": "The DBN-6300 must install system updates when new releases are available in accordance with organizational configuration management policy and procedures.",
+      "description": "Failing to update malicious code protection mechanisms, including application software files, signature definitions, and vendor-provided rules, leaves the system vulnerable to exploitation by recently developed attack methods and programs. \n \nThe IDPS is a key malicious code protection mechanism in the enclave infrastructure. To ensure this protection is responsive to changes in malicious code threats, IDPS components must be updated, including application software files, anti-virus signatures, detection heuristics, vendor-provided rules, and vendor-provided signatures. \n \nUpdates must be installed in accordance with the CCB procedures for the local organization. However, at a minimum:  \n \n1. Updates designated as critical security updates by the vendor must be installed immediately.  \n \n2. Updates for signature definitions, detection heuristics, and vendor-provided rules must be installed immediately. \n \n3. Updates for application software must be installed in accordance with the CCB procedures. \n \n4. Prior to automatically installing updates, either manual or automated integrity and authentication checking is required, at a minimum, for application software updates.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65007",
+      "title": "To protect against unauthorized data mining, the DBN-6300 must monitor for and detect SQL injection attacks launched against data storage objects, including, at a minimum, databases, database records, and database fields.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to detect attacks that use unauthorized data mining techniques to attack databases may result in the compromise of information.\n\nThe DBN-6300 is a passive listening device, and operates only as a detector, inspecting database traffic from a mirrored/SPAN port or tap for the purpose of analyzing every SQL statement visible on that network segment, and is therefore not in a position to block the flow of network traffic.  Any blocking will be performed by a different device on the network based on the analysis provided by the DBN-6300.  Protection against attacks launched against data storage objects, databases, database records and database fields will be managed by other devices, potentially based on information provided by the IDPS-6300.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65009",
+      "title": "To protect against unauthorized data mining, the DBN-6300 must detect SQL code injection attacks launched against data storage objects, including, at a minimum, databases, database records, queries, and fields.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to detect attacks that use unauthorized data mining techniques to attack databases may result in the compromise of information.\n\nInjection attacks allow an attacker to inject code into a program or query or inject malware onto a computer to execute remote commands that can read or modify a database or change data on a website. Web applications frequently access databases to store, retrieve, and update information. An attacker can construct inputs that the database will execute. This is most commonly referred to as a code injection attack. This type of attack includes XPath and LDAP injections. \n\nIDPS component(s) with anomaly detection must be included in the IDPS implementation to protect against unauthorized data mining. These components must include rules and anomaly detection algorithms to monitor for atypical database queries or accesses.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65011",
+      "title": "To protect against unauthorized data mining, the DBN-6300 must detect code injection attacks launched against application objects including, at a minimum, application URLs and application code/input fields.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to detect attacks that use unauthorized data mining techniques to attack applications may result in the compromise of information. \n \nInjection attacks allow an attacker to inject SQL code into a program or query or inject malware onto a computer to execute remote commands that can read or modify a database or change data on a website. \n \nIDPS component(s) with anomaly detection must be included in the IDPS implementation. These components must include behavior-based anomaly detection algorithms to monitor for atypical application behavior, which may include commands and accesses.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65013",
+      "title": "To protect against unauthorized data mining, the DBN-6300 must detect SQL injection attacks launched against data storage objects, including, at a minimum, databases, database records, and database fields.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to detect attacks that use unauthorized data mining techniques to attack databases may result in the compromise of information. \n \nSQL injection attacks are the most prevalent attacks against web applications and databases. These attacks inject SQL commands that can read, modify, or compromise the meaning of the original SQL query. An attacker can spoof identity; expose, tamper, destroy, or make existing data unavailable; or gain unauthorized privileges on the database server. \n \nIDPS component(s) with anomaly detection must be included in the IDPS implementation to monitor for and detect unauthorized data mining. These components must include rules and anomaly detection algorithms to monitor for SQL injection attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65015",
+      "title": "The DBN-6300 must support centralized management and configuration of the content captured in audit records generated by all DBN-6300 components.",
+      "description": "Without the ability to centrally manage the content captured in the log records, identification, troubleshooting, and correlation of suspicious behavior would be difficult and could lead to a delayed or incomplete analysis of an attack. Centralized management and storage of log records increases efficiency in maintenance and management of records and facilitates the backup and archiving of those records. \n \nThe IDPS must be configured to support centralized management and configuration of the content to be captured in audit records generated by all network components. IDPS sensors and consoles must have the capability to support centralized logging. They must be configured to send log messages to centralized, redundant servers and be capable of being remotely configured to change logging parameters (such as facility and severity levels). \n \nDB Networks can (and does) use Splunk as the current Security Operations Center (SOC) alert notification mechanism, which is driven off the syslog on the DB Networks DBN-6300.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65017",
+      "title": "The DBN-6300 must off-load log records to a centralized log server.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration. Off-loading ensures audit information does not get overwritten if the limited audit storage capacity is reached and also protects the audit record in case the system/component being audited is compromised. \n \nThis also prevents the log records from being lost if the logs stored locally are accidentally or intentionally deleted, altered, or corrupted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65019",
+      "title": "The DBN-6300 must integrate with a network-wide monitoring capability.",
+      "description": "An integrated, network-wide intrusion detection capability increases the ability to detect and prevent sophisticated distributed attacks based on access patterns and characteristics of access. \n \nIntegration is more than centralized logging and a centralized management console. The enclave's monitoring capability may include multiple sensors, IPS, sensor event databases, behavior-based monitoring devices, application-level content inspection systems, malicious code protection software, scanning tools, audit record monitoring software, and network monitoring software. Some tools may monitor external traffic while others monitor internal traffic at key boundaries.  \n \nThese capabilities may be implemented using different devices and therefore can have different security policies and severity-level schema. This is valuable because content filtering, monitoring, and prevention can become a bottleneck on the network if not carefully configured.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65021",
+      "title": "The DBN-6300 must continuously monitor inbound communications traffic between the application tier and the database tier for unusual/unauthorized activities or conditions at the SQL level.",
+      "description": "If inbound communications traffic is not continuously monitored for unusual/unauthorized activities or conditions, there will be times when hostile activity may not be noticed and defended against. \n \nAlthough some of the components in the site's content scanning solution may be used for periodic scanning assessment, the IDPS sensors and other components must provide continuous, 24 hours a day, 7 days a week monitoring. \n \nUnusual/unauthorized activities or conditions related to information system inbound communications traffic include, for example, internal traffic that indicates the presence of malicious code within organizational information systems or propagating among system components, the unauthorized exporting of information, or signaling to external information systems. Anomalies within organizational information systems include, for example, large file transfers, long-time persistent connections, use of unusual protocols and ports, and communications with suspected or known malicious external entities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65023",
+      "title": "The DBN-6300 must off-load log records to a centralized log server in real time.",
+      "description": "Off-loading ensures audit information is not overwritten if the limited audit storage capacity is reached and also protects the audit record in case the system/component being audited is compromised. \n \nOff-loading is a common process in information systems with limited audit storage capacity. The audit storage on the IDPS is used only in a transitory fashion until the system can communicate with the centralized log server designated for storing the audit records, at which point the information is transferred. However, DoD requires that the log be transferred in real time, which indicates that the time from event detection to off-loading is seconds or less. \n \nThis does not apply to audit logs generated on behalf of the device itself (management).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65025",
+      "title": "When implemented for protection of the database tier, the DBN-6300 must be logically connected for maximum database traffic visibility.",
+      "description": "Configuring the IDPS to implement organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoD that reflects the most restrictive security posture consistent with operational requirements. \n \nConfiguration settings are the set of parameters that can be changed that affect the security posture and/or functionality of the network element. Security-related parameters are those parameters impacting the security state of the network element, including the parameters required to satisfy other security control requirements. For the network element, security-related parameters include settings for communications traffic management configurations. If the DBN-6300 is installed incorrectly in the site's network architecture, vulnerable databases may not be detected and consequently may remain unprotected. \n \nTo ensure optimum protection, the DBN-6300 must be logically installed between the application and database tiers of the network. The device has multiple interfaces that allow several connections to accommodate various network architectures. The device is installed as a passive listening device on all applicable subnetworks using the available ports. When placed correctly, the device monitors the \"last mile\" prior to database access, which is where SQL is optimally monitored.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65059",
+      "title": "When implemented for discovery protection against unidentified or rogue databases, the DBN-6300 must provide a catalog of all visible databases and database services.",
+      "description": "If the DBN-6300 is installed incorrectly in the site's network architecture, vulnerable or unknown databases may not be detected and consequently may remain vulnerable and unprotected. \n \nFor proper functionality of the DBN-6300, it is necessary to examine the discovered databases to see that an expected wide variety and number of them are covered. If the DBN-6300 is not able to see and detect database services, it will not be able to monitor the databases against threats.",
+      "severity": "medium"
+    }
+  ]
+}

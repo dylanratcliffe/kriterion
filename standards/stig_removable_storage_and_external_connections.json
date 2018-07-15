@@ -1,0 +1,137 @@
+{
+  "name": "stig_removable_storage_and_external_connections",
+  "date": "2017-09-25",
+  "description": "None",
+  "title": "Removable Storage and External Connections Security Technical Implementation Guide",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-22110",
+      "title": "Require approval prior to allowing use of portable storage devices.",
+      "description": "Use of unapproved devices to process non-publicly releasable data increases the risk to the network.  Devices attached to or inserted into the end point's plug-and-play ports and slots can be a vector for the insertion of malware when used to access the network.  Storage devices are portable and can be easily concealed. Devices with volatile memory (erased when not connected) may contain internal batteries that also pose a threat to attached systems.  Requiring approval prior to use of these devices heightens awareness of the threat, limits the potential use of contaminated devices, and allows for proper tracking and control. Designated Approval Authority (DAA) approval of flash memory devices is required by the United States Cyber Command (USCYBERCOM) Communications Task Order (CTO) 10-084 Removable Flash Media Device Implementation within and between Department of Defense (DoD) Networks (U/FOUO) (or latest version of this CTO).  ",
+      "severity": "high"
+    },
+    {
+      "id": "V-22111",
+      "title": "Access to mobile and removable storage devices such as USB thumb drives and external hard disk drives will be protected by password, PIN, or passphrase.",
+      "description": "If USB media and devices are not protected by strong access control techniques, unauthorized access may put sensitive data at risk. Data-at-rest encryption products will be configured to require a user-chosen PIN prior to unencrypting the drive. Users must choose a strong PIN.  Implementation of access control on persistent memory devices helps to ensure that sensitive information is accessed only by authorized and authenticated individuals.\n\nFurther policy details:\n\nIn accordance with the DoD data-at-rest (DAR) policy, access control is required to protect data not approved for public release.  The DoD Enterprise Software Initiative (ESI) blanket purchase agreements program requires all products support encryption and a FIPS 140-2 password, PIN, or passphrase.\n\nAccess control can be implemented using either software or hardware.  The recommended best practice is to purchase devices that include built-in security features, including on-board or hardware encryption, password management, key management, and malware protection. Several manufacturers offer drives with these features. \n\nA USB thumb drive security vulnerability was discovered by a German company that describes a security flaw that allows an attacker to use a very simple software tool that can unlock any of the affected hardware-encrypted storage devices and bypass the access control system. This exploit worked on several thumb drive models that were FIPS 140-2 validated. \n\nThe following DoD policies apply to access control solutions for all USB storage devices.\n\n- Use of password or PIN to access the encrypted storage device. Certificate-based authentication can be used but is not mandated. \n\n- For devices with on-board access control and encryption features, the system administrator will configure these security features prior to issuance. Default PINs and passwords will be changed prior to use.\n\n- Password and/or key management procedures will be established for systems storing mission-critical information.",
+      "severity": "high"
+    },
+    {
+      "id": "V-22112",
+      "title": "For all removable flash media and external hard disk drives, use an organization-approved method to wipe the device before using for the first-time.",
+      "description": "Removable media often arrives from the vendor with many files already stored on the drive. These files may contain malware or spyware which present a risk to DoD resources.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22113",
+      "title": "Sensitive but unclassified data must be encrypted using FIPS 140-2 validated modules when stored on a USB flash drive and external hard disk drive.",
+      "description": "If information deemed sensitive (non-publicly releasable) by the data-owner is not encrypted when stored on removable storage media, this can lead to the compromise of unclassified sensitive data. These devices are portable and are often lost or stolen, which makes the data more vulnerable than other storage devices.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22114",
+      "title": "Train all users on the secure use of removable media and storage devices, acceptable use policy, and approval process through use of user's guide, user's agreement, or training program. ",
+      "description": "Written user guidance gives the users a place to learn about updated guidance on user responsibilities for safeguarding DoD information assets. Most security breaches occur when users violate security policy because they lack training.  ",
+      "severity": "low"
+    },
+    {
+      "id": "V-22115",
+      "title": "Set boot order of computers approved for use with removable storage such that the Basic Input Output System (BIOS) does not allow default booting from devices attached to a USB, firewire, or eSATA port.",
+      "description": "If the BIOS is left set to allow the end point to boot from a device attached to the USB, firewire, or eSATA port, an attacker could use a USB device to force a reboot by either performing a hardware reset or cycling the power. This can lead to a denial of service attack or the compromise of sensitive data on the system and the network to which it is connected.",
+      "severity": "high"
+    },
+    {
+      "id": "V-22169",
+      "title": "For Wireless USB (WUSB) devices, comply with the Wireless STIG peripheral devices policy. \n",
+      "description": "The use of unauthorized wireless devices can compromise DoD computers, networks, and data. The receiver for a wireless end point provides a wireless port on the computer that could be attacked by a hacker. Wireless transmissions can be intercepted by a hacker and easily viewed if required security is not used.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22172",
+      "title": "Maintain a list of approved removable storage media or devices.",
+      "description": "Many persistent memory media or devices are portable, easily stolen, and contain sensitive data. If these devices are lost or stolen, it may take a while to discover that sensitive information has been lost.  Inventory and bar-coding of authorized devices will increase the organization’s ability to uncover unauthorized portable storage devices.",
+      "severity": "low"
+    },
+    {
+      "id": "V-22173",
+      "title": "Permit only government-procured and -owned devices.",
+      "description": "Persistent memory devices (e.g., thumb drives, memory cards, external hard drives, or other removable storage devices) may contain malware installed on the drive or within the firmware. Personally- or contractor-owned devices may not be compliant with rigorous standards for encryption, anti-virus, and data wiping that is required for the use of removable storage devices in DoD.  Therefore, use of personal devices in PCs attached to the network may put the network at risk. ",
+      "severity": "high"
+    },
+    {
+      "id": "V-22174",
+      "title": "Firmware on the USB flash drive and external hard drive will be signed and verified with either Hashed Message Authentication Code (HMAC) or digital signatures. ",
+      "description": "Several security incidents have occurred when the firmware on devices contained malware. For devices used to store or transfer sensitive information, if the firmware is signed, then this provides added assurance that the firmware has not been compromised.",
+      "severity": "low"
+    },
+    {
+      "id": "V-22175",
+      "title": "Data transfers using USB flash media (thumb drives) will comply with the requirements in the CTO 10-084 (or most recent version) and these procedures will be documented.",
+      "description": "USB flash media may have malware installed on the drive which may adversely impact the DoD network. Even the use of approved devices does not eliminate this risk. Use of  sound security practices and procedures will further mitigate this risk when using flash media.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22176",
+      "title": "Install and configure Host-Based Security System (HBSS) with Device Control Module (DCM) on all Windows host computers that will use removable storage devices.",
+      "description": "Because of the innate security risks involved with using removable storage devices (flash drives, thumb drives, disk drives, etc.), an access control and authorization method is needed.  DCM software provides granular end point access control and management of removable media. Currently, DCM only supports the Windows operating system (OS).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22177",
+      "title": "For end points using Windows operating systems, removable storage devices will be restricted by a unique device identifier (e.g. serial number, device instance ID) or to specific host end points or users.",
+      "description": "Because of the innate security risks involved with using removable storage devices (e.g., flash drives, thumb drives, external solid state disk drives, etc.), users must follow required access procedures. Restricting specific devices to each user allows for non-repudiation and audit tracking.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-23894",
+      "title": "Maintain a list of all personnel that have been authorized to use flash media.",
+      "description": "Many USB flash media devices are portable, easily stolen, and may be used to temporarily store sensitive information.  If these devices are lost or stolen, it will assist the investigation if personnel who use these devices are readily identified with contact information.",
+      "severity": "low"
+    },
+    {
+      "id": "V-23895",
+      "title": "Maintain a list of all end point systems that have been authorized for use with flash media.",
+      "description": "Many USB persistent memory devices are portable and easily overlooked. They may be used as a vector for exfiltrating data.  To help mitigate this risk, end points must be designated as properly authorized and configured for use with USB flash drives within the DoD. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-23919",
+      "title": "The host system will perform on-access anti-virus and malware checking, regardless of whether the external storage or flash drive has software or hardware malware features.\n",
+      "description": "Like the traditional hard drive, removable storage devices and media may contain malware which may threaten DoD systems to which they eventually directly or indirectly attach. To mitigate this risk, DoD policy requires anti-virus and malware detection solutions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-23920",
+      "title": "For higher risk data transfers using flash media, use an organization approved security scanning software and disk wipe software to protect against malware and data compromise.",
+      "description": "Use of an organization approved security scanning software and disk wipe software with the procedures listed in the Check section is the only authorized method for using flash media for higher risk data transfers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-23921",
+      "title": "Removable storage devices for which the organization has failed to maintain physical control will be scanned for malicious activity upon reclamation.",
+      "description": "Failure to maintain proper control of storage devices used in sensitive systems may mean the firmware or other files could have been compromised. Action is needed to scan for malicious code. Although, the data on the device is most likely protected by encryption and authentication controls, it is still possible that a sophisticated attacker may have compromised the device. The risk to the system and the network increases if the device is used on a server or by a user with administrator privileges.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-23950",
+      "title": "Organizations that do not have a properly configured HBSS with DCM configuration will not use removable storage devices.",
+      "description": "Because of the innate security risks involved with using removable storage devices (flash drives, thumb drives, disk drives, etc.), an access control and authorization method is needed.  DCM software provides granular end point access control and management of removable media. Currently, DCM only supports the Windows operating system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24176",
+      "title": "Configure the cryptographic module on a USB thumb drive or external hard drive using a NIST-approved encryption algorithm to encrypt sensitive or restricted data-at-rest.",
+      "description": "The DoD DAR policy requires encryption for portable and mobile storage. However, even when a FIPS140-2 validated cryptographic module is used, the implementation must be configured to use a NIST-approved algorithm. Advanced Encryption Standard (AES) is the most commonly available FIPS-approved algorithm and is required for use with USB thumb drives by CTO 10-084 (or latest version). The encryption algorithm must also be configured.  Without this granular configuration, full protection of data encryption is not achieved and the data may be accessible if the drive is lost or stolen.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24177",
+      "title": "Use a National Security Agency (NSA)-approved, Type 1 certified data encryption and hardware solution when storing classified information on USB flash media and other removable storage devices.",
+      "description": "The exploitation of this vulnerability will directly and immediately result in loss of, unauthorized disclosure of, or access to classified data or materials. An NSA-approved, Type 1 solution includes the hardware, software, and proof of coordination/approval with NSA for the level of classified processed by the external storage solution.\n",
+      "severity": "high"
+    }
+  ]
+}

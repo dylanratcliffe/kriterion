@@ -1,0 +1,197 @@
+{
+  "name": "stig_mobile_email_management_mem_server",
+  "date": "2013-05-08",
+  "description": "This STIG provides technical security controls required for the use of a MEM server that manages mobile email from/to mobile devices in the DoD environment. The requirements listed in this benchmark apply to any DoD iOS implementation when iOS devices process sensitive DoD information, connect to a DoD network or network connected PC, or provide service to a DoD email system. The requirements can be implemented in an application server separate from the MDM server or included in the MDM server.  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailbox@mail.mil.",
+  "title": "Mobile Email Management (MEM) Server Security Technical Implementation Guide (STIG)",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-24972",
+      "title": "The required mobile device management server version (or later) must be used. ",
+      "description": "Earlier versions of the MDM server may have security vulnerabilities or not have required security features implemented. Therefore, sensitive DoD data could be exposed if required security features are not implemented on site-managed mobile devices.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24973",
+      "title": "The host server where the mobile management server is installed must be hardened according to the appropriate Application STIG (SQL, Apache Tomcat, IIS, etc.). ",
+      "description": "The host server where the mobile management server is installed must be compliant with the Windows STIG and applicable application STIGs to ensure the system is not vulnerable to attack resulting in a Denial of Service or compromise of the management server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24975",
+      "title": "The host server where the mobile management server is installed must have a host-based or appliance firewall, which must be configured as required.\n",
+      "description": "A mobile device user could get access to unauthorized network resources (application and content servers, etc.) via the communications link between the mobile device and mobile management server if the server host firewall is not set up as required. HBSS is usually used to satisfy this requirement.",
+      "severity": "high"
+    },
+    {
+      "id": "V-25754",
+      "title": "The PKI digital certificate installed on mobile management servers for server authentication must be a DoD PKI-issued certificate.",
+      "description": "When a self-signed PKI certificate is used, a rogue mobile management server can impersonate the DoD mobile management server. DoDI 8520-02 requires PKI certificates come from a trusted DoD PKI.",
+      "severity": "low"
+    },
+    {
+      "id": "V-26564",
+      "title": "Authentication on system administration accounts for mobile management servers must be configured to support CTO 07-15 Rev 1 requirements.\n",
+      "description": "CTO 07-15 Rev 1 requires administrator accounts use either CAC authentication or use complex passwords to ensure strong access control is enforced. This is best enforced by requiring the server support AD authentication.",
+      "severity": "high"
+    },
+    {
+      "id": "V-32776",
+      "title": "The MEM client must provide users with the option to deny acceptance of a certificate when the certificates revocation status cannot be verified. \n",
+      "description": "When the certificate revocation status cannot be verified, the email sender's identity cannot be verified and the user must have the capability to accept or deny the certificate and act on the email content based on sensitivity of the email content and mission needs.",
+      "severity": "low"
+    },
+    {
+      "id": "V-32777",
+      "title": "The MEM client must alert the user if it receives a public-key certificate issued from an untrusted certificate authority. ",
+      "description": "When the  public-key certificate is issued from an untrusted certificate authority, the certificate cannot be trusted and the recipient must have the capability to accept or deny the certificate and act on the email content based on sensitivity of the email content and mission needs.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32779",
+      "title": "The MEM client must alert the user if it receives an invalid public-key certificate. ",
+      "description": "When the public-key certificate is invalid, the certificate cannot be trusted and the recipient must have the capability to accept or deny the certificate and act on the email content based on sensitivity of the email content and mission needs.",
+      "severity": "low"
+    },
+    {
+      "id": "V-32781",
+      "title": "The MEM client must not accept certificate revocation information without verifying its authenticity. \n",
+      "description": "When the  public-key certificate has been identified as revoked but the revocation authenticity cannot be verified, the revocation cannot be trusted and the recipient must have the capability to accept or deny the certificate and act on the email content based on sensitivity of the email content and mission needs.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32782",
+      "title": "The MEM client must verify user digital certificate when performing PKI transactions. ",
+      "description": "The trust of any PKI operation is contingent on the certificate chain. Authentication and encryption services based on PKI would be untrusted if the certificate chain is not verified.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32788",
+      "title": "The MEM client must alert the user if it receives an unverified public-key certificate. ",
+      "description": "When the  public-key certificate is  unverified certificate, the certificate cannot be trusted and the recipient must have the capability to accept or deny the certificate and act on the email content based on sensitivity of the email content and mission needs.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32789",
+      "title": "All data (including email and attachments) sent over the wireless link between the mobile email client and MEM server located on the DoD network must be encrypted using AES. ",
+      "description": "AES is the DoD standard for unclassified data encryption.  When other encryption algorithms are used (non-type-1) the level of trust that sensitive DoD data cannot be compromised is not available.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32790",
+      "title": "The MEM server and client must encrypt all data using a FIPS 140-2 validated cryptographic module. ",
+      "description": "FIPS 140-2 validated encryption is the DoD standard for unclassified data encryption. When non-FIPS validated encryption modules are used (other than Type 1) the required level of trust that sensitive DoD data cannot be compromised is not available.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32791",
+      "title": "The MEM client must be capable of providing S/MIME v3 (or later version) encryption of email. ",
+      "description": "Sensitive DoD data could be exposed if the required setting is not configured on the Good server. If S/MIME support is not configured on the server, the user will not be able to view critical encrypted email or be able to encrypt email with sensitive DoD information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32792",
+      "title": "The MEM client S/MIME must be fully interoperable with DoD PKI.",
+      "description": "Without DoD PKI interoperability, the S/MIME feature would not work and could not meet DoD S/MIME requirements.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32793",
+      "title": "The MEM client S/MIME encryption algorithm must support both 3DES and AES. ",
+      "description": "DES and AES are the DoD standard for unclassified data encryption based on DoD PKI certificates. AES is preferred but some DoD CACs only support the 3DES encryption algorithm.  When other encryption algorithms are used (non-type-1) the level of trust that sensitive DoD data cannot be compromised is not available.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32794",
+      "title": "The MEM client S/MIME cryptographic module must be FIPS 140-2 validated. ",
+      "description": "FIPS 140-2 validated encryption is the DoD standard for unclassified data encryption.  When non-FIPS validated encryption modules are used (other than Type 1) the level of trust that sensitive DoD data cannot be compromised is not available.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32795",
+      "title": "The MEM client must provide the capability to save public certificates of contacts in an acceptable method.",
+      "description": "This capability is required to support S/MIME encryption of email.  Without S/MIME, end-to-end data encryption is not possible and sensitive DoD data could be compromised.",
+      "severity": "low"
+    },
+    {
+      "id": "V-32796",
+      "title": "The MEM client must not cache the certificate status of signed emails that have been received on the handheld device beyond the expiration period of the revocation data. ",
+      "description": "If the revocation status of the certificate is not cached, the email client would need to retrieve the status every time a user opens a signed email, which would cause a usability issue of the mobile email feature and possibly cause the user to begin to ignore the status of signing certificates in received email.",
+      "severity": "low"
+    },
+    {
+      "id": "V-32797",
+      "title": "The MEM client must set the Smart Card or Certificate Store Password caching timeout period to no more than 120 minutes, if Smart Card or Certificate Store Password caching is available.",
+      "description": "The certificate/key store contents must not remain unencrypted indefinitely; otherwise, the encryption keys and PKI certificates stored in the store could be compromised. The store must re-encrypt contents of the store on or before the required timeout period.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32798",
+      "title": "The MEM client must provide the mobile device user the capability to digitally sign and/or encrypt outgoing email messages using software or hardware based digital certificates. ",
+      "description": "The email client must support signing and encrypting email using both software and hardware PKI certificates so that the DoD can use either certificate form factor based on current policy, security threats, and mission needs.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32799",
+      "title": "The MEM client must provide the mobile device user the capability to decrypt incoming email messages using software or hardware based digital certificates. \n",
+      "description": "The email client must support signing operations (verifying digital signatures) and decrypting email using both software and hardware PKI certificates so that the DoD can use either certificate form factor based on current policy, security threat, and mission needs.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32800",
+      "title": "The MEM client must provide a mechanism to provide certificate validation through a trusted OCSP, CRL, or SCVP. \n",
+      "description": "Certificate validation is a key requirement of a robust PKI; therefore, the mobile email server must support all DoD accepted processes for distributing certificate status information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32801",
+      "title": "The MEM client must provide a noticeable warning to the user if the CRL, SCVP, or OCSP server cannot be contacted or the revocation data provided cannot be verified. ",
+      "description": "Certificate validation is a key requirement of a robust PKI; therefore, the user must be notified if the status of a certificate on a signed email cannot be verified.",
+      "severity": "low"
+    },
+    {
+      "id": "V-32802",
+      "title": "The MEM client must support retrieving encryption certificates not stored in the local trust anchor store for S/MIME purposes. ",
+      "description": "S/MIME operations cannot be performed if the device user cannot access public encryption certificates for email recipients; therefore, if encryption certificates are not stored in the contacts list or other local certificate store, S/MIME must be able to retrieve the certificates from the GAL, GDS, or other non-local DoD sources.",
+      "severity": "low"
+    },
+    {
+      "id": "V-32803",
+      "title": "The MEM client must support SHA2 or later signing operations. ",
+      "description": "SHA2 or later signing is required because earlier signing algorithms have been compromised and do not provide the required level of trust.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32804",
+      "title": "The MEM client must either block or convert all active content in email (HTML, RTF, etc.) to text before the email is forwarded to the mobile device. ",
+      "description": "HTML email and inline images in email can contain malware or links to websites with malware.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32805",
+      "title": "The MEM client must support SHA2 signature verification. ",
+      "description": "SHA2 or later signing is required because earlier signing algorithms have been compromised and do not provide the required level of trust.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32806",
+      "title": "All email sent to the mobile device must be managed by the  mobile email server.  Desktop or Internet controlled email redirection are not authorized.\n",
+      "description": "Desktop or Internet controlled mobile email redirection does not allow the mobile email to be managed by a mobile email management server; therefore, email security policies cannot be enforced.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32807",
+      "title": "The MEM client must enable a system administrator to select which data fields in the contacts data base will be available to applications outside of the contact database.",
+      "description": "Sensitive contact information could be exposed to unauthorized people.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-33231",
+      "title": "The master AES encryption key used to encrypt data between the management server and the agent on the mobile device must be changed every 30 days or less. ",
+      "description": "There are two primary methods for generating the encryption key used to encrypt data between the management server and the server agent installed on the mobile device.  The first method is to use a shared secret and the second is to generate the master encryption key based on PKI key generation.  When a shared secret is used, if the master encryption key is not rotated periodically, and it is compromised, all future data sent between the mobile management server and the agent located on the mobile device would be compromised. Limiting the compromise to no more than a specific period of data is a security best practice.",
+      "severity": "low"
+    }
+  ]
+}

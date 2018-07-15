@@ -1,0 +1,29 @@
+{
+  "name": "stig_zos_hcdacf2",
+  "date": "2015-01-15",
+  "description": "None",
+  "title": "z/OS HCD for ACF2 STIG",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-16932",
+      "title": "IBM Hardware Configuration Definition (HCD) install data sets are not properly protected.",
+      "description": "IBM Hardware Configuration Definition (HCD) product has the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17947",
+      "title": "IBM Hardware Configuration Definition (HCD) resources are not properly defined and protected.",
+      "description": "Program products can run with sensitive system privileges, and potentially can circumvent system controls.  Failure to properly control access to program product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data. Many utilities assign resource controls that can be granted to system programmers only in greater than read authority. Resources are also granted to certain non sytems personnel with read only authority.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21592",
+      "title": "IBM Hardware Configuration Definition (HCD) User data sets are not properly protected.",
+      "description": "IBM Hardware Configuration Definition (HCD) product has the capability to use privileged functions and/or to have access to sensitive data. Failure to properly restrict access to their data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "name": "stig_samsung_knox_android_1.0",
+  "date": "2013-05-03",
+  "description": "Developed by Samsung Electronics Co., Ltd.; Fixmo Inc.; and General Dynamics C4 Systems, Inc. in coordination with DISA for use in the DoD.",
+  "title": "Samsung Knox Android 1.0 STIG",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "KNOX-00-000100",
+      "title": "The mobile operating system must employ mobile device management services to centrally manage configuration settings, including security policies.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls. If these controls are not implemented, the system may be vulnerable to a variety of attacks. The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages. This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls. It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-01-000200",
+      "title": "The mobile operating system must enforce a minimum length for the device unlock password.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting guessing and brute force attacks. The ability to crack a password is a function of how many times an attempt to crack the password, how quickly the adversary can do each attempt, and the size of the password space. The longer the minimum length of the password is, the larger the password space.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-01-000300",
+      "title": "The mobile operating system must lock the device after no more than 15 minutes of inactivity.",
+      "description": "The device lock function prevents further access to the system by initiating a session lock after a period of inactivity or upon receiving a request from a user. The device lock is retained until the user reestablishes access using established identification and authentication procedures.\n\nA device lock is a temporary action taken when a user stops work but does not want to shut down because of the temporary nature of the hiatus. During the device lock a publicly viewable pattern is visible on the associated display, hiding what was previously visible on the screen. Once invoked, the device lock shall remain in place until the user re-authenticates. No other system activity aside from re-authentication can unlock the system.\n\nThe operating system must lock the device after the organization defined time period. This prevents others from gaining access to the device when not in the user's possession and accessing sensitive DoD information. A device lock mitigates the risk that an adversary can access data on an unattended mobile device but only after the maximum of 15 minute period of inactivity.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-01-000400",
+      "title": "The mobile operating system must not permit a user to disable the password-protected lock feature on the device.",
+      "description": "If the user is able to disable the password-protected lock feature, the user can change the configuration of the device to allow access without a password. The modified configuration would enable an adversary with access to the device to obtain DoD information and possibly other information resources on other systems. An operating system that does not allow a user to disable this feature mitigates the risk of this attack. In cases in which the mobile operating system relies on another application for protected data storage (e.g., if FIPS 140-2 validated encryption for unclassified use is not native to the device), then this requirement applies to both the device lock password and the password to the data storage application.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-02-000500",
+      "title": "The mobile operating system must disallow the device unlock password from containing fewer than a specified minimum number of upper case alphabetic characters.",
+      "description": "Password complexity or strength refers to how difficult it is to determine a password using a dictionary or brute force attack. Setting minimum numbers of certain types of characters increases password complexity, and therefore makes it more difficult for an adversary to discover the password. In the DoD, the expectation is that the setting will range from a minimum of 1 to 2 upper case alphabetic characters in the device unlock password. The parameter should be selected based on a risk assessment that weighs factors, such as the environments the device will be located and operational requirements for users to access data in a timely manner.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-02-000600",
+      "title": "The mobile operating system must disallow the device unlock password from containing fewer than a specified minimum number of lower case alphabetic characters.",
+      "description": "Password complexity or strength refers to how difficult it is to determine a password using a dictionary or brute force attack. Setting minimum numbers of certain types of characters increases password complexity, and therefore makes it more difficult for an adversary to discover the password. In the DoD, the expectation is that the setting will range from a minimum of 1 to 2 lower case characters in the device unlock password. The parameter should be selected based on a risk assessment that weighs factors, such as the environments the device will be located and operational requirements for users to access data in a timely manner.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-02-000700",
+      "title": "The mobile operating system must disallow the device unlock password from containing fewer than a specified minimum number of numeric characters.",
+      "description": "Password complexity or strength refers to how difficult it is to determine a password using a dictionary or brute force attack. Setting minimum numbers of certain types of characters increases password complexity, and therefore makes it more difficult for an adversary to discover the password. In the DoD, the expectation is that the setting will range from a minimum of 1 to 2 numeric characters in the device unlock password. The parameter should be selected based on a risk assessment that weighs factors, such as the environments the device will be located and operational requirements for users to access data in a timely manner.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-02-000800",
+      "title": "The mobile operating system must enforce a maximum lifetime of 120 days for the device unlock password (password age).",
+      "description": "Changing passcodes regularly prevents an attacker who has compromised the password from re-using it to regain access. This is an unlikely scenario, but is addressed by setting a password expiration. The IA control only needs to be enforced in product level STIGs if there is a need for such rotation based on the expected operational use of the device.",
+      "severity": "low"
+    },
+    {
+      "id": "KNOX-02-000900",
+      "title": "The mobile operating system must prohibit a user from reusing any of the last five previously used device unlock passwords.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting guessing and brute force attacks. Remembering the prior five device unlock passwords enables the operating system from permitting those passwords to be reused, which increases the resistance against password attacks.",
+      "severity": "low"
+    },
+    {
+      "id": "KNOX-03-001000",
+      "title": "The mobile operating system must force the user to change at least two characters of the device unlock password whenever the password is changed.",
+      "description": "If an adversary learns part or all of a password, the adversary can use this information to more easily crack a user's subsequent passwords if the passwords do not differ significantly from one to the next. Requiring a user to change at least two characters in the password is an effective way of preserving the protection provided by password complexity in this context.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-03-001100",
+      "title": "The mobile operating system must disallow more than two sequential numbers (e.g., 456) in the device unlock password.",
+      "description": "Password complexity or strength refers to how difficult it is to determine a password using a dictionary or brute force attack. Passwords with sequential numbers (e.g., 456 or 987) are considered easier to crack than random patterns. Therefore, disallowing sequential numbers makes it more difficult for an adversary to discover the password.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-04-001200",
+      "title": "The mobile operating system must include organization defined additional, more detailed information in the audit records for audit events identified by type, location, or subject.",
+      "description": "Information system auditing capability is critical for accurate forensic analysis. Audit record content that may be necessary to satisfy the requirement of this control, includes timestamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, file names involved, and access control or flow control rules invoked.\n\nThe audit configuration must be adaptable to include organization defined additional, more detailed information in the audit records for audit events identified by type, location, or subject. Examples of this information include VPN state, communications interface, and duration of event.",
+      "severity": "low"
+    },
+    {
+      "id": "KNOX-04-001300",
+      "title": "The mobile operating system must authenticate tethered connections to the device.",
+      "description": "Authentication may occur either by reentry of the device unlock passcode at the time of connection, through another passcode with the same or stronger complexity, or through PKI certificates. Authentication mitigates the risk that an adversary who obtains physical possession of the device is not able to use the tethered connection to access sensitive data on the device or otherwise tamper with its operating system or applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-04-001400",
+      "title": "The mobile operating system must disable access to the device's contact database when the device is locked.",
+      "description": "On some devices, users can access the device's contact database to obtain phone numbers and other information using voice-activated Bluetooth peripherals even when the mobile device is locked. Often this information is personally identifiable information (PII), which is considered sensitive. It could also be used by an adversary to profile the user or engage in social engineering to obtain further information from other unsuspecting users. Disabling access to the contact database in these situations mitigates the risk of this attack. The DAA may waive this requirement with written notice if the operational environment requires this capability.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-04-001500",
+      "title": "The mobile operating system's Bluetooth module must not permit any data transfer between devices prior to Bluetooth mutual authentication.",
+      "description": "Bluetooth mutual authentication provides assurance that both the mobile device and Bluetooth peripheral are legitimate. If the authentication does not occur immediately before permitting a network connection, there is the potential for a man-in-the-middle attack in which a third device intercepts the traffic between the two legitimate devices. Mutual authentication prevents this from occurring.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-04-001600",
+      "title": "The mobile operating system's Bluetooth stack must use 128-bit Bluetooth encryption when performing data communications with other Bluetooth devices.",
+      "description": "If data traffic is sent unencrypted, an adversary may be able to read it to obtain sensitive information. 128-bit Bluetooth encryption for data communications mitigates the risk of unauthorized eavesdropping. DoD has determined that FIPS 140-2 validated encryption is not required for voice communications.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-05-001800",
+      "title": "The mobile operating system must conduct a device integrity scan at least once every six hours.",
+      "description": "Unauthorized changes to the operating system software or information on the system can possibly result in integrity or availability concerns. In order to quickly react to this situation, the operating system must detect these changes. One aspect of detection is the frequency at which the scans occur. The ability to set an appropriate frequency mitigates the risk that an attack will go without detection longer than the scanning interval.",
+      "severity": "low"
+    },
+    {
+      "id": "KNOX-06-001900",
+      "title": "The mobile operating system must be able to filter both inbound and outbound traffic based on IP address and UDP/TCP port.",
+      "description": "Open ports provide an attack surface that an adversary can then potentially use to breach system security. If an adversary can communicate with the mobile device from any IP address, then the device may be open to any other device on the Internet. Reducing the attack surface through IP address and port restrictions mitigates this risk.",
+      "severity": "low"
+    },
+    {
+      "id": "KNOX-07-002100",
+      "title": "Only DoD PKI-issued or DoD-approved server authentication certificates may be installed on DoD mobile operating system devices.",
+      "description": "If unauthorized device authentication certificates are installed on the device, there is the potential that the device may connect to a rogue device or network. Rogue devices can mimic the behavior of authorized equipment to trick the user into providing authentication credentials, which could then in turn be used to compromise DoD information and networks. Restricting device authentication certificates to an authorized list mitigates the risk of attaching to rogue devices and networks.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-08-002200",
+      "title": "The mobile operating system must encrypt all data on the mobile device using AES encryption (AES 128 bit encryption key length is the minimum requirement; AES 256-bit desired).",
+      "description": "If data at rest is unencrypted, it is vulnerable to disclosure. Even if the operating system enforces permissions on data access, an adversary can remove non-volatile memory and read it directly, thereby circumventing operating system controls. Encrypting the data ensures that confidentiality is protected even when the operating system is not running. AES encryption with appropriate key lengths provides assurance that the cryptography is adequate.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-12-002300",
+      "title": "The mobile operating system must prevent the installation of applications that are not digitally signed with a DoD-approved private key.",
+      "description": "Any changes to the hardware, software, and/or firmware components of the information system and/or application can potentially have significant effects on the overall security of the system. Digital signatures on code provide assurance that the code comes from a known source and has not been modified.",
+      "severity": "high"
+    },
+    {
+      "id": "KNOX-12-002400",
+      "title": "The mobile operating system must prevent a user from installing unapproved applications.",
+      "description": "The operating system must enforce software installation by users based upon what types of software installations are permitted (e.g., updates and security patches to existing software) and what types of installations are prohibited (e.g., software whose pedigree with regard to being potentially malicious is unknown or suspect) by the organization. The installation and execution of unauthorized software on an operating system may allow the application to obtain sensitive information or further compromise the system. Preventing a user from installing unapproved applications mitigates this risk.",
+      "severity": "high"
+    },
+    {
+      "id": "KNOX-13-002500",
+      "title": "The mobile operating system must synchronize the internal clock at least once every 24 hours with an authoritative time server or the Global Positioning System.",
+      "description": "Determining the correct time a particular application event occurred on a system is critical when conducting forensic analysis and investigating system events. \n\nPeriodically synchronizing internal clocks with an authoritative time source is needed in order to correctly correlate the timing of events that occur across the enterprise. The two authoritative time sources for mobile operating systems are an authoritative time server which is synchronized with redundant United States Naval Observatory (USNO) time servers as designated for the appropriate DoD network (NIPRNet or SIPRNet) or the Global Positioning System (GPS).\n\nTimestamps generated by the audit system in mobile operating systems shall include both date and time. The time may be expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.",
+      "severity": "low"
+    },
+    {
+      "id": "KNOX-13-002600",
+      "title": "The mobile operating system must authenticate devices before establishing remote network (e.g., VPN) connections using bidirectional cryptographically based authentication between devices.",
+      "description": "Without strong mutual authentication a mobile device may connect to an unauthorized network. In many cases, the user may falsely believe that the device is connected to an authorized network and then provide authentication credentials and other sensitive information. A strong bidirectional cryptographically based authentication method mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-13-002700",
+      "title": "The mobile operating system's VPN client must use either IPSec or SSL/TLS when connecting to DoD networks.",
+      "description": "Use of non-standard communications protocols can affect both the availability and confidentiality of communications. IPSec and SSL/TLS are both well-known and tested protocols that provide strong assurance with respect to both IA and interoperability.",
+      "severity": "medium"
+    },
+    {
+      "id": "KNOX-13-002800",
+      "title": "The mobile operating system must prevent a user from using a browser that does not direct its traffic to a DoD proxy server.",
+      "description": "Proxy servers can inspect traffic for malware and other signs of a security attack. Allowing a mobile device to access the public Internet without proxy server inspection forgoes the protection that the proxy server would otherwise provide. Malware downloaded onto the device could have a wide variety of malicious consequences, including loss of sensitive DoD information. Forcing traffic to flow through a proxy server greatly mitigates the risk of access to public Internet resources.",
+      "severity": "medium"
+    }
+  ]
+}

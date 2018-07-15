@@ -1,0 +1,431 @@
+{
+  "name": "stig_bind_9.x",
+  "date": "2018-04-03",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "BIND 9.x Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-72363",
+      "title": "A BIND 9.x server implementation must be running in a chroot(ed) directory structure.",
+      "description": "With any network service, there is the potential that an attacker can exploit a vulnerability within the program that allows the attacker to gain control of the process and even run system commands with that control. One possible defense against this attack is to limit the software to particular quarantined areas of the file system, memory or both. This effectively restricts the service so that it will not have access to the full file system. If such a defense were in place, then even if an attacker gained control of the process, the attacker would be unable to reach other commands or files on the system. This approach often is referred to as a padded cell, jail, or sandbox. All of these terms allude to the fact that the software is contained in an area where it cannot harm either itself or others. A more technical term is a chroot(ed) directory structure.\n\nBIND should be configured to run in a padded cell or chroot(ed) directory structure.",
+      "severity": "low"
+    },
+    {
+      "id": "V-72365",
+      "title": "A BIND 9.x server implementation must be operating on a Current-Stable version as defined by ISC.",
+      "description": "The BIND STIG was written to incorporate capabilities and features provided in BIND version 9.9.x. However, it is recognized that security vulnerabilities in BIND are identified and then addressed on a regular, ongoing basis. Therefore it is required that the product be maintained at the latest stable versions in order to address vulnerabilities that are subsequently identified and can then be remediated via updates to the product.\n\nFailure to run a version of BIND that has the capability to implement all of the required security features and that does provide services compliant to the DNS RFCs can have a severe impact on the security posture of a DNS infrastructure. Without the required security in place, a DNS implementation is vulnerable to many types of attacks and could be used as a launching point for further attacks on the organizational network that is utilizing the DNS implementation.\n\nSatisfies: SRG-APP-000516-DNS-000097, SRG-APP-000516-DNS-000103",
+      "severity": "high"
+    },
+    {
+      "id": "V-72367",
+      "title": "The platform on which the name server software is hosted must only run processes and services needed to support the BIND 9.x implementation.",
+      "description": "Hosts that run the name server software should not provide any other services. Unnecessary services running on the DNS server can introduce additional attack vectors leading to the compromise of an organization’s DNS architecture.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72369",
+      "title": "The BIND 9.x server software must run with restricted privileges.",
+      "description": "Failure to provide logical access restrictions associated with changes to application configuration may have significant effects on the overall security of the system. When dealing with access restrictions pertaining to change control, it should be noted that any changes to the hardware, software, and/or firmware components of the information system and/or application can have significant effects on the overall security of the system. Accordingly, only qualified and authorized individuals should be allowed to obtain access to application components for the purposes of initiating changes, including upgrades and modifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72371",
+      "title": "The host running a BIND 9.X implementation must implement a set of firewall rules that restrict traffic on the DNS interface.",
+      "description": "Configuring hosts that run a BIND 9.X implementation to only accept DNS traffic on a DNS interface allows a system firewall to be configured to limit the allowed incoming ports/protocols to 53/tcp and 53/udp. Sending outgoing DNS messages from a random port minimizes the risk of an attacker guessing the outgoing message port and sending forged replies.\n\nThe TCP/IP stack in DNS hosts (stub resolver, caching/resolving/recursive name server, authoritative name server, etc.) could be subjected to packet flooding attacks (such as SYNC and smurf), resulting in disruption of communication. By implementing a specific set of firewall rules that limit accepted traffic to the interface, these risk of packet flooding and other TCP/IP based attacks is reduced.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72373",
+      "title": "The host running a BIND 9.x implementation must use a dedicated management interface in order to separate management traffic from DNS specific traffic.",
+      "description": "Providing Out-Of-Band (OOB) management is the best first step in any management strategy. No production traffic resides on an out-of-band network. The biggest advantage to implementation of an OOB network is providing support and maintenance to the network that has become degraded or compromised. During an outage or degradation period the in band management link may not be available.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72375",
+      "title": "The host running a BIND 9.x implementation must use an interface that is configured to process only DNS traffic.",
+      "description": "Configuring hosts that run a BIND 9.X implementation to only accept DNS traffic on a DNS interface allows a system to be configured to segregate DNS traffic from all other host traffic.\n\nThe TCP/IP stack in DNS hosts (stub resolver, caching/resolving/recursive name server, authoritative name server, etc.) could be subjected to packet flooding attacks (such as SYNC and smurf), resulting in disruption of communication. \n\nThe use of a dedicated interface for DNS traffic allows for these threats to be mitigated by creating a means to limit what types of traffic can be processed using a host based firewall solution.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72377",
+      "title": "A BIND 9.x server implementation must be configured to allow DNS administrators to audit all DNS server components, based on selectable event criteria, and produce audit records within all DNS server components that contain information for failed security verification tests, information to establish the outcome and source of the events, any information necessary to determine cause of failure, and any information necessary to return to operations with least disruption to mission processes.",
+      "description": "Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident, or identify those responsible for one. The actual auditing is performed by the OS/NDM, but the configuration to trigger the auditing is controlled by the DNS server.\n\nThe list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records. \n\nThe DoD has defined the list of events for which the application will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nThe DoD has defined the data which the application will provide an audit record generation capability for an event as the following: \n\n(i) Establish the source of the event;\n\n(ii) The outcome of the event; and\n\n(iii) Identify the application itself as the source of the event.\n\nWithout establishing the source of the event, it is impossible to establish, correlate, and investigate the events leading up to an outage or attack. Associating information about the source of the event within the application provides a means of investigating an attack, recognizing resource utilization or capacity thresholds, or identifying an improperly configured application. \n\nWithout information about the outcome of events, security personnel cannot make an accurate assessment about whether an attack was successful or if changes were made to the security state of the system.\n\nEvent outcomes can include indicators of event success or failure and event-specific results (e.g., the security state of the information system after the event occurred). As such, they also provide a means to measure the impact of an event and help authorized personnel to determine the appropriate response.\"\nFailure to a known state can address safety or security in accordance with the mission/business needs of the organization. Failure to a known secure state helps prevent a loss of confidentiality, integrity, or availability in the event of a failure of the information system or a component of the system. Preserving application state information helps to facilitate application restart and return to the operational mode of the organization with less disruption to mission-essential processes.\n\nThe DNS server should be configured to generate audit records whenever a self-test fails. The OS/NDM is responsible for generating notification messages related to this audit record.\n\nIf authorized individuals do not have the ability to modify auditing parameters in response to a changing threat environment, the organization may not be able to effectively respond, and important forensic information may be lost.\n\nThis requirement enables organizations to extend or limit auditing as necessary to meet organizational requirements. Auditing that is limited to conserve information system resources may be extended to address certain threat situations. In addition, auditing may be limited to a specific set of events to facilitate audit reduction, analysis, and reporting. Organizations can establish time thresholds in which audit actions are changed, for example, near real-time, within minutes, or within hours.\n\nIn addition to logging where events occur within the application, the application must also produce audit records that identify the application itself as the source of the event. In order to compile an accurate risk assessment and provide forensic analysis, it is essential for security personnel to know the source of the event, particularly in the case of centralized logging. In the case of centralized logging, the source would be the application name accompanied by the host or client name.\n\nSatisfies: SRG-APP-000089-DNS-000004, SRG-APP-000098-DNS-000009, SRG-APP-000099-DNS-000010, SRG-APP-000226-DNS-000032, SRG-APP-000275-DNS-000040, SRG-APP-000353-DNS-000045",
+      "severity": "low"
+    },
+    {
+      "id": "V-72379",
+      "title": "The BIND 9.x server implementation must not be configured with a channel to send audit records to null.",
+      "description": "DNS software administrators require DNS transaction logs for a wide variety of reasons including troubleshooting, intrusion detection, and forensics. Ensuring that the DNS transaction logs are recorded on the local system will provide the capability needed to support these actions. Sending DNS transaction data to the null channel would cause a loss of important data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-72381",
+      "title": "The BIND 9.x server logging configuration must be configured to generate audit records for all DoD-defined auditable events to a local file by enabling triggers for all events with a severity of info, notice, warning, error, and critical for all DNS components.",
+      "description": "Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident, or identify those responsible for one. The actual auditing is performed by the OS/NDM, but the configuration to trigger the auditing is controlled by the DNS server.\n\nThe list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records. \n\nThe DoD has defined the list of events for which the application will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.",
+      "severity": "low"
+    },
+    {
+      "id": "V-72383",
+      "title": "In the event of an error when validating the binding of other DNS servers identity to the BIND 9.x information, when anomalies in the operation of the signed zone transfers are discovered, for the success and failure of start and stop of the name server service or daemon, and for the success and failure of all name server events, a BIND 9.x server implementation must generate a log entry.",
+      "description": "Auditing and logging are key components of any security architecture. It is essential for security personnel to know what is being performed on the system, where an event occurred, when an event occurred, and by whom the event was triggered, in order to compile an accurate risk assessment. Logging the actions of specific events provides a means to investigate an attack, to recognize resource utilization or capacity thresholds, or to simply identify an improperly configured DNS system. If auditing is not comprehensive, it will not be useful for intrusion monitoring, security investigations, and forensic analysis.\n\nThe DNS server should audit all failed attempts at server authentication through DNSSEC and TSIG. The actual auditing is performed by the OS/NDM but the configuration to trigger the auditing is controlled by the DNS server.\n\nFailing to act on the validation errors may result in the use of invalid, corrupted, or compromised information. The validation of bindings can be achieved, for example, by the use of cryptographic checksums. Validations must be performed automatically.\n\nThe DNS server does not have the capability of shutting down or restarting the information system. The DNS server can be configured to generate audit records when anomalies are discovered.\n\nSatisfies: SRG-APP-000350-DNS-000044, SRG-APP-000474-DNS-000073, SRG-APP-000504-DNS-000074, SRG-APP-000504-DNS-000082",
+      "severity": "low"
+    },
+    {
+      "id": "V-72385",
+      "title": "The print-severity variable for the configuration of BIND 9.x server logs must be configured to produce audit records containing information to establish what type of events occurred.",
+      "description": "Auditing and logging are key components of any security architecture. It is essential for security personnel to know what is being performed on the system, where an event occurred, when an event occurred, and by whom the event was triggered, in order to compile an accurate risk assessment. Logging the actions of specific events provides a means to investigate an attack, recognize resource utilization or capacity thresholds, or to simply identify an improperly configured DNS implementation. Without log records that aid in the establishment of what types of events occurred and when those events occurred, there is no traceability for forensic or analytical purposes, and the cause of events is severely hindered.",
+      "severity": "low"
+    },
+    {
+      "id": "V-72387",
+      "title": "The print-time variable for the configuration of BIND 9.x server logs must be configured to establish when (date and time) the events occurred.",
+      "description": "Without establishing when events occurred, it is impossible to establish, correlate, and investigate the events relating to an incident. \n\nAssociating event types with detected events in the application and audit logs provides a means of investigating an attack, recognizing resource utilization or capacity thresholds, or identifying an improperly configured application. In order to compile an accurate risk assessment and provide forensic analysis, it is essential for security personnel to know when events occurred (date and time).",
+      "severity": "low"
+    },
+    {
+      "id": "V-72389",
+      "title": "The print-category variable for the configuration of BIND 9.x server logs must be configured to record information indicating which process generated the events.",
+      "description": "Without establishing where events occurred, it is impossible to establish, correlate, and investigate the events relating to an incident. Associating information about where the event occurred within the application provides a means of investigating an attack, recognizing resource utilization or capacity thresholds, or identifying an improperly configured application. In order to compile an accurate risk assessment and provide forensic analysis, it is essential for security personnel to know where events occurred, such as application components, modules, session identifiers, filenames, host names, and functionality.",
+      "severity": "low"
+    },
+    {
+      "id": "V-72391",
+      "title": "The BIND 9.x server implementation must be configured with a channel to send audit records to a remote syslog.",
+      "description": "Protection of log data includes assuring log data is not accidentally lost or deleted. Backing up audit records to a different system or onto separate media than the system being audited on a defined frequency helps to assure, in the event of a catastrophic system failure, the audit records will be retained. \n\nThis helps to ensure a compromise of the information system being audited does not also result in a compromise of the audit records.",
+      "severity": "low"
+    },
+    {
+      "id": "V-72393",
+      "title": "The BIND 9.x server implementation must be configured with a channel to send audit records to a local file.",
+      "description": "DNS software administrators require DNS transaction logs for a wide variety of reasons including troubleshooting, intrusion detection, and forensics. Ensuring that the DNS transaction logs are recorded on the local system will provide the capability needed to support these actions.",
+      "severity": "low"
+    },
+    {
+      "id": "V-72395",
+      "title": "The BIND 9.x server implementation must maintain at least 3 file versions of the local log file.",
+      "description": "DNS software administrators require DNS transaction logs for a wide variety of reasons including troubleshooting, intrusion detection, and forensics. Ensuring that the DNS transaction logs are recorded on the local system will provide the capability needed to support these actions.",
+      "severity": "low"
+    },
+    {
+      "id": "V-72397",
+      "title": "The BIND 9.x secondary name server must limit the number of zones requested from a single master name server.",
+      "description": "Limiting the number of concurrent sessions reduces the risk of Denial of Service (DoS) to the DNS implementation.\n\nName servers do not have direct user connections but accept client connections for queries. Original restriction on client connections should be high enough to prevent a self-imposed denial of service, after which the connections are monitored and fine-tuned to best meet the organization's specific requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72399",
+      "title": "The BIND 9.x secondary name server must limit the total number of zones the name server can request at any one time.",
+      "description": "Limiting the number of concurrent sessions reduces the risk of Denial of Service (DoS) to the DNS implementation.\n\nName servers do not have direct user connections but accept client connections for queries. Original restriction on client connections should be high enough to prevent a self-imposed denial of service, after which the connections are monitored and fine-tuned to best meet the organization's specific requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72401",
+      "title": "The BIND 9.x server implementation must limit the number of concurrent session client connections to the number of allowed dynamic update clients.",
+      "description": "Limiting the number of concurrent sessions reduces the risk of Denial of Service (DoS) to the DNS implementation. \n\nName servers do not have direct user connections but accept client connections for queries. Original restriction on client connections should be high enough to prevent a self-imposed denial of service, after which the connections are monitored and fine-tuned to best meet the organization's specific requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72403",
+      "title": "The BIND 9.x server implementation must be configured to use only approved ports and protocols.",
+      "description": "In order to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nApplications are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations.\n\nTo support the requirements and principles of least functionality, the application must support the organizational requirements by providing only essential capabilities and limiting the use of ports, protocols, and/or services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72405",
+      "title": "A BIND 9.x server implementation must manage excess capacity, bandwidth, or other redundancy to limit the effects of information flooding types of Denial of Service (DoS) attacks.",
+      "description": "A DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity. \n\nA denial of service (DoS) attack against the DNS infrastructure has the potential to cause a DoS to all network users. As the DNS is a distributed backbone service of the Internet, various forms of amplification attacks resulting in DoS, while utilizing the DNS, are still prevalent on the Internet today. Some potential DoS flooding attacks against the DNS include malformed packet flood, spoofed source addresses, and distributed DoS. Without the DNS, users and systems would not have the ability to perform simple name to IP resolution. \n\nConfiguring the DNS implementation to defend against cache poisoning, employing increased capacity and bandwidth, building redundancy into the DNS architecture, utilizing DNSSEC, limiting and securing recursive services, DNS black holes, etc., may reduce the susceptibility to some flooding types of DoS attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72407",
+      "title": "A BIND 9.x server implementation must prohibit recursion on authoritative name servers.",
+      "description": "A potential vulnerability of DNS is that an attacker can poison a name server's cache by sending queries that will cause the server to obtain host-to-IP address mappings from bogus name servers that respond with incorrect information. Once a name server has been poisoned, legitimate clients may be directed to non-existent hosts (which constitutes a denial of service), or, worse, hosts that masquerade as legitimate ones to obtain sensitive data or passwords. \n\nTo guard against poisoning, name servers authoritative for .mil domains should be separated functionally from name servers that resolve queries on behalf of internal clients. Organizations may achieve this separation by dedicating machines to each function or, if possible, by running two instances of the name server software on the same machine: one for the authoritative function and the other for the resolving function. In this design, each name server process may be bound to a different IP address or network interface to implement the required segregation.\n\nDNSSEC ensures that the answer received when querying for name resolution actually comes from a trusted name server. Since DNSSEC is still far from being globally deployed external to DoD, and many resolvers either have not been updated or do not support DNSSEC, maintaining cached zone data separate from authoritative zone data mitigates the gap until all DNS data is validated with DNSSEC. \n\nSince DNS forwarding of queries can be accomplished in some DNS applications without caching locally, DNS forwarding is the method to be used when providing external DNS resolution to internal clients.\n\nSatisfies: SRG-APP-000246-DNS-000035, SRG-APP-000383-DNS-000047",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72409",
+      "title": "The master servers in a BIND 9.x implementation must notify authorized secondary name servers when zone files are updated.",
+      "description": "It is important to maintain the integrity of a zone file. The serial number of the SOA record is used to indicate to secondary name server that a change to the zone has occurred and a zone transfer should be performed. The serial number used in the SOA record provides the DNS administrator a method to verify the integrity of the zone file based on the serial number of the last update and ensure that all slave servers are using the correct zone file.\nWhen a primary master name server notices that the serial number of a zone has changed, it sends a special announcement to all of the slave name servers for that zone. The primary master name server determines which servers are the slaves for the zone by looking at the list of NS records in the zone and taking out the record that points to the name server listed in the MNAME field of the zone's SOA record as well as the domain name of the local host.\nWhen a secondary name server receives a NOTIFY announcement for a zone from one of its configured master name servers, it responds with a NOTIFY response. The response tells the master that the slave received the NOTIFY announcement so that the master can stop sending it NOTIFY announcements for the zone. Then the slave proceeds just as if the refresh timer for that zone had expired: it queries the master name server for the SOA record for the zone that the master claims has changed. If the serial number is higher, the slave transfers the zone.\nThe slave should next issue its own NOTIFY announcements to the other authoritative name servers for the zone. The idea is that the primary master may not be able to notify all of the slave name servers for the zone itself, since it's possible some slaves can't communicate directly with the primary master (they use another slave as their master). Older BIND 8 slaves don't send NOTIFY messages unless explicitly configured to do so.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-72411",
+      "title": "The secondary name servers in a BIND 9.x implementation must be configured to initiate zone update notifications to other authoritative zone name servers.",
+      "description": "It is important to maintain the integrity of a zone file. The serial number of the SOA record is used to indicate to secondary name server that a change to the zone has occurred and a zone transfer should be performed. The serial number used in the SOA record provides the DNS administrator a method to verify the integrity of the zone file based on the serial number of the last update and ensure that all slave servers are using the correct zone file.\nWhen a primary master name server notices that the serial number of a zone has changed, it sends a special announcement to all of the slave name servers for that zone. The primary master name server determines which servers are the slaves for the zone by looking at the list of NS records in the zone and taking out the record that points to the name server listed in the MNAME field of the zone's SOA record as well as the domain name of the local host.\nWhen a secondary name server receives a NOTIFY announcement for a zone from one of its configured master name servers, it responds with a NOTIFY response. The response tells the master that the slave received the NOTIFY announcement so that the master can stop sending it NOTIFY announcements for the zone. Then the slave proceeds just as if the refresh timer for that zone had expired: it queries the master name server for the SOA record for the zone that the master claims has changed. If the serial number is higher, the slave transfers the zone.\nThe slave should next issue its own NOTIFY announcements to the other authoritative name servers for the zone. The idea is that the primary master may not be able to notify all of the slave name servers for the zone itself, since it's possible some slaves can't communicate directly with the primary master (they use another slave as their master). Older BIND 8 slaves don't send NOTIFY messages unless explicitly configured to do so.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-72419",
+      "title": "On the BIND 9.x server the platform on which the name server software is hosted must be configured to send outgoing DNS messages from a random port.",
+      "description": "Hosts that run the name server software should not provide any other services and therefore should be configured to respond to DNS traffic only. Outgoing DNS messages should be sent from a random port to minimize the risk of an attacker's guessing the outgoing message port and sending forged replies.",
+      "severity": "low"
+    },
+    {
+      "id": "V-72421",
+      "title": "A BIND 9.x caching name server must implement DNSSEC validation to check all DNS queries for invalid input.",
+      "description": "A common vulnerability of applications is unpredictable behavior when invalid inputs are received. This requirement guards against adverse or unintended system behavior caused by invalid inputs, where information system responses to the invalid input may be disruptive or cause the system to fail into an unsafe state. \n\nAttacks may be generated by entering invalid data into DNS transactions, in the hopes that the data will not be handled correctly and will allow a vulnerable condition to be exploited. To safeguard against this, all untrusted data entered in DNS transactions (e.g., DNS queries) should be checked for validity before being processed further.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72423",
+      "title": "A BIND 9.x master name server must limit the number of concurrent zone transfers between authorized secondary name servers.",
+      "description": "Limiting the number of concurrent sessions reduces the risk of Denial of Service (DoS) to the DNS implementation.\n\nName servers do not have direct user connections but accept client connections for queries. Original restriction on client connections should be high enough to prevent a self-imposed denial of service, after which the connections are monitored and fine-tuned to best meet the organization's specific requirements.\n\nPrimary name servers also make outbound connection to secondary name servers to provide zone transfers and accept inbound connection requests from clients wishing to provide a dynamic update. Primary name servers should explicitly limit zone transfers to only be made to designated secondary name servers. Because zone transfers involve the transfer of entire zones and use TCP connections, they place substantial demands on network resources relative to normal DNS queries. Errant or malicious frequent zone transfer requests on the name servers of the enterprise can overload the master zone server and result in DoS to legitimate users. Primary name servers should be configured to limit the hosts from which they will accept dynamic updates.\n\nAdditionally, the number of concurrent clients, especially TCP clients, needs to be kept to a level that does not risk placing the system in a DoS state.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72425",
+      "title": "A BIND 9.x implementation configured as a caching name server must restrict recursive queries to only the IP addresses and IP address ranges of known supported clients.",
+      "description": "Any host that can query a resolving name server has the potential to poison the servers name cache or take advantage of other vulnerabilities that may be accessed through the query service. The best way to prevent this type of attack is to limit queries to internal hosts, which need to have this service available to them.\n\nTo guard against poisoning, name servers authoritative for .mil domains should be separated functionally from name servers that resolve queries on behalf of internal clients. Organizations may achieve this separation by dedicating machines to each function or, if possible, by running two instances of the name server software on the same machine; one for the authoritative function and the other for the resolving function. In this design, each name server process may be bound to a different IP address or network interface to implement the required segregation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72429",
+      "title": "The BIND 9.x server implementation must uniquely identify and authenticate the other DNS server before responding to a server-to-server transaction, zone transfer and/or dynamic update request using cryptographically based bidirectional authentication to protect the integrity of the information in transit.",
+      "description": "Server-to-server (zone transfer) transactions are provided by TSIG, which enforces mutual server authentication using a key that is unique to each server pair (TSIG), thus uniquely identifying the other server. DNS does perform server authentication when TSIG is used, but this authentication is transactional in nature (each transaction has its own authentication performed).\n\nEnforcing mutually authenticated communication sessions during zone transfers provides the assurance that only authorized servers are requesting and receiving DNS zone data. Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity.\n\nFailure to properly implement transactional security may have significant effects on the overall security of the DNS infrastructure. The lack of mutual authentication between name servers during a DNS transaction would allow a threat actor to launch a Man-In-The-Middle attack against the DNS infrastructure. This attack could lead to unauthorized DNS zone data being introduced, resulting in network traffic being redirected to a rogue site.\n\nSatisfies: SRG-APP-000158-DNS-000015, SRG-APP-000390-DNS-000048, SRG-APP-000394-DNS-000049, SRG-APP-000395-DNS-000050, SRG-APP-000439-DNS-000063, SRG-APP-000440-DNS-000065",
+      "severity": "high"
+    },
+    {
+      "id": "V-72431",
+      "title": "The BIND 9.x server implementation must utilize separate TSIG key-pairs when securing server-to-server transactions.",
+      "description": "Server-to-server (zone transfer) transactions are provided by TSIG, which enforces mutual server authentication using a key that is unique to each server pair (TSIG), thus uniquely identifying the other server.\n\nEnforcing separate TSIG key-pairs provides another layer of protection for the BIND implementation in the event that a TSIG key is compromised. This additional layer of security provides the DNS administrators with the ability to change a compromised TSIG key with a minimal disruption to DNS operations.\n\nFailure to identify devices and authenticate devices can lead to malicious activity, such as a Man-In-The-Middle attack where an attacker could pose as an authorized name server, and redirect legitimate customers to malicious websites. A failure on this part could also lead to a Denial of Service of any and all DNS services provided to an organizations network infrastructure.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72437",
+      "title": "The TSIG keys used with the BIND 9.x implementation must be owned by a privileged account.",
+      "description": "Incorrect ownership of a TSIG key file could allow an adversary to modify the file, thus defeating the security objective.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72439",
+      "title": "The TSIG keys used with the BIND 9.x implementation must be group owned by a privileged account.",
+      "description": "Incorrect ownership of a TSIG key file could allow an adversary to modify the file, thus defeating the security objective.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72441",
+      "title": "The read and write access to a TSIG key file used by a BIND 9.x server must be restricted to only the account that runs the name server software.",
+      "description": "Weak permissions of a TSIG key file could allow an adversary to modify the file, thus defeating the security objective.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72443",
+      "title": "The BIND 9.X implementation must not utilize a TSIG or DNSSEC key for more than one year.",
+      "description": "Cryptographic keys are the backbone of securing DNS information over the wire, maintaining DNS data integrity, and the providing the ability to validate DNS information that is received.\n\nWhen a cryptographic key is utilized by a DNS server for a long period of time, the likelihood of compromise increases. A compromised key set would allow an attacker to intercept and possibly inject comprised data into the DNS server. In this compromised state, the DNS server would be vulnerable to DoS attacks, as well as being vulnerable to becoming a launching pad for further attacks on an organizations network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72445",
+      "title": "A BIND 9.x server must implement NIST FIPS-validated cryptography for provisioning digital signatures and generating cryptographic hashes.",
+      "description": "The use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The application must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.\n\nThe choice of digital signature algorithm will be based on recommended algorithms in well-known standards. NIST's Digital Signature Standard (DSS) [FIPS186] provides three algorithm choices:\n\n- Digital Signature Algorithm (DSA)\n- RSA\n- Elliptic Curve DSA (ECDSA)\n\nOf these three algorithms, RSA and DSA are more widely available and hence are considered candidates of choice for DNSSEC. In terms of performance, both RSA and DSA have comparable signature generation speeds, but DSA is much slower for signature verification. Hence, RSA is the recommended algorithm as far as this guideline is concerned. It can be expected that name servers and clients will be able to use the RSA algorithm at the minimum.\n\nNIST's Secure Hash Standard (SHS) (FIPS 180-3) specifies SHA-1, SHA-224, SHA-256, SHA-384, and SHA-512 as approved hash algorithms to be used as part of the algorithm suite for generating digital signatures using the digital signature algorithms in NIST's DSS[FIPS186].\n\nSatisfies: SRG-APP-000514-DNS-000075, SRG-APP-000516-DNS-000090",
+      "severity": "high"
+    },
+    {
+      "id": "V-72447",
+      "title": "The DNSSEC keys used with the BIND 9.x implementation must be owned by a privileged account.",
+      "description": "Information at rest refers to the state of information when it is located on a secondary storage device within an organizational information system. Mobile devices, laptops, desktops, and storage devices can be either lost or stolen, and the contents of their data storage (e.g., hard drives and non-volatile memory) can be read, copied, or altered. Applications and application users generate information throughout the course of their application use.\n\nThe DNS server must protect the confidentiality and integrity of the DNSSEC keys and must protect the integrity of DNS information. There is no need to protect the confidentiality of DNS information because it is accessible by all devices that can contact the server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72449",
+      "title": "The DNSSEC keys used with the BIND 9.x implementation must be group owned by a privileged account.",
+      "description": "Information at rest refers to the state of information when it is located on a secondary storage device within an organizational information system. Mobile devices, laptops, desktops, and storage devices can be either lost or stolen, and the contents of their data storage (e.g., hard drives and non-volatile memory) can be read, copied, or altered. Applications and application users generate information throughout the course of their application use.\n\nThe DNS server must protect the confidentiality and integrity of the DNSSEC keys and must protect the integrity of DNS information. There is no need to protect the confidentiality of DNS information because it is accessible by all devices that can contact the server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72451",
+      "title": "Permissions assigned to the DNSSEC keys used with the BIND 9.x implementation must enforce read-only access to the key owner and deny access to all other users.",
+      "description": "Information at rest refers to the state of information when it is located on a secondary storage device within an organizational information system. Mobile devices, laptops, desktops, and storage devices can be either lost or stolen, and the contents of their data storage (e.g., hard drives and non-volatile memory) can be read, copied, or altered. Applications and application users generate information throughout the course of their application use.\n\nThe DNS server must protect the confidentiality and integrity of the DNSSEC keys and must protect the integrity of DNS information. There is no need to protect the confidentiality of DNS information because it is accessible by all devices that can contact the server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72453",
+      "title": "The BIND 9.x server private key corresponding to the ZSK pair must be the only DNSSEC key kept on a name server that supports dynamic updates.",
+      "description": "The private key in the ZSK key pair must be protected from unauthorized access. If possible, the private key should be stored off-line (with respect to the Internet-facing, DNSSEC-aware name server) in a physically secure, non-network-accessible machine along with the zone file master copy. \n\nThis strategy is not feasible in situations in which the DNSSEC-aware name server has to support dynamic updates. To support dynamic update transactions, the DNSSEC-aware name server (which usually is a primary authoritative name server) has to have both the zone file master copy and the private key corresponding to the zone-signing key (ZSK-private) online to immediately update the signatures for the updated RRsets.\n\nFailure to protect the private ZSK opens it to being maliciously obtained and opens the DNS zone to being populated with invalid data. The integrity of the DNS zone would be compromised leading to a loss of trust whether a DNS response has originated from an authentic source, the response is complete, and has not been tampered with during transit.",
+      "severity": "high"
+    },
+    {
+      "id": "V-72455",
+      "title": "On the BIND 9.x server the private keys corresponding to both the ZSK and the KSK must not be kept on the BIND 9.x DNSSEC-aware primary authoritative name server when the name server does not support dynamic updates.",
+      "description": "The private keys in the KSK and ZSK key pairs must be protected from unauthorized access. If possible, the private keys should be stored off-line (with respect to the Internet-facing, DNSSEC-aware name server) in a physically secure, non-network-accessible machine along with the zone file master copy. \n\nThis strategy is not feasible in situations in which the DNSSEC-aware name server has to support dynamic updates. To support dynamic update transactions, the DNSSEC-aware name server (which usually is a primary authoritative name server) has to have both the zone file master copy and the private key corresponding to the zone-signing key (ZSK-private) online to immediately update the signatures for the updated RRsets. The private key corresponding to the key-signing key (KSK-private) can still be kept off-line.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72457",
+      "title": "The two files generated by the BIND 9.x server dnssec-keygen program must be owned by the root account, or deleted, after they have been copied to the key file in the name server.",
+      "description": "To enable zone transfer (requests and responses) through authenticated messages, it is necessary to generate a key for every pair of name servers. The key also can be used for securing other transactions, such as dynamic updates, DNS queries, and responses. The binary key string that is generated by most key generation utilities used with DNSSEC is Base64-encoded. A TSIG is a string used to generate the message authentication hash stored in a TSIG RR and used to authenticate an entire DNS message.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72459",
+      "title": "The two files generated by the BIND 9.x server dnssec-keygen program must be group owned by the server administrator account, or deleted, after they have been copied to the key file in the name server.",
+      "description": "To enable zone transfer (requests and responses) through authenticated messages, it is necessary to generate a key for every pair of name servers. The key also can be used for securing other transactions, such as dynamic updates, DNS queries, and responses. The binary key string that is generated by most key generation utilities used with DNSSEC is Base64-encoded. A TSIG is a string used to generate the message authentication hash stored in a TSIG RR and used to authenticate an entire DNS message.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72461",
+      "title": "Permissions assigned to the dnssec-keygen keys used with the BIND 9.x implementation must enforce read-only access to the key owner and deny access to all other users.",
+      "description": "To enable zone transfer (requests and responses) through authenticated messages, it is necessary to generate a key for every pair of name servers. The key also can be used for securing other transactions, such as dynamic updates, DNS queries, and responses. The binary key string that is generated by most key generation utilities used with DNSSEC is Base64-encoded. A TSIG is a string used to generate the message authentication hash stored in a TSIG RR and used to authenticate an entire DNS message. Weak permissions could allow an adversary to modify the file(s), thus defeating the security objective.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72469",
+      "title": "The BIND 9.x server signature generation using the KSK must be done off-line, using the KSK-private key stored off-line.",
+      "description": "The private key in the KSK key pair must be protected from unauthorized access. The private key should be stored off-line (with respect to the Internet-facing, DNSSEC-aware name server) in a physically secure, non-network-accessible machine along with the zone file master copy. \n\nFailure to protect the private KSK may have significant effects on the overall security of the DNS infrastructure. A compromised KSK could lead to an inability to detect unauthorized DNS zone data resulting in network traffic being redirected to a rogue site.",
+      "severity": "high"
+    },
+    {
+      "id": "V-72471",
+      "title": "A BIND 9.x server implementation must maintain the integrity and confidentiality of DNS information while it is being prepared for transmission, in transmission, and in use and t must perform integrity verification and data origin verification for all DNS information.",
+      "description": "DNSSEC is required for securing the DNS query/response transaction by providing data origin authentication and data integrity verification through signature verification and the chain of trust\n\nFailure to accomplish data origin authentication and data integrity verification could have significant effects on DNS Infrastructure. The resultant response could be forged, it may have come from a poisoned cache, the packets could have been intercepted without the resolver's knowledge, or resource records could have been removed that would result in query failure or denial of service\n\nFailure to validate name server replies would cause many networking functions and communications to be adversely affected. With DNS, the presence of Delegation Signer (DS) records associated with child zones informs clients of the security status of child zones. These records are crucial to the DNSSEC chain of trust model. Each parent domain's DS record is used to verify the DNSKEY record in its subdomain, from the top of the DNS hierarchy down.\n\nFailure to validate the chain of trust used with DNSSEC would have a significant impact on the security posture of the DNS server. Non-validated trust chains may contain rouge DNS servers and allow those unauthorized servers to introduce invalid data into an organizations DNS infrastructure. A compromise of this type would be difficult to detect and may have devastating effects on the validity and integrity of DNS zone information.\n\nSatisfies: SRG-APP-000213-DNS-000024, SRG-APP-000215-DNS-000026, SRG-APP-000219-DNS-000028, SRG-APP-000219-DNS-000029, SRG-APP-000219-DNS-000030, SRG-APP-000347-DNS-000041, SRG-APP-000348-DNS-000042, SRG-APP-000349-DNS-000043, SRG-APP-000420-DNS-000053, SRG-APP-000421-DNS-000054, SRG-APP-000422-DNS-000055, SRG-APP-000423-DNS-000056, SRG-APP-000424-DNS-000057, SRG-APP-000425-DNS-000058, SRG-APP-000426-DNS-000059, SRG-APP-000441-DNS-000066, SRG-APP-000442-DNS-000067, SRG-APP-000516-DNS-000089",
+      "severity": "high"
+    },
+    {
+      "id": "V-72473",
+      "title": "A BIND 9.x server implementation must provide the means to indicate the security status of child zones.",
+      "description": "If name server replies are invalid or cannot be validated, many networking functions and communication would be adversely affected. With DNS, the presence of Delegation Signer (DS) records associated with child zones informs clients of the security status of child zones. These records are crucial to the DNSSEC chain of trust model. Each parent domain's DS record is used to verify the DNSKEY record in its subdomain, from the top of the DNS hierarchy down.\n\nA DNS server is an example of an information system providing name/address resolution service. Digital signatures and cryptographic keys are examples of additional artifacts. DNS resource records are examples of authoritative data. Applications other than the DNS, to map between host/service names and network addresses, must provide other means to assure the authenticity and integrity of response data.\n\nIn DNS, trust in the public key of the source is established by starting from a trusted name server and establishing the chain of trust down to the current source of response through successive verifications of signature of the public key of a child by its parent.\n\nA trust anchor is an authoritative entity represented via a public key and associated data. It is used in the context of public key infrastructures, X.509 digital certificates, and Domain Name System Security Extensions (DNSSEC).\n\nWhen there is a chain of trust, usually the top entity to be trusted becomes the trust anchor. A certification path starts with the subject certificate and proceeds through a number of intermediate certificates up to a trusted root certificate. In DNS, a trust anchor is a DNSKEY that is placed into a validating resolver so the validator can cryptographically validate the results for a given request back to a known public key (the trust anchor).\n\nAn example means to indicate the security status of child subspaces is through the use of delegation signer (DS) resource records in the DNS.\n\nPath validation is necessary for a relying party to make an informed trust decision when presented with any certificate not already explicitly trusted. Without path validation and a chain of trust, there can be no trust that the data integrity authenticity has been maintained during a transaction.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72475",
+      "title": "The BIND 9.x server validity period for the RRSIGs covering the DS RR for zones delegated children must be no less than two days and no more than one week.",
+      "description": "The best way for a zone administrator to minimize the impact of a key compromise is by limiting the validity period of RRSIGs in the zone and in the parent zone. This strategy limits the time during which an attacker can take advantage of a compromised key to forge responses. An attacker that has compromised a ZSK can use that key only during the KSK's signature validity interval. An attacker that has compromised a KSK can use that key for only as long as the signature interval of the RRSIG covering the DS RR in the delegating parent. These validity periods should be short, which will require frequent re-signing.\n\nTo prevent the impact of a compromised KSK, a delegating parent should set the signature validity period for RRSIGs covering DS RRs in the range of a few days to 1 week. This re-signing does not require frequent rollover of the parent's ZSK, but scheduled ZSK rollover should still be performed at regular intervals.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72477",
+      "title": "The core BIND 9.x server files must be owned by the root or BIND 9.x process account.",
+      "description": "Discretionary Access Control (DAC) is based on the premise that individual users are \"owners\" of objects and therefore have discretion over who should be authorized to access the object and in which mode (e.g., read or write). Ownership is usually acquired as a consequence of creating the object or via specified ownership assignment. In a DNS implementation, DAC should be granted to a minimal number of individuals and objects because DNS does not interact directly with users and users do not store and share data with the DNS application directly.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72479",
+      "title": "The core BIND 9.x server files must be group owned by a group designated for DNS administration only.",
+      "description": "Discretionary Access Control (DAC) is based on the premise that individual users are \"owners\" of objects and therefore have discretion over who should be authorized to access the object and in which mode (e.g., read or write). Ownership is usually acquired as a consequence of creating the object or via specified ownership assignment. In a DNS implementation, DAC should be granted to a minimal number of individuals and objects because DNS does not interact directly with users and users do not store and share data with the DNS application directly.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72481",
+      "title": "The permissions assigned to the core BIND 9.x server files must be set to utilize the least privilege possible.",
+      "description": "Discretionary Access Control (DAC) is based on the premise that individual users are \"owners\" of objects and therefore have discretion over who should be authorized to access the object and in which mode (e.g., read or write). Ownership is usually acquired as a consequence of creating the object or via specified ownership assignment. In a DNS implementation, DAC should be granted to a minimal number of individuals and objects because DNS does not interact directly with users and users do not store and share data with the DNS application directly.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72483",
+      "title": "On a BIND 9.x server for zones split between the external and internal sides of a network, the RRs for the external hosts must be separate from the RRs for the internal hosts.",
+      "description": "Authoritative name servers for an enterprise may be configured to receive requests from both external and internal clients. \n\nExternal clients need to receive RRs that pertain only to public services (public Web server, mail server, etc.) \n\nInternal clients need to receive RRs pertaining to public services as well as internal hosts. \n\nThe zone information that serves the RRs on both the inside and the outside of a firewall should be split into different physical files for these two types of clients (one file for external clients and one file for internal clients).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72485",
+      "title": "On a BIND 9.x server in a split DNS configuration, where separate name servers are used between the external and internal networks, the external name server must be configured to not be reachable from inside resolvers.",
+      "description": "Instead of having the same set of authoritative name servers serve different types of clients, an enterprise could have two different sets of authoritative name servers. \n\nOne set, called external name servers, can be located within a DMZ; these would be the only name servers that are accessible to external clients and would serve RRs pertaining to hosts with public services (Web servers that serve external Web pages or provide B2C services, mail servers, etc.) \n\nThe other set, called internal name servers, is to be located within the firewall and should be configured so they are not reachable from outside and hence provide naming services exclusively to internal clients.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72487",
+      "title": "On a BIND 9.x server in a split DNS configuration, where separate name servers are used between the external and internal networks, the internal name server must be configured to not be reachable from outside resolvers.",
+      "description": "Instead of having the same set of authoritative name servers serve different types of clients, an enterprise could have two different sets of authoritative name servers. \n\nOne set, called external name servers, can be located within a DMZ; these would be the only name servers that are accessible to external clients and would serve RRs pertaining to hosts with public services (Web servers that serve external Web pages or provide B2C services, mail servers, etc.) \n\nThe other set, called internal name servers, is to be located within the firewall and should be configured so they are not reachable from outside and hence provide naming services exclusively to internal clients.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72489",
+      "title": "A BIND 9.x server implementation must implement internal/external role separation.",
+      "description": "DNS servers with an internal role only process name/address resolution requests from within the organization (i.e., internal clients). DNS servers with an external role only process name/address resolution information requests from clients external to the organization (i.e., on the external networks, including the Internet). The set of clients that can access an authoritative DNS server in a particular role is specified by the organization using address ranges, explicit access control lists, etc. In order to protect internal DNS resource information, it is important to isolate the requests to internal DNS servers. \n\nFailure to separate internal and external roles in DNS may lead to address space that is private (e.g., 10.0.0.0/24) or is otherwise concealed by some form of Network Address Translation from leaking into the public DNS system. Allowing private IP space to leak into the public DNS system may provide a person with malicious intent the ability to footprint your network and identify potential attack targets residing on your private network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-72491",
+      "title": "On the BIND 9.x server the IP address for hidden master authoritative name servers must not appear in the name servers set in the zone database.",
+      "description": "A hidden master authoritative server is an authoritative DNS server whose IP address does not appear in the name server set for a zone. All of the name servers that do appear in the zone database as designated name servers get their zone data from the hidden master via a zone transfer request. In effect, all visible name servers are actually secondary slave servers. This prevents potential attackers from targeting the master name server because its IP address may not appear in the zone database.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72493",
+      "title": "A BIND 9.x implementation operating in a split DNS configuration must be approved by the organizations Authorizing Official.",
+      "description": "BIND 9.x has implemented an option to use \"view\" statements to allow for split DNS architecture to be configured on a single name server. \n\nIf the split DNS architecture is improperly configured there is a risk that internal IP addresses and host names could leak into the external view of the DNS server. \n\nAllowing private IP space to leak into the public DNS system may provide a person with malicious intent the ability to footprint your network and identify potential attack targets residing on your private network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-72495",
+      "title": "On the BIND 9.x server the private key corresponding to the ZSK, stored on name servers accepting dynamic updates, must be owned by root.",
+      "description": "The private ZSK key must be protected from unauthorized access.\n\nThis strategy is not feasible in situations in which the DNSSEC-aware name server has to support dynamic updates. To support dynamic update transactions, the DNSSEC-aware name server (which usually is a primary authoritative name server) has to have both the zone file master copy and the private key corresponding to the zone-signing key (ZSK-private) online to immediately update the signatures for the updated RRsets.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72497",
+      "title": "On the BIND 9.x server the private key corresponding to the ZSK, stored on name servers accepting dynamic updates, must be group owned by root.",
+      "description": "The private ZSK key must be protected from unauthorized access.\n\nThis strategy is not feasible in situations in which the DNSSEC-aware name server has to support dynamic updates. To support dynamic update transactions, the DNSSEC-aware name server (which usually is a primary authoritative name server) has to have both the zone file master copy and the private key corresponding to the zone-signing key (ZSK-private) online to immediately update the signatures for the updated RRsets.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72499",
+      "title": "A BIND 9.x server implementation must enforce approved authorizations for controlling the flow of information between authoritative name servers and specified secondary name servers based on DNSSEC policies.",
+      "description": "A mechanism to detect and prevent unauthorized communication flow must be configured or provided as part of the system design. If information flow is not enforced based on approved authorizations, the system may become compromised. Information flow control regulates where information is allowed to travel within a system and between interconnected systems. The flow of all application information must be monitored and controlled so it does not introduce any unacceptable risk to the systems or data.\n\nWithin the context of DNS, this is applicable in terms of controlling the flow of DNS information between systems, such as DNS zone transfers.\n\nAuthoritative name servers (especially primary name servers) should be configured with an allow-transfer access control sub statement designating the list of hosts from which DNS information, such as zone transfers, can be accepted. These restrictions address the denial-of-service threat and potential exploits from unrestricted dissemination of information about internal resources.\n\nZone transfer from primary name servers should be restricted to secondary name servers. The zone transfer should be completely disabled in the secondary name servers. The address match list argument for the allow-transfer sub statement should consist of IP addresses of secondary name servers and stealth secondary name servers.\n\nSatisfies: SRG-APP-000215-DNS-000003, SRG-APP-000516-DNS-000095",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72501",
+      "title": "A BIND 9.x server validity period for the RRSIGs covering a zones DNSKEY RRSet must be no less than two days and no more than one week.",
+      "description": "The best way for a zone administrator to minimize the impact of a key compromise is by limiting the validity period of RRSIGs in the zone and in the parent zone. This strategy limits the time during which an attacker can take advantage of a compromised key to forge responses. An attacker that has compromised a ZSK can use that key only during the KSK's signature validity interval. An attacker that has compromised a KSK can use that key for only as long as the signature interval of the RRSIG covering the DS RR in the delegating parent. These validity periods should be short, which will require frequent re-signing.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72503",
+      "title": "A BIND 9.x server NSEC3 must be used for all internal DNS zones.",
+      "description": "To ensure that RRs associated with a query are really missing in a zone file and have not been removed in transit, the DNSSEC mechanism provides a means for authenticating the nonexistence of an RR. It generates a special RR called an NSEC (or NSEC3) RR that lists the RRTypes associated with an owner name as well as the next name in the zone file. It sends this special RR, along with its signatures, to the resolving name server. By verifying the signature, a DNSSEC-aware resolving name server can determine which authoritative owner name exists in a zone and which authoritative RRTypes exist at those owner names.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72505",
+      "title": "Every NS record in a zone file on a BIND 9.x server must point to an active name server and that name server must be authoritative for the domain specified in that record.",
+      "description": "Poorly constructed NS records pose a security risk because they create conditions under which an adversary might be able to provide the missing authoritative name services that are improperly specified in the zone file. The adversary could issue bogus responses to queries that clients would accept because they learned of the adversary's name server from a valid authoritative name server, one that need not be compromised for this attack to be successful. The list of slave servers must remain current within 72 hours of any changes to the zone architecture that would affect the list of slaves. If a slave server has been retired or is not operational but remains on the list, then an adversary might have a greater opportunity to impersonate that slave without detection, rather than if the slave were actually online. For example, the adversary may be able to spoof the retired slave's IP address without an IP address conflict, which would not be likely to occur if the true slave were active.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72507",
+      "title": "On a BIND 9.x server all authoritative name servers for a zone must be located on different network segments.",
+      "description": "Most enterprises have an authoritative primary server and a host of authoritative secondary name servers. It is essential that these authoritative name servers for an enterprise be located on different network segments. This dispersion ensures the availability of an authoritative name server not only in situations in which a particular router or switch fails but also during events involving an attack on an entire network segment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72509",
+      "title": "On a BIND 9.x server all authoritative name servers for a zone must have the same version of zone information.",
+      "description": "It is important to maintain the integrity of a zone file. The serial number of the SOA record is used to indicate to secondary name server that a change to the zone has occurred and a zone transfer should be performed. The serial number used in the SOA record provides the DNS administrator a method to verify the integrity of the zone file based on the serial number of the last update and ensure that all slave servers are using the correct zone file.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72511",
+      "title": "On a BIND 9.x server all root name servers listed in the local root zone file hosted on a BIND 9.x authoritative name server must be valid for that zone.",
+      "description": "All caching name servers must be authoritative for the root zone because, without this starting point, they would have no knowledge of the DNS infrastructure and thus would be unable to respond to any queries. The security risk is that an adversary could change the root hints and direct the caching name server to a bogus root server. At that point, every query response from that name server is suspect, which would give the adversary substantial control over the network communication of the name servers' clients.",
+      "severity": "low"
+    },
+    {
+      "id": "V-72513",
+      "title": "On a BIND 9.x server all root name servers listed in the local root zone file hosted on a BIND 9.x authoritative name server must be empty or removed.",
+      "description": "A potential vulnerability of DNS is that an attacker can poison a name servers cache by sending queries that will cause the server to obtain host-to-IP address mappings from bogus name servers that respond with incorrect information. The DNS architecture needs to maintain one name server whose zone records are correct and the cache is not poisoned, in this effort the authoritative name server may not forward queries, one of the ways to prevent this, the root hints file is to be deleted.\n\nWhen authoritative servers are sent queries for zones that they are not authoritative for, and they are configured as a non-caching server (as recommended), they can either be configured to return a referral to the root servers or they can be configured to refuse to answer the query. The requirement is to configure authoritative servers to refuse to answer queries for any zones for which they are not authoritative. This is more efficient for the server, and allows it to spend more of its resources doing what its intended purpose is; answering authoritatively for its zone.",
+      "severity": "low"
+    },
+    {
+      "id": "V-72515",
+      "title": "On the BIND 9.x server a zone file must not include resource records that resolve to a fully qualified domain name residing in another zone.",
+      "description": "If a name server were able to claim authority for a resource record in a domain for which it was not authoritative, this would pose a security risk. In this environment, an adversary could use illicit control of a name server to impact IP address resolution beyond the scope of that name server (i.e., by claiming authority for records outside of that server's zones). Fortunately, all but the oldest versions of BIND and most other DNS implementations do not allow for this behavior. Nevertheless, the best way to eliminate this risk is to eliminate from the zone files any records for hosts in another zone.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72517",
+      "title": "On the BIND 9.x server CNAME records must not point to a zone with lesser security for more than six months.",
+      "description": "The use of CNAME records for exercises, tests, or zone-spanning aliases should be temporary (e.g., to facilitate a migration). When a host name is an alias for a record in another zone, an adversary has two points of attack: the zone in which the alias is defined and the zone authoritative for the alias's canonical name. This configuration also reduces the speed of client resolution because it requires a second lookup after obtaining the canonical name. Furthermore, in the case of an authoritative name server, this information is promulgated throughout the enterprise to caching servers and thus compounds the vulnerability.",
+      "severity": "low"
+    },
+    {
+      "id": "V-72519",
+      "title": "The BIND 9.x server implementation must prohibit the forwarding of queries to servers controlled by organizations outside of the U.S. Government.",
+      "description": "If remote servers to which DoD DNS servers send queries are controlled by entities outside of the U.S. Government the possibility of a DNS attack is increased. \n\nThe Enterprise Recursive Service (ERS) provides the ability to apply enterprise-wide policy to all recursive DNS traffic that traverses the NIPRNet-to-Internet boundary. All recursive DNS servers on the NIPRNet must be configured to exclusively forward DNS traffic traversing NIPRNet-to-Internet boundary to the ERS anycast IPs.\n\nOrganizations need to carefully configure any forwarding that is being used by their caching name servers. They should only configure \"forwarding of all queries\" to servers within the DoD. Systems configured to use domain-based forwarding should not forward queries for mission critical domains to any servers that are not under the control of the US Government.",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "stig_mobile_policy",
+  "date": "2016-09-01",
+  "description": "This STIG provides policy, training, and operating procedure security controls for the use of mobile devices and systems in the DoD environment. This STIG applies to any mobile operating system device used to store, process, transmit, or receive DoD information. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Mobile Policy Security Technical Implementation Guide (STIG)",
+  "version": "2",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-12106",
+      "title": "Unclassified wireless devices must not be operated in Secure Spaces (as defined in DoDI 8420.01) unless required conditions are followed.",
+      "description": "The operation of electronic equipment and emanations must be controlled in and around areas where sensitive information is kept or processed.  Sites should post signs and train users to this requirement to mitigate this vulnerability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13982",
+      "title": "All users of mobile devices or wireless devices must sign a user agreement before the mobile or wireless device is issued to the user and the user agreement used at the site must include required content. ",
+      "description": "Lack of user training and understanding of responsibilities to safeguard wireless technology is a significant vulnerability to the enclave. Once policies are established, users must be trained to these requirements or the risk to the network remains.\n\nUser agreements are particularly important for mobile and remote users since there is a high risk of loss, theft, or compromise. Thus, this signed agreement is a good best practice to help ensure the site is confirming the user is aware of the risks and proper procedures.",
+      "severity": "low"
+    },
+    {
+      "id": "V-19813",
+      "title": "Computers with an embedded wireless system must have the radio removed before the computer is used to transfer, receive, store, or process classified information, unless the wireless system has been certified via the DoD Commercial Solutions for Classified (CSfC) program.",
+      "description": "With the increasing popularity of wireless networking, most laptops have wireless NICs (network interface cards) installed on the laptop motherboard. Although the system administrator may disable these embedded NICs, the user may purposefully or accidentally enable the device. These devices may also inadvertently transmit ambient sound or electronic signals. Therefore, simply disabling the transmit capability is an inadequate solution for computers processing classified information. In addition, embedded wireless cards do not meet DoD security requirements for classified wireless usage.",
+      "severity": "high"
+    },
+    {
+      "id": "V-8283",
+      "title": "All wireless/mobile systems (including associated peripheral devices, operating system, applications, network/PC connection methods, and services) must be approved by the approval authority prior to installation and use for processing DoD information. \n\n",
+      "description": "Unauthorized wireless systems expose DoD networks to attack. The Authorizing Official (AO) and appropriate commanders must be aware of all wireless systems used at the site. AOs should ensure a risk assessment for each system, including associated services and peripherals, is conducted before approving. Accept risks only when needed to meet mission requirements.",
+      "severity": "high"
+    }
+  ]
+}

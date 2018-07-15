@@ -1,0 +1,185 @@
+{
+  "name": "stig_airwatch_mdm",
+  "date": "2015-11-30",
+  "description": "Developed by AirWatch in coordination with DISA for the DoD.",
+  "title": "AirWatch MDM STIG",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-47299",
+      "title": "The AirWatch MDM Server must implement separation of administrator duties by requiring a specific role be assigned to each administrator account.",
+      "description": "Separation of duties supports the management of individual accountability and reduces the power of one individual or administrative account.  Employing a separation of duties model reduces the threat that one individual has the authority to make changes to a system, and the authority to delete any record of those changes. \nThis requirement is intended to limit exposure due to operating from within a privileged account or role.  The inclusion of a role is intended to address those situations where an access control policy, such as Role Based Access Control (RBAC), is being implemented and where a change of role provides the same degree of assurance in the change of access authorizations for both the user and all processes acting on behalf of the user as would be provided by a change between a privileged and non-privileged account. \nIt is recommended that the following or similar roles be supported:  \n- AirWatch MDM Server administrative account administrator:  responsible for server installation, initial configuration, and maintenance functions.\n- Security configuration policy administrator (IA technical professional):  responsible for security configuration of the server and setting up and maintenance of mobile device security policies.\n- Device management administrator (Technical operator):  responsible for maintenance of mobile device accounts, including setup, change of account configurations, and account deletion.\n- Auditor (internal auditor or reviewer):  responsible for reviewing and maintaining server and mobile device audit logs.",
+      "severity": "high"
+    },
+    {
+      "id": "V-47301",
+      "title": "If the AirWatch MDM Server includes a mobile email management capability, the email client must either block or convert all active content in email (HTML, RTF, etc.) to text before the email is forwarded to the mobile device.",
+      "description": "HTML embedded in an email has the potential to host malicious code that may allow an attacker access to the user's end device and possibly the network to which it is attached. Requiring that all emails are viewed in plain text protects against malicious code that could be embedded in the HTML content of an email.",
+      "severity": "low"
+    },
+    {
+      "id": "V-47303",
+      "title": "The AirWatch MDM Server must support the transfer of audit logs to remote log or management servers.",
+      "description": "AirWatch MDM Server auditing capability is critical for accurate forensic analysis. The ability to transfer audit logs often is necessary to quickly isolate them, protect their integrity, and analyze their contents. An important aspect of security is maintaining awareness of what users have tried to do with their devices and what activities and actions MDM administrators have made.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47307",
+      "title": "The AirWatch MDM Server must utilize the integration of audit review, analysis, and reporting processes by an organizations central audit management system to support organizational processes for investigation and response to suspicious activities.",
+      "description": "Auditing and logging are key components of any security architecture.  It is essential for security personnel to know what is being done, what attempted to be done, where it was done, when it was done, and by whom in order to compile an accurate collection of data for troubleshooting, forensics, etc.  Logging the actions of specific events provides a means to investigate an attack, recognize resource utilization or capacity thresholds, or to simply identify an improperly configured network element.  In order to determine what is happening within the network infrastructure or to resolve and trace an attack, it is imperative to correlate the log data from multiple network elements to acquire a clear understanding as to what happened or is happening.  Collecting log data and presenting that data in a single, consolidated view achieves this objective.",
+      "severity": "low"
+    },
+    {
+      "id": "V-47309",
+      "title": "The AirWatch MDM Server must centralize the review and analysis of audit records from multiple components within the server.",
+      "description": "Due to the numerous functions an AirWatch MDM Server implementation processes, log files can become extremely large because of the volume of data.  The more processes that are logged, more log data is collected.  This can become very difficult to analyze manually; therefore, it is important to process them automatically and tailor the views of the data to only those events of interest based upon selectable criteria.  Without the automation of log processing, based upon events of interest to security personnel, log files will not be viewed accurately and actions will not be taken when a significant event occurs on the system because it can be too overwhelming.  Significant or meaningful events may be missed due to the sheer volume of data if logs are reviewed manually.  Reducing the auditing capability to only those events that are significant aids in supporting near real-time audit review and analysis requirements and after-the-fact investigations of security incidents. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47313",
+      "title": "The AirWatch MDM Server must automatically process audit records for events of interest based upon selectable, event criteria.",
+      "description": "Due to the numerous functions an AirWatch MDM Server implementation processes, log files can become extremely large because of the volume of data.  The more processes that are logged, the more log data is collected.  This can become very difficult to analyze manually; therefore, it is important to process them automatically and tailor the views of the data to only those events of interest based upon selectable criteria.  Without the automation of log processing, based upon events of interest to security personnel, log files will not be viewed accurately and actions will not be taken when a significant event occurs on the system because it can be too overwhelming.  Significant or meaningful events may be missed due to the sheer volume of data if logs are reviewed manually.",
+      "severity": "low"
+    },
+    {
+      "id": "V-47317",
+      "title": "The AirWatch MDM Server must be capable of scanning the hardware version of managed mobile devices and alert if unsupported versions are found.\n",
+      "description": "Approved versions of devices have gone though all required phases of testing, approval, etc., and are able to support required security features.  Using non-approved versions of mobile device hardware could compromise the security baseline of the mobile system, since some required security features may not be supported.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47319",
+      "title": "The AirWatch MDM Server must configure the mobile device to prohibit the mobile device user from installing unapproved applications.",
+      "description": "The operating system must enforce software installation by users based upon what types of software installations are permitted (e.g., updates and security patches to existing software) and what types of installations are prohibited (e.g., software whose pedigree with regard to being potentially malicious is unknown or suspect) by the organization.  The installation and execution of unauthorized software on an operating system may allow the application to obtain sensitive information or further compromise the system.  Preventing a user from installing unapproved applications mitigates this risk.  All OS core applications, third-party applications, and carrier installed applications must be approved.  In this case, applications include any applets, browse channel apps, and icon apps.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47321",
+      "title": "The AirWatch MDM Server must configure the mobile device to prohibit the mobile device user from installing unapproved applications.",
+      "description": "The operating system must enforce software installation by users based upon what types of software installations are permitted (e.g., updates and security patches to existing software) and what types of installations are prohibited (e.g., software whose pedigree with regard to being potentially malicious is unknown or suspect) by the organization.  The installation and execution of unauthorized software on an operating system may allow the application to obtain sensitive information or further compromise the system.  Preventing a user from installing unapproved applications mitigates this risk.  All OS core applications, third-party applications, and carrier installed applications must be approved.  In this case, applications include any applets, browse channel apps, and icon apps.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47325",
+      "title": "The AirWatch MDM Server must configure the mobile device agent to prohibit the download of software from a DoD non-approved source (e.g., DoD operated mobile device application store or AirWatch MDM Server).",
+      "description": "DoD can perform due diligence on sources of software to mitigate the risk that malicious software is introduced to those sources.  Therefore, if software is downloaded from a DoD-approved source, then it is less likely to be malicious than if it is downloaded from an unapproved source.  To prevent access to unapproved sources, the operating system in most cases can be configured to disable user access to public application stores.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47327",
+      "title": "The AirWatch MDM Server must configure the mobile device agent to prohibit the download of software from a DoD non-approved source (e.g., DoD operated mobile device application store or AirWatch MDM Server).",
+      "description": "DoD can perform due diligence on sources of software to mitigate the risk that malicious software is introduced to those sources.  Therefore, if software is downloaded from a DoD-approved source, then it is less likely to be malicious than if it is downloaded from an unapproved source.  To prevent access to unapproved sources, the operating system in most cases can be configured to disable user access to public application stores.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47329",
+      "title": "The AirWatch MDM Server must configure the mobile device agent to prohibit the download of software from a DoD non-approved source (e.g., DoD operated mobile device application store or AirWatch MDM Server).",
+      "description": "DoD can perform due diligence on sources of software to mitigate the risk that malicious software is introduced to those sources.  Therefore, if software is downloaded from a DoD-approved source, then it is less likely to be malicious than if it is downloaded from an unapproved source.  To prevent access to unapproved sources, the operating system in most cases can be configured to disable user access to public application stores.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47331",
+      "title": "The AirWatch MDM Server must provide the administrative functionality to specify a list of approved applications that must be installed on the mobile device and cannot be removed by the user.",
+      "description": "DoD can perform due diligence on sources of software to mitigate the risk that malicious software is introduced to those sources.  Therefore, if software is downloaded from a DoD-approved source, then it is less likely to be malicious than if it is downloaded from an unapproved source.  To prevent access to unapproved sources, the operating system in most cases can be configured to disable user access to public application stores.  In some cases, some applications are required for secure operation of the mobile devices controlled by the AirWatch MDM Server.  In these cases, the ability for users to remove the application is needed as to ensure proper secure operations of the device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47333",
+      "title": "The AirWatch MDM Server must provide the administrative functionality to specify a list of approved applications that must be installed on the mobile device and cannot be removed by the user.",
+      "description": "DoD can perform due diligence on sources of software to mitigate the risk that malicious software is introduced to those sources.  Therefore, if software is downloaded from a DoD-approved source, then it is less likely to be malicious than if it is downloaded from an unapproved source.  To prevent access to unapproved sources, the operating system in most cases can be configured to disable user access to public application stores.  In some cases, some applications are required for secure operation of the mobile devices controlled by the AirWatch MDM Server.  In these cases, the ability for users to remove the application is needed as to ensure proper secure operations of the device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47335",
+      "title": "The AirWatch MDM Server must be able to detect if the security policy has been modified, disabled, or bypassed on managed mobile devices.",
+      "description": "If the security policy has been modified in an unauthorized manner, IA is severely degraded and a variety of further attacks are possible.  Detecting whether the security policy has been modified or disabled mitigates these risks.",
+      "severity": "high"
+    },
+    {
+      "id": "V-47337",
+      "title": "The AirWatch MDM Server must employ automated mechanisms to respond to unauthorized changes to the security policy or AirWatch MDM Server agent on managed mobile devices.",
+      "description": "Uncoordinated or incorrect configuration changes to the AirWatch MDM Server managed components can potentially lead to compromises.  Without automated mechanisms to respond to changes, changes can go unnoticed for a significant amount of time which could result in compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47339",
+      "title": "The AirWatch MDM Server must uniquely identify mobile devices managed by the server prior to connecting to the device.",
+      "description": "When managed mobile devices connect to the AirWatch MDM Server, the security policy and possible sensitive DoD data will be pushed to the device.  In addition, the device may be provided access to application and web servers on the DoD network.  Therefore, strong authentication of the user on the device is required to ensure sensitive DoD data is not exposed and unauthorized access to the DoD network is not granted, exposing the network to malware and attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47341",
+      "title": "The AirWatch MDM Server device integrity validation component must employ automated mechanisms to detect the presence of unauthorized software on managed mobile devices and notify designated organizational officials in accordance with the organization-defined frequency.",
+      "description": "Unauthorized software poses a risk to the device because it could potentially perform malicious functions, including but not limited to gathering sensitive information, searching for other system vulnerabilities, or modifying log entries.  A mechanism to detect unauthorized software and notify officials of its presence assists in the task of removing such software to eliminate the risks it poses to the device and the networks to which the device attaches.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47343",
+      "title": "The AirWatch MDM Server must terminate the network connection associated with a communications session at the end of the session or after an organization-defined time period of inactivity.",
+      "description": "If communication’s sessions remain open for extended periods of time even when unused, there is the potential for an adversary to highjack the session and use it to gain access to the device or networks to which it is attached.  Terminating sessions after a certain period of inactivity is a method for mitigating the risk of this vulnerability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47345",
+      "title": "The AirWatch MDM Server must ensure authentication of both mobile device AirWatch MDM Server agent and server during the entire session.",
+      "description": "AirWatch MDM Server can be prone to man-in-the middle attacks.  If communication sessions are not provided appropriate validity protections, such as the employment of SSL Mutual Authentication authenticity of the data cannot be guaranteed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47347",
+      "title": "The AirWatch MDM Server must notify when it detects unauthorized changes to security configuration of managed mobile devices.",
+      "description": "Incident response functions are intended to monitor, detect, and alarm on defined events occurring on the system or on the network.  A large part of their functionality is accurate and timely notification of events.  Notifications can be made more efficient by the creation of notification groups containing members who would be responding to a particular alarm or event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47349",
+      "title": "The AirWatch MDM Server must perform required actions when a security related alert is received.",
+      "description": "Incident response functions are intended to monitor, detect, and alarm on defined events occurring on the system or on the network.  A large part of their functionality is accurate and timely notification of events.  Notifications can be made more efficient by the creation of notification groups containing members who would be responding to a particular alarm or event.  Types of actions the AirWatch MDM Server must be able to perform after a security alert include:  log the alert, send email to a system administrator, wipe the managed mobile device, lock the mobile device account on the AirWatch MDM Server, disable the security container, wipe the security container, and delete any unapproved application.  Security alerts include any alert from the MDIS or MAM component of the AirWatch MDM Server.",
+      "severity": "high"
+    },
+    {
+      "id": "V-47351",
+      "title": "The AirWatch MDM Server device integrity validation component must include the capability to notify an organization-defined list of response personnel who are identified by name and/or by role notifications of suspicious events.",
+      "description": "Integrity checking applications are by their nature, designed to monitor and detect defined events occurring on the system. When the integrity checking mechanism finds an anomaly, it must notify personnel in order to ensure the proper action is taken based upon the integrity issues found. If notification is not performed, the issue may continue or worsen to allow intruders into the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47353",
+      "title": "The AirWatch MDM Server device integrity validation component must use automated mechanisms to alert security personnel when the device has been jailbroken or rooted.",
+      "description": "Successful incident response and auditing relies on timely, accurate system information and analysis in order to allow the organization to identify and respond to potential incidents in a proficient manner.  The ability of an AirWatch MDM Server to detect \"jailbreaking\" or rooting of the device mitigates the potential for these breaches to have further consequences to the enterprise.\n\n\"Jailbreaking\"/rooting refers to a mobile device where the security mechanisms of the hardware and OS of the device have been bypassed so the user has root access.",
+      "severity": "high"
+    },
+    {
+      "id": "V-47355",
+      "title": "The AirWatch MDM Server device integrity validation component must identify the affected mobile device, severity of the finding, and provide a recommended mitigation.",
+      "description": "One of the most significant indicators of an IA attack is modification of operating system files, device drivers, or security enforcement mechanisms.  An integrity verification capability or tool detects unauthorized modifications to files or permissions and either prevents further operation or reports its findings so an appropriate response can occur.",
+      "severity": "high"
+    },
+    {
+      "id": "V-47357",
+      "title": "The AirWatch MDM Server device integrity validation component must base recommended mitigations for findings on the identified risk level of the finding.",
+      "description": "One of the most significant indicators of an IA attack is modification of operating system files, device drivers, or security enforcement mechanisms.  An integrity verification capability or tool detects unauthorized modifications to files or permissions and either prevents further operation or reports its findings so an appropriate response can occur.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-47359",
+      "title": "The AirWatch MDM Server must back up audit records on an organization-defined frequency onto a different system or media than the system being audited.",
+      "description": "Protection of log data includes assuring the log data is not accidentally lost or deleted.  Backing up audit records to a different system or onto separate media other than the system being audited on an organizationally-defined frequency helps to assure in the event of a catastrophic system failure, the audit records will be retained.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48041",
+      "title": "The AirWatch MDM Server must record an event in the audit log each time the server makes a security relevant configuration change on a managed mobile device.",
+      "description": "Any changes to the hardware, software, and/or firmware components of the information system and/or application can potentially have significant effects on the overall security of the system. Security-relevant configuration changes, if not authorized, are a breach of system security and might indicate a broader attack is occurring. Recording security-relevant changes in the audit logs mitigates the risk that unauthorized changes will go undetected.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-63317",
+      "title": "AirWatch MDM server versions that are no longer supported by the vendor for security updates must not be installed on a system.\n",
+      "description": "AirWatch MDM server versions (6.5 and earlier versions) that are no longer supported by AirWatch by VMware for security updates are not  evaluated or updated for vulnerabilities, leaving them open to potential attack. Organizations must transition to a supported AirWatch MDM server version to ensure continued support.\n",
+      "severity": "high"
+    }
+  ]
+}

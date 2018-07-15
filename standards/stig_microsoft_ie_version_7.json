@@ -1,0 +1,749 @@
+{
+  "name": "stig_microsoft_ie_version_7",
+  "date": "2015-12-17",
+  "description": "None",
+  "title": "Microsoft IE Version 7 ",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-14245",
+      "title": "Internet Explorer - Do not allow users to enable or disable add-ons.",
+      "description": "This check verifies that the system is configured to allow users to enable or disable add-ons through Add-On Manager in Internet Explorer.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15490",
+      "title": "Automatic configuration of Internet Explorer is not disabled.",
+      "description": "This setting specifies to automatically detect the proxy server settings used to connect to the Internet and customize Internet Explorer. This setting specifies that Internet explorer use the configuration settings provided in a file by the system administrator.  If you enable this policy setting, the user will not be able to do automatic configuration. You can import your current connection settings from your machine using Internet Explorer Maintenance under Admin Templates using group policy editor.  If you disable or do no configure this policy setting, the user will have the freedom to automatically configure these settings.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15492",
+      "title": "Prevent participation in the Customer Experience Improvement Program is not disabled.",
+      "description": "This setting controls whether users can participate in the Microsoft Customer Experience Improvement Program to help improve Microsoft applications.\nWhen users choose to participate in the Customer Experience Improvement Program (CEIP), applications automatically send information to Microsoft about how the applications are used. This information is combined with other CEIP data to help Microsoft solve problems and to improve the products and features customers use most often. This feature does not collect users' names, addresses, or any other identifying information except the IP address that is used to send the data.\nBy default, users have the opportunity to opt into participation in the CEIP the first time they run an application. If your organization has policies that govern the use of external resources such as the CEIP, allowing users to opt in to the program might cause them to violate these policies.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15494",
+      "title": "Turn off the Security Settings Check feature is not disabled. ",
+      "description": "This policy setting turns off the Security Settings Check feature, which checks Internet Explorer security settings to determine when the settings put Internet Explorer at risk.  If you enable this policy setting, the security settings check will not be performed.  If you disable or do not configure this policy setting, the security settings check will be performed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15495",
+      "title": "Turn off Managing Phishing filter is not disabled.",
+      "description": "This policy setting allows the user to enable a phishing filter that will warn if the Web site being visited is known for fraudulent attempts to gather personal information through \"phishing.\"  If you enable this policy setting, the user will not be prompted to enable the phishing filter. You must specify which mode the phishing filter uses: manual, automatic, or off.  If you select manual mode, the phishing filter performs only local analysis and users are prompted to permit any data to be sent to Microsoft.  If the feature is fully enabled, all website addresses not contained on the filter's whitelist will be sent automatically to Microsoft without prompting the user.  If you disable or do not configure this policy setting, the user will be prompted to decide the mode of operation for the phishing filter.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15497",
+      "title": "Allow active content from CDs to run on user machines is not disabled.",
+      "description": "This policy setting allows you to manage whether users receive a dialog requesting permission for active content on a CD to run.  If you enable this policy setting, active content on a CD will run without a prompt.\nIf you disable this policy setting, active content on a CD will always prompt before running.  If you do not configure this policy, users can choose whether to be prompted before running active content on a CD.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15499",
+      "title": "Allow software to run or install even if the signature is invalid is not disabled.",
+      "description": "Microsoft ActiveX controls and file downloads often have digital signatures attached that vouch for both the file's integrity and the identity of the signer (creator) of the software. Such signatures help ensure that unmodified.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15500",
+      "title": "Allow third-party browser extensions are not disabled.",
+      "description": "This policy setting allows you to manage whether Internet Explorer will launch COM add-ons known as browser helper objects, such as toolbars. Browser helper objects may contain flaws such as buffer overruns which impact Internet Explorer's performance or stability.  If you enable this policy setting, Internet Explorer automatically launches any browser helper objects that are installed on the user's computer.  If you disable this policy setting, browser helper objects do not launch.  If you do not configure this policy, Internet Explorer automatically launches any browser helper objects that are installed on the user's computer.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15502",
+      "title": "Check for server certificate revocation is not enabled.",
+      "description": "This policy setting allows you to manage whether Internet Explorer will check revocation status of servers' certificates. Certificates are revoked when they have been compromised or are no longer valid, and this option protects users from submitting confidential data to a site that may be fraudulent or not secure. If you enable this policy setting, Internet Explorer will check to see if server certificates have been revoked.  If you disable this policy setting, Internet Explorer will not check server certificates to see if they have been revoked.  If you do not configure this policy setting, Internet Explorer will not check server certificates to see if they have been revoked.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15503",
+      "title": "Check for signatures on downloaded programs is not enabled.",
+      "description": "This policy setting allows you to manage whether Internet Explorer checks for digital signatures (which identifies the publisher of signed software and verifies it hasn't been modified or tampered with) on user computers before downloading executable programs.  If you enable this policy setting, Internet Explorer will check the digital signatures of executable programs and display their identities before downloading them to user computers.\nIf you disable this policy setting, Internet Explorer will not check the digital signatures of executable programs or display their identities before downloading them to user computers.  If you do not configure this policy, Internet Explorer will not check the digital signatures of executable programs or display their identities before downloading them to user computers.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15504",
+      "title": "Intranet Sites: Include all network paths (UNCs) are disabled. ",
+      "description": "This policy setting controls whether URLs representing UNCs are mapped into the local Intranet security zone.  If you enable this policy setting, all network paths are mapped into the Intranet Zone.  If you disable this policy setting, network paths are not necessarily mapped into the Intranet Zone (other rules might map one there).  If you do not configure this policy setting, users choose whether network paths are mapped into the Intranet Zone.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15507",
+      "title": "Allow script-initiated windows without size or position constraints for internet zone is not disabled.",
+      "description": "This policy setting allows you to manage restrictions on script-initiated pop-up windows and windows that include the title and status bars.\nIf you enable this policy setting, Windows Restrictions security will not apply in this zone. The security zone runs without the added layer of security provided by this feature.  If you disable this policy setting, the possible harmful actions contained in script-initiated pop-up windows and windows that include the title and status bars cannot be run. This Internet Explorer security feature will be on in this zone as dictated by the Scripted Windows Security Restrictions feature control setting for the process.  If you do not configure this policy setting, the possible harmful actions contained in script-initiated pop-up windows and windows that include the title and status bars cannot be run. This Internet Explorer security feature will be on in this zone as dictated by the Scripted Windows Security Restrictions feature control setting for the process.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15508",
+      "title": "Allow script-initiated windows without size or position constraints for restricted sites zone are not disabled.",
+      "description": "This policy setting allows you to manage restrictions on script-initiated pop-up windows and windows that include the title and status bars.\nIf you enable this policy setting, Windows Restrictions security will not apply in this zone. The security zone runs without the added layer of security provided by this feature.  If you disable this policy setting, the possible harmful actions contained in script-initiated pop-up windows and windows that include the title and status bars cannot be run. This Internet Explorer security feature will be on in this zone as dictated by the Scripted Windows Security Restrictions feature control setting for the process.  If you do not configure this policy setting, the possible harmful actions contained in script-initiated pop-up windows and windows that include the title and status bars cannot be run. This Internet Explorer security feature will be on in this zone as dictated by the Scripted Windows Security Restrictions feature control setting for the process.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15509",
+      "title": "Allow Scriptlets are not disabled.",
+      "description": "This policy setting allows you to manage whether scriptlets can be allowed.\nIf you enable this policy setting, users will be able to run scriptlets.\nIf you disable this policy setting, users will not be able to run scriptlets.\nIf you do not configure this policy setting, a scriptlet can be enabled or disabled by the user.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15513",
+      "title": "Automatic prompting for file downloads dialog box is not disabled.",
+      "description": "This policy setting determines whether users will be prompted for non user-initiated file downloads. Regardless of this setting, users will receive file download dialogs for user-initiated downloads.  If you enable this setting, users will receive a file download dialog for automatic download attempts.\nIf you disable or do not configure this setting, file downloads that are not user-initiated will be blocked, and users will see the Information Bar instead of the file download dialog. Users can then click the Information Bar to allow the file download prompt.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15515",
+      "title": "Java permissions for my computer are not disabled.",
+      "description": "This policy setting allows you to manage permissions for Java applets.\nIf you enable this policy setting, you can choose options from the drop-down box. Custom, to control permissions settings individually.  Low Safety enables applets to perform all operations.  Medium Safety enables applets to run in their sandbox (an area in memory outside of which the program cannot make calls), plus capabilities like scratch space (a safe and secure storage area on the client computer) and user-controlled file I/O.   High Safety enables applets to run in their sandbox. Disable Java to prevent any applets from running.\nIf you disable this policy setting, Java applets cannot run.  If you do not configure this policy setting, the permission is set to High Safety.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15516",
+      "title": "Java permissions for my computer group policy are not disabled.",
+      "description": "This policy setting allows you to manage permissions for Java applets.\nIf you enable this policy setting, you can choose options from the drop-down box. Custom, to control permissions settings individually.  Low Safety enables applets to perform all operations.  Medium Safety enables applets to run in their sandbox (an area in memory outside of which the program cannot make calls), plus capabilities like scratch space (a safe and secure storage area on the client computer) and user-controlled file I/O.   High Safety enables applets to run in their sandbox. Disable Java to prevent any applets from running.\nIf you disable this policy setting, Java applets cannot run.  If you do not configure this policy setting, the permission is set to High Safety.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15517",
+      "title": "Java permissions for group policy for local intranet zone are not disabled.",
+      "description": "This policy setting allows you to manage permissions for Java applets.\nIf you enable this policy setting, you can choose options from the drop-down box. Custom, to control permissions settings individually.  Low Safety enables applets to perform all operations.  Medium Safety enables applets to run in their sandbox (an area in memory outside of which the program cannot make calls), plus capabilities like scratch space (a safe and secure storage area on the client computer) and user-controlled file I/O.   High Safety enables applets to run in their sandbox. Disable Java to prevent any applets from running.\nIf you disable this policy setting, Java applets cannot run.  If you do not configure this policy setting, the permission is set to High Safety.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15518",
+      "title": "Java permissions for group policy for trusted sites zone are not disabled.",
+      "description": "This policy setting allows you to manage permissions for Java applets.\nIf you enable this policy setting, you can choose options from the drop-down box. Custom, to control permissions settings individually.  Low Safety enables applets to perform all operations.  Medium Safety enables applets to run in their sandbox (an area in memory outside of which the program cannot make calls), plus capabilities like scratch space (a safe and secure storage area on the client computer) and user-controlled file I/O.   High Safety enables applets to run in their sandbox. Disable Java to prevent any applets from running.\nIf you disable this policy setting, Java applets cannot run.  If you do not configure this policy setting, the permission is set to High Safety.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15519",
+      "title": "Java permissions for group policy for internet zone are not disabled.",
+      "description": "This policy setting allows you to manage permissions for Java applets.\nIf you enable this policy setting, you can choose options from the drop-down box. Custom, to control permissions settings individually.  Low Safety enables applets to perform all operations.  Medium Safety enables applets to run in their sandbox (an area in memory outside of which the program cannot make calls), plus capabilities like scratch space (a safe and secure storage area on the client computer) and user-controlled file I/O.   High Safety enables applets to run in their sandbox. Disable Java to prevent any applets from running.\nIf you disable this policy setting, Java applets cannot run.  If you do not configure this policy setting, the permission is set to High Safety.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15520",
+      "title": "Java permissions for group policy for restricted sites zone are not disabled.",
+      "description": "This policy setting allows you to manage permissions for Java applets.\nIf you enable this policy setting, you can choose options from the drop-down box. Custom, to control permissions settings individually.  Low Safety enables applets to perform all operations.  Medium Safety enables applets to run in their sandbox (an area in memory outside of which the program cannot make calls), plus capabilities like scratch space (a safe and secure storage area on the client computer) and user-controlled file I/O.   High Safety enables applets to run in their sandbox. Disable Java to prevent any applets from running.\nIf you disable this policy setting, Java applets cannot run.  If you do not configure this policy setting, the permission is set to High Safety.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15521",
+      "title": "Loose or un-compiled XAML files for internet zone are not disabled.",
+      "description": "These are eXtensible Application Markup Language (XAML) files. XAML is an XML-based declarative markup language commonly used for creating rich user interfaces and graphics that leverage the Windows Presentation Foundation.  If you enable this policy setting and the dropdown box is set to Enable, .XAML files will be automatically loaded inside Internet Explorer 7.0. User will not be able to change this behavior. If the dropdown box is set to Prompt, users will receive a prompt for loading .XAML files.  If you disable this policy setting, .XAML files will not be loaded inside Internet Explorer 7. User will not be able to change this behavior.  If you do not configure this policy setting, users will have the freedom to decide whether to load XAML files inside Internet Explorer 7.0.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15522",
+      "title": "Loose or un-compiled XAML files for restricted sites zone are not disabled.",
+      "description": "These are eXtensible Application Markup Language (XAML) files. XAML is an XML-based declarative markup language commonly used for creating rich user interfaces and graphics that leverage the Windows Presentation Foundation.  If you enable this policy setting and the dropdown box is set to Enable, .XAML files will be automatically loaded inside Internet Explorer 7.0. User will not be able to change this behavior. If the dropdown box is set to Prompt, users will receive a prompt for loading .XAML files.  If you disable this policy setting, .XAML files will not be loaded inside Internet Explorer 7. User will not be able to change this behavior.  If you do not configure this policy setting, users will have the freedom to decide whether to load XAML files inside Internet Explorer 7.0.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15523",
+      "title": "Open files based on content, not file extension for internet zone are not disabled.",
+      "description": "This policy setting allows you to manage MIME sniffing for file promotion from one type to another based on a MIME sniff. A MIME sniff is the recognition by Internet Explorer of the file type based on a bit signature.  If you enable this policy setting, the MIME Sniffing Safety Feature will not apply in this zone. The security zone will run without the added layer of security provided by this feature.  If you disable this policy setting, the actions that may be harmful cannot run; this Internet Explorer security feature will be turned on in this zone, as dictated by the feature control setting for the process.\nIf you do not configure this policy setting, the MIME Sniffing Safety Feature will not apply in this zone.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15524",
+      "title": "Open files based on content, not file extension for restricted sites zone are not disabled.",
+      "description": "This policy setting allows you to manage MIME sniffing for file promotion from one type to another based on a MIME sniff. A MIME sniff is the recognition by Internet Explorer of the file type based on a bit signature.  If you enable this policy setting, the MIME Sniffing Safety Feature will not apply in this zone. The security zone will run without the added layer of security provided by this feature.  If you disable this policy setting, the actions that may be harmful cannot run; this Internet Explorer security feature will be turned on in this zone, as dictated by the feature control setting for the process.\nIf you do not configure this policy setting, the MIME Sniffing Safety Feature will not apply in this zone.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15525",
+      "title": "Turn Off First-Run Opt-In for internet zone is not disabled.",
+      "description": "This policy setting controls the First Run response that users see on a zone by zone basis.  When a user encounters a new control that has not previously run in Internet Explorer, they may be prompted to approve the control.  This feature determines if the user gets the prompt or not.  \nIf you enable this policy setting, the Gold Bar prompt will be turned off in the corresponding zone.  If you disable this policy setting, the Gold Bar prompt will be turned on in the corresponding zone.   If you do not configure this policy setting, the first-run prompt is turned off by default.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15526",
+      "title": "Turn Off First-Run Opt-In for restricted sites zone are not disabled.",
+      "description": "This policy setting controls the First Run response that users see on a zone by zone basis.  When a user encounters a new control that has not previously run in Internet Explorer, they may be prompted to approve the control.  This feature determines if the user gets the prompt or not.  \nIf you enable this policy setting, the Gold Bar prompt will be turned off in the corresponding zone.  If you disable this policy setting, the Gold Bar prompt will be turned on in the corresponding zone.   If you do not configure this policy setting, the first-run prompt is turned off by default.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15527",
+      "title": "Turn on Protected Mode internet zone is not enabled.",
+      "description": "Protected mode protects Internet Explorer from exploited vulnerabilities by reducing the locations Internet Explorer can write to in the registry and the file system.  If you enable this policy setting, Protected Mode will be turned on. Users will not be able to turn off protected mode.  If you disable this policy setting, Protected Mode will be turned off. It will revert to Internet Explorer 6 behavior that allows for Internet Explorer to write to the registry and the file system. Users will not be able to turn on protected mode.  If you do not configure this policy, users will be able to turn on or off protected mode.\nRequires Windows Vista; will be ignored by Windows XP.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15528",
+      "title": "Turn on Protected Mode for restricted sites zone is not enabled.",
+      "description": "VISTA Only\nProtected mode protects Internet Explorer from exploited vulnerabilities by reducing the locations Internet Explorer can write to in the registry and the file system.  If you enable this policy setting, Protected Mode will be turned on. Users will not be able to turn off protected mode.  If you disable this policy setting, Protected Mode will be turned off. It will revert to Internet Explorer 6 behavior that allows for Internet Explorer to write to the registry and the file system. Users will not be able to turn on protected mode.  If you do not configure this policy, users will be able to turn on or off protected mode.\nRequires Windows Vista; will be ignored by Windows XP.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15529",
+      "title": "Use Pop-up Blocker for internet zone is not enabled.",
+      "description": "This policy setting allows you to manage whether unwanted pop-up windows appear. Pop-up windows that are opened when the end user clicks a link are not blocked.  If you enable this policy setting, most unwanted pop-up windows are prevented from appearing.  If you disable this policy setting, pop-up windows are not prevented from appearing.  If you do not configure this policy setting, most unwanted pop-up windows are prevented from appearing.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15530",
+      "title": "Use Pop-up Blocker for restricted sites zone is not enabled.",
+      "description": "This policy setting allows you to manage whether unwanted pop-up windows appear. Pop-up windows that are opened when the end user clicks a link are not blocked.  If you enable this policy setting, most unwanted pop-up windows are prevented from appearing.  If you disable this policy setting, pop-up windows are not prevented from appearing.  If you do not configure this policy setting, most unwanted pop-up windows are prevented from appearing.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15533",
+      "title": "Web sites in less privileged Web content zones can navigate into internet zone is not disabled.",
+      "description": "This policy setting allows you to manage whether Web sites from less privileged zones, such as Restricted Sites, can navigate into this zone.\nIf you enable this policy setting, Web sites from less privileged zones can open new windows in, or navigate into, this zone.  The security zone will run without the added layer of security that is provided by the Protection from Zone Elevation security feature. If you select Prompt in the drop-down box, a warning is issued to the user that potentially risky navigation is about to occur.  If you disable this policy setting, the possibly harmful navigations are prevented. The Internet Explorer security feature will be on in this zone as set by Protection from Zone Elevation feature control.  If you do not configure this policy setting, Web sites from less privileged zones can open new windows in, or navigate into, this zone.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15534",
+      "title": "Web sites in less privileged Web content zones can navigate into restricted sites zone is not disabled.",
+      "description": "This policy setting allows you to manage whether Web sites from less privileged zones, such as Restricted Sites, can navigate into this zone.\nIf you enable this policy setting, Web sites from less privileged zones can open new windows in, or navigate into, this zone.  The security zone will run without the added layer of security that is provided by the Protection from Zone Elevation security feature. If you select Prompt in the drop-down box, a warning is issued to the user that potentially risky navigation is about to occur.  If you disable this policy setting, the possibly harmful navigations are prevented. The Internet Explorer security feature will be on in this zone as set by Protection from Zone Elevation feature control.  If you do not configure this policy setting, Web sites from less privileged zones can open new windows in, or navigate into, this zone.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15545",
+      "title": "Allow binary and script behaviors are not disabled.",
+      "description": "This policy setting allows you to manage dynamic binary and script behaviors: components that encapsulate specific functionality for HTML elements to which they were attached.  If you enable this policy setting, binary and script behaviors are available. If you select Administrator approved in the drop-down box, only behaviors listed in the Admin-approved Behaviors under Binary Behaviors Security Restriction policy are available. If you disable this policy setting, binary and script behaviors are not available unless applications have implemented a custom security manager.  If you do not configure this policy setting, binary and script behaviors are available.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15546",
+      "title": "Automatic prompting for file downloads is not disabled.",
+      "description": "This policy setting determines whether users will be prompted for non user-initiated file downloads. Regardless of this setting, users will receive file download dialogs for user-initiated downloads.  If you enable this setting, users will receive a file download dialog for automatic download attempts.  If you disable or do not configure this setting, file downloads that are not user-initiated will be blocked, and users will see the Information Bar instead of the file download dialog. Users can then click the Information Bar to allow the file download prompt.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15548",
+      "title": "Internet Explorer Processes for MIME handling is not enabled. (Reserved)",
+      "description": "Internet Explorer uses Multipurpose Internet Mail Extensions (MIME) data to determine file handling procedures for files received through a Web server. The Consistent MIME Handling\\Internet Explorer Processes policy setting determines whether Internet Explorer requires that all file-type information provided by Web servers be consistent. For example, if the MIME type of a file is text/plain but the MIME data indicates that the file is really an executable file, Internet Explorer changes its extension to reflect this executable status. This capability helps ensure that executable code cannot masquerade as other types of data that may be trusted.  If you enable this policy setting, Internet Explorer examines all received files and enforces consistent MIME data for them. If you disable or do not configure this policy setting, Internet Explorer does not require consistent MIME data for all received files and will use the MIME data provided by the file.  MIME file-type spoofing is a potential threat to your organization. Ensuring that these files are consistent and properly labeled helps prevent malicious file downloads from infecting your network. Therefore, this appendix recommends you configure this policy as Enabled for all environments specified in this guide.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15549",
+      "title": "Internet Explorer Processes for MIME sniffing is not enabled. (Reserved)",
+      "description": "MIME sniffing is the process of examining the content of a MIME file to determine its context — whether it is a data file, an executable file, or some other type of file. This policy setting determines whether Internet Explorer MIME sniffing will prevent promotion of a file of one type to a more dangerous file type. When set to Enabled, MIME sniffing will never promote a file of one type to a more dangerous file type. Disabling MIME sniffing configures Internet Explorer processes to allow a MIME sniff that promotes a file of one type to a more dangerous file type. For example, promoting a text file to an executable file is a dangerous promotion because any code in the supposed text file would be executed.  MIME file-type spoofing is a potential threat to your organization. Ensuring that these files are consistently handled helps prevent malicious file downloads from infecting your network. Therefore, this appendix recommends you configure this policy as Enabled for all environments specified in this guide. Note: This setting works in conjunction with, but does not replace, the Consistent MIME Handling settings.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15550",
+      "title": "Internet Explorer Processes for MK protocol is not enabled. (Explorer)",
+      "description": "The MK Protocol Security Restriction policy setting reduces attack surface area by blocking the seldom used MK protocol. Some older Web applications use the MK protocol to retrieve information from compressed files. Setting this policy to Enabled blocks the MK protocol for Windows Explorer and Internet Explorer, which causes resources that use the MK protocol to fail. Disabling this setting allows applications to use the MK protocol API.  Because the MK protocol is not widely used, it should be blocked wherever it is not needed. This appendix recommends you configure this setting to Enabled to block the MK protocol unless you specifically need it in your environment. Note: Because resources that use the MK protocol will fail when you deploy this setting, you should ensure that none of your applications use the MK protocol.\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15551",
+      "title": "Internet Explorer Processes for MK protocol is not enabled. (IExplore)",
+      "description": "The MK Protocol Security Restriction policy setting reduces attack surface area by blocking the seldom used MK protocol. Some older Web applications use the MK protocol to retrieve information from compressed files. Setting this policy to Enabled blocks the MK protocol for Windows Explorer and Internet Explorer, which causes resources that use the MK protocol to fail. Disabling this setting allows applications to use the MK protocol API.  Because the MK protocol is not widely used, it should be blocked wherever it is not needed. This appendix recommends you configure this setting to Enabled to block the MK protocol unless you specifically need it in your environment. Note: Because resources that use the MK protocol will fail when you deploy this setting, you should ensure that none of your applications use the MK protocol.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15552",
+      "title": "Internet Explorer Processes for Zone Elevation is not enabled. (Reserved)",
+      "description": "Internet Explorer places restrictions on each Web page it opens that are dependent upon the location of the Web page (such as Internet zone, Intranet zone, or Local Machine zone). Web pages on a local computer have the fewest security restrictions and reside in the Local Machine zone, which makes the Local Machine security zone a prime target for malicious attackers.  If you enable this policy setting, any zone can be protected from zone elevation by Internet Explorer processes. This approach stops content running in one zone from gaining the elevated privileges of another zone. If you disable this policy setting, no zone receives such protection for Internet Explorer processes. Because of the severity and relative frequency of zone elevation attacks, this appendix recommends that you configure this setting as Enabled in all environments.\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15556",
+      "title": "Internet Explorer Processes for Download prompt is not enabled.  (Reserved)",
+      "description": "In certain circumstances, Web sites can initiate file download prompts without interaction from users. This technique can allow Web sites to put unauthorized files on users' hard drives if they click the wrong button and accept the download.  If you configure the Restrict File Download\\Internet Explorer Processes policy setting to Enabled, file download prompts that are not user-initiated are blocked for Internet Explorer processes. If you configure this policy setting as Disabled, prompting will occur for file downloads that are not user-initiated for Internet Explorer processes.  Note: This setting is configured as Enabled in all environments specified in this guide to help prevent attackers from placing arbitrary code on users' computers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15557",
+      "title": "Internet Explorer Processes for Download prompt is not enabled.  Explorer",
+      "description": "In certain circumstances, Web sites can initiate file download prompts without interaction from users. This technique can allow Web sites to put unauthorized files on users' hard drives if they click the wrong button and accept the download.  If you configure the Restrict File Download\\Internet Explorer Processes policy setting to Enabled, file download prompts that are not user-initiated are blocked for Internet Explorer processes. If you configure this policy setting as Disabled, prompting will occur for file downloads that are not user-initiated for Internet Explorer processes.  Note: This setting is configured as Enabled in all environments specified in this guide to help prevent attackers from placing arbitrary code on users' computers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15558",
+      "title": "Internet Explorer Processes for Download prompt is not enabled.  IExplore",
+      "description": "In certain circumstances, Web sites can initiate file download prompts without interaction from users. This technique can allow Web sites to put unauthorized files on users' hard drives if they click the wrong button and accept the download.  If you configure the Restrict File Download\\Internet Explorer Processes policy setting to Enabled, file download prompts that are not user-initiated are blocked for Internet Explorer processes. If you configure this policy setting as Disabled, prompting will occur for file downloads that are not user-initiated for Internet Explorer processes.  Note: This setting is configured as Enabled in all environments specified in this guide to help prevent attackers from placing arbitrary code on users' computers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15559",
+      "title": "Internet Explorer Processes for restricting pop-up windows is not enabled. (Reserved)",
+      "description": "Internet Explorer allows scripts to programmatically open, resize, and reposition various types of windows. Often, disreputable Web sites will resize windows to either hide other windows or force you to interact with a window that contains malicious code.  The Scripted Window Security Restrictions security feature restricts pop-up windows and prohibits scripts from displaying windows in which the title and status bars are not visible to the user or hide other windows’ title and status bars. If you enable the Scripted Window Security Restrictions\\Internet Explorer Processes policy setting, pop-up windows and other restrictions apply for Windows Explorer and Internet Explorer processes. If you disable or do not configure this policy setting, scripts can continue to create pop-up windows and windows that hide other windows.  This appendix recommends you configure this setting to Enabled to help prevent malicious Web sites from controlling your Internet Explorer windows or fooling users into clicking on the wrong window.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15560",
+      "title": "Run .NET Framework-reliant components not signed with Authenticode are not disabled.",
+      "description": "This policy setting allows you to manage whether .NET Framework components that are signed with Authenticode can be executed from Internet Explorer. These components include managed controls referenced from an object tag and managed executables referenced from a link.  \nIf you enable this policy setting, Internet Explorer will execute signed managed components. If you select Prompt in the drop-down box, Internet Explorer will prompt the user to determine whether to execute signed managed components.  If you disable this policy setting, Internet Explorer will not execute signed managed components.  If you do not configure this policy setting, Internet Explorer will execute signed managed components.\n\nThis policy setting allows you to manage whether .NET Framework components that are not signed with Authenticode can be executed from Internet Explorer. These components include managed controls referenced from an object tag and managed executables referenced from a link.\nIf you enable this policy setting, Internet Explorer will execute unsigned managed components. If you select Prompt in the drop-down box, Internet Explorer will prompt the user to determine whether to execute unsigned managed components.  If you disable this policy setting, Internet Explorer will not execute unsigned managed components.  If you do not configure this policy setting, Internet Explorer will execute unsigned managed components.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15561",
+      "title": "Run .NET Framework-reliant components signed with Authenticode are not disabled.",
+      "description": "This policy setting allows you to manage whether .NET Framework components that are not signed with Authenticode can be executed from Internet Explorer. These components include managed controls referenced from an object tag and managed executables referenced from a link.\nIf you enable this policy setting, Internet Explorer will execute unsigned managed components. If you select Prompt in the drop-down box, Internet Explorer will prompt the user to determine whether to execute unsigned managed components.  If you disable this policy setting, Internet Explorer will not execute unsigned managed components.  If you do not configure this policy setting, Internet Explorer will execute unsigned managed components.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15562",
+      "title": "Scripting of Java applets is not disabled.",
+      "description": "This policy setting allows you to manage whether applets are exposed to scripts within the zone.  If you enable this policy setting, scripts can access applets automatically without user intervention.  If you select Prompt in the drop-down box, users are queried to choose whether to allow scripts to access applets.  If you disable this policy setting, scripts are prevented from accessing applets.  If you do not configure this policy setting, scripts can access applets automatically without user intervention.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15563",
+      "title": "Turn off changing the URL to be displayed for checking updates to Internet Explorer and Internet Tools is not disabled.",
+      "description": "This policy setting allows checking for updates for Internet Explorer from the specified URL, included by default in Internet Explorer.  If you enable this policy setting, users will not be able to change the URL to be displayed for checking updates to Internet Explorer and Internet Tools. You must specify the URL to be displayed for checking updates to Internet Explorer and Internet Tools.  If you disable or do not configure this policy setting, users will be able to change the URL to be displayed for checking updates to Internet Explorer and Internet Tools.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15564",
+      "title": "Turn off configuring the update check interval is not disabled.",
+      "description": "This setting specifies the update check interval. The default value is 30 days.\nIf you enable this policy setting, the user will not be able to configure the update check interval. You have to specify the update check interval.\nIf you disable or do not configure this policy setting, the user will have the freedom to configure the update check interval.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15565",
+      "title": "Internet Explorer Processes for MIME handling is not enabled.  Explorer",
+      "description": "Internet Explorer uses Multipurpose Internet Mail Extensions (MIME) data to determine file handling procedures for files received through a Web server. The Consistent MIME Handling\\Internet Explorer Processes policy setting determines whether Internet Explorer requires that all file-type information provided by Web servers be consistent. For example, if the MIME type of a file is text/plain but the MIME data indicates that the file is really an executable file, Internet Explorer changes its extension to reflect this executable status. This capability helps ensure that executable code cannot masquerade as other types of data that may be trusted.  If you enable this policy setting, Internet Explorer examines all received files and enforces consistent MIME data for them. If you disable or do not configure this policy setting, Internet Explorer does not require consistent MIME data for all received files and will use the MIME data provided by the file.  MIME file-type spoofing is a potential threat to your organization. Ensuring that these files are consistent and properly labeled helps prevent malicious file downloads from infecting your network. Therefore, this appendix recommends you configure this policy as Enabled for all environments specified in this guide.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15566",
+      "title": "Internet Explorer Processes for MIME handling is not enabled. IExplore",
+      "description": "Internet Explorer uses Multipurpose Internet Mail Extensions (MIME) data to determine file handling procedures for files received through a Web server. The Consistent MIME Handling\\Internet Explorer Processes policy setting determines whether Internet Explorer requires that all file-type information provided by Web servers be consistent. For example, if the MIME type of a file is text/plain but the MIME data indicates that the file is really an executable file, Internet Explorer changes its extension to reflect this executable status. This capability helps ensure that executable code cannot masquerade as other types of data that may be trusted.  If you enable this policy setting, Internet Explorer examines all received files and enforces consistent MIME data for them. If you disable or do not configure this policy setting, Internet Explorer does not require consistent MIME data for all received files and will use the MIME data provided by the file.  MIME file-type spoofing is a potential threat to your organization. Ensuring that these files are consistent and properly labeled helps prevent malicious file downloads from infecting your network. Therefore, this appendix recommends you configure this policy as Enabled for all environments specified in this guide.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15568",
+      "title": "Internet Explorer Processes for MK protocol is not enabled.  (Reserved)",
+      "description": "The MK Protocol Security Restriction policy setting reduces attack surface area by blocking the seldom used MK protocol. Some older Web applications use the MK protocol to retrieve information from compressed files. Setting this policy to Enabled blocks the MK protocol for Windows Explorer and Internet Explorer, which causes resources that use the MK protocol to fail. Disabling this setting allows applications to use the MK protocol API.  Because the MK protocol is not widely used, it should be blocked wherever it is not needed. This appendix recommends you configure this setting to Enabled to block the MK protocol unless you specifically need it in your environment. Note: Because resources that use the MK protocol will fail when you deploy this setting, you should ensure that none of your applications use the MK protocol.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15569",
+      "title": "Internet Explorer Processes for Zone Elevation is not enabled. Explorer",
+      "description": "Internet Explorer places restrictions on each Web page it opens that are dependent upon the location of the Web page (such as Internet zone, Intranet zone, or Local Machine zone). Web pages on a local computer have the fewest security restrictions and reside in the Local Machine zone, which makes the Local Machine security zone a prime target for malicious attackers.  If you enable this policy setting, any zone can be protected from zone elevation by Internet Explorer processes. This approach stops content running in one zone from gaining the elevated privileges of another zone. If you disable this policy setting, no zone receives such protection for Internet Explorer processes. Because of the severity and relative frequency of zone elevation attacks, this appendix recommends that you configure this setting as Enabled in all environments.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15570",
+      "title": "Internet Explorer Processes for Zone Elevation is not enabled. IExplore",
+      "description": "Internet Explorer places restrictions on each Web page it opens that are dependent upon the location of the Web page (such as Internet zone, Intranet zone, or Local Machine zone). Web pages on a local computer have the fewest security restrictions and reside in the Local Machine zone, which makes the Local Machine security zone a prime target for malicious attackers.  If you enable this policy setting, any zone can be protected from zone elevation by Internet Explorer processes. This approach stops content running in one zone from gaining the elevated privileges of another zone. If you disable this policy setting, no zone receives such protection for Internet Explorer processes. Because of the severity and relative frequency of zone elevation attacks, this appendix recommends that you configure this setting as Enabled in all environments.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15571",
+      "title": "Internet Explorer Processes for restricting pop-up windows is not enabled.  Explorer",
+      "description": "Internet Explorer allows scripts to programmatically open, resize, and reposition various types of windows. Often, disreputable Web sites will resize windows to either hide other windows or force you to interact with a window that contains malicious code.  The Scripted Window Security Restrictions security feature restricts pop-up windows and prohibits scripts from displaying windows in which the title and status bars are not visible to the user or hide other windows’ title and status bars. If you enable the Scripted Window Security Restrictions\\Internet Explorer Processes policy setting, pop-up windows and other restrictions apply for Windows Explorer and Internet Explorer processes. If you disable or do not configure this policy setting, scripts can continue to create pop-up windows and windows that hide other windows.  This appendix recommends you configure this setting to Enabled to help prevent malicious Web sites from controlling your Internet Explorer windows or fooling users into clicking on the wrong window.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15572",
+      "title": "Internet Explorer Processes for restricting pop-up windows is not enabled.  IExplore",
+      "description": "Internet Explorer allows scripts to programmatically open, resize, and reposition various types of windows. Often, disreputable Web sites will resize windows to either hide other windows or force you to interact with a window that contains malicious code.  The Scripted Window Security Restrictions security feature restricts pop-up windows and prohibits scripts from displaying windows in which the title and status bars are not visible to the user or hide other windows’ title and status bars. If you enable the Scripted Window Security Restrictions\\Internet Explorer Processes policy setting, pop-up windows and other restrictions apply for Windows Explorer and Internet Explorer processes. If you disable or do not configure this policy setting, scripts can continue to create pop-up windows and windows that hide other windows.  This appendix recommends you configure this setting to Enabled to help prevent malicious Web sites from controlling your Internet Explorer windows or fooling users into clicking on the wrong window.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15574",
+      "title": "Disable AutoComplete for forms is not enabled.",
+      "description": "This AutoComplete feature suggests possible matches when users are filling up forms.  If you enable this setting, the user is not suggested matches when filling forms. The user cannot change it.  If you disable this setting, the user is suggested possible matches when filling forms. The user cannot change it.\nIf you do not configure this setting, the user has the freedom to turn on the auto-complete feature for forms.  To display this option, the users open the Internet Options dialog box, click the Contents Tab and click the Settings button.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15575",
+      "title": "Disable external branding of Internet Explorer is not enabled.",
+      "description": "Prevents branding of Internet programs, such as customization of Internet Explorer and Outlook Express logos and title bars, by another party.  If you enable this policy, it prevents customization of the browser by another party, such as an Internet service provider or Internet content provider.  If you disable this policy or do not configure it, users could install customizations from another party-for example, when signing up for Internet services.  This policy is intended for administrators who want to maintain a consistent browser across an organization.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15579",
+      "title": "Turn off Crash Detection is not enabled.",
+      "description": "The Turn off Crash Detection policy setting allows you to manage the crash detection feature of add-on management in Internet Explorer. If you enable this policy setting, a crash in Internet Explorer will be similar to one on a computer running Windows XP Professional Service Pack 1 and earlier: Windows Error Reporting will be invoked. If you disable this policy setting, the crash detection feature in add-on management will be functional.  Because Internet Explorer crash report information could contain sensitive information from the computer's memory, this appendix recommends you configure this option to Enabled unless you are experiencing frequent repeated crashes and need to report them for follow-up troubleshooting. In those cases you could temporarily configure the setting to Disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15580",
+      "title": "Turn off page transitions is not enabled.",
+      "description": "This policy setting specifies if, as you move from one Web page to another, Internet Explorer fades out of the page you are leaving and fades into the page to which you are going.  If you enable this policy setting, page transitions will be turned off. The user cannot change this behavior.  If you disable this policy setting, page transitions will be turned on. The user cannot change this behavior.  If you do not configure this policy setting, the user can turn on or off page transitions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15581",
+      "title": "Turn on the auto-complete feature for user names and passwords on forms are not disabled.",
+      "description": "This AutoComplete feature can remember and suggest User names and passwords on Forms.  If you enable this setting, the user cannot change \"User name and passwords on forms\" or \"prompt me to save passwords\". The Auto Complete feature for User names and passwords on Forms will be turned on. You have to decide whether to select \"prompt me to save passwords\".  If you disable this setting the user cannot change \"User name and passwords on forms\" or \"prompt me to save passwords\". The Auto Complete feature for User names and passwords on Forms is turned off. The user also cannot opt to be prompted to save passwords.  If you do not configure this setting, the user has the freedom of turning on Auto complete for User name and passwords on forms and the option of prompting to save passwords. To display this option, the users open the Internet Options dialog box, click the Contents Tab and click the Settings button.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15582",
+      "title": "Turn on the Internet Connection Wizard Auto Detect is not disabled.",
+      "description": "This policy setting determines if the Internet Connection Wizard was completed. If it was not completed, it launches the Internet Connection Wizard.  If you enable this policy setting, the Internet Connection Wizard is launched automatically if it was not completed before. The user cannot prevent the wizard from launching.  If you disable this policy setting, the Internet Connection Wizard is not launched automatically. The user can launch the wizard manually.  If you do not configure this policy setting, the user will have the freedom to decide whether the Internet Connection Wizard should be launched automatically.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15603",
+      "title": "Internet Explorer Processes for MIME sniffing is not enabled.  Explorer",
+      "description": "MIME sniffing is the process of examining the content of a MIME file to determine its context — whether it is a data file, an executable file, or some other type of file. This policy setting determines whether Internet Explorer MIME sniffing will prevent promotion of a file of one type to a more dangerous file type. When set to Enabled, MIME sniffing will never promote a file of one type to a more dangerous file type. Disabling MIME sniffing configures Internet Explorer processes to allow a MIME sniff that promotes a file of one type to a more dangerous file type. For example, promoting a text file to an executable file is a dangerous promotion because any code in the supposed text file would be executed.  MIME file-type spoofing is a potential threat to your organization. Ensuring that these files are consistently handled helps prevent malicious file downloads from infecting your network. Therefore, this appendix recommends you configure this policy as Enabled for all environments specified in this guide. Note: This setting works in conjunction with, but does not replace, the Consistent MIME handling settings.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15604",
+      "title": "Internet Explorer Processes for MIME sniffing is not enabled.  IExplore",
+      "description": "MIME sniffing is the process of examining the content of a MIME file to determine its context — whether it is a data file, an executable file, or some other type of file. This policy setting determines whether Internet Explorer MIME sniffing will prevent promotion of a file of one type to a more dangerous file type. When set to Enabled, MIME sniffing will never promote a file of one type to a more dangerous file type. Disabling MIME sniffing configures Internet Explorer processes to allow a MIME sniff that promotes a file of one type to a more dangerous file type. For example, promoting a text file to an executable file is a dangerous promotion because any code in the supposed text file would be executed.  MIME file-type spoofing is a potential threat to your organization. Ensuring that these files are consistently handled helps prevent malicious file downloads from infecting your network. Therefore, this appendix recommends you configure this policy as Enabled for all environments specified in this guide. Note: This setting works in conjunction with, but does not replace, the Consistent MIME handling settings.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16879",
+      "title": "The Download signed ActiveX controls property is not set properly for the Lockdown Zone.",
+      "description": "This policy setting allows you to manage whether users may download signed ActiveX controls from a page in the zone.  If you enable this policy, users can download signed controls without user intervention. If you select Prompt in the drop-down box, users are queried whether to download controls signed by publishers who aren't trusted. Code signed by trusted publishers is silently downloaded.  If you disable the policy setting, signed controls cannot be downloaded.  If you do not configure this policy setting, users are queried whether to download controls signed by publishers who aren't trusted.  Code signed by trusted publishers is silently downloaded.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17296",
+      "title": "Prevent performance of First Run Customize settings is not enabled.",
+      "description": "This policy setting prevents performance of the First Run Customize settings ability and controls what the user will see when they launch Internet Explorer for the first time after installation of Internet Explorer.\nIf you enable this policy setting, users must make one of two choices:\n1: Skip Customize Settings, and go directly to the user’s home page.\n2: Skip Customize Settings, and go directly to the \"Welcome to Internet Explorer\" Web page.\nIf you disable or do not configure this policy setting, users go through the regular first run process.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21887",
+      "title": "Disable Configuring History - Histroy setting is not set to 40 days.",
+      "description": "This setting specifies the number of days that Internet Explorer keeps track of the pages viewed in the History List. The delete Browsing History option can be accessed using Tools, Internet Options and General tab. It is also available as Delete History directly under tools, Internet options, Delete Browsing History in Internet Explorer 7.  If you enable this policy setting, a user cannot set the number of days that Internet Explorer keeps track of the pages viewed in the History List. You must specify the number of days that Internet Explorer keeps track of the pages viewed in the History List. Users will not be able to delete browsing history.  If you disable or do not configure this policy setting, a user can set the number of days that Internet Explorer keeps track of the pages viewed in the History List and has the freedom to Delete Browsing History.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22171",
+      "title": "Internet Explorer Processes Restrict ActiveX Install (Reserved) property is properly set.",
+      "description": "This policy setting enables blocking of ActiveX control installation prompts for Internet Explorer processes.  If you do not configure this policy setting, the user’s preference will be used to determine whether to block ActiveX control installations for Internet Explorer processes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22634",
+      "title": "Allow status bar updates via script (Internet Zone) property is properly set.",
+      "description": "This policy setting allows you to manage whether script is allowed to update the status bar within the zone.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22635",
+      "title": "Run .NET Framework-reliant components not signed with Authenticode (Internet Zone) property is properly set.",
+      "description": "This policy setting allows you to manage whether .NET Framework components that are not signed with Authenticode can be executed from Internet Explorer.  These components include managed controls referenced from an object tag and managed executables referenced from a link.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22636",
+      "title": "Run .NET Framework-reliant components signed with Authenticode (Internet Zone) property is properly set.",
+      "description": "This policy setting allows you to manage whether .NET Framework components that are signed with Authenticode can be executed from Internet Explorer.  These components include managed controls referenced from an object tag and managed executables referenced from a link.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22637",
+      "title": "Allow Scriptlets (Restricted Sites Zone) property is properly set.",
+      "description": "This policy setting allows you to manage whether scriptlets can be allowed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22638",
+      "title": "Allow status bar updates via script (Restricted Sites Zone) property is properly set.",
+      "description": "This policy setting allows you to manage whether script is allowed to update the status bar within the zone.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22687",
+      "title": "Internet Explorer Processes Restrict ActiveX Install (Explorer) property is properly set.",
+      "description": "This policy setting enables blocking of ActiveX control installation prompts for Internet Explorer processes.  If you do not configure this policy setting, the user’s preference will be used to determine whether to block ActiveX control installations for Internet Explorer processes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22688",
+      "title": "Internet Explorer Processes Restrict ActiveX Install (IExplorer) property is properly set.",
+      "description": "This policy setting enables blocking of ActiveX control installation prompts for Internet Explorer processes.  If you do not configure this policy setting, the user’s preference will be used to determine whether to block ActiveX control installations for Internet Explorer processes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30777",
+      "title": "Automatic checking for Internet Explorer updates is not disabled.",
+      "description": "This policy setting allows you to manage whether Internet Explorer checks the Internet for newer versions. When Internet Explorer is set to do this, the checks occur approximately every 30 days, and users are prompted to install new versions as they become available. If you enable this policy setting, Internet Explorer checks the Internet for a new version approximately every 30 days and prompts the user to download new versions when they are available. Newer versions might not comply with the Internet Explorer version requirements of the organization. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30779",
+      "title": "Internet Explorer Processes for Information bars are enforced (Reserved).",
+      "description": "This policy setting allows you to manage whether the Information bar is displayed for Internet Explorer processes when file or code installs are restricted.  By default, the Information bar is displayed for Internet Explorer processes.  If you enable this policy setting, the Information bar will be displayed for Internet Explorer Processes.  If you disable this policy setting, the Information n bar will not be displayed for Internet Explorer processes.  If you do not configure this policy setting, the Information bar will be displayed for Internet Explorer Processes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30780",
+      "title": "Internet Explorer Processes for Information bars is not enforced (Explorer).",
+      "description": "This policy setting allows you to manage whether the Information bar is displayed for Internet Explorer processes when file or code installs are restricted.  By default, the Information bar is displayed for Internet Explorer processes.  If you enable this policy setting, the Information bar will be displayed for Internet Explorer Processes.  If you disable this policy setting, the Information bar will not be displayed for Internet Explorer processes.  If you do not configure this policy setting, the Information bar will be displayed for Internet Explorer Processes",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30781",
+      "title": "Internet Explorer Processes for Information bars is not enforced (IExplore).",
+      "description": "This policy setting allows you to manage whether the Information bar is displayed for Internet Explorer processes when file or code installs are restricted. By default, the Information bar is displayed for Internet Explorer processes. If you enable this policy setting, the Information bar will be displayed for Internet Explorer processes. If you disable this policy setting, the Information bar will not be displayed for Internet Explorer processes. If you do not configure this policy setting, the Information bar will be displayed for Internet Explorer processes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32808",
+      "title": "Check for publishers certificate revocation must be enforced.",
+      "description": "Check for publisher's certificate revocation options should be enforced to ensure all PKI signed objects are validated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3427",
+      "title": "Internet Explorer is not configured to require consistent security zone settings to all users.",
+      "description": "This setting enforces consistent security zone settings to all users of the computer.  Security Zones control browser behavior at various web sites and it is desirable to maintain a consistent policy for all users of a machine.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3428",
+      "title": "Internet Explorer is configured to Allow Users to Change Policies.",
+      "description": "This setting prevents users from changing the Internet Explorer policies on the machine.  Policy changes should be made by Administrators only, so this setting should be Enabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3429",
+      "title": "Internet Explorer is configured to Allow Users to Add/Delete Sites.",
+      "description": "This setting prevents users from adding sites to various security zones.  Users should not be able to add sites to different zones, as this could allow them to bypass security controls of the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3430",
+      "title": "Internet Explorer is not configured to disable making Proxy Settings Per Machine.",
+      "description": "This setting controls whether or not the Internet Explorer proxy settings are configured on a per-user or per-machine basis.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6228",
+      "title": "The IE home page is not set to blank or a trusted site.",
+      "description": "By setting this parameter appropriately, a malicious web site will not be automatically loaded into a browser which may contain mobile code.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6238",
+      "title": "The IE TLS parameter must be set correctly.",
+      "description": "This parameter ensures  only DoD-approved ciphers and algorithms are enabled for use by the web browser. TLS is a protocol for protecting communication between the browser and the target server.  When the browser attempts to set up a protected communication with the target server, the browser and server negotiate which protocol and version to use.  The browser and server attempt to match each other’s list of supported protocols and versions and pick the most preferred match. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6239",
+      "title": "The IE warning about certificate address mismatch must be enforced.",
+      "description": "This parameter warns users if the certificate being presented by the web site is invalid. Since server certificates are used to validate the identity of the web server it is critical to warn the user of a potential issue with the certificate being presented by the web server. This setting aids to prevent spoofing attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6243",
+      "title": "Download signed ActiveX controls for internet zone is not disabled.",
+      "description": "This policy setting allows you to manage whether users may download signed ActiveX controls from a page in the zone.  If you enable this policy, users can download signed controls without user intervention. If you select Prompt in the drop-down box, users are queried whether to download controls signed by publishers who aren't trusted. Code signed by trusted publishers is silently downloaded.  If you disable the policy setting, signed controls cannot be downloaded.  If you do not configure this policy setting, users are queried whether to download controls signed by publishers who aren't trusted.  Code signed by trusted publishers is silently downloaded.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6244",
+      "title": "Download unsigned ActiveX controls for internet zone is not disabled.",
+      "description": "Active X controls can contain potentially malicious code and must only be allowed to be downloaded from trusted sites and they must be digitally signed.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6245",
+      "title": "Initialize and script ActiveX controls not marked as safe for internet zone is not disabled.",
+      "description": "This policy setting allows you to manage ActiveX controls not marked as safe.\nIf you enable this policy setting, ActiveX controls are run, loaded with parameters, and scripted without setting object safety for untrusted data or scripts. This setting is not recommended, except for secure and administered zones. This setting causes both unsafe and safe controls to be initialized and scripted, ignoring the Script ActiveX controls marked safe for scripting option.\nIf you enable this policy setting and select Prompt in the drop-down box, users are queried whether to allow the control to be loaded with parameters or scripted.  If you disable this policy setting, ActiveX controls that cannot be made safe are not loaded with parameters or scripted.  If you do not configure this policy setting, ActiveX controls that cannot be made safe are not loaded with parameters or scripted.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6248",
+      "title": "Allow font downloads for internet zone is not disabled.",
+      "description": "Download of fonts can sometimes contain malicious code.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6249",
+      "title": "Java permissions for internet zone are not disabled.",
+      "description": "Java must have level of protections based upon the site being browsed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6250",
+      "title": "Access data sources across domains are not disabled.",
+      "description": "This policy setting allows you to manage whether Internet Explorer can access data from another security zone using the Microsoft XML Parser (MSXML) or ActiveX Data Objects (ADO).  If you enable this policy setting, users can load a page in the zone that uses MSXML or ADO to access data from another site in the zone. If you select Prompt in the drop-down box, users are queried to choose whether to allow a page to be loaded in the zone that uses MSXML or ADO to access data from another site in the zone.  If you disable this policy setting, users cannot load a page in the zone that uses MSXML or ADO to access data from another site in the zone.  If you do not configure this policy setting, users cannot load a page in the zone that uses MSXML or ADO to access data from another site in the zone.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6253",
+      "title": "The Allow drag and drop or copy and paste files for internet zone are not disabled.",
+      "description": "Drag and Drop of files must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6254",
+      "title": "Allow installation of desktop items for internet zone is not disabled.",
+      "description": "Installation of items must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6255",
+      "title": "Launching applications and files in an IFRAME for internet zone is not disabled.",
+      "description": "Launching of programs in IFRAME must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6256",
+      "title": "Navigate sub-frames across different domains for internet zone are not disabled.",
+      "description": "Frames that navigate across different domains are a security concern because the user may think they are accessing pages on one site while they are actually accessing pages on another site.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6257",
+      "title": "Software channel permissions for internet zone are not disabled.",
+      "description": "Software Channel permissions must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6259",
+      "title": "Userdata persistence for internet zone is not disabled.",
+      "description": "Userdata persistence must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6260",
+      "title": "Allow cut, copy or paste operations from the clipboard via script are not disabled for internet zone.",
+      "description": "This policy setting allows you to manage whether scripts can perform a clipboard operation (for example, cut, copy, and paste) in a specified region.\nIf you enable this policy setting, a script can perform a clipboard operation.\nIf you select Prompt in the drop-down box, users are queried as to whether to perform clipboard operations.  If you disable this policy setting, a script cannot perform a clipboard operation.  If you do not configure this policy setting, a script can perform a clipboard operation.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6262",
+      "title": "Logon options for internet zone are not enabled.",
+      "description": "Care must be taken with user credentials and how automatic logons are performed and how default Windows credentials are passed to web sites.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6267",
+      "title": "Java permissions for local intranet zone are not disabled.",
+      "description": "Java must have level of protection based upon the site being browsed.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6281",
+      "title": "Java permissions for trusted sites zone are not disabled.",
+      "description": "Java must have level of protection based upon the site being browsed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6289",
+      "title": "Download signed ActiveX controls for restricted sites zone is not disabled.",
+      "description": "ActiveX controls can contain potentially malicious code and must only be allowed to be downloaded from  trusted sites.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6290",
+      "title": "Download unsigned ActiveX controls for restricted sites zone is not disabled.",
+      "description": "ActiveX controls can contain potentially malicious code and must only be allowed to be downloaded from  trusted sites and they must be digitally signed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6291",
+      "title": "Initialize and script ActiveX controls not marked as safe for restricted sites zone is not disabled.",
+      "description": "ActiveX controls that are not marked safe for scripting should not be executed.  Although this is not a \ncomplete security measure for a control to be marked safe for scripting, if a control is not marked \nsafe, it should not be initialized and executed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6292",
+      "title": "Run ActiveX controls and plugins are not disabled..",
+      "description": "ActiveX controls that are not marked safe for scripting should not be executed.  Although this is not a \ncomplete security measure for a control to be marked safe for scripting, if a control is not marked \nsafe, it should not be initialized and executed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6293",
+      "title": "Script ActiveX controls marked safe for scripting is not disabled.",
+      "description": "ActiveX controls that are not marked safe for scripting should not be executed.  Although this is not a \ncomplete security measure for a control to be marked safe for scripting, if a control is not marked \nsafe, it should not be initialized and executed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6294",
+      "title": "Allow file downloads are not disabled.",
+      "description": "Files should not be able to be downloaded from sites that are considered restricted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6295",
+      "title": "Allow font downloads for restricted sites zone is not disabled.",
+      "description": "Download of fonts can sometimes contain malicious code.    Files should not be downloaded from restricted sites.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6297",
+      "title": "Access data sources across domains restricted sites zones are not disabled.",
+      "description": "This policy setting allows you to manage whether Internet Explorer can access data from another security zone using the Microsoft XML Parser (MSXML) or ActiveX Data Objects (ADO).  If you enable this policy setting, users can load a page in the zone that uses MSXML or ADO to access data from another site in the zone. If you select Prompt in the drop-down box, users are queried to choose whether to allow a page to be loaded in the zone that uses MSXML or ADO to access data from another site in the zone.  If you disable this policy setting, users cannot load a page in the zone that uses MSXML or ADO to access data from another site in the zone.  If you do not configure this policy setting, users cannot load a page in the zone that uses MSXML or ADO to access data from another site in the zone.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6298",
+      "title": "Allow META REFRESH is not disabled.",
+      "description": "Allow  META REFRESH  must have level of protection based upon the site being browsed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6301",
+      "title": "Allow drag and drop or copy and paste files for restricted sites zone are not disabled.",
+      "description": "Drag and Drop of files must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6302",
+      "title": "Allow installation of desktop items for restricted sites zone is not disabled.",
+      "description": "Installation of items must have level of protection based upon the site being accessed. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6303",
+      "title": "Launching applications and files in an IFRAME is not disabled.",
+      "description": "Launching of programs in IFRAME must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6304",
+      "title": "Navigate sub-frames across different domains for restricted sites zone are not disabled.",
+      "description": "Frames that navigate across different domains are a security concern because the user may think they are accessing pages on one site while they are actually accessing pages on another site.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6305",
+      "title": "Software channel permissions for restricted sites zone are not disabled.",
+      "description": "Software channel permissions must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6307",
+      "title": "Userdata persistence for restricted sites zone is not disabled.",
+      "description": "No perseistant data should exist and be used in the Restricted sites zone. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6308",
+      "title": "Allow active scripting is not disabled.",
+      "description": "Active Scripting must have level of protection based upon the site being accessed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6309",
+      "title": "Allow cut, copy or paste operations from the clipboard via script are not disabled for restricted sites zone.",
+      "description": "The Allow paste operations via script must have level of protection based upon the site being browsed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6311",
+      "title": "Logon options for restricted sites zones are not enabled.",
+      "description": "Care must be taken with user credentials and how automatic logons are performed and how default Windows credentials are passed to web sites.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-64781",
+      "title": "The installed version of IE must be a supported version.",
+      "description": "Unsupported versions are no longer being evaluated or updated for security related issues.",
+      "severity": "high"
+    },
+    {
+      "id": "V-7007",
+      "title": "Java permissions for restricted sites zone are not disabled.",
+      "description": "Java must have level of protection based upon the site being browsed.",
+      "severity": "medium"
+    }
+  ]
+}

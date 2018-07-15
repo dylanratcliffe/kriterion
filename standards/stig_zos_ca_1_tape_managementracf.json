@@ -1,0 +1,77 @@
+{
+  "name": "stig_zos_ca_1_tape_managementracf",
+  "date": "2016-12-21",
+  "description": "None",
+  "title": "z/OS CA 1 Tape Management for RACF STIG",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-16932",
+      "title": "CA 1 Tape Management installation data sets must be properly protected.",
+      "description": "CA 1 Tape Management installation data sets have the ability to use privileged functions and/or have access to sensitive data.  Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17067",
+      "title": "CA-1 Tape Management STC data sets must be properly protected.",
+      "description": "CA-1 Tape Management STC data sets have the ability to use privileged functions and/or have access to sensitive data.  Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17072",
+      "title": "CA 1 Tape Management TMC, AUDIT and optional RDS and VPD data sets will be properly protected.",
+      "description": "CA 1 Tape Management TMC and AUDIT and optional data sets control the operations and access to the tape management system, and site specific information regarding tape volumes.  Unauthorized access to these data sets could threaten the integrity and availability of the CA 1 Tape Management System, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17452",
+      "title": "CA 1 Tape Management Started Task name will be properly identified and/or defined to the system ACP.",
+      "description": "CA 1 Tape Management requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17454",
+      "title": "CA 1 Tape Management Started task will be properly defined to the STARTED resource class for RACF.",
+      "description": "Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources.  Improper control of product resources could potentially compromise the operating system, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17947",
+      "title": "CA 1 Tape Management command resources will be properly defined and protected.",
+      "description": "CA 1 Tape Management can run with sensitive system privileges, and potentially can circumvent system controls.  Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data.  Many utilities assign resource controls that can be granted to system programmers only in greater than read authority.  Resources are also granted to certain non systems personnel with read only authority.\n\nOn-line applications offer the capabilities to directly access the CA 1 Tape Management Catalog (TMC) for query and update purposes.  CA 1 special tape handling privileges offer the ability to process special tape requirements, such as BLP and foreign tapes.  Uncontrolled access to these CA 1 features and facilities may threaten the integrity and availability of the CA 1 tape management system, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17982",
+      "title": "CA 1 Tape Management function and password resources will be properly defined and protected.",
+      "description": "CA 1 Tape Management can run with sensitive system privileges, and potentially can circumvent system controls.  Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data.  Many utilities assign resource controls that can be granted to system programmers only in greater than read authority.  Resources are also granted to certain non systems personnel with read only authority.\n\nCA 1 on-line applications offer the capabilities to directly access the CA 1 Tape Management Catalog (TMC) for query and update purposes.  CA 1 special tape handling privileges offer the ability to process special tape requirements, such as BLP and foreign tapes.  Uncontrolled access to these CA 1 features and facilities may threaten the integrity and availability of the CA 1 tape management system, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17985",
+      "title": "CA 1 Tape Management user exits, when in use, must be reviewed and/or approved.",
+      "description": "CA-1 Tape Management user exits, TMSUXnA and TMSUXnS, provide the capability to bypass or modify existing ACP controls.  A review and evaluation of exit code must be performed to ensure that the integrity of the CA-1 processing environment is kept intact.  Unauthorized usage of these exits may compromise the confidentiality and integrity of customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18011",
+      "title": "CA 1 Tape Management Resource Class will be defined or active in the ACP.",
+      "description": "Failure to use a robust ACP to control a product could potentially compromise the integrity and availability of the MVS operating system and user data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18014",
+      "title": "CA 1 Tape Management external security options will be specified properly.",
+      "description": "CA 1 Tape Management offers multiple external security interfaces that are controlled by parameters specified in TMOOPT00.  These interfaces provide security controls for several CA 1 system and user functions.  Without proper controls of these sensitive functions, the integrity of the CA 1 Tape Management System and the confidentiality of data stored on tape volumes may be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-22689",
+      "title": "CA 1 Tape Management system password will be changed from the default.",
+      "description": "CA 1 Tape Management default system password is common with all CA 1 systems.  With this password, CA 1 tape processing can be deactivated.  This could allow for unauthorized access to information stored on tape volumes and the CA 1 Tape Management Catalog (TMC).  The result may threaten the integrity and availability of the CA 1 Tape Management System, and compromise the confidentiality of customer data.",
+      "severity": "medium"
+    }
+  ]
+}

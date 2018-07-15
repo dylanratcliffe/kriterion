@@ -1,0 +1,71 @@
+{
+  "name": "stig_microsoft_exchange_2010_client_access_server_role",
+  "date": "2012-05-31",
+  "description": "The Microsoft Exchange Server 2010 STIGs cover four of the five roles available with Microsoft Exchange Server 2010, plus core Exchange Server 2010 global requirements. The Email Services Policy STIG must also be reviewed for each site hosting email services. The core Exchange Server guidance must be reviewed on each server role prior to the role-specific guidance. Also, for the Client Access server, the IIS guidance must be reviewed prior to the OWA checks.",
+  "title": "Microsoft Exchange 2010 Client Access Server Role",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "EXCH-CA-100",
+      "title": "Encryption must be used for RPC client access.",
+      "description": "Failure to require secure connections to the client access server increases the potential for unintended decryption and data loss.  This setting controls whether client machines are forced to use secure channels to communicate with the server.  If this feature is enabled, clients will only be able to communicate with the server over secure communication channels.",
+      "severity": "medium"
+    },
+    {
+      "id": "EXCH-CA-101",
+      "title": "Encryption must be used for OWA access.",
+      "description": "Failure to require secure connections on a web site increases the potential for unintended decryption and data loss.  This setting controls whether client machines should be forced to use secure channels to communicate with this virtual directory.  If this feature is enabled, clients will only be able to communicate with the directory if they are capable of supporting secure communication with the server.\n\nIf Outlook Web App is approved for use, secure channels and FIPS level encryption are required, as well as appropriate certificate setting. The use of secure communication prevents eavesdroppers from reading or modifying communications between servers and clients.   The network and DMZ STIG identify criteria for OWA and Public Folder configuration in the network, including CAC enabled pre-authentication through an application firewall proxy, such as Microsoft ISA.\n\nNote: If OWA is not approved for use, this control is not applicable and the OWA virtual directory should be removed to eliminate the possibility of attack through this vector.",
+      "severity": "medium"
+    },
+    {
+      "id": "EXCH-CA-102",
+      "title": "The Microsoft Active Sync directory must be removed.",
+      "description": "To reduce the vectors through which a server can be attacked, unneeded application components should be disabled or removed.  By default, a virtual directory is installed for Active Sync, and the Exchange application default has Active Sync disabled.  If an attacker were to intrude into an Exchange Front-End server and reactivate Active Sync, this attack vector could once again be open, provided the virtual directory is present.  Once removed, the Active Sync functionality cannot be used without restoring the virtual directory, not a trivial process.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "EXCH-CA-103",
+      "title": "The Public Folder virtual directory must be removed if not in use by the site.",
+      "description": "To reduce the vectors through which a server can be attacked, unneeded application components should be disabled or removed.  By default, a virtual directory is installed for Public Folders.  If an attacker were to intrude into an Exchange Front-End server and be able to access the public folder web site, it would provide an additional attack vector, provided the virtual directory was present.  Once removed, the Public functionality cannot be used without restoring the virtual directory.  \n",
+      "severity": "low"
+    },
+    {
+      "id": "EXCH-CA-104",
+      "title": "Web email must use standard ports and protocols.",
+      "description": "PPSM standard defined ports and protocols must be used for all Exchange services.  The standard port for HTTP connections is 80 and the standard port for HTTPS\nconnections is 443.  \n\nChanging the ports to non-standard values provides only temporary and limited protection against automated attacks since these attacks will not likely connect to the custom port.  However, a determined attacker may still be able to determine which ports are used for the HTTP and HTTPS protocols by performing a comprehensive port scan.  \n\nNegative impacts to using nonstandard ports include complexity for the system administrator, custom configurations for connecting clients, risk of port conflict with non-exchange applications, and risk of incompatibility with standard port monitoring applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "EXCH-CA-105",
+      "title": "Forms-based Authentication must not be used.",
+      "description": "Identification and Authentication provide the foundation for access control.  Access to email services applications in the DoD require authentication using DoD Public Key Infrastructure (PKI) certificates.  The Exchange Receive Connector, which operates Outlook Web App (OWA), is used to enable web access to user email mailboxes.  This setting controls whether forms-based login should be used by the OWA web site. \n\nForms-based login enables a user to enter an Account and Password for the web session.   The form stores the username and password information in browser cookies, and enables the user's mailbox server to be located without user participation.  The cookies persist throughout the OWA session after which they are destroyed. \n\nBecause the DoD requires Common Access Card (CAC)-based authentication to applications, OWA access must be brokered through an application proxy (for example, Internet Security and Acceleration [ISA]), which performs CAC authentication using a proxy-hosted OWA form.  The authenticated request is then forwarded directly to OWA, where authentication is repeated without requiring the user to repeat authentication steps.  For this scenario to work, the Application Proxy server must have forms-based authentication enabled, and Exchange must have forms-based Authentication disabled.  \n\nIf forms-based Authentication is enabled on the Exchange Front End server, it is evidence that the application proxy server is either not correctly configured, or it may be missing.",
+      "severity": "high"
+    },
+    {
+      "id": "EXCH-CA-106",
+      "title": "The Microsoft Exchange forms-based authentication service must be disabled.",
+      "description": "Identification and Authentication provide the foundation for access control.  Access to email services applications in the DoD require authentication using DoD Public Key Infrastructure (PKI) certificates.  There are two sections to using form-based authentication the service must be running and the option to use forms-based authentication must be enabled. Forms-based login enables a user to enter a username and password to logon to the system.  By disabling the forms-based authentication service malicious users will not have the ability to enter users name and password to access a system.",
+      "severity": "medium"
+    },
+    {
+      "id": "EXCH-CA-107",
+      "title": "HTTP authenticated access must be set to Integrated Windows Authentication only.",
+      "description": "This feature controls the authentication method used to connect to the OWA virtual directories. \nEnsure this is set to Integrated Windows Authentication only.\nAnonymous access provides for no access control. Basic Authentication transmits the password in the clear and risks exposure, and the other methods are not recommended by Microsoft for this control. Failure to configure this as per the recommendation may result in unrestricted access to OWA virtual directory, passwords being sent in the clear, and/or the inability to correctly authenticate, depending on which change is made.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "EXCH-CA-108",
+      "title": "The Microsoft Exchange IMAP4 service must be disabled.",
+      "description": "The IMAP4 protocol is not approved for use within the DoD. It uses a clear text based user name and password and does not support the DoD standard for PKI for email access. User name and password could easily be captured from the network allowing malicious user to access other system features. Uninstalling or disabling the service will prevent the use of the IMAP4 protocol.",
+      "severity": "medium"
+    },
+    {
+      "id": "EXCH-CA-109",
+      "title": "The Microsoft Exchange POP3 service must be disabled.",
+      "description": "The POP3 protocol is not approved for use within the DoD. It uses a clear text based user name and password and does not support the DoD standard for PKI for email access. User name and password could easily be captured from the network allowing malicious user to access other system features. Uninstalling or disabling the service will prevent the use of the POP3 protocol.",
+      "severity": "medium"
+    }
+  ]
+}

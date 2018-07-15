@@ -1,0 +1,395 @@
+{
+  "name": "stig_cisco_ios_xe_release_3_ndm",
+  "date": "2018-03-08",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Cisco IOS XE Release 3 NDM Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-73961",
+      "title": "The Cisco IOS XE router must limit the number of concurrent SSH sessions to an organization-defined number.",
+      "description": "Device management includes the ability to control the number of administrators and management sessions that manage a device. Limiting the number of allowed administrators and sessions per administrator is helpful in limiting risks related to DoS attacks.\n\nThis requirement addresses concurrent sessions for administrative accounts and does not address concurrent sessions by a single administrator via multiple administrative accounts. The maximum number of concurrent sessions should be defined based upon mission needs and the operational environment for each system.",
+      "severity": "low"
+    },
+    {
+      "id": "V-73963",
+      "title": "The Cisco IOS XE router must use an authentication server for the purpose of granting administrative access.",
+      "description": "All accounts used for access to the network device are privileged or system-level accounts. Therefore, if account management functions are not automatically enforced, an attacker could gain privileged access to a vital element of the network security architecture.\n\nThe use of Authentication, Authorization, and Accounting (AAA) affords the best methods for controlling user access, authorization levels, and activity logging. By enabling AAA on the routers in conjunction with an authentication server such as TACACS+ or RADIUS, the administrators can easily add or remove user accounts, add or remove command authorizations, and maintain a log of user activity.\n\nThe use of an authentication server provides the capability to assign device administrators to tiered groups that contain their privilege level, which is used for authorization of specific commands. \n\nThis control does not include emergency administration accounts that provide access to the network device components in case of network failure. There must be only one such locally defined account. All other accounts must be defined. All other accounts must be created and managed on the site's authentication server (e.g., RADIUS, LDAP, or Active Directory). This requirement is applicable to account management functions provided by the network device.",
+      "severity": "high"
+    },
+    {
+      "id": "V-73965",
+      "title": "The Cisco IOS XE router must automatically audit account creation.",
+      "description": "Upon gaining access to a network device, an attacker will often first attempt to create a persistent method of reestablishing access. One way to accomplish this is to create a new account. Notification of account creation helps to mitigate this risk. Auditing account creation provides the necessary reconciliation that account management procedures are being followed. Without this audit trail, personnel without the proper authorization may gain access to critical network nodes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73967",
+      "title": "The Cisco IOS XE router must automatically audit account modification.",
+      "description": "Since the accounts in the network device are privileged or system-level accounts, account management is vital to the security of the network device. Account management by a designated authority ensures access to the network device is being controlled in a secure manner by granting access to only authorized personnel with the appropriate and necessary privileges. Auditing account modification along with an automatic notification to appropriate individuals will provide the necessary reconciliation that account management procedures are being followed. If modifications to management accounts are not audited, reconciliation of account management procedures cannot be tracked.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73969",
+      "title": "The Cisco IOS XE router must automatically audit account removal.",
+      "description": "Account management, as a whole, ensures access to the network device is being controlled in a secure manner by granting access to only authorized personnel. Auditing account removal actions will support account management procedures. When device management accounts are terminated, user or service accessibility may be affected. Auditing also ensures authorized active accounts remain enabled and available for use when required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73971",
+      "title": "The Cisco IOS XE router must enforce approved authorizations for controlling the flow of management information within the router based on information flow control policies.",
+      "description": "A mechanism to detect and prevent unauthorized communication flow must be configured or provided as part of the system design. If management information flow is not enforced based on approved authorizations, the network device may become compromised. Information flow control regulates where management information is allowed to travel within a network device. The flow of all management information must be monitored and controlled so it does not introduce any unacceptable risk to the network device or data. \n\nApplication-specific examples of enforcement occur in systems that employ rule sets or establish configuration settings that restrict information system services or message-filtering capability based on message content (e.g., implementing key word searches or using document characteristics).\n\nApplications providing information flow control must be able to enforce approved authorizations for controlling the flow of management information within the system in accordance with applicable policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73973",
+      "title": "The Cisco IOS XE router must enforce the limit of three consecutive invalid logon attempts by a user during a 15-minute time period.",
+      "description": "By limiting the number of failed login attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73975",
+      "title": "The Cisco IOS XE router must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the device.",
+      "description": "Display of the DoD-approved use notification before granting access to the network device ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73977",
+      "title": "The Cisco IOS XE router must retain the Standard Mandatory DoD Notice and Consent Banner on the screen until the administrator acknowledges the usage conditions and takes explicit actions to log on for further access.",
+      "description": "The banner must be acknowledged by the administrator prior to the device allowing the administrator access to the network device. This provides assurance that the administrator has seen the message and accepted the conditions for access. If the consent banner is not acknowledged by the administrator, DoD will not be in compliance with system use notifications required by law. \n\nTo establish acceptance of the network administration policy, a click-through banner at management session logon is required. The device must prevent further activity until the administrator executes a positive action to manifest agreement.\n\nIn the case of CLI access using a terminal client, entering the username and password when the banner is presented is considered an explicit action of acknowledgement. Entering the username, viewing the banner, then entering the password is also acceptable.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73979",
+      "title": "The Cisco IOS XE router must protect against an individual (or process acting on behalf of an individual) falsely denying having performed organization-defined actions to be covered by non-repudiation.",
+      "description": "This requirement supports non-repudiation of actions taken by an administrator and is required in order to maintain the integrity of the configuration management process. All configuration changes to the network device are logged, and administrators authenticate with two-factor authentication before gaining administrative access. Together, these processes will ensure the administrators can be held accountable for the configuration changes they implement.\n\nTo meet this requirement, the network device must log administrator access and activity.",
+      "severity": "low"
+    },
+    {
+      "id": "V-73981",
+      "title": "The Cisco IOS XE router must provide audit record generation capability for DoD-defined auditable events within the router.",
+      "description": "Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the network device (e.g., process, module). Certain specific device functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoD has defined the list of events for which the device will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities or other system level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n(iii) All account creation, modification, disabling, and termination actions.",
+      "severity": "low"
+    },
+    {
+      "id": "V-73983",
+      "title": "The Cisco IOS XE router must allow only the ISSM (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited.",
+      "description": "Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent the auditing of critical events. Misconfigured audits may degrade the system's performance by overwhelming the audit log. Misconfigured audits may also make it more difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.",
+      "severity": "low"
+    },
+    {
+      "id": "V-73985",
+      "title": "The Cisco IOS XE router must generate audit records when successful/unsuccessful attempts to access privileges occur.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73987",
+      "title": "The Cisco IOS XE router must initiate session auditing upon startup.",
+      "description": "If auditing is enabled late in the start-up process, the actions of some start-up processes may not be audited. Some audit systems also maintain state information only available if auditing is enabled before a given process is created.",
+      "severity": "low"
+    },
+    {
+      "id": "V-73989",
+      "title": "The Cisco IOS XE router must produce audit log records containing sufficient information to establish what type of event occurred.",
+      "description": "It is essential for security personnel to know what is being done, what was attempted, where it was done, when it was done, and by whom it was done in order to compile an accurate risk assessment. Associating event types with detected events in the application and audit logs provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured network device. Without this capability, it would be difficult to establish, correlate, and investigate the events leading up to an outage or attack.",
+      "severity": "low"
+    },
+    {
+      "id": "V-73991",
+      "title": "The Cisco IOS XE router must produce audit records containing information to establish when (date and time) the events occurred.",
+      "description": "It is essential for security personnel to know what is being done, what was attempted, where it was done, when it was done, and by whom it was done in order to compile an accurate risk assessment. Logging the date and time of each detected event provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured network device. In order to establish and correlate the series of events leading up to an outage or attack, it is imperative the date and time are recorded in all log records.",
+      "severity": "low"
+    },
+    {
+      "id": "V-73993",
+      "title": "The Cisco IOS XE router must produce audit records containing information to establish where the events occurred.",
+      "description": "In order to compile an accurate risk assessment and provide forensic analysis, it is essential for security personnel to know where events occurred, such as device hardware components, device software modules, session identifiers, filenames, host names, and functionality.\n\nAssociating information about where the event occurred within the network device provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured device.",
+      "severity": "low"
+    },
+    {
+      "id": "V-73995",
+      "title": "The Cisco IOS XE router must produce audit log records containing information to establish the source of events.",
+      "description": "In order to compile an accurate risk assessment and provide forensic analysis, it is essential for security personnel to know the source of the event.  The source may be a component, module, or process within the device or an external session, administrator, or device.\n\nAssociating information about where the source of the event occurred provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured device.",
+      "severity": "low"
+    },
+    {
+      "id": "V-73997",
+      "title": "The Cisco IOS XE router must produce audit records that contain information to establish the outcome of the event.",
+      "description": "Without information about the outcome of events, security personnel cannot make an accurate assessment as to whether an attack was successful or if changes were made to the security state of the system.\n\nEvent outcomes can include indicators of event success or failure and event-specific results (e.g., the security state of the device after the event occurred). As such, they also provide a means to measure the impact of an event and help authorized personnel to determine the appropriate response.",
+      "severity": "low"
+    },
+    {
+      "id": "V-73999",
+      "title": "The Cisco IOS XE router must generate audit records containing information that establishes the identity of any individual or process associated with the event.",
+      "description": "Without information that establishes the identity of the subjects (i.e., administrators or processes acting on behalf of administrators) associated with the events, security personnel cannot determine responsibility for the potentially harmful event.\n\nEvent identifiers (if authenticated or otherwise known) include, but are not limited to, user database tables, primary key values, user names, or process identifiers.",
+      "severity": "low"
+    },
+    {
+      "id": "V-74001",
+      "title": "The Cisco IOS XE router must generate audit records containing the full-text recording of privileged commands.",
+      "description": "Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information. \n\nOrganizations consider limiting the additional audit information to only that information explicitly needed for specific audit requirements. The additional information required is dependent on the type of information (i.e., sensitivity of the data and the environment within which it resides). At a minimum, the organization must audit full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.",
+      "severity": "low"
+    },
+    {
+      "id": "V-74003",
+      "title": "The Cisco IOS XE router must use internal system clocks to generate time stamps for audit records.",
+      "description": "In order to determine what is happening within the network infrastructure or to resolve and trace an attack, the network device must support the organization's capability to correlate the audit log data from multiple network devices to acquire a clear understanding of events. In order to correlate auditable events, time stamps are needed on all of the log records.\n\nIf the internal clock is not used, the system may not be able to provide time stamps for log messages. Additionally, externally generated time stamps may not be accurate. Applications can use the capability of an operating system or purpose-built module for this purpose.  (Note that the internal clock is required to be synchronized with authoritative time sources by other requirements.)",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74005",
+      "title": "The Cisco IOS XE router must off load audit records via syslog so the audit records can be backed up every seven days.",
+      "description": "Protection of log data includes assuring log data is not accidentally lost or deleted. Regularly backing up audit records to a different system or onto separate media than the system being audited helps to assure, in the event of a catastrophic system failure, the audit records will be retained. \n\nThis helps to ensure a compromise of the information system being audited does not also result in a compromise of the audit records.",
+      "severity": "low"
+    },
+    {
+      "id": "V-74007",
+      "title": "The Cisco IOS XE router must be configured to prohibit the use of all unnecessary or non-secure ports, protocols, or services.",
+      "description": "In order to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable unused or unnecessary physical and logical ports/protocols on information systems.\n\nNetwork devices are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the network device must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved. Some network devices have capabilities enabled by default; if these capabilities are not necessary, they must be disabled. If a particular capability is used, then it must be documented and approved.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74009",
+      "title": "The Cisco IOS XE router must have a single local account that will only be used as an account of last resort with full access to the network device.",
+      "description": "Authentication for administrative (privileged level) access to the device is required at all times. An account can be created on the device's local database for use in an emergency, such as when the authentication server is down or connectivity between the device and the authentication server is not operable. This account is also referred to as the account of last resort since the emergency administration account is strictly intended to be used only as a last resort and immediate administrative access is absolutely necessary.\n\nThe number of emergency administration accounts is restricted to at least one, but no more than operationally required as determined by the ISSO. The emergency administration account logon credentials must be stored in a sealed envelope and kept in a safe.",
+      "severity": "high"
+    },
+    {
+      "id": "V-74011",
+      "title": "The Cisco IOS XE router must enforce a minimum 15-character password length.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. Password length is one factor of several that helps to determine strength and how long it takes to crack a password.\n\nThe shorter the password, the lower the number of possible combinations that need to be tested before the password is compromised. Use of more characters in a password helps to exponentially increase the time and/or resources required to compromise the password.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74013",
+      "title": "If multifactor authentication is not supported and passwords must be used, the Cisco IOS XE router must enforce password complexity by requiring that at least one upper-case character be used.",
+      "description": "Use of a complex passwords helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password is, the greater the number of possible combinations that need to be tested before the password is compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74015",
+      "title": "If multifactor authentication is not supported and passwords must be used, the Cisco IOS XE router must enforce password complexity by requiring that at least one lower-case character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74017",
+      "title": "If multifactor authentication is not supported and passwords must be used, the Cisco IOS XE router must enforce password complexity by requiring that at least one numeric character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74019",
+      "title": "If multifactor authentication is not supported and passwords must be used, the Cisco IOS XE router must enforce password complexity by requiring that at least one special character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74021",
+      "title": "If multifactor authentication is not supported and passwords must be used, the CCisco IOS XE router must require that when a password is changed, the characters are changed in at least eight of the positions within the password.",
+      "description": "If the application allows the user to consecutively reuse extensive portions of passwords, this increases the chances of password compromise by increasing the window of opportunity for attempts at guessing and brute-force attacks.\n\nThe number of changed characters refers to the number of changes required with respect to the total number of positions in the current password. In other words, characters may be the same within the two passwords; however, the positions of the like characters must be different.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74023",
+      "title": "The Cisco IOS XE router must store only encrypted representations of passwords.",
+      "description": "Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.\n\nNetwork devices must enforce password encryption when storing passwords.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74025",
+      "title": "The Cisco IOS XE router must enforce a 60-day maximum password lifetime restriction.",
+      "description": "Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed at specific intervals. \n\nOne method of minimizing this risk is to use complex passwords and periodically change them. If the network device does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the passwords could be compromised. \n\nThis requirement does not include emergency administration accounts which are meant for access to the network device in case of failure. These accounts are not required to have maximum password lifetime restrictions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74027",
+      "title": "The Cisco IOS XE router must terminate all network connections associated with a device management session at the end of the session, or the session must be terminated after 10 minutes of inactivity except to fulfill documented and validated mission requirements.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element. \n\nTerminating network connections associated with communications sessions includes, for example, de-allocating associated TCP/IP address/port pairs at the operating system level, or de-allocating networking assignments at the application level if multiple application sessions are using a single, operating system-level network connection. This does not mean that the device terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74029",
+      "title": "The Cisco IOS XE router must reveal error messages only to authorized individuals (ISSO, ISSM, and SA).",
+      "description": "Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state. Additionally, sensitive account information must not be revealed through error messages to unauthorized personnel or their designated representatives.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74031",
+      "title": "The Cisco IOS XE router must automatically terminate a network administrator session after organization-defined conditions or trigger events requiring session disconnect.",
+      "description": "Automatic session termination addresses the termination of administrator-initiated logical sessions in contrast to the termination of network connections that are associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever an administrator (or process acting on behalf of a user) accesses a network device. Such administrator sessions can be terminated (and thus terminate network administrator access) without terminating network sessions. \n\nSession termination terminates all processes associated with an administrator's logical session except those processes that are specifically created by the administrator (i.e., session owner) to continue after the session is terminated. \n\nConditions or trigger events requiring automatic session termination can include, for example, organization-defined periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use. These conditions will vary across environments and network device types.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74033",
+      "title": "The Cisco IOS XE router must automatically audit account enabling actions.",
+      "description": "Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply enable a new or disabled account. Notification of account enabling is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail which documents the creation of application user accounts and notifies administrators and Information System Security Officers (ISSO). Such a process greatly reduces the risk that accounts will be surreptitiously created and provides logging that can be used for forensic purposes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74035",
+      "title": "The Cisco IOS XE router must audit the execution of privileged functions.",
+      "description": "Misuse of privileged functions, either intentionally or unintentionally by authorized users, or by unauthorized external entities that have compromised information system accounts, is a serious and ongoing concern and can have significant adverse impacts on organizations. Auditing the use of privileged functions is one way to detect such misuse and identify the risk from insider threats and the advanced persistent threat.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74037",
+      "title": "The Cisco IOS XE router must provide the capability for organization-identified individuals or roles to change the auditing to be performed based on all selectable event criteria within near-real-time.",
+      "description": "If authorized individuals do not have the ability to modify auditing parameters in response to a changing threat environment, the organization may not be able to effectively respond, and important forensic information may be lost.\n\nThis requirement enables organizations to extend or limit auditing as necessary to meet organizational requirements. Auditing that is limited to conserve information system resources may be extended to address certain threat situations. In addition, auditing may be limited to a specific set of events to facilitate audit reduction, analysis, and reporting. Organizations can establish time thresholds in which audit actions are changed, for example, near-real-time, within minutes, or within hours.\n\nThe individuals or roles to change the auditing are dependent on the security configuration of the network device--for example, it may be configured to allow only some administrators to change the auditing, while other administrators can review audit logs but not reconfigure auditing. Because this capability is so powerful, organizations should be extremely cautious about only granting this capability to fully authorized security personnel.",
+      "severity": "low"
+    },
+    {
+      "id": "V-74039",
+      "title": "The Cisco IOS XE router must allocate audit record storage capacity in accordance with organization-defined audit record storage requirements.",
+      "description": "In order to ensure network devices have a sufficient storage capacity in which to write the audit logs, they need to be able to allocate audit record storage capacity.  The task of allocating audit record storage capacity is usually performed during initial device setup if it is modifiable. \n\nThe value for the organization-defined audit record storage requirement will depend on the amount of storage available on the network device, the anticipated volume of logs, the frequency of transfer from the network device to centralized log servers, and other factors.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74041",
+      "title": "The Cisco IOS XE router must compare internal information system clocks at least every 24 hours with an authoritative time server.",
+      "description": "Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. Sources outside of the configured acceptable allowance (drift) may be inaccurate. Additionally, unnecessary synchronization may have an adverse impact on system performance and may indicate malicious activity.  Synchronizing internal information system clocks provides uniformity of time stamps for information systems with multiple system clocks and systems connected over a network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74043",
+      "title": "The Cisco IOS XE router must synchronize internal information system clocks to the authoritative time source when the time difference is greater than the organization-defined time period.",
+      "description": "Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. \n\nSynchronizing internal information system clocks provides uniformity of time stamps for information systems with multiple system clocks and systems connected over a network. Organizations should consider setting time periods for different types of systems (e.g., financial, legal, or mission-critical systems). Organizations should also consider endpoints that may not have regular access to the authoritative time server (e.g., mobile, teleworking, and tactical endpoints). This requirement is related to the comparison done every 24 hours in CCI-001891 because a comparison must be done in order to determine the time difference.\n\nThe organization-defined time period will depend on multiple factors, most notably the granularity of time stamps in audit logs. For example, if time stamps only show to the nearest second, there is no need to have accuracy of a tenth of a second in clocks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74045",
+      "title": "The Cisco IOS XE router must be configured to synchronize internal information system clocks with the primary and secondary time sources located in different geographic regions using redundant authoritative time sources.",
+      "description": "The loss of connectivity to a particular authoritative time source will result in the loss of time synchronization (free-run mode) and increasingly inaccurate time stamps on audit events and other functions. \n\nMultiple time sources provide redundancy by including a secondary source. Time synchronization is usually a hierarchy; clients synchronize time to a local source while that source synchronizes its time to a more accurate source. The network device must utilize an authoritative time server and/or be configured to use redundant authoritative time sources. This requirement is related to the comparison done in CCI-001891.\n\nDoD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DoD network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74047",
+      "title": "The Cisco IOS XE router must record time stamps for audit records that can be mapped to Coordinated Universal Time (UTC) or Greenwich Mean Time (GMT).",
+      "description": "If time stamps are not consistently applied and there is no common time reference, it is difficult to perform forensic analysis.\n\nTime stamps generated by the application include date and time. Time is commonly expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74049",
+      "title": "The Cisco IOS XE router must record time stamps for audit records that meet a granularity of one second for a minimum degree of precision.",
+      "description": "Without sufficient granularity of time stamps, it is not possible to adequately determine the chronological order of records. Time stamps generated by the application include date and time. Granularity of time measurements refers to the degree of synchronization between information system clocks and reference clocks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74051",
+      "title": "The Cisco IOS XE router must authenticate network management, SNMP, and NTP endpoint devices before establishing a local, remote, and/or network connection using bidirectional authentication that is cryptographically based.",
+      "description": "Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity. Bidirectional authentication provides stronger safeguards to validate the identity of other devices for connections that are of greater risk.\n\nA local connection is any connection with a device communicating without the use of a network. A network connection is any connection with a device that communicates through a network (e.g., local area or wide area network, Internet). A remote connection is any connection with a device communicating through an external network (e.g., the Internet).\n\nBecause of the challenges of applying this requirement on a large scale, organizations are encouraged to only apply the requirement to those limited number (and type) of devices that truly need to support this capability. For network device management, this has been determined to be network management device addresses, SNMP authentication, and NTP authentication.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74053",
+      "title": "Applications used for nonlocal maintenance sessions must implement cryptographic mechanisms to protect the integrity of nonlocal maintenance and diagnostic communications.",
+      "description": "This requires the use of secure protocols instead of their unsecured counterparts, such as SSH instead of telnet, SCP instead of FTP, and HTTPS instead of HTTP. If unsecured protocols (lacking cryptographic mechanisms) are used for sessions, the contents of those sessions will be susceptible to manipulation, potentially allowing alteration and hijacking of maintenance sessions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74055",
+      "title": "Applications used for nonlocal maintenance sessions must implement cryptographic mechanisms to protect the confidentiality of nonlocal maintenance and diagnostic communications.",
+      "description": "This requires the use of secure protocols instead of their unsecured counterparts, such as SSH instead of telnet, SCP instead of FTP, and HTTPS instead of HTTP. If unsecured protocols (lacking cryptographic mechanisms) are used for sessions, the contents of those sessions will be susceptible to eavesdropping, potentially putting sensitive data (including administrator passwords) at risk of compromise and potentially allowing hijacking of maintenance sessions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74057",
+      "title": "The Cisco IOS XE router must protect against or limit the effects of all known types of Denial of Service (DoS) attacks on network device management network by employing organization-defined security safeguards.",
+      "description": "DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity.\n\nThis requirement addresses the configuration of network devices to mitigate the impact of DoS attacks that have occurred or are ongoing on device availability. For each network device, known and potential DoS attacks must be identified and solutions for each type implemented. A variety of technologies exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or restricting the number of sessions the device opens at one time). Employing increased capacity and bandwidth, combined with service redundancy, may reduce the susceptibility to some DoS attacks.\n\nThe security safeguards cannot be defined at the DoD level because they vary according to the capabilities of the individual network devices and the security controls applied on the adjacent networks (for example, firewalls performing packet filtering to block DoS attacks).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74059",
+      "title": "If the Cisco IOS XE router uses mandatory access control, the Cisco IOS XE router  must enforce organization-defined mandatory access control policies over all subjects and objects.",
+      "description": "Mandatory access control policies constrain what actions subjects can take with information obtained from data objects for which they have already been granted access, thus preventing the subjects from passing the information to unauthorized subjects and objects. This class of mandatory access control policies also constrains what actions subjects can take with respect to the propagation of access control privileges; that is, a subject with a privilege cannot pass that privilege to other subjects.\n\nEnforcement of mandatory access control is typically provided via an implementation that meets the reference monitor concept. The reference monitor enforces (mediates) access relationships between all subjects and objects based on privilege and need to know.\n\nThe mandatory access control policies are defined uniquely for each network device, so they cannot be specified in the requirement. An example of where mandatory access control may be needed is to prevent administrators from tampering with audit objects.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74061",
+      "title": "The Cisco IOS XE router must generate audit records when successful/unsuccessful attempts to modify administrator privileges occur.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74063",
+      "title": "The Cisco IOS XE router must generate audit records when successful/unsuccessful attempts to delete administrator privileges occur.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74065",
+      "title": "The Cisco IOS XE router must generate audit records when successful/unsuccessful logon attempts occur.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74067",
+      "title": "The Cisco IOS XE router must generate audit records for privileged activities or other system-level access.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74069",
+      "title": "The Cisco IOS XE router must generate audit records showing starting and ending time for administrator access to the system.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74071",
+      "title": "The Cisco IOS XE router must generate audit records when concurrent logons from different workstations occur.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74073",
+      "title": "The Cisco IOS XE router must generate audit records for all account creations, modifications, disabling, and termination events.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74075",
+      "title": "The Cisco IOS XE router must off-load audit records onto a different system or media than the system being audited.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74077",
+      "title": "The Cisco IOS XE router must generate audit log events for a locally developed list of auditable events.",
+      "description": "Auditing and logging are key components of any security architecture. Logging the actions of specific events provides a means to investigate an attack; to recognize resource utilization or capacity thresholds; or to identify an improperly configured network device. If auditing is not comprehensive, it will not be useful for intrusion monitoring, security investigations, and forensic analysis.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74079",
+      "title": "Administrative accounts for device management must be configured on the authentication server and not the Cisco IOS XE router itself (except for the emergency administration account).",
+      "description": "The use of authentication servers or other centralized management servers for providing centralized authentication services is required for network device management. Maintaining local administrator accounts for daily usage on each network device without centralized management is not scalable or feasible. Without centralized management, it is likely that credentials for some network devices will be forgotten, leading to delays in administration, which itself leads to delays in remediating production problems and in addressing compromises in a timely fashion.\n\nAdministrative accounts for network device management must be configured on the authentication server and not the network device itself. The only exception is for the emergency administration account (also known as the account of last resort), which is configured locally on each device. Note that more than one emergency administration account may be permitted if approved.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74081",
+      "title": "The Cisco IOS XE router must support organizational requirements to conduct backups of system level information contained in the information system when changes occur or weekly, whichever is sooner.",
+      "description": "System-level information includes default and customized settings and security attributes, including ACLs that relate to the network device configuration, as well as software required for the execution and operation of the device. Information system backup is a critical step in ensuring system integrity and availability. If the system fails and there is no backup of the system-level information, a denial of service condition is possible for all who utilize this critical network component.\n\nThis control requires the network device to support the organizational central backup process for system-level information associated with the network device. This function may be provided by the network device itself; however, the preferred best practice is a centralized backup rather than each network device performing discrete backups.",
+      "severity": "low"
+    },
+    {
+      "id": "V-74083",
+      "title": "The Cisco IOS XE router must obtain its public key certificates from an appropriate certificate policy through an approved service provider.",
+      "description": "For user certificates, each organization obtains certificates from an approved, shared service provider, as required by OMB policy. For federal agencies operating a legacy public key infrastructure cross-certified with the Federal Bridge Certification Authority at medium assurance or higher, this Certification Authority will suffice.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74085",
+      "title": "The Cisco IOS XE router must be configured to send log data to a syslog server for the purpose of forwarding alerts to the administrators and the ISSO.",
+      "description": "Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply create a new account. Notification of account creation is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail which documents the creation of accounts and notifies administrators and Information System Security Officers (ISSOs). Such a process greatly reduces the risk that accounts will be surreptitiously created and provides logging that can be used for forensic purposes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74087",
+      "title": "The Cisco IOS XE router must be configured to send SNMP traps and notifications to the SNMP manager for the purpose of sending alarms and notifying appropriate personnel as required by specific events.",
+      "description": "If appropriate actions are not taken when a network device failure occurs, a denial of service condition may occur which could result in mission failure since the network would be operating without a critical security monitoring and prevention function. Upon detecting a failure of network device security components, the HP FlexFabric Switch must activate a system alert message, send an alarm, or shut down. By immediately displaying an alarm message, potential security violations can be identified more quickly even when administrators are not logged into the device. This can be facilitated by the switch sending SNMP traps to the SNMP manager that can then have the necessary action taken by automatic or operator intervention.",
+      "severity": "medium"
+    }
+  ]
+}

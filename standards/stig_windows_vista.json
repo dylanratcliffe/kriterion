@@ -1,0 +1,1517 @@
+{
+  "name": "stig_windows_vista",
+  "date": "2017-01-30",
+  "description": "The Windows Vista Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  The requirements were developed from DoD consensus, as well as the Windows Vista Security Guide and security templates published by Microsoft Corporation.  Comments or proposed revisions to this document should be sent via e-mail to the following address:  disa.stig_spt@mail.mil.",
+  "title": "Windows Vista Security Technical Implementation Guide",
+  "version": "6",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-1070",
+      "title": "Physical security of the Automated Information System (AIS) does not meet DISA requirements.",
+      "description": "Inadequate physical protection can undermine all other security precautions utilized to protect the system. This can jeopardize the confidentiality, availability, and integrity of the system.  Physical security of the AIS is the first line protection of any system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1072",
+      "title": "Shared user accounts are permitted on the system.",
+      "description": "Shared accounts do not provide individual accountability for system access and resource usage.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1073",
+      "title": "Systems must be at supported service packs (SP) or releases levels.",
+      "description": "Systems at unsupported service packs or releases will not receive security updates for new vulnerabilities and leaves them subject to exploitation.   Systems must be maintained at a service pack level supported by the vendor with new security updates.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1074",
+      "title": "An approved, up-to-date, DoD antivirus program must be installed and used.",
+      "description": "Antivirus programs are a primary line of defense against the introduction of viruses and malicious code that can destroy data and even render a computer inoperable.  Utilizing an antivirus program provides the ability to detect malicious code before extensive damage occurs.  Updated virus scan data files help to protect a system, since new malware are identified by the software vendors on a continual basis.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1075",
+      "title": "The system allows shutdown from the logon dialog box.",
+      "description": "Preventing display of the shutdown button in the logon dialog box may encourage a hard shut down with the power button.  (However, displaying the shutdown button may allow individuals to shut down a system anonymously.) ",
+      "severity": "low"
+    },
+    {
+      "id": "V-1076",
+      "title": "System information backups are not created, updated, and protected according to DISA requirements.",
+      "description": "Recovery of a damaged or compromised system in a timely basis is difficult without a system information backup.  A system backup will usually include sensitive information such as user accounts that could be used in an attack.  As a valuable system resource, the system backup should be protected and stored in a physically secure location.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1077",
+      "title": "Permissions for event logs must conform to minimum requirements.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks. Audit logs are necessary to provide a trail of evidence in case the system or network is compromised. Event logs may be susceptible to tampering if proper permissions are not applied.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1081",
+      "title": "Local volumes are not formatted using NTFS.",
+      "description": "This is a category 1 finding because the ability to set access permissions and audit critical directories and files is only available by using the NTFS file system.  The capability to assign access permissions to file objects is a DOD policy requirement.\nThe FAT file system only provides the capability to make files read-only and hidden.  The capability to change these attributes is not restricted to any users.  An unauthorized individual could boot the machine from a floppy disk and gain full and unrecorded access to file data.\n\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-1084",
+      "title": "System pagefile is cleared upon shutdown.",
+      "description": "This check verifies that Windows is not configured to wipe clean the system page file during a controlled system shutdown.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1085",
+      "title": "Floppy media devices are not allocated upon user logon.",
+      "description": "This check verifies that Windows is configured to not limit access to floppy drives when a user is logged on locally per the FDCC.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1089",
+      "title": "The required legal notice must be configured to display before console logon.",
+      "description": "Failure to display the logon banner prior to a logon attempt will negate legal proceedings resulting from unauthorized access to system resources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1090",
+      "title": "Caching of logon credentials must be limited.",
+      "description": "The default Windows configuration caches the last logon credentials for users who log on interactively to a system.  This feature is provided for system availability reasons, such as the user's machine being disconnected from the network or domain controllers being unavailable.  Even though the credential cache is well-protected, if a system is attacked, an unauthorized individual may isolate the password to a domain user account using a password-cracking program and gain access to the domain.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1093",
+      "title": "Anonymous shares are not restricted.",
+      "description": "This is a Category 1 finding because it allows anonymous logon users (null session connections) to list all account names and enumerate all shared resources, thus providing a map of potential points to attack the system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1097",
+      "title": "Number of allowed bad-logon attempts does not meet minimum requirements.",
+      "description": "The account lockout feature, when enabled, prevents brute-force password attacks on the system.  The higher this value is, the less effective the account lockout feature will be in protecting the local system.  The number of bad logon attempts should be reasonably small to minimize the possibility of a successful password attack, while allowing for honest errors made during a normal user logon.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1098",
+      "title": "Time before bad-logon counter is reset does not meet minimum requirements.",
+      "description": "This parameter specifies the amount of time that must pass between two successive login attempts to ensure that a lockout will occur.  The smaller this value is, the less effective the account lockout feature will be in protecting the local system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1099",
+      "title": "Lockout duration does not meet minimum requirements.",
+      "description": "This parameter specifies the amount of time that must pass before a locked-out account is automatically unlocked by the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1102",
+      "title": "Unauthorized users are granted right to Act as part of the operating system.",
+      "description": "This is a Category 1 finding because users and user groups that are assigned this right can bypass all security protective mechanisms that apply to all users, including administrators.  Accounts with this right should have passwords with the maximum length and be kept in a locked container accessible only by the IAO and his designated backup. \n\nSome applications require this right to function.  Any exception needs to be documented with the IAO.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1103",
+      "title": "User rights assignments must meet minimum requirements.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high level capabilities not required by the normal user.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1104",
+      "title": "Maximum password age does not meet minimum requirements.",
+      "description": "The longer a password is in use, the greater the opportunity for someone to gain unauthorized knowledge of the passwords.   Further, scheduled changing of passwords hinders the ability of unauthorized system users to crack passwords and gain access to a system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1105",
+      "title": "Minimum password age does not meet minimum requirements.",
+      "description": "Permitting passwords to be changed in immediate succession within the same day, allows users to cycle passwords through their history database.  This enables users to effectively negate the purpose of mandating periodic password changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1107",
+      "title": "The password history must be configured to 24 passwords remembered.",
+      "description": "A system is more vulnerable to unauthorized access when system users recycle the same password several times without being required to change a password to a unique password on a regularly scheduled basis. This enables users to effectively negate the purpose of mandating periodic password changes. The default value is 24 for Windows domain systems.  DoD has decided this is the appropriate value for all Windows systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1112",
+      "title": "Outdated or unused accounts must be removed from the system.",
+      "description": "Outdated or unused accounts provide penetration points that may go undetected.  Inactive accounts must be deleted if no longer necessary or, if still required, disable until needed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1113",
+      "title": "The built-in guest account is not disabled.",
+      "description": "A system faces an increased vulnerability threat if the built-in guest account is not disabled.  This account is a known account that exists on all Windows systems and cannot be deleted.  This account is initialized during the installation of the operating system with no password assigned.  This account is a member of the Everyone user group and has all the rights and permissions associated with that group, which could subsequently provide access to system resources to anonymous users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1114",
+      "title": "The built-in guest account has not been renamed.",
+      "description": "A system faces an increased vulnerability threat if the built-in guest account is not renamed or disabled.  The built-in guest account is a known user account on all Windows systems, and as initially installed, does not require a password.  This can allow access to system resources by unauthorized users.  This account is a member of the group Everyone and has all the rights and permissions associated with that group and could provide access to system resources to unauthorized users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1115",
+      "title": "The built-in administrator account has not been renamed.",
+      "description": "The built-in administrator account is a well known account.  Renaming the account to an unidentified name improves the protection of this account and the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1118",
+      "title": "Event log sizes do not meet minimum requirements.",
+      "description": "Inadequate log size will cause the log to fill up quickly and require frequent clearing by administrative personnel.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1119",
+      "title": "Booting into alternate operating systems is permitted.",
+      "description": "Allowing other operating systems to run on a secure system, can allow users to circumvent security.  If more than one operating system is installed on a computer, each must be configured to be compliant with STIG guidance.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1120",
+      "title": "Installed FTP server is configured to allow prohibited logins.",
+      "description": "The FTP (File Transfer Protocol) service allows remote users to access shared files and directories.  Allowing anonymous FTP makes user auditing difficult.\n\nUsing accounts that have administrator privileges to log on to FTP risks that the user id and password will be captured on the network, and give administrator access to an unauthorized user.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1121",
+      "title": "Installed FTP server is configured to allow access to the system drive.",
+      "description": "This is a Category 1 finding because the FTP service allows remote users to access shared files and directories which could provide access to system resources and compromise the system, especially if the user can gain access to the root directory of the boot drive.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1122",
+      "title": "The system configuration is not set with a password-protected screen saver.",
+      "description": "The system should be locked when unattended.  Unattended systems are susceptible to unauthorized use.  The screen saver should be set at a maximum of 15 minutes and password protected.  This protects critical and sensitive data from exposure to unauthorized personnel with physical access to the computer.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1127",
+      "title": "Only administrators responsible for the system must have Administrator rights on the system.",
+      "description": "An account that does not have Administrator duties must not have Administrator rights. Such rights would allow the account to bypass or modify required security restrictions on that machine and make it vulnerable to attack.\n\nSystem administrators must log on to systems only using accounts with the minimum level of authority necessary. \n\nFor domain joined workstations, the Domain Admins group must be replaced by a domain workstation administrator group.  Restricting highly privileged accounts from the local Administrators group helps mitigate the risk of privilege escalation resulting from credential theft attacks.\n\nStandard user accounts must not be members of the built-in Administrators group.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1128",
+      "title": "Security configuration tools or equivalent processes must be used to configure and maintain platforms for security compliance.",
+      "description": "Security configuration tools such as Group Policies and Security Templates allow system administrators to consolidate security-related system settings into a single configuration file.  These settings can then be applied consistently to any number of Windows systems.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1130",
+      "title": "ACLs for system files and directories do not conform to minimum requirements.",
+      "description": "Failure to properly configure file and directory permissions (ACLs) allows the possibility of unauthorized and anonymous modification to the operating system and installed applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1135",
+      "title": "Printer share permissions are not configured as recommended.",
+      "description": "Improperly configured share permissions on printers can permit the addition of unauthorized print devices on the network.  Windows shares are a means by which files, folders, printers, and other resources can be published for network users to remotely access.  Regular users cannot create shares on their local machines; only Administrators and Power Users have that ability.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1136",
+      "title": "Users must be forcibly disconnected when their logon hours expire.",
+      "description": "Users must not be permitted to remain logged on to the network after they have exceeded their permitted logon hours. In many cases, this indicates that a user forgot to log off before leaving for the day.  However, it may also indicate that a user is attempting unauthorized access at a time when the system may be less closely monitored.  Forcibly disconnecting users when logon hours expire protects critical and sensitive network data from exposure to unauthorized personnel with physical access to the computer.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1140",
+      "title": "Users with Administrative privilege are not documented or do not have separate accounts for administrative duties and normal operational tasks.",
+      "description": "Using a privileged account to perform routine functions makes the computer vulnerable to attack by any virus or Trojan Horse inadvertently introduced during a session that has been granted full privileges.\n\nThe rule of least privilege should always be enforced.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1141",
+      "title": "Unencrypted passwords must not be sent to third-party SMB Servers.",
+      "description": "Some non-Microsoft SMB servers only support unencrypted (plain text) password authentication.  Sending plain text passwords across the network, when authenticating to an SMB server, reduces the overall security of the environment.  Check with the Vendor of the SMB server to see if there is a way to support encrypted password authentication.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1145",
+      "title": "Automatic logons must be disabled.",
+      "description": "Allowing a system to automatically log on when the machine is booted could give access to any unauthorized individual who restarts the computer.  Automatic logon with administrator privileges would give full access to an unauthorized individual.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1148",
+      "title": "Local users must not exist on a system in a domain.",
+      "description": "To minimize potential points of attack, local users, other than built-in accounts such as Administrator and Guest accounts, must not exist on a workstation in a domain.  Users must log onto workstations in a domain with their domain accounts.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1150",
+      "title": "The built-in Windows password complexity policy must be enabled.",
+      "description": "The use of complex passwords increases their strength against attack. The built-in Windows password complexity policy requires passwords to contain at least 3 of the 4 types of characters (numbers, upper- and lower-case letters, and special characters), as well as preventing the inclusion of user names or parts of.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1151",
+      "title": "Print driver installation privilege is not restricted to administrators.",
+      "description": "By default, the print spooler allows any user to add and to delete printer drivers on the local system.  This capability should be restricted to authorized personnel.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1152",
+      "title": "Anonymous access to the registry must be restricted.",
+      "description": "The registry is integral to the function, security, and stability of the Windows system.  Some processes may require anonymous access to the registry.  This must be limited to properly protect the system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1153",
+      "title": "The Send download LanMan compatible password option is not set to Send NTLMv2 response only\\refuse LM.",
+      "description": "The Kerberos v5 authentication protocol is the default for authentication of users who are logging on to domain accounts.  NTLM is retained in later Windows versions  for compatibility with clients and servers that are running earlier versions of Windows.  It is also used to authenticate logons to stand-alone computers that are running later versions.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1154",
+      "title": "Ctrl+Alt+Del security attention sequence is Disabled.",
+      "description": "Disabling the Ctrl+Alt+Del security attention sequence can compromise system security.  Because only Windows responds to the Ctrl+Alt+Del security sequence, you can be assured that any passwords you enter following that sequence are sent only to Windows.  If you eliminate the sequence requirement, malicious programs can request and receive your Windows password.  Disabling this sequence also suppresses a custom logon banner.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1155",
+      "title": "The Deny access to this computer from the network user right on workstations must be configured to prevent access from highly privileged domain accounts and local administrator accounts on domain systems and unauthenticated access on all systems. ",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high level capabilities.\n\nThe \"Deny access to this computer from the network\" right defines the accounts that are prevented from logging on from the network.\n\nIn an Active Directory Domain, denying logons to the Enterprise Admins and Domain Admins groups on lower trust systems helps mitigate the risk of privilege escalation from credential theft attacks which could lead to the compromise of an entire domain.\n\nLocal administrator accounts on domain-joined systems must also be assigned this right to decrease the risk of lateral movement resulting from credential theft attacks.\n\nThe Guests group must be assigned this right to prevent unauthenticated access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1157",
+      "title": "The Smart Card removal option is set to take no action.",
+      "description": "Determines what should happen when the smart card for a logged-on user is removed from the smart card reader.\n\nThe options are:\n- No Action\n- Lock Workstation\n- Force Logoff",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1158",
+      "title": "The Recovery Console SET command must be disabled.",
+      "description": "The Recovery Console SET command allows environment variables to be set in the Recovery Console.  This permits access to all drives and folders and the copying of files to removable media which could expose sensitive information.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1159",
+      "title": "The Recovery Console option is set to permit automatic logon to the system.",
+      "description": "This is a Category 1 finding because if this option is set, the Recovery Console does not require you to provide a password and will automatically log on to the system, giving Administrator access to system files.\n\nBy default, the Recovery Console requires you to provide the password for the Administrator account before accessing the system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-1162",
+      "title": "The Windows SMB server is not enabled to perform SMB packet signing when possible.",
+      "description": "If this policy is enabled, it causes the Windows Server Message Block (SMB) server to perform SMB packet signing.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1163",
+      "title": "Outgoing secure channel traffic is not encrypted when possible.",
+      "description": "Requests sent on the secure channel are authenticated, and sensitive information (such as passwords) is encrypted, but not all information is encrypted.  If this policy is enabled, outgoing secure channel traffic should be encrypted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1164",
+      "title": "Outgoing secure channel traffic is not signed when possible.",
+      "description": "Requests sent on the secure channel are authenticated, and sensitive information (such as passwords) is encrypted, but the channel is not integrity checked.  If this policy is enabled, all outgoing secure channel traffic should be signed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1165",
+      "title": "The computer account password is prevented from being reset.",
+      "description": "As a part of Windows security, computer account passwords are changed automatically.  Enabling this policy to disable automatic password changes can make the system more vulnerable to malicious access.  Frequent password changes can be a significant safeguard for your system.  If this policy is disabled, a new password for the computer account will be generated every week.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1166",
+      "title": "The Windows SMB client is not enabled to perform SMB packet signing when possible.",
+      "description": "If this policy is enabled, it causes the Windows Server Message Block (SMB) client to perform SMB packet signing when communicating with an SMB server that is enabled or required to perform SMB packet signing. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1168",
+      "title": "Members of the Backup Operators group must have separate accounts for backup duties and normal operational tasks.",
+      "description": "Backup Operators are able to read and write to any file in the system, regardless of the rights assigned to it.  Backup and restore rights permit users to circumvent the file access restrictions present on NTFS disk drives for the purpose of backup and restore.  Members of the Backup Operators group must have separate logon accounts for performing backup duties.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1171",
+      "title": "Ejection of removable NTFS media is not restricted to Administrators.",
+      "description": "Removable hard drives can be formatted and ejected by others who are not members of the Administrators Group, if they are not properly configured.  Formatting and ejecting removable NTFS media should only be done by administrators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-1172",
+      "title": "Users are not warned in advance that their passwords will expire.",
+      "description": "This setting configures the system to display a warning to users telling them how many days are left before their password expires.  By giving the user advanced warning, the user has time to construct a sufficiently strong password.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1173",
+      "title": "The default permissions of Global system objects are not increased.",
+      "description": "Windows system maintains a global list of shared system resources such as DOS device names, mutexes, and semaphores. Each type of object is created with a default DACL that specifies who can access the objects with what permissions. If this policy is enabled, the default DACL is stronger, allowing non-admin users to read shared objects, but not modify shared objects that they did not create.",
+      "severity": "low"
+    },
+    {
+      "id": "V-1174",
+      "title": "The amount of idle time required before suspending a session must be properly set.",
+      "description": "Open sessions can increase the avenues of attack on a system.  This setting is used to control when a computer disconnects an inactive SMB session.  If client activity resumes, the session is automatically re-established.  This protects critical and sensitive network data from exposure to unauthorized personnel with physical access to the computer.",
+      "severity": "low"
+    },
+    {
+      "id": "V-11806",
+      "title": "The system is configured to allow the display of the last user name on the logon screen.",
+      "description": "The user name of the last user to log onto a system will not be displayed.  This eliminates half of the Userid/Password equation that an unauthorized person would need to log on.",
+      "severity": "low"
+    },
+    {
+      "id": "V-14224",
+      "title": "The system does not have a backup administrator account",
+      "description": "The built-in administrator account, as a well known account subject to attack, is disabled by default and per STIG requirements.  Domain Admins on domain joined systems should provide sufficient availability for administering a system.  A site with limited administrators must ensure they have a contingency for administering a non-domain system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14225",
+      "title": "Administrator Passwords are changed when necessary.",
+      "description": "This check verifies that the passwords for the default and backup administrator accounts are changed at least annually or when any member of the administrative team leaves the organization.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14228",
+      "title": "Auditing Access of Global System Objects must be turned off.",
+      "description": "This setting prevents the system from setting up a default system access control list for certain system objects, which could create a very large number of security events, filling the security log in Windows and making it difficult to identify actual issues.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14229",
+      "title": "Audit of Backup and Restore Privileges is not turned off.",
+      "description": "This policy setting stops the system from generating audit events for every file backed up or restored which could fill the Security log in Windows. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14230",
+      "title": "Audit policy using subcategories is enabled.",
+      "description": "This policy setting allows administrators to enable the more precise auditing capabilities present in Windows Vista and later.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14231",
+      "title": "Hide Computer from the browse list.",
+      "description": "This check verifies Windows Vista is configured to hide the computer from the browse list.",
+      "severity": "low"
+    },
+    {
+      "id": "V-14232",
+      "title": "IPSec Exemptions are limited.",
+      "description": "This check verifies that Windows is configured to limit IPSec exemptions.",
+      "severity": "low"
+    },
+    {
+      "id": "V-14234",
+      "title": "User Account Control - Built In Admin Approval Mode",
+      "description": "This check verifies whether the built-in Administrator account runs in Admin Approval Mode.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14235",
+      "title": "User Account Control - Behavior of elevation prompt for administrators",
+      "description": "This check verifies whether logged on administrator is prompted for consent when he attempts to complete a task that requires raised privileges.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14236",
+      "title": "User Account Control - Behavior of elevation prompt for standard users.",
+      "description": "This check verifies whether the logged on user is prompted for credentials when attempting to complete a task that requires raised privileges.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14237",
+      "title": "User Account Control - Detect Application Installations",
+      "description": "This check verifies whether Windows responds to application installation requests by prompting for credentials.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14239",
+      "title": "User Account Control - Elevate UIAccess applications that are in secure locations",
+      "description": "This check verifies whether Windows only allows applications installed in a secure location, such as the Program Files or the Windows\\System32 folders, on the file system to run with elevated privileges.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14240",
+      "title": "User Account Control - Run all admins in Admin Approval Mode",
+      "description": "This check verifies that UAC has not been disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14241",
+      "title": "User Account Control - Switch to secure desktop",
+      "description": "This check verifies that the elevation prompt is only used in secure desktop mode.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14242",
+      "title": "User Account Control - Non UAC Compliant Application Virtualization",
+      "description": "This check verifies that non UAC compliant applications will run in virtualized file and registry entries allowing them to run.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14243",
+      "title": "Require username and password to elevate a running application.",
+      "description": "This check verifies that the system is configured to always require users to type in a user name and password to elevate a running application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14247",
+      "title": "Terminal Services / Remote Desktop Service - Prevent password saving in the Remote Desktop Client",
+      "description": "This check verifies that the system is configured to prevent Users from saving passwords in the Remote Desktop Client.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14248",
+      "title": "Users must be prevented from connecting using Terminal Services.",
+      "description": "Allowing a Terminal Services session to a workstation enables another avenue of access that could be exploited.  The system must be configured to prevent users from connecting to a computer using Terminal Services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14249",
+      "title": "Terminal Services / Remote Desktop Services - Local drives prevented from sharing with Terminal Servers.",
+      "description": "This check verifies that the system is configured to prevent users from sharing the local drives on their client computers to Terminal Servers that they access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14253",
+      "title": "Restrict unauthenticated RPC clients.",
+      "description": "This check verifies that the system is configured to restrict unauthenticated RPC clients from connecting to the RPC server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14254",
+      "title": "Client computers required to authenticate for RPC communication.",
+      "description": "This check verifies that the system is configured to force client computers to provide authentication before an RPC communication is established.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14255",
+      "title": "File and Folder Publish to Web option unavailable.",
+      "description": "This check verifies that the system is configured to make the options to publish to the web unavailable from File and Folder Tasks in Windows folders.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14256",
+      "title": "Web Publishing and online ordering wizards prevented from downloading list of providers.",
+      "description": "This check verifies that the system is configured to prevent Windows from downloading a list of providers for the Web publishing and online ordering wizards.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14257",
+      "title": "Windows Messenger prevented from collecting anonymous information.",
+      "description": "This check verifies that the system is configured to prevent Windows Messenger from collecting anonymous information about how the Windows Messenger software and service is used.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14258",
+      "title": "Search Companion prevented from automatically downloading content updates.",
+      "description": "This check verifies that the system is configured to prevent Search Companion from automatically downloading content updates during local and Internet searches.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14259",
+      "title": "Prevent printing over HTTP.",
+      "description": "This check verifies that the system is configured to prevent the client computer’s ability to print over HTTP, which allows the computer to print to printers on the intranet as well as the Internet.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14260",
+      "title": "Computer prevented from downloading print driver packages over HTTP.",
+      "description": "This check verifies that the system is configured to prevent the computer from downloading print driver packages over HTTP.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14261",
+      "title": "Windows is prevented from using Windows Update to search for drivers.",
+      "description": "This check verifies that the system is configured to prevent Windows from searching Windows Update for device drivers when no local drivers for a device are present.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14262",
+      "title": "IPv6 must be disabled until a deliberate transition strategy has been implemented.  Use of IPv6 transition technologies must be disabled.",
+      "description": "Any nodes’ interface with IPv6 enabled by default presents a potential risk of traffic being transmitted or received without proper risk mitigation strategy and is therefore, a serious security concern.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14268",
+      "title": "Preserve Zone information when saving attachments.",
+      "description": "This check verifies that file attachments are marked with their zone of origin allowing Windows to determine risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14269",
+      "title": "Hide mechanism for removing Zone information from file attachments.",
+      "description": "This check verifies that users cannot manually remove zone information from saved file attachments.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14270",
+      "title": "Notify antivirus when file attachments are opened.",
+      "description": "This check verifies that antivirus programs are notified when a user opens a file attachment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14271",
+      "title": "Application account passwords length and change requirement",
+      "description": "Setting application accounts to expire may cause applications to stop functioning. The site will have a policy that application account passwords manually generated and entered by a system administrator are changed at least annually or when a system administrator with knowledge of the password leaves the organization. Application/service account passwords will be at least 15 characters and follow complexity requirements for all passwords.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15505",
+      "title": "The HBSS McAfee Agent is not installed.",
+      "description": null,
+      "severity": "medium"
+    },
+    {
+      "id": "V-15666",
+      "title": "Windows Peer to Peer Networking ",
+      "description": "This check verifies Microsoft Peer-to-Peer Networking Service is turned off.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15667",
+      "title": "Prohibit Network Bridge in Windows",
+      "description": "This check verifies the Network Bridge can not be installed and configured.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15672",
+      "title": "Event Viewer Events.asp Links",
+      "description": "This check verifies that Events.asp hyperlinks in Event Viewer are available.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15673",
+      "title": "Internet Connection Wizard ISP Downloads ",
+      "description": "This check verifies that the Internet Connection Wizard cannot download a list of Internet Service Providers (ISPs) from Microsoft.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15674",
+      "title": "Disable Internet File Association Service",
+      "description": "This check verifies that unhandled file associations will not use the Microsoft Web service to find an application.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15675",
+      "title": "Windows Registration Wizard",
+      "description": "This check verifies that the Windows Registration Wizard is blocked from online registration.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15676",
+      "title": "Order Prints Online",
+      "description": "This check verifies that the “Order Prints Online” task is not available in Windows Explorer.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15677",
+      "title": "Windows Movie Maker Codec Downloads ",
+      "description": "This check verifies that the codecs will not be automatically downloaded for Windows Movie Maker.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15678",
+      "title": "Windows Movie Maker Web Links",
+      "description": "This check verifies that the links to web sites in Windows Movie Maker will not be available.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15679",
+      "title": "Windows Movie Maker Online Hosting ",
+      "description": "This check verifies that movies can not be sent to a video hosting provider on the web.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15680",
+      "title": "The classic logon screen must be required for user logons.",
+      "description": "The classic logon screen requires users to enter a logon name and password to access a system.  The simple logon screen or Welcome screen displays usernames for selection, providing part of the necessary logon information.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15682",
+      "title": "Attachments must be prevented from being downloaded from RSS feeds.",
+      "description": "Attachments from RSS feeds may not be secure.  This setting will prevent attachments from being downloaded from RSS feeds.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15683",
+      "title": "Windows Explorer – Shell Protocol Protected Mode ",
+      "description": "This check verifies that the shell protocol is run in protected mode.  (This allows applications to only open limited folders.)",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15684",
+      "title": "Windows Installer – IE Security Prompt",
+      "description": "This check verifies that users are notified if a web-based program attempts to install software. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15685",
+      "title": "Windows Installer – User Control ",
+      "description": "This check verifies that users are prevented from changing installation options.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15686",
+      "title": "Windows Installer – Vendor Signed Updates",
+      "description": "This check verifies that users are prevented applying vendor signed updates.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15687",
+      "title": "Media Player – First Use Dialog Boxes ",
+      "description": "This check verifies that users are not presented with Privacy and Installation options on first use of Windows Media Player.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15696",
+      "title": "Network – Mapper I/O Driver ",
+      "description": "This check verifies that the Mapper I/O network protocol driver is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15697",
+      "title": "Network – Responder Driver ",
+      "description": "This check verifies that the Responder network protocol driver is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15698",
+      "title": "Network – Windows Connect Now Wireless Configuration ",
+      "description": "This check verifies that the configuration of wireless devices using Windows Connect Now is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15699",
+      "title": "Network – Windows Connect Now Wizards ",
+      "description": "This check verifies that access to the Windows Connect Now wizards is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15700",
+      "title": "Device Install – PnP Interface Remote Access ",
+      "description": "This check verifies that remote access to the Plug and Play interface is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15701",
+      "title": "Device Install – Drivers System Restore Point",
+      "description": "This check verifies that a system restore point will be created when a new device driver is installed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15702",
+      "title": "Device Install – Generic Driver Error Report",
+      "description": "This check verifies that an Error Report will not be sent when a generic device driver is installed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15703",
+      "title": "Driver Install – Device Driver Search Prompt",
+      "description": "This check verifies that users will not be prompted to search Windows Updated for device drivers.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15704",
+      "title": "Handwriting Recognition Error Reporting (Tablet PCs)",
+      "description": "This check verifies that errors in handwriting recognition on Tablet PCs are not reported to Microsoft.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15705",
+      "title": "Power Mgmt – Password Wake on Battery",
+      "description": "This check verifies that the user is prompted for a password on resume from sleep (on battery).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15706",
+      "title": "Power Mgmt – Password Wake When Plugged In",
+      "description": "This check verifies that the user is prompted for a password on resume from sleep (Plugged In).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15707",
+      "title": "Remote Assistance – Session Logging",
+      "description": "This check verifies that Remote Assistance log files will be generated.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15708",
+      "title": "Digital Locker",
+      "description": "This check verifies that Digital Locker, a dedicated download manager can not run.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15709",
+      "title": "Game Explorer Information Downloads",
+      "description": "This check verifies that game information is not downloaded from Windows Metadata Services.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15710",
+      "title": "Online Assistance – Untrusted Content",
+      "description": "This check verifies that untrusted content is not rendered for online assistance.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15711",
+      "title": "Search – Encrypted Files Indexing",
+      "description": "This check verifies that encrypted files are not indexed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15712",
+      "title": "Indexing of mail items in Exchange folders when Outlook is running in uncached mode must be turned off.",
+      "description": "Indexing of encrypted items may expose sensitive data.  This setting prevents mail items in a Microsoft Exchange folder from being indexed when Outlook is running in uncached mode.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15713",
+      "title": "Defender – SpyNet Reporting",
+      "description": "This check verifies that SpyNet membership is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15714",
+      "title": "The system must be configured to save Error Reporting events and messages to the system event log.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks.  This setting ensures that Error Reporting events will be saved in the system event log.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15715",
+      "title": "The system must be configured to generate error reports.",
+      "description": "Enabling Windows Error Reporting generates information useful to system administrators and forensics analysts for diagnosing system problems and investigating intrusions.  If Windows Error Reporting is turned off, valuable system diagnostic and vulnerability information may be lost.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15717",
+      "title": "The system must be configured to allow a local or DOD-wide collector to request additional error reporting diagnostic data to be sent.",
+      "description": "Sending additional error reporting data provides valuable system diagnostic and vulnerability information that would otherwise not be generated nor collected.  This setting controls whether additional data in support of error reports can be sent to a local or DOD-wide reporting site.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15718",
+      "title": "Windows Explorer – Heap Termination",
+      "description": "This check verifies that heap termination on corruption is disabled.  This may prevent Windows Explorer from terminating immediately from certain legacy plug-in applications.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15719",
+      "title": "Users must be notified if the logon server was inaccessible and cached credentials were used.",
+      "description": "Notifying a user whether cached credentials were used may make them aware of connection issues.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15720",
+      "title": "Windows Mail – Communities",
+      "description": "This check verifies that Windows Mail will not check newsgroups for Communities support.",
+      "severity": "low"
+    },
+    {
+      "id": "V-15721",
+      "title": "Windows Mail – Disable Application",
+      "description": "This check verifies that Windows Mail will be disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15722",
+      "title": "Media DRM – Internet Access",
+      "description": "This check verifies that Windows Media Digital Rights Management will be prevented from accessing the internet.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15723",
+      "title": "Meeting Space",
+      "description": "This check verifies that Windows Meeting Space is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15724",
+      "title": "Unsigned gadgets must not be installed.",
+      "description": "Uncontrolled installation of applications can introduce various issues, including system instability, and allow access to sensitive information.  Installation of applications must be controlled by the enterprise.  This setting prevents unsigned gadgets from being installed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15725",
+      "title": "The More Gadgets link must be disabled.",
+      "description": "Uncontrolled installation of applications can introduce various issues, including system instability, and allow access to sensitive information.  Installation of applications must be controlled by the enterprise.  This setting prevents access to gadgets through the More Gadgets link.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15726",
+      "title": "User-installed gadgets must be turned off.",
+      "description": "Uncontrolled installation of applications can introduce various issues, including system instability, and allow access to sensitive information.  Installation of applications must be controlled by the enterprise.  This setting prevents user-installed gadgets from running.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15727",
+      "title": "User Network Sharing",
+      "description": "This check verifies that users are prevented from sharing files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15823",
+      "title": "Remove Software Certificate Installation Files",
+      "description": "This check verifies that software certificate installation files have been removed from a system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16020",
+      "title": "Windows Customer Experience Improvement Program is disabled.",
+      "description": "This check verifies that the Windows Customer Experience Improvement Program is disabled so information is not passed to the vendor.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16021",
+      "title": "Help Experience Improvement Program is disabled.",
+      "description": "This check verifies that the Windows Help Experience Improvement Program is disabled to prevent information from being passed to the vendor.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16047",
+      "title": "Built-in Admin Account Status",
+      "description": "This check verifies that Windows Vista is configured to disable the built-in administrator account which provides no accountability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16048",
+      "title": "Disable Help Ratings feed back.",
+      "description": "This check verifies that the users cannot provide ratings feedback to Microsoft for Help content ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17373",
+      "title": "Secure Removable Media – CD-ROM",
+      "description": "This check verifies that Windows is configured to not limit access to CD drives when a user is logged on locally per the FDCC.",
+      "severity": "low"
+    },
+    {
+      "id": "V-17374",
+      "title": "User Account Control – Executable Elevation",
+      "description": "This check verifies that elevation of application in UAC is not restricted to signed and validated applications per the FDCC.",
+      "severity": "low"
+    },
+    {
+      "id": "V-17900",
+      "title": "Disallow AutoPlay/Autorun from Autorun.inf",
+      "description": "This registry key will prevent the autorun.inf from executing commands.",
+      "severity": "high"
+    },
+    {
+      "id": "V-18010",
+      "title": "Unapproved Users have access to Debug programs.",
+      "description": "This is a Category 1 finding as it provides access to the kernel with complete access to sensitive and critical operating system components.",
+      "severity": "high"
+    },
+    {
+      "id": "V-2371",
+      "title": "ACLs for disabled services do not conform to minimum standards.",
+      "description": "When configuring either the startup mode or access control list for a service, you must configure the other as well. When a service is explicitly disabled, its ACL should also be secured by changing the default ACL from Everyone Full Control to grant Administrators and SYSTEM Full Control and Interactive Read access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2372",
+      "title": "Reversible password encryption is not disabled.",
+      "description": "Storing passwords using reversible encryption is essentially the same as storing clear-text versions of the passwords. For this reason, this policy should never be enabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2374",
+      "title": "The system is configured to autoplay removable media.",
+      "description": "Autoplay begins reading from a drive as soon as you insert media in the drive.  As a result, the setup file of programs and the music on audio media starts immediately.  By default, Autoplay is disabled on removable drives, such as the floppy disk drive (but not the CD-ROM drive), and on network drives.  If you enable this policy, you can also disable Autoplay on all drives.",
+      "severity": "high"
+    },
+    {
+      "id": "V-26070",
+      "title": "Standard user accounts must only have Read permissions to the Winlogon registry key.",
+      "description": "Permissions on the Winlogon registry key must only allow privileged accounts to change registry values. If standard users have this capability there is a potential for programs to run with elevated privileges when a privileged user logs on to the system.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-26359",
+      "title": "The Windows dialog box title for the legal banner must be configured.",
+      "description": "Failure to display the logon banner prior to a logon attempt will negate legal proceedings resulting from unauthorized access to system resources.",
+      "severity": "low"
+    },
+    {
+      "id": "V-26483",
+      "title": "The Deny log on as a batch job user right on workstations must be configured to prevent access from highly privileged domain accounts on domain systems and unauthenticated access on all systems.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high level capabilities.\n\nThe \"Deny log on as a batch job\" right defines accounts that are prevented from logging on to the system as a batch job, such as Task Scheduler.  \n\nIn an Active Directory Domain, denying logons to the Enterprise Admins and Domain Admins groups on lower trust systems helps mitigate the risk of privilege escalation from credential theft attacks which could lead to the compromise of an entire domain.\n\nThe Guests group must be assigned to prevent unauthenticated access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26484",
+      "title": "The Deny log on as a service user right on workstations must be configured to prevent access from highly privileged domain accounts on domain systems.  No other groups or accounts must be assigned this right.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high level capabilities.\n\nThe \"Deny log on as a service\" right defines accounts that are denied log on as a service.  \n\nIn an Active Directory Domain, denying logons to the Enterprise Admins and Domain Admins groups on lower trust systems helps mitigate the risk of privilege escalation from credential theft attacks which could lead to the compromise of an entire domain.\n\nIncorrect configurations could prevent services from starting and result in a DoS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26485",
+      "title": "The Deny log on locally user right on workstations must be configured to prevent access from highly privileged domain accounts on domain systems and unauthenticated access on all systems.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high level capabilities.\n\nThe \"Deny log on locally\" right defines accounts that are prevented from logging on interactively.  \n\nIn an Active Directory Domain, denying logons to the Enterprise Admins and Domain Admins groups on lower trust systems helps mitigate the risk of privilege escalation from credential theft attacks which could lead to the compromise of an entire domain.\n\nThe Guests group must be assigned this right to prevent unauthenticated access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26486",
+      "title": "The Deny log on through Terminal Services user right on workstations must prevent all access if TS is not used by the organization.  If TS is used, it must be configured to prevent access from highly privileged domain accounts and local administrator accounts on domain systems and unauthenticated access on all systems.",
+      "description": "Inappropriate granting of user rights can provide system, administrative, and other high level capabilities.\n\nThe \"Deny log on through Terminal Services\" right defines the accounts that are prevented from logging on using Terminal Services.\n\nIf Terminal Services is not used by the organization, the Everyone group must be assigned this right to prevent all access.\n\nIn an Active Directory Domain, denying logons to the Enterprise Admins and Domain Admins groups on lower trust systems helps mitigate the risk of privilege escalation from credential theft attacks which could lead to the compromise of an entire domain.\n\nLocal administrator accounts on domain-joined systems must also be assigned this right to decrease the risk of lateral movement resulting from credential theft attacks.\n\nThe Guests group must be assigned this right to prevent unauthenticated access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2908",
+      "title": "Unencrypted remote access is permitted to system services.",
+      "description": "This is a category 1 finding because when unencrypted access to system services is permitted, an intruder can intercept user identification and passwords that are being transmitted in clear text.  This could give an intruder unlimited access to the network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-32272",
+      "title": "The DoD Root CA certificates must be installed in the Trusted Root Store.",
+      "description": "To ensure secure DoD websites and DoD-signed code are properly validated, the system must trust the DoD Root Certificate Authorities (CAs). The DoD root certificates will ensure that the trust chain is established for server certificates issued from the DoD CAs.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32273",
+      "title": "The External Root CA certificates must be installed in the Trusted Root Store on unclassified systems.",
+      "description": "To ensure secure websites protected with External Certificate Authority (ECA) server certificates are properly validated, the system must trust the ECA Root CAs. The ECA root certificates will ensure the trust chain is established for server certificates issued from the External CAs. This requirement only applies to unclassified systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32274",
+      "title": "The DoD Interoperability Root CA cross-certificates must be installed in the Untrusted Certificates Store on unclassified systems.",
+      "description": "To ensure users do not experience denial of service when performing certificate-based authentication to DoD websites due to the system chaining to a root other than DoD Root CAs, the DoD Interoperability Root CA cross-certificates must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32282",
+      "title": "Standard user accounts must only have Read permissions to the Active Setup\\Installed Components registry key.",
+      "description": "Permissions on the Active Setup\\Installed Components registry key must only allow privileged accounts to add or change registry values.  If standard user accounts have this capability there is a potential for programs to run with elevated privileges when a privileged user logs on to the system. ",
+      "severity": "high"
+    },
+    {
+      "id": "V-3245",
+      "title": "File share ACLs have not been reconfigured to remove the Everyone group.",
+      "description": "By default, the Everyone group is given full control to new file shares. When a share is created, permissions should be reconfigured to give the minimum access to those accounts that require it.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3337",
+      "title": "Anonymous SID/Name translation is allowed.",
+      "description": "This is a Category 1 finding because this setting controls the ability of users or process that have authenticated as anonymous users to perform SID/Name translation.  This setting should be disabled, as only authorized users should be able to perform such translations.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3338",
+      "title": "Unauthorized named pipes are accessible with anonymous credentials.",
+      "description": "This is a Category 1 finding because the potential for gaining unauthorized system access.  Pipes are internal system communications processes.  They are identified internally by ID numbers that vary between systems.  To make access to these processes easier, these pipes are given names that do not vary between systems.  This setting controls which of these pipes anonymous users may access.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3339",
+      "title": "Unauthorized registry paths are remotely accessible.",
+      "description": "This is a Category 1 finding because it could give unauthorized individuals access to the Registry.  \nIt controls which registry paths are accessible from a remote computer.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3340",
+      "title": "Unauthorized shares can be accessed anonymously.",
+      "description": "This is a Category 1 finding because the potential for gaining unauthorized system access. Any shares listed can be accessed by any network user.  This could lead to the exposure or corruption of sensitive data.  Enabling this setting is very dangerous.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3343",
+      "title": "Solicited Remote Assistance is allowed.",
+      "description": "This setting controls whether or not solicited remote assistance is allowed from this computer.  Solicited assistance is help that is specifically requested by the user.  This is a Category 1 finding because it may allow unauthorized parties access to the resources on the computer.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3344",
+      "title": "The use of local accounts with blank passwords is not restricted to console logons only.",
+      "description": "This is a Category 1 finding because no accounts with blank passwords should exist on a system.  The password policy should prevent this from occurring.  However, if a local account with a blank password does exist, enabling this setting will limit the account to local console logon only.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3347",
+      "title": "Internet Information System (IIS) or its subcomponents are installed on a workstation.",
+      "description": "This is a Category 1 finding because not removing these services may allow unauthorized internet services to be hosted.  Web sites should only be hosted on servers that have been designed for that purpose and can be adequately secured.  ",
+      "severity": "high"
+    },
+    {
+      "id": "V-3348",
+      "title": "The user is allowed to launch Windows Messenger (MSN Messenger, .NET Messenger).",
+      "description": "This setting prevents the Windows Messenger client from being run.  \n\nInstant Messaging clients must be in compliance of with the Instant Messaging STIG.  Windows Messenger should not be active on Windows unless the instant messaging system is a Managed Enterprise Service for unclassified data for which the DAA has approved.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3349",
+      "title": "Windows Messenger (MSN Messenger, .NET messenger) is run at system startup.",
+      "description": "This setting prevents the automatic launch of Windows Messenger at user logon.  \n\nInstant Messaging clients must be in compliance of with the Instant Messaging STIG.  Windows Messenger should not be active on Windows unless the instant messaging system is a Managed Enterprise Service for unclassified data for which the DAA has approved.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3373",
+      "title": "The maximum age for machine account passwords is not set to requirements.",
+      "description": "This setting controls the maximum password age that a machine account may have.  This setting should be set to no more than 30 days, ensuring the machine changes its password monthly.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3374",
+      "title": "The system is not configured to require a strong session key.",
+      "description": "This setting controls the required strength of a session key. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3375",
+      "title": "Domain Controller authentication is not required to unlock the workstation.",
+      "description": "This setting controls the behavior of the system when you attempt to unlock the workstation.  If this setting is enabled, the system will pass the credentials to the domain controller (if in a domain) for authentication before allowing the system to be unlocked.  This will be set to disabled per the FDCC.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3376",
+      "title": "The system is configured to permit storage of credentials or .NET Passports.",
+      "description": "This setting controls the storage of authentication credentials or .NET passports on the local system.  Such credentials should never be stored on the local machine as that may lead to account compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3377",
+      "title": "The system is configured to give anonymous users Everyone rights.",
+      "description": "This setting helps define the permissions that anonymous users have.  If this setting is enabled then anonymous users have the same rights and permissions as the built-in Everyone group.  Anonymous users should not have these permissions or rights.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3378",
+      "title": "The system is not configured to use the Classic security model.",
+      "description": "Windows includes two network-sharing security models - Classic and Guest only. With the classic model, local accounts must be password protected; otherwise, anyone can use guest user accounts to access shared system resources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3379",
+      "title": "The system must be configured to prevent the storage of the LAN Manager hash of passwords.",
+      "description": "The LAN Manager hash uses a weak encryption algorithm.  Account passwords can be retrieved from this hash using available tools.  This setting controls whether or not a LAN Manager hash of the password is stored in the SAM the next time the password is changed.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3380",
+      "title": "The system is not configured to force users to log off when their allowed logon hours expire.",
+      "description": "This setting controls whether or not users are forced to log off when their allowed logon hours expire.  If logon hours are set for users, then this should be enforced.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3381",
+      "title": "The system is not configured to recommended LDAP client signing requirements.",
+      "description": "This setting controls the signing requirements for LDAP clients.  This setting should be set to Negotiate signing or Require signing depending on the environment and type of LDAP server in use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3382",
+      "title": "The system is not configured to meet the minimum requirement for session security for NTLM SSP based Clients.",
+      "description": "Microsoft has implemented a variety of security support providers for use with RPC sessions.  In a homogenous Windows environment, all of the options should be enabled and testing should be performed in a heterogeneous environment to determine the maximum-security level that provides reliable functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3383",
+      "title": "The system is not configured to use FIPS compliant Algorithms for Encryption, Hashing, and Signing.",
+      "description": "This setting ensures that the system uses algorithms that are FIPS compliant for encryption, hashing, and signing.  FIPS compliant algorithms meet specific standards established by the U.S. Government and should be the algorithms used for all OS encryption functions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3385",
+      "title": "The system must be configured to require case insensitivity for non-Windows subsystems.",
+      "description": "This setting controls the behavior of non-Windows subsystems when dealing with the case of arguments or commands.  Case sensitivity could lead to the access of files or commands that must be restricted.  To prevent this from happening, case insensitivity restrictions must be required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3426",
+      "title": "The system is configured to allow remote desktop sharing through NetMeeting.",
+      "description": "Remote desktop sharing enables several users to interact and control one desktop.  This could allow unauthorized users to control the system.  Remote desktop sharing should be disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3453",
+      "title": "Terminal Services is not configured to always prompt a client for passwords upon connection.",
+      "description": "This setting controls the ability of users to supply passwords automatically as part of their Remote Desktop Connection.  Disabling this setting would allow anyone to use the stored credentials in a connection item to connect to the terminal server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3454",
+      "title": "Terminal Services is not configured with the client connection encryption set to the required level.",
+      "description": "Remote connections must be encrypted to prevent interception of data or sensitive information.  Selecting “High Level” will ensure encryption of Terminal Services sessions in both directions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3455",
+      "title": "Terminal Services is configured to use a common temporary folder for all sessions.",
+      "description": "This setting, which is located under the Temporary Folders section of the Terminal Services configuration option, controls the use of per session temporary folders or of a communal temporary folder.  If this setting is enabled, only one temporary folder is used for all terminal services sessions.  If a communal temporary folder is used, it might be possible for users to access other users temporary folders.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3456",
+      "title": "Terminal Services is not configured to delete temporary folders.",
+      "description": "This setting, which is located under the Temporary Folders section of the Terminal Services configuration option, controls the deletion of the temporary folders when the session is terminated.  Temporary folders should always be deleted after a session is over to prevent hard disk clutter and potential leakage of information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3457",
+      "title": "Terminal Services is not configured to set a time limit for disconnected sessions.",
+      "description": "This setting controls how long a session will remain open if it is unexpectedly terminated.  Such sessions should be terminated as soon as possible.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3458",
+      "title": "Terminal Services idle session time limit does not meet the requirement.",
+      "description": "This setting controls how long a session may be idle before it is automatically disconnected from the server.  Users should disconnect if they plan on being away from their terminals for extended periods of time.  Idle sessions should be disconnected after 15 minutes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3469",
+      "title": "Group Policies must be refreshed in the background if the user is logged on.",
+      "description": "If this setting is enabled, then Group Policy settings are not refreshed while a user is currently logged on. This could lead to instances when a user does not have the latest changes to a policy applied and is therefore operating in an insecure context.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3470",
+      "title": "The system is configured to allow unsolicited remote assistance offers.",
+      "description": "This setting controls whether unsolicited offers of help to this computer are allowed.  The list of users allowed to offer remote assistance to this system is accessed by pressing the Helpers button.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3472",
+      "title": "The system is configured to use an unauthorized time server.",
+      "description": "The Windows Time Service controls time synchronization settings.  Time synchronization is essential for authentication and auditing purposes.  If the Windows Time Service is used, it should synchronize with a secure, authorized time source.   Domain joined systems are automatically configured to synchronize with domain controllers.  If an NTP server is configured it should synchronize with a secure, authorized time source.  ",
+      "severity": "low"
+    },
+    {
+      "id": "V-3479",
+      "title": "The system is not configured to use Safe DLL Search Mode.",
+      "description": "The default search behavior, when an application calls a function in a Dynamic Link Library (DLL), is to search the current directory followed by the directories contained in the systems path environment variable.  An unauthorized DLL inserted into an applications working directory could allow malicious code to be run on the system.  Creating the following registry key and setting the appropriate value forces the system to search the %Systemroot% for the DLL before searching the current directory or the rest of the path.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3480",
+      "title": "Media Player must be configured to prevent automatic checking for updates.",
+      "description": "Uncontrolled system updates can introduce issues to a system. The automatic check for updates performed by Windows Media Player must be disabled to ensure a constant platform and to prevent the introduction of unknown\\untested software on the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-34974",
+      "title": "The Windows Installer Always install with elevated privileges must be disabled.",
+      "description": "Standard user accounts must not be granted elevated privileges.  Enabling Windows Installer to elevate privileges when installing applications can allow malicious persons and applications to gain full control of a system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-36439",
+      "title": "Local administrator accounts must have their privileged token filtered to prevent elevated privileges from being used over the network on domain systems.",
+      "description": "A compromised local administrator account can provide means for an attacker to move laterally between domain systems. \n\nWith User Account Control enabled, filtering the privileged token for local administrator accounts will prevent the elevated privileges of these accounts from being used over the network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-36440",
+      "title": " Inbound exceptions to the firewall on domain workstations must only allow authorized management systems and remote management hosts.",
+      "description": "Allowing inbound access to domain workstations from other systems may allow lateral movement across systems if credentials are compromised.  Limiting inbound connections only from authorized management systems and remote management hosts will help limit this exposure.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-36451",
+      "title": "Policy must require that administrative user accounts not be used with applications that access the internet, such as web browsers, or with potential internet sources, such as email.",
+      "description": "Using applications that access the internet or have potential internet sources using administrative privileges exposes a system to compromise.  If a flaw in an application is exploited while running as a privileged user, the entire system could be compromised.  Web browsers and email are common attack vectors for introducing malicious code and must not be run with an administrative user account.\n\nSince administrative user accounts may generally change or work around technical restrictions for running a web browser or other applications, it is essential that policy requires administrative users not access the internet or use applications, such as email.\n\nThe policy should define specific exceptions for local service administration.  These exceptions may include HTTP(S)-based tools that are used for the administration of the local system, services, or attached devices.",
+      "severity": "high"
+    },
+    {
+      "id": "V-3666",
+      "title": "The system is not configured to meet the minimum requirement for session security for NTLM SSP based Servers.",
+      "description": "Microsoft has implemented a variety of security support providers for use with RPC sessions.  In a homogenous Windows environment, all of the options should be enabled and testing should be performed in a heterogeneous environment to determine the maximum-security level that provides reliable functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-36701",
+      "title": "The Enhanced Mitigation Experience Toolkit (EMET) system-wide Address Space Layout Randomization (ASLR) must be enabled and configured to Application Opt In.",
+      "description": "Attackers are constantly looking for vulnerabilities in systems and applications.  The Enhanced Mitigation Experience Toolkit can enable several mechanisms, such as Data Execution Prevention (DEP), Address Space Layout Randomization (ASLR), and Structured Exception Handler Overwrite Protection (SEHOP) on the system and applications adding additional levels of protection.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-36702",
+      "title": "The Enhanced Mitigation Experience Toolkit (EMET) Default Protections for Internet Explorer must be enabled.",
+      "description": "Attackers are constantly looking for vulnerabilities in systems and applications.  The Enhanced Mitigation Experience Toolkit can enable several mechanisms, such as Data Execution Prevention (DEP), Address Space Layout Randomization (ASLR), and Structured Exception Handler Overwrite Protection (SEHOP) on the system and applications adding additional levels of protection.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-36703",
+      "title": "The Enhanced Mitigation Experience Toolkit (EMET) Default Protections for Recommended Software must be enabled.",
+      "description": "Attackers are constantly looking for vulnerabilities in systems and applications.  The Enhanced Mitigation Experience Toolkit can enable several mechanisms, such as Data Execution Prevention (DEP), Address Space Layout Randomization (ASLR), and Structured Exception Handler Overwrite Protection (SEHOP) on the system and applications adding additional levels of protection.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-36704",
+      "title": "The Enhanced Mitigation Experience Toolkit (EMET) Default Protections for Popular Software must be enabled.",
+      "description": "Attackers are constantly looking for vulnerabilities in systems and applications.  The Enhanced Mitigation Experience Toolkit can enable several mechanisms, such as Data Execution Prevention (DEP), Address Space Layout Randomization (ASLR), and Structured Exception Handler Overwrite Protection (SEHOP) on the system and applications adding additional levels of protection.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-36705",
+      "title": "The Enhanced Mitigation Experience Toolkit (EMET) system-wide Data Execution Prevention (DEP) must be enabled and configured to at least Application Opt Out.",
+      "description": "Attackers are constantly looking for vulnerabilities in systems and applications.  The Enhanced Mitigation Experience Toolkit can enable several mechanisms, such as Data Execution Prevention (DEP), Address Space Layout Randomization (ASLR), and Structured Exception Handler Overwrite Protection (SEHOP) on the system and applications adding additional levels of protection.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-36706",
+      "title": "The Enhanced Mitigation Experience Toolkit (EMET) system-wide Structured Exception Handler Overwrite Protection (SEHOP) must be configured to Application Opt Out.",
+      "description": "Attackers are constantly looking for vulnerabilities in systems and applications.  The Enhanced Mitigation Experience Toolkit can enable several mechanisms, such as Data Execution Prevention (DEP), Address Space Layout Randomization (ASLR), and Structured Exception Handler Overwrite Protection (SEHOP) on the system and applications adding additional levels of protection.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3828",
+      "title": "Security-related Software Patches are not applied.",
+      "description": "Major software vendors release security patches and hot fixes to their products when security vulnerabilities are discovered.  It is essential that these updates be applied in a timely manner to prevent unauthorized persons from exploiting identified vulnerabilities.\n\nThe Severity code may be elevated to a Category I if patches deemed Critical have not been applied.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39137",
+      "title": "The Enhanced Mitigation Experience Toolkit (EMET) v5.5 or later must be installed on the system.",
+      "description": "Attackers are constantly looking for vulnerabilities in systems and applications.  The Enhanced Mitigation Experience Toolkit can enable several mechanisms, such as Data Execution Prevention (DEP), Address Space Layout Randomization (ASLR), and Structured Exception Handler Overwrite Protection (SEHOP) on the system and applications adding additional levels of protection.",
+      "severity": "high"
+    },
+    {
+      "id": "V-40237",
+      "title": "The US DoD CCEB Interoperability Root CA cross-certificate must be installed in the Untrusted Certificates Store on unclassified systems.",
+      "description": "To ensure users do not experience denial of service when performing certificate-based authentication to DoD websites due to the system chaining to a root other than DoD Root CAs, the US DoD CCEB Interoperability Root CA cross-certificate must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-4107",
+      "title": "Windows operating systems that are no longer supported by the vendor for security updates must not be installed on a system.",
+      "description": "Windows operating systems that are no longer supported by Microsoft for security updates are not evaluated or updated for vulnerabilities leaving them open to potential attack. Organizations must upgrade to a supported operating system to ensure continued support.",
+      "severity": "high"
+    },
+    {
+      "id": "V-4108",
+      "title": "The system must generate an audit event when the audit log reaches a percentage of full threshold.",
+      "description": "Audit records may be lost if the security log becomes full.  When the audit log reaches a given percent full, an audit event is written to the security log.  An event is recorded as a success audit under the category of System.  This option may be especially useful if the audit logs are set to be cleared manually.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4110",
+      "title": "The system is configured to allow IP source routing.",
+      "description": "Protects against IP source routing spoofing.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4111",
+      "title": "The system is configured to redirect ICMP.",
+      "description": "When disabled, forces ICMP to be routed via shortest path first.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4112",
+      "title": "The system is configured to detect and configure default gateway addresses.",
+      "description": "Enables or disables the Internet Router Discovery Protocol (IRDP) used to detect and configure Default Gateway addresses on the computer.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4113",
+      "title": "The system is configured for a greater keep-alive time than recommended.",
+      "description": "Controls how often TCP sends a keep-alive packet in attempting to verify that an idle connection is still intact.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4116",
+      "title": "The system must be configured to ignore NetBIOS name release requests except from WINS servers.",
+      "description": "Configuring the system to ignore name release requests, except from WINS servers, prevents a denial of service (DoS) attack.  The DoS consists of sending a NetBIOS name release request to the server for each entry in the server's cache, causing a response delay in the normal operation of the servers WINS resolution capability.",
+      "severity": "low"
+    },
+    {
+      "id": "V-42420",
+      "title": "A host-based firewall must be installed and enabled on the system.",
+      "description": "A firewall provides a line of defense against attack, allowing or blocking inbound and outbound connections based on a set of rules.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-4438",
+      "title": "The system must limit how many times unacknowledged TCP data is retransmitted.",
+      "description": "In a SYN flood attack, the attacker sends a continuous stream of SYN packets to a server, and the server leaves the half-open connections open until it is overwhelmed and no longer is able to respond to legitimate requests.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4442",
+      "title": "This check verifies that Windows is configured to have password protection take effect within a limited time frame when the screen saver becomes active.",
+      "description": "Allowing more than several seconds makes the computer vulnerable to a potential attack from someone walking up to the console to attempt to log onto the system before the lock takes effect.",
+      "severity": "low"
+    },
+    {
+      "id": "V-4443",
+      "title": "Unauthorized registry paths and sub-paths are remotely accessible.",
+      "description": "The registry is a database for computer configuration information, much of which is sensitive. An attacker could use this to facilitate unauthorized activities. To reduce the risk of this happening, it is also lowered by the fact that the default ACLs assigned throughout the registry are fairly restrictive and they help to protect it from access by unauthorized users. \n",
+      "severity": "high"
+    },
+    {
+      "id": "V-4448",
+      "title": "Group Policy objects are not reprocessed if they have not changed.",
+      "description": "Enabling this setting and then selecting the \"Process even if the Group Policy objects have not changed\" option ensures that the policies will be reprocessed even if none have been changed. This way, any unauthorized changes are forced to match the domain-based group policy settings again. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-45589",
+      "title": "A group must be defined on domain systems to include all local administrator accounts.",
+      "description": "Several user rights on domain systems require that local administrator accounts be assigned to them.  This is separate from the built-in Administrators group, which also contains domain administrative accounts/groups.  Defining a consistent group name allows compliance to be more easily determined.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56421",
+      "title": "The touch keyboard or input panel must not highlight keys as passwords are entered.",
+      "description": "The touch keyboard or input panel may highlight keys as passwords are entered, providing visibility to nearby persons, and compromising them.",
+      "severity": "low"
+    },
+    {
+      "id": "V-56511",
+      "title": "The Windows Error Reporting Service must be running and configured to start automatically.",
+      "description": "Windows Error Reporting information can be used to help diagnose day-to-day software issues, as well as help discover malicious code and possibly zero-day attacks on systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57455",
+      "title": "The system must be configured to prevent the display of error messages to the user.",
+      "description": "Displaying error messages to users provides them the option of sending the reports.  Error reports should be sent silently, unknown to the user.  This setting controls whether users are shown an error dialog box that lets them report an error.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57457",
+      "title": "The system must be configured to store error reports locally, on the system or in the enclave, and not send them to Microsoft.",
+      "description": "Forwarding error reports to vendors could expose sensitive information.  This setting controls the configuration of a local or DOD-wide error reporting site.   In order to not send the data to any system at this time, yet create the reports locally on the system, this value needs to be a single blank character.  To forward error reports to a collection server, the site's error reporting server name or IP address must be defined.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57459",
+      "title": "The system must be configured to use SSL to forward error reports.",
+      "description": "The use of SSL enables the secure forwarding of error reporting data from local systems to a reporting site.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57461",
+      "title": "The system must be configured to send error reports on TCP port 1232.",
+      "description": "An error reporting site's TCP port must be defined in the local system in order to forward data from local systems via TCP.  Port 1232 is the recommended port setting.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57463",
+      "title": "The system must be configured to archive error reports.",
+      "description": "The error reporting archive is stored locally on the system, and is created after an error report has been sent to the local collector or DOD-wide collector (if defined).  This creates a backup of the error reporting.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57465",
+      "title": "The system must be configured to store all data in the error report archive.",
+      "description": "The error reporting archive is stored locally on the system and is created after an error report has been sent to the local collector or DOD-wide collector (if defined).  Storing all data, including memory contents, adds data that is very helpful in analyzing the errors.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57467",
+      "title": "The maximum number of error reports to archive on a system must be configured to 100 or greater.",
+      "description": "The retention of archived reports provides a history.  Older reports are automatically deleted as new reports are generated once the maximum limit has been met.  The archive is stored locally on the system and is created after the error report has been sent to the local collector or DOD-wide collector (if defined).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57469",
+      "title": "The system must be configured to queue error reports until a local or DOD-wide collector is available.",
+      "description": "Queueing error reports provides the ability for a system to collect reports locally or until a collection server can be contacted.  Valuable system diagnostic and vulnerability information may be lost if the report queue is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57471",
+      "title": "The system must be configured to add all error reports to the queue.",
+      "description": "Error reports are queued for sending to an error reporting site when the queueing behavior is set to Always Queue.  This will maintain the reports in the queue until a connection can be made to the collection server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57473",
+      "title": "The maximum number of error reports to queue on a system must be configured to 50 or greater.",
+      "description": "The error reporting queue is stored locally on the system and contains the error reports until they have been manually removed or automatically sent to the local collector or DOD-wide collector (if defined).  Once a report has been sent to a collector, it is moved to the report archive.  Old reports are deleted as new ones arrive once the maximum limit has been met.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57475",
+      "title": "The system must be configured to attempt to forward queued error reports once a day.",
+      "description": "Error reports stored in the queue should be forwarded to a local or DOD-wide collection site when the system can connect to the site.  This setting controls the frequency a system will use to try forwarding queued reports to the local or DOD-wide collector.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57477",
+      "title": "The system must be configured to automatically consent to send all data requested by a local or DOD-wide error collection site.",
+      "description": "Configuring error reporting to send all requested data ensures all relevant data associated with the error report is captured for later analysis.  This setting determines the default consent behavior of Windows Error Reporting.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-57479",
+      "title": "The system must be configured to permit the default consent levels of Windows Error Reporting to override any other consent policy setting.",
+      "description": "This setting determines the behavior of the \"Configure Default Consent\" setting in relation to custom consent settings.  Enabling this allows the default consent levels of Windows Error Reporting to always override any other consent policy setting.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6825",
+      "title": "A Windows system has an incorrect default DCOM authorization level.",
+      "description": "The DCOM default authentication level has been detected to be below the required setting. If the authentication level is None, then any user can access any object on the system without authentication.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6826",
+      "title": "A Windows system has a writable DCOM configuration.",
+      "description": "A registry key for a valid DCOM object has access permissions that could allow non-administrator users to change the security settings if inadvertently set to a low level of security.  An attacker could possibly execute code under the context of the console or some other user. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6830",
+      "title": "DCOM calls are not executed under the security context of the calling user.",
+      "description": "DCOM calls are executed under the security context of the calling user by default.  If the RunAs key has been altered, the DCOM calls can be executed under the user context of the currently logged in user, or as a third user.  If present, the RunAs value tells the COM Service Control Manager (SCM) the name of the account under which the server is to be activated. In addition to the account name, the COM SCM must also have the password of the account. The result of a successful logon is a security context (token) for the named account that is used as the primary token for the new COM server process. Administrators should not use this method in the evaluated configuration if accountability is required, since accountability cannot be enforced. \nRunAs values will be removed.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6831",
+      "title": "Outgoing secure channel traffic is not encrypted or signed.",
+      "description": "Requests sent on the secure channel are authenticated, and sensitive information (such as passwords) is encrypted, but not all information is encrypted.  If this policy is enabled, outgoing secure channel traffic will be encrypted and signed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6832",
+      "title": "The Windows Server SMB client is not enabled to always perform SMB packet signing.",
+      "description": "If this policy is enabled, it causes the Windows Server Message Block (SMB) client to perform SMB packet signing when communicating with an SMB server that is enabled or required to perform SMB packet signing.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6833",
+      "title": "The Windows Server SMB server is not enabled to always perform SMB packet signing.",
+      "description": "If this policy is enabled, it causes the Windows Server Message Block (SMB) server to always perform SMB packet signing.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6834",
+      "title": "Named Pipes and Shares can be accessed anonymously.",
+      "description": "This is a Category 1 finding because of the potential for gaining unauthorized system access. \n\nPipes are internal system communications processes.  They are identified internally by ID numbers that vary between systems.  To make access to these processes easier, these pipes are given names that do not vary between systems.  \n\nWhen this setting is disabled, Network shares can be accessed by any network user.  This could lead to the exposure or corruption of sensitive data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6836",
+      "title": "For systems utilizing a logon ID as the individual identifier, passwords must be a minimum of 14 characters in length.",
+      "description": "Information systems not protected with strong password schemes including passwords of minimum length provide the opportunity for anyone to crack the password thus gaining access to the system and causing the device, information, or the local network to be compromised or a denial of service. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6840",
+      "title": "To the extent system capabilities permit, system mechanisms are not implemented to enforce automatic expiration of passwords and to prevent reuse.",
+      "description": "Passwords that do not expire or are reused increase the exposure of a password with greater probability of being discovered or cracked. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6850",
+      "title": "Auditing must be configured as required.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7002",
+      "title": "DOD information system access does not require the use of a password. ",
+      "description": "The lack of password protection enables anyone to gain access to the information system, which opens a backdoor opportunity for intruders to compromise the system as well as other resources within the same administrative domain.",
+      "severity": "high"
+    }
+  ]
+}

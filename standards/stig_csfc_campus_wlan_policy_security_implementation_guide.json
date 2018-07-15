@@ -1,0 +1,95 @@
+{
+  "name": "stig_csfc_campus_wlan_policy_security_implementation_guide",
+  "date": "2014-03-19",
+  "description": "This STIG contains the policy, training, and operating procedure security controls for the use of classified campus WLAN systems based on the Commercial Solutions for Classified (CSfC) Campus IEEE 802.11 Wireless Local Area Network (WLAN)Capability Package. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailbox@mail.mil.",
+  "title": "CSfC Campus WLAN Policy Security Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-12072",
+      "title": "Wireless devices must not be allowed in a permanent, temporary, or mobile Sensitive Compartmented Information Facilities (SCIFs), unless approved by the SCIF Cognizant Security Authority (CSA) in accordance with Intelligence Community Directive 503 and Director Central Intelligence Directive (DCID) 6/9, the DAA, and the site Special Security Officer (SSO). \n",
+      "description": "Emanations from computing devices in the secured area may be transmitted or picked up inadvertently by wireless devices.",
+      "severity": "high"
+    },
+    {
+      "id": "V-13982",
+      "title": "All users of mobile devices or wireless devices must sign a user agreement before the mobile or wireless device is issued to the user and the user agreement used at the site must include required content. ",
+      "description": "Lack of user training and understanding of responsibilities to safeguard wireless technology is a significant vulnerability to the enclave. Once policies are established, users must be trained to these requirements or the risk to the network remains.\n\nUser agreements are particularly important for mobile and remote users since there is a high risk of loss, theft, or compromise. Thus, this signed agreement is a good best practice to help ensure the site is confirming the user is aware of the risks and proper procedures. \n",
+      "severity": "low"
+    },
+    {
+      "id": "V-24955",
+      "title": "A data spill (Classified Message Incident (CMI)) procedure or policy must be published for site CMDs.",
+      "description": "When a data spill occurs on a CMD, classified or sensitive data must be protected to prevent disclosure. After a data spill, the CMD must either be wiped using approved procedures, or destroyed if no procedures are available, so classified or sensitive data is not exposed. If a data spill procedure is not published, the site may not use approved procedures to remediate after a data spill occurs and classified data could be exposed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24957",
+      "title": "If a data spill (Classified Message Incident (CMI)) occurs on a wireless email device or system at a site, the site must follow required data spill procedures. ",
+      "description": "If required procedures are not followed after a data spill, classified data could be exposed to unauthorized personnel.",
+      "severity": "high"
+    },
+    {
+      "id": "V-24958",
+      "title": "Required procedures must be followed for the disposal of CMDs. ",
+      "description": "If appropriate procedures are not followed prior to disposal of a CMD, an adversary may be able to obtain sensitive DoD information or learn aspects of the configuration of the device that might facilitate a subsequent attack.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24962",
+      "title": "The site Incident Response Plan or other procedure must include procedures to follow when a mobile operating system (OS) based mobile device is reported lost or stolen. ",
+      "description": "Sensitive DoD data could be stored in memory on a DoD operated mobile operating system (OS) based CMD and the data could be compromised if required actions are not followed when a CMD is lost or stolen. Without procedures for lost or stolen mobile operating system (OS) based CMD devices, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24969",
+      "title": "Required actions must be followed at the site when a CMD has been lost or stolen. ",
+      "description": "If procedures for lost or stolen CMDs are not followed, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA.",
+      "severity": "low"
+    },
+    {
+      "id": "V-36590",
+      "title": "The site must successfully complete a security assessment of the CSfC based campus WLAN system to confirm compliance with the CSfC Campus WLAN Capability Package prior to IOC and yearly thereafter.",
+      "description": "Classified data could be exposed if the campus WLAN system is operated out of compliance with the Commercial Solutions for Classified (CSfC) Campus IEEE 802.11 Wireless Local Area Network (WLAN) Capability Package and any NSA approved deviations to the capability package. The NSA Commercial Solutions for Classified (CSfC) registration process requires CSfC-listed equipment be used in the campus WLAN system. The site should perform a security assessment prior to operating the system to confirm it is compliant and periodically, thereafter, to verify the system is still in compliance with the most recent version of the capability package.",
+      "severity": "high"
+    },
+    {
+      "id": "V-36592",
+      "title": "User training must include required topics.",
+      "description": "Classified data could be exposed if users of client devices, that are components a campus WLAN system that is based on the CSfC Campus IEEE 802.11 Wireless Local Area Network (WLAN) Capability Package, are not aware of required operating procedures for safeguarding the client device and the data stored on the device.",
+      "severity": "low"
+    },
+    {
+      "id": "V-36593",
+      "title": "If Commercial Mobile Devices (CMD) (smartphones or tablets) are used as clients in the campus WLAN system, DoD CIO Memorandum, Use of Commercial Mobile Device (CMD) in the Department of Defense (DoD) must be followed.",
+      "description": "DoD CIO Memorandum, “Use of Commercial Mobile Device (CMD) in the Department of Defense (DoD)”, 6 Apr 2011, requires specific security controls be implemented in the DoD because these technologies “adds a new element of risk to DoD information”. Classified DoD networks and/or data could be exposed if required controls are not implemented for CMDs that operate as components of a campus WLAN system that is based on the CSfC Campus IEEE 802.11 Wireless Local Area Network (WLAN) Capability Package.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-36594",
+      "title": "A Secure WLAN (SWLAN) connected to the SIPRNet must have a SIPRNet connection approval package on file with the Classified Connection Approval Office (CCAO). ",
+      "description": "The CCAO approval process provides assurance that the SWLAN use is appropriate and does not introduce unmitigated risks into the SIPRNET.",
+      "severity": "high"
+    },
+    {
+      "id": "V-8283",
+      "title": "All wireless/mobile systems (including associated peripheral devices, operating system, applications, network/PC connection methods, and services) must be approved by the approval authority prior to installation and use for processing DoD information. \n\n",
+      "description": "Unauthorized wireless systems expose DoD networks to attack. The DAA and appropriate commanders must be aware of all wireless systems used at the site. DAAs should ensure a risk assessment for each system including associated services and peripherals, is conducted before approving. Accept risks only when needed to meet mission requirements.",
+      "severity": "high"
+    },
+    {
+      "id": "V-8284",
+      "title": "The site IAO must maintain a list of all DAA-approved wireless and non-wireless PED devices that store, process, or transmit DoD information. ",
+      "description": "The site must maintain a list of all DAA-approved wireless and non-wireless CMDs. Close tracking of authorized wireless devices will facilitate the search for rogue devices. Sites must keep good inventory control over wireless and handheld devices used to store, process, and transmit DoD data since these devices can be easily lost or stolen leading to possible exposure of DoD data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-8297",
+      "title": "Wireless devices connecting directly or indirectly to the network must be included in the site security plan.",
+      "description": "The DAA and site commander must be aware of all approved wireless devices used at the site or DoD data could be exposed to unauthorized people.  Documentation of the enclave configuration must include all attached systems.  If the current configuration cannot be determined, then it is difficult to apply security policies effectively.  Security is particularly important for wireless technologies attached to the enclave network because these systems increase the potential for eavesdropping and other unauthorized access to network resources.",
+      "severity": "low"
+    }
+  ]
+}

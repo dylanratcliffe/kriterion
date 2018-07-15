@@ -1,0 +1,35 @@
+{
+  "name": "stig_bluetoothzigbee",
+  "date": "2014-03-18",
+  "description": "This STIG contains the technical security controls for the operation of Bluetooth/Zigbee devices in the DoD environment.",
+  "title": "Bluetooth/Zigbee Security Technical Implementation Guide (STIG)",
+  "version": "6",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-18619",
+      "title": "Bluetooth peripherals must conform to the DoD Bluetooth Peripheral Device Security Requirements Specification.\n",
+      "description": "Sensitive unclassified voice and data communications could be intercepted and exposed if required security controls are not used.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30360",
+      "title": "The site must have a written policy or training materials stating Bluetooth must be disabled on all applicable devices unless they employ FIPS 140-2 validated cryptographic modules for data-in-transit.",
+      "description": "Policy and training provide assurance that security requirements will be implemented in practice. Failure to use FIPS 140-2 validated cryptography makes data more vulnerable to security breaches.",
+      "severity": "low"
+    },
+    {
+      "id": "V-3499",
+      "title": "If Bluetooth (or Zigbee) devices transmit unclassified DoD data communications, then they must use FIPS 140-2 validated cryptographic modules for data in transit, including digital voice communications.",
+      "description": "FIPS validation provides assurance that the cryptographic modules are implemented correctly and resistant to compromise.  Failure to use FIPS 140-2 validated cryptographic modules makes it more likely that sensitive DoD data will be exposed to unauthorized people.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-4634",
+      "title": "Bluetooth (and Zigbee) devices must not be used to send, receive, store, or process classified information.",
+      "description": "Classified data could be compromised since Bluetooth (and Zigbee) devices do not meet DoD encryption requirements for classified data.",
+      "severity": "high"
+    }
+  ]
+}

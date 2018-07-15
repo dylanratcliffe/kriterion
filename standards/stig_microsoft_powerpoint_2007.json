@@ -1,0 +1,131 @@
+{
+  "name": "stig_microsoft_powerpoint_2007",
+  "date": "2016-03-31",
+  "description": "None",
+  "title": "Microsoft PowerPoint 2007",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-17173",
+      "title": "Disable user name and password syntax from being used in URLs",
+      "description": "The Uniform Resource Locator (URL) standard allows user authentication to be included in URL strings in the form http://username:password@example.com. A malicious user might use this URL syntax to create a hyperlink that appears to open a legitimate website but actually opens a deceptive (spoofed) website. For example, the URL http://www.wingtiptoys.com@example.com appears to open http://www.wingtiptoys.com but actually opens http://example.com. To protect users from such attacks, Internet Explorer usually blocks any URLs using this syntax.\n\nThis functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a webpage). If user names and passwords in URLs are allowed, users could be diverted to dangerous webpages, which could pose a security risk.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17174",
+      "title": "Enable IE Bind to Object functionality for instances of IE launched from PowerPoint. ",
+      "description": "Internet Explorer performs a number of safety checks before initializing an ActiveX control. It will not initialize a control if the kill bit for the control is set in the registry, or if the security settings for the zone in which the control is located do not allow it to be initialized.\nThis functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a Web page). A security risk could occur if potentially dangerous controls are allowed to load.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17175",
+      "title": "Evaluate Saved from URL mark when launched from PowerPoint",
+      "description": "Typically, when Internet Explorer loads a Web page from a UNC share that contains a Mark of the Web (MOTW) comment that indicates the page was saved from a site on the Internet, Internet Explorer runs the page in the Internet security zone instead of the less restrictive Local Intranet security zone. This functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a Web page). If Internet Explorer does not evaluate the page for a MOTW, potentially dangerous code could be allowed to run.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17183",
+      "title": "Block navigation to URL embedded in Office products to protect against attack by malformed URL.",
+      "description": "To protect users from attacks, Internet Explorer usually does not attempt to load malformed URLs. This functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a Web page). If Internet Explorer attempts to load a malformed URL, a security risk could occur in some cases.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17184",
+      "title": "Block pop-ups for links that invoke instances of IE from within PowerPoint.",
+      "description": "The Pop-up Blocker feature in Internet Explorer can be used to block most unwanted pop-up and pop-under windows from appearing. This functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a Web page). If the Pop-up Blocker is disabled, disruptive and potentially dangerous pop-up windows could load and present a security risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17187",
+      "title": "Disable Trust Bar Notification for unsigned application add-ins -PowerPoint",
+      "description": "By default, if an application is configured to require that all add-ins be signed by a trusted publisher, any unsigned add-ins the application loads will be disabled and the application will display the Trust Bar at the top of the active window. The Trust Bar contains a message that informs users about the unsigned add-in.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17322",
+      "title": "Block opening of pre-release versions of file formats new to PowerPoint 2007 through the Compatibility Pack for the 2007 Office system and PowerPoint 2007 Converter - System",
+      "description": "The Microsoft Office Compatibility Pack for Word, Excel, and PowerPoint 2007 File Formats enables users of Microsoft Word 2000, Word 2002, and Office Word 2003 to open files saved in the Office Open XML format used by Word 2007. Word Open XML files usually have the following extensions: \n•\t.docx\n•\t.docm\n•\t.dotx\n•\t.dotm\n•\t.xml\n\nBy default, the Compatibility Pack does not open files that were saved in pre-release versions of the new Office Open XML format, which underwent some minor changes prior to the final release of Word 2007. If this configuration is changed, through a registry modification or by some other mechanism, users with the Compatibility Pack installed can open files saved by some pre-release versions of Word, but not by others, which can lead to inconsistent file opening functionality.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17471",
+      "title": "Disable all Trusted Locations.",
+      "description": "Trusted locations specified in the Trust Center are used to define file locations that are assumed to be safe. Content, code, and add-ins are allowed to load from trusted locations with a minimal amount of security, without prompting the users for permission. If a dangerous file is opened from a trusted location, it will not be subject to standard security measures and could harm users' computers or data.\nBy default, files located in trusted locations (those specified in the Trust Center) are assumed to be safe.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17473",
+      "title": "Determine whether to force encrypted macros to be scanned in open XML presentations. ",
+      "description": "When an Office Open XML document (Word, Excel, Powerpoint) is rights-managed or password-protected, any macros that are embedded in the document are encrypted along with the rest of the contents.  \nBy default, these encrypted macros will be disabled unless they are scanned by antivirus software immediately before being loaded. If this default configuration is modified, Office 2007 products will not require encrypted macros to be scanned before loading. They will be handled as specified by the Office 2007 System macro security settings, which can cause macro viruses to load undetected and lead to data loss or reduced application functionality.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17503",
+      "title": "Disable feature that would block older version of office products from saving files to open XML formats.  ",
+      "description": "The Office Open XML format file types introduced in the 2007 Microsoft Office release offer a number of benefits compared with the previous binary file types supported in Office 2003, including the potential to reduce the effects of malicious code. Files can be identified as unable to run code, and will therefore ignore any embedded code. Also, any files that do have embedded code are easier to identify.\nFor users who run older versions of these applications, Microsoft offers the Microsoft Office Compatibility Pack for Word, Excel, and PowerPoint 2007 File Formats, which enables them to open and save Open XML files. The Compatibility Pack can be used with the following Microsoft Office programs:\n•\tWord 2000 with Service Pack 3, Excel 2000 with Service Pack 3, and PowerPoint 2000 with Service Pack 3 \n•\tWord 2002 with Service Pack 3, Excel 2002 with Service Pack 3, and PowerPoint 2002 with Service Pack 3\n•\tWord 2003 with at least Service Pack 1, Excel 2003 with at least Service Pack 1, and PowerPoint 2003 with at least Service Pack 1 \n•\tMicrosoft Office Word Viewer 2003\n•\tMicrosoft Office Excel Viewer 2003\n•\tMicrosoft Office PowerPoint Viewer 2003\nIf users cannot save files in Office Open XML format for some reason, they will be unable to take advantage of the security benefits of the new file types.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17518",
+      "title": "Block opening of \"open XML\" format files created by pre-release versions of PowerPoint",
+      "description": "By default, users can open files that were saved in pre-release versions of the new Office Open XML format, which underwent some minor changes prior to the final release of Office 2007. Open XML files usually have the following extensions:\n•\t.xlsb\n•\t.xlsx\n•\t.xlsm\n•\t.xltx\n•\t.xltm\n•\t.xlam\nIf a vulnerability is discovered that affects these kinds of files, you can use this setting to protect your organization against attacks by temporarily preventing users from opening files in these formats until a security patch is available.\nBy default, these file types are not blocked in Office 2007 products.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17519",
+      "title": "Block Opening of \"Open XML\" file types to prevent them automatically executing code. ",
+      "description": "The Office Open XML format file types introduced in the 2007 Microsoft Office release offer a number of benefits compared to the previous binary file types supported in Office 2003, including the potential to reduce the effects of malicious code. Files can be identified as unable to run code, and will therefore ignore any embedded code. Also, any files that do have embedded code are easier to identify. \nIf a vulnerability is discovered that affects Office Open XML files, you can use this setting to protect your organization against attacks by temporarily preventing users from opening files in these formats until a security patch is available.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17520",
+      "title": "Disable settings for content and add-ins that  \"Allow trusted locations not on computer\" that might bypass more stringent security checks. ",
+      "description": "By default, files located in trusted locations and specified in the Trust Center are assumed to be safe. Content, code, and add-ins are allowed to load from trusted locations with minimal security and without prompting the user for permission.\nBy default, users can specify trusted locations on network shares or in other remote locations that are not under their direct control by selecting the Allow Trusted Locations on my network (not recommended) check box in the Trusted Locations section of the Trust Center. If a dangerous file is opened from a trusted location, it will not be subject to typical security measures and could affect users' computers or data.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17521",
+      "title": "Save files default format as backward compatible,  not as XML.",
+      "description": "By default, Office 2007 producst save new workbooks in the Office Open XML format. For users who run prior versions of Office products, Microsoft offers the Microsoft Office Compatibility Pack, which enables these versions to open and save open XML format. If some users in your organization cannot install the Compatibility Pack, or are running other versions of Office products these users might not be able to access Excel files saved in the Open XML format.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17522",
+      "title": "Disable Trust access for VBA into Excel, Word, and PowerPoint.   ",
+      "description": "VSTO projects require access to the Visual Basic for Applications project system in Excel 2007, PowerPoint 2007, and Word 2007, even though the projects do not use Visual Basic for Applications. Design-time support of controls in both Visual Basic and C# projects depends on the Visual Basic for Applications project system in Word and Excel.\nBy default, Excel, Word, and PowerPoint do not allow automation clients to have programmatic access to VBA projects. Users can enable this by selecting the Trust access to the VBA project object model in the Macro Settings section of the Trust Center. However, doing so allows macros in any documents the user opens to access the core Visual Basic objects, methods, and properties, which represents a potential security hazard.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17545",
+      "title": "Enable Warning Bar settings for VBA macros contained in PowerPoint Files.",
+      "description": "By default, when users open files in the specified applications that contain VBA macros, the applications open the files with the macros disabled and display the Trust Bar with a warning that macros are present and have been disabled. Users can inspect and edit the files if appropriate, but cannot use any disabled functionality until they enable it by clicking Options on the Trust Bar and selecting the appropriate action. If users enable dangerous macros, it could affect their computers or cause sensitive information to be compromised. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17563",
+      "title": "Block PowerPoint from automatically opening converters to view older PowerPoint presentations. ",
+      "description": "PowerPoint 2007 requires the use of a conversion tool to open presentations saved in versions of PowerPoint older than PowerPoint 97, such as PowerPoint 95, PowerPoint 4.0, and others.\nIf a vulnerability is discovered that affects these kinds of files, you can use this setting to protect your organization against attacks by temporarily preventing users from opening files in these formats until a security patch is available.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17752",
+      "title": "Make hidden markup invisible - PowerPoint",
+      "description": "PowerPoint presentations that are saved in standard or HTML format can contain a flag indicating whether markup (comments or ink annotations) in the presentation should be visible when the presentation is open. By default, PowerPoint 2007 ignores this flag when opening a file, and always displays any markup present in the file. In addition, when saving a file, PowerPoint sets the flag to display markup when the presentation is next opened.\nIf this default configuration is changed, PowerPoint sets the flag according to the state of the Show Markup option on the Review tab of the Ribbon when it saves presentations in standard or HTML format. In addition, PowerPoint enables or disables the Show Markup option according to the way the flag is set when it opens files, which means that a presentation saved with hidden markup is opened with the markup still hidden.\nIf a file is saved with hidden markup, users might inadvertently distribute sensitive comments or information to others via the presentation file.\n\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17788",
+      "title": "Disable the ability to run programs from a PowerPoint presentation.  ",
+      "description": "Action buttons can be used to launch external programs from PowerPoint 2007 presentations. If a malicious person adds an action button to a presentation that launches a dangerous program, it could significantly affect the security of a user's computer and data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17809",
+      "title": "Disable the feature to \"unblock automatic download of linked images\" in PowerPoint. ",
+      "description": "When users insert images into PowerPoint 2007 presentations, they can select Link to File instead of Insert. If they do so, the image is represented by a link to a file on disk instead of being embedded in the presentation file itself.\nBy default, when PowerPoint opens a presentation it does not display any linked images saved on a different computer unless the presentation itself is saved in a trusted location (as configured in the Trust Center). If this configuration is changed, PowerPoint will load any images that were saved in remote locations, which presents a security risk.\n",
+      "severity": "medium"
+    }
+  ]
+}

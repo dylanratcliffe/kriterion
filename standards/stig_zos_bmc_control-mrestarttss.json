@@ -1,0 +1,23 @@
+{
+  "name": "stig_zos_bmc_control-mrestarttss",
+  "date": "2015-09-28",
+  "description": "None",
+  "title": "z/OS BMC CONTROL-M/Restart for TSS STIG",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-16932",
+      "title": "BMC CONTROL-M/Restart installation data sets will be properly protected.",
+      "description": "BMC CONTROL-M/Restart installation data sets have the ability to use privileged functions and/or have access to sensitive data. Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-21592",
+      "title": "BMC CONTROL-M/Restart Archived Sysout data sets must be properly protected.",
+      "description": "BMC CONTROL-M/Restart Archived Sysout data sets have the ability to use privileged functions and/or have access to sensitive data.  Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "name": "stig_microsoft_windows_2008_server_domain_name_system",
+  "date": "2018-04-05",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "Microsoft Windows 2008 Server Domain Name System Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-58237",
+      "title": "The Windows 2008 DNS Server must restrict incoming dynamic update requests to known clients.",
+      "description": "Limiting the number of concurrent sessions reduces the risk of Denial of Service (DoS) on any system.\n\nA DNS server's function requires it to be able to handle multiple sessions at a time so limiting concurrent sessions could potentially cause an impact to availability.  Primary name servers need to be configured to limit the actual hosts from which they will accept dynamic updates and from which they will accept zone transfer requests, and all name servers should be configured to limit the hosts from/to which they receive/send zone transfers. Restricting sessions to known hosts will mitigate the DoS vulnerability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58543",
+      "title": "The Windows 2008 DNS Server must be configured to record, and make available to authorized personnel, who added/modified/deleted DNS zone information.",
+      "description": "Without a means for identifying the individual that produced the information, the information cannot be relied upon. Identifying the validity of information may be delayed or deterred.\n\nThis requirement ensures organizational personnel have a means to identify who produced or changed specific information in transfers, zone information, or DNS configuration changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58547",
+      "title": "The Windows 2008 DNS Server must, in the event of an error validating another DNS servers identity, send notification to the DNS administrator.",
+      "description": "Failing to act on the validation errors may result in the use of invalid, corrupted, or compromised information. The validation of bindings can be achieved, for example, by the use of cryptographic checksums. Validations must be performed automatically.\n\nAt a minimum, the application must log the validation error. However, more stringent actions can be taken based on the security posture and value of the information. The organization should consider the system's environment and impact of the errors when defining the actions. Additional examples of actions include automated notification to administrators, halting system process, or halting the specific operation.\n\nThe auditing is performed by the OS/NDM, but the configuration to trigger the auditing is controlled by the DNS server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58549",
+      "title": "The Windows 2008 DNS Server log must be enabled.",
+      "description": "Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident, or identify those responsible for one. The actual auditing is performed by the OS/NDM, but the configuration to trigger the auditing is controlled by the DNS server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58553",
+      "title": "The Windows 2008 DNS Server logging criteria must only be configured by the ISSM or individuals appointed by the ISSM.",
+      "description": "Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. The actual auditing is performed by the OS/NDM, but the configuration to trigger the auditing is controlled by the DNS server.\n\nSince the configuration of the audit logs on the DNS server dictates which events are logged for the purposes of correlating events, the permissions for configuring the audit logs must be restricted to only those with the role of ISSM or those appointed by the ISSM.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58573",
+      "title": "The Windows 2008 DNS Servers audit records must be backed up at least every seven days onto a different system or system component than the system or component being audited.",
+      "description": "Protection of log data includes assuring log data is not accidentally lost or deleted. Backing up audit records to a different system or onto separate media than the system being audited on a defined frequency helps to assure, in the event of a catastrophic system failure, the audit records will be retained. \n\nThis helps to ensure a compromise of the information system being audited does not also result in a compromise of the audit records.\n\nThis requirement only applies to applications that have a native backup capability for audit records. Operating system backup requirements cover applications that do not provide native backup functions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58577",
+      "title": "The Windows DNS name servers for a zone must be geographically dispersed.",
+      "description": "In addition to network-based separation, authoritative name servers should be dispersed geographically as well. In other words, in addition to being located on different network segments, the authoritative name servers should not all be located within the same building. One approach that some organizations follow is to locate some authoritative name servers in their own premises and others in their ISPs' data centers or in partnering organizations.\n\nA network administrator may choose to use a \"hidden\" master authoritative server and only have secondary servers visible on the network. A hidden master authoritative server is an authoritative DNS server whose IP address does not appear in the name server set for a zone.  If the master authoritative name server is \"hidden\", a secondary authoritative name server may reside in the same building as the hidden master.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58579",
+      "title": "The Windows 2008 DNS Server must prohibit recursion on authoritative name servers for which forwarders have not been configured for external queries.",
+      "description": "A potential vulnerability of DNS is that an attacker can poison a name server's cache by sending queries that will cause the server to obtain host-to-IP address mappings from bogus name servers that respond with incorrect information. Once a name server has been poisoned, legitimate clients may be directed to non-existent hosts (which constitutes a denial of service), or, worse, hosts that masquerade as legitimate ones to obtain sensitive data or passwords. \n\nTo guard against poisoning, name servers authoritative for .mil domains should be separated functionally from name servers that resolve queries on behalf of internal clients. Organizations may achieve this separation by dedicating machines to each function or, if possible, by running two instances of the name server software on the same machine: one for the authoritative function and the other for the resolving function. In this design, each name server process may be bound to a different IP address or network interface to implement the required segregation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58581",
+      "title": "Forwarders on an authoritative Windows 2008 DNS Server, if enabled for external resolution, must only forward to either an internal, non-AD-integrated DNS server or to the DoD Enterprise Recursive Services (ERS).",
+      "description": "A potential vulnerability of DNS is that an attacker can poison a name server's cache by sending queries that will cause the server to obtain host-to-IP address mappings from bogus name servers that respond with incorrect information. Once a name server has been poisoned, legitimate clients may be directed to non-existent hosts (which constitutes a denial of service), or, worse, hosts that masquerade as legitimate ones to obtain sensitive data or passwords. \n\nTo guard against poisoning, name servers authoritative for .mil domains should be separated functionally from name servers that resolve queries on behalf of internal clients. Organizations may achieve this separation by dedicating machines to each function or, if possible, by running two instances of the name server software on the same machine: one for the authoritative function and the other for the resolving function. In this design, each name server process may be bound to a different IP address or network interface to implement the required segregation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58583",
+      "title": "The Windows 2008 DNS Server with a caching name server role must restrict recursive query responses to only the IP addresses and IP address ranges of known supported clients.",
+      "description": "A potential vulnerability of DNS is that an attacker can poison a name server's cache by sending queries that will cause the server to obtain host-to-IP address mappings from bogus name servers that respond with incorrect information. Once a name server has been poisoned, legitimate clients may be directed to non-existent hosts (which constitutes a denial of service), or, worse, hosts that masquerade as legitimate ones to obtain sensitive data or passwords.\n\nTo guard against poisoning, name servers specifically fulfilling the role of providing recursive query responses for external zones need to be segregated from name servers authoritative for internal zones.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58593",
+      "title": "The Windows 2008 DNS Servers zone files must have NS records that point to active name servers authoritative for the domain specified in that record.",
+      "description": "Poorly constructed NS records pose a security risk because they create conditions under which an adversary might be able to provide the missing authoritative name services that are improperly specified in the zone file. The adversary could issue bogus responses to queries that clients would accept because they learned of the adversary's name server from a valid authoritative name server, one that need not be compromised for this attack to be successful. The list of slave servers must remain current within 72 hours of any changes to the zone architecture that would affect the list of slaves. If a slave server has been retired or is not operational but remains on the list, then an adversary might have a greater opportunity to impersonate that slave without detection, rather than if the slave was actually online. For example, the adversary may be able to spoof the retired slave's IP address without an IP address conflict, which would not be likely to occur if the true slave were active.",
+      "severity": "high"
+    },
+    {
+      "id": "V-58595",
+      "title": "All authoritative name servers for a zone must be located on different network segments.",
+      "description": "Most enterprises have an authoritative primary server and a host of authoritative secondary name servers. It is essential that these authoritative name servers for an enterprise be located on different network segments. This dispersion ensures the availability of an authoritative name server not only in situations in which a particular router or switch fails but also during events involving an attack on an entire network segment.\n\nA network administrator may choose to use a \"hidden\" master authoritative server and only have secondary servers visible on the network. A hidden master authoritative server is an authoritative DNS server whose IP address does not appear in the name server set for a zone. If the master authoritative name server is \"hidden\", a secondary authoritative name server may reside on the same network as the hidden master.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58597",
+      "title": "All authoritative name servers for a zone must have the same version of zone information.",
+      "description": "The only protection approach for content control of a DNS zone file is the use of a zone file integrity checker. The effectiveness of integrity checking using a zone file integrity checker depends upon the database of constraints built into the checker. The deployment process consists of developing these constraints with the right logic, and the only determinant of the truth value of these logical predicates is the parameter values for certain key fields in the format of various RRTypes.\n\nThe serial number in the SOA RDATA is used to indicate to secondary name servers that a change to the zone has occurred and a zone transfer should be performed. It should always be increased whenever a change is made to the zone data. DNS NOTIFY must be enabled on the master authoritative name server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58603",
+      "title": "For zones split between the external and internal sides of a network, the RRs for the external hosts must be separate from the RRs for the internal hosts.",
+      "description": "Authoritative name servers for an enterprise may be configured to receive requests from both external and internal clients. \n\nExternal clients need to receive RRs that pertain only to public services (public Web server, mail server, etc.) \n\nInternal clients need to receive RRs pertaining to public services as well as internal hosts. \n\nThe zone information that serves the RRs on both the inside and the outside of a firewall should be split into different physical files for these two types of clients (one file for external clients and one file for internal clients).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58605",
+      "title": "In a split DNS configuration, where separate name servers are used between the external and internal networks, the external name server must be configured to not be reachable from inside resolvers.",
+      "description": "Instead of having the same set of authoritative name servers serve different types of clients, an enterprise could have two different sets of authoritative name servers. \n\nOne set, called external name servers, can be located within a DMZ; these would be the only name servers that are accessible to external clients and would serve RRs pertaining to hosts with public services (Web servers that serve external Web pages or provide B2C services, mail servers, etc.) \n\nThe other set, called internal name servers, is to be located within the firewall and should be configured so they are not reachable from outside and hence provide naming services exclusively to internal clients.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58607",
+      "title": "In a split DNS configuration, where separate name servers are used between the external and internal networks, the internal name server must be configured to not be reachable from outside resolvers.",
+      "description": "Instead of having the same set of authoritative name servers serve different types of clients, an enterprise could have two different sets of authoritative name servers.\n\nOne set, called external name servers, can be located within a DMZ; these would be the only name servers that are accessible to external clients and would serve RRs pertaining to hosts with public services (Web servers that serve external Web pages or provide B2C services, mail servers, etc.)\n\nThe other set, called internal name servers, is to be located within the firewall and should be configured so they are not reachable from outside and hence provide naming services exclusively to internal clients.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58609",
+      "title": "Primary authoritative name servers must be configured to only receive zone transfer requests from specified secondary name servers.",
+      "description": "Authoritative name servers (especially primary name servers) should be configured with an allow-transfer access control sub statement designating the list of hosts from which zone transfer requests can be accepted. These restrictions address the denial-of-service threat and potential exploits from unrestricted dissemination of information about internal resources. Based on the need-to-know, the only name servers that need to refresh their zone files periodically are the secondary name servers. Zone transfer from primary name servers should be restricted to secondary name servers. The zone transfer should be completely disabled in the secondary name servers. The address match list argument for the allow-transfer sub statement should consist of IP addresses of secondary name servers and stealth secondary name servers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58611",
+      "title": "The Windows 2008 DNS Servers zone database files must not be accessible for edit/write by users and/or processes other than the Windows 2008 DNS Server service account and/or the DNS database administrator.",
+      "description": "Discretionary Access Control (DAC) is based on the premise that individual users are \"owners\" of objects and therefore have discretion over who should be authorized to access the object and in which mode (e.g., read or write). Ownership is usually acquired as a consequence of creating the object or via specified ownership assignment. In a DNS implementation, DAC should be granted to a minimal number of individuals and objects because DNS does not interact directly with users and users do not store and share data with the DNS application directly.\n\nThe primary objective of DNS authentication and access control is the integrity of DNS records; only authorized personnel must be able to create and modify resource records, and name servers should only accept updates from authoritative master servers for the relevant zones. Integrity is best assured through authentication and access control features within the name server software and the file system the name server resides on. In order to protect the zone files and configuration data, which should only be accessed by the name service or an administrator, access controls need to be implemented on files, and rights should not be easily propagated to other users. Lack of a stringent access control policy places the DNS infrastructure at risk to malicious persons and attackers, in addition to potential denial of service to network resources.\n\nDAC allows the owner to determine who will have access to objects they control. An example of DAC includes user-controlled file permissions. DAC models have the potential for the access controls to propagate without limit, resulting in unauthorized access to said objects.\n\nWhen applications provide a DAC mechanism, the DNS implementation must be able to limit the propagation of those access rights.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58613",
+      "title": "The Windows 2008 DNS Server must implement internal/external role separation.",
+      "description": "DNS servers with an internal role only process name/address resolution requests from within the organization (i.e., internal clients). DNS servers with an external role only process name/address resolution information requests from clients external to the organization (i.e., on the external networks, including the Internet). The set of clients that can access an authoritative DNS server in a particular role is specified by the organization using address ranges, explicit access control lists, etc. In order to protect internal DNS resource information, it is important to isolate the requests to internal DNS servers. Separating internal and external roles in DNS prevents address space that is private (e.g., 10.0.0.0/24) or is otherwise concealed by some form of Network Address Translation from leaking into the public DNS system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58615",
+      "title": "The Windows 2008 DNS Server authoritative for local zones must only point root hints to the DNS servers that host the internal root domain.",
+      "description": "All caching name servers must be authoritative for the root zone because, without this starting point, they would have no knowledge of the DNS infrastructure and thus would be unable to respond to any queries. The security risk is that an adversary could change the root hints and direct the caching name server to a bogus root server. At that point, every query response from that name server is suspect, which would give the adversary substantial control over the network communication of the name servers' clients. When authoritative servers are sent queries for zones that they are not authoritative for, and they are configured as a non-caching server (as recommended), they can either be configured to return a referral to the root servers or they can be configured to refuse to answer the query. The recommendation is to configure authoritative servers to refuse to answer queries for any zones for which they are not authoritative. This is more efficient for the server and allows it to spend more of its resources doing what its intended purpose is, answering authoritatively for its zone.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58617",
+      "title": "The DNS name server software must be at the latest version.",
+      "description": "Each newer version of the name server software, especially the BIND software, generally is devoid of vulnerabilities found in earlier versions because it has design changes incorporated to take care of those vulnerabilities. These vulnerabilities have been exploited (i.e., some form of attack was launched), and sufficient information has been generated with respect to the nature of those exploits. It makes good business sense to run the latest version of name server software because theoretically it is the safest version. Even if the software is the latest version, it is not safe to run it in default mode. The security administrator should always configure the software to run in the recommended secure mode of operation after becoming familiar with the new security settings for the latest version.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58621",
+      "title": "The Windows 2008 DNS Servers zone files must not include CNAME records pointing to a zone with lesser security for more than six months.",
+      "description": "The use of CNAME records for exercises, tests, or zone-spanning aliases should be temporary (e.g., to facilitate a migration). When a host name is an alias for a record in another zone, an adversary has two points of attack: the zone in which the alias is defined and the zone authoritative for the alias's canonical name. This configuration also reduces the speed of client resolution because it requires a second lookup after obtaining the canonical name. Furthermore, in the case of an authoritative name server, this information is promulgated throughout the enterprise to caching servers and thus compounds the vulnerability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58623",
+      "title": "Non-routable IPv6 link-local scope addresses must not be configured in any zone.",
+      "description": "IPv6 link-local scope addresses are not globally routable and must not be configured in any DNS zone.  Similar to RFC1918 addresses, if a link-local scope address is inserted into a zone provided to clients, most routers will not forward this traffic beyond the local subnet.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58625",
+      "title": "AAAA addresses must not be configured in a zone for hosts that are not IPv6-aware.",
+      "description": "DNS is only responsible for resolving a domain name to an IP address.  Applications and operating systems are responsible for processing the IPv6 or IPv4 record that may be returned.  With this in mind, a denial of service could easily be implemented for an application that is not IPv6-aware.  When the application receives an IP address in hexadecimal, it is up to the application/operating system to decide how to handle the response.  Combining both IPv6 and IPv4 records into the same domain can lead to application problems that are beyond the scope of the DNS administrator.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58627",
+      "title": "When IPv6 protocol is installed, the server must also be configured to answer for IPv6 AAAA records.",
+      "description": "To prevent the possibility of a denial of service in relation to an IPv4 DNS server trying to respond to IPv6 requests, the server should be configured not to listen on any of its IPv6 interfaces unless it does contain IPv6 AAAA resource records in one of the zones.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58633",
+      "title": "The Windows 2008 DNS Server must uniquely identify the other DNS server before responding to a server-to-server transaction.",
+      "description": "Without identifying devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity. This applies to server-to-server (zone transfer) transactions only and is provided by TSIG/SIG(0), which enforces mutual server authentication using a key that is unique to each server pair (TSIG) or using PKI-based authentication (SIG(0)), thus uniquely identifying the other server.\n\nTSIG and SIG(0) are not configurable in Windows 2008 DNS Server.\n\nTo meet the requirement for authentication between Windows DNS servers, IPsec will be implemented between the Windows DNS servers which host any non-AD-integrated zones.\nTSIG and SIG(0) are not configurable in Windows 2012 DNS Server.\n\nTo meet the requirement for authentication between Windows DNS servers, IPsec will be implemented between the Windows DNS servers which host any non-AD-integrated zones.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58637",
+      "title": "The Windows DNS primary server must only send zone transfers to a specific list of secondary name servers.",
+      "description": "Primary name servers also make outbound connection to secondary name servers to provide zone transfers and accept inbound connection requests from clients wishing to provide a dynamic update. Primary name servers should explicitly limit zone transfers to only be made to designated secondary name servers. Because zone transfers involve the transfer of entire zones and use TCP connections, they place substantial demands on network resources relative to normal DNS queries. Errant or malicious frequent zone transfer requests on the name servers of the enterprise can overload the master zone server and result in DoS to legitimate users.\n\nAD-integrated DNS servers replicate zone information via AD replication. Non-AD-integrated DNS servers replicate zone information via zone transfers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58641",
+      "title": "The Windows 2008 DNS Server must be configured to enforce authorized access to the corresponding private key.",
+      "description": "The cornerstone of the PKI is the private key used to encrypt or digitally sign information. If the private key is stolen, this will lead to the compromise of the authentication and non-repudiation gained through PKI because the attacker can use the private key to digitally sign documents and pretend to be the authorized user. Both the holders of a digital certificate and the issuing authority must protect the computers, storage devices, or whatever they use to keep the private keys.\n\nSIG(0) is used for server-to-server authentication for DNS transactions, and it uses PKI-based authentication. So, in cases where SIG(0) is being used instead of TSIG (which uses a shared key, not PKI-based authentication), this requirement is applicable.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58643",
+      "title": "The Windows DNS Server key file must be owned by the account under which the Windows  DNS Server service is run.",
+      "description": "To enable dnssec (requests and responses) through authenticated messages, it is necessary to generate a key for every pair of name servers. The key can also be used for securing other transactions, such as dynamic updates, DNS queries, and responses. The binary key string that is generated by the dnscmd key generation utility used with DNSSEC is Base64-encoded.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58649",
+      "title": "The Windows 2008 DNS Server must implement a local cache of revocation data for PKI authentication in the event revocation information via the network is not accessible.",
+      "description": "Without configuring a local cache of revocation data, there is the potential to allow access to users who are no longer authorized (users with revoked certificates).\n\nSIG(0) is used for server-to-server authentication for DNS transactions, and it uses PKI-based authentication. So, in cases where SIG(0) is being used instead of TSIG (which uses a shared key, not PKI-based authentication), this requirement is applicable.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58655",
+      "title": "The Windows 2008 DNS Servers IP address must be statically defined and configured locally on the server.",
+      "description": "The major threat associated with DNS forged responses or failures are the integrity of the DNS data returned in the response.  By requiring remote clients to obtain origin authentication and integrity verification assurances for the host/service name to network address resolution information obtained through the service, data origin is validated. \n\nEnsuring all name servers have static IP addresses makes it possible to configure restricted DNS communication between the name servers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58661",
+      "title": "WINS lookups must be disabled on the Windows 2008 DNS Server.",
+      "description": "The major threat associated with DNS forged responses or failures is the integrity of the DNS data returned in the response. If/when WINS lookups are enabled, the validity of the data becomes questionable since the WINS data is provided to the requestor, unsigned and invalidated. A DNS server is an example of an information system providing name/address resolution service. Digital signatures and cryptographic keys are examples of additional artifacts. DNS resource records are examples of authoritative data. Applications other than the DNS, to map between host/service names and network addresses, must provide other means to assure the authenticity and integrity of response data.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58693",
+      "title": "The Windows 2008 DNS Server must protect secret/private cryptographic keys while at rest.",
+      "description": "Information at rest refers to the state of information when it is located on a secondary storage device within an organizational information system. Mobile devices, laptops, desktops, and storage devices can be either lost or stolen, and the contents of their data storage (e.g., hard drives and non-volatile memory) can be read, copied, or altered. Applications and application users generate information throughout the course of their application use.\n\nThe DNS server must protect the confidentiality and integrity of shared keys (for TSIG) and private keys (for SIG(0)) and must protect the integrity of DNS information. There is no need to protect the confidentiality of DNS information because it is accessible by all devices that can contact the server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58695",
+      "title": "The Windows 2008 DNS Server must not contain zone records that have not been validated in over a year.",
+      "description": "If zone information has not been validated in over a year, then there is no assurance that it is still valid.  If invalid records are in a zone, then an adversary could potentially use their existence for improper purposes. An SOP detailing this process can resolve this requirement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58697",
+      "title": "The Windows 2008 DNS Server must restrict individuals from using it for launching Denial of Service (DoS) attacks against other information systems.",
+      "description": "Applications and application developers must take the steps needed to ensure users cannot use an authorized application to launch DoS attacks against other systems and networks. For example, applications may include mechanisms that throttle network traffic so users are not able to generate unlimited network traffic via the application. Limiting system resources that are allocated to any user to a bare minimum may also reduce the ability of users to launch some DoS attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58699",
+      "title": "The Windows 2008 DNS Server must use DNS Notify to prevent denial of service through increase in workload.",
+      "description": "In the case of application DoS attacks, care must be taken when designing the application to ensure the application makes the best use of system resources. SQL queries have the potential to consume large amounts of CPU cycles if they are not tuned for optimal performance. Web services containing complex calculations requiring large amounts of time to complete can bog down if too many requests for the service are encountered within a short period of time.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58707",
+      "title": "The Windows 2008 DNS Server must be configured to only allow zone information that reflects the environment for which it is authoritative, to include IP ranges and IP versions.",
+      "description": "DNS zone data for which a Windows 2008 DNS server is authoritative should represent the network for which it is responsible. If a Windows 2008 DNS server hosts zone records for other networks or environments, there is the possibility for the records to become invalid or stale or be redundant/conflicting with a DNS server truly authoritative for the other network environment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58709",
+      "title": "The Windows 2008 DNS Server must follow procedures to re-role a secondary name server as the master name server should the master name server permanently lose functionality.",
+      "description": "Failing to an unsecure condition negatively impacts application security and can lead to system compromise. Failure conditions include, for example, loss of communications among critical system components or between system components and operational facilities. Fail-safe procedures include, for example, alerting operator personnel and providing specific instructions on subsequent steps to take (e.g., do nothing, reestablish system settings, shutdown processes, restart the system, or contact designated organizational personnel).\n\nTransactions such as zone transfers would not be able to work correctly anyway in this state.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58711",
+      "title": "The Windows 2008 DNS Server must, when a component failure is detected, activate a notification to the system administrator.",
+      "description": "Predictable failure prevention requires organizational planning to address system failure issues. If components key to maintaining systems security fail to function, the system could continue operating in an insecure state. The organization must be prepared, and the application must support requirements that specify if the application must alarm for such conditions and/or automatically shut down the application or the system.\n\nThis can include conducting a graceful application shutdown to avoid losing information. Automatic or manual transfer of components from standby to active mode can occur, for example, upon detection of component failures.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58713",
+      "title": "The Windows 2008 DNS Server must perform verification of the correct operation of security functions: upon system start-up and/or restart; upon command by a user with privileged access; and/or every 30 days.",
+      "description": "Security function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Security functionality includes, but is not limited to, establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters. Without verification, security functions may not operate correctly and this failure may go unnoticed. \n\nNotifications provided by information systems include, for example, electronic alerts to system administrators, messages to local computer consoles, and/or hardware indications, such as lights.\n\nThe DNS server should perform self-tests, such as at server start-up, to confirm that its security functions are working properly.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58717",
+      "title": "The Windows 2008 DNS Server must be configured to notify the ISSO/ISSM/DNS administrator when functionality of Secure Updates has been removed or broken.",
+      "description": "Security function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Security functionality includes, but is not limited to, establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters. If personnel are not notified of failed security verification tests, they will not be able to take corrective action and the unsecure condition(s) will remain. Notifications provided by information systems include messages to local computer consoles, and/or hardware indications, such as lights.\n\nThe DNS server should be configured to generate audit records whenever a self-test fails. The OS/NDM is responsible for generating notification messages related to this audit record.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58737",
+      "title": "The DNS Name Server software must be configured to refuse queries for its version information.",
+      "description": "Each newer version of the name server software, especially the BIND software, generally is devoid of vulnerabilities found in earlier versions because it has design changes incorporated to take care of those vulnerabilities. Of course, these vulnerabilities have been exploited (i.e., some form of attack was launched), and sufficient information has been generated with respect to the nature of those exploits. Thus, it makes good business sense to run the latest version of name server software because theoretically it is the safest version.\n\nIn some installations, it may not be possible to switch over to the latest version of name server software immediately. If the version of the name server software is revealed in queries, this information may be used by attackers who are looking for a specific version of the software which has a discovered weakness. To prevent information about which version of name server software is running on a system, name servers should be configured to refuse queries for its version information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-58739",
+      "title": "The HINFO, RP, TXT, and LOC RR types must not be used in the zone SOA.",
+      "description": "There are several types of RRs in the DNS that are meant to convey information to humans and applications about the network, hosts, or services. These RRs include the Responsible Person (RP) record, the Host Information (HINFO) record, the Location (LOC) record, and the catch-all text string resource record (TXT) [RFC1035]. Although these record types are meant to provide information to users in good faith, they also allow attackers to gain knowledge about network hosts before attempting to exploit them. For example, an attacker may query for HINFO records, looking for hosts that list an OS or platform known to have exploits.\n\nTherefore, great care should be taken before including these record types in a zone. In fact, they are best left out altogether.\n\nMore careful consideration should be taken with the TXT resource record type. A DNS administrator will have to decide if the data contained in a TXT RR constitutes an information leak or is a necessary piece of information. For example, several authenticated email technologies use TXT RR's to store email sender policy information such as valid email senders for a domain. These judgments will have to be made on a case-by-case basis.\n\nA DNS administrator should take care when including HINFO, RP, TXT, LOC, or other RR types that could divulge information that would be useful to an attacker or the external view of a zone if using split DNS.\n\nRRs such as HINFO and TXT provide information about software name and versions (e.g., for resources such as Web servers and mail servers) that will enable the well-equipped attacker to exploit the known vulnerabilities in those software versions and launch attacks against those resources.",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,0 +1,329 @@
+{
+  "name": "stig_apple_ios_5",
+  "date": "2012-07-20",
+  "description": "This STIG contains technical security controls required for the use of Apple iOS 5 devices (iPhone and iPad) in the DoD environment when managed by an approved mobile management server.",
+  "title": "Apple iOS 5 Security Technical Implementation Guide (STIG)",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-18627",
+      "title": "The VPN client on wireless clients (PDAs, smartphones) used for remote access to DoD networks must be FIPS 140-2 validated.  ",
+      "description": "DoD data could be compromised if transmitted data is not secured with a compliant VPN.  FIPS validation provides a level of assurance that the encryption of the device has been securely implemented.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19897",
+      "title": "All wireless PDA clients used for remote access to DoD networks must have a VPN supporting AES encryption. ",
+      "description": "DoD data could be compromised if transmitted data is not secured with a compliant VPN.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19898",
+      "title": "All wireless PDA clients used for remote access to DoD networks must have a VPN supporting CAC authentication. ",
+      "description": "DoD data could be compromised if transmitted data is not secured with a compliant VPN.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19899",
+      "title": "All wireless PDA client VPNs must have split tunneling disabled.  ",
+      "description": "DoD data could be compromised if transmitted data is not secured with a compliant VPN.  Split tunneling could allow connections from non-secure Internet sites to access data on the DoD network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24982",
+      "title": "Smart Card Readers (SCRs) used with smartphones must have required software version installed.",
+      "description": "Required security features are not available in earlier software versions. In addition, there may be known vulnerabilities in earlier versions.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24983",
+      "title": "S/MIME must be installed on mobile device, so users can sign/encrypt email",
+      "description": "S/MIME provides the capability for users to send and receive S/MIME email messages from wireless email devices. S/MIME and digital signatures provide assurance the message is authentic and is required by DoD policy.  Without S/MIME users will not be able to read encrypted email and will not be able to encrypt email with sensitive information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24984",
+      "title": "If mobile device email auto signatures are used, the signature message must not disclose the email originated from a smartphone (e.g., Sent From My Wireless Handheld).\n",
+      "description": "The disclaimer message may give information which may key an attacker in on the device. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-24985",
+      "title": "The browser must direct all traffic to a DoD Internet proxy gateway.\n",
+      "description": "When using the DoD Internet proxy for iOS device Internet connections, enclave Internet security controls will filter and monitor iOS device Internet connections and reduce the risk that malware could be downloaded on the mobile device.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-25003",
+      "title": "Mobile devices must have required operating system software version installed.\n",
+      "description": "Unapproved OS versions do not support required security features.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25006",
+      "title": "iOS devices must be configured to require a password to remove the iOS configuration profile, if a configuration profile is used.\n",
+      "description": "Sensitive DoD data could be compromised if a security profile is not installed on DoD iPhone/iPad/iPod Touch devices.  The profile should only be removed by the system administrator.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25007",
+      "title": "Mobile devices must be configured to require a password/passcode for device unlock.\n",
+      "description": "Sensitive DoD data could be compromised if a device unlock passcode is not set up on a DoD iOS device.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25009",
+      "title": "Maximum passcode age must be set.",
+      "description": "Sensitive DoD data could be compromised if a strong device unlock passcode is not set up on a DoD iPOS device and the passcode is not changed periodically.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-25010",
+      "title": "The mobile device must be set to lock the device after a set period of user inactivity. ",
+      "description": "Sensitive DoD data could be compromised if the smartphone does not automatically lock after 15 minutes of inactivity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25011",
+      "title": "Passcode maximum failed attempts must be set to required value.",
+      "description": "A hacker with unlimited attempts can determine the password of an iOS device within a few minutes using password hacking tools, which could lead to unauthorized access to the iOS device and exposure to sensitive DoD data.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25012",
+      "title": "Access to public application stores must be disabled.",
+      "description": "Strong configuration management of all applications installed on DoD device is required to ensure the security baseline of the system is maintained.  Otherwise, sensitive DoD data could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25013",
+      "title": "Users must enable iOS application download.\n",
+      "description": "Application download must be enabled so iOS updates can be installed over-the-air (OTA) and security updates will be installed as soon as possible. This is a key feature of the security baseline for DoD iOS devices. The MAM server will be responsible for scanning the device periodically and alert if the user has downloaded unapproved applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25014",
+      "title": "Mobile device cameras must be used only if documented approval is in the site physical security policy.\n",
+      "description": "This is an operational security issue.   DoD sensitive information could be compromised if cameras are allowed in areas not authorized by the site physical security plan.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25015",
+      "title": "Mobile device screen capture must not be allowed.\n",
+      "description": "Sensitive data, including FOUO data displayed on the screen, could be saved in unsecure memory on the device.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25016",
+      "title": "The device minimum password/passcode length must be set. ",
+      "description": "Sensitive DoD data could be compromised if a device unlock password/passcode is not set to required length on a DoD smartphones.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25017",
+      "title": "Apple iOS Auto-Lock must be set.",
+      "description": "Sensitive DoD data could be compromised if the iOS device does not automatically lock after a set period of inactivity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25018",
+      "title": "The smartphone passcode history setting must be set.",
+      "description": "The passcode would be more susceptible to compromise if the user can select frequently used passcodes.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25020",
+      "title": "The mobile device Wi-Fi radio must be disabled as the default setting and is enabled only when Wi-Fi connectivity is required.\n",
+      "description": "The Wi-Fi radio can be used by a hacker to connect to the smartphone without the knowledge of the user. Sensitive DoD data could be exposed and the hacker could use the device to attack the enclave.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25022",
+      "title": "All mobile devices must display the required banner during device unlock/logon.\n",
+      "description": "DoD CIO memo requires all PDAs, BlackBerrys, and smartphones to have a consent banner displayed during logon/device unlock to ensure users understand their responsibilities to safeguard DoD data. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25033",
+      "title": "iOS Safari must be disabled.\n",
+      "description": "The Safari browser does not support FIPS 140-2 validated encryption and CAC authentication to DoD web sites.  FIPS validation provides a level of assurance that encrypted sensitive data will not be compromised.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-25092",
+      "title": "The iOS device Wi-Fi setting Ask to Join Networks must be set to On at all times (User Based Enforcement (UBE)).\n",
+      "description": "The risk of a DoD mobile device being attacked via a rogue Wi-Fi access point is higher than for a rogue cellular access point. Therefore, the mobile device should be configured so it does not automatically connect to a Wi-Fi access point. The user should acknowledge and approve the connection to any Wi-Fi access point to minimize the risk of sensitive data on the device being exposed.  \n",
+      "severity": "low"
+    },
+    {
+      "id": "V-25755",
+      "title": "Access to online application purchases must be disabled.",
+      "description": "Strong configuration management of all applications installed on DoD devise is required to ensure the security baseline of the system is maintained. Otherwise, sensitive DoD data could be compromised.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25756",
+      "title": "Encrypted smartphone backups must be enabled.",
+      "description": "The act of connecting an iOS device to a PC can put it at risk of attack if the PC is compromised. The iOS device should sync to a minimum number of approved machines. It should not sync to laptops that travel with the device and it should always use encrypted backups.",
+      "severity": "low"
+    },
+    {
+      "id": "V-27635",
+      "title": "Remote full device wipe must be enabled.",
+      "description": "Sensitive DoD data could be compromised if mobile OS device data could not be wiped when directed by the system administrator.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32686",
+      "title": "iOS Siri application must be disabled.\n",
+      "description": "The Siri application connects to Apple servers and stores information about the device and user inquiries on those servers. The use of Siri could lead to the compromise of sensitive DoD information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32688",
+      "title": "iOS Multiplayer Gaming must be disabled.\n",
+      "description": "The game function connects to Apple servers and allows the transfer of device data to other iOS devices. The use of the game function could lead to the compromise of sensitive DoD information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32689",
+      "title": "Adding Game Center Friends must be disabled.\n",
+      "description": "The game function connects to Apple servers and allows the transfer of device data to other iOS devices. The use of the game function could lead to the compromise of sensitive DoD information.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32690",
+      "title": "Allow iCloud Backup must be disabled.\n",
+      "description": "The iCloud feature (and associated iCloud setting in iOS) stores iOS device data on Apple controlled servers. Sensitive DoD data saved on the iOS device could be compromised when it is stored on the Apple servers.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32691",
+      "title": "Allow Document Syncing must be disabled.\n",
+      "description": "The iCloud feature (and associated iCloud setting in iOS) stores iOS device data on Apple controlled servers. Sensitive DoD data saved on the iOS device could be compromised when it is stored on the Apple servers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32693",
+      "title": "Allow Photo Stream must be disabled.\n",
+      "description": "The iCloud feature (and associated iCloud setting in iOS) stores iOS device data on Apple controlled servers. Sensitive DoD data saved on the iOS device could be compromised when it is stored on the Apple servers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32695",
+      "title": "Allow Diagnostic Data to be Sent to Apple must be disabled.\n",
+      "description": "Sensitive DoD information could be compromised if this setting is not implemented. DoD mobile device diagnostic data could be considered sensitive data and should not be sent to Apple and reside on Apple servers.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32696",
+      "title": "All wireless PDA client VPNs must timeout an inactive session after a set period of inactivity.\n",
+      "description": "The data on a DoD iOS device most likely contains sensitive DoD information, therefore, when device data is backed up to a local, approved laptop, the data should be encrypted to prevent compromise of data.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32697",
+      "title": "All wireless PDA client VPN authentication credential cache timeout must be set to 2 hours or less. \n",
+      "description": "DoD data could be compromised if transmitted data is not secured with a compliant VPN. User authentication credentials (CAC PIN) may be compromised if a hacker credential cache is not wiped on a periodic basis.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32698",
+      "title": "MDM, MAM, and integrity validation agent(s) must be installed and operate at all times on the mobile OS device.\n",
+      "description": "The MDM, MAM, and integrity scanning agents all perform various security management functions on the iOS devices (some products integrate all three functions into one agent).  If these agents are not on the mobile device, key security controls may not be enforced, which could lead to the compromise of sensitive DoD data.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-32699",
+      "title": "The mobile operating system must not permit a user to disable or modify the security policy or enforcement mechanisms on the device.\n",
+      "description": "The integrity of the security policy and enforcement mechanisms is critical to the IA posture of the operating system.  If a user can modify a device's security policy or enforcement mechanisms, then a wide range of subsequent attacks are possible, including unauthorized access to information and networks.  Access controls that prevent a user from making modifications such as these mitigate the risk of operating system compromise.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-32700",
+      "title": "The mobile operating system must provide mutual authentication between the provisioning server and the provisioned device during a trusted over-the-air (OTA) provisioning session.\n",
+      "description": "When dealing with access restrictions pertaining to change control, it should be noted that any changes to the hardware, software, and/or firmware components of the information system can potentially have significant effects on the overall security of the system.  Mutual authentication ensures both that the device is authorized for provisioning and that a rogue provisioning server is not used to obtain software.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-32701",
+      "title": "The mobile operating system must protect the confidentiality of the provisioning data downloaded to the handheld device during a trusted over-the-air (OTA) provisioning session.\n",
+      "description": "Provisioning data may be sensitive and therefore must be adequately protected.  An adversary within the general proximity of the mobile device can eavesdrop on OTA transactions, making them particularly vulnerable to attack if confidentiality protections are not in place.  Proper use of cryptography provides strong assurance that provisioning data is protected against confidentiality attacks.  \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32702",
+      "title": "The mobile operating system must protect the integrity of the provisioning data downloaded to the handheld device during a trusted over-the-air (OTA) provisioning session.\n",
+      "description": "Provisioning data may be sensitive and therefore must be adequately protected.  It may be possible for an adversary within the general proximity of the mobile device to hijack provisioning sessions and modify data transmitted during the provisioning process.  Proper use of cryptography provides strong assurance that provisioning data is protected against integrity attacks.   \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32703",
+      "title": "The mobile operating system must support the capability for the system administrator to disable over-the-air (OTA) provisioning. \n",
+      "description": "In some environments, the risk of OTA provisioning may outweigh any convenience benefit it offers.  In such cases, the administrator should have the ability to disable OTA provisioning to ensure secure breaches do not occur from use of this technique.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-32704",
+      "title": "The mobile operating system must encrypt all data in transit using AES encryption when communicating with DoD information resources (128-bit key length is the minimum requirement; 256-bit desired). \n",
+      "description": "If data traffic is sent unencrypted, an adversary may be able to read it to obtain sensitive information.  AES encryption with 128-bit (or longer) keys mitigates the risk of unauthorized eavesdropping.  This requirement applies to both VPN connections and DoD messaging connections (email and authorized instant messaging applications).\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32705",
+      "title": "The mobile operating system PKI certificate store must encrypt contents using AES encryption (AES 128 bit encryption key length is the minimum requirement; AES 256 desired).\n",
+      "description": "If an adversary can access the key store, it may be able to use the keys to perform a variety of unauthorized transactions.  It may also be able to modify public keys in a way that it can trick the operating system into accepting invalid certificates.  Encrypting the key store protects the integrity and confidentiality of keys.  AES encryption with adequate key lengths provides assurance that the protection is strong.\n",
+      "severity": "high"
+    },
+    {
+      "id": "V-32706",
+      "title": "The cryptographic module supporting encryption of data in transit (including email and attachments) must be FIPS 140-2 validated.\n",
+      "description": "The most common vulnerabilities with cryptographic modules are those associated with poor implementation.   FIPS 140 validation provides assurance that the relevant cryptography has been implemented correctly.  FIPS validation is also a strict requirement for use of cryptography in the Federal Government.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32707",
+      "title": "The cryptographic module supporting encryption of data at rest must be FIPS 140-2 validated.\n",
+      "description": "The most common vulnerabilities with cryptographic modules are those associated with poor implementation.   FIPS 140 validation provides assurance that the relevant cryptography has been implemented correctly.  FIPS validation is also a strict requirement for use of cryptography in the Federal Government.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32708",
+      "title": "The cryptographic module supporting encryption of the certificate store must be FIPS 140-2 validated.\n",
+      "description": "The most common vulnerabilities with cryptographic modules are those associated with poor implementation.   FIPS 140 validation provides assurance that the relevant cryptography has been implemented correctly.  FIPS validation is also a strict requirement for use of cryptography in the Federal Government.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32711",
+      "title": "The mobile operating system must prevent a user from using a browser that does not direct its traffic to a DoD proxy server. \n",
+      "description": "Proxy servers can inspect traffic for malware and other signs of a security attack.  Allowing a mobile device to access the public Internet without proxy server inspection forgoes the protection that the proxy server would otherwise provide.  Malware downloaded onto the device could have a wide variety of malicious consequences, including loss of sensitive DoD information.  Forcing traffic to flow through a proxy server greatly mitigates the risk of access to public Internet resources.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32712",
+      "title": "The mobile operating system must encrypt all data on the mobile device using AES encryption (AES 128 bit encryption key length is the minimum requirement; AES 256 desired). \n",
+      "description": "If data at rest is unencrypted, it is vulnerable to disclosure.  Even if the operating system enforces permissions on data access, an adversary can remove non-volatile memory and read it directly, thereby circumventing operating system controls.   Encrypting the data ensures that confidentiality is protected even when the operating system is not running.  AES encryption with appropriate key lengths provides assurance that the cryptography is adequate.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32713",
+      "title": "The mobile operating system must require a valid password be successfully entered before the mobile device data is unencrypted.\n",
+      "description": "Encryption is only effective if the decryption procedure is protected.  If an adversary can easily access the private key (either directly or through a software application), then sensitive DoD data is likely to be disclosed.    Password protection is one method to reduce the likelihood of such an occurrence.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32715",
+      "title": "The mobile operating system must re-encrypt all device data when the device is locked.  \n",
+      "description": "If data is not encrypted upon the lock of the device, there is the potential for an adversary to remove non-volatile memory from the device and read it directly using tools for that purpose.  This attack would render other operating system controls useless.  Encrypting data provides assurance that it will be protected even when memory is physically removed from the device.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32716",
+      "title": "The mobile operating system must employ a DoD approved anti-virus application or otherwise prevent a malware application from installing and executing. \n",
+      "description": "In order to minimize potential negative impact to the organization that can be caused by malicious code, it is imperative that malicious code is identified and eradicated. Malicious code includes viruses, worms, Trojan horses, and spyware.  Malicious code can result in the disclosure of sensitive information or cause a denial of service.  Anti-virus applications are not common on mobile operating systems but one or more methods to mitigate the risk of malware must be in place to protect DoD information and networks.\n",
+      "severity": "high"
+    }
+  ]
+}

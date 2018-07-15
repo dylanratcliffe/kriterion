@@ -1,0 +1,221 @@
+{
+  "name": "stig_iis6_server",
+  "date": "2015-06-01",
+  "description": "None",
+  "title": "IIS6 Server",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-13591",
+      "title": "Classified web servers must be afforded physical security commensurate with the classification of its content.",
+      "description": "When data of a classified nature is migrated to a web server, fundamental principles applicable to the safeguarding of classified material must be followed. A classified web server needs to be afforded physical security commensurate with the classification of its content to ensure the protection of the data it houses.",
+      "severity": "high"
+    },
+    {
+      "id": "V-13613",
+      "title": "The site software used with the web server must have all applicable security patches applied and documented.",
+      "description": "The IAVM process does not address all patches that have been identified for the host operating system or, in this case, the web server software environment. Many vendors have subscription services available to notify users of known security threats. The site needs to be aware of these fixes and make determinations based on local policy and what software features are installed, if these patches need to be applied. \n\nIn some cases, patches also apply to middleware and database systems. Maintaining the security of web servers requires frequent reviews of security notices. Many security notices mandate the installation of a software patch to overcome security vulnerabilities. \n\nSAs and ISSOs should regularly check the vendor support web site for patches and information related to the web server software. All applicable security patches will be applied to the operating system and to the web server software. Security patches are deemed applicable if the product is installed, even if it is not used or is disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13621",
+      "title": "All web server documentation, sample code, example applications, and tutorials must be removed from a production web server.",
+      "description": "Web server documentation, sample code, example applications, and tutorials may be an exploitable threat to a web server. A production web server may only contain components that are operationally necessary (e.g., compiled code, scripts, web-content, etc.). Delete all directories containing samples and any scripts used to execute the samples.",
+      "severity": "high"
+    },
+    {
+      "id": "V-13698",
+      "title": "The IISADMPWD directory must be removed from the Web server.",
+      "description": "The IISADMPWD directory is included by default with IIS. It allows users to reset Windows passwords. The use of userid and passwords is a far less secure solution for controlling user access to web applications than a PKI solution with subscriber certificates. The capability to be able to change passwords externally gives potential intruders an easier mechanism to access the system in an effort to compromise user IDs and passwords.",
+      "severity": "high"
+    },
+    {
+      "id": "V-13700",
+      "title": "The File System Object component, if not required, must be disabled.",
+      "description": "Some COM components are not required for most applications and should be removed if possible.  Most notably, consider disabling the File System Object component; however, this will also remove the Dictionary object.  Be aware some programs may require components that are being disabled, so it is highly recommended this be tested completely before implementing on your production Web servers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13701",
+      "title": "The command shell options must be disabled.",
+      "description": "The command shell can be used to call arbitrary commands at the web server from within an HTML page.  ",
+      "severity": "high"
+    },
+    {
+      "id": "V-13714",
+      "title": "The AllowRestrictedChars registry key must be disabled.",
+      "description": "IIS6 Http.sys is the kernel mode driver that handles HTTP requests.  There are several registry keys associated with http.sys.  If the AllowRestrictedChars key is set to a nonzero value, Http.sys accepts hex-escaped chars in request URLs that decode to U+0000 – U+001F and U+007F – U+009F ranges. If this capability is enabled it allows malicious characters to be hex-encoded by an attacker in an attempt to bypass input validation routines.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13715",
+      "title": "The EnableNonUTF8 registry key must be disabled.",
+      "description": "Http.sys is the kernel mode driver that handles HTTP requests.  There are several registry keys associated with http.sys.  The EnableNonUTF8 registry key expands the amount of character types the web server accepts.  Hackers can use this capability to submit content in a URL that can execute in the CPU by means of a buffer overflow.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13716",
+      "title": "The FavorUTF8 registry key must be set properly.",
+      "description": "Http.sys is the kernel mode driver that handles HTTP requests.  There are several registry keys associated with http.sys.  The FavorUTF8 registry key allows URLs to be decoded as UTF-8 before any other encoding.\n\nOverlong encoding forms have been used to bypass security validations in high profile products including Microsoft's IIS web server. Therefore, great care must be taken to avoid security issues if validation is performed before conversion from UTF-8, and it is generally much simpler to handle overlong forms before any input validation is done.\n\nTo maintain security in the case of invalid input, there are two options. The first is to decode the UTF-8 before doing any input validation checks. The second is to use a decoder that, in the event of invalid input, returns either an error or text the application considers to be harmless. Another possibility is to avoid conversion out of UTF-8 altogether but this relies on any other software that the data is passed to safely handling the invalid data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13717",
+      "title": "The MaxFieldLength registry entry must be set properly.",
+      "description": "By default, the MaxFieldLength registry entry is not present. This registry entry specifies the maximum size of any individual HTTP client request. Typically, this registry entry is configured together with the MaxRequestBytes registry entry.   Setting this value to high, when the application does not require it to operate, may cause performance problems as well as Denial of Service issues for the web server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13718",
+      "title": "The MaxRequestBytes registry entry must be set properly.",
+      "description": "Http.sys is the kernel mode driver that handles HTTP requests.  There are several registry keys associated with http.sys.  The MaxRequestBytes registry key determines the upper limit for the total size of the HTTP request line and headers. If this value is set too high, performance or Denial of Service conditions may appear.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13719",
+      "title": "The UrlSegmentMaxLength registry entry must be set properly.",
+      "description": "Http.sys is the kernel mode driver that handles HTTP requests.  There are several registry keys associated with http.sys.  The UrlSegmentMaxLength key sets the maximum number of characters in a URL path segment (the area between the slashes in the URL). Setting this value too large may cause performance or a Denial of Service condition on the web server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13720",
+      "title": "The PercentUAllowed registry entry must be set properly.",
+      "description": "Http.sys is the kernel mode driver that handles HTTP requests.  There are several registry keys associated with http.sys.  The PercentUAllowed key allows the web server to accept Unicode character syntax via ASCII (i.e., through the URL). Allowing this type of notation, opens the web server to encoding attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13721",
+      "title": "The UriMaxUriBytes registry entry must be set properly.",
+      "description": "Http.sys is the kernel mode driver that handles HTTP requests.  There are several registry keys associated with http.sys.  The UriMaxUriBytes key is used to set size limits on what is cached in the kernel response cache. Setting this value to large may cause performance or Denial of Service conditions on the web server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13722",
+      "title": "The UrlSegmentMaxCount registry entry must be set properly.",
+      "description": "Http.sys is the kernel mode driver that handles HTTP requests.  There are several registry keys associated with http.sys.  The UrlSegmentMaxCount value determines the maximum number of URL path segments accepted by the server. It effectively limits the number of slashes that can be included by the user in a request URL.  It is recommended to set fairly stringent limits on this value based on the depth of the web document root tree to protect the server from a file system traversal attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2232",
+      "title": "The web server service password(s) must be entrusted to the SA or Web Manager.",
+      "description": "Normally, a service account is established for the web server. This is because a privileged account is not desirable and the server is designed to run for long uninterrupted periods of time. The SA or Web Manager will need password access to the web server to restart the service in the event of an emergency as the web server is not to restart automatically after an unscheduled interruption.  If the password is not entrusted to an SA or web manager the ability to ensure the availability of the web server is compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2234",
+      "title": "Public web server resources must not be shared with private assets.",
+      "description": "It is important to segregate public web server resources from private resources located behind the DoD DMZ in order to protect private assets. When folders, drives or other resources are directly shared between the public web server and private servers the intent of data and resource segregation can be compromised.  Resources such as printers, files, and folders/directories must not be shared between public web servers and assets located within the internal network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2235",
+      "title": "The service account ID used to run the web service must have its password changed at least annually.",
+      "description": "Normally, a service account is established for the web service to run under rather than permitting it to run as system or root. The password on such accounts must be changed at least annually. It is a fundamental tenet of security that passwords are not to be null and not to be set to never expire.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2236",
+      "title": "A compiler must not be installed on a production web server.",
+      "description": "The presence of a compiler on a production server facilitates the malicious user’s task of creating custom versions of programs and installing Trojan Horses or viruses.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2242",
+      "title": "A public web server, if hosted on the NIPRNet, must be isolated in an accredited DoD DMZ Extension.",
+      "description": "To minimize exposure of private assets to unnecessary risk by attackers, public web servers must be isolated from internal systems.  Public web servers are by nature more vulnerable to attack from publically based sources, such as the public Internet. Once compromised, a public web server might be used as a base for further attack on private resources, unless additional layers of protection are implemented. Public web servers must be located in a DoD DMZ Extension, if hosted on the NIPRNet, with carefully controlled access. Failure to isolate resources in this way increase risk that private assets are exposed to attacks from public sources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2243",
+      "title": "A private web server must be located on a separate controlled access subnet.",
+      "description": "Private web servers, which host sites serving controlled access data, must be protected from outside threats in addition to insider threats. Insider threat may be accidental or intentional but, in either case, can cause a disruption in service of the web server. To protect the private web server from these threats, it must be located on a separate controlled access subnet and must not be a part of the public DMZ that houses the public web servers. It also cannot be located inside the enclave as part of the local general population LAN.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2246",
+      "title": "The web server must use a vendor-supported version of the web server software.",
+      "description": "The web server Software, IIS 6, is no longer supported by Microsoft for security updates and is not evaluated or updated for vulnerabilities, leaving it open to potential attack. Organizations must transition to a supported IIS release to ensure continued support.",
+      "severity": "high"
+    },
+    {
+      "id": "V-2247",
+      "title": "Non-administrators must not be allowed access to the directory tree, the shell, or other operating system functions and utilities.",
+      "description": "As a rule, accounts on a web server are to be kept to a minimum. Only administrators, web managers, developers, auditors, and web authors require accounts on the machine hosting the web server. This is in addition to the anonymous web user account. The resources to which these accounts have access must also be closely monitored and controlled. Only the SA needs access to all the system’s capabilities, while the web administrator and associated staff require access and control of the web content and web server configuration files. The anonymous web user account must not have access to system resources as that account could then control the server.",
+      "severity": "high"
+    },
+    {
+      "id": "V-2248",
+      "title": "Access to web administration tools must be restricted to the Web Manager and the Web Manager’s designees.",
+      "description": "The key web service administrative and configuration tools must only be accessible by the web server staff. All users granted this authority will be documented and approved by the ISSO. Access to the IIS Manager will be limited to authorized users and administrators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2251",
+      "title": "Programs and features not necessary for operations must be removed.",
+      "description": "Just as running unneeded services and protocols increase the attack surface of the web server, running unneeded utilities and programs is also an added risk to the web server.",
+      "severity": "low"
+    },
+    {
+      "id": "V-2257",
+      "title": "Administrative users and groups with access privilege to the web server must be documented.",
+      "description": "There are typically several individuals and groups involved in running a production web site. In most cases, several types of users on a web server can be identified such as SA's, Web Managers, Auditors, Authors, Developers, and the Clients. Nonetheless, only necessary user and administrative accounts will be allowed on the web server. Accounts will be restricted to those who are necessary to maintain web services, review the server’s operation and the OS. Owing to the sensitivity of web servers, a detailed record of these accounts must be maintained.",
+      "severity": "low"
+    },
+    {
+      "id": "V-2259",
+      "title": "Web server system files must conform to minimum file permission requirements.",
+      "description": "This check verifies the key web server system configuration files are owned by the SA or Web Manager controlled account. These same files which control the configuration of the web server, and thus its behavior, must also be accessible by the account which runs the web service. If these files are altered by a malicious user, the web server would no longer be under the control of its managers and owners; properties in the web server configuration could be altered to compromise the entire server platform.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2261",
+      "title": "A public web server must limit e-mail to outbound only.",
+      "description": "Incoming e-mails have been known to provide hackers with access to servers. Disabling the incoming mail service prevents this type of attacks. Additionally, e-mail is a specialized application requiring the dedication of server resources. A production web server should only provide hosting services for web sites. Supporting mail services on a web server opens the server to the risk of abuse as an e-mail relay.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2264",
+      "title": "Wscript.exe and Cscript.exe must not be accessible by users other than the SA and Web Manager.",
+      "description": "Windows Scripting Host (WSH) is installed under either a Typical or Custom installation option of a Microsoft Network Server. This technology permits the execution of powerful script files from the Windows NT command line. This technology is also classified as a Category I Mobile Code. If the access to these files is not tightly controlled, a malicious user could readily compromise the server by using a form to send input to these scripting engines. This is a web-related vulnerability that could exist on any NT / Win 2000 system regardless of the web server software being used on the platform.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2271",
+      "title": "Monitoring software must include CGI type files or equivalent programs.",
+      "description": "By their very nature, CGI type files permit the anonymous web user to interact with data and perhaps store data on the web server. In many cases, CGI scripts exercise system-level control over the server’s resources. These files make appealing targets for the malicious user. If these files can be modified or exploited, the web server can be compromised. CGI or equivalent files must be monitored by a security tool alerting the Web Admin of any unauthorized changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6485",
+      "title": "Web server content and configuration files must be part of a routine backup program.",
+      "description": "Backing up web server data and web server application software after upgrades or maintenance ensures that recovery can be accomplished up to the current version. It also provides a means to determine and recover from subsequent unauthorized changes to the software and data.\n\nA tested and verifiable backup strategy will be implemented for web server software as well as all web server data files. Backup and recovery procedures will be documented and the Web Manager or SA for the specific application will be responsible for the design, test, and implementation of the procedures.\n      \nThe site will have a contingency processing plan/disaster recovery plan that includes web servers. The contingency plan will be periodically tested in accordance with DoDI 8500.2 requirements.\n\nThe site will identify an off-site storage facility in accordance with DoDI 8500.2 requirements. Off-site backups will be updated on a regular basis and the frequency will be documented in the contingency plan.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-6537",
+      "title": "Anonymous access accounts must be restricted.",
+      "description": "Many of the security problems that occur are not the result of a user gaining access to files or data for which the user does not have permissions, but rather users are assigned incorrect permissions to unauthorized data. The files, directories, and data that are stored on the web server need to be evaluated and a determination made concerning authorized access to information and programs on the server. In most cases, we can identify several types of users on a web server. These are system SAs, web administrators, auditors, authors, developers, and clients (web users, either anonymous or authenticated). Only authorized users and administrative accounts will be allowed on the host server in order to maintain the web server, applications, and review the server operations.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6577",
+      "title": "A web server must not be co-hosted with other services",
+      "description": "A detailed web server installation and configuration plan should be followed to provide standardization during the installation process. The installation and configuration plan should not support the co-hosting of multiple services such as Domain Name Service (DNS), e-mail, databases, search engines, indexing, or streaming media on the same server providing the web publishing service.\n\nDisallowed or restricted services in the context of this vulnerability apply to services not directly associated with the delivery of web content. An operating system that supports a web server will not provide other services (e.g., domain controller, e-mail server, database server, etc.). Only those services necessary to support the web server and its hosted sites are specifically allowed and may include, but are not limited to, operating system, logging, anti-virus, host intrusion detection, administrative maintenance, or network requirements. Any unnecessary services or protocols should be removed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6724",
+      "title": "Web server and/or operating system information must be protected.",
+      "description": "The web server response header of an HTTP response can contain several fields of information including the requested HTML page. The information included in this response can be web server type and version, operating system and version, and ports associated with the web server. This provides the malicious user valuable information without the use of extensive tools.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6754",
+      "title": "The IIS Internet Printing Protocol must be disabled.",
+      "description": "The use of Internet Printing Protocol (IPP) on an IIS web server allows client’s access to shared printers. This privileged access could allow remote code execution by increasing the web servers attack surface. Additionally, IPP does not support SSL adding to its risk posture.",
+      "severity": "medium"
+    }
+  ]
+}

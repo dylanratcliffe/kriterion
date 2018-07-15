@@ -1,0 +1,65 @@
+{
+  "name": "stig_microsoft_outlook_2003",
+  "date": "2014-10-03",
+  "description": "None",
+  "title": "Microsoft Outlook 2003 ",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-12781",
+      "title": "Office 2003 Customer Experience Improvement Program",
+      "description": "When sending data as part of the Customer Experience Improvement Program there is a possibility of exposing sensitive data. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6320",
+      "title": "An unsupported version of Outlook is installed.",
+      "description": "Without product support, vulnerabilities are not being tracked or fixed by the vendor. ",
+      "severity": "high"
+    },
+    {
+      "id": "V-6321",
+      "title": "Outlook is not configured to use the Restricted Sites Security Zone.",
+      "description": "Outlook needs to run in the context of the restricted sites zone so when it processes messages in an HTML format the content of the message is controlled and the machine is protected from automatically executing mobile code.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6323",
+      "title": "Outlook is not configured to read HTML as text.",
+      "description": "HTML in email can potentially contain mobile code.  This parameter will ensure that mobile code can not be executed in either the preview pane or when the message is opened.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6324",
+      "title": "An unsupported version of Office is installed.",
+      "description": "Unsupported vendor software is not being updated or evaluated for security vulnerabilities.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6325",
+      "title": "The latest Office service pack is not installed. ",
+      "description": "The lastest service pack needs to be applied to ensure all security related patches are incorporated and that the software is a t supported service level.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6326",
+      "title": "The Macro Security Level option in Office 2000,  XP (2002), or 2003 applications is not set to Medium,  High, or Very High.",
+      "description": "The security level controls the action of macros.  Macros can be embedded into documents to be executed at the time the document is opened.  This can potentially intitiate a malicious action.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6327",
+      "title": "The option for trusting all installed add-ins and templates is not disabled.",
+      "description": "This option ensures that macro security warning are displayed for all addins and templates. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6328",
+      "title": "The Error Reporting tool for Office XP/2003 is installed or enabled.",
+      "description": "This could potentially send sensitive application data to the vendor and needs to be disabled.",
+      "severity": "medium"
+    }
+  ]
+}

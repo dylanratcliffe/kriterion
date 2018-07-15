@@ -1,0 +1,167 @@
+{
+  "name": "stig_test_and_development_zone_a",
+  "date": "2015-12-17",
+  "description": "None",
+  "title": "Test and Development Zone A Security Technical Implementation Guide",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-39344",
+      "title": "Network infrastructure and systems supporting the test and development environment must be documented within the organizations accreditation package.",
+      "description": "Up-to-date documentation is essential in assisting with the management, auditing, and security of the network infrastructure used to support the test and development environment.  Network diagrams are important because they show the overall layout where devices are physically located within the network infrastructure. Diagrams also show the relationship and connectivity between devices where possible intrusive attacks could take place.  Having up-to-date network diagrams will also help show what the security, traffic, and physical impact of adding a system will be on the network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39345",
+      "title": "Network infrastructure and systems supporting the test and development environment must follow DoD certification and accreditation procedures before connecting to a DoD operational network or Internet Service Provider.",
+      "description": "Prior to connecting to a live operational network, such as the DISN, systems, at minimum, receive an IATO.  A system without an IATO does not show adequate effort to meet IA controls and security requirements and may pose a risk to other computers or systems connecting to the operational network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39433",
+      "title": "Network infrastructure and systems supporting the test and development environment must be registered in a DoD asset management system.",
+      "description": "An asset management system is used to send out notifications on vulnerabilities in commercial and military information infrastructures as they are discovered.  If the organization's assets are not registered with an asset management system, administrators will not be notified of important vulnerabilities such as viruses, denial of service attacks, system weaknesses, back doors, and other potentially harmful situations.  Additionally, there will be no way to enter, track, or resolve findings during a review.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39434",
+      "title": "Network infrastructure and systems supporting the test and development environment must be managed from a management network.",
+      "description": "It is important to restrict administrative access to the supporting network infrastructure and systems in the test and development environment, as it reduces the risk of data theft or interception from an attacker on the operational network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39435",
+      "title": "The organization must document impersistent connections to the test and development environment with approval by the organizations Authorizing Official.",
+      "description": "An impersistent connection is any temporary connection needed to another test and development environment or DoD operational network where testing is not feasible.  As any unvetted connection or device will create additional risk and compromise the entire environment, it is up to the Authorizing Official for the organization to accept the risk of an impersistent connection.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39436",
+      "title": "Application development must not occur on DoD operational network segments.",
+      "description": "To reduce the risk of compromise of DoD operational networks and data, application and system development needs to be limited to systems within a network segment designated for development only.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39437",
+      "title": "Development systems must have antivirus installed and enabled with up-to-date signatures.",
+      "description": "Virus scan programs are a primary line of defense against the introduction of viruses and malicious code that can destroy data and even render a computer inoperable.  Utilizing the most current virus scan program provides the ability to detect this malicious code before extensive damage occurs.  Updated virus scan data files help protect a system, as new malware is identified by the software vendors on a regular basis.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39438",
+      "title": "Development systems must have HIDS or HIPS installed and configured with up-to-date signatures.",
+      "description": "A HIDS or HIPS application is a secondary line of defense behind the antivirus.  The application will monitor all ports and the dynamic state of a development system.  If the application detects irregularities on the system, it will block incoming traffic that may potentially compromise the development system that can lead to a DoS or data theft.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39439",
+      "title": "Development systems must have a firewall installed, configured, and enabled.",
+      "description": "A firewall provides a line of defense against malicious attacks.   To be effective, it must be enabled and properly configured.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39440",
+      "title": "Development systems must be part of a patch management solution.",
+      "description": "Major software vendors release security patches and hotfixes to their products when security vulnerabilities are discovered.  It is essential that these updates be applied in a timely manner to prevent unauthorized individuals from exploiting identified vulnerabilities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39441",
+      "title": "A change management policy must be implemented for application development.",
+      "description": "Change management is the formal review process that ensures that all changes made to a system or application receives formal review and approval.  Change management reduces impacts from proposed changes that could possibly have interruptions to the services provided.  Recording all changes for applications will be accomplished by a configuration management policy.  The configuration management policy will capture the actual changes to software code and anything else affected by the change.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39611",
+      "title": "The organization must document and gain approval from the Change Control Authority prior to migrating data to DoD operational networks.",
+      "description": "Without the approval of the Change Control Authority, data moved from the test and development network into an operational network could pose a risk of containing malicious code or cause other unintended consequences to live operational data.  Data moving into operational networks from final stage preparation must always be vetted and approved.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39614",
+      "title": "Application code must go through a code review prior to deployment into DoD operational networks.",
+      "description": "Prior to release of the application receiving an IATO for deployment into a DoD operational network, the application will have a thorough code review.  Along with the proper testing, the code review will specify flaws causing security, compatibility, or reliability concerns that may compromise the operational network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39619",
+      "title": "Access to source code during application development must be restricted to authorized users.",
+      "description": "Restricting access to source code and the application to authorized users will limit the risk of source code theft or other potential compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39627",
+      "title": "The test and development infrastructure must use a gateway to separate access to DoD operational networks.",
+      "description": "Acting as the first hop into a test and development environment, the gateway can implement proper routing and provide a first layer of defense against attacks and other unintentional compromise or spillage of sensitive information into the operational network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39629",
+      "title": "Ports, protocols, and services visible to DoD operational networks or ISPs must follow DoDI 8551.1 policy.",
+      "description": "In accordance with the DoD 8551.1 policy, the test and development environment may require external access to live operational data to perform final stage testing.  All network connections for the test and development environment must make use of the PPS CAL at the appropriate boundaries.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39636",
+      "title": "The test and development infrastructure must use a firewall for traffic inspection to and from DoD operational networks.",
+      "description": "A firewall is necessary to inspect traffic as it flows into and out of the test and development environment.  Without a firewall present, traffic could flow freely between the operational network and test and development environment, allowing malicious or other unintended traffic and unauthorized access, compromising a system or environment.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39662",
+      "title": "Access control lists between development and testing network segments within a test and development environment must be in a deny-by-default posture.",
+      "description": "To prevent malicious or accidental leakage of information between test and development environments, organizations must implement a deny-by-default security posture.  All traffic not explicitly permitted must be denied.  Such rule sets prevent many malicious exploits or accidental leakage by regulating the ports, protocols, or services necessary between network segments within the test and development environment.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39663",
+      "title": "Access control lists between the test and development environment and DoD operational networks must be in a deny-by-default posture.",
+      "description": "To prevent malicious or accidental leakage of traffic between test and development environments and operational networks, organizations must implement a deny-by-default security posture.  Perimeter routers, boundary controllers, or firewalls must deny incoming and outgoing traffic not expressly permitted.  Such rule sets prevent many malicious exploits or accidental leakage by regulating the ports, protocols, or services necessary to the enclave.",
+      "severity": "high"
+    },
+    {
+      "id": "V-39664",
+      "title": "Access control lists between the test and development environments must be in a deny-by-default posture.",
+      "description": "To prevent malicious or accidental leakage of traffic, organizations must implement a deny-by-default security posture between test and development environments.  All ingress and egress traffic not explicitly permitted between test and development environments must be denied. Such rule sets prevent many malicious exploits or accidental leakage by regulating the ports, protocols, or services necessary to each environment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39667",
+      "title": "Remote access into the test and development environment must use an encryption mechanism approved for the classification level of the network.",
+      "description": "Remote access to the environment using unapproved encryption mechanism is inherently dangerous because anyone with a packet sniffer and access to the network can acquire the device's account and password information.  With this intercepted information, a malicious user could gain access to the device, cause denial of service attacks, intercept sensitive information, or perform other destructive actions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39669",
+      "title": "Remote access VPNs must prohibit the use of split tunneling on VPN connections.",
+      "description": "The VPN software on a host can be configured in either of two modes. It can be set to encrypt all IP traffic originating from that host, and send all of that traffic to the remote IP address of the network gateway. This configuration is called “tunnel-all” mode, because all IP traffic from the host must traverse the VPN tunnel to the remote system, where it will either be processed or further forwarded to additional IP addresses after decryption. Alternately, the VPN software can be set only to encrypt traffic that is specifically addressed to an IP at the other end of the VPN tunnel. All other IP traffic bypasses the VPN encryption and routing process, and is handled by the host as if the VPN relationship did not exist. This configuration is called “split-tunnel” mode, because the IP traffic from the host is split between encrypted packets sent across the VPN tunnel and unencrypted packets sent to all other external addresses. There are security and operational implications in the decision of whether to use split-tunnel or tunnel-all mode. Placing a host in tunnel-all mode makes it appear to the rest of the world as a node on the connected logical (VPN-connected) network. It no longer has an identity to the outside world based on the local physical network. In tunnel-all mode, all traffic between the remote host and any other host can be subject to inspection and processing by the security policy devices of the remote VPN-linked network. This improves the security aspects of the connected network, since it can enforce all security policies on the VPN-connected computer.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39671",
+      "title": "Installation of operating systems on systems and devices in the test and development environment must be logically separated to prohibit access to any operational network.",
+      "description": "Systems are most vulnerable to attack during the installation of an operating system because no security controls have been put in place to protect the system.  It is very important to block all access to a system while the operating system is being installed and configured until such time that security controls can be implemented.",
+      "severity": "low"
+    },
+    {
+      "id": "V-39672",
+      "title": "Virtual machines used for application development and testing must not share the same physical host with DoD operational virtual machines.",
+      "description": "Attacks on virtual machines from other VMs through denial of service and other attacks potentially stealing sensitive data such as source code used in application development.  It is imperative to keep DoD operational virtual machines on physically separate platforms from test and development virtual machines.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-41494",
+      "title": "Data used for testing and development must be downloaded through a secure connection to an IA-compliant system for vulnerability scanning prior to deployment in the test and development environment.",
+      "description": "It is mandatory that data from an untrusted network or website that is to be used in a testing and development environment be downloaded through a secure perimeter.  Bringing data directly from an untrusted network or downloaded from a personal computer or home Internet connection must be prohibited.  Scanning data is crucial to ensure the integrity of the information prior to deployment for T&D processes.  While not an all-inclusive list, data in this situation includes OS patches, application updates, operating systems, development tools, and test data.  In the T&D environment, there will typically be one or more IA-compliant systems accessing a secure Internet connection. If a secure Internet connection is not available, such as in Zone D, a connection in another zone can be used and the data moved by approved physical media into the zone.  Scanning the data with an anti-virus program will reduce the risk of exploits and of having vulnerable systems in the T&D environment taken over.  Downloading data from a single workstation for all zone environments is acceptable.  Organizations with NIPRNet connections must download all data through their NIPR connection for scanning at the IAPs.  Contractors or other DoD organizations without any direct NIPRNet connectivity will need to use a secure Internet connection following all applicable DoD IA policy and STIG requirements.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-43317",
+      "title": "The organization must create a policy and procedures document for proper handling and transport of data entering (physically or electronically) the test and development environment.",
+      "description": "Without policies and procedures in place, the organization will not have the authority to hold personnel accountable for improperly handling or transporting data into the test and development environment. The documents need to include guidance for both physical and electronic data migration.",
+      "severity": "medium"
+    }
+  ]
+}

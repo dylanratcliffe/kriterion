@@ -1,0 +1,131 @@
+{
+  "name": "stig_smartphone_policy",
+  "date": "2012-10-09",
+  "description": "This STIG contains the policy, training, and operating procedure security controls for the use of smartphones in the DoD environment.",
+  "title": "Smartphone Policy Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-24953",
+      "title": "Site physical security policy must include a statement if PDAs and smartphones with digital cameras (still and video) are permitted or prohibited on or in this DoD facility.",
+      "description": "Mobile devices with cameras are easily used to photograph sensitive information and areas if not addressed. Sites must establish, document, and train on how to mitigate this threat. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-24954",
+      "title": "The site physical security policy must state digital cameras (still and video) must not be allowed in any SCIF or other areas where classified documents or information is stored, transmitted, or processed. ",
+      "description": "PDAs, smartphones, and tablets with embedded cameras can be used to photograph classified material and can be easily concealed. Classified information could be compromised. Photos may also be taken of the areas that would facilitate a subsequent physical security breach.",
+      "severity": "high"
+    },
+    {
+      "id": "V-24955",
+      "title": "A data spill (Classified Message Incident (CMI)) procedure or policy must be published for site smartphones and tablets.",
+      "description": "When a data spill occurs on a smartphone/tablet, classified or sensitive data must be protected to prevent disclosure. After a data spill, the smartphone/tablet must either be wiped using approved procedures, or destroyed if no procedures are available, so classified or sensitive data is not exposed.  If a data spill procedure is not published, the site may not use approved procedures to remediate after a data spill occurs and classified data could be exposed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24957",
+      "title": "If a data spill (Classified Message Incident (CMI)) occurs on a wireless email device or system at a site, the site must follow required data spill procedures. ",
+      "description": "If required procedures are not followed after a data spill, classified data could be exposed to unauthorized personnel.",
+      "severity": "high"
+    },
+    {
+      "id": "V-24958",
+      "title": "Required procedures must be followed for the disposal of smartphones.  ",
+      "description": "If appropriate procedures are not followed prior to disposal of a smartphone, an adversary may be able to obtain sensitive DoD information or learn aspects of the configuration of the device that might facilitate a subsequent attack.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24960",
+      "title": "Mobile operating system (OS) based smartphone and tablet devices and systems must not be used to send, receive, store, or process classified messages unless specifically approved by NSA for such purposes and NSA approved transmission and storage methods are used.",
+      "description": "DoDD 8100.2 states wireless devices will not be used for classified data unless approved for such use. Classified data could be exposed to unauthorized personnel.",
+      "severity": "high"
+    },
+    {
+      "id": "V-24961",
+      "title": "Mobile device users must complete required training before being provided mobile devices or allowed access to DoD networks with a mobile device.",
+      "description": "Users are the first line of security controls for smartphone  systems. They must be trained in using smartphone security controls or the system could be vulnerable to attack.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24962",
+      "title": "The site Incident Response Plan or other procedure must include procedures to follow when a mobile operating system (OS) based smartphone or tablet device is reported lost or stolen. ",
+      "description": "Sensitive DoD data could be stored in memory on a DoD operated mobile operating system (OS) based Smartphone and tablet device and the data could be compromised if required actions are not followed when a smartphone is lost or stolen. Without procedures for lost or stolen mobile operating system (OS) based Smartphone and tablet devices, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24963",
+      "title": "The mobile device SA must perform a wipe command on all new or reissued smartphones and a STIG or ISCG-compliant IT policy will be pushed to the device before issuing it to DoD personnel.",
+      "description": "Malware can be installed on the device at some point between shipping from the factory and delivery to DoD.  The malware could result in the compromise of sensitive DoD information or result in the introduction of malware within the DoD network.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24964",
+      "title": "Mobile device software updates must only originate from approved DoD sources.",
+      "description": "Users must not accept Over-The-Air (OTA) wireless software updates from the wireless carrier or other non-DoD sources unless the updates have been tested and approved by the IAO. Unauthorized/unapproved software updates could include malware or cause a degradation of the security posture of the smartphone and DoD network infrastructure. All software updates should be reviewed and/or tested by the smartphone system administrator and originate from a DoD source or DoD-approved source. Wireless software updates should be pushed from the smartphone management server, when this feature is available.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24965",
+      "title": "Smartphone Instant Messaging (IM) client application must connect only to a DoD controlled IM server compliant with the Instant Messaging STIG. ",
+      "description": "Non-DoD IM servers can be located anywhere in the world and may be under an adversary’s control. If a DoD smartphone IM client connects to a non-DoD IM server, malware could be installed on the smartphone/tablet from the server or sensitive DoD data on the smartphone could be transferred to the server. In addition, if malware is installed on the smartphone, this could lead to hacker attacks on the DoD enclave the smartphone connects to.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24966",
+      "title": "The site wireless policy or wireless remote access policy must include information on required smartphone/tablet Wi-Fi security controls.",
+      "description": "If the policy does not include information on Wi-Fi security controls, then it is more likely that the security controls will not be implemented properly.  Wi-Fi is vulnerable to a number of security breaches without appropriate controls.  These breaches could involve the interception of sensitive DoD information and the use of the device to connect to DoD networks.  ",
+      "severity": "low"
+    },
+    {
+      "id": "V-24968",
+      "title": "Mobile devices must be provisioned with DoD PKI digital certificates, so users can digitally sign and encrypt e-mail notifications or other e-mail messages required by DoD policy. DAA approval will be obtained prior to the use of software PKI certificates on mobile devices.",
+      "description": "S/MIME provides the user with the ability to digitally sign and encrypt email messages, to verify the digital signatures on received messages, and to decrypt messages received from others if those messages are encrypted. Digital signatures provide strong cryptographic assurance of the authenticity and integrity of the signed message, including attachments. This capability protects against the insertion of malicious mobile code and social engineering attacks in which an adversary masquerades as a known user, as well as other exploits. Encryption provides confidentiality for sensitive information, which is particularly valuable when messages are sent to or received from users external to DoD messaging infrastructure, as such messages would otherwise travel in the clear over the public Internet. The use of software certificates adds additional risk of compromise to the user's digital certificates and to the DoD PKI infrastructure.  DoD PKI certificates may not be provisioned in the native mobile operating system certificate store unless the certificate is protected with a valid FIPS 140-2 validated cryptographic module. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-24969",
+      "title": "Required actions must be followed at the site when a smartphone has been lost or stolen. ",
+      "description": "If procedures for lost or stolen smartphones/tablets are not followed, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25034",
+      "title": "Users must receive training on required topics before they are authorized to access a DoD network via a wireless remote access device. ",
+      "description": "Improper use of wireless remote access to a DoD network can compromise both the wireless client and the network, as well as, expose DoD data to unauthorized people. Without adequate training remote access users are more likely to engage in behaviors that make DoD networks and information more vulnerable to security exploits.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25035",
+      "title": "The site must have a Wireless Remote Access Policy signed by the site DAA, Commander, Director, or other appropriate authority. ",
+      "description": "Wireless clients, DoD data, and the DoD network could be compromised if operational policies for the use of wireless remote access are not documented by the site.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25036",
+      "title": "The site physical security policy must include a statement if PDAs, smartphones, and tablets with digital cameras (still and video) are permitted or prohibited on or in the DoD facility.",
+      "description": "Wireless client, networks, and data could be compromised if unapproved wireless remote access is used.  In most cases, unapproved devices are not managed and configured as required by the appropriate STIG and the site’s overall network security controls are not configured to provide adequate security for unapproved devices.  When listed in the SSP, the site has shown that security controls have been designed to account for the wireless devices.",
+      "severity": "low"
+    },
+    {
+      "id": "V-28317",
+      "title": "Mobile users must complete required training annually.\n\n",
+      "description": "Users are the first line of security controls for smartphone/tablet systems. They must be trained in using smartphone security controls or the system could be vulnerable to attack.  If training is not renewed on an annual basis, users may not be informed of new security procedures or may forget previously trained procedures, which could lead to an exposure of sensitive DoD information.",
+      "severity": "low"
+    },
+    {
+      "id": "V-32674",
+      "title": "All non-core applications on the smartphone must be approved by the DAA or the Command IT Configuration Control Board.\n",
+      "description": "Non-approved applications can contain malware.  Approved applications should be reviewed and tested by the approving authority to ensure they do not contain malware, spyware, or have unexpected features (e.g., send private information to a web site, track user actions, connect to a non-DoD management server).  The DAA or Command IT Configuration Control Board is responsible for setting up procedures to review, test, and approve smartphone applications.  It is expected the process will be similar to what is used to approve and manage applications on command PCs.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-32677",
+      "title": "A security risk analysis must be performed on a mobile operating system (OS) application by the DAA or DAA authorized authority prior to the application being approved for use.\n",
+      "description": "Non-approved applications can contain malware. Approved applications should be reviewed and tested by the approving authority to ensure they do not contain malware, spyware, or have unexpected features (e.g., send private information to a web site, track user actions, connect to a non-DoD management server).\n",
+      "severity": "high"
+    }
+  ]
+}

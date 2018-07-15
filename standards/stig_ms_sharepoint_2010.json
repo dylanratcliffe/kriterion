@@ -1,0 +1,269 @@
+{
+  "name": "stig_ms_sharepoint_2010",
+  "date": "2018-04-02",
+  "description": "This STIG is applicable to all Microsoft SharePoint 2010 implementations. For complete security protection of any SharePoint implementation, the Windows OS, application server (s) and the database server (s) must also be secured using the applicable STIGs. ",
+  "title": "MS SharePoint 2010 Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-27965",
+      "title": "SharePoint must support the requirement to initiate a session lock after an organizationally defined time period of system or application inactivity has transpired.",
+      "description": "A session time-out lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system, but does not log out because of the temporary nature of the absence. The session lock is implemented at the point where session activity can be determined. This is typically at the operating system-level, but may also be at the application level. The organization must define the period of inactivity before a session lock is initiated, so this setting must be configurable.\n\nIn SharePoint, enabling security validation provides application level security for web pages while the authenticated user is absent. The user must be required to re-authenticate after a specified inactivity period is exceeded.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-27968",
+      "title": "SharePoint must maintain and support the use of organizationally defined security attributes to stored information.",
+      "description": "Security attributes are metadata representing the basic properties of an entity with respect to safeguarding information. These attributes are typically associated with internal data structures within the application and are used to enable the implementation of access control and flow control policies, reflect special dissemination, handling or distribution instructions, or support other aspects of the information security policy. Some examples of application security attributes include classified, For Official Use Only (FOUO), Personally Identifiable Information (PII), and sensitive.\n\nThe term security label is often used to associate a set of security attributes with a specific information object as part of the data structure for that object (e.g., user access privileges, nationality, affiliation as contractor). \n\nA SharePoint information management policy or a third party Information Right Management (IRM) solution must be installed to implement this requirement.  Although a 3rd party solution is recommended for a more robust solution, SharePoint can natively meet this requirement through combined use of information rights policy and defined content type.   Content types must be defined which bind metadata to the content in storage and in process. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-27974",
+      "title": "SharePoint must allow authorized users to associate security attributes with information.",
+      "description": "Security attributes are metadata representing the basic properties of an entity with respect to safeguarding information. These attributes are typically associated with internal data structures within the application and are used to enable the implementation of access control and flow control policies, reflect special dissemination, handling or distribution instructions, or support other aspects of the information security policy. Some examples of application security attributes include classified, FOUO, and sensitive.\n\nThe term security label is often used to associate a set of security attributes with a specific information object as part of the data structure for that object (e.g., user access privileges, nationality, affiliation as contractor). \n\nFor SharePoint installations, this capability is natively provided once content types, metadata, and an information management policy is configured as required by SHPT-00-000009 and SHPT-00-000010. Once content types are defined, enabled and configured, users will be prompted to enter these attributes when adding new documents or list items.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-27996",
+      "title": "SharePoint must enforce dual authorization, based on organizational policies and procedures for organizationally defined privileged commands.",
+      "description": "An organization may see fit to define a policy stating certain commands contained within an application require dual authorization before they may be invoked. Dual authorization requires two distinct approving authorities to approve the use of the command prior to being invoked. When the organization defines a set of application related privileged commands requiring dual authorization, the application must support those organizational requirements. \n\nOnce an information management policy has been created, the metadata and security attributes created can be enforced using a workflow. However, as with most applications, privilege restrictions, such as dual authorizations cannot be set for the super account, Farm Administrator. When adding a workflow to a SharePoint library or list, this enforces a business process on all items in the library or list. A workflow describes the actions the system or users must perform on each item, such as obtain dual approvals.\n\nNote: If many documents across different libraries require dual authorization, the site should consider creating a content type and adding this type as part of an information management policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28023",
+      "title": "The organization must employ cryptographic mechanisms to prevent unauthorized disclosure of information during transmission unless otherwise protected by alternative physical measures.",
+      "description": "Preventing the disclosure of transmitted information requires that applications take measures to using a cryptographic mechanism to protect the information during transmission. This is usually achieved through the use of TLS, SSL, or Internet Protocol Security (IPSec) Virtual Private Network (VPN). ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28026",
+      "title": "SharePoint must identify potentially security-relevant error conditions.",
+      "description": "The error messages and usage data to be monitored should be carefully considered. The extent to which the application is able to identify and handle error conditions is guided by organizational policy and operational requirements. \n\nUsage and Health Data Collection Service Application collects data about usage and health of your farm. This information is used for Health Monitoring and this is also required for running the Web Analytics Service. If there is no Usage and Health Data Collection Service Application or the Usage and Health Data Collection Proxy is stopped, the Web Analytics Report will not show any data.\n\nSharePoint Usage and Health Data Collection Service Application must be enabled in order to detect potential security errors. The usage and health data settings are farm-wide and cannot be set for individual servers in the farm.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28066",
+      "title": "Applications must support organizational requirements to employ cryptographic mechanisms to protect information in storage.",
+      "description": "When data is written to digital media there is risk of data loss and data compromise. An organizational assessment of risk guides the selection of media and associated information contained on the media requiring restricted access. Organizations need to document in policy and procedures, the media requiring restricted access, individuals authorized to access the media, and the specific measures taken to restrict access.  Encryption of data at rest in SQL is required if the data owner deems it necessary.",
+      "severity": "high"
+    },
+    {
+      "id": "V-28071",
+      "title": "SharePoint must terminate the network connection associated with a communications session at the end of the session or after an organizationally defined time period of inactivity.",
+      "description": "This requirement applies to both internal and external networks. Terminating network connections associated with communications sessions include, de-allocating associated TCP/IP address/port pairs at the operating-system level, or de-allocating networking assignments at the application level if multiple application sessions are using a single operating system-level network connection. \n\nThe time period of inactivity may, as the organization deems necessary, be a set of time periods by type of network access or for specific accesses. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28087",
+      "title": "SharePoint must protect audit information from unauthorized access to the usage and health logs.",
+      "description": "If audit data were to become compromised then competent forensic analysis and discovery of the true source of potentially malicious system activity is difficult. To ensure the veracity of audit data the information system and/or SharePoint must protect audit information from unauthorized access.\n\nSharePoint is an integrated product with comprehensive built-in auditing capabilities working with the Windows system event log. Additional trace logs and usage logs are created by the application and are placed in a designated folder. Logs of actions taken by users of site content (editing, modifying, viewing, deleting, etc.) are stored in a SQL database.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28089",
+      "title": "SharePoint must protect audit information from unauthorized modification of usage and health data collection logs.",
+      "description": "If audit data were to become compromised then competent forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.\n\nTo ensure the veracity of audit data the information system and/or SharePoint must protect audit information from unauthorized modification.\n\nSharePoint is an integrated product with comprehensive built-in auditing capabilities working with the Windows system event log. Additional trace logs and usage logs are created by the application and are placed in a designated folder. Logs of actions taken by users of site content (editing, modifying, viewing, deleting, etc.) are stored in a SQL database. Only designated audit administrators and internal accounts should have any type of permission to these files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28094",
+      "title": "SharePoint must protect audit information from unauthorized deletion of usage and health logs.",
+      "description": "If audit data were to become compromised then competent forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.\n\nTo ensure the veracity of audit data the information system and/or SharePoint must protect audit information from unauthorized deletion. \n\nSharePoint is an integrated product with comprehensive built-in auditing capabilities that works with the Windows system event log. Additional trace logs and usage logs are created by the application and are placed in a designated folder. Logs of actions taken by users of site content (editing, modifying, viewing, deleting, etc.) are stored in a SQL database.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28097",
+      "title": "SharePoint must protect audit tools from unauthorized access.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. Depending upon the log format and application, system and application log tools may provide the only means to manipulate and manage application and system log data.\n\nSharePoint is an integrated product with comprehensive built-in auditing capabilities working with the Windows system event log. Additional trace logs and usage logs are created by the application and are placed in a designated folder. Logs of actions taken by users of site content (editing, modifying, viewing, deleting, etc.), are stored in a SQL database.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28114",
+      "title": "SharePoint must allow designated organizational personnel to select which auditable events are to be audited by specific components of the system.",
+      "description": "Without auditing enabled, individual system accesses cannot be tracked and malicious activity cannot be detected and traced back to an individual account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28119",
+      "title": "The Central Administration Web Application must use Kerberos as the authentication provider.",
+      "description": "An authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message. \n\nTechniques used to address this include protocols using nonce's or challenges (e.g., Transport Layer Security (TLS), WS_Security), and time synchronous or challenge-response one-time authenticators. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28138",
+      "title": "SharePoint managed service accounts must be set to enable automatic password change. ",
+      "description": "Passwords have a number of inherent risks. One method of minimizing this risk is to enforce the use of complex passwords. Another method is to enforce periodic password changes. If the information system does not limit the lifetime of passwords and force password changes, the system may be vulnerable to password attacks and may become compromised.\n\nThis setting only enables automatic password changes for managed account. These accounts are in AD DS. The Windows server STIG guidance requires annual password changes for all service accounts. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28144",
+      "title": "SharePoint must support the requirement that privileged access is further defined between audit-related privileges and other privileges.",
+      "description": "Protection of audit records and audit data is of critical importance. Care must be taken to ensure privileged users cannot circumvent audit protections put in place. Auditing might not be reliable when performed by an information system which the user being audited has privileged access. The privileged user could inhibit auditing or directly modify audit records. To prevent this from occurring, privileged access shall be further defined between audit-related privileges and other privileges, thus, limiting the users with audit-related privileges. Reducing the risk of audit compromises by privileged users can also be achieved by performing audit activity on a separate information system where the user in question has limited access or by using storage media that cannot be modified (e.g., write-once recording devices).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28169",
+      "title": "To support the requirements and principles of least functionality; SharePoint must support the organizational requirement to provide only essential capabilities.",
+      "description": "Information systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nAdditionally, it is sometimes convenient to provide multiple services from a single component of an information system, but doing so increases risk over limiting the services provided by any one component. \n\nServices not necessary to the SharePoint installation must not be installed on the servers in the farm.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28170",
+      "title": "When configuring Central Administration, the port number selected must comply with  DoD Ports and Protocol Management (PPSM) program requirements.\n\n",
+      "description": "During the installation of Microsoft SharePoint, the Central Administration Web site is established on a randomly-assigned TCP port by default. Allowing a randomly-assigned default may result in use of a port which violates DoD policy or conflicts with ports already in use.  Use of certain well-known ports may also result in slow operational responses or may expose the application to denial of service attacks.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28177",
+      "title": "Backup of SharePoint system level files for critical systems must be performed when identified as required by the owning organization.",
+      "description": "Information system backup is a critical step in maintaining data assurance and availability. System-level information includes: system-state information, operating system and application software, and licenses. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28184",
+      "title": "To support audit review, analysis, and reporting, SharePoint must integrate audit review, analysis, and reporting processes to support organizational processes for investigation and response to suspicious activities.",
+      "description": "Successful incident response and auditing relies on timely, accurate system information and analysis in order to allow the organization to identify and respond to potential incidents in a proficient manner. \n\nAudit review, analysis, and reporting are all activities are related to the evaluation of system activity through the inspection and analysis of system log data. \n\nSome examples include, but are not limited to, organizational requirements to cooperate with legal counsel and/or auditors in order to provide reports on certain types of system activity or analyzing system logs to ascertain sources or causes of certain system activity. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-28207",
+      "title": "SharePoint must implement security functions as largely independent modules to avoid unnecessary interactions between modules. ",
+      "description": "Microsoft recommends separate Application Pools (and security accounts) for site collections with authenticated and anonymous content; to isolate applications storing security or management information; or where users have great liberty to create and administer sites and to collaborate on content. With this configuration, if an attacker gains control of one Application Pool, they do not gain universal access to all data hosted in the SharePoint farm. \n\nConfiguring separate Application Pools with the appropriate security based on access and content allows for content isolation and load balancing, limiting access to specific servers. Organizations can use custom HTTP modules for specific zones to create unique sign-on rules based on these groups of users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28217",
+      "title": "For environments requiring an Internet-facing capability, the SharePoint application server upon which Central Administration is installed must not be installed in the DMZ.",
+      "description": "Information flow control regulates where information is allowed to travel within and between information systems (as opposed to who is allowed to access the information) and without explicit regard to subsequent accesses to the information. \n\nSharePoint Central Administrator is a powerful management tool used to administer the farm. This server should be installed on a trusted network segment. This server should be used to run required services rather than user-oriented web applications. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28230",
+      "title": "SharePoint must enable IRM to bind attributes to information to facilitate the organization’s established information flow policy as needed.",
+      "description": "The application enforces approved authorizations for controlling the flow of information within the system and between interconnected systems in accordance with applicable policy. Information flow control regulates where information is allowed to travel within an information system and between information systems (as opposed to who is allowed to access the information) and without explicit regard to subsequent accesses to that information. \n\nAttribution is a critical component of a security concept of operations. The ability to identify source and destination points for information flowing in an information system, allows forensic reconstruction of events when required, and increases policy compliance by attributing policy violations to specific organizations/individuals. Binding security attributes to information allows policy enforcement mechanisms to act on that information and enforce policy.\n",
+      "severity": "low"
+    },
+    {
+      "id": "V-28241",
+      "title": "SharePoint must enforce organizational requirements to implement separation of duties through assigned information access authorizations.",
+      "description": "Separation of duties is a prevalent Information Technology control implemented at different layers of the information system including the operating system and in applications. It serves to eliminate or reduce the possibility that a single user may carry out a prohibited action. Separation of duties requires that the person accountable for approving an action is not the same person who is tasked with implementing or carrying out the action. \n\nAdditionally, the person or entity accountable for monitoring the activity must be separate as well. To meet this requirement, applications, when applicable, shall be divided where functionality is based on roles and duties. Examples of separation of duties include: (i) mission functions and distinct information system support functions are divided among different individuals/roles; (ii) different individuals perform information system support functions (e.g., system management, systems programming, configuration management, quality assurance and testing, network security); (iii) security personnel who administer access control functions do not administer audit functions; and (iv) different administrator accounts for different roles.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28249",
+      "title": "Timer job retries for automatic password change on Managed Accounts must meet DoD password retry policy.",
+      "description": "When an authentication method is exposed to allow for the utilization of an application, there is a risk that attempts will be made to obtain unauthorized access. To defeat these attempts, organizations define the number of times a user account may consecutively fail a log in attempt. The organization also defines the period of time in which these consecutive failed attempts may occur. By limiting the number of failed log in attempts, the risk of unauthorized system access via user password guessing otherwise known as brute forcing is reduced. Limits are imposed by locking the account. \n\nThe automatic password change feature for Managed Accounts allows SharePoint to automatically generate new strong passwords on a schedule set by the administrator. This generates a password change job in the Timer Service. Limiting the number of times the job attempts to change the password, will help guard against a password change attack.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28252",
+      "title": "SharePoint clients must be configured to display an approved system use notification message or banner before granting access to the system. ",
+      "description": "Applications are required to display an approved system use notification message or banner before granting access to the system that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance and states: \n\n(i) users are accessing a U.S. Government information system; \n(ii) system usage may be monitored, recorded, and subject to audit; \n(iii) unauthorized use of the system is prohibited and subject to criminal and civil penalties; and \n(iv) use of the system indicates consent to monitoring and recording.\n\nSystem use notification messages can be implemented in the form of warning banners displayed when individuals log in to the information system. \n\nSystem use notification is intended only for information system access that includes an interactive login interface with a human user and is not intended to require notification when an interactive interface does not exist. \n\nUse this banner for desktops, laptops, and other devices accommodating banners of 1300 characters. The banner shall be implemented as a click-through banner at logon (to the extent permitted by the operating system), meaning it prevents further activity on the information system unless and until the user executes a positive action to agree by clicking on a box indicating “OK” or some other equivalent action.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28254",
+      "title": "SharePoint must retain the notification message or banner on the screen until users take explicit actions to log on to or further access.",
+      "description": "To establish acceptance of system usage policy, a click-through banner at application logon is required. The banner shall prevent further activity on the application unless and until the user executes a positive action to agree by clicking on a box indicating \"OK\" or agreement with the terms of the banner. The text of this banner should be customizable in the event of future user agreement changes. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28256",
+      "title": "SharePoint must be configured to display the banner, when appropriate, before granting further access.",
+      "description": "Applications are required to display the following information:\n\n(i) displays the system use information when appropriate, before granting further access; \n(ii) displays references, if any, to monitoring, recording, or auditing consistent with privacy accommodations for such systems that generally prohibit those activities; and \n(iii) includes in the notice given to public users of the information system, a description of the authorized uses of the system.\n\nSystem use notification messages can be implemented in the form of warning banners displayed when individuals login to the information system. System use notification is intended only for information system access including an interactive login interface with a human user and is not intended to require notification when an interactive interface does not exist. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-28281",
+      "title": "The Central Administration site must not be accessible from Extranet or Internet connections.",
+      "description": "SharePoint must prevent the presentation of information system management-related functionality at an interface utilized by general, (i.e., non-privileged), users. \n\nCentral Administration is an application used to manage SharePoint system settings and the settings of the web applications running under SharePoint. The Central Administration application should be protected using a defense-in-depth approach. Regular users should not be able to access the Central Administration as the first line of defense. The second line of defense is that regular users do not have user ids defined in the Central Administration application. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-29301",
+      "title": "SharePoint sites must not use NTLM.",
+      "description": "An authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message. Techniques used to address this include protocols using nonce's or challenges (e.g., TLS, WS_Security), and time synchronous or challenge-response one-time authenticators. \n\nSharePoint must not use NTLM in the authentication process. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-29306",
+      "title": "SharePoint farm service account (Database Access account) must be configured with minimum privileges in Active Directory (AD).",
+      "description": "Separation of duties is a prevalent Information Technology control implemented at different layers of the information system including the operating system and in applications. It serves to eliminate or reduce the possibility that a single user may carry out a prohibited action. Separation of duties requires the person accountable for approving an action not be the same person who is tasked with implementing the action. \n\nThis requirement is intended to limit exposure due to user accounts being used to operate from within a privileged account or role. Limiting the access and permissions of privileged accounts to the minimum required, reduces exposure if the account is compromised and provides forensic history of activity when operating from these accounts. \n\nThis policy limits the Farm Account privileges in AD.  However, default permissions for this account are configured by the SharePoint Products Configuration Wizard during product installation. This account is referred to during the installation as the “Database Access” account. By default, the account is used as the service account for the SharePoint Timer Service and the SharePoint Central Administration Web Site Application Pool. These settings should not be changed. Furthermore, this account should not be used as the service account for non-privileged services, applications, or application pools.\n\nSee TechNet Article cc678863 for information regarding required permission. The server farm account requires membership in the Domain Users group in Active Directory.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-29338",
+      "title": "The Online Web Part Gallery must be configured for limited access.",
+      "description": "Web Part galleries are groupings of Web Parts. There are four Web Part galleries: Closed Web Parts, Site Name Gallery, Server Gallery, and Online Gallery. The Online Gallery is a collection of Microsoft MSNBC Web Parts located on the Internet. Allowing users to access the Online Web Part Gallery causes a significant performance hit on the server, due to the server attempting to connect to the MSNBC online gallery. This could result in a Denial-of-Service. The Online Gallery could contain Web Parts from unknown third parties, which could increase the risk of a malicious code execution attack. Preventing users from accessing the Online Web Part Gallery decreases the system's attack surface. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-29339",
+      "title": "SharePoint-specific malware (i.e., anti-virus) software must be integrated and configured.",
+      "description": "Configuring anti-virus settings ensures documents will be scanned for viruses upon download from and upload to the SharePoint server. Anti-virus settings are not configured by default, therefore leaving SharePoint document libraries open to potential viruses.",
+      "severity": "high"
+    },
+    {
+      "id": "V-29363",
+      "title": "The “Automatically delete the site collection if use is not confirmed” property must not be enabled for web applications.",
+      "description": "Automatic deletion is an administrative feature that can delete unused sites without administrative intervention and without a backup mechanism. Automatic deletion permanently removes all content and information from the site collection and any sites beneath it. If the site collection administrator or secondary site collection administrator fails to confirm a site is still in use when receiving an email notification asking if the site is still in use, the site is automatically deleted. This could result in a Denial-of-Service to the users of that site. Also, data could be lost if a backup was not made prior to removing the site collection.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-29367",
+      "title": "Access to Central Administration site must be limited to authorized users and groups.",
+      "description": "SharePoint must prevent the presentation of information system management-related functionality at an interface utilized by general, (i.e., non-privileged), users administrative interfaces to non-privileged users.\n\nInformation system management functionality includes: functions necessary to administer databases, network components, workstations, or servers, and typically requires privileged user access. The separation of user functionality from information system management functionality is either physical or logical and is accomplished by using different computers, different central processing units, different instances of the operating system, different network addresses, combinations of these methods, or other methods as appropriate. An example of this type of separation is observed in web administrative interfaces that use separate authentication methods for users of any other information system resources. This may include isolating the administrative interface on a different domain and with additional access controls. The Central Administrator is the web application used to manage SharePoint system configuration and web application settings.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-29373",
+      "title": "A secondary site collection administrator must be defined when creating a new site collection.",
+      "description": "If a site reaches its maximum size, users will be denied access until an administrator fixes the problem. Having a secondary administrator reduces the risk of having a Denial-of-Service on a site. If the site reaches its maximum size, the secondary administrator can fix the problem if the primary administrator is not available. In some situations, having a secondary site administrator could be inappropriate for reasons of control or confidentiality.",
+      "severity": "low"
+    },
+    {
+      "id": "V-29398",
+      "title": "SharePoint service accounts must be configured for separation of duties.",
+      "description": "Separation of duties is a prevalent Information Technology control implemented at different layers of the information system including the operating system and in applications. It serves to eliminate or reduce the possibility that a single user may carry out a prohibited action. \n\nSharePoint service accounts must be configured for separation of duties, particularly the farm services account which should not be used to manage other services.  The required service accounts must be created in AD (default users group member only).  These AD accounts are applied when installing and configuring SharePoint services. If the default Farm Services Account is used for all services during initial configuration, this must be changed when each service is configured.  This violates the principles of least privilege since not all services have equal trust levels. Some services, (e.g., Excel Service or Search Service), may be configured to interact with outside resources. Microsoft recommends separate accounts for each service with the minimum required privileges for each service account.\n\nWhen each service is installed, a service account is requested by the application. Ensure one service account is not used for all services. Either use separate accounts for all services or group the services based on trust and access privileges. Each account will be a member of the default user domain group in AD. The exact services installed on each farm may vary.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-29399",
+      "title": "The SharePoint setup user domain account must be configured with the minimum privileges in Active Directory.",
+      "description": "Separation of duties is a prevalent Information Technology control implemented at different layers of the information system including the operating system and in applications. It serves to eliminate or reduce the possibility that a single user may carry out a prohibited action. Separation of duties requires the person accountable for approving an action not be the same person tasked with implementing the action. \n\nThis requirement is intended to limit exposure due to users (or entities acting on behalf of users) being used to operate from within a privileged account or role. Limiting the access and permissions of privileged accounts to the minimum required, reduces exposure if the account is compromised and provides forensic history of activity when operating from these accounts.\n\nSee TechNet Article cc678863 for information regarding required permission. The setup user administrator account is used during initial creation of the farm, to update the farm servers, and to configure certain farm configuration option. The setup user administrator account should be limited to membership in the Domain Users group in Active Directory.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30282",
+      "title": "SharePoint must protect audit information from unauthorized access to the trace data log files.",
+      "description": "If audit data were to become compromised then competent forensic analysis and discovery of the true source of potentially malicious system activity is difficult. To ensure the veracity of audit data the information system and/or SharePoint must protect audit information from unauthorized access.\n\nSharePoint is an integrated product with comprehensive built-in auditing capabilities working with the Windows system event log. Additional trace logs and usage logs are created by the application and are placed in a designated folder. Logs of actions taken by users of site content (editing, modifying, viewing, deleting, etc.) are stored in a SQL database.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30287",
+      "title": "SharePoint must protect audit information from unauthorized modification to trace data logs.",
+      "description": "If audit data were to become compromised then competent forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.\n\nTo ensure the veracity of audit data the information system and/or SharePoint must protect audit information from unauthorized modification.\n\nSharePoint is an integrated product with comprehensive built-in auditing capabilities working with the Windows system event log. Additional trace logs and usage logs are created by the application and are placed in a designated folder. Logs of actions taken by users of site content (editing, modifying, viewing, deleting, etc.) are stored in a SQL database. Only designated audit administrators and internal accounts should have any type of permission to these files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30290",
+      "title": "SharePoint must protect audit information from unauthorized deletion of trace log files.",
+      "description": "If audit data were to become compromised then competent forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.\n\nTo ensure the veracity of audit data the information system and/or SharePoint must protect audit information from unauthorized deletion. \n\nSharePoint is an integrated product with comprehensive built-in auditing capabilities that works with the Windows system event log. Additional trace logs and usage logs are created by the application and are placed in a designated folder. Logs of actions taken by users of site content (editing, modifying, viewing, deleting, etc.) are stored in a SQL database.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30364",
+      "title": "SharePoint information management policies must be created, configured, and maintained to support the use of organizationally defined security attributes. ",
+      "description": "A SharePoint information management policy is a set of rules governing the availability and behavior of a certain type of content in the application. These policies enable administrators to control and evaluate who can access information, how long to retain information, and how effectively people are complying with the policy. For all systems processing non-publicly releasable information, an information management policy must be applied to content in document libraries and site collections by default. Applying policy to a content type or metadata allows the policy to be applied globally across document libraries, sites, or site collections. \n\nThese policies must be created and configured to automatically enforce organizationally-defined security policy to a document library, a site, or a specific content type. Information management policy can be used to apply permissions, audit requirements, security labels, or barcodes based on organizationally defined content types, thus leveraging a centralized security policy and security attributes that binds to SharePoint information while in storage and in process. \n\nNOTE: Sites should run and review usage reports for the information management policy. This report shows how many policies are in place in a web application and how many documents are affected by each policy. This information can help identify which SharePoint sites are not using the global policies which may indicate a compliance issue. The information on this report can also help organizations determine how effectively the organizationally-defined labeling and other compliance requirements documented in the Site Security Plan (SSP) are being implemented. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-30366",
+      "title": "The SharePoint setup user domain account must be configured with the minimum privileges for the local server.",
+      "description": "Separation of duties is a prevalent Information Technology control implemented at different layers of the information system including the operating system and in applications. It serves to eliminate or reduce the possibility that a single user may carry out a prohibited action. Separation of duties requires the person accountable for approving an action not be the same person tasked with implementing the action. \n\nThis requirement is intended to limit exposure due to users (or entities acting on behalf of users) being used to operate from within a privileged account or role. Limiting the access and permissions of privileged accounts to the minimum required, reduces exposure if the account is compromised and provides forensic history of activity when operating from these accounts.\n\nSee TechNet Article cc678863 for information regarding required permission. The setup user administrator account is used during initial creation of the farm, to update the farm servers, and to configure certain farm configuration option. The setup user administrator account must have membership in the local administrators Windows group on each server in the farm (excluding SQL Server and the Exchange server.)\n\n",
+      "severity": "medium"
+    }
+  ]
+}

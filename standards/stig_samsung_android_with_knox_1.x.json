@@ -1,0 +1,293 @@
+{
+  "name": "stig_samsung_android_with_knox_1.x",
+  "date": "2014-04-22",
+  "description": "Developed by Samsung Electronics Co., Ltd. in coordination with DISA for the DoD.",
+  "title": "Samsung Android (with Knox 1.x) STIG",
+  "version": "2",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-48247",
+      "title": "The administrator/MDM must disable all Bluetooth profiles except for HSP (Headset Profile), HFP (Hands-Free Profile) and SPP (Serial Port Profile).",
+      "description": "Unsecure Bluetooth profiles may allow either unauthenticated connections to mobile devices or transfer of sensitive DoD data without required DoD information assurance (IA) controls. Only the HSP, HFP, and SPP profiles are required to meet current DoD Bluetooth needs and DoD data and voice IA controls.\n\nSFR ID: FMT_SMF.1.1 #42",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48249",
+      "title": "Samsung Knox Android must protect data-at-rest on built-in storage media.",
+      "description": "The operating system must ensure the data being written to the mobile device's storage media is protected from unauthorized access. If data at rest is unencrypted, it is vulnerable to disclosure. Even if the operating system enforces permissions on data access, an adversary can read storage devices directly, thereby circumventing operating system controls. Encrypting the data ensures that confidentiality is protected even when the operating system is not running.\n\nSFR ID: FDP_DAR_EXT.1.1",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48251",
+      "title": "The administrator/MDM must enable CC mode.",
+      "description": "CC mode implements several security controls required by the Mobile Device Functional Protection Profile (MDFPP).  If CC mode is not implemented, DoD data is more at risk of being compromised and the MD is more at risk of being compromised if lost or stolen.\n\nCC mode implements the following controls:\n- enables the OpenSSL FIPS crypto library\n- sets the password failure settings to wipe the device to 5 (5 failed consecutive attempts will wipe the device), unless the value has been set to the DoD value (10)\n- disables ODIN mode (download mode)\n\nSFR ID: FMT_SMF.1.1 #42",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48253",
+      "title": "The container must be enabled by the administrator/MDM.",
+      "description": "The container must be enabled by the administrator/MDM or the container's protections will not apply to the mobile device. This will cause the mobile device's apps and data to be at significantly higher risk of compromise because they are not protected by encryption, isolation, etc.\n\nSFR ID: FMT_SMF.1.1 #42",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48255",
+      "title": "The mobile device operating system must have access to DoD root and intermediate PKI certificates when performing DoD PKI-related transactions.",
+      "description": "DoD root and intermediate PKI certificates are used to verify the authenticity of PKI certificates of users and web services. If the root and intermediate certificates are not available, an adversary could falsely sign a certificate in such a way that it could not be detected. Providing access to the DoD root and intermediate PKI certificates greatly diminishes the risk of this attack.\n\nSFR ID: FMT_SMF.1.1 #13",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48257",
+      "title": "The administrator/MDM must set the maximum number of consecutive failed container authentication attempts to 10 or less.",
+      "description": "Users must not be able to override the system policy on the maximum number of consecutive failed authentication attempts because this could allow them to raise the maximum, thus giving adversaries more chances to guess/brute force passwords, which increases the risk of the mobile device being compromised. Therefore, only administrators and the MDM software should have the authority to set consecutive failed authentication attempt policies.\n\nSFR ID: FMT_SMF.1.1 #02",
+      "severity": "low"
+    },
+    {
+      "id": "V-48261",
+      "title": "Only DoD PKI issued or DoD approved server authentication certificates must be installed on DoD Samsung Knox Android devices.",
+      "description": "If unauthorized device authentication certificates are installed on the device, there is the potential that the device may connect to a rogue device or network. Rogue devices can mimic the behavior of authorized equipment to trick the user into providing authentication credentials, which could then in turn be used to compromise DoD information and networks. Restricting device authentication certificates to an authorized list mitigates the risk of attaching to rogue devices and networks.\n\nSFR ID: FMT_SMF.1.1 #14",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48263",
+      "title": "Samsung Knox Android must allow only the administrator/MDM to set the screen lock timeout for the container password.",
+      "description": "Users must not be able to override the system policy on the screen lock timeout because this could allow them to effectively disable the timeout (e.g., by setting the timeout to 0 minutes) or to set the timeout for such a long duration as to make it nearly ineffective. Either of these would increase the window of opportunity for adversaries who gain physical access to the mobile device through loss, theft, etc. Such devices are much more likely to be in an unlocked state when acquired by an adversary, thus granting immediate access to the data on the mobile device. Therefore, only administrators and the MDM software should have the authority to set screen lock timeout policies.\n\nSFR ID: FMT_MOF.1.1(2) #02",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48265",
+      "title": "The Samsung Knox Android Bluetooth module must not permit any data transfer between devices prior to Bluetooth mutual authentication.",
+      "description": "Bluetooth mutual authentication provides assurance that both the mobile device and Bluetooth peripheral are legitimate. If the authentication does not occur immediately before permitting a network connection, there is the potential for a man-in-the-middle attack in which a third device intercepts the traffic between the two legitimate devices. Mutual authentication prevents this from occurring.\n\nSFR ID: FIA_BLT_EXT.1.1",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48267",
+      "title": "The administrator/MDM must enforce a minimum password length of 6 characters for the container password.",
+      "description": "Password strength is a measure of the effectiveness of a password in resisting guessing and brute force attacks. The ability to crack a password is a function of how many attempts an adversary is permitted, how quickly an adversary can do each attempt, and the size of the password space. The longer the minimum length of the password is, the larger the password space. Having a too-short minimum password length significantly reduces password strength, increasing the chance of password compromise and resulting device and data compromise. \n\nSFR ID: FMT_SMF.1.1 #01",
+      "severity": "low"
+    },
+    {
+      "id": "V-48269",
+      "title": "Samsung Knox Android must authenticate devices before establishing remote network (e.g., VPN) connections using bidirectional cryptographically based authentication between devices.",
+      "description": "Without strong mutual authentication a mobile device may connect to an unauthorized network. In many cases, the user may falsely believe that the device is connected to an authorized network and then provide authentication credentials and other sensitive information. A strong bidirectional cryptographically based authentication method mitigates this risk.\n\nSFR ID: FMT_SMF.1.1 #42",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48271",
+      "title": "Samsung Knox Android must allow only the administrator/MDM to enforce a minimum password length for the container password.",
+      "description": "Users must not be able to override the system policy on minimum password length because this could allow them to set passwords that are easily guessable or crackable. Only administrators and the MDM software should have the authority to set minimum password length policies.\n\nSFR ID: FMT_MOF.1.1(2) #01",
+      "severity": "low"
+    },
+    {
+      "id": "V-48273",
+      "title": "Samsung Knox Android must be able to filter both inbound and outbound traffic based on IP address and UDP/TCP port.",
+      "description": "Open ports provide an attack surface that an adversary can then potentially use to breach system security. If an adversary can communicate with the mobile device from any IP address, then the device may be open to any other device on the Internet. Reducing the attack surface through IP address and port restrictions mitigates this risk.\n\nSFR ID: FMT_SMF.1.1 #42",
+      "severity": "low"
+    },
+    {
+      "id": "V-48275",
+      "title": "Samsung Knox Android must prevent a user from using a browser in the container that does not direct its traffic to a DoD proxy server.",
+      "description": "Proxy servers can inspect traffic for malware and other signs of a security attack. Allowing a mobile device to access the public Internet without proxy server inspection forgoes the protection that the proxy server would otherwise provide. Malware downloaded onto the device could have a wide variety of malicious consequences, including loss of sensitive DoD information. Forcing traffic to flow through a proxy server greatly mitigates the risk of access to public Internet resources.\n\nSFR ID: FMT_SMF.1.1 #42",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48277",
+      "title": "Samsung Knox Android must synchronize the internal clock on an organization-defined periodic basis with an authoritative time server or the Global Positioning System.",
+      "description": "Determining the correct time a particular application event occurred on a system is critical when conducting forensic analysis and investigating system events. \n\nPeriodically synchronizing internal clocks with an authoritative time source is needed in order to correctly correlate the timing of events that occur across the enterprise. The two authoritative time sources for mobile operating systems are an authoritative time server which is synchronized with redundant United States Naval Observatory (USNO) time servers as designated for the appropriate DoD network (NIPRNet or SIPRNet) or the Global Positioning System (GPS).\n\nTime stamps generated by the audit system in mobile operating systems shall include both date and time. The time may be expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.\n\nSFR ID: FPT_STM.1.1",
+      "severity": "low"
+    },
+    {
+      "id": "V-48279",
+      "title": "The Samsung Knox Android VPN client must use either IPSec or SSL/TLS when connecting to DoD networks.",
+      "description": "Use of non-standard communications protocols can affect both the availability and confidentiality of communications. IPSec and SSL/TLS are both well-known and tested protocols that provide strong assurance with respect to both IA and interoperability.\n\nSFR ID: FMT_SMF.1.1 #42",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48281",
+      "title": "Before establishing a user session, Samsung Knox Android must display an administrator/MDM-specified advisory notice and consent warning banner regarding use of Samsung Knox Android.",
+      "description": "The operating system is required to display the DoD approved system use notification message or banner before granting access to the system that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. This ensures the legal requirements for auditing and monitoring are met. \n\nSystem use notification messages can be displayed when individuals log in to the information system. The approved DoD text must be used as specified in the DoD CIO memorandum dated 9 May 2008.\n\nSFR ID: FTA_TAB.1.1",
+      "severity": "low"
+    },
+    {
+      "id": "V-48283",
+      "title": "The Samsung Knox Android Bluetooth stack must use 128-bit Bluetooth encryption when performing data communications with other Bluetooth devices.",
+      "description": "If data traffic is sent unencrypted, an adversary may be able to read it to obtain sensitive information. 128-bit Bluetooth encryption for data communications mitigates the risk of unauthorized eavesdropping. DoD has determined that FIPS 140-2 validated encryption is not required for voice communications.\n\nSFR ID: FMT_SMF.1.1 #42",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48285",
+      "title": "The administrator/MDM must configure the mobile operating system to display the DoD-standard consent banner.",
+      "description": "The operating system is required to display the DoD approved system use notification message or banner before granting access to the system that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. This ensures the legal requirements for auditing and monitoring are met.\n\nSystem use notification messages can be displayed when individuals log in to the information system. The approved DoD text must be used as specified in DTM-8-060 (dated 9 May 2008; revised 25 September 2013).\n\nThe messages to choose from are: \n[A. Use this banner for desktops, laptops, and other devices accommodating banners of 1300 characters.  The banner shall be implemented as a click-through banner at logon (to the extent permitted by the operating system); meaning it prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating “OK.”]\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. \nBy using this IS (which includes any device attached to this IS), you consent to the following conditions: \n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n\n[B. For Blackberries and other PDAs/PEDs with severe character limitations:]\n\n\"I've read & consent to terms in IS user agreem't.\"\n\nSFR ID: FMT_SMF.1.1 #41",
+      "severity": "low"
+    },
+    {
+      "id": "V-48287",
+      "title": "The administrator/MDM must disable mock locations.",
+      "description": "Developers often use mock locations in the development of apps that leverage location-based services. Developer modes circumvent certain security measures, so their use for standard operation is not recommended. Developer modes may increase the likelihood of compromise of confidentiality, integrity, and availability.\n\nIn particular, malicious applications can use the mock locations feature in the Android OS to override the device GPS location and provide a fake location to the user or network provider.\n\nSFR ID: FMT_SMF.1.1 #21",
+      "severity": "low"
+    },
+    {
+      "id": "V-48289",
+      "title": "Samsung Knox Android must prevent a user from using a browser outside the container that does not direct its traffic to a DoD proxy server.",
+      "description": "Proxy servers can inspect traffic for malware and other signs of a security attack. Allowing a mobile device to access the public Internet without proxy server inspection forgoes the protection that the proxy server would otherwise provide. Malware downloaded onto the device could have a wide variety of malicious consequences, including loss of sensitive DoD information. Forcing traffic to flow through a proxy server greatly mitigates the risk of access to public Internet resources.\n\nSFR ID: FMT_SMF.1.1 #42",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48291",
+      "title": "Samsung Knox Android must authenticate tethered connections to the device.",
+      "description": "Authentication may occur either by reentry of the device unlock passcode at the time of connection, through another passcode with the same or stronger complexity, or through PKI certificates. Authentication mitigates the risk that an adversary who obtains physical possession of the device is not able to use the tethered connection to access sensitive data on the device or otherwise tamper with its operating system or applications.\n\nSFR ID: FMT_SMF.1.1 #42",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48293",
+      "title": "The administrator/MDM must disable USB debugging.",
+      "description": "USB debugging mode provides access to developer mode features.  Developer modes circumvent certain security measures, so their use for standard operation is not recommended. Developer modes may increase the likelihood of compromise of confidentiality, integrity, and availability. Because of the security risks of developer modes, users must not be able to enable them.\n\nSFR ID: FMT_SMF.1.1 #21",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48297",
+      "title": "Samsung Knox Android must wipe all protected data from the device after 10 consecutive unsuccessful attempts to unlock the device.",
+      "description": "Any time an authentication method is exposed to allow for the utilization of an operating system, there is a risk that attempts will be made to obtain unauthorized access.  Mobile devices present additional risks related to attempted unauthorized access. If they are lost, stolen, or misplaced, attempts can be made to unlock the device by guessing the password. Once unlocked, an adversary may be able to obtain sensitive data on the device. The odds of guessing the passwords are greatly reduced if the operating system intervenes after a small number of consecutive unsuccessful login attempts occur. Wiping all protected data at that time renders the data permanently inaccessible.\n\nSFR ID: FIA_AFL_EXT.1.2",
+      "severity": "low"
+    },
+    {
+      "id": "V-48299",
+      "title": "Samsung Knox Android must allow only the administrator/MDM to enforce a minimum password length.",
+      "description": "Users must not be able to override the system policy on minimum password length because this could allow them to set passwords that are easily guessable or crackable. Only administrators and the MDM software should have the authority to set minimum password length policies.\n\nSFR ID: FMT_MOF.1.1(2) #01",
+      "severity": "low"
+    },
+    {
+      "id": "V-48301",
+      "title": "Samsung Knox Android must allow only the administrator/MDM to enforce a minimum password complexity.",
+      "description": "Users must not be able to override the system policy on minimum password complexity because this could allow them to set passwords that are easily guessable or crackable. Only administrators and the MDM software should have the authority to set minimum password complexity policies.\n\nSFR ID: FMT_MOF.1.1(2) #01",
+      "severity": "low"
+    },
+    {
+      "id": "V-48305",
+      "title": "Samsung Knox Android must allow only the administrator/MDM to disable the screen lock function.",
+      "description": "Users must not be able to override the system policy on the screen lock function because this could allow them to disable the function, preventing automatic screen locking from occurring. This would increase the window of opportunity for adversaries who gain physical access to the mobile device through loss, theft, etc. Devices without automatic locking are much more likely to be in an unlocked state when acquired by an adversary, thus granting immediate access to the data on the mobile device. Therefore, only administrators and the MDM software should have the authority to disable the screen lock function.\n\nSFR ID: FMT_MOF.1.1(2) #02",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48307",
+      "title": "Samsung Knox Android must allow only the administrator/MDM to set the screen lock timeout.",
+      "description": "Users must not be able to override the system policy on the screen lock timeout because this could allow them to effectively disable the timeout (e.g., by setting the timeout to 0 minutes) or to set the timeout for such a long duration as to make it nearly ineffective. Either of these would increase the window of opportunity for adversaries who gain physical access to the mobile device through loss, theft, etc. Such devices are much more likely to be in an unlocked state when acquired by an adversary, thus granting immediate access to the data on the mobile device. Therefore, only administrators and the MDM software should have the authority to set screen lock timeout policies.\n\nSFR ID: FMT_MOF.1.1(2) #02",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48309",
+      "title": "Samsung Knox Android must allow only the administrator/MDM to set the maximum number of consecutive failed authentication attempts.",
+      "description": "Users must not be able to override the system policy on the maximum number of consecutive failed authentication attempts because this could allow them to raise the maximum, thus giving adversaries more chances to guess/brute force passwords, which increases the risk of the mobile device being compromised. Therefore, only administrators and the MDM software should have the authority to set consecutive failed authentication attempt policies.\n\nSFR ID: FMT_MOF.1.1(2) #02",
+      "severity": "low"
+    },
+    {
+      "id": "V-48311",
+      "title": "The administrator/MDM must enforce a minimum device unlock password length of 6 characters.",
+      "description": "Password strength is a measure of the effectiveness of a password in resisting guessing and brute force attacks. The ability to crack a password is a function of how many attempts an adversary is permitted, how quickly an adversary can make each attempt, and the size of the password space. The longer the minimum length of the password is, the larger the password space. Having a too short of minimum password length significantly reduces password strength, increasing the chance of password compromise and resulting device and data compromise. \n\nSFR ID: FMT_SMF.1.1 #01",
+      "severity": "low"
+    },
+    {
+      "id": "V-48313",
+      "title": "Samsung Knox Android must employ mobile device management services to centrally manage security relevant configuration and policy settings.",
+      "description": "Security related parameters are those parameters impacting the security state of the system and include parameters related to the implementation of other IA controls. If these controls are not implemented, the system may be vulnerable to a variety of attacks. The use of an MDM allows an organization to assign values to security related parameters across all the devices it manages. This provides assurance that the required mobile OS security controls are being enforced, and that the device user or an adversary has not modified or disabled the controls. It also greatly increases efficiency and manageability of devices in a large scale environment relative to an environment in which each device must be configured separately.\n\nSFR ID: FMT_SMF.1.1 #15",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48317",
+      "title": "The administrator/MDM must set the maximum number of consecutive failed authentication attempts for the device unlock password to 10 or less.",
+      "description": "Users must not be able to override the system policy on the maximum number of consecutive failed authentication attempts because this could allow them to raise the maximum, thus giving adversaries more chances to guess/brute force passwords, which increases the risk of the mobile device being compromised. Therefore, only administrators and the MDM software should have the authority to set consecutive failed authentication attempt policies.\n\nSFR ID: FMT_SMF.1.1 #02",
+      "severity": "low"
+    },
+    {
+      "id": "V-48319",
+      "title": "Samsung Knox Android must lock the device screen after a time period of inactivity.",
+      "description": "Having a session lock after an idle time helps protect the device from unauthorized access. The idle time is a window of opportunity for adversaries who gain physical access to the mobile device through loss, theft, etc. Devices that do not initiate a session lock after a period of time are much more likely to be in an unlocked state when acquired by an adversary, thus granting immediate access to the data on the mobile device.\n\nSFR ID: FTA_SSL_EXT.1.1(1)",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48321",
+      "title": "The administrator/MDM must disable USB mass storage mode.",
+      "description": "This data transfer capability could allow users to transfer sensitive DoD data onto unauthorized USB storage devices, thus leading to the compromise of this DoD data.\n\nSFR ID: FMT_SMF.1.1 #42",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48333",
+      "title": "The administrator/MDM must configure an application whitelist, listing authorized applications and versions.",
+      "description": "Requiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications.\n\nSFR ID: FMT_SMF.1.1 #10",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48335",
+      "title": "Samsung Knox Android must allow only the administrator/MDM to configure application installation policy by specifying authorized application repositories.",
+      "description": "Users must not be able to override the system policy on specifying authorized application repositories because this could allow them to list unauthorized sites as part of the \"authorized\" list. This could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications.\n\nSFR ID: FMT_MOF.1.1(2) #04",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48337",
+      "title": "The administrator/MDM must configure the application installation policy by specifying authorized application repositories (Disable Google Play).",
+      "description": "Forcing all applications to be installed from authorized application repositories can prevent unauthorized and malicious applications from being installed and executed on mobile devices. Allowing such installations and executions could cause a compromise of DoD data accessible by these unauthorized/malicious applications.\n\nSFR ID: FMT_SMF.1.1 #10",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48339",
+      "title": "Samsung Knox Android must allow only the administrator/MDM to configure application installation policy by specifying a set of allowed applications and versions (an application whitelist).",
+      "description": "Users must not be able to override the system policy on specifying an application whitelist because this could allow them to list unauthorized applications as part of the whitelist. This could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications.\n\nSFR ID: FMT_MOF.1.1(2) #04",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48341",
+      "title": "Samsung Knox Android must allow only the administrator/MDM to enable/disable wireless remote access connections (except for personal hotspot service),  and tethered connections.",
+      "description": "Users must not be able to override the system policy on wireless remote access connections because this could allow them to establish unauthorized remote access connections. The mobile device itself could provide services to other systems, which is not an acceptable use of the mobile device. Unauthorized remote access connections would expose the mobile device to additional risk, thereby increasing the likelihood of compromise of its confidentiality and integrity.\n\nSFR ID: FMT_MOF.1.1(2) #08",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48343",
+      "title": "Samsung Knox Android must allow only the administrator/MDM to enable/disable developer modes.",
+      "description": "Developer modes circumvent certain security measures, so their use for standard operation is not recommended. Developer modes may increase the likelihood of compromise of confidentiality, integrity, and availability. Because of the security risks of developer modes, users must not be able to enable them.\n\nSFR ID: FMT_MOF.1.1(2) #11",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48345",
+      "title": "Samsung Knox Android must allow only the administrator/MDM to enable/disable data-at-rest protection.",
+      "description": "Users must not be able to override the system policy on data-at-rest protection. The operating system must ensure the data being written to the mobile device's built-in storage media is protected from unauthorized access. If data at rest is unencrypted, it is vulnerable to disclosure. Even if the operating system enforces permissions on data access, an adversary can read storage media directly, thereby circumventing operating system controls. Encrypting the data ensures that confidentiality is protected even when the operating system is not running. There are also considerable security and operational risks in allowing users to enable data-at-rest protection because they are unlikely to configure it according to DoD requirements, thus creating weaknesses that can be exploited to gain unauthorized access to data. Therefore, only administrators and the MDM software should be able to set the data-at-rest protection policy.\n\nSFR ID: FMT_MOF.1.1(2) #12",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48347",
+      "title": "Samsung Knox Android must allow only the administrator/MDM to enable/disable data-at-rest protection for removable media.",
+      "description": "Users must not be able to override the system policy on data-at-rest protection for removable media. The operating system must ensure the data being written to the mobile device's removable media is protected from unauthorized access. If data at rest is unencrypted, it is vulnerable to disclosure. Even if the operating system enforces permissions on data access, an adversary can read removable media directly, thereby circumventing operating system controls. Encrypting the data ensures that confidentiality is protected even when the operating system is not running. There are also considerable security and operational risks in allowing users to enable data-at-rest protection because they are unlikely to configure it according to DoD requirements, thus creating weaknesses that can be exploited to gain unauthorized access to data. Therefore, only administrators and the MDM software should be able to set the data-at-rest protection policy for removable media.\n\nSFR ID: FMT_MOF.1.1(2) #13",
+      "severity": "medium"
+    },
+    {
+      "id": "V-48349",
+      "title": "Samsung Knox Android must allow only the administrator/MDM to enable/disable USB mass storage mode.",
+      "description": "Users must not be able to override the system policy on enabling/disabling USB mass storage mode. Enabling USB mass storage mode could allow sensitive DoD data to be copied to USB storage devices, thus compromising the confidentiality of the data.\n\nSFR ID: FMT_MOF.1.1(2) #31",
+      "severity": "medium"
+    },
+    {
+      "id": "V-49681",
+      "title": "Samsung Knox Android must protect data-at-rest on removable storage media.",
+      "description": "The operating system must ensure the data being written to the mobile device's storage media is protected from unauthorized access. If data at rest is unencrypted, it is vulnerable to disclosure. Even if the operating system enforces permissions on data access, an adversary can read storage devices directly, thereby circumventing operating system controls. Encrypting the data ensures that confidentiality is protected even when the operating system is not running.\n\nSFR ID: FDP_DAR_EXT.1.1",
+      "severity": "medium"
+    },
+    {
+      "id": "V-49683",
+      "title": "The administrator/MDM must configure the application installation policy by specifying authorized application repositories (Disable unknown sources).",
+      "description": "Forcing all applications to be installed from authorized application repositories can prevent unauthorized and malicious applications from being installed and executed on mobile devices. Allowing such installations and executions could cause a compromise of DoD data accessible by these unauthorized/malicious applications.\n\nSFR ID: FMT_SMF.1.1 #10",
+      "severity": "medium"
+    },
+    {
+      "id": "V-49685",
+      "title": "The administrator/MDM must configure the application installation policy by specifying authorized application repositories (Enroll in MDM).",
+      "description": "Forcing all applications to be installed from authorized application repositories can prevent unauthorized and malicious applications from being installed and executed on mobile devices. Allowing such installations and executions could cause a compromise of DoD data accessible by these unauthorized/malicious applications.\n\nSFR ID: FMT_SMF.1.1 #10",
+      "severity": "medium"
+    },
+    {
+      "id": "V-49687",
+      "title": "Samsung Knox Android must lock the container after 15 minutes of inactivity.",
+      "description": "Having a session lock after an idle time helps protect the device from unauthorized access. The idle time is a window of opportunity for adversaries who gain physical access to the mobile device through loss, theft, etc. Devices that do not initiate a session lock after a period of time are much more likely to be in an unlocked state when acquired by an adversary, thus granting immediate access to the data on the mobile device.\n\nSFR ID: FTA_SSL_EXT.1.1(1)",
+      "severity": "medium"
+    }
+  ]
+}

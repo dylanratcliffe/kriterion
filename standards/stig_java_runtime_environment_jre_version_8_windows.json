@@ -1,0 +1,107 @@
+{
+  "name": "stig_java_runtime_environment_jre_version_8_windows",
+  "date": "2017-12-21",
+  "description": "The Java Runtime Environment (JRE) is a bundle developed and offered by Oracle Corporation which includes the Java Virtual Machine (JVM), class libraries, and other components necessary to run Java applications and applets.  Certain default settings within the JRE pose a security risk so it is necessary to deploy system wide properties to ensure a higher degree of security when utilizing the JRE.\n",
+  "title": "Java Runtime Environment (JRE) version 8 STIG for Windows",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-66723",
+      "title": "Oracle JRE 8 must lock the option to enable users to check publisher certificates for revocation.",
+      "description": "Certificates may be revoked due to improper issuance, compromise of the certificate, and failure to adhere to policy. Therefore, any certificate found revoked on a CRL or via Online Certificate Status Protocol (OCSP) should not be trusted. Permitting execution of an applet published with a revoked certificate may result in spoofing, malware, system modification, invasion of privacy, and denial of service.\n\nEnsuring users cannot change these settings assures a more consistent security profile.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66939",
+      "title": "Oracle JRE 8 must have a deployment.config file present.",
+      "description": "By default no deployment.config file exists; thus, no system-wide deployment.properties file exists.  The file must be created. The deployment.config file is used for specifying the location and execution of system-level properties for the Java Runtime Environment. Without the deployment.config file, setting particular options for the Java control panel is impossible.\n\nThe deployment.config file can be created in either of the following locations:\n\n<Windows Directory>\\Sun\\Java\\Deployment\\deployment.config\n- or -\n<JRE Installation Directory>\\lib\\deployment.config\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66941",
+      "title": "Oracle JRE 8 deployment.config file must contain proper keys and values.",
+      "description": "The deployment.config  configuration file contains two keys.  \n\nThe \"deployment.properties\" key includes the path of the \"deployment.properties\" file and the \"deployment.properties.mandatory\" key contains either a TRUE or FALSE value.  \n \nIf the path specified to \"deployment.properties\" does not lead to a \"deployment.properties\" file, the value of the “deployment.system.config.mandatory” key determines how JRE will handle the situation.  \n\nIf the value of the \"deployment.system.config.mandatory\" key is TRUE and if the path to the \"deployment.properties\" file is invalid, the JRE will not allow Java applications to run.   This is the desired behavior.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66943",
+      "title": "Oracle JRE 8 must have a deployment.properties file present.",
+      "description": "By default no deployment.properties file exists; thus, no system-wide deployment exists. The file must be created. The deployment.properties file is used for specifying keys for the Java Runtime Environment.  Each option in the Java control panel is represented by property keys. These keys adjust the options in the Java control panel based on the value assigned to that key.  Without the deployment.properties file, setting particular options for the Java control panel is impossible.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66945",
+      "title": "Oracle JRE 8 must default to the most secure built-in setting.",
+      "description": "Applications that are signed with a valid certificate and include the permissions attribute in the manifest for the main JAR file are allowed to run with security prompts. All other applications are blocked. Unsigned applications could perform numerous types of attacks on a system.",
+      "severity": "low"
+    },
+    {
+      "id": "V-66947",
+      "title": "Oracle JRE 8 must be set to allow Java Web Start (JWS) applications.",
+      "description": "Java Web Start (JWS) applications are the most commonly used.  Denying these applications could be detrimental to the user experience. Whitelisting, blacklisting, and signing of applications help mitigate the risk of running JWS applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66949",
+      "title": "Oracle JRE 8 must disable the dialog enabling users to grant permissions to execute signed content from an untrusted authority.",
+      "description": "Java applets exist both signed and unsigned.  Even for signed applets, there can be many sources, some of which may be purveyors of malware.  Applet sources considered trusted can have their information populated into the browser, enabling Java to validate applets against trusted sources.  Permitting execution of signed Java applets from untrusted sources may result in acquiring malware, and risks system modification, invasion of privacy, or denial of service.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66951",
+      "title": "Oracle JRE 8 must lock the dialog enabling users to grant permissions to execute signed content from an untrusted authority.",
+      "description": "Java applets exist both signed and unsigned. Even for signed applets, there can be many sources, some of which may be purveyors of malware. Applet sources considered trusted can have their information populated into the browser, enabling Java to validate applets against trusted sources. Permitting execution of signed Java applets from untrusted sources may result in acquiring malware, and risks system modification, invasion of privacy, or denial of service.\n\nEnsuring users cannot change settings contributes to a more consistent security profile.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66953",
+      "title": "Oracle JRE 8 must set the option to enable online certificate validation.",
+      "description": "Online certificate validation provides a real-time option to validate a certificate.  When enabled, if a certificate is presented, the status of the certificate is requested.  The status is sent back as “current”, “expired”, or “unknown”.  Online certificate validation provides a greater degree of validation of certificates when running a signed Java applet.   Permitting execution of an applet with an invalid certificate may result in malware, system modification, invasion of privacy, and denial of service.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66955",
+      "title": "Oracle JRE 8 must prevent the download of prohibited mobile code.",
+      "description": "Decisions regarding the employment of mobile code within organizational information systems are based on the potential for the code to cause damage to the system if used maliciously. \n\nMobile code is defined as software modules obtained from remote systems, transferred across a network, and then downloaded and executed on a local system without explicit installation or execution by the recipient.\n\nUsage restrictions and implementation guidance apply to both the selection and use of mobile code installed, downloaded, or executed on all endpoints (e.g., servers, workstations, and smart phones). This requirement applies to applications that execute, evaluate, or otherwise process mobile code (e.g., web applications, browsers, and anti-virus applications).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66957",
+      "title": "Oracle JRE 8 must enable the option to use an accepted sites list.",
+      "description": "Utilizing a whitelist provides a configuration management method for allowing the execution of only authorized software. Using only authorized software decreases risk by limiting the number of potential vulnerabilities.\n\nThe organization must identify authorized software programs and permit execution of authorized software. The process used to identify software programs that are authorized to execute on organizational information systems is commonly referred to as whitelisting.\n\nVerification of whitelisted software can occur either prior to execution or at system startup.\n\nThis requirement applies to configuration management applications or similar types of applications designed to manage system processes and configurations (e.g., HBSS and software wrappers).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66959",
+      "title": "Oracle JRE 8 must have an exception.sites file present.",
+      "description": "Utilizing a whitelist provides a configuration management method for allowing the execution of only authorized software. Using only authorized software decreases risk by limiting the number of potential vulnerabilities.\n\nThe organization must identify authorized software programs and permit execution of authorized software. The process used to identify software programs that are authorized to execute on organizational information systems is commonly referred to as whitelisting.\n\nVerification of whitelisted software can occur either prior to execution or at system startup.\n\nThis requirement applies to configuration management applications or similar types of applications designed to manage system processes and configurations (e.g., HBSS and software wrappers).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66961",
+      "title": "Oracle JRE 8 must enable the dialog to enable users to check publisher certificates for revocation.",
+      "description": "A certificate revocation list is a directory which contains a list of certificates that have been revoked for various reasons. Certificates may be revoked due to improper issuance, compromise of the certificate, and failure to adhere to policy. Therefore, any certificate found on a CRL should not be trusted. Permitting execution of an applet published with a revoked certificate may result in spoofing, malware, system modification, invasion of privacy, and denial of service.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66963",
+      "title": "Oracle JRE 8 must prompt the user for action prior to executing mobile code.",
+      "description": "Mobile code can cause damage to the system. It can execute without explicit action from, or notification to, a user. \n\nActions enforced before executing mobile code include, for example, prompting users prior to opening email attachments and disabling automatic execution.\n\nThis requirement applies to mobile code-enabled software, which is capable of executing one or more types of mobile code.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66965",
+      "title": "Oracle JRE 8 must remove previous versions when the latest version is installed.",
+      "description": "Previous versions of software components that are not removed from the information system after updates have been installed may be exploited by adversaries. Some information technology products may remove older versions of software automatically from the information system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-66967",
+      "title": "The version of Oracle JRE 8 running on the system must be the most current available.",
+      "description": "Oracle JRE 8 is being continually updated by the vendor in order to address identified security vulnerabilities.  Running an older version of the JRE can introduce security vulnerabilities to the system.",
+      "severity": "high"
+    }
+  ]
+}

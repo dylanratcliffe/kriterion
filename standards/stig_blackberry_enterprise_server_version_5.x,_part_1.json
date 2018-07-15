@@ -1,0 +1,35 @@
+{
+  "name": "stig_blackberry_enterprise_server_version_5.x,_part_1",
+  "date": "2015-07-02",
+  "description": "BlackBerry Enterprise Server (version 5.x) STIG, Part 1 in XCCDF format.\nPart 1:  BES architecture and training requirements.\nPart 2:  BES configuration requirements.\nPart 3:  BES IT Policy configuration requirements.\n",
+  "title": "BlackBerry Enterprise Server (version 5.x), Part 1 Security Technical Implementation Guide",
+  "version": "2",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-11870",
+      "title": "Onset Technologies METAmessage software must not be installed on DoD BlackBerry devices or on the BES.\n",
+      "description": "Onset Technologies METAmessage software is production software which may introduce a virus or other malicious code on the system.  This software is not approved for use on DoD systems.",
+      "severity": "high"
+    },
+    {
+      "id": "V-14021",
+      "title": "Only the BlackBerry Enterprise Server (BES) email solution must be used.  ",
+      "description": " If the required BlackBerry system is not used, DoD networks are at risk of being penetrated or DoD data could be exposed.",
+      "severity": "high"
+    },
+    {
+      "id": "V-14199",
+      "title": "Any services installed with the BES (for example IIS, SQL, Apache Web Server, etc.) must be reviewed for STIG compliance in accordance with the appropriate SQL, Apache Web Server, or IIS STIGs. ",
+      "description": "The server must be compliant with the SQL STIG, Apache Web Server STIG, and/or IIS STIG to ensure the system is not vulnerable to attack resulting in a Denial of Service or compromise of the wireless email server.\n\nNote: Some of these services are optional and may not be installed on a specific host server during the BES installation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19191",
+      "title": "Required version of the BlackBerry Enterprise Server (BES) must be installed.",
+      "description": "Earlier versions of the BES have security vulnerabilities. CYBERCOM IAVA directs all DoD installations upgrade to required version due to BlackBerry ending support for version 4.1.6 and 4.1.7 as of 2 July 2011.",
+      "severity": "high"
+    }
+  ]
+}

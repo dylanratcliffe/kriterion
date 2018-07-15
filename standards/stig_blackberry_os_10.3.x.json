@@ -1,0 +1,257 @@
+{
+  "name": "stig_blackberry_os_10.3.x",
+  "date": "2016-09-08",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "BlackBerry OS 10.3.x Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-65683",
+      "title": "BlackBerry OS 10.3 must require a valid password be successfully entered before the mobile device data is unencrypted.",
+      "description": "Passwords provide a form of access control that prevents unauthorized individuals from accessing computing resources and sensitive data. Passwords may also be a source of entropy for generation of key encryption or data encryption keys. If a password is not required to access data, then this data is accessible to any adversary who obtains physical possession of the device. Requiring that a password be successfully entered before the mobile device data is unencrypted mitigates this risk.\n\nNote: MDF PP v.2.0 requires a Password Authentication Factor and requires management of its length and complexity. It leaves open whether the existence of a password is subject to management. This STIGID addresses the configuration to require a password, which is critical to the cybersecurity posture of the device.\n\nSFR ID: FIA_UAU_EXT.1.1",
+      "severity": "high"
+    },
+    {
+      "id": "V-65685",
+      "title": "BlackBerry OS 10.3 must enforce a minimum password length of 6 characters.",
+      "description": "Password strength is a measure of the effectiveness of a password in resisting guessing and brute force attacks. The ability to crack a password is a function of how many attempts an adversary is permitted, how quickly an adversary can do each attempt, and the size of the password space. The longer the minimum length of the password is, the larger the password space. Having a too-short minimum password length significantly reduces password strength, increasing the chance of password compromise and resulting device and data compromise.\n\nSFR ID: FMT_SMF_EXT.1.1 #01a",
+      "severity": "low"
+    },
+    {
+      "id": "V-65687",
+      "title": "BlackBerry OS 10.3 must lock the Work Space after 15 minutes (or less) of inactivity.",
+      "description": "The screen lock timeout must be set to a value that helps protect the device from unauthorized access. Having a too-long timeout would increase the window of opportunity for adversaries who gain physical access to the mobile device through loss, theft, etc. Such devices are much more likely to be in an unlocked state when acquired by an adversary, thus granting immediate access to the data on the mobile device. The maximum timeout period of 15 minutes has been selected to balance functionality and security; shorter timeout periods may be appropriate depending on the risks posed to the mobile device.\n\nSFR ID: FMT_SMF_EXT.1.1 #01b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65689",
+      "title": "BlackBerry OS 10.3 must not allow more than 10 consecutive failed authentication attempts.",
+      "description": "The more attempts an adversary has to guess a password, the more likely the adversary will enter the correct password and gain access to resources on the device. Setting a limit on the number of attempts mitigates this risk. Setting the limit at 10 gives authorized users the ability to make a few mistakes when entering the password but still provides adequate protection against dictionary or brute force attacks on the password.\n\nSFR ID: FMT_SMF_EXT.1.1 #02",
+      "severity": "low"
+    },
+    {
+      "id": "V-65691",
+      "title": "BlackBerry OS 10.3 must not allow protocols supporting wireless remote access connections.",
+      "description": "Having wireless remote access connections enabled could allow establishment of unauthorized remote access connections, which may give an adversary unintended capabilities. These remote access connections would expose the mobile device to additional risk, thereby increasing the likelihood of compromise of the confidentiality and integrity of its resident data. In this context, tethering refers to wired connections to an external device and not use of the device as a hotspot. A mobile device providing personal hotspot functionality is not considered wireless remote access if the functionality only provides access to a distribution network (such as a mobile carrier's cellular data network) and does not provide access to local applications or data.\n\nSFR ID: FMT_SMF_EXT.1.1 #23",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65693",
+      "title": "BlackBerry OS 10.3 must not allow use of developer modes.",
+      "description": "Developer modes expose features of the BlackBerry device that are not available during standard operation. When the Development Mode is enabled on BlackBerry 10 OS devices, the user has the capability to sideload apps to either the Work Space or Personal Space. Disabling this feature removes the capability for a user to sideload apps. An adversary may leverage a vulnerability inherent in a developer mode to compromise the confidentiality, integrity, and availability of DoD-sensitive information. Disabling developer modes mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #24",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65695",
+      "title": "BlackBerry OS 10.3 must protect data at rest on removable storage media. The requirement applies only to Work - Only Activation types.",
+      "description": "The BlackBerry device must ensure the data being written to the mobile device's removable media is protected from unauthorized access. If data at rest is unencrypted, it is vulnerable to disclosure. Even if the operating system enforces permissions on data access, an adversary can read removable media directly, thereby circumventing operating system controls. Encrypting the data ensures confidentiality is protected even when the operating system is not running.\n\nSFR ID: FMT_SMF_EXT.1.1 #26",
+      "severity": "high"
+    },
+    {
+      "id": "V-65697",
+      "title": "BlackBerry OS 10.3 must display the DoD advisory warning message each time the device restarts. This requirement does not apply to Work and personal - Corporate.",
+      "description": "The BlackBerry OS 10.3 is required to display the DoD-approved system use notification message or banner before granting access to the system that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Required banners help ensure that DoD can audit and monitor the activities of mobile device users without legal restriction.\n\nSystem use notification messages can be displayed when individuals first access or unlock the mobile device. The banner shall be implemented as a \"click-through\" banner at device unlock (to the extent permitted by the operating system). A \"click through\" banner prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating “OK.”\n\nThe approved DoD text must be used exactly as required in the KS referenced in DoDI 8500.01. For devices accommodating banners of 1300 characters, the banner text is: \n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. \nBy using this IS (which includes any device attached to this IS), you consent to the following conditions: \n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. \n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n\nFor devices with severe character limitations, the banner text is: \n\nI've read & consent to terms in IS user agreem't.\n\nThe administrator must configure the banner text exactly as written without any changes.\n\nSFR ID: FMT_SMF_EXT.1.1 #36",
+      "severity": "low"
+    },
+    {
+      "id": "V-65699",
+      "title": "BlackBerry OS 10.3 must not allow the USB mass storage mode.",
+      "description": "USB mass storage mode enables the transfer of data and software from one device to another. This software can include malware. When USB mass storage is enabled on a mobile device, it becomes a potential vector for malware and unauthorized data exfiltration. Prohibiting USB mass storage mode mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #39",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65701",
+      "title": "BlackBerry OS 10.3 must disable automatic transfer of diagnostic data to an external device other than an MDM service with which the device has enrolled.",
+      "description": "Many software systems automatically send diagnostic data to the manufacturer or a third party. This data enables the developers to understand real world field behavior and improve the product based on that information. Unfortunately, it can also reveal information about what DoD users are doing with the systems and what causes them to fail. An adversary embedded within the software development team or elsewhere could use the information acquired to breach BlackBerry OS 10.3 smartphone security. Disabling automatic transfer of such information mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1#45",
+      "severity": "low"
+    },
+    {
+      "id": "V-65703",
+      "title": "BlackBerry OS 10.3 work space whitelist must not include applications with the following characteristics: (See Vulnerability Discussion for list).",
+      "description": "Requiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications.\n\nList of characteristics:\n-backup MD data to non-DoD cloud servers (including user and application access to cloud backup services);\n-transmit MD diagnostic data to non-DoD servers;\n-voice assistant application if available when MD is locked;\n-voice dialing application if available when MD is locked;\n-allows synchronization of data or applications between devices associated with user;\n-payment processing; and\n-allows unencrypted (or encrypted but not FIPS 140-2 validated) data sharing with other MDs, display screens (screen mirroring), or printers.\n\nSFR ID: FMT_SMF_EXT.1.1 #10b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65705",
+      "title": "BlackBerry OS 10.3 must be configured to disable all Bluetooth profiles except for HSP (Headset Profile), HFP (HandsFree Profile), and SPP (Serial Port Profile).",
+      "description": "Some Bluetooth profiles provide the capability for remote transfer of sensitive DoD data without encryption or otherwise do not meet DoD IT security policies and therefore should be disabled.\n\nSFR ID: FMT_SMF_EXT.1.1 #20",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65707",
+      "title": "BlackBerry OS 10.3 must be configured to prevent non-approved updates of system software.",
+      "description": "FOTA allows the user to download and install firmware updates over-the-air. These updates can include OS upgrades, security patches, bug fixes, new features and applications. Since the updates are controlled by the carriers, DoD will not have an opportunity to review and update policies prior to update availability to end users. Disabling FOTA will mitigate the risk of allowing users access to applications that could compromise DoD sensitive data. After reviewing the update and adjusting any necessary policies (i.e., disabling applications determined to pose risk), the administrator can re-enable FOTA.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65709",
+      "title": "BlackBerry OS 10.3 must implement the management setting: limit Work Space contact data available in Personal space.",
+      "description": "The contact database often contains a significant amount of information beyond each person's name and phone number. The records may contain addresses and other identifying or sensitive information that should not be revealed. There may be cases in which an organization has determined it is an acceptable risk to distribute parts of a person's contact record but not others. Enabling the system administrator to select which fields are available outside the contact database application (or to applications outside the work persona in the case of a dual persona device) assists with management of the risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65711",
+      "title": "BlackBerry OS 10.3 must implement the management setting: must bind removable storage media cards to the mobile device via centrally managed policy. This requirement is applicable to Work space only activation Type.",
+      "description": "The removable media card is an extension of the embedded device media. In order to protect sensitive data stored on the media card, the data must be encrypted and bound to the device such that it cannot be read by other mobile devices and computers.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65713",
+      "title": "BlackBerry OS 10.3 must implement the management setting: disable Bluetooth Discoverable Mode via centrally managed policy. This requirement only applies to Work space only and Work and personal - Regulated activation types.",
+      "description": "Bluetooth usage could provide an attack vector for a hacker to connect to a BlackBerry device without the knowledge of the user. Disabling Discoverable mode reduces the risk of a non-authorized Bluetooth device connecting the DoD BlackBerry.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65715",
+      "title": "BlackBerry OS 10.3 must implement the management setting: disable the transfer of any file-based data via Bluetooth.",
+      "description": "Bluetooth data transfers, except when using an approved smart card reader, do not use FIPS validated encryption. Therefore data transfer via Bluetooth must be disabled to mitigate the possible loss of sensitive DoD information.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65717",
+      "title": "BlackBerry OS 10.3 must implement the management setting: disable the transfer of any file-based data via Near Field Communication (NFC) via centrally managed policy.",
+      "description": "NFC data transfers do not use FIPS validated encryption. Therefore data transfer via NFC must be disabled to mitigate the possible loss of sensitive DoD information.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65719",
+      "title": "BlackBerry OS 10.3 must implement the management setting: enforce the minimum password length for the Personal Space password to 4 digits. This requirement does not apply to the Work space only activation type.",
+      "description": "Password strength is a measure of the effectiveness of a password in resisting guessing and brute-force attacks. The ability to crack a password is a function of how many attempts an adversary is permitted, how quickly an adversary can do each attempt, and the size of the password space. The longer the minimum length of the password is, the larger the password space. Having a too-short minimum password length significantly reduces password strength, increasing the chance of password compromise and resulting device and data compromise. A password is required for the Personal Space to stop access to the BlackBerry desktop by an unauthorized person. This is a mobile security best practice control.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65721",
+      "title": "BlackBerry OS 10.3 must implement the management setting: disallow Personal Space applications access to the Work Space network connection. This requirement does not apply to the Work space only activation type.",
+      "description": "Allowing movement of files and data from the personal Space to the Work Space will result in both personal data and sensitive DoD data being placed in the same space. This can potentially result in DoD data being transmitted to non-authorized recipients via personal email accounts or social applications, or transmission of malicious files to DoD accounts. Disabling this feature mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65723",
+      "title": "BlackBerry OS 10.3 must implement the management setting: disable BlackBerry Bridge.",
+      "description": "BlackBerry Bridge is used to view information on the BlackBerry via the BlackBerry Playbook tablet. Use of the BlackBerry Playbook is not allowed in the DoD, therefore BlackBerry Bridge must be disabled.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65725",
+      "title": "BlackBerry OS 10.3 must implement the management setting: disable lock screen preview of work content.",
+      "description": "Sensitive data could be viewed if the preview of data on the locked screen is not disabled and could be exposed to unauthorized viewers.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65727",
+      "title": "The BlackBerry MDM Agent must be configured to operate in a NIAP Common Criteria mode of operation, to enable generation of audit records of required events: (See Vulnerability Discussion for list). This requirement only applies to Work space only and Work and personal - Regulated activation types.",
+      "description": "Audit logs enable monitoring of security-relevant events and subsequent forensics when breaches occur. They help identify attacks, so that breaches can either be prevented or limited in their scope. They facilitate analysis to improve performance and security.\n\nRequired audit events:\na. Start-up and shutdown of the audit functions;\nb. Change in MDM policy;\nc. Device modification commanded by the MDM server;\nd. Specifically defined auditable events in Table 7 of MDM Agent EP v.2.0.\n\nSFR ID: FAU_GEN.1.1(2) Refinement, MDM Agent EP",
+      "severity": "low"
+    },
+    {
+      "id": "V-65731",
+      "title": "The BlackBerry MDM Agent must be configured to generate an audit record of required events: (See Vulnerability Discussion for list). This requirement only applies to Work space only and Work and personal - Regulated activation types.",
+      "description": "Audit logs enable monitoring of security-relevant events and subsequent forensics when breaches occur. They help identify attacks, so that breaches can either be prevented or limited in their scope. They facilitate analysis to improve performance and security.\n\nRequired audit events:\na. Start-up and shutdown of the audit functions;\nb. Change in MDM policy;\nc. Device modification commanded by the MDM server;\nd. Specifically defined auditable events in Table 7 of MDM Agent EP v.2.0.\n\nSFR ID: FAU_GEN.1.1(2) Refinement, MDM Agent EP",
+      "severity": "low"
+    },
+    {
+      "id": "V-65733",
+      "title": "The BlackBerry MDM Agent must be configured to generate an audit record of successful required events, including: (See Vulnerability Discussion for list). This requirement only applies to Work space only and Work and personal - Regulated activation types.",
+      "description": "Audit logs enable monitoring of security-relevant events and subsequent forensics when breaches occur. They help identify attacks, so that breaches can either be prevented or limited in their scope. They facilitate analysis to improve performance and security.\n\nRequired events:\na. Start-up and shutdown of the audit functions;\nb. Change in MDM policy;\nc. Device modification commanded by the MDM server;\nd. Specifically defined auditable events in Table 7 of MDM Agent EP v.2.0.\n\nSFR ID: FAU_GEN.1.1(2) Refinement, MDM Agent EP",
+      "severity": "low"
+    },
+    {
+      "id": "V-65741",
+      "title": "The BlackBerry MDM Agent must be configured to generate an audit record of required Informational level events, which may include: (See Vulnerability Discussion for list). This requirement only applies to Work space only and Work and personal - Regulated activation types.",
+      "description": "Audit logs enable monitoring of security-relevant events and subsequent forensics when breaches occur. They help identify attacks, so that breaches can either be prevented or limited in their scope. They facilitate analysis to improve performance and security.\n\nRequired events:\na. Start-up and shutdown of the audit functions;\nb. Change in MDM policy;\nc. Device modification commanded by the MDM server;\nd. Specifically defined auditable events in Table 7 of MDM Agent EP v.2.0.\n\nSFR ID: FAU_GEN.1.1(2) Refinement, MDM Agent EP",
+      "severity": "low"
+    },
+    {
+      "id": "V-65743",
+      "title": "The BlackBerry MDM Agent must be configured to generate an audit record of failed required events, which may include: (See Vulnerability Discussion for list). This requirement only applies to Work space only and Work and personal - Regulated activation types.",
+      "description": "Audit logs enable monitoring of security-relevant events and subsequent forensics when breaches occur. They help identify attacks, so that breaches can either be prevented or limited in their scope. They facilitate analysis to improve performance and security.\n\nRequired events:\na. Start-up and shutdown of the audit functions;\nb. Change in MDM policy;\nc. Device modification commanded by the MDM server;\nd. Specifically defined auditable events in Table 7 of MDM Agent EP v.2.0.\n\nSFR ID: FAU_GEN.1.1(2) Refinement, MDM Agent EP",
+      "severity": "low"
+    },
+    {
+      "id": "V-65745",
+      "title": "The BlackBerry MDM Agent must be configured to generate an audit record of required error level events, which may include: (See Vulnerability Discussion for list). This requirement only applies to Work space only and Work and personal - Regulated activation types.",
+      "description": "Audit logs enable monitoring of security-relevant events and subsequent forensics when breaches occur. They help identify attacks, so that breaches can either be prevented or limited in their scope. They facilitate analysis to improve performance and security.\n\nRequired events:\na. Start-up and shutdown of the audit functions;\nb. Change in MDM policy;\nc. Device modification commanded by the MDM server;\nd. Specifically defined auditable events in Table 7 of MDM Agent EP v.2.0.\n\nSFR ID: FAU_GEN.1.1(2) Refinement, MDM Agent EP",
+      "severity": "low"
+    },
+    {
+      "id": "V-65747",
+      "title": "The BlackBerry MDM Agent must be configured to generate an audit record of required warning level events, which may include: (See Vulnerability Discussion for list). This requirement only applies to Work space only and Work and personal - Regulated activation types.",
+      "description": "Audit logs enable monitoring of security-relevant events and subsequent forensics when breaches occur. They help identify attacks, so that breaches can either be prevented or limited in their scope. They facilitate analysis to improve performance and security.\n\nRequired events:\na. Start-up and shutdown of the audit functions;\nb. Change in MDM policy;\nc. Device modification commanded by the MDM server;\nd. Specifically defined auditable events in Table 7 of MDM Agent EP v.2.0.\n\nSFR ID: FAU_GEN.1.1(2) Refinement, MDM Agent EP",
+      "severity": "low"
+    },
+    {
+      "id": "V-65749",
+      "title": "BlackBerry OS 10.3 must force the use of BBM Protected mode.",
+      "description": "BBM Protected mode provides strong data encryption for the Blackberry chat service. If data-in-transit is unencrypted, it is vulnerable to disclosure.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65751",
+      "title": "The BlackBerry MDM Agent must be configured to synchronize generated audit records of required events every 6 hours or less. This requirement only applies to Work space only and Work and personal - Regulated activation types.",
+      "description": "Audit logs enable monitoring of security-relevant events and subsequent forensics when breaches occur. They help identify attacks, so that breaches can either be prevented or limited in their scope. They facilitate analysis to improve performance and security.\n\nSFR ID: FAU_GEN.1.1(2) Refinement, MDM Agent EP",
+      "severity": "low"
+    },
+    {
+      "id": "V-65753",
+      "title": "BlackBerry OS 10.3 must implement the management setting: disable Voice Dictation in Work Applications.",
+      "description": "Voice Dictation in Work Applications uses a cloud based services to provide dictation support. Sensitive DoD data could be at risk of exposures if this service is enabled.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65755",
+      "title": "BlackBerry OS 10.3 must implement the management setting: display External Email Address Warning Message.",
+      "description": "The \"External Email Address Warning Message\" allows administrators to enforce a feature on the BlackBerry 10 smartphones to display a warning message for email addresses that are deemed as external to the primary internal mail domain. This feature provides a safeguard for accidently sending sensitive DoD information to email addresses external to the DoD.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65757",
+      "title": "BlackBerry OS 10.3 must implement the management setting: Check certificate expiry for MDM connection.",
+      "description": "Without strong authentication of the MDM, the MDM agent may connect to a rogue MDM and the mobile device could then come under management control of the rogue MDM. This could lead to exposure of sensitive DoD data.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65759",
+      "title": "BlackBerry OS 10.3 must protect data at rest on built-in storage media for Personal space. This requirement only applies to Work and Personal  Corporate and Work and personal - Regulated activation types.",
+      "description": "The BlackBerry device must ensure the data being written to the mobile device's built-in storage media is protected from unauthorized access. If data at rest is unencrypted, it is vulnerable to disclosure. Even if the operating system enforces permissions on data access, an adversary can read storage media directly, thereby circumventing operating system controls. Encrypting the data ensures confidentiality is protected even when the operating system is not running.\n\nSFR ID: FMT_SMF_EXT.1.1 #25",
+      "severity": "high"
+    },
+    {
+      "id": "V-65761",
+      "title": "BlackBerry OS 10.3 must prevent opening links in work email messages in the personal browser. This requirement only applies to Work and personal - Corporate and Work and personal - Regulated activation types.",
+      "description": "If web links in work email were opened using the personal browser, there is a possibility that sensitive DoD data could spill from the Work space to the Personal space, which could lead to public exposure of that data.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65763",
+      "title": "BlackBerry OS 10.3 must prevent untrusted connections to the mail server.",
+      "description": "If an untrusted connection to a mail server is allowed, the device may connect to either a rogue email server or a compromised DoD email server. In either case, sensitive DoD data could be compromised.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65765",
+      "title": "BlackBerry OS 10.3 must prevent the use of BlackBerry Protect.",
+      "description": "BlackBerry Protect gives users the ability to remotely lock, wipe, send audible alerts, and locate their BlackBerry device, but can become a maintainability issue for enterprise deployments. If a user forgets their BlackBerry ID password, the device must be sent back to BlackBerry to have the BlackBerry Protect feature disabled. In addition, BlackBerry Protect must be disabled by the user before it can be wiped and transferred to a new user.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-65773",
+      "title": "BlackBerry OS 10.3 must prevent third-party apps from using BlackBerry Blend.",
+      "description": "If third party apps are allowed to use BlackBerry Blend, it may be possible for DoD data on the BlackBerry that is being displayed on a PC via the Blend connection to be saved to the PC. Sensitive DoD data could be at risk of compromise in this case.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
+      "severity": "medium"
+    },
+    {
+      "id": "V-71491",
+      "title": "The BlackBerry OS 10.3 The BlackBerry OS 10.3 smartphone must close the Hotspot Browser connection if the user does not log into the Hotspot Browser after 15 minutes (or less).",
+      "description": "This configuration setting sets the amount of time the hotspot browser remains open without login.  The hotspot browser could be at risk of attack by an adversary if it remains open when not being used by the handset user.  It is a best practice to close the browser when not in use.",
+      "severity": "low"
+    },
+    {
+      "id": "V-71493",
+      "title": "The BlackBerry OS 10.3 smartphone must implement the management setting:  Allow use of preloaded trusted root certificates",
+      "description": "This configuration setting specifies whether a BlackBerry device can use preloaded trusted root certificates to establish a trusted certificate chain. If this rule is not selected, the device can use only trusted root certificates that are sent from BES12 for work connections.  When not selected, the DoD will be limited in how root certificates can be deployed to BlackBerry handhelds, which may cause an operational issue.",
+      "severity": "low"
+    }
+  ]
+}

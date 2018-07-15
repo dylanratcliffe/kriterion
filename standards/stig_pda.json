@@ -1,0 +1,83 @@
+{
+  "name": "stig_pda",
+  "date": "2014-03-18",
+  "description": "This STIG contains technical security controls for the operation of a PDA in the DoD environment.  In this case, PDA refers to any handheld computing device with or without wireless, except for Commercial Mobile Devices (CMDs) (smartphones or tablet computers).",
+  "title": "PDA Security Technical Implementation Guide (STIG)",
+  "version": "6",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-14202",
+      "title": "FIPS 140-2 validated encryption modules must be used to encrypt unclassified sensitive data at rest on the wireless device (e.g., laptop, PDA, smartphone).",
+      "description": "If a wireless device is lost or stolen without DAR encryption, sensitive DoD data could be compromised.  Most known security breaches of cryptography result from improper implementation, not flaws in the cryptographic algorithms themselves.   FIPS 140-2 validation provides assurance that cryptography is implemented correctly, and is required for Federal Government uses of cryptography in non-classified applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-14275",
+      "title": "DoD-licensed anti-malware software will be installed on all wireless clients (e.g., PDAs and smartphones) and non-wireless PDAs.   ",
+      "description": "Security risks inherent to wireless technology usage can be minimized with security measures such current anti-virus updates.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18625",
+      "title": "PDA and Smartphones that are connected to DoD Windows computers via a USB connection must be compliant with requirements.",
+      "description": "PDAs with flash memory can introduce malware to a PC when they are connected for provisioning of the PDA or to transfer data between the PC and PDA, particularly if the PDA is seen by the PC as a mass storage device and autorun in enabled.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18627",
+      "title": "The VPN client on wireless clients (PDAs, smartphones) used for remote access to DoD networks must be FIPS 140-2 validated.  ",
+      "description": "DoD data could be compromised if transmitted data is not secured with a compliant VPN.  FIPS validation provides a level of assurance that the encryption of the device has been securely implemented.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18856",
+      "title": "Removable memory cards (e.g., MicroSD) must use a FIPS 140-2 validated encryption module to bind the card to a particular device such that the data on the card is not readable on any other device.",
+      "description": "Memory card used to transfer files between PCs and PDAs is a migration path for the spread of malware on DoD computers and handheld devices.  These risks are mitigated by the requirements listed in this check.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19897",
+      "title": "All wireless PDA clients used for remote access to DoD networks must have a VPN capability that supports AES encryption.",
+      "description": "DoD data could be compromised if transmitted data is not secured with a compliant VPN.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19898",
+      "title": "All wireless PDA clients used for remote access to a DoD network must have a VPN capability that supports CAC authentication. ",
+      "description": "If an adversary can bypass a VPN’s authentication controls, then the adversary can compromise DoD data transmitted over the VPN and conduct further attacks on DoD networks.  CAC authentication greatly mitigates this risk by providing strong two-factor authentication.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-19899",
+      "title": "Wireless PDA VPNs must operate with split tunneling disabled.",
+      "description": "DoD data could be compromised if transmitted data is not secured with a compliant VPN.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25007",
+      "title": "The PDA/smartphone must be configured to require a passcode for device unlock.",
+      "description": "Sensitive DoD data could be compromised if a device unlock passcode is not set up on a DoD PDA/smartphone. These devices are particularly vulnerable because they are exposed to many potential adversaries when they taken outside of the physical security perimeter of DoD facilities, and because they are easily concealed if stolen.",
+      "severity": "high"
+    },
+    {
+      "id": "V-25011",
+      "title": "Password/passcode maximum failed attempts must be set to the required value.",
+      "description": "A hacker with unlimited attempts can determine the passcode of a smartphone within a few minutes using password hacking tools, which could lead to unauthorized access to the PDA/smartphone and disclosure of sensitive DoD data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25016",
+      "title": "The device minimum password/passcode length must be set as required. ",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting guessing and brute force attacks. The ability to crack a password is a function of how many attempts an adversary is permitted, how quickly an adversary can do each attempt, and the size of the password space. The longer the minimum length of the password is, the larger the password space.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25022",
+      "title": "PDAs/smartphones must display the required banner during device unlock/ logon.  ",
+      "description": "DoD CIO memo requires all PDAs, BlackBerrys, and smartphones to have a consent banner displayed during logon/device unlock to ensure users understand their responsibilities to safeguard DoD data.  When users understand their responsibilities, they are less likely to engage in behaviors that could compromise of DoD information systems.",
+      "severity": "medium"
+    }
+  ]
+}

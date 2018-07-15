@@ -1,0 +1,53 @@
+{
+  "name": "stig_cmd_management_server_policy",
+  "date": "2014-08-05",
+  "description": "This STIG contains the policy, training, and operating procedure security controls for the use of CMD management servers in the DoD environment.  This STIG replaces the Wireless Management Server STIG (V1R6).  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailbox@mail.mil.",
+  "title": "CMD Management Server Policy Security Technical Implementation Guide (STIG)",
+  "version": "2",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-24955",
+      "title": "A data spill (Classified Message Incident (CMI)) procedure or policy must be published for site CMDs.",
+      "description": "When a data spill occurs on a CMD, classified or sensitive data must be protected to prevent disclosure. After a data spill, the CMD must either be wiped using approved procedures, or destroyed if no procedures are available, so classified or sensitive data is not exposed. If a data spill procedure is not published, the site may not use approved procedures to remediate after a data spill occurs and classified data could be exposed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-24957",
+      "title": "If a data spill (Classified Message Incident (CMI)) occurs on a wireless email device or system at a site, the site must follow required data spill procedures. ",
+      "description": "If required procedures are not followed after a data spill, classified data could be exposed to unauthorized personnel.",
+      "severity": "high"
+    },
+    {
+      "id": "V-24962",
+      "title": "The site Incident Response Plan or other procedure must include procedures to follow when a mobile operating system (OS) based mobile device is reported lost or stolen. ",
+      "description": "Sensitive DoD data could be stored in memory on a DoD operated mobile operating system (OS) based CMD and the data could be compromised if required actions are not followed when a CMD is lost or stolen. Without procedures for lost or stolen mobile operating system (OS) based CMD devices, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24969",
+      "title": "Required actions must be followed at the site when a CMD has been lost or stolen. ",
+      "description": "If procedures for lost or stolen CMDs are not followed, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA.",
+      "severity": "low"
+    },
+    {
+      "id": "V-24970",
+      "title": "The CMD management server administrator must receive required training.",
+      "description": "The security posture of the CMD management server could be compromised if the administrator is not trained to follow required procedures. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-24971",
+      "title": "The IAO at the mobile device management server site must verify local sites, where mobile devices are provisioned, issued, and managed, are conducting annual self assessments.",
+      "description": "The security integrity of the mobile device system depends on local sites where mobile devices are provisioned and issued complying with STIG requirements. The risk of malware introduced on a handheld device and avenues of attack into the enclave via a mobile device could result if STIG procedures are not followed.",
+      "severity": "low"
+    },
+    {
+      "id": "V-28313",
+      "title": "CMD management server administrator training must be renewed annually.",
+      "description": "The CMD management server administrator must renew required training annually.",
+      "severity": "low"
+    }
+  ]
+}

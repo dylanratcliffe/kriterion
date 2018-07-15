@@ -1,0 +1,221 @@
+{
+  "name": "stig_microsoft_word_2010",
+  "date": "2018-04-04",
+  "description": "Settings in this guidance assume a complete installation of Microsoft Office 2010 on the Windows 7 Platform. Registry paths and values identified in each control assume the use of Group Policy Administrative Templates. Installations not using Group Policies to administer Microsoft Office products may observe alternate registry paths for stored configuration values. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "Microsoft Word 2010 STIG",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-17173",
+      "title": "Disabling of user name and password syntax from being used in URLs must be enforced.",
+      "description": "The Uniform Resource Locator (URL) standard allows user authentication to be included in URL strings in the form http://username:password@example.com. A malicious user might use this URL syntax to create a hyperlink that appears to open a legitimate Web site but actually opens a deceptive (spoofed) Web site. For example, the URL http://www.wingtiptoys.com@example.com appears to open http://www.wingtiptoys.com but actually opens http://example.com. To protect users from such attacks, Internet Explorer usually blocks any URLs using this syntax.\n\nThis functionality can be controlled separately for instances of Internet Explorer spawned by Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a Web page). If user names and passwords in URLs are allowed, users could be diverted to dangerous Web pages, which could pose a security risk.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17174",
+      "title": "Enabling IE Bind to Object functionality must be present.",
+      "description": "Internet Explorer performs a number of safety checks before initializing an ActiveX control. It will not initialize a control if the kill bit for the control is set in the registry, or if the security settings for the zone in which the control is located do not allow it to be initialized.\nThis functionality can be controlled separately for instances of Internet Explorer spawned by Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a Web page). A security risk could occur if potentially dangerous controls are allowed to load.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17175",
+      "title": "Saved from URL mark to assure Internet zone processing must be enforced.",
+      "description": "Typically, when Internet Explorer loads a Web page from a Universal Naming Convention (UNC) share that contains a Mark of the Web (MOTW) comment, indicating the page was saved from a site on the Internet, Internet Explorer runs the page in the Internet security zone instead of the less restrictive Local Intranet security zone. This functionality can be controlled separately for instances of Internet Explorer spawned by Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a Web page). If Internet Explorer does not evaluate the page for a MOTW, potentially dangerous code could be allowed to run.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17183",
+      "title": "Navigation to URL's embedded in Office products must be blocked.",
+      "description": "To protect users from attacks, Internet Explorer usually does not attempt to load malformed URLs. This functionality can be controlled separately for instances of Internet Explorer spawned by Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a Web page). If Internet Explorer attempts to load a malformed URL, a security risk could occur in some cases.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17184",
+      "title": "Links that invoke instances of IE from within an Office product must be blocked.",
+      "description": "The Pop-up Blocker feature in Internet Explorer can be used to block most unwanted pop-up and pop-under windows from appearing. This functionality can be controlled separately for instances of Internet Explorer spawned by Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a Web page). If the Pop-up Blocker is disabled, disruptive and potentially dangerous pop-up windows could load and present a security risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17187",
+      "title": "Trust Bar Notifications for unsigned application add-ins must be blocked.",
+      "description": "If an application is configured to require all add-ins be signed by a trusted publisher, any unsigned add-ins the application loads will be disabled and the application will display the Trust Bar at the top of the active window. The Trust Bar contains a message informing users about the unsigned add-in.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17322",
+      "title": "Pre-release versions of file formats new to Office Products must be blocked.",
+      "description": "This policy setting controls whether users with the Microsoft Office Compatibility Pack for Word 2010 File Formats installed can open Office Open XML files saved with pre-release versions of Word 2010. Word Open XML files usually have the following extensions: .docx, .docm, .dotx, .dotm, .xml. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17471",
+      "title": "All automatic loading from Trusted Locations must be disabled.",
+      "description": "Trusted locations specified in the Trust Center are used to define file locations assumed to be safe. Content, code, and add-ins are allowed to load from trusted locations with a minimal amount of security, without prompting the users for permission. If a dangerous file is opened from a trusted location, it will not be subject to standard security measures and could harm users' computers or data. By default, files located in trusted locations (those specified in the Trust Center) are assumed to be safe.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17473",
+      "title": "Force encrypted macros to be scanned in open XML documents must be determined and configured.",
+      "description": "When an Office Open XML document (Word, Excel, and PowerPoint) is rights-managed, or password-protected, any macros embedded in the document are encrypted along with the rest of the contents.  By default, these encrypted macros will be disabled unless they are scanned by antivirus software immediately before being loaded. If this default configuration is modified, Office products will not require encrypted macros to be scanned before loading. They will be handled as specified by the Office System macro security settings, which can cause macro viruses to load undetected and lead to data loss or reduced application functionality.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17520",
+      "title": "Disallowance of Trusted Locations on the network must be enforced.",
+      "description": "Files located in Trusted Locations and specified in the Trust Center are assumed to be safe. Content, code, and add-ins are allowed to load from Trusted Locations with minimal security and without prompting the user for permission. By default, users can specify Trusted Locations on network shares, or in other remote locations not under their direct control, by selecting the “Allow Trusted Locations on my network” (not recommended) check box in the Trusted Locations section of the Trust Center. If a dangerous file is opened from a trusted location, it will not be subject to typical security measures and could affect users' computers or data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17521",
+      "title": "Save files default format  must be configured.",
+      "description": "When users create new document files, Word 2010 saves them in the new Word 2010 .docx format.  Ensure this setting is enabled to specify that all new files are created in Word 2010.  If a new document is created in an earlier format, some users may not be able to open or use the file, or they may choose a format this is less secure than the Word 2010 format.  Users can still select a specific format when they save files, but they cannot change default of this setting from the Word Options dialog box.  This enforced user behavior ensures any change to the file format requires additional deliberate user interaction.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17522",
+      "title": "Trust access for VBA must be disallowed.",
+      "description": "VSTO projects require access to the Visual Basic for Applications project system in Excel, PowerPoint, and Word, even though the projects do not use Visual Basic for Applications. Design-time support of controls in both Visual Basic and C# projects depends on the Visual Basic for Applications project system in Word and Excel. By default, Excel, Word, and PowerPoint do not allow automation clients to have programmatic access to VBA projects. Users can enable this by selecting the Trust access to the VBA project object model in the Macro Settings section of the Trust Center. However, doing so allows macros in any documents the user opens to access the core Visual Basic objects, methods, and properties, which represents a potential security hazard.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17545",
+      "title": "Warning Bar settings for VBA macros must be configured.",
+      "description": "When users open files containing VBA Macros, applications open the files with the macros disabled and displays the Trust Bar with a warning that macros are present and have been disabled. Users may then enable these macros by clicking Options on the Trust Bar and selecting the option to enable them. Disabling or not configuring this setting may allow dangerous macros to become active on user computers or the network. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17811",
+      "title": "The automatically update links feature must be configured as off. ",
+      "description": "When users open documents Word automatically updates any links to external content, such as graphics, Excel worksheets, and PowerPoint slides. To disable automatic updating, the user can click the Office Button, click Word Options, click Advanced, scroll to the General section, and then clear the Update automatic links at open check box.\nIf Word is configured to automatically update links when documents are open, document content can change without the user's knowledge, which could put important information at risk. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17813",
+      "title": "A warning before printing that the document contains tracking changes must be provided.",
+      "description": "Tracked changes or comments embedded within a document may contain sensitive, insulting, or embarrassing information that the document owner forgot, or that a contributor may have placed.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26584",
+      "title": "Add-on Management functionality must be allowed.",
+      "description": "Internet Explorer add-ons are pieces of code, run in Internet Explorer, to provide additional functionality. Rogue add-ons may contain viruses or other malicious code. Disabling or not configuring this setting could allow malicious code or users to become active on user computers or the network. For example, a malicious user can monitor and then use keystrokes users type into Internet Explorer. Even legitimate add-ons may demand resources, compromising the performance of Internet Explorer, and the operating systems for user computers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26585",
+      "title": "Protection from zone elevation must be enforced.",
+      "description": "Internet Explorer places restrictions on each web page users can use the browser to open. Web pages on a user's local computer have the fewest security restrictions and reside in the Local Machine zone, making this security zone a prime target for malicious users and code. Disabling or not configuring this setting could allow pages in the Internet zone to navigate to pages in the Local Machine zone to then run code to elevate privileges. This could allow malicious code or users to become active on user computers or the network. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26586",
+      "title": "ActiveX Installs must be configured for proper restriction.",
+      "description": "Microsoft ActiveX controls allow unmanaged, unprotected code to run on the user computers. ActiveX controls do not run within a protected container in the browser like the other types of HTML or Microsoft Silverlight-based controls. Disabling or not configuring this setting does not block prompts for ActiveX control installations and these prompts display to users. This could allow malicious code to become active on user computers or the network. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26587",
+      "title": "File Downloads must be configured for proper restrictions.",
+      "description": "Disabling this setting allows websites to present file download prompts via code without the user specifically initiating the download.  User preferences may also allow the download to occur without prompting or interacting with the user.  Even if Internet Explorer prompts the user to accept the download, some websites abuse this functionality.  Malicious websites may continually prompt users to download a file or present confusing dialog boxes to trick users into downloading or running a file.  If the download occurs and it contains malicious code, the code could become active on user computers or the network.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26588",
+      "title": "Scripted Window Security must be enforced.",
+      "description": "Malicious websites often try to confuse or trick users into giving a site permission to perform an action allowing the site to take control of the users' computers in some manner. Disabling or not configuring this setting allows unknown websites to:\n-Create browser windows appearing to be from the local operating system.\n-Draw active windows displaying outside of the viewable areas of the screen capturing keyboard input.\n-Overlay parent windows with their own browser windows to hide important system information, choices or prompts.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26589",
+      "title": "Application add-ins must be signed by Trusted Publisher.",
+      "description": "Office 2010 applications do not check the digital signature on application add-ins before opening them.  Disabling or not configuring this setting may allow an application to load a dangerous add-in.  As a result, malicious code could become active on user computers or the network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26590",
+      "title": "Data Execution Prevention must be enforced.",
+      "description": "Data Execution Prevention (DEP) is a set of hardware and software technologies performing additional checks on memory to help prevent malicious code from running on a system. The primary benefit of DEP is to help prevent code execution from data pages. Enabling this setting, turns off Data Execution Prevention. As a result, malicious code takes advantage of code injection or buffer overflow vulnerabilities possibly exploiting the computer.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26592",
+      "title": "Configuration for file validation must be enforced.",
+      "description": "Office Binary Documents (97-2003) are checked to see if they conform against the file format schema before they are opened.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26612",
+      "title": "Blocking as default file block opening behavior must be enforced.",
+      "description": "Users can open, view, or edit a large number of file types in Word 2010.  Some file types are safer than others, as some could allow malicious code to become active on user computers or the network.  For this reason, disabling or not configuring this setting could allow malicious code to become active on user computers or the network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26614",
+      "title": "Files from the Internet zone must be opened in Protected View.\n",
+      "description": "This policy setting allows for determining if files downloaded from the Internet zone open in Protected View. If enabling this policy setting, files downloaded from the Internet zone do not open in Protected View. If disabling or not configuring this policy setting, files downloaded from the Internet zone open in Protected View.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26615",
+      "title": "Files in unsafe locations must be opened in Protected View.\n",
+      "description": "This policy setting determines if files located in unsafe locations will open in Protected View. If unsafe locations have not been specified, only the \"Downloaded Program Files\" and \"Temporary Internet Files\" folders are considered unsafe locations. If enabling this policy setting, files located in unsafe locations do not open in Protected View. If disabling or not configuring this policy setting, files located in unsafe locations open in Protected View.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26616",
+      "title": "Document behavior if file validation fails must be set.\n",
+      "description": "This policy key controls the behavior of how Office documents should be handled when failing File Validation. The options available are:\n-Block files completely. This will prevent users from opening files.\n-Open files in Protected View and disallow edit. This will prevent users from editing the files.\n-Open files in Protected view and allow edit. This will allow users to edit the files.\nIf disabling or not configuring this policy setting, the default setting will be, \"open files in protected view and allow edit\".\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26617",
+      "title": "Attachments opened from Outlook must be in Protected View.",
+      "description": "This policy setting allows for determining if Excel files in Outlook attachments open in Protected View. If enabling this policy setting, Outlook attachments do not open in Protected View. If disabling or not configuring this policy setting, Outlook attachments open in Protected View.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26648",
+      "title": "Online translation dictionaries must be in use.\n",
+      "description": "This setting allows you to prevent online dictionaries from being used for the translation of text through the Research pane. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26653",
+      "title": "Word 2 and earlier binary documents and templates must be blocked for open/save.\n",
+      "description": "This setting allows you to determine whether users can open, view, edit, or save Word files with the format specified by the title of this policy setting. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26654",
+      "title": "Word 2000 binary documents and templates must be configured to edit in protected view.  ",
+      "description": "This setting allows you to determine whether users can open, view, edit, or save Word files with the format specified by the title of this policy setting.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26656",
+      "title": "Word 6.0 binary documents and templates must be configured for block open/save actions.\n",
+      "description": "This setting allows you to determine whether users can open, view, edit, or save Word files with the format specified by the title of this policy setting. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26657",
+      "title": "Word 95 binary documents and templates must be configured to edit in protected view. ",
+      "description": "This setting allows you to determine whether users can open, view, edit, or save Word files with the format specified by the title of this policy setting. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26658",
+      "title": "Word 97 binary documents and templates must be configured to edit in protected view.",
+      "description": "This setting allows you to determine whether users can open, view, edit, or save Word files with the format specified by the title of this policy setting.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26659",
+      "title": "Word XP binary documents and templates must be configured to edit in protected view.",
+      "description": "This setting allows you to determine whether users can open, view, edit, or save Word files with the format specified by the title of this policy setting.  ",
+      "severity": "medium"
+    }
+  ]
+}

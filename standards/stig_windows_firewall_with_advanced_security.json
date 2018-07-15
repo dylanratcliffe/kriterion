@@ -1,0 +1,137 @@
+{
+  "name": "stig_windows_firewall_with_advanced_security",
+  "date": "2018-02-21",
+  "description": "The Windows Firewall with Advanced Security Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.\n",
+  "title": "Windows Firewall with Advanced Security Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-17415",
+      "title": "The Windows Firewall with Advanced Security must be enabled when connected to a domain.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  This setting enables the firewall when connected to the domain.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17416",
+      "title": "The Windows Firewall with Advanced Security must be enabled when connected to a private network.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  This setting enables the firewall when connected to a private network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17417",
+      "title": "The Windows Firewall with Advanced Security must be enabled when connected to a public network.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  This setting enables the firewall when connected to a public network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17418",
+      "title": "The Windows Firewall with Advanced Security must block unsolicited inbound connections when connected to a domain.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  Unsolicited inbound connections may be malicious attempts to gain access to a system.  Unsolicited inbound connections, for which there is no rule allowing the connection, will be blocked in the domain.",
+      "severity": "high"
+    },
+    {
+      "id": "V-17419",
+      "title": "The Windows Firewall with Advanced Security must allow outbound connections, unless a rule explicitly blocks the connection when connected to a domain.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  Outbound connections are allowed in the domain, unless a rule explicitly blocks the connection.  This allows normal outbound communication, which could be restricted as necessary with additional rules.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17425",
+      "title": "The Windows Firewall with Advanced Security log size must be configured for domain connections.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  The firewall log file size for a domain connection will be set to ensure enough capacity is allocated for audit data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-17426",
+      "title": "The Windows Firewall with Advanced Security must log dropped packets when connected to a domain.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  Logging of dropped packets for a domain connection will be enabled to maintain an audit trail of potential issues.",
+      "severity": "low"
+    },
+    {
+      "id": "V-17427",
+      "title": "The Windows Firewall with Advanced Security must log successful connections when connected to a domain.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  Logging of successful connections for a domain connection will be enabled to maintain an audit trail if issues are discovered.",
+      "severity": "low"
+    },
+    {
+      "id": "V-17428",
+      "title": "The Windows Firewall with Advanced Security must block unsolicited inbound connections when connected to a private network.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  Unsolicited inbound connections may be malicious attempts to gain access to a system.  Unsolicited inbound connections, for which there is no rule allowing the connection, will be blocked on a private network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-17429",
+      "title": "The Windows Firewall with Advanced Security must allow outbound connections, unless a rule explicitly blocks the connection when connected to a private network.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  Outbound connections are allowed on a private network, unless a rule explicitly blocks the connection.  This allows normal outbound communication, which could be restricted as necessary with additional rules.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17435",
+      "title": "The Windows Firewall with Advanced Security log size must be configured for private network connections.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  The firewall log file size for a private connection will be set  to ensure enough capacity is allocated for audit data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-17436",
+      "title": "The Windows Firewall with Advanced Security must log dropped packets when connected to a private network.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.   Logging of dropped packets for a private network connection will be enabled  to maintain an audit trail of potential issues.",
+      "severity": "low"
+    },
+    {
+      "id": "V-17437",
+      "title": "The Windows Firewall with Advanced Security must log successful connections when connected to a private network.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  Logging of successful connections for a private network connection will be enabled  to maintain an audit trail if issues are discovered.",
+      "severity": "low"
+    },
+    {
+      "id": "V-17438",
+      "title": "The Windows Firewall with Advanced Security must block unsolicited inbound connections when connected to a public network.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  Unsolicited inbound connections may be malicious attempts to gain access to a system.  Unsolicited inbound connections, for which there is no rule allowing the connection, will be blocked on a public network.",
+      "severity": "high"
+    },
+    {
+      "id": "V-17439",
+      "title": "The Windows Firewall with Advanced Security must allow outbound connections, unless a rule explicitly blocks the connection when connected to a public network.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  Outbound connections are allowed on a public network, unless a rule explicitly blocks the connection.  This allows normal outbound communication, which could be restricted as necessary with additional rules.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17442",
+      "title": "The Windows Firewall with Advanced Security local firewall rules must not be merged with Group Policy settings when connected to a public network.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  Local firewall rules will not be merged with Group Policy settings on a public network to prevent Group Policy settings from being changed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17443",
+      "title": "The Windows Firewall with Advanced Security local connection rules must not be merged with Group Policy settings when connected to a public network.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  Local connection rules will not be merged with Group Policy settings on a public network to prevent Group Policy settings from being changed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17445",
+      "title": "The Windows Firewall with Advanced Security log size must be configured for public network connections.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  The firewall log file size for a public network connection will be set  to ensure enough capacity is allocated for audit data.",
+      "severity": "low"
+    },
+    {
+      "id": "V-17446",
+      "title": "The Windows Firewall with Advanced Security must log dropped packets when connected to a public network.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  Logging of dropped packets for a public network connection will be enabled  to maintain an audit trail of potential issues.",
+      "severity": "low"
+    },
+    {
+      "id": "V-17447",
+      "title": "The Windows Firewall with Advanced Security must log successful connections when connected to a public network.",
+      "description": "A firewall provides a line of defense against attack.  To be effective, it must be enabled and properly configured.  Logging of successful connections for a public network connection will be enabled to maintain an audit trail if issues are discovered.",
+      "severity": "low"
+    },
+    {
+      "id": "V-36440",
+      "title": "Inbound exceptions to the firewall on domain workstations must only allow authorized remote management hosts.",
+      "description": "Allowing inbound access to domain workstations from other systems may allow lateral movement across systems if credentials are compromised.  Limiting inbound connections only from authorized remote management systems will help limit this exposure.",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "name": "stig_microsoft_excel_2007",
+  "date": "2015-10-02",
+  "description": "None",
+  "title": "Microsoft Excel 2007 ",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-17173",
+      "title": "Disable user name and password syntax from being used in URLs",
+      "description": "The Uniform Resource Locator (URL) standard allows user authentication to be included in URL strings in the form http://username:password@example.com. A malicious user might use this URL syntax to create a hyperlink that appears to open a legitimate website but actually opens a deceptive (spoofed) website. For example, the URL http://www.wingtiptoys.com@example.com appears to open http://www.wingtiptoys.com but actually opens http://example.com. To protect users from such attacks, Internet Explorer usually blocks any URLs using this syntax.\n\nThis functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a web page). If user names and passwords in URLs are allowed, users could be diverted to dangerous web pages, which could pose a security risk.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17174",
+      "title": "Bind to Object - Excel",
+      "description": "Internet Explorer performs a number of safety checks before initializing an ActiveX control. It will not initialize a control if the kill bit for the control is set in the registry, or if the security settings for the zone in which the control is located do not allow it to be initialized.\n\nThis functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a web page). A security risk could occur if potentially dangerous controls are allowed to load.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17175",
+      "title": "Evaluate Saved from URL mark when launched from Excel",
+      "description": "Typically, when Internet Explorer loads a web page from a UNC share that contains a Mark of the Web (MOTW) comment that indicates the page was saved from a site on the Internet, Internet Explorer runs the page in the Internet security zone instead of the less restrictive Local Intranet security zone. This functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a web page). If Internet Explorer does not evaluate the page for a MOTW, potentially dangerous code could be allowed to run.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17183",
+      "title": "Block navigation to URL embedded in Office products to protect against attack by malformed URL.",
+      "description": "To protect users from attacks, Internet Explorer usually does not attempt to load malformed URLs. This functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a web page). If Internet Explorer attempts to load a malformed URL, a security risk could occur in some cases.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17184",
+      "title": "Block pop-ups for links that invoke instances of IE from within Excel",
+      "description": "The Pop-up Blocker feature in Internet Explorer can be used to block most unwanted pop-up and pop-under windows from appearing. This functionality can be controlled separately for instances of Internet Explorer spawned by 2007 Office applications (for example, if a user clicks a link in an Office document or selects a menu option that loads a web page). If the Pop-up Blocker is disabled, disruptive and potentially dangerous pop-up windows could load and present a security risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17187",
+      "title": "Disable Trust Bar Notification for unsigned application add-ins - Excel",
+      "description": "By default, if an application is configured to require that all add-ins be signed by a trusted publisher, any unsigned add-ins the application loads will be disabled and the application will display the Trust Bar at the top of the active window. The Trust Bar contains a message that informs users about the unsigned add-in.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17322",
+      "title": "Block opening of pre-release versions of file formats new to Excel  2007 through the Compatibility Pack for the 2007 Office system and Excel 2007 Converter - System",
+      "description": "The Microsoft Office Compatibility Pack for Word, Excel, and PowerPoint 2007 File Formats enables users of Microsoft Word 2000, Word 2002, and Office Word 2003 to open files saved in the Office Open XML format used by Word 2007. Word Open XML files usually have the following extensions: \n•\t.docx\n•\t.docm\n•\t.dotx\n•\t.dotm\n•\t.xml\n\nBy default, the Compatibility Pack does not open files that were saved in pre-release versions of the new Office Open XML format, which underwent some minor changes prior to the final release of Word 2007. If this configuration is changed, through a registry modification or by some other mechanism, users with the Compatibility Pack installed can open files saved by some pre-release versions of Word, but not by others, which can lead to inconsistent file opening functionality.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17471",
+      "title": "Disable all Trusted Locations.",
+      "description": "Trusted locations specified in the Trust Center are used to define file locations that are assumed to be safe. Content, code, and add-ins are allowed to load from trusted locations with a minimal amount of security, without prompting the users for permission. If a dangerous file is opened from a trusted location, it will not be subject to standard security measures and could harm users' computers or data.\nBy default, files located in trusted locations (those specified in the Trust Center) are assumed to be safe.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17473",
+      "title": "Determine whether to force encrypted macros to be scanned in open XML workbooks. ",
+      "description": "When an Office Open XML document (Word, Excel, Powerpoint) is rights-managed or password-protected, any macros that are embedded in the document are encrypted along with the rest of the contents.  \nBy default, these encrypted macros will be disabled unless they are scanned by antivirus software immediately before being loaded. If this default configuration is modified, Office 2007 products will not require encrypted macros to be scanned before loading. They will be handled as specified by the Office 2007 System macro security settings, which can cause macro viruses to load undetected and lead to data loss or reduced application functionality.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17503",
+      "title": "Disable feature that would block older version of office products from saving files to open XML formats.  ",
+      "description": "The Office Open XML format file types introduced in the 2007 Microsoft Office release offer a number of benefits compared with the previous binary file types supported in Office 2003, including the potential to reduce the effects of malicious code. Files can be identified as unable to run code, and will therefore ignore any embedded code. Also, any files that do have embedded code are easier to identify.\nFor users who run older versions of these applications, Microsoft offers the Microsoft Office Compatibility Pack for Word, Excel, and PowerPoint 2007 File Formats, which enables them to open and save Open XML files. The Compatibility Pack can be used with the following Microsoft Office programs:\n•\tWord 2000 with Service Pack 3, Excel 2000 with Service Pack 3, and PowerPoint 2000 with Service Pack 3 \n•\tWord 2002 with Service Pack 3, Excel 2002 with Service Pack 3, and PowerPoint 2002 with Service Pack 3\n•\tWord 2003 with at least Service Pack 1, Excel 2003 with at least Service Pack 1, and PowerPoint 2003 with at least Service Pack 1 \n•\tMicrosoft Office Word Viewer 2003\n•\tMicrosoft Office Excel Viewer 2003\n•\tMicrosoft Office PowerPoint Viewer 2003\nIf users cannot save files in Office Open XML format for some reason, they will be unable to take advantage of the security benefits of the new file types.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17518",
+      "title": "Block opening of \"open XML\" format files created by pre-release versions of Excel. ",
+      "description": "By default, users can open files that were saved in pre-release versions of the new Office Open XML format, which underwent some minor changes prior to the final release of Office 2007. Excel Open XML files usually have the following extensions:\n•\t.xlsb\n•\t.xlsx\n•\t.xlsm\n•\t.xltx\n•\t.xltm\n•\t.xlam\nIf a vulnerability is discovered that affects these kinds of files, you can use this setting to protect your organization against attacks by temporarily preventing users from opening files in these formats until a security patch is available.\nBy default, these file types are not blocked in Office 2007 products.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17519",
+      "title": "Block Opening of \"Open XML\" file types to prevent them automatically executing code. ",
+      "description": "The Office Open XML format file types introduced in the 2007 Microsoft Office release offer a number of benefits compared to the previous binary file types supported in Office 2003, including the potential to reduce the effects of malicious code. Files can be identified as unable to run code, and will therefore ignore any embedded code. Also, any files that do have embedded code are easier to identify. \nIf a vulnerability is discovered that affects Office Open XML files, you can use this setting to protect your organization against attacks by temporarily preventing users from opening files in these formats until a security patch is available.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17520",
+      "title": "Disable settings for content and add-ins that  \"Allow trusted locations not on computer\" that might bypass more stringent security checks. ",
+      "description": "By default, files located in trusted locations and specified in the Trust Center are assumed to be safe. Content, code, and add-ins are allowed to load from trusted locations with minimal security and without prompting the user for permission.\nBy default, users can specify trusted locations on network shares or in other remote locations that are not under their direct control by selecting the Allow Trusted Locations on my network (not recommended) check box in the Trusted Locations section of the Trust Center. If a dangerous file is opened from a trusted location, it will not be subject to typical security measures and could affect users' computers or data.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17521",
+      "title": "Save files default format as backward compatible,  not as XML.",
+      "description": "By default, Excel 2007 saves new workbooks in the Office Open XML format with an .xlsx extension. For users who run Excel 2000 with Service Pack 3, Excel 2002 with Service Pack 3, and Excel 2003 with at least Service Pack 1, Microsoft offers the Microsoft Office Compatibility Pack, which enables these versions of Excel to open and save .xlsx files. If some users in your organization cannot install the Compatibility Pack, or are running versions of Excel older than Excel 2000 with Service Pack 3, these users might not be able to access Excel files saved in the .xlsx format.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17522",
+      "title": "Disable Trust access for VBA into Excel, Word, and PowerPoint.   ",
+      "description": "VSTO projects require access to the Visual Basic for Applications project system in Excel 2007, PowerPoint 2007, and Word 2007, even though the projects do not use Visual Basic for Applications. Design-time support of controls in both Visual Basic and C# projects depends on the Visual Basic for Applications project system in Word and Excel.\nBy default, Excel, Word, and PowerPoint do not allow automation clients to have programmatic access to VBA projects. Users can enable this by selecting the Trust access to the VBA project object model in the Macro Settings section of the Trust Center. However, doing so allows macros in any documents the user opens to access the core Visual Basic objects, methods, and properties, which represents a potential security hazard.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17545",
+      "title": "Enable Warning Bar settings for VBA macros contained in Excel Files.",
+      "description": "By default, when users open files in the specified applications that contain VBA macros, the applications open the files with the macros disabled and display the Trust Bar with a warning that macros are present and have been disabled. Users can inspect and edit the files if appropriate, but cannot use any disabled functionality until they enable it by clicking Options on the Trust Bar and selecting the appropriate action. If users enable dangerous macros, it could affect their computers or cause sensitive information to be compromised. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17621",
+      "title": "Force file extension to match file type created - Excel",
+      "description": "Excel 2007 can load files with extensions that do not match the files' type. For example, if a comma-separated values (CSV) file named example.csv is renamed example.xls, Excel can properly load it as a CSV file.\nSome attacks target specific file formats. If Excel is allowed to load files with extensions that do not match their file types, a malicious person can deceive users into loading dangerous files that have incorrect extensions.\nBy default, if users attempt to open files with the wrong extension, Excel opens the file and displays a warning that the file type is not what Excel expected.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17650",
+      "title": "Create configuration to prevent Internet links and Network UNCs from being created as embedded hyperlinks.  ",
+      "description": "By default, when users type a string of characters that Excel 2007 recognizes as a Uniform Resource Locator (URL) or Uniform Naming Convention (UNC) path to a resource on the Internet or a local network, Excel will transform it into a hyperlink. Clicking the hyperlink opens it in the configured default Web browser or the appropriate application. This functionality can enable users to accidentally create links to dangerous or restricted resources, which could create a security risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17652",
+      "title": "Disable the automatic republish to web pages for Excel documents having that link. ",
+      "description": "If users choose to publish Excel data to a static Web page and enable the AutoRepublish feature, Excel 2007 saves a copy of the data to the Web page every time the user saves the workbook. If the page is on a Web server, anyone who has access to the page will be able to see the updated data after every save, which can lead to the undesired disclosure of sensitive or incorrect information.\nBy default, a message dialog box displays every time the user saves a published workbook when AutoRepublish is enabled. From this dialog box, the user can disable AutoRepublish temporarily or permanently, or select Do not show this message again to prevent the dialog box from appearing after every save. If the user selects Do not show this message again, Excel will continue to automatically republish the data after every save without informing the user.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17732",
+      "title": "Ask user to update automatic links instead of automatically updating spreadsheet - Excel. ",
+      "description": "If an Excel 2007 workbook contains links to other documents and users are not prompted to approve them, the contents of the workbook might change without the users' knowledge because the linked files have changed.\nBy default, users are prompted to update automatic links.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17744",
+      "title": "AutoRepublish Warning Alert should be enabled - Excel",
+      "description": "AutoRepublish is a feature in Excel 2007 that allows workbooks to be automatically republished to the World Wide Web each time the workbook is saved. A number of changes might need to be made to allow the workbook to be successfully published, including the following:\n•\tExternal references are converted to values.\n•\tHidden formulas become visible.\n•\tThe Set precision as displayed option, which appears beneath the When calculating this workbook heading in the Advanced section of the Excel Options dialog box, is no longer available.\nThese types of changes can mean that the version on the Web page might not be the same as the Excel file.\nBy default, a message dialog box appears every time the user saves a published workbook when AutoRepublish is enabled. From this dialog box, the user can disable AutoRepublish temporarily or permanently, or select Do not show this message again to prevent the dialog box from appearing after every save. If the user selects Do not show this message again, Excel will continue to automatically republish the data after every save without informing the user.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17751",
+      "title": "Do not Load pictures from web pates not created in Excel",
+      "description": "By default, when users open Web pages in Excel 2007, Excel loads any graphics that are included in the pages, regardless of whether they were originally created in Excel. Allowing Excel to load graphics created in other programs can make Excel vulnerable to possible future zero-day attacks that use graphic files as an attack vector. If such an event occurs, this setting can be used to mitigate the vulnerability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17796",
+      "title": "Do not save additional data needed to maintain formulas - Excel. ",
+      "description": "Microsoft Office Web Components (OWC) is a collection of Component Object Model (COM) controls used by earlier versions of Microsoft Office for publishing spreadsheets, charts, and databases to the Web, and for viewing the published components on the Web. OWC was removed from the 2007 Office release in favor of improvements to the Web features of Office desktop applications and of Microsoft Windows SharePoint Services. Organizations that currently support publishing data to the Web via OWC and are not ready to migrate to newer publishing methods can download OWC from Microsoft and continue to use it with 2007 Microsoft Office applications.\nBy default, when users save workbooks as Web pages that use OWC, Excel maintains externally referenced data of formulas that are not in the selected range to be published, which increases the size of the files and in some cases increases the risk of exposing sensitive information. The user can change this functionality by clearing the Save any additional hidden data necessary to maintain formulas check box on the General tab in the Web Options dialog box (available from the Advanced section of the Excel Options dialog box). If the check box is cleared, Excel 2007 replaces the formulas with calculated values, which reduces the size of the file.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-17804",
+      "title": "Store macro in Personal macro Workbook by default - Excel. ",
+      "description": "The Record Macro dialog box includes a drop-down menu that allows users to choose whether to store the new macro in the current workbook, a new workbook, or their personal macro workbook (Personal.xlsb), a hidden workbook that opens every time Excel 2007 starts.\nBy default, Excel displays the Record Macro dialog box with This Workbook already selected in the drop-down menu. If a user saves a macro in the active workbook and then distributes the workbook to others, the macro is distributed along with the workbook, which could put workbook data at risk if the macro is triggered accidentally or intentionally.\n",
+      "severity": "medium"
+    }
+  ]
+}

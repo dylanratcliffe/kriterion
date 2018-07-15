@@ -1,0 +1,77 @@
+{
+  "name": "stig_sun_ray_4_policy",
+  "date": "2015-04-02",
+  "description": "The Sun Ray 4 Policy Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "Sun Ray 4 Policy STIG",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-16397",
+      "title": "There is no up-to-date documentation or diagrams of the Sun Ray infrastructure.",
+      "description": "Without current and accurate documentation, any changes to the Sun Ray infrastructure may jeopardize the network’s integrity. To assist in the management, auditing, and security of the network, facility drawings and topology maps are a necessity.  Topology maps and documentation are important because they show the overall layout of the network infrastructure and where devices are physically located. They also show the relationship and inter-connectivity between devices and where possible intrusive attacks could take place. If an incident were to occur, the lack of documentation would impact the ability to respond.  Additionally, documentation along with diagrams of the network topology are required to be submitted to the Connection Approval Process (CAP) for approval to connect to the NIPRNet or SIPRNet.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16400",
+      "title": "User Registration process is not clearly documented.",
+      "description": " Without proper user registration documentation, users and system administrators may not register users in the Sun Ray system properly and potentially grant users more privileges than necessary.",
+      "severity": "low"
+    },
+    {
+      "id": "V-16409",
+      "title": "The IAO/SA is not receiving Sun Ray security and patch notifications.",
+      "description": "Organizations need to stay current with all applicable Sun Ray Server software updates that are released from Sun. In order to be aware of updates as they are released, Sun Ray system administrators will subscribe to Sun Ray Server vendor security notices, updates, and patches to ensure that all new vulnerabilities are known. New Sun Ray Server patches and updates should be reviewed for the Sun Ray Server before moving them into a production environment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16411",
+      "title": "Applications published to users are not approved by the IAO/SA.  ",
+      "description": "Publishing applications to users via the Kiosk mode bypasses a login mode.  Therefore, some applications may or may not provide security to identify and authorize users to the application.  For instance, adding the xterm application provides users with access to a command-line interface from a Kiosk mode session.  This is not ideal since users should not be able to access the server’s command line functionality.  Therefore, only approved applications will be published to users.  ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16412",
+      "title": "The Sun Ray Session Server (SRSS) is used to host other applications.",
+      "description": "The availability of the Sun Ray Session Server (SRSS) is critical since it manages the sessions associated with the Desktop Units.  The Sun Ray software controls user authentication, encryption between Sun Ray servers and Desktop Units, system administration tools, session management, policy enforcement, and device management.  If other applications are competing or using hardware resources, the availability of the SRSS may be a risk.  Furthermore, application programs such as web servers, databases, or messaging systems may provide an avenue by which a privileged user may unintentionally introduce malicious code.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16413",
+      "title": "The Sun Ray system and user logs are not reviewed weekly.",
+      "description": "If a system administrator does not review Sun Ray logs weekly, there is the potential that an attack or other security issue can go unnoticed for a week or more, which is unacceptable in DoD environments.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16414",
+      "title": "The disaster recovery plan does not include the Sun Ray system (network infrastructure and peripherals).",
+      "description": "If the disaster recovery plan does not include the Sun Ray system, recovering from a disaster would not be possible.  All peripherals and necessary equipment must be included in the disaster recovery plan to ensure a successful restoration of data, servers, and clients are possible.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16415",
+      "title": "There are no backup and recovery procedures for the Sun Ray system.",
+      "description": "Backup and recovery procedures are critical to the availability and protection of the Sun Ray system. Availability of the system will be hindered if the system is compromised, shutdown, or not available. Backup and recovery of the Sun Ray system includes the operating system, applications, and databases.  Due to the complexity of the Sun Ray system and potential third party applications, procedures will need to be developed to provide guidance to system administrators.  Without a process in place describing the steps to backup and recover the Sun Ray system, backups and recoveries may be inconsistent based on the system administrator performing the action.  Furthermore, if a system administrator would leave the position, there will be no documentation on the process to backup or recover the system.",
+      "severity": "low"
+    },
+    {
+      "id": "V-16416",
+      "title": "There is no spare Sun Ray Desktop Unit available for use in the event of a Sun Ray Desktop Unit malfunction or failure.",
+      "description": "Users will not be able to access the required applications for their job function if the Sun Ray Desktop Unit fails or malfunctions. Having a spare Sun Ray Desktop Unit will provide users a quick replacement of the failed unit, while giving them minimal downtime. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16417",
+      "title": "The Sun Ray system is not under direct control of a site Configuration Control Board.",
+      "description": "Security integrity of the system and the ability to back-up and recover from failures cannot be maintained without the control of the system configuration.  Unless the configuration is controlled by an independent board it is much less likely to be in its approved accredited state.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-16418",
+      "title": "The site has not configured the Sun Ray server in the PNP database.",
+      "description": "DoDI 8550.1 Ports, Protocols, and Services Management (PPSM) is the DoD’s policy on IP Ports, Protocols, and Services (PPS). It controls the PPS that are permitted or approved to cross DoD network boundaries. Standard well known and registered IP ports and associated protocols and services are assessed for vulnerabilities and threats to the entire Global Information Grid (GIG) which includes the DISN backbone networks. The results are published in a Vulnerability Assessment (VA) report. Each port and protocol is given a rating of green, yellow, orange, or red in association with \neach of the 16 defined boundary types. Green means the protocol is relatively secure and is approved to cross the associated boundary without restrictions. Yellow means the protocol has security issues that must be mitigated to be used. Red means that the protocol is prohibited due to vulnerabilities that cannot be mitigated or approved, and is banned when crossing that boundary. The orange category requires DSAWG approval if the protocol exists and is necessary on the network.  However, the orange category mandates that new systems and applications must not be developed using this protocol whether it crosses a boundary or not. \n\nThe PPS Assurance Categories Assignment List (CAL) contains information regarding the assessed ports and protocols and defined boundaries, which is updated on a monthly basis. The PPSM information is available on the IASE and DKO/DoD IA Portal web sites. A portion of the DoDI 8550.1 PPS policy requires registration of those PPS that cross any of the boundaries defined by the policy that are “visible to DoD-managed components”. Therefore, to comply with the policy and ensure that protocols and ports are acceptable, Sun Ray servers will be registered as automated information \nsystems (AIS) with their associated TCP or UDP ports in the DoD Ports and Protocol Registration System.",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,0 +1,407 @@
+{
+  "name": "stig_f5_big-ip_local_traffic_manager_11.x",
+  "date": "2016-09-28",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "F5 BIG-IP Local Traffic Manager 11.x Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-60257",
+      "title": "The BIG-IP Core implementation must be configured to enforce approved authorizations for logical access to information and system resources by employing identity-based, role-based, and/or attribute-based security policies.",
+      "description": "Successful authentication must not automatically give an entity access to an asset or security boundary. The lack of authorization-based access control could result in the immediate compromise and unauthorized access to sensitive information. All DoD systems must be properly configured to incorporate access control methods that do not rely solely on authentication for authorized access.\n\nAuthorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization.\n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. \n\nALGs must use these policies and mechanisms to control access on behalf of the application for which it is acting as intermediary and access control mechanisms are required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60259",
+      "title": "The BIG-IP Core implementation must be configured to enforce approved authorizations for controlling the flow of information within the network based on attribute- and content-based inspection of the source, destination, headers, and/or content of the communications traffic.",
+      "description": "Information flow control regulates where information is allowed to travel within a network. The flow of all network traffic must be monitored and controlled so it does not introduce any unacceptable risk to the network infrastructure or data.\n\nInformation flow control policies and enforcement mechanisms are commonly employed by organizations to control the flow of information between designated sources and destinations (e.g., networks, individuals, devices) within information systems. Examples of information flow control restrictions include keeping export-controlled information from being transmitted in the clear to the Internet or blocking information marked as classified but being transported to an unapproved destination.\n\nALGs enforce approved authorizations by employing security policy and/or rules that restrict information system services, provide packet-filtering capability based on header or protocol information, and/or message filtering capability based on data content (e.g., implementing key word searches or using document characteristics).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60261",
+      "title": "The BIG-IP Core implementation must be configured to restrict or block harmful or suspicious communications traffic by controlling the flow of information between interconnected networks based on attribute- and content-based inspection of the source, destination, headers, and/or content of the communications traffic.",
+      "description": "Information flow control regulates where information is allowed to travel within a network and between interconnected networks. Blocking or restricting detected harmful or suspicious communications between interconnected networks enforces approved authorizations for controlling the flow of traffic.\n\nThis requirement applies the Application Layer Gateway (ALG) when used as a gateway or boundary device that allows traffic flow between interconnected networks of differing security policies.\n\nThe ALG is installed and configured in such a way that it restricts or blocks information flows based on guidance in the Ports, Protocols, and Services Management (PPSM) regarding restrictions for boundary crossing for ports, protocols and services. Information flow restrictions may be implemented based on attribute- and content-based inspection of the source, destination, headers, and/or content of the communications traffic.\n\nThe ALG must be configured with policy filters (e.g., security policy, rules, and/or signatures) that restrict or block information system services; provide a packet-filtering capability based on header information; and/or perform message filtering based on message content. The policy filters used depend upon the type of application gateway (e.g., web, email, or TLS).",
+      "severity": "high"
+    },
+    {
+      "id": "V-60263",
+      "title": "The BIG-IP Core implementation must be configured to display the Standard Mandatory DoD-approved Notice and Consent Banner before granting access to virtual servers.",
+      "description": "Display of a standardized and approved use notification before granting access to the virtual servers ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist. This requirement applies to network elements that have the concept of a user account and have the logon function residing on the network element.\n\nThe banner must be formatted in accordance with DTM-08-060. Use the following verbiage for network elements that can accommodate banners of 1300 characters:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\n\"I've read & consent to terms in IS user agreem't.\"\n\nThis policy only applies to ALGs (e.g., identity management or authentication gateways) that provide user account services as part of the intermediary services.",
+      "severity": "low"
+    },
+    {
+      "id": "V-60265",
+      "title": "The BIG-IP Core implementation must be configured to retain the Standard Mandatory DoD-approved Notice and Consent Banner on the screen until users accessing virtual servers acknowledge the usage conditions and take explicit actions to log on for further access.",
+      "description": "The banner must be acknowledged by the user prior to allowing the user access to virtual servers. This provides assurance that the user has seen the message and accepted the conditions for access. If the consent banner is not acknowledged by the user, DoD will not be in compliance with system use notifications required by law.\n\nTo establish acceptance of the application usage policy, a click-through banner at application logon is required. The network element must prevent further activity until the user executes a positive action to manifest agreement by clicking on a box indicating \"OK\".\n\nThis policy only applies to gateways (e.g., identity management or authentication gateways) that provide user account services as part of the intermediary services.",
+      "severity": "low"
+    },
+    {
+      "id": "V-60267",
+      "title": "The BIG-IP Core implementation must be configured to display the Standard Mandatory DoD-approved Notice and Consent Banner before granting access to publicly accessible applications.",
+      "description": "Display of a standardized and approved use notification before granting access to the publicly accessible network element ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist. This requirement applies to network elements that have the concept of a user account and have the logon function residing on the network element.\n\nThe banner must be formatted in accordance with DTM-08-060. Use the following verbiage for network elements that can accommodate banners of 1300 characters:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\n\"I've read & consent to terms in IS user agreem't.\"\n\nThis policy only applies to gateways (e.g., identity management or authentication gateways) that provide user account services as part of the intermediary services off-loaded from the application. Publicly accessed systems are used in DoD to provide benefit information, pay information, or public services. There may also be self-registration and authorization services provided by these gateways.",
+      "severity": "low"
+    },
+    {
+      "id": "V-60269",
+      "title": "The BIG-IP Core implementation must be configured to limit the number of concurrent sessions to an organization-defined number for virtual servers.",
+      "description": "Network element management includes the ability to control the number of users and user sessions that utilize a network element. Limiting the number of current sessions per user is helpful in limiting risks related to DoS attacks.\n\nThis requirement addresses concurrent sessions for information system accounts and does not address concurrent sessions by single users via multiple system accounts. \n\nThe organization-defined number of concurrent sessions must be the same as the requirements specified for the application for which it serves as intermediary.\n\nThis policy only applies to application gateways/firewalls (e.g., identity management or authentication gateways) that provide user account services as part of the intermediary services.",
+      "severity": "high"
+    },
+    {
+      "id": "V-60271",
+      "title": "The BIG-IP Core implementation must be configured to monitor inbound traffic for remote access policy compliance when accepting connections to virtual servers.",
+      "description": "Automated monitoring of remote access traffic allows organizations to detect cyber attacks and also ensure ongoing compliance with remote access policies by inspecting connection activities of remote access capabilities.\n\nA remote access policy establishes and documents usage restrictions, configuration/connection requirements, and implementation guidance for each type of remote access allowed prior to allowing connections to the information systems.\n\nRemote access methods include both unencrypted and encrypted traffic (e.g., web portals, web content filter, TLS, and webmail). With inbound TLS inspection, the traffic must be inspected prior to being allowed on the enclave's web servers hosting TLS or HTTPS applications. With outbound traffic inspection, traffic must be inspected prior to being forwarded to destinations outside of the enclave, such as external email traffic.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60273",
+      "title": "The BIG-IP Core implementation must be configured to use encryption services that implement NIST SP 800-52 Revision 1 compliant cryptography to protect the confidentiality of connections to virtual servers.",
+      "description": "Without confidentiality protection mechanisms, unauthorized individuals may gain access to sensitive information via a remote access session.\n\nRemote access is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include broadband and wireless connections. Remote access methods include, for example, proxied remote encrypted traffic (e.g., TLS gateways, web content filters, and webmail proxies).\n\nEncryption provides a means to secure the remote connection so as to prevent unauthorized access to the data traversing the remote access connection, thereby providing a degree of confidentiality. The encryption strength of the mechanism is selected based on the security categorization of the information.\n\nThis requirement applies to ALGs providing remote access proxy services as part of their intermediary services (e.g., OWA or TLS gateway).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60275",
+      "title": "The BIG-IP Core implementation must be configured to comply with the required TLS settings in NIST SP 800-52 Revision 1 for TLS services to virtual servers.",
+      "description": "NIST SP 800-52 Revision 1 provides guidance on using the most secure version and configuration of the TLS/SSL protocol. Using older unauthorized versions or incorrectly configuring protocol negotiation makes the gateway vulnerable to known and unknown attacks that exploit vulnerabilities in this protocol.\n\nThis requirement applies to TLS gateways (also known as SSL gateways) and is not applicable to VPN devices. Application protocols such as HTTPS and DNSSEC use TLS/SSL as the underlying security protocol and thus are in scope for this requirement. NIST SP 800-52 Revision 1 provides guidance.\n\nNIST SP 800-52 Revision 1 sets TLS version 1.1 as a minimum version, thus all versions of SSL are not allowed (including for client negotiation) either on DoD-only or on public facing servers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60277",
+      "title": "The BIG-IP Core implementation must be configured to use NIST SP 800-52 Revision 1 compliant cryptography to protect the integrity of remote access sessions to virtual servers.",
+      "description": "Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nRemote access is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include broadband and wireless connections. Remote access methods include, for example, proxied remote encrypted traffic (e.g., TLS gateways, web content filters, and webmail proxies).\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nThis requirement applies to ALGs providing remote access proxy services as part of their intermediary services (e.g., OWA or TLS gateway).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60279",
+      "title": "The BIG-IP Core implementation must be configured to protect audit information from unauthorized read access.",
+      "description": "Auditing and logging are key components of any security architecture. Logging the actions of specific events provides a means to investigate an attack, recognize resource utilization or capacity thresholds, or to simply identify an improperly configured network element. Thus, it is imperative that the collected log data from the various network elements, as well as the auditing tools, be secured and can only be accessed by authorized personnel.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60281",
+      "title": "The BIG-IP Core implementation must be configured to protect audit information from unauthorized modification.",
+      "description": "If audit data were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.\n\nTo ensure the veracity of audit data, the information system and/or the application must protect audit information from unauthorized modification.\n\nThis requirement can be achieved through multiple methods, which will depend upon system architecture and design. Some commonly employed methods include ensuring log files receive the proper file system permissions and limiting log data locations.\n\nAudit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit information system activity.\n\nThis does not apply to audit logs generated on behalf of the device itself (management).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60283",
+      "title": "The BIG-IP Core implementation must be configured to protect audit information from unauthorized deletion.",
+      "description": "If audit data were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.\n\nTo ensure the veracity of audit data, the information system and/or the application must protect audit information from unauthorized modification. This requirement can be achieved through multiple methods, which will depend upon system architecture and design. Some commonly employed methods include ensuring log files receive the proper file system permissions, and limiting log data locations.\n\nAudit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit information system activity.\n\nThis requirement does not apply to audit logs generated on behalf of the device itself (device management).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60285",
+      "title": "The BIG-IP Core implementation must be configured to protect audit tools from unauthorized access.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit data.\n\nNetwork elements providing tools to interface with audit data will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys in order to make access decisions regarding the access to audit tools.\n\nAudit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.\n\nThis does not apply to audit logs generated on behalf of the device itself (management).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60287",
+      "title": "The BIG-IP Core implementation must be configured to protect audit tools from unauthorized modification.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit data.\n\nNetwork elements providing tools to interface with audit data will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys in order to make access decisions regarding the modification of audit tools.\n\nAudit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.\n\nThis does not apply to audit logs generated on behalf of the device itself (management).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60289",
+      "title": "The BIG-IP Core implementation must be configured to protect audit tools from unauthorized deletion.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit data.\n\nNetwork elements providing tools to interface with audit data will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys in order to make access decisions regarding the deletion of audit tools.\n\nAudit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.\n\nThis does not apply to audit logs generated on behalf of the device itself (management).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60291",
+      "title": "The BIG-IP Core implementation must be configured so that only functions, ports, protocols, and/or services that are documented for the server/application for which the virtual servers are providing connectivity.",
+      "description": "Information systems are capable of providing a wide variety of functions (capabilities or processes) and services. Some of these functions and services are installed and enabled by default. The organization must determine which functions and services are required to perform the content filtering and other necessary core functionality for each component of the ALG. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nThe primary function of an ALG is to provide application-specific content filtering and/or proxy services. The ALG application suite may integrate related content filtering and analysis services and tools (e.g., IPS, proxy, malware inspection, black/white lists). Some gateways may also include email scanning, decryption, caching, and DLP services. However, services and capabilities which are unrelated to this primary functionality must not be installed (e.g., DNS, email client or server, FTP server, or web server).\n\nNext Generation ALGs (NGFW) and Unified Threat Management (UTM) ALGs integrate functions which have been traditionally separated. These products integrate content filtering features to provide more granular policy filtering. There may be operational drawbacks to combining these services into one device. Another issue is that NGFW and UTM products vary greatly with no current definitive industry standard.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60293",
+      "title": "The BIG-IP Core implementation must be configured to remove or disable any functions, ports, protocols, and/or services that are not documented as required.",
+      "description": "Unrelated or unneeded proxy services increase the attack vector and add excessive complexity to the securing of the ALG. Multiple application proxies can be installed on many ALGs. However, proxy types must be limited to related functions. At a minimum, the web and email gateway represent different security domains/trust levels. Organizations should also consider separation of gateways that service the DMZ and the trusted network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60295",
+      "title": "The BIG-IP Core implementation must be configured to prohibit or restrict the use of functions, ports, protocols, and/or services, as defined in the Ports, Protocol, and Service Management (PPSM) Category Assurance List (CAL) and vulnerability assessments.",
+      "description": "In order to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types); organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nALGs are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. DoD continually assesses the ports, protocols, and services that can be used for network communications. Some ports, protocols, or services have known exploits or security weaknesses. Network traffic using these ports, protocols, and services must be prohibited or restricted in accordance with DoD policy. The ALG is a key network element for preventing these non-compliant ports, protocols, and services from causing harm to DoD information systems.\n\nThe network ALG must be configured to prevent or restrict the use of prohibited ports, protocols, and services throughout the network by filtering the network traffic and disallowing or redirecting traffic as necessary. Default and updated policy filters from the vendors will disallow older versions of protocols and applications and will address most known non-secure ports, protocols, and/or services. However, sources for further policy filters are the IAVMs and the PPSM requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60297",
+      "title": "The BIG-IP Core implementation must be configured to uniquely identify and authenticate organizational users (or processes acting on behalf of organizational users) when connecting to virtual servers.",
+      "description": "To assure accountability and prevent unauthenticated access, organizational users must be identified and authenticated to prevent potential misuse and compromise of the system.\nOrganizational users include organizational employees or individuals the organization deems to have equivalent status of employees (e.g., contractors). Organizational users (and any processes acting on behalf of users) must be uniquely identified and authenticated for all accesses except the following:\n\n1) Accesses explicitly identified and documented by the organization. Organizations document specific user actions that can be performed on the information system without identification or authentication.\n\n2) Accesses that occur through authorized use of group authenticators without individual authentication. Organizations may require unique identification of individuals in group accounts (e.g., shared privilege accounts) or for detailed accountability of individual activity.\n\nThis requirement applies to ALGs that provide user proxy services, including identification and authentication. This service must use the site's directory service (e.g., Active Directory). Directory services must not be installed onto the gateway.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60299",
+      "title": "The BIG-IP Core implementation must be configured with a pre-established trust relationship and mechanisms with appropriate authorities (e.g., Active Directory or authentication, authorization, and accounting (AAA) server) that validate user account access authorizations and privileges when providing access control to virtual servers.",
+      "description": "User account and privilege validation must be centralized in order to prevent unauthorized access using changed or revoked privileges.\n\nALGs can implement functions such as traffic filtering, authentication, access, and authorization functions based on computer and user privileges. However, the directory service (e.g., Active Directory or LDAP) must not be installed on the ALG, particularly if the gateway resides on the untrusted zone of the Enclave.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60301",
+      "title": "The BIG-IP Core implementation providing user authentication intermediary services must restrict user authentication traffic to specific authentication server(s) when providing access control to virtual servers.",
+      "description": "User authentication can be used as part of the policy filtering rule sets. Some URLs or network resources can be restricted to authenticated users only. Users are prompted by the application or browser for credentials. Authentication service may be provided by the ALG as an intermediary for the application; however, the authentication credential must be stored in the site's directory services server.\n\nThis requirement only applies to components where this is specific to the function of the device or has the concept of an organizational user (e.g., proxy capability). This does not apply to authentication for the purpose of configuring the device itself (i.e., device management).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60303",
+      "title": "The BIG-IP Core implementation providing user authentication intermediary services must use multifactor authentication for network access to non-privileged accounts when granting access to virtual servers.",
+      "description": "To assure accountability and prevent unauthenticated access, non-privileged users must utilize multifactor authentication to prevent potential misuse and compromise of the system.\n\nMultifactor authentication uses two or more factors to achieve authentication. Factors include: \n\n1) Something you know (e.g., password/PIN); \n2) Something you have (e.g., cryptographic, identification device, token); and \n3) Something you are (e.g., biometric).\n\nNon-privileged accounts are not authorized on the network element regardless of configuration.\n\nNetwork access is any access to an application by a user (or process acting on behalf of a user) where said access is obtained through a network connection.\n\nThe DoD CAC with DoD-approved PKI is an example of multifactor authentication.\n\nThis requirement applies to ALGs that provide user authentication intermediary services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60305",
+      "title": "The BIG-IP Core implementation must be configured to validate certificates used for TLS functions for connections to virtual servers by constructing a certification path (which includes status information) to an accepted trust anchor.",
+      "description": "A trust anchor is an authoritative entity represented via a public key. Within a chain of trust, the top entity to be trusted is the \"root certificate\" or \"trust anchor\" such as a Certification Authority (CA). A certification path starts with the subject certificate and proceeds through a number of intermediate certificates up to a trusted root certificate, typically issued by a trusted CA. Path validation is necessary for a relying party to make an informed trust decision when presented with any certificate not already explicitly trusted.\n\nDeploying the ALG with TLS enabled may require the CA certificates for each proxy to be used for TLS traffic decryption/encryption. The installation of these certificates in each trusted root certificate store is used by proxied applications and browsers on each client.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60307",
+      "title": "The BIG-IP Core implementation providing PKI-based, user authentication intermediary services must be configured to map the authenticated identity to the user account for PKI-based authentication to virtual servers.",
+      "description": "Authorization for access to any network element requires an approved and assigned individual account identifier. To ensure only the assigned individual is using the account, the account must be bound to a user certificate when PKI-based authentication is implemented.\n\nThis requirement applies to ALGs that provide user authentication intermediary services (e.g., authentication gateway or TLS gateway). This does not apply to authentication for the purpose of configuring the device itself (device management).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60309",
+      "title": "The BIG-IP Core implementation must be configured to uniquely identify and authenticate non-organizational users (or processes acting on behalf of non-organizational users) when connecting to virtual servers.",
+      "description": "Lack of authentication enables anyone to gain access to the network or possibly a network element that provides opportunity for intruders to compromise resources within the network infrastructure. By identifying and authenticating non-organizational users, their access to network resources can be restricted accordingly.\n\nNon-organizational users will be uniquely identified and authenticated for all accesses other than those accesses explicitly identified and documented by the organization when related to the use of anonymous access. Authorization requires an individual account identifier that has been approved, assigned, and configured on an authentication server. Authentication of user identities is accomplished through the use of passwords, tokens, biometrics, or in the case of multifactor authentication, some combination thereof.\n\nThis control applies to application layer gateways that provide content filtering and proxy services on network segments (e.g., DMZ) that allow access by non-organizational users. This requirement focuses on authentication requests to the proxied application for access to destination resources and policy filtering decisions rather than administrator and management functions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60311",
+      "title": "The BIG-IP Core implementation must terminate all network connections associated with a communications session at the end of the session, or as follows: for in-band management sessions (privileged sessions), the session must be terminated after 10 minutes of inactivity; and for user sessions (non-privileged session), the session must be terminated after 15 minutes of inactivity.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element.\n\nTerminating network connections associated with communications sessions includes, for example, de-allocating associated TCP/IP address/port pairs at the operating system level and de-allocating networking assignments at the application level if multiple application sessions are using a single operating system level network connection.\n\nALGs may provide session control functionality as part of content filtering, load balancing, or proxy services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60313",
+      "title": "The BIG-IP Core implementation must be configured to protect the authenticity of communications sessions.",
+      "description": "Authenticity protection provides protection against man-in-the-middle attacks/session hijacking and the insertion of false information into sessions.\n\nThis requirement focuses on communications protection for the application session rather than for the network packet and establishes grounds for confidence at both ends of communications sessions in ongoing identities of other parties and in the validity of information transmitted. Depending on the required degree of confidentiality and integrity, web services/SOA will require the use of TLS/TLS mutual authentication (two-way/bidirectional).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60315",
+      "title": "The BIG-IP Core implementation must be configured to activate a session lock to conceal information previously visible on the display for connections to virtual servers.",
+      "description": "A session time-out lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence.\n\nThe session lock is implemented at the point where session activity can be determined. The network element session lock event must include an obfuscation of the display screen so as to prevent other users from reading what was previously displayed.\n\nPublicly viewable images can include static or dynamic images, for example, patterns used with screen savers, photographic images, solid colors, a clock, a battery life indicator, or a blank screen, with the additional caveat that none of the images convey sensitive information.\n\nThis policy only applies to gateways (e.g., identity management or authentication gateways) that provide user account services as part of the intermediary services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60317",
+      "title": "The BIG-IP Core implementation must be configured to initiate a session lock after a 15-minute period of inactivity when users are connected to virtual servers.",
+      "description": "A session time-out lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence. Rather than relying on the user to manually lock their session prior to vacating the vicinity, network elements need to be able to identify when a user's session has idled and take action to initiate the session lock.\n\nThe session lock is implemented at the point where session activity can be determined and/or controlled.\n\nThis policy only applies to gateways (e.g., identity management or authentication gateways) that provide user account services as part of the intermediary services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60319",
+      "title": "The BIG-IP Core implementation providing user access control intermediary services must provide the capability for users to directly initiate a session lock.",
+      "description": "A session lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not want to log out because of the temporary nature of the absence.\n\nThe session lock is implemented at the point where session activity can be determined. Rather than be forced to wait for a period of time to expire before the user session can be locked, network elements need to provide users with the ability to manually invoke a session lock so users may secure their session should the need arise for them to temporarily vacate the immediate physical vicinity.\n\nThis policy only applies to gateways (e.g., identity management or authentication gateways) that provide user account services as part of the intermediary services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60321",
+      "title": "The BIG-IP Core implementation must automatically terminate a user session for a user connected to virtual servers when organization-defined conditions or trigger events occur that require a session disconnect.",
+      "description": "Automatic session termination addresses the termination of user-initiated logical sessions in contrast to the termination of network connections that are associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever a user (or process acting on behalf of a user) accesses an organizational information system. Such user sessions can be terminated (and thus terminate user access) without terminating network sessions.\n\nSession termination terminates all processes associated with a user's logical session except those processes that are specifically created by the user (i.e., session owner) to continue after the session is terminated.\n\nThis capability is typically reserved for specific system functionality where the system owner, data owner, or organization requires additional trigger events based on specific mission needs. Conditions or trigger events requiring automatic session termination can include, for example, targeted responses to certain types of incidents and time-of-day restrictions on information system use.\n\nThis policy only applies to gateways (e.g., identity management or authentication gateways) that provide user account services as part of the intermediary services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60323",
+      "title": "The BIG-IP Core must display an explicit logoff message to users indicating the reliable termination of authenticated communications sessions when providing access to virtual servers.",
+      "description": "If a user cannot explicitly end a session, the session may remain open and be exploited by an attacker; this is referred to as a zombie session. Users need to be aware of whether or not the session has been terminated.\n\nLogoff messages for access, for example, can be displayed after authenticated sessions have been terminated. However, for some types of interactive sessions including, for example, remote logon, information systems typically send logoff messages as final messages prior to terminating sessions.\n\nThis policy only applies to ALGs (e.g., identity management or authentication gateways) that provide user account services as part of the intermediary services.",
+      "severity": "low"
+    },
+    {
+      "id": "V-60325",
+      "title": "The BIG-IP Core implementation providing intermediary services for remote access communications traffic must control remote access methods to virtual servers.",
+      "description": "Remote access devices, such as those providing remote access to network devices and information systems, which lack automated control capabilities, increase risk and make remote user access management difficult at best.\n\nRemote access is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include broadband and wireless connections. Remote access methods include, for example, proxied remote encrypted traffic (e.g., TLS gateways, web content filters, and webmail proxies).\n\nThis requirement applies to ALGs providing remote access proxy services as part of its intermediary services (e.g., OWA or TLS gateway). ALGs that proxy remote access must be capable of taking enforcement action (i.e., blocking, restricting, or forwarding to an enforcement mechanism) if traffic monitoring reveals unauthorized activity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60327",
+      "title": "To protect against data mining, the BIG-IP Core implementation must be configured to prevent code injection attacks from being launched against data storage objects, including, at a minimum, databases, database records, queries, and fields when providing content filtering to virtual servers.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to prevent attacks launched against organizational information from unauthorized data mining may result in the compromise of information.\n\nInjection attacks allow an attacker to inject code into a program or query or inject malware into a computer to execute remote commands that can read or modify a database or change data on a website. Web applications frequently access databases to store, retrieve, and update information. An attacker can construct inputs that the database will execute. This is most commonly referred to as a code injection attack. This type of attack includes XPath and LDAP injections.\n\nCompliance requires the ALG to have the capability to prevent code injections. Examples include Web Application Firewalls (WAFs) or database application gateways.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60329",
+      "title": "To protect against data mining, the BIG-IP Core implementation providing content filtering must be configured to prevent code injection attacks from being launched against application objects, including, at a minimum, application URLs and application code.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to prevent attacks launched against organizational information from unauthorized data mining may result in the compromise of information.\n\nInjection attacks allow an attacker to inject code into a program or query or inject malware into a computer to execute remote commands that can read or modify a database or change data on a website. These attacks include buffer overrun, XML, JavaScript, and HTML injections.\n\nCompliance requires the ALG to have the capability to prevent code injections. Examples include Web Application Firewalls (WAFs) or database application gateways.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60331",
+      "title": "To protect against data mining, the BIG-IP Core implementation providing content filtering must be configured to prevent SQL injection attacks from being launched against data storage objects, including, at a minimum, databases, database records, and database fields.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to prevent attacks launched against organizational information from unauthorized data mining may result in the compromise of information.\n\nSQL injection attacks are the most prevalent attacks against web applications and databases. These attacks inject SQL commands that can read, modify, or compromise the meaning of the original SQL query. An attacker can spoof identity; expose, tamper, destroy, or make existing data unavailable; or gain unauthorized privileges on the database server.\n\nCompliance requires the ALG to have the capability to prevent SQL code injections. Examples include Web Application Firewalls (WAFs) or database application gateways.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60333",
+      "title": "To protect against data mining, the BIG-IP Core implementation providing content filtering must be configured to detect code injection attacks being launched against data storage objects.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to detect attacks launched against organizational databases may result in the compromise of information.\n\nInjection attacks allow an attacker to inject code into a program or query or inject malware into a computer to execute remote commands that can read or modify a database or change data on a website. Web applications frequently access databases to store, retrieve, and update information. An attacker can construct inputs that the database will execute. This is most commonly referred to as a code injection attack. This type of attack includes XPath and LDAP injections.\n\nALGs with anomaly detection must be configured to protect against unauthorized code injections. These devices must include rules and anomaly detection algorithms to monitor for atypical database queries or accesses. Examples include Web Application Firewalls (WAFs) or database application gateways.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60335",
+      "title": "To protect against data mining, the BIG-IP Core implementation providing content filtering must be configured to detect SQL injection attacks being launched against data storage objects, including, at a minimum, databases, database records, and database fields.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to detect attacks launched against organizational databases may result in the compromise of information.\n\nSQL injection attacks are the most prevalent attacks against web applications and databases. These attacks inject SQL commands that can read, modify, or compromise the meaning of the original SQL query. An attacker can spoof identity; expose, tamper, destroy, or make existing data unavailable; or gain unauthorized privileges on the database server.\n\nALGs with anomaly detection must be configured to protect against unauthorized data mining attacks. These devices must include rules and anomaly detection algorithms to monitor for atypical database queries or accesses. Examples include Web Application Firewalls (WAFs) or database application gateways.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60337",
+      "title": "The BIG-IP Core implementation must be configured to detect code injection attacks being launched against application objects, including, at a minimum, application URLs and application code, when providing content filtering to virtual servers.",
+      "description": "Data mining is the analysis of large quantities of data to discover patterns and is used in intelligence gathering. Failure to detect attacks launched against organizational applications may result in the compromise of information.\n\nInjection attacks allow an attacker to inject code into a program or query or inject malware into a computer to execute remote commands that can read or modify a database or change data on a website. These attacks include buffer overrun, XML, JavaScript, and HTML injections.\n\nALGs with anomaly detection must be configured to protect against unauthorized code injections. These devices must include rules and anomaly detection algorithms to monitor for atypical database queries or accesses. Examples include Web Application Firewalls (WAFs) or database application gateways.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60339",
+      "title": "The BIG-IP Core implementation must be configured to require users to re-authenticate to virtual servers when organization-defined circumstances or situations require re-authentication.",
+      "description": "Without re-authentication, users may access resources or perform tasks for which they do not have authorization.\n\nIn addition to the re-authentication requirements associated with session locks, organizations may require re-authentication of individuals and/or devices in other situations, including (but not limited to) the following circumstances: \n\n1) When authenticators change;\n2) When roles change;\n3) When security categories of information systems change;\n4) When the execution of privileged functions occurs;\n5) After a fixed period of time; and\n6) Periodically.\n\nWithin the DoD, the minimum circumstances requiring re-authentication are privilege escalation and role changes.\n\nThis requirement only applies to components where this is specific to the function of the device or has the concept of user authentication (e.g., VPN or ALG capability). This does not apply to authentication for the purpose of configuring the device itself (i.e., device management).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60341",
+      "title": "A BIG-IP Core implementation providing user authentication intermediary services must be configured to require multifactor authentication for remote access to non-privileged accounts in such a way that one of the factors is provided by a device separate from the system gaining access.",
+      "description": "For remote access to non-privileged accounts, the purpose of requiring a device that is separate from the information system gaining access for one of the factors during multifactor authentication is to reduce the likelihood of compromising authentication credentials stored on the system.\n\nMultifactor solutions that require devices separate from information systems gaining access include, for example, hardware tokens providing time-based or challenge-response authenticators and smart cards such as the U.S. Government Personal Identity Verification card and the DoD common access card.\n\nA privileged account is defined as an information system account with authorizations of a privileged user.\n\nRemote access is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nAn example of compliance with this requirement is the use of a one-time password token and PIN coupled with a password; or the use of a CAC/PIV card and PIN coupled with a password.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60343",
+      "title": "The BIG-IP Core implementation providing user authentication intermediary services must be configured to require multifactor authentication for remote access with privileged accounts to virtual servers in such a way that one of the factors is provided by a device separate from the system gaining access.",
+      "description": "For remote access to privileged accounts, the purpose of requiring a device that is separate from the information system gaining access for one of the factors during multifactor authentication is to reduce the likelihood of compromising authentication credentials stored on the system.\n\nMultifactor solutions that require devices separate from information systems gaining access include, for example, hardware tokens providing time-based or challenge-response authenticators and smart cards such as the U.S. Government Personal Identity Verification card and the DoD common access card.\n\nA privileged account is defined as an information system account with authorizations of a privileged user.\n\nRemote access is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60345",
+      "title": "The BIG-IP Core implementation providing user authentication intermediary services must accept Personal Identity Verification (PIV) credentials when providing user authentication to virtual servers.",
+      "description": "The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access.\n\nDoD has mandated the use of the CAC to support identity management and personal authentication for systems covered under HSPD 12, as well as a primary component of layered protection for national security systems.\n\nThis requirement applies to ALGs that provide user authentication intermediary services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60347",
+      "title": "The BIG-IP Core implementation providing user authentication intermediary services must electronically verify Personal Identity Verification (PIV) credentials when providing user authentication to virtual servers.",
+      "description": "The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access.\n\nDoD has mandated the use of the CAC to support identity management and personal authentication for systems covered under HSPD 12, as well as a primary component of layered protection for national security systems. \n\nThis requirement applies to ALGs that provide user authentication intermediary services.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60349",
+      "title": "The BIG-IP Core implementation must be configured to deny-by-default all PKI-based authentication to virtual servers supporting path discovery and validation if unable to access revocation information via the network.",
+      "description": "When revocation data is unavailable from the network, the system should be configured to deny-by-default to mitigate the risk of a user with a revoked certificate gaining unauthorized access. Local cached revocation data can be out of date or not able to be installed on the local system, which increases administration burden for the system.\n\n\nThe intent of this requirement is to deny unauthenticated users access to virtual servers in case access to OCSP (required by CCI-000185) is not available.\n\nThis requirement applies to ALGs that provide user authentication intermediary services (e.g., authentication gateway or TLS gateway). This does not apply to authentication for the purpose of configuring the device itself (device management).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60351",
+      "title": "The BIG-IP Core implementation must be able to accept Personal Identity Verification (PIV) credentials from other federal agencies when connecting to member pools/nodes.",
+      "description": "Access may be denied to authorized users if federal agency PIV credentials are not accepted.\n\nPersonal Identity Verification (PIV) credentials are those credentials issued by federal agencies that conform to FIPS Publication 201 and supporting guidance documents. OMB Memorandum 11-11 requires federal agencies to continue implementing the requirements specified in HSPD-12 to enable agency-wide use of PIV credentials.\n\nThis requirement applies to ALGs that provide user authentication intermediary services (e.g., authentication gateway or TLS gateway). This does not apply to authentication for the purpose of configuring the device itself (device management).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60353",
+      "title": "The BIG-IP Core implementation must be able to electronically verify Personal Identity Verification (PIV) credentials from other federal agencies when authenticating to virtual servers.",
+      "description": "Inappropriate access may be granted to unauthorized users if federal agency PIV credentials are not electronically verified.\n\nPIV credentials are those credentials issued by federal agencies that conform to FIPS Publication 201 and supporting guidance documents. OMB Memorandum 11-11 requires federal agencies to continue implementing the requirements specified in HSPD-12 to enable agency-wide use of PIV credentials.\n\nThis requirement applies to ALGs that provide user authentication intermediary services (e.g., authentication gateway or TLS gateway). This does not apply to authentication for the purpose of configuring the device itself (device management).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60355",
+      "title": "The BIG-IP Core implementation must be able to accept FICAM-approved third-party credentials for PKI-authentication to virtual servers.",
+      "description": "Access may be denied to legitimate users if Federal Identity, Credential, and Access Management (FICAM)-approved third-party credentials are not accepted.\n\nThird-party credentials are those credentials issued by non-federal government entities approved by the FICAM Trust Framework Solutions initiative.\n\nThis requirement typically applies to organizational information systems that are accessible to non-federal government agencies and other partners. This allows federal government relying parties to trust such credentials at their approved assurance levels.\n\nThis requirement only applies to components where this is specific to the function of the device or has the concept of a non-organizational user, (e.g., ALG capability that is the front end for an application in a DMZ). This does not apply to authentication for the purpose of configuring the device itself (i.e., device management).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60357",
+      "title": "The BIG-IP Core implementation must be able to conform to FICAM-issued profiles when providing authentication to virtual servers.",
+      "description": "Without conforming to Federal Identity, Credential, and Access Management (FICAM)-issued profiles, the information system may not be interoperable with FICAM-authentication protocols, such as SAML 2.0 and OpenID 2.0.\n\nUse of FICAM-issued profiles addresses open identity management standards.\n\nThis requirement only applies to components where this is specific to the function of the device or has the concept of a non-organizational user, (e.g., ALG capability that is the front end for an application in a DMZ).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60359",
+      "title": "The BIG-IP Core implementation must be configured to only allow the use of DoD-approved PKI-established certificate authorities for verification of the establishment of protected sessions.",
+      "description": "Untrusted certificate authorities (CA) can issue certificates, but they may be issued by organizations or individuals that seek to compromise DoD systems or by organizations with insufficient security controls. If the CA used for verifying the certificate is not a DoD-approved CA, trust of this CA has not been established.\n\nThe DoD will only accept PKI certificates obtained from a DoD-approved internal or external certificate authority. Reliance on CAs for the establishment of secure sessions includes, for example, the use of TLS/TLS certificates.\n\nThis requirement focuses on communications protection for the application session rather than for the network packet.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60361",
+      "title": "The BIG-IP Core implementation must be configured to protect against known and unknown types of Denial of Service (DoS) attacks by employing rate-based attack prevention behavior analysis when providing content filtering to virtual servers.",
+      "description": "If the network does not provide safeguards against DoS attacks, network resources will be unavailable to users.\n\nInstallation of content filtering gateways and application layer firewalls at key boundaries in the architecture mitigates the risk of DoS attacks. These attacks can be detected by matching observed communications traffic with patterns of known attacks and monitoring for anomalies in traffic volume/type.\n\nDetection components that use rate-based behavior analysis can detect attacks when signatures for the attack do not exist or are not installed. These attacks include zero-day attacks, which are new attacks for which vendors have not yet developed signatures. Rate-based behavior analysis can detect sophisticated, Distributed DoS (DDoS) attacks by correlating traffic information from multiple network segments or components.\n\nThis requirement applies to the functionality of the ALG as it pertains to handling communications traffic rather than to the ALG device itself.",
+      "severity": "high"
+    },
+    {
+      "id": "V-60363",
+      "title": "The BIG-IP Core implementation must be configured to implement load balancing to limit the effects of known and unknown types of Denial of Service (DoS) attacks to virtual servers.",
+      "description": "If the network does not provide safeguards against DoS attacks, network resources will be unavailable to users. Load balancing provides service redundancy; which service redundancy reduces the susceptibility of the ALG to many DoS attacks.\n\nThe ALG must be configured to prevent or mitigate the impact on network availability and traffic flow of DoS attacks that have occurred or are ongoing.\n\nThis requirement applies to the functionality of the device as it pertains to handling network traffic. Some types of attacks may be specialized to certain network technologies, functions, or services. For each technology, known and potential DoS attacks must be identified and solutions for each type implemented.",
+      "severity": "high"
+    },
+    {
+      "id": "V-60365",
+      "title": "The BIG-IP Core implementation must be configured to protect against known types of Denial of Service (DoS) attacks by employing signatures when providing content filtering to virtual servers.",
+      "description": " If the network does not provide safeguards against DoS attacks, network resources will be unavailable to users. \n\nInstallation of content filtering gateways and application layer firewalls at key boundaries in the architecture mitigates the risk of DoS attacks. These attacks can be detected by matching observed communications traffic with patterns of known attacks and monitoring for anomalies in traffic volume, type, or protocol usage.\n\nDetection components that use signatures can detect known attacks by using known attack signatures. Signatures are usually obtained from and updated by the ALG component vendor.\n\nThis requirement applies to the communications traffic functionality of the ALG as it pertains to handling communications traffic rather than to the ALG device itself.",
+      "severity": "high"
+    },
+    {
+      "id": "V-60367",
+      "title": "The BIG-IP Core implementation must be configured to protect against or limit the effects of known and unknown types of Denial of Service (DoS) attacks by employing pattern recognition pre-processors when providing content filtering to virtual servers.",
+      "description": "If the network does not provide safeguards against DoS attacks, network resources will be unavailable to users.\n\nInstallation of content filtering gateways and application layer firewalls at key boundaries in the architecture mitigates the risk of DoS attacks. These attacks can be detected by matching observed communications traffic with patterns of known attacks.\n\nDetection components that use pattern recognition pre-processors can detect attacks when signatures for the attack do not exist or are not installed. These attacks include zero-day attacks, which are new attacks for which vendors have not yet developed signatures.\n\nThis requirement applies to the communications traffic functionality of the ALG as it pertains to handling communications traffic, rather than to the ALG device itself.",
+      "severity": "high"
+    },
+    {
+      "id": "V-60369",
+      "title": "The BIG-IP Core implementation must be configured to only allow incoming communications from authorized sources routed to authorized destinations.",
+      "description": "Unrestricted traffic may contain malicious traffic that poses a threat to an enclave or to other connected networks. Additionally, unrestricted traffic may transit a network, which uses bandwidth and other resources.\n\nAccess control policies and access control lists implemented on devices that control the flow of network traffic (e.g., application-level firewalls and Web content filters), ensure the flow of traffic is only allowed from authorized sources to authorized destinations. Networks with different levels of trust (e.g., the Internet or CDS) must be kept separate.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60371",
+      "title": "The BIG-IP Core implementation must be configured to handle invalid inputs in a predictable and documented manner that reflects organizational and system objectives.",
+      "description": "A common vulnerability of network elements is unpredictable behavior when invalid inputs are received. This requirement guards against adverse or unintended system behavior caused by invalid inputs, where information system responses to the invalid input may be disruptive or cause the system to fail into an unsafe state.\n\nThe behavior will be derived from the organizational and system requirements and includes, but is not limited to, notification of the appropriate personnel, creating an audit record, and rejecting invalid input.\n\nThis requirement applies to gateways and firewalls that perform content inspection or have higher-layer proxy functions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60373",
+      "title": "The BIG-IP Core implementation must continuously monitor inbound communications traffic crossing internal security boundaries for unusual or unauthorized activities or conditions.",
+      "description": "If inbound communications traffic is not continuously monitored, hostile activity may not be detected and prevented. Output from application and traffic monitoring serves as input to continuous monitoring and incident response programs.\n\nInternal monitoring includes the observation of events occurring on the network crossing  internal boundaries at managed interfaces such as web content filters. Depending on the type of ALG, organizations can monitor information systems by monitoring audit activities, application access patterns, characteristics of access, content filtering, or unauthorized exporting of information across boundaries. Unusual/unauthorized activities or conditions may include large file transfers, long-time persistent connections, unusual protocols and ports in use, and attempted communications with suspected malicious external addresses.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60375",
+      "title": "The BIG-IP Core implementation must be configured to check the validity of all data inputs except those specifically identified by the organization.",
+      "description": "Invalid user input occurs when a user inserts data or characters into an application's data entry fields and the application is unprepared to process that data. This results in unanticipated application behavior potentially leading to an application or information system compromise. Invalid input is one of the primary methods employed when attempting to compromise an application.\n\nNetwork devices with the functionality to perform application layer inspection may be leveraged to validate data content of network communications. Checking the valid syntax and semantics of information system inputs (e.g., character set, length, numerical range, and acceptable values) verifies that inputs match specified definitions for format and content. Software typically follows well-defined protocols that use structured messages (i.e., commands or queries) to communicate between software modules or system components. Structured messages can contain raw or unstructured data interspersed with metadata or control information. If network elements use attacker-supplied inputs to construct structured messages without properly encoding such messages, then the attacker could insert malicious commands or special characters that can cause the data to be interpreted as control information or metadata. Consequently, the module or component that receives the tainted output will perform the wrong operations or otherwise interpret the data incorrectly. Pre-screening inputs prior to passing to interpreters prevents the content from being unintentionally interpreted as commands. Input validation helps to ensure accurate and correct inputs and prevent attacks such as cross-site scripting and a variety of injection attacks.\n\nThis requirement applies to gateways and firewalls that perform content inspection or have higher-layer proxy functionality.\n\nNote: A limitation of ~200 policies per cluster currently exists on the BIG-IP Core.  If this requirement cannot be met due to this limitation, documentation from the AO is required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60377",
+      "title": "The BIG-IP Core implementation must be configured to implement NIST FIPS-validated cryptography to generate cryptographic hashes when providing encryption traffic to virtual servers.",
+      "description": "Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The network element must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.\n\nThis requirement applies only to ALGs that provide encryption intermediary services (e.g., HTTPS, TLS, or DNSSEC).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60379",
+      "title": "The BIG-IP Core implementation must be configured to implement NIST FIPS-validated cryptography for digital signatures when providing encrypted traffic to virtual servers.",
+      "description": "Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The network element must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.\n\nThis requirement applies only to ALGs that provide encryption intermediary services (e.g., HTTPS, TLS, or DNSSEC).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60381",
+      "title": "The BIG-IP Core implementation must be configured to use NIST FIPS-validated cryptography to implement encryption services when providing encrypted traffic to virtual servers.",
+      "description": "Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The network element must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.\n\nThis requirement applies only to ALGs that provide encryption intermediary services (e.g., HTTPS, TLS, or DNSSEC).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60383",
+      "title": "The BIG-IP Core implementation must be configured to inspect for protocol compliance and protocol anomalies in inbound SMTP and Extended SMTP communications traffic to virtual servers.",
+      "description": "Application protocol anomaly detection examines application layer protocols such as SMTP to identify attacks based on observed deviations in the normal RFC behavior of a protocol or service. This type of monitoring allows for the detection of known and unknown exploits that exploit weaknesses of commonly used protocols.\n\nSince protocol anomaly analysis examines the application payload for patterns or anomalies, an SMTP proxy must be included in the ALG. This ALG will be configured to inspect inbound SMTP and Extended SMTP communications traffic to detect protocol anomalies such as malformed message and command insertion attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60385",
+      "title": "The BIG-IP Core implementation must be configured to inspect for protocol compliance and protocol anomalies in inbound FTP and FTPS communications traffic to virtual servers.",
+      "description": "Application protocol anomaly detection examines application layer protocols such as FTP to identify attacks based on observed deviations in the normal RFC behavior of a protocol or service. This type of monitoring allows for the detection of known and unknown exploits that exploit weaknesses of commonly used protocols.\n\nSince protocol anomaly analysis examines the application payload for patterns or anomalies, an FTP proxy must be included in the ALG. This ALG will be configured to inspect inbound FTP and FTPS communications traffic to detect protocol anomalies such as malformed message and command insertion attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-60387",
+      "title": "The BIG-IP Core implementation must be configured to inspect for protocol compliance and protocol anomalies in inbound HTTP and HTTPS traffic to virtual servers.",
+      "description": "Application protocol anomaly detection examines application layer protocols such as HTTP to identify attacks based on observed deviations in the normal RFC behavior of a protocol or service. This type of monitoring allows for the detection of known and unknown exploits that exploit weaknesses of commonly used protocols.\n\nSince protocol anomaly analysis examines the application payload for patterns or anomalies, an HTTP proxy must be included in the ALG. This ALG will be configured to inspect inbound HTTP and HTTPS communications traffic to detect protocol anomalies such as malformed message and command insertion attacks. Note that if mutual authentication is enabled, there will be no way to inspect HTTPS traffic with MITM.",
+      "severity": "medium"
+    }
+  ]
+}
