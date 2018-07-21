@@ -45,6 +45,5 @@ class Kriterion
     def compliant?
       (@out_of_sync_count == 0) and (@change_count == 0)
     end
-
   end
 end

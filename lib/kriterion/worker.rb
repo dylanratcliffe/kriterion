@@ -129,11 +129,28 @@ class Kriterion
             end
           end
 
-          binding.pry
+          # Add the resource to the section
+          backend.add_resource(section, resource)
         end
 
+        # Reload the standard as new sections may have been added
+        standard = backend.get_standard(name)
 
-        # TODO: Continue from here
+        # I have realised that adding something to a mongodb document that is
+        # deeper than one level down is near impossible, so I'm going to need to
+        # be a bit smarter about how I lay out this data. One giant hash is not
+        # likely to work and I"m probably going to have to have many tables with
+        # fields in each that reference their parent as per
+        # https://docs.mongodb.com/manual/tutorial/model-tree-structures-with-parent-references/
+        # The next thing to do is refactor the backend to fix all this. Thank
+        # god there is even a concept of a backend so I dont' have to change the
+        # workers.
+        #
+        # It's worth noting that it *could* probably be just one large hash if I
+        # didn't have to deal with race conditions. Which I do
+
+        binding.pry
+
         # Recalculate the compliance of a given standard once it is done
       end
     end
@@ -146,11 +163,11 @@ class Kriterion
         response = Net::HTTP.get_response(queue_uri)
 
         case response.code
-        when "204"
-          logger.debug "Queue empty, sleeping..."
+        when '204'
+          logger.debug 'Queue empty, sleeping...'
           sleep 3
-        when "200"
-          logger.debug "Got a report, parsing..."
+        when '200'
+          logger.debug 'Got a report, parsing...'
           report = JSON.parse(JSON.parse(response.body)['value'])
           logger.info "Report: transaction_uuid: #{report['transaction_uuid']}"
           process_report(report)

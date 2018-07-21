@@ -55,6 +55,11 @@ class Kriterion
         }
         standards_db.update_one(query, instruction)
       end
+
+      def add_resource(section, resource)
+        standard = find_standard(section.standard)
+        binding.pry
+      end
       # def set_standard_details(name, standard)
       #   # TODO: Complete this
       # end
