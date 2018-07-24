@@ -111,7 +111,8 @@ class Kriterion
                                        ].join(standard.section_separator)
                                      end
 
-              # Get the details
+              # Get the details from the standards database (name, description
+              # etc.)
               current_section = @standards[name]['sections'].select do |s|
                 s['name'] == current_section_name
               end[0]
@@ -120,9 +121,12 @@ class Kriterion
                 previous
               else
                 # Create the new section object
-                current_section['standard'] = standard.name
+                current_section['standard']    = standard.name
+                current_section['parent_type'] = previous.type
+                current_section['parent_name'] = previous.name
                 current_section = Kriterion::Section.new(current_section)
 
+                # Add the section to the backend
                 backend.add_section(current_section)
                 current_section
               end
@@ -130,6 +134,7 @@ class Kriterion
           end
 
           # Add the resource to the section
+          binding.pry
           backend.add_resource(section, resource)
         end
 

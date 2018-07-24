@@ -11,6 +11,10 @@ class Kriterion
       attr_reader :database
       attr_reader :client
       attr_reader :standards_db
+      attr_reader :sections_db
+      attr_reader :items_db
+      attr_reader :resources_db
+      attr_reader :events_db
       attr_reader :standard_details_db
 
       def initialize(opts)
@@ -23,6 +27,10 @@ class Kriterion
           ["#{@hostname}:#{@port}"], database: @database
         )
         @standards_db        = @client[:standards]
+        @sections_db         = @client[:sections]
+        @items_db            = @client[:items]
+        @resources_db        = @client[:resources]
+        @events_db           = @client[:events]
         @standard_details_db = @client[:standard_details]
         # TODO: Work out how to set the mongo client logging level
       end
@@ -41,25 +49,41 @@ class Kriterion
       end
 
       def add_standard(standard)
-        result = standards_db.insert_one(standard.to_h)
-        raise "Insertion of #{standard.name} failed" unless result.ok?
-        standard
+        insert_into_db(@standards_db, standard)
       end
 
       def add_section(section)
-        query       = { name: section.standard }
-        instruction = {
-          '$addToSet' => {
-            sections: section.to_h
-          }
-        }
-        standards_db.update_one(query, instruction)
+        insert_into_db(@sections_db, section)
       end
 
-      def add_resource(section, resource)
-        standard = find_standard(section.standard)
-        binding.pry
+      def add_item(item)
+        insert_into_db(@items_db, item)
       end
+
+      def add_resource(resource)
+        insert_into_db(@resources_db, resource)
+      end
+
+      def add_event(event)
+        insert_into_db(@events_db, event)
+      end
+      # def add_section(section)
+      #   query = {
+      #     name: section.name,
+      #     standard: section.standard
+      #   }
+      #   instruction = {
+      #     '$addToSet' => {
+      #       sections: section.to_h
+      #     }
+      #   }
+      #   standards_db.update_one(query, instruction)
+      # end
+
+      # def add_resource(section, resource)
+      #   standard = find_standard(section.standard)
+      #   binding.pry
+      # end
       # def set_standard_details(name, standard)
       #   # TODO: Complete this
       # end
@@ -70,6 +94,12 @@ class Kriterion
       # end
 
       private
+
+      def insert_into_db(database, thing)
+        result = database.insert_one(thing.to_h)
+        raise "Insertion of #{thing} failed" unless result.ok?
+        thing
+      end
 
       def find_standard(name)
         result = standards_db.find(name: name)

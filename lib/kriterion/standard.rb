@@ -1,3 +1,4 @@
+
 require 'kriterion/object'
 
 class Kriterion
@@ -51,6 +52,10 @@ class Kriterion
     def self.reload_all!
       backend = Kriterion::Backend.get
       @@standards = backend.standards
+    end
+
+    def type
+      :standard
     end
   end
 end
