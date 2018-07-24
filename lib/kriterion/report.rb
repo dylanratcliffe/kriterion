@@ -46,11 +46,11 @@ class Kriterion
       # If this is a hash then the objects haven't been initialised
       # We should initialise them now
       if @resource_statuses.is_a? Hash
-        @resource_statuses = @resource_statuses.map do |ref, params|
+        @resource_statuses = @resource_statuses.map do |_ref, params|
           Kriterion::ResourceStatus.new(params)
         end
       end
-      return @resource_statuses
+      @resource_statuses
     end
 
     # Returns resources that have given tags, expects an array of tags
@@ -61,6 +61,5 @@ class Kriterion
         end
       end
     end
-
   end
 end

@@ -133,9 +133,31 @@ class Kriterion
             end
           end
 
-          # Add the resource to the section
+          # Create and add the item if it doesn't yet exist
+          item = case section.items.select { |i| i.id == section_tag }.count
+                 when 1
+                   # The item already exists, return it
+                   section.items.select { |i| i.id == section_tag }[0]
+                 when 0
+                   # The item does not exist, create it, add to the database,
+                   # then return it
+                   item_details = @standards[name]['items'].select do |i|
+                     i['id'] == section_tag
+                   end[0]
+                   item_details['section_uuid'] = section.uuid
+                   item_details['section_path'] = captures
+                   backend.add_item(Kriterion::Item.new(item_details))
+                 else
+                   raise "Found muliple sections with the id #{section_tag}"
+                 end
+
           binding.pry
-          backend.add_resource(section, resource)
+
+
+          # Add extra contextual data to that resource
+          resource.standard = standard.name
+          resource.item     = item.id
+          backend.add_resource(item, resource)
         end
 
         # Reload the standard as new sections may have been added

@@ -40,10 +40,12 @@ class Kriterion
       @out_of_sync_count = hash['out_of_sync_count']
       @events            = hash['events']
       @corrective_change = hash['corrective_change']
+      @standard          = hash['standard']
+      @item              = hash['item']
     end
 
     def compliant?
-      (@out_of_sync_count == 0) and (@change_count == 0)
+      @out_of_sync_count.zero? && @change_count.zero?
     end
   end
 end

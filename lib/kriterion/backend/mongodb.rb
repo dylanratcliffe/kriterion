@@ -39,11 +39,6 @@ class Kriterion
         binding.pry
       end
 
-      def standard(standard)
-        # TODO: Complete this
-        binding.pry
-      end
-
       def get_standard(name)
         sanitise_standard(find_standard(name))
       end
@@ -56,15 +51,15 @@ class Kriterion
         insert_into_db(@sections_db, section)
       end
 
-      def add_item(item)
+      def add_item(section, item)
         insert_into_db(@items_db, item)
       end
 
-      def add_resource(resource)
+      def add_resource(item, resource)
         insert_into_db(@resources_db, resource)
       end
 
-      def add_event(event)
+      def add_event(resource, event)
         insert_into_db(@events_db, event)
       end
       # def add_section(section)
