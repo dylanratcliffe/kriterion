@@ -21,7 +21,7 @@ class Kriterion
       @section_path = data['section_path']
       @parent_type  = data['parent_type']
       @parent_uuid  = data['parent_uuid']
-      @resources    = data['resources']
+      @resources    = data['resources'] || []
     end
   end
 end

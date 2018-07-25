@@ -41,7 +41,7 @@ class Kriterion
       @skipped           = hash['skipped']
       @change_count      = hash['change_count']
       @out_of_sync_count = hash['out_of_sync_count']
-      @events            = hash['events']
+      @events            = hash['events'] || []
       @corrective_change = hash['corrective_change']
       @parent_uuid       = hash['parent_uuid']
     end

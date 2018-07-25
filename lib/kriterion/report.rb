@@ -53,6 +53,10 @@ class Kriterion
       @resource_statuses
     end
 
+    def certname
+      host
+    end
+
     # Returns resources that have given tags, expects an array of tags
     def resources_with_tags(tags)
       resource_statuses.select do |resource|

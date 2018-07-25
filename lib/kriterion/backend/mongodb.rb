@@ -51,12 +51,9 @@ class Kriterion
         standard = sanitise_standard(find_standard(name))
         return nil if standard.nil?
 
-        if opts[:recurse]
-          find_children!(standard)
-          standard
-        else
-          standard
-        end
+        find_children!(standard) if opts[:recurse]
+
+        standard
       end
 
       def add_standard(standard)
@@ -75,34 +72,16 @@ class Kriterion
         insert_into_db(resources_db, resource)
       end
 
+      def purge_events!(certname)
+        # Delete all events for this certname
+        events_db.delete_many(
+          certname: certname
+        )
+      end
+
       def add_event(event)
         insert_into_db(events_db, event)
       end
-      # def add_section(section)
-      #   query = {
-      #     name: section.name,
-      #     standard: section.standard
-      #   }
-      #   instruction = {
-      #     '$addToSet' => {
-      #       sections: section.to_h
-      #     }
-      #   }
-      #   standards_db.update_one(query, instruction)
-      # end
-
-      # def add_resource(section, resource)
-      #   standard = find_standard(section.standard)
-      #   binding.pry
-      # end
-      # def set_standard_details(name, standard)
-      #   # TODO: Complete this
-      # end
-      #
-      # def get_standard_details(name)
-      #   # TODO: Complete this
-      #   standard_details_db.find(name)
-      # end
 
       private
 
@@ -126,16 +105,22 @@ class Kriterion
           )
 
           result.each do |resource|
-            res = Kriterion::ResourceStatus.new(resource)
-            find_children!(res)
-            object.resources << res
+            resource = Kriterion::ResourceStatus.new(resource)
+            find_children! resource
+            object.resources << resource
           end
         when Kriterion::ResourceStatus
-          # TODO: Implement
-          binding.pry
+          result = events_db.find(
+            resource: object.resource
+          )
+
+          result.each do |event|
+            event = Kriterion::Event.new(event)
+            find_children! event
+            object.events << event
+          end
         when Kriterion::Event
-          # TODO: Implement
-          binding.pry
+          nil
         else
           # We can safely assume this is a Kriterion::Standard or
           # Kriterion::Section, which are treated the same
@@ -166,7 +151,8 @@ class Kriterion
           parent_type: parent.type,
           parent_uuid: parent.uuid
         )
-        results.each do |item|
+
+        results.map do |item|
           Kriterion::Item.new(item)
         end
       end
