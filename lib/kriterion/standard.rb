@@ -13,7 +13,6 @@ class Kriterion
     attr_accessor :version
     attr_accessor :item_syntax
     attr_accessor :section_separator
-    attr_accessor :compliance
     attr_accessor :sections
     attr_accessor :items
 
@@ -30,7 +29,6 @@ class Kriterion
                              Regexp.new(data['item_syntax'])
                            end
       @section_separator = data['section_separator']
-      @compliance        = data['compliance']
       @sections          = data['sections'] || []
       @items             = data['items'] || []
     end
@@ -58,6 +56,10 @@ class Kriterion
 
     def type
       :standard
+    end
+
+    def compliance
+      super([items, sections].flatten)
     end
   end
 end

@@ -23,5 +23,9 @@ class Kriterion
       @parent_uuid  = data['parent_uuid']
       @resources    = data['resources'] || []
     end
+
+    def compliance
+      super(resources)
+    end
   end
 end

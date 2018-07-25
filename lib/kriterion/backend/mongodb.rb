@@ -1,4 +1,4 @@
-require 'kriterion/resource_status'
+require 'kriterion/resource'
 require 'kriterion/standard'
 require 'kriterion/section'
 require 'kriterion/backend'
@@ -37,7 +37,7 @@ class Kriterion
         @resources_db        = @client[:resources]
         @events_db           = @client[:events]
         @standard_details_db = @client[:standard_details]
-        # TODO: Work out how to set the mongo client logging level
+        @client.logger.level = logger.level
       end
 
       def standards
@@ -72,15 +72,48 @@ class Kriterion
         insert_into_db(resources_db, resource)
       end
 
+      def add_event(event)
+        insert_into_db(events_db, event)
+      end
+
+      def add_unchanged_node(resource, certname)
+        resources_db.update_one(
+          { resource: resource.resource },
+          '$addToSet' => {
+            unchanged_nodes: certname
+          }
+        )
+      end
+
+      def update_compliance!(thing)
+        databases = {
+          Kriterion::Standard => standards_db,
+          Kriterion::Section  => sections_db,
+          Kriterion::Item     => items_db,
+          Kriterion::Resource => resources_db
+        }
+
+        databases[thing.class].update_one(
+          { uuid: thing.uuid },
+          '$set' => {
+            compliance: thing.compliance
+          }
+        )
+      end
+
       def purge_events!(certname)
         # Delete all events for this certname
         events_db.delete_many(
           certname: certname
         )
-      end
 
-      def add_event(event)
-        insert_into_db(events_db, event)
+        # Delete all instances of this certname under "unchanged_nodes"
+        resources_db.update_many(
+          {}, # Don't pass a query as we want to purge everything
+          '$pull' => { # Remove this node from unchanged nodes
+            unchanged_nodes: certname
+          }
+        )
       end
 
       private
@@ -90,7 +123,7 @@ class Kriterion
           Kriterion::Standard,
           Kriterion::Section,
           Kriterion::Item,
-          Kriterion::ResourceStatus,
+          Kriterion::Resource,
           Kriterion::Event
         ]
 
@@ -105,11 +138,11 @@ class Kriterion
           )
 
           result.each do |resource|
-            resource = Kriterion::ResourceStatus.new(resource)
+            resource = Kriterion::Resource.new(resource)
             find_children! resource
             object.resources << resource
           end
-        when Kriterion::ResourceStatus
+        when Kriterion::Resource
           result = events_db.find(
             resource: object.resource
           )

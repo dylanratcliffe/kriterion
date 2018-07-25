@@ -60,6 +60,8 @@ class Kriterion
 
       return nil if relevant_resources.empty?
 
+      logger.info "Processing report with #{relevant_resources.count} relevant resources"
+
       # Purge all old events relevant to this node, they will be re-added
       backend.purge_events! report.certname
 
@@ -152,7 +154,7 @@ class Kriterion
                    # The item does not exist, create it, add to the database,
                    # then return it
                    item_details = @standards[name]['items'].select do |i|
-                     i['id'] == section_tag
+                     i['id'].upcase == section_tag.upcase
                    end[0]
                    item_details['parent_uuid']  = section.uuid
                    item_details['parent_type']  = section.type
@@ -171,22 +173,43 @@ class Kriterion
             backend.add_resource(resource)
           end
 
+          # Inform the database that this node is unchanged if we have no events
+          if resource.events.empty?
+            backend.add_unchanged_node(resource, report.certname)
+          end
+
           # Add all events to the database
-          resource.events.each do |event|
+          resource.events = resource.events.map do |event|
             event          = Kriterion::Event.new(event)
             event.certname = report.certname
             event.resource = resource.resource
             backend.add_event(event)
+            event
           end
+
+          # Finally update the compliance details for this resource and its
+          # parent item
+          backend.update_compliance! resource
+          backend.update_compliance! item
+
+          # Find all of the parent sections and update the compliance on them
+          # Don't recalculate the compliance of the standard yet, wait until the
+          # end.
+          # TODO:
+          binding.pry
         end
 
         # Reload the standard as new sections may have been added
         standard = backend.get_standard(name, recurse: true)
 
-        binding.pry
-
         # Recalculate the compliance of a given standard once it is done
+        # TODO:
+
       end
+    end
+
+    def calculate_compliance!(standard)
+
     end
 
     def run
@@ -203,7 +226,7 @@ class Kriterion
         when '200'
           logger.debug 'Got a report, parsing...'
           report = JSON.parse(JSON.parse(response.body)['value'])
-          logger.info "Report: transaction_uuid: #{report['transaction_uuid']}"
+          logger.info "Processing report: #{report['host']} #{report['time']}"
           process_report(report)
         end
       end

@@ -24,5 +24,9 @@ class Kriterion
     def type
       :section
     end
+
+    def compliance
+      super([items, sections].flatten)
+    end
   end
 end

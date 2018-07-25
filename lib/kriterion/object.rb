@@ -25,5 +25,22 @@ class Kriterion
     def find_section(name)
       sections ? sections.select { |s| s.name == name }[0] : nil
     end
+
+    def compliance(objects)
+      total         = objects.count
+      compliant     = objects.count { |o| o.compliance['compliant'] }
+      non_compliant = total - compliant
+      percentage    = compliant / total
+
+      {
+        'compliant' => percentage == 1,
+        'events'    => {
+          'percentage'    => percentage,
+          'compliant'     => compliant,
+          'non_compliant' => non_compliant,
+          'total'         => total
+        }
+      }
+    end
   end
 end
