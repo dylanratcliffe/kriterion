@@ -15,10 +15,10 @@ class Kriterion
       @name        = data['name']
       @standard    = data['standard']
       @description = data['description']
-      @items       = data['items']
-      @sections    = data['sections']
+      @items       = data['items'] || []
+      @sections    = data['sections'] || []
       @parent_type = data['parent_type']
-      @parent_name = data['parent_name']
+      @parent_uuid = data['parent_uuid']
     end
 
     def type

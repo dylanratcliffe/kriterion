@@ -1,7 +1,8 @@
+require 'kriterion/object'
 require 'json'
 
 class Kriterion
-  class ResourceStatus
+  class ResourceStatus < Kriterion::Object
     attr_reader :title
     attr_reader :file
     attr_reader :line
@@ -20,6 +21,8 @@ class Kriterion
     attr_reader :out_of_sync_count
     attr_reader :events
     attr_reader :corrective_change
+
+    attr_accessor :parent_uuid
 
     def initialize(hash)
       @title             = hash['title']
@@ -40,8 +43,7 @@ class Kriterion
       @out_of_sync_count = hash['out_of_sync_count']
       @events            = hash['events']
       @corrective_change = hash['corrective_change']
-      @standard          = hash['standard']
-      @item              = hash['item']
+      @parent_uuid       = hash['parent_uuid']
     end
 
     def compliant?

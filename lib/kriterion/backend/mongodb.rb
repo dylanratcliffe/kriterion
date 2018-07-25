@@ -1,4 +1,9 @@
+require 'kriterion/resource_status'
+require 'kriterion/standard'
+require 'kriterion/section'
 require 'kriterion/backend'
+require 'kriterion/event'
+require 'kriterion/item'
 require 'kriterion/logs'
 require 'mongo'
 include Kriterion::Logs
@@ -39,28 +44,39 @@ class Kriterion
         binding.pry
       end
 
-      def get_standard(name)
-        sanitise_standard(find_standard(name))
+      def get_standard(name, opts = {})
+        # Set recursion to false by default
+        opts[:recurse] = opts[:recurse] || false
+
+        standard = sanitise_standard(find_standard(name))
+        return nil if standard.nil?
+
+        if opts[:recurse]
+          find_children!(standard)
+          standard
+        else
+          standard
+        end
       end
 
       def add_standard(standard)
-        insert_into_db(@standards_db, standard)
+        insert_into_db(standards_db, standard)
       end
 
       def add_section(section)
-        insert_into_db(@sections_db, section)
+        insert_into_db(sections_db, section)
       end
 
-      def add_item(section, item)
-        insert_into_db(@items_db, item)
+      def add_item(item)
+        insert_into_db(items_db, item)
       end
 
-      def add_resource(item, resource)
-        insert_into_db(@resources_db, resource)
+      def add_resource(resource)
+        insert_into_db(resources_db, resource)
       end
 
-      def add_event(resource, event)
-        insert_into_db(@events_db, event)
+      def add_event(event)
+        insert_into_db(events_db, event)
       end
       # def add_section(section)
       #   query = {
@@ -90,10 +106,79 @@ class Kriterion
 
       private
 
+      def find_children!(object)
+        accepted_objects = [
+          Kriterion::Standard,
+          Kriterion::Section,
+          Kriterion::Item,
+          Kriterion::ResourceStatus,
+          Kriterion::Event
+        ]
+
+        unless accepted_objects.include?(object.class)
+          raise "Unsupported object type #{object.class.name}"
+        end
+
+        case object
+        when Kriterion::Item
+          result = resources_db.find(
+            parent_uuid: object.uuid
+          )
+
+          result.each do |resource|
+            res = Kriterion::ResourceStatus.new(resource)
+            find_children!(res)
+            object.resources << res
+          end
+        when Kriterion::ResourceStatus
+          # TODO: Implement
+          binding.pry
+        when Kriterion::Event
+          # TODO: Implement
+          binding.pry
+        else
+          # We can safely assume this is a Kriterion::Standard or
+          # Kriterion::Section, which are treated the same
+
+          # Find all child sections and add them to the standard
+          find_sections(object).each do |section|
+            object.sections << section
+            # Also recurse and find all children of each child we find
+            find_children!(section)
+          end
+
+          # Find all direct child items
+          find_items(object).each do |item|
+            object.items << item
+            find_children!(item)
+          end
+        end
+      end
+
       def insert_into_db(database, thing)
         result = database.insert_one(thing.to_h)
         raise "Insertion of #{thing} failed" unless result.ok?
         thing
+      end
+
+      def find_items(parent)
+        results = items_db.find(
+          parent_type: parent.type,
+          parent_uuid: parent.uuid
+        )
+        results.each do |item|
+          Kriterion::Item.new(item)
+        end
+      end
+
+      def find_sections(parent)
+        result = sections_db.find(
+          parent_type: parent.type,
+          parent_uuid: parent.uuid
+        )
+        result.map do |section|
+          Kriterion::Section.new(section)
+        end
       end
 
       def find_standard(name)
@@ -114,12 +199,6 @@ class Kriterion
         return nil if result.nil?
         # Compile the regex from a lazy-compiled BSON regex back to a ruby one
         result['item_syntax'] = result['item_syntax'].compile
-        # Convert sections to objects
-        if result['sections']
-          result['sections'] = result['sections'].map do |s|
-            Kriterion::Section.new(s)
-          end
-        end
         Kriterion::Standard.new(result)
       end
     end

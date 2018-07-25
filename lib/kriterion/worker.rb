@@ -3,6 +3,7 @@ require 'net/http'
 require 'logger'
 require 'kriterion'
 require 'kriterion/logs'
+require 'kriterion/item'
 require 'kriterion/report'
 require 'kriterion/section'
 require 'kriterion/standard'
@@ -70,7 +71,7 @@ class Kriterion
       end
 
       affected_standards.each do |name, resources|
-        standard = backend.get_standard(name)
+        standard = backend.get_standard(name, recurse: true)
         unless standard
           # If the standard doesn't yet exist in the backed, add it
           standard = Kriterion::Standard.new(@standards[name])
@@ -79,7 +80,7 @@ class Kriterion
           # TODO: See if there is a better way to deal with this, the reason I'm
           # doing this is that I want to make sure that there is not difference
           # between a newly created object and one that came from the database
-          standard = backend.get_standard(name)
+          standard = backend.get_standard(name, recurse: true)
         end
 
         resources.each do |resource|
@@ -123,7 +124,7 @@ class Kriterion
                 # Create the new section object
                 current_section['standard']    = standard.name
                 current_section['parent_type'] = previous.type
-                current_section['parent_name'] = previous.name
+                current_section['parent_uuid'] = previous.uuid
                 current_section = Kriterion::Section.new(current_section)
 
                 # Add the section to the backend
@@ -144,24 +145,20 @@ class Kriterion
                    item_details = @standards[name]['items'].select do |i|
                      i['id'] == section_tag
                    end[0]
-                   item_details['section_uuid'] = section.uuid
+                   item_details['parent_uuid']  = section.uuid
                    item_details['section_path'] = captures
                    backend.add_item(Kriterion::Item.new(item_details))
                  else
                    raise "Found muliple sections with the id #{section_tag}"
                  end
 
-          binding.pry
-
-
           # Add extra contextual data to that resource
-          resource.standard = standard.name
-          resource.item     = item.id
-          backend.add_resource(item, resource)
+          resource.parent_uuid = item.uuid
+          backend.add_resource(resource)
         end
 
         # Reload the standard as new sections may have been added
-        standard = backend.get_standard(name)
+        standard = backend.get_standard(name, recurse: true)
 
         # I have realised that adding something to a mongodb document that is
         # deeper than one level down is near impossible, so I'm going to need to

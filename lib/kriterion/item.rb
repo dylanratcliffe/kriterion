@@ -1,21 +1,27 @@
+require 'kriterion/object'
+
 class Kriterion
-  class Item
+  class Item < Kriterion::Object
     attr_reader :uuid
     attr_reader :id
     attr_reader :title
     attr_reader :description
     attr_reader :severity
-    attr_reader :section_uuid
+    attr_reader :parent_uuid
     attr_reader :section_path
 
-    def intialize(data)
+    attr_accessor :resources
+
+    def initialize(data)
       @uuid         = data['uuid'] || SecureRandom.uuid
       @id           = data['id']
       @title        = data['title']
       @description  = data['description']
       @severity     = data['severity']
-      @section_uuid = data['section_uuid']
       @section_path = data['section_path']
+      @parent_type  = data['parent_type']
+      @parent_uuid  = data['parent_uuid']
+      @resources    = data['resources']
     end
   end
 end
