@@ -195,8 +195,13 @@ class Kriterion
           # Find all of the parent sections and update the compliance on them
           # Don't recalculate the compliance of the standard yet, wait until the
           # end.
-          # TODO:
-          binding.pry
+          item.parent_names.each do |parent|
+            # TODO: Complete this so that it updates the compliance of
+            # everything. It's probably better if we re-query this stuff from
+            # the database to reduce the chances of race conditions
+            binding.pry
+
+          end
         end
 
         # Reload the standard as new sections may have been added

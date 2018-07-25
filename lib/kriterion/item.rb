@@ -27,5 +27,15 @@ class Kriterion
     def compliance
       super(resources)
     end
+
+    def parent_names(separator)
+      parents = []
+
+      section_path.each_index do |index|
+        parents << section_path[0..index].join(separator)
+      end
+
+      parents.reverse
+    end
   end
 end

@@ -159,14 +159,14 @@ class Kriterion
           # Kriterion::Section, which are treated the same
 
           # Find all child sections and add them to the standard
-          find_sections(object).each do |section|
+          find_child_sections(object).each do |section|
             object.sections << section
             # Also recurse and find all children of each child we find
             find_children!(section)
           end
 
           # Find all direct child items
-          find_items(object).each do |item|
+          find_child_items(object).each do |item|
             object.items << item
             find_children!(item)
           end
@@ -179,7 +179,7 @@ class Kriterion
         thing
       end
 
-      def find_items(parent)
+      def find_child_items(parent)
         results = items_db.find(
           parent_type: parent.type,
           parent_uuid: parent.uuid
@@ -190,7 +190,7 @@ class Kriterion
         end
       end
 
-      def find_sections(parent)
+      def find_child_sections(parent)
         result = sections_db.find(
           parent_type: parent.type,
           parent_uuid: parent.uuid
