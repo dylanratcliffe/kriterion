@@ -1,9 +1,11 @@
+
 require 'kriterion/object'
 
 class Kriterion
   class Standard < Kriterion::Object
     @@standards = []
 
+    attr_accessor :uuid
     attr_accessor :name
     attr_accessor :date
     attr_accessor :description
@@ -16,6 +18,7 @@ class Kriterion
     attr_accessor :items
 
     def initialize(data)
+      @uuid              = data['uuid'] || SecureRandom.uuid
       @name              = data['name']
       @date              = data['date']
       @description       = data['description']
@@ -28,8 +31,8 @@ class Kriterion
                            end
       @section_separator = data['section_separator']
       @compliance        = data['compliance']
-      @sections          = data['sections']
-      @items             = data['items']
+      @sections          = data['sections'] || []
+      @items             = data['items'] || []
     end
 
     def self.get(name)
@@ -51,6 +54,10 @@ class Kriterion
     def self.reload_all!
       backend = Kriterion::Backend.get
       @@standards = backend.standards
+    end
+
+    def type
+      :standard
     end
   end
 end

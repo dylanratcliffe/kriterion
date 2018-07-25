@@ -10,14 +10,19 @@ class Kriterion
     attr_accessor :items
     attr_accessor :sections
 
-    def initialize(data, parent = nil)
+    def initialize(data)
       @uuid        = data['uuid'] || SecureRandom.uuid
       @name        = data['name']
       @standard    = data['standard']
       @description = data['description']
-      @items       = data['items']
-      @sections    = data['sections']
-      parent.sections << self if parent
+      @items       = data['items'] || []
+      @sections    = data['sections'] || []
+      @parent_type = data['parent_type']
+      @parent_uuid = data['parent_uuid']
+    end
+
+    def type
+      :section
     end
   end
 end
