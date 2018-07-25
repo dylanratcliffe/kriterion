@@ -178,24 +178,10 @@ class Kriterion
             event.resource = resource.resource
             backend.add_event(event)
           end
-
         end
 
         # Reload the standard as new sections may have been added
         standard = backend.get_standard(name, recurse: true)
-
-        # I have realised that adding something to a mongodb document that is
-        # deeper than one level down is near impossible, so I'm going to need to
-        # be a bit smarter about how I lay out this data. One giant hash is not
-        # likely to work and I"m probably going to have to have many tables with
-        # fields in each that reference their parent as per
-        # https://docs.mongodb.com/manual/tutorial/model-tree-structures-with-parent-references/
-        # The next thing to do is refactor the backend to fix all this. Thank
-        # god there is even a concept of a backend so I dont' have to change the
-        # workers.
-        #
-        # It's worth noting that it *could* probably be just one large hash if I
-        # didn't have to deal with race conditions. Which I do
 
         binding.pry
 
