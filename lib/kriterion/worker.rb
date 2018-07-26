@@ -221,20 +221,26 @@ class Kriterion
 
     def run
       while true do
-        # Connect and check if there is anythong on the queue
-        # TODO: Change this so that they listen properly
-        logger.debug "GET #{queue_uri}"
-        response = Net::HTTP.get_response(queue_uri)
+        logger.info "Starting..."
+        begin
+          # Connect and check if there is anythong on the queue
+          # TODO: Change this so that they listen properly
+          logger.debug "GET #{queue_uri}"
+          response = Net::HTTP.get_response(queue_uri)
 
-        case response.code
-        when '204'
-          logger.debug 'Queue empty, sleeping...'
+          case response.code
+          when '204'
+            logger.debug 'Queue empty, sleeping...'
+            sleep 3
+          when '200'
+            logger.debug 'Got a report, parsing...'
+            report = JSON.parse(JSON.parse(response.body)['value'])
+            logger.info "Processing report: #{report['host']} #{report['time']}"
+            process_report(report)
+          end
+        rescue StandardError => e
+          logger.error "Encountered an error: #{e}"
           sleep 3
-        when '200'
-          logger.debug 'Got a report, parsing...'
-          report = JSON.parse(JSON.parse(response.body)['value'])
-          logger.info "Processing report: #{report['host']} #{report['time']}"
-          process_report(report)
         end
       end
     end
