@@ -23,5 +23,20 @@ class Kriterion
       @parent_uuid  = data['parent_uuid']
       @resources    = data['resources'] || []
     end
+
+    def compliance
+      super(resources)
+    end
+
+    def parent_names(separator)
+      parents = []
+
+      section_path.each_index do |index|
+        parents << section_path[0..index].join(separator)
+      end
+
+      parents.delete(id)
+      parents.reverse
+    end
   end
 end

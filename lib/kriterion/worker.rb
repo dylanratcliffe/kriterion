@@ -60,6 +60,8 @@ class Kriterion
 
       return nil if relevant_resources.empty?
 
+      logger.info "Processing report with #{relevant_resources.count} relevant resources"
+
       # Purge all old events relevant to this node, they will be re-added
       backend.purge_events! report.certname
 
@@ -100,11 +102,15 @@ class Kriterion
           # Go though all sections and subsections and create them if required
           captures = standard.item_syntax.match(section_tag).captures - [nil]
 
+          # Convert the captures to a list of sections, but excluse the last one
+          # because that will be the name of the item
+          parent_sections = captures_to_sections(standard, captures[0..-2])
+
           # If there are no captures then this is a direct child of a standard
           if captures.nil?
             section = standard
           else
-            section = captures.reduce(standard) do |previous, current|
+            section = parent_sections.reduce(standard) do |previous, current|
               # If the section already exists return it
               if previous.find_section(current)
                 previous.find_section(current)
@@ -152,7 +158,7 @@ class Kriterion
                    # The item does not exist, create it, add to the database,
                    # then return it
                    item_details = @standards[name]['items'].select do |i|
-                     i['id'] == section_tag
+                     i['id'].upcase == section_tag.upcase
                    end[0]
                    item_details['parent_uuid']  = section.uuid
                    item_details['parent_type']  = section.type
@@ -171,21 +177,45 @@ class Kriterion
             backend.add_resource(resource)
           end
 
+          # Inform the database that this node is unchanged if we have no events
+          if resource.events.empty?
+            backend.add_unchanged_node(resource, report.certname)
+          end
+
           # Add all events to the database
-          resource.events.each do |event|
+          resource.events = resource.events.map do |event|
             event          = Kriterion::Event.new(event)
             event.certname = report.certname
             event.resource = resource.resource
             backend.add_event(event)
+            event
+          end
+
+          # Finally update the compliance details for this resource and its
+          # parent item
+          backend.update_compliance! resource
+          backend.update_compliance! item
+
+          # Find all of the parent sections and update the compliance on them
+          # Don't recalculate the compliance of the standard yet, wait until the
+          # end.
+          item.parent_names(standard.section_separator).each do |parent|
+            # TODO: Complete this so that it updates the compliance of
+            # everything. It's probably better if we re-query this stuff from
+            # the database to reduce the chances of race conditions
+            result = backend.find_sections(
+              name: parent,
+              standard: standard.name
+            )
+            result.each { |r| backend.update_compliance! r }
           end
         end
 
         # Reload the standard as new sections may have been added
         standard = backend.get_standard(name, recurse: true)
 
-        binding.pry
-
         # Recalculate the compliance of a given standard once it is done
+        backend.update_compliance! standard
       end
     end
 
@@ -203,10 +233,22 @@ class Kriterion
         when '200'
           logger.debug 'Got a report, parsing...'
           report = JSON.parse(JSON.parse(response.body)['value'])
-          logger.info "Report: transaction_uuid: #{report['transaction_uuid']}"
+          logger.info "Processing report: #{report['host']} #{report['time']}"
           process_report(report)
         end
       end
+    end
+
+    private
+
+    def captures_to_sections(standard, captures)
+      sections = []
+
+      captures.each_index do |index|
+        sections << captures[0..index].join(standard.section_separator)
+      end
+
+      sections
     end
   end
 end

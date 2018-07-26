@@ -1,5 +1,5 @@
 require 'json'
-require 'kriterion/resource_status'
+require 'kriterion/resource'
 
 class Kriterion
   class Report
@@ -47,7 +47,7 @@ class Kriterion
       # We should initialise them now
       if @resource_statuses.is_a? Hash
         @resource_statuses = @resource_statuses.map do |_ref, params|
-          Kriterion::ResourceStatus.new(params)
+          Kriterion::Resource.new(params)
         end
       end
       @resource_statuses
