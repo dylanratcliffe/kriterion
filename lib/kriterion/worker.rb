@@ -239,7 +239,7 @@ class Kriterion
           end
         rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
                Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError,
-               Net::ProtocolError, SocketError => e
+               Net::ProtocolError, Errno::ECONNREFUSED, SocketError => e
           logger.error "Error while running: #{e}"
           logger.info 'Sleeping...'
           sleep 3

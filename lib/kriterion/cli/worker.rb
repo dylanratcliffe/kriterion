@@ -14,14 +14,15 @@ class Kriterion
             exit 0
           end
 
-          option   :u, :uri,            'URI of the RestMQ server', argument: :required
-          optional :q, :queue,         'Queue to subscribe to', default: 'reports'
-          optional :h, :mongo_hostname, 'Hostname of the MongoDB server to use', default: 'localhost'
-          optional :d, :mongo_database, 'Name of the MongoDB database to use', default: 'kriterion'
-          optional :p, :mongo_port,     'Port for MongoDB', default: 27017
+          optional :u, :uri           , 'URI of the RestMQ server'             , default: ENV['uri'] || 'http://localhost:8888'
+          optional :q, :queue         , 'Queue to subscribe to'                , default: ENV['queue']|| 'reports'
+          optional :h, :mongo_hostname, 'Hostname of the MongoDB server to use', default: ENV['mongo_hostname']|| 'localhost'
+          optional :d, :mongo_database, 'Name of the MongoDB database to use'  , default: ENV['mongo_database']|| 'kriterion'
+          optional :p, :mongo_port    , 'Port for MongoDB'                     , default: ENV['mongo_port']|| 27017
 
 
           run do |opts, args, cmd|
+            options =
             # TODO: Get log levels working properly
             require 'kriterion/worker'
             worker = Kriterion::Worker.new(opts)
