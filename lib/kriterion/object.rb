@@ -30,7 +30,11 @@ class Kriterion
       total         = objects.count
       compliant     = objects.count { |o| o.compliance['compliant'] }
       non_compliant = total - compliant
-      percentage    = compliant / total
+      percentage    = if total.zero?
+                        0
+                      else
+                        compliant / total
+                      end
 
       {
         'compliant' => percentage == 1,

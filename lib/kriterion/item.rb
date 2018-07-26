@@ -35,6 +35,7 @@ class Kriterion
         parents << section_path[0..index].join(separator)
       end
 
+      parents.delete(id)
       parents.reverse
     end
   end

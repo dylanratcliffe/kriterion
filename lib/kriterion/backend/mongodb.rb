@@ -56,6 +56,14 @@ class Kriterion
         standard
       end
 
+      def find_sections(query)
+        sections_db.find(
+          query
+        ).map do |section|
+          Kriterion::Section.new(section)
+        end
+      end
+
       def add_standard(standard)
         insert_into_db(standards_db, standard)
       end

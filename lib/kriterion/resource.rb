@@ -40,11 +40,16 @@ class Kriterion
       compliant     = unchanged_nodes.count
       non_compliant = events.group_by(&:certname).count
       total         = compliant + non_compliant
+      percentage    = if total.zero?
+                        0
+                      else
+                        compliant / total
+                      end
 
       {
         'compliant' => events.empty?,
         'events'    => {
-          'percentage'    => compliant / total,
+          'percentage'    => percentage,
           'compliant'     => compliant,
           'non_compliant' => non_compliant,
           'total'         => total

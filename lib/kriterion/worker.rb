@@ -102,11 +102,15 @@ class Kriterion
           # Go though all sections and subsections and create them if required
           captures = standard.item_syntax.match(section_tag).captures - [nil]
 
+          # Convert the captures to a list of sections, but excluse the last one
+          # because that will be the name of the item
+          parent_sections = captures_to_sections(standard, captures[0..-2])
+
           # If there are no captures then this is a direct child of a standard
           if captures.nil?
             section = standard
           else
-            section = captures.reduce(standard) do |previous, current|
+            section = parent_sections.reduce(standard) do |previous, current|
               # If the section already exists return it
               if previous.find_section(current)
                 previous.find_section(current)
@@ -195,12 +199,15 @@ class Kriterion
           # Find all of the parent sections and update the compliance on them
           # Don't recalculate the compliance of the standard yet, wait until the
           # end.
-          item.parent_names.each do |parent|
+          item.parent_names(standard.section_separator).each do |parent|
             # TODO: Complete this so that it updates the compliance of
             # everything. It's probably better if we re-query this stuff from
             # the database to reduce the chances of race conditions
-            binding.pry
-
+            result = backend.find_sections(
+              name: parent,
+              standard: standard.name
+            )
+            result.each { |r| backend.update_compliance! r }
           end
         end
 
@@ -208,13 +215,8 @@ class Kriterion
         standard = backend.get_standard(name, recurse: true)
 
         # Recalculate the compliance of a given standard once it is done
-        # TODO:
-
+        backend.update_compliance! standard
       end
-    end
-
-    def calculate_compliance!(standard)
-
     end
 
     def run
@@ -235,6 +237,18 @@ class Kriterion
           process_report(report)
         end
       end
+    end
+
+    private
+
+    def captures_to_sections(standard, captures)
+      sections = []
+
+      captures.each_index do |index|
+        sections << captures[0..index].join(standard.section_separator)
+      end
+
+      sections
     end
   end
 end
