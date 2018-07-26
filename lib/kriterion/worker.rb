@@ -224,17 +224,25 @@ class Kriterion
         # Connect and check if there is anythong on the queue
         # TODO: Change this so that they listen properly
         logger.debug "GET #{queue_uri}"
-        response = Net::HTTP.get_response(queue_uri)
+        begin
+          response = Net::HTTP.get_response(queue_uri)
 
-        case response.code
-        when '204'
-          logger.debug 'Queue empty, sleeping...'
+          case response.code
+          when '204'
+            logger.debug 'Queue empty, sleeping...'
+            sleep 3
+          when '200'
+            logger.debug 'Got a report, parsing...'
+            report = JSON.parse(JSON.parse(response.body)['value'])
+            logger.info "Processing report: #{report['host']} #{report['time']}"
+            process_report(report)
+          end
+        rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
+               Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError,
+               Net::ProtocolError, Errno::ECONNREFUSED, SocketError => e
+          logger.error "Error while running: #{e}"
+          logger.info 'Sleeping...'
           sleep 3
-        when '200'
-          logger.debug 'Got a report, parsing...'
-          report = JSON.parse(JSON.parse(response.body)['value'])
-          logger.info "Processing report: #{report['host']} #{report['time']}"
-          process_report(report)
         end
       end
     end
