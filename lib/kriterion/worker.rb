@@ -221,11 +221,10 @@ class Kriterion
 
     def run
       while true do
-        logger.info "Starting..."
+        # Connect and check if there is anythong on the queue
+        # TODO: Change this so that they listen properly
+        logger.debug "GET #{queue_uri}"
         begin
-          # Connect and check if there is anythong on the queue
-          # TODO: Change this so that they listen properly
-          logger.debug "GET #{queue_uri}"
           response = Net::HTTP.get_response(queue_uri)
 
           case response.code
@@ -238,8 +237,11 @@ class Kriterion
             logger.info "Processing report: #{report['host']} #{report['time']}"
             process_report(report)
           end
-        rescue StandardError => e
-          logger.error "Encountered an error: #{e}"
+        rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
+               Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError,
+               Net::ProtocolError, SocketError => e
+          logger.error "Error while running: #{e}"
+          logger.info 'Sleeping...'
           sleep 3
         end
       end
