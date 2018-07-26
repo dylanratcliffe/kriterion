@@ -1,6 +1,6 @@
 {
   "name": "stig_infrastructure_router__juniper",
-  "date": "2017-06-27",
+  "date": "2018-03-06",
   "description": "Infrastructure Router Security Technical Implementation Guide – Juniper",
   "title": "Infrastructure Router Security Technical Implementation Guide  Juniper",
   "version": "8",
@@ -376,7 +376,7 @@
     {
       "id": "V-3085",
       "title": "The network element must have HTTP service for administrative access disabled.",
-      "description": "The additional services that the router is enabled for increases the risk for an attack since the router will listen for these services. In addition, these services provide an unsecured method for an attacker to gain access to the router.  Most recent software versions support remote configuration and monitoring using the World Wide Web's HTTP protocol.  In general, HTTP access is equivalent to interactive access to the router.  The authentication protocol used for HTTP is equivalent to sending a clear-text password across the network, and, unfortunately, there is no effective provision in HTTP for challenge-based or one-time passwords.  This makes HTTP a relatively risky choice for use across the public Internet.  Any additional services that are enabled increase the risk for an attack since the router will listen for these services.",
+      "description": "The additional services the router is enabled for increases the risk for an attack since the router will listen for these services. In addition, these services provide an unsecured method for an attacker to gain access to the router.  Most recent software versions support remote configuration and monitoring using the World Wide Web's HTTP protocol.  In general, HTTP access is equivalent to interactive access to the router.  The authentication protocol used for HTTP is equivalent to sending a clear-text password across the network, and, unfortunately, there is no effective provision in HTTP for challenge-based or one-time passwords.  This makes HTTP a relatively risky choice for use across the public Internet.  Any additional services that are enabled increase the risk for an attack since the router will listen for these services. The HTTPS server may be enabled for administrative access.",
       "severity": "medium"
     },
     {

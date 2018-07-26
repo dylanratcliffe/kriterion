@@ -1,6 +1,6 @@
 {
   "name": "stig_windows_2008_domain_controller",
-  "date": "2017-12-05",
+  "date": "2018-03-07",
   "description": "The Windows 2008 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  The requirements were developed from DoD consensus, as well as the Windows 2008 Security Guide and security templates published by Microsoft Corporation.  Comments or proposed revisions to this document should be sent via e-mail to the following address:  disa.stig_spt@mail.mil.",
   "title": "Windows 2008 Domain Controller Security Technical Implementation Guide",
   "version": "6",
@@ -15,8 +15,8 @@
     },
     {
       "id": "V-1072",
-      "title": "Shared user accounts are permitted on the system.",
-      "description": "Shared accounts do not provide individual accountability for system access and resource usage.",
+      "title": "Shared user accounts must not be permitted on the system.",
+      "description": "Shared accounts (accounts where two or more people log on with the same user identification) do not provide adequate identification and authentication. There is no way to provide for nonrepudiation or individual accountability for system access and resource usage.",
       "severity": "medium"
     },
     {
@@ -513,8 +513,8 @@
     },
     {
       "id": "V-14271",
-      "title": "Application account passwords length and change requirement",
-      "description": "Setting application accounts to expire may cause applications to stop functioning. The site will have a policy that application account passwords manually generated and entered by a system administrator are changed at least annually or when a system administrator with knowledge of the password leaves the organization. Application/service account passwords will be at least 15 characters and follow complexity requirements for all passwords.",
+      "title": "Application account passwords must meet DoD requirements for length, complexity and changes.",
+      "description": "Setting application accounts to expire may cause applications to stop functioning. The organization must have a policy that manually managed application account passwords are changed at least annually or when a system administrator with knowledge of the password leaves the organization. Application/service account passwords must be at least 15 characters and follow complexity requirements for all passwords.",
       "severity": "medium"
     },
     {
@@ -1268,12 +1268,6 @@
       "severity": "high"
     },
     {
-      "id": "V-40175",
-      "title": "The antivirus program must be configured to update signature files on a daily basis.",
-      "description": "Virus scan programs are a primary line of defense against the introduction of viruses and malicious code that can destroy data and even render a computer inoperable. Using a virus scan program provides the ability to detect malicious code before extensive damage occurs. Updated virus scan data files help protect a system, as constantly changing malware is identified by the antivirus software vendors.",
-      "severity": "high"
-    },
-    {
       "id": "V-40237",
       "title": "The US DoD CCEB Interoperability Root CA cross-certificate must be installed in the Untrusted Certificates Store on unclassified systems.",
       "description": "To ensure users do not experience denial of service when performing certificate-based authentication to DoD websites due to the system chaining to a root other than DoD Root CAs, the US DoD CCEB Interoperability Root CA cross-certificate must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.",
@@ -1407,7 +1401,7 @@
     },
     {
       "id": "V-6840",
-      "title": "To the extent system capabilities permit, system mechanisms will be implemented to enforce automatic expiration of passwords and to prevent reuse.",
+      "title": "Windows 2008 passwords must be configured to expire.",
       "description": "Passwords that do not expire or are reused increase the exposure of a password with greater probability of being discovered or cracked. ",
       "severity": "medium"
     },
@@ -1419,8 +1413,8 @@
     },
     {
       "id": "V-7002",
-      "title": "DoD information system access will require the use of a password. ",
-      "description": "The lack of password protection enables anyone to gain access to the information system, which opens a backdoor opportunity for intruders to compromise the system as well as other resources within the same administrative domain.",
+      "title": "Windows 2008 accounts must be configured to require passwords.",
+      "description": "The lack of password protection enables anyone to gain access to the information system, which opens a backdoor opportunity for intruders to compromise the system as well as other resources.",
       "severity": "high"
     },
     {
