@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kriterion (0.1.0)
+    kriterion (0.0.1)
       cri (~> 2.10)
       httparty (~> 0.16)
       mongo (~> 2.5)
@@ -59,4 +59,4 @@ DEPENDENCIES
   rspec (~> 3.0)
 
 BUNDLED WITH
-   1.16.1
+   1.16.3
