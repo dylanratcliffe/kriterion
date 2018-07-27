@@ -1,10 +1,12 @@
 require 'json'
-require 'net/http'
 require 'logger'
+require 'net/http'
+require 'benchmark'
 require 'kriterion'
 require 'kriterion/logs'
 require 'kriterion/item'
 require 'kriterion/report'
+require 'kriterion/metrics'
 require 'kriterion/section'
 require 'kriterion/standard'
 
@@ -19,18 +21,24 @@ class Kriterion
     attr_reader :queue_uri
     attr_reader :standards
     attr_reader :backend
+    attr_reader :metrics
 
     def initialize(opts = {})
-      logger.level = Kriterion::Logs::DEBUG if opts[:debug]
+      logger.level = if opts[:debug]
+                       Kriterion::Logs::DEBUG
+                     else
+                       Kriterion::Logs::INFO
+                     end
 
       # Set up connections
-      @uri            = opts[:uri]
-      @queue          = opts[:queue]
-      @queue_uri      = URI("#{@uri}/q/#{@queue}")
+      @uri       = opts[:uri]
+      @queue     = opts[:queue]
+      @queue_uri = URI("#{@uri}/q/#{@queue}")
+      @metrics   = Kriterion::Metrics.new
 
       # Set up the backend
       # TODO: Clean this up and make fully dynamic
-      backend_name    = opts[:backend] || 'mongodb'
+      backend_name = opts[:backend] || 'mongodb'
       case backend_name
       when 'mongodb'
         require 'kriterion/backend/mongodb'
@@ -38,7 +46,8 @@ class Kriterion
           Kriterion::Backend::MongoDB.new(
             hostname: opts[:mongo_hostname],
             port:     opts[:mongo_port],
-            database: opts[:mongo_database]
+            database: opts[:mongo_database],
+            metrics:  metrics
           )
         )
       end
@@ -52,7 +61,7 @@ class Kriterion
     end
 
     def process_report(report)
-      report = Kriterion::Report.new(report)
+      report  = Kriterion::Report.new(report)
 
       # Check if the report contains any relevant resources
       standard_names     = standards.keys
@@ -191,31 +200,35 @@ class Kriterion
             event
           end
 
-          # Finally update the compliance details for this resource and its
-          # parent item
-          backend.update_compliance! resource
-          backend.update_compliance! item
+          metrics[:update_compliance] += Benchmark.realtime do
+            # Finally update the compliance details for this resource and its
+            # parent item
+            backend.update_compliance! resource
+            backend.update_compliance! item
 
-          # Find all of the parent sections and update the compliance on them
-          # Don't recalculate the compliance of the standard yet, wait until the
-          # end.
-          item.parent_names(standard.section_separator).each do |parent|
-            # TODO: Complete this so that it updates the compliance of
-            # everything. It's probably better if we re-query this stuff from
-            # the database to reduce the chances of race conditions
-            result = backend.find_sections(
-              name: parent,
-              standard: standard.name
-            )
-            result.each { |r| backend.update_compliance! r }
+            # Find all of the parent sections and update the compliance on them
+            # Don't recalculate the compliance of the standard yet, wait until
+            # the end.
+            item.parent_names(standard.section_separator).each do |parent|
+              # TODO: Complete this so that it updates the compliance of
+              # everything. It's probably better if we re-query this stuff from
+              # the database to reduce the chances of race conditions
+              result = backend.find_sections(
+                name: parent,
+                standard: standard.name
+              )
+              result.each { |r| backend.update_compliance! r }
+            end
           end
         end
 
         # Reload the standard as new sections may have been added
         standard = backend.get_standard(name, recurse: true)
 
-        # Recalculate the compliance of a given standard once it is done
-        backend.update_compliance! standard
+        metrics[:update_compliance] += Benchmark.realtime do
+          # Recalculate the compliance of a given standard once it is done
+          backend.update_compliance! standard
+        end
       end
     end
 
@@ -235,7 +248,13 @@ class Kriterion
             logger.debug 'Got a report, parsing...'
             report = JSON.parse(JSON.parse(response.body)['value'])
             logger.info "Processing report: #{report['host']} #{report['time']}"
-            process_report(report)
+            binding.pry
+
+            metrics[:total_processing] += Benchmark.realtime do
+              process_report(report)
+            end
+
+            metrics.print
           end
         rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
                Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError,

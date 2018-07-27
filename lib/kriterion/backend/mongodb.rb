@@ -2,9 +2,11 @@ require 'kriterion/resource'
 require 'kriterion/standard'
 require 'kriterion/section'
 require 'kriterion/backend'
+require 'kriterion/metrics'
 require 'kriterion/event'
 require 'kriterion/item'
 require 'kriterion/logs'
+require 'benchmark'
 require 'mongo'
 include Kriterion::Logs
 
@@ -21,37 +23,37 @@ class Kriterion
       attr_reader :resources_db
       attr_reader :events_db
       attr_reader :standard_details_db
+      attr_reader :metrics
 
       def initialize(opts)
         logger.info 'Initializing MongoDB backend'
-
+        @metrics             = opts[:metrics] || Kriterion::Metrics.new
         @hostname            = opts[:hostname]
         @port                = opts[:port]
         @database            = opts[:database]
         @client              = Mongo::Client.new(
           ["#{@hostname}:#{@port}"], database: @database
         )
+        @client.logger.level = logger.level
         @standards_db        = @client[:standards]
         @sections_db         = @client[:sections]
         @items_db            = @client[:items]
         @resources_db        = @client[:resources]
         @events_db           = @client[:events]
         @standard_details_db = @client[:standard_details]
-        @client.logger.level = logger.level
-      end
-
-      def standards
-        binding.pry
       end
 
       def get_standard(name, opts = {})
-        # Set recursion to false by default
-        opts[:recurse] = opts[:recurse] || false
+        standard = nil
+        metrics[:backend_get_standard] += Benchmark.realtime do
+          # Set recursion to false by default
+          opts[:recurse] = opts[:recurse] || false
 
-        standard = sanitise_standard(find_standard(name))
-        return nil if standard.nil?
+          standard = sanitise_standard(find_standard(name))
+          return nil if standard.nil?
 
-        find_children!(standard) if opts[:recurse]
+          find_children!(standard) if opts[:recurse]
+        end
 
         standard
       end

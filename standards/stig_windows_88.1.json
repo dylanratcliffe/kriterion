@@ -1,6 +1,6 @@
 {
   "name": "stig_windows_88.1",
-  "date": "2017-12-01",
+  "date": "2018-02-12",
   "description": "The Windows 8/8.1 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Windows 8/8.1 Security Technical Implementation Guide",
   "version": "1",
@@ -705,7 +705,7 @@
     },
     {
       "id": "V-21954",
-      "title": "Kerberos encryption types must be configured to prevent the use of DES encryption suites.",
+      "title": "The use of DES encryption suites must not be allowed for Kerberos encryption.",
       "description": "Certain encryption types are no longer considered secure.  This setting configures a minimum encryption type for Kerberos, preventing the use of the DES encryption suites.",
       "severity": "medium"
     },
@@ -1046,20 +1046,8 @@
       "severity": "medium"
     },
     {
-      "id": "V-26534",
-      "title": "The system must be configured to audit Account Management - Other Account Management Events failures.",
-      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nOther Account Management records events such as the access of a password hash or the Password Policy Checking API being called.",
-      "severity": "medium"
-    },
-    {
       "id": "V-26535",
       "title": "The system must be configured to audit Account Management - Security Group Management successes.",
-      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nSecurity Group Management records events such as creating, deleting or changing of security groups, including changes in group members.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-26536",
-      "title": "The system must be configured to audit Account Management - Security Group Management failures.",
       "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nSecurity Group Management records events such as creating, deleting or changing of security groups, including changes in group members.",
       "severity": "medium"
     },
@@ -1162,12 +1150,6 @@
     {
       "id": "V-26555",
       "title": "The system must be configured to audit System - Security System Extension successes.",
-      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nSecurity System Extension records events related to extension code being loaded by the security subsystem.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-26556",
-      "title": "The system must be configured to audit System - Security System Extension failures.",
       "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks.  Audit logs are necessary to provide a trail of evidence in case the system or network is compromised.  Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nSecurity System Extension records events related to extension code being loaded by the security subsystem.",
       "severity": "medium"
     },
@@ -2003,12 +1985,6 @@
       "id": "V-39137",
       "title": "The Enhanced Mitigation Experience Toolkit (EMET) v5.5 or later must be installed on the system.",
       "description": "Attackers are constantly looking for vulnerabilities in systems and applications.  The Enhanced Mitigation Experience Toolkit can enable several mechanisms, such as Data Execution Prevention (DEP), Address Space Layout Randomization (ASLR), and Structured Exception Handler Overwrite Protection (SEHOP) on the system and applications adding additional levels of protection.",
-      "severity": "high"
-    },
-    {
-      "id": "V-40175",
-      "title": "The antivirus program must be configured to update signature files on a daily basis.",
-      "description": "Virus scan programs are a primary line of defense against the introduction of viruses and malicious code that can destroy data and even render a computer inoperable. Using a virus scan program provides the ability to detect malicious code before extensive damage occurs. Updated virus scan data files help protect a system, as constantly changing malware is identified by the antivirus software vendors.",
       "severity": "high"
     },
     {

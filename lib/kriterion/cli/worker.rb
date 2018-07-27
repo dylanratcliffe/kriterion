@@ -22,8 +22,6 @@ class Kriterion
 
 
           run do |opts, args, cmd|
-            options =
-            # TODO: Get log levels working properly
             require 'kriterion/worker'
             worker = Kriterion::Worker.new(opts)
             worker.run
