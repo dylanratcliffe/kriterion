@@ -248,7 +248,6 @@ class Kriterion
             logger.debug 'Got a report, parsing...'
             report = JSON.parse(JSON.parse(response.body)['value'])
             logger.info "Processing report: #{report['host']} #{report['time']}"
-            binding.pry
 
             metrics[:total_processing] += Benchmark.realtime do
               process_report(report)
