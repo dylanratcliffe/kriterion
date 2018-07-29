@@ -28,6 +28,8 @@ TODO: Write usage instructions here
 
 This project requires MongoDB and RestMQ to be up and working. You can run them up manually using the commands below, or run `docker-compose up` to spin up everything.
 
+To populate the queue with example reports, run `bundle exec ruby spec/populate_queue.rb http://localhost:8888`
+
 ### Docker Containers
 
 #### `kriterion_worker`

@@ -18,5 +18,9 @@ class Kriterion
         logger.info "  #{name} #{value.round(2)}s"
       end
     end
+
+    def reset!
+      @metrics = {}
+    end
   end
 end

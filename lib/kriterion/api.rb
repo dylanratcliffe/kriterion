@@ -1,27 +1,38 @@
 require 'json'
-require 'mongo'
+require 'sinatra/base'
 require 'kriterion/logs'
-include Kriterion::Logs
+require 'kriterion/connector'
+
+require 'pry'
 
 class Kriterion
-  class API
-    attr_reader :mongo
-    attr_reader :standards_dir
+  class API < Sinatra::Application
+    attr_accessor :queue_uri
+    attr_accessor :metrics
+    attr_accessor :backend
 
-    def initialize(opts)
-      if opts[:debug]
-        logger.level = Kriterion::Logs::DEBUG
+    include Kriterion::Logs
+
+    # We only every want to have one instance of this running at a time. This is
+    # required due to the way that Sinatra initialises things This adds the
+    # initialize method etc.
+    @@instance = nil
+
+    def initialize(opts = {})
+      # If there is already an instance, copy the objects from that
+      if @@instance
+        @queue_uri = @@instance.queue_uri
+        @metrics   = @@instance.metrics
+        @backend   = @@instance.backend
+      else
+        @queue_uri, @metrics, @backend = Kriterion::Connector.connections(opts)
+        @@instance = self
       end
-
-      @mongo_hostname = opts[:mongo_hostname]
-      @mongo_port     = opts[:mongo_port]
-      @mongo_database = opts[:mongo_database]
-      @mongo          = Mongo::Client.new([ "#{@mongo_hostname}:#{@mongo_port}" ], :database => @mongo_database)
-      @standards_dir  = opts[:standards_dir]
+      super()
     end
 
-    def run
-      # Find all standards and add them to mongodb
+    get '/standards/:name' do |name|
+      backend.get_standard(name, recurse: true).to_h.to_json
     end
   end
 end

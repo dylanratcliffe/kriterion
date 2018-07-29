@@ -26,3 +26,4 @@ class Kriterion
 end
 
 require 'kriterion/cli/worker'
+require 'kriterion/cli/api'

@@ -1,67 +1,38 @@
 require 'json'
-require 'logger'
 require 'net/http'
 require 'benchmark'
 require 'kriterion'
-require 'kriterion/logs'
 require 'kriterion/item'
 require 'kriterion/report'
 require 'kriterion/metrics'
 require 'kriterion/section'
 require 'kriterion/standard'
+require 'kriterion/connector'
 
 require 'pry'
 
 class Kriterion
   class Worker
     include Kriterion::Logs
+    include Kriterion::Connector
 
-    attr_reader :uri
-    attr_reader :queue
     attr_reader :queue_uri
     attr_reader :standards
     attr_reader :backend
     attr_reader :metrics
 
     def initialize(opts = {})
-      logger.level = if opts[:debug]
-                       Kriterion::Logs::DEBUG
-                     else
-                       Kriterion::Logs::INFO
-                     end
+      @queue_uri, @metrics, @backend = Kriterion::Connector.connections(opts)
 
-      # Set up connections
-      @uri       = opts[:uri]
-      @queue     = opts[:queue]
-      @queue_uri = URI("#{@uri}/q/#{@queue}")
-      @metrics   = Kriterion::Metrics.new
-
-      # Set up the backend
-      # TODO: Clean this up and make fully dynamic
-      backend_name = opts[:backend] || 'mongodb'
-      case backend_name
-      when 'mongodb'
-        require 'kriterion/backend/mongodb'
-        Kriterion::Backend.set(
-          Kriterion::Backend::MongoDB.new(
-            hostname: opts[:mongo_hostname],
-            port:     opts[:mongo_port],
-            database: opts[:mongo_database],
-            metrics:  metrics
-          )
-        )
-      end
-
-      @backend = Kriterion::Backend.get
-
-      # TODO: Work out how workers are going to get the list of standards frmo the API runner
+      # TODO: Work out how workers are going to get the list of standards frmo
+      # the API runner
       # TODO: Remove placeholder code
       standards_dir   = File.expand_path('standards', Kriterion::ROOT)
       @standards      = Kriterion.standards([standards_dir])
     end
 
     def process_report(report)
-      report  = Kriterion::Report.new(report)
+      report = Kriterion::Report.new(report)
 
       # Check if the report contains any relevant resources
       standard_names     = standards.keys
@@ -254,6 +225,7 @@ class Kriterion
             end
 
             metrics.print
+            metrics.reset!
           end
         rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
                Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError,
