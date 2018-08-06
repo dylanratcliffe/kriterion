@@ -31,8 +31,10 @@ class Kriterion
       super()
     end
 
+    set :bind, '0.0.0.0'
+
     get '/standards/:name' do |name|
-      backend.get_standard(name, recurse: true).to_h.to_json
+      backend.get_standard(name, recurse: true).to_h(:full).to_json
     end
   end
 end

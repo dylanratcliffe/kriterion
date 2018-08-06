@@ -18,8 +18,13 @@ class Kriterion
           ].include? k
         end
       elsif mode == :full
+
         hash
       end
+    end
+
+    def expand(object)
+      binding.pry
     end
 
     def find_section(name)
