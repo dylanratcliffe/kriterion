@@ -159,35 +159,18 @@ class Kriterion
             backend.add_event(event)
             event
           end
-
-          metrics[:update_compliance] += Benchmark.realtime do
-            # Finally update the compliance details for this resource and its
-            # parent item
-            backend.update_compliance! resource
-            backend.update_compliance! item
-
-            # Find all of the parent sections and update the compliance on them
-            # Don't recalculate the compliance of the standard yet, wait until
-            # the end.
-            item.parent_names(standard.section_separator).each do |parent|
-              # TODO: Complete this so that it updates the compliance of
-              # everything. It's probably better if we re-query this stuff from
-              # the database to reduce the chances of race conditions
-              result = backend.find_sections(
-                name: parent,
-                standard: standard.name
-              )
-              result.each { |r| backend.update_compliance! r }
-            end
-          end
         end
 
         # Reload the standard as new sections may have been added
         standard = backend.get_standard(name, recurse: true)
 
         metrics[:update_compliance] += Benchmark.realtime do
-          # Recalculate the compliance of a given standard once it is done
-          backend.update_compliance! standard
+          # Recalculate the compliance of a given standard once it is done (This
+          # also calculates the compliacne of all children and yeilds them to
+          # block)
+          standard.flush_compliance! do |child|
+            backend.update_compliance! child
+          end
         end
       end
     end

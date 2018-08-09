@@ -106,7 +106,7 @@ class Kriterion
         databases[thing.class].update_one(
           { uuid: thing.uuid },
           '$set' => {
-            compliance: thing.flush_compliance!
+            compliance: thing.compliance
           }
         )
       end

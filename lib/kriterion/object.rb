@@ -77,6 +77,14 @@ class Kriterion
 
     def flush_compliance!
       @compliance = nil
+      # Flush the compliance of all children also
+      expandable_keys.each do |key|
+        send(key).each do |thing|
+          thing.flush_compliance!
+          yield(thing) if block_given?
+        end
+      end
+      yield(self) if block_given?
       compliance
     end
   end

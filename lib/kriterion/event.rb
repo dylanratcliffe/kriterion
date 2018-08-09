@@ -32,5 +32,10 @@ class Kriterion
       @certname          = data['certname']
       @resource          = data['resource']
     end
+
+    # Resources don't have compliance so we don't want this to do anything
+    def compliance
+      nil
+    end
   end
 end
