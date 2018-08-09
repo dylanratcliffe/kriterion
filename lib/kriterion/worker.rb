@@ -93,26 +93,12 @@ class Kriterion
             section = parent_sections.reduce(standard) do |previous, current|
               # If the section already exists return it
               if previous.find_section(current)
-                binding.pry
                 previous.find_section(current)
               else
-                binding.pry
-
-                # This is a new section that does not yet exist in the database,
-                # we therefore need to get the details and pull them all in
-                current_section_name = if previous.is_a? Kriterion::Standard
-                                         current
-                                       elsif previous.is_a? Kriterion::Section
-                                         [
-                                           previous.name,
-                                           current
-                                         ].join(standard.section_separator)
-                                       end
-
                 # Get the details from the standards database (name, description
                 # etc.)
                 current_section = @standards[name]['sections'].select do |s|
-                  s['name'] == current_section_name
+                  s['name'] == current
                 end[0]
 
                 if current_section.nil?
