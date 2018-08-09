@@ -13,6 +13,8 @@ class Kriterion
     attr_accessor :resources
 
     def initialize(data)
+      super(data)
+
       @uuid         = data['uuid'] || SecureRandom.uuid
       @id           = data['id']
       @title        = data['title']

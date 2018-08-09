@@ -11,6 +11,8 @@ class Kriterion
     attr_accessor :sections
 
     def initialize(data)
+      super(data)
+
       @uuid        = data['uuid'] || SecureRandom.uuid
       @name        = data['name']
       @standard    = data['standard']

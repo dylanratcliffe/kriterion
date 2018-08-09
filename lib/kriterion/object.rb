@@ -1,5 +1,9 @@
 class Kriterion
   class Object
+    def initialize(data)
+      @compliance = data['compliance']
+    end
+
     def to_h(mode = :basic)
       raise 'Mode must be :basic or :full' unless %i[basic full].include? mode
       hash = {}
@@ -44,7 +48,13 @@ class Kriterion
       sections ? sections.select { |s| s.name == name }[0] : nil
     end
 
+    # Returns the cahced complicance value or calculates from scratch if
+    # required
     def compliance(objects)
+      # Returns cached value if it exists
+      return @compliance if @compliance
+
+      # Calculate compliance
       total         = objects.count
       compliant     = objects.count { |o| o.compliance['compliant'] }
       non_compliant = total - compliant
@@ -63,6 +73,11 @@ class Kriterion
           'total'         => total
         }
       }
+    end
+
+    def flush_compliance!
+      @compliance = nil
+      compliance
     end
   end
 end

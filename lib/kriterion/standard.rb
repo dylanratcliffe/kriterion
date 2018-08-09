@@ -17,6 +17,7 @@ class Kriterion
     attr_accessor :items
 
     def initialize(data)
+      super(data)
       @uuid              = data['uuid'] || SecureRandom.uuid
       @name              = data['name']
       @date              = data['date']
