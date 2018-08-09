@@ -61,7 +61,7 @@ class Kriterion
           # If the standard doesn't yet exist in the backed, add it
           standard = Kriterion::Standard.new(@standards[name])
           logger.debug "Adding starndard #{standard.name} to backend"
-          backend.add_standard(standard)
+          backend.ensure_standard(standard)
           # TODO: See if there is a better way to deal with this, the reason I'm
           # doing this is that I want to make sure that there is not difference
           # between a newly created object and one that came from the database
@@ -111,7 +111,7 @@ class Kriterion
                   current_section = Kriterion::Section.new(current_section)
 
                   # Add the section to the backend
-                  backend.add_section(current_section)
+                  backend.ensure_section(current_section)
                   current_section
                 end
               end
@@ -132,7 +132,7 @@ class Kriterion
                    item_details['parent_uuid']  = section.uuid
                    item_details['parent_type']  = section.type
                    item_details['section_path'] = captures
-                   backend.add_item(Kriterion::Item.new(item_details))
+                   backend.ensure_item(Kriterion::Item.new(item_details))
                  else
                    raise "Found muliple sections with the id #{section_tag}"
                  end
@@ -143,7 +143,7 @@ class Kriterion
           # Add the new resource to the backend if it doesn't exist
           unless item.resources.include? resource
             item.resources << resource
-            backend.add_resource(resource)
+            backend.ensure_resource(resource)
           end
 
           # Inform the database that this node is unchanged if we have no events

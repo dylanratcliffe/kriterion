@@ -68,5 +68,9 @@ class Kriterion
         }
       }
     end
+
+    def self.primary_key
+      :title
+    end
   end
 end

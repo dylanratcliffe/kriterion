@@ -87,5 +87,13 @@ class Kriterion
       yield(self) if block_given?
       compliance
     end
+
+    def primary_key
+      self.class.primary_key
+    end
+
+    def self.primary_key
+      :name
+    end
   end
 end

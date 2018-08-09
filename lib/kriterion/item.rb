@@ -48,5 +48,9 @@ class Kriterion
     def expandable_keys
       [:resources]
     end
+
+    def self.primary_key
+      :id
+    end
   end
 end

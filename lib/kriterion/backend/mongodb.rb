@@ -43,6 +43,39 @@ class Kriterion
         @standard_details_db = @client[:standard_details]
       end
 
+      [
+        'standard',
+        'section',
+        'item',
+        'resource'
+      ].each do |thing|
+        # Create the find_{thing} method that allows us to find any kind of
+        # object
+        define_method("find_#{thing}") do |string|
+          result = database_for(thing).find(
+            class_for(thing).primary_key => string
+          )
+          return result.first if result.count == 1
+          raise "Found > 1 standards with name: #{name}" if result.count > 1
+          nil
+        end
+
+        # Allows you to call find_{thing}s and pass in a mongodb query and
+        # return the output
+        define_method("find_#{thing}s") do |query|
+          database_for(thing).find(query).map do |result|
+            class_for(thing).new(result)
+          end
+        end
+
+        define_method("ensure_#{thing}") do |object|
+          unless send("find_#{thing}", object.send(object.primary_key))
+            insert_into_db(database_for(object), object)
+          end
+          object
+        end
+      end
+
       def get_standard(name, opts = {})
         standard = nil
         metrics[:backend_get_standard] += Benchmark.realtime do
@@ -56,30 +89,6 @@ class Kriterion
         end
 
         standard
-      end
-
-      def find_sections(query)
-        sections_db.find(
-          query
-        ).map do |section|
-          Kriterion::Section.new(section)
-        end
-      end
-
-      def add_standard(standard)
-        insert_into_db(standards_db, standard)
-      end
-
-      def add_section(section)
-        insert_into_db(sections_db, section)
-      end
-
-      def add_item(item)
-        insert_into_db(items_db, item)
-      end
-
-      def add_resource(resource)
-        insert_into_db(resources_db, resource)
       end
 
       def add_event(event)
@@ -96,14 +105,7 @@ class Kriterion
       end
 
       def update_compliance!(thing)
-        databases = {
-          Kriterion::Standard => standards_db,
-          Kriterion::Section  => sections_db,
-          Kriterion::Item     => items_db,
-          Kriterion::Resource => resources_db
-        }
-
-        databases[thing.class].update_one(
+        database_for(thing).update_one(
           { uuid: thing.uuid },
           '$set' => {
             compliance: thing.compliance
@@ -127,6 +129,30 @@ class Kriterion
       end
 
       private
+
+      # Returns the database for a given object type
+      def database_for(object)
+        cls = object.is_a?(String) ? class_for(object) : object.class
+        databases = {
+          Kriterion::Standard => @standards_db,
+          Kriterion::Section  => @sections_db,
+          Kriterion::Item     => @items_db,
+          Kriterion::Resource => @resources_db,
+          Kriterion::Event    => @events_db
+        }
+        databases[cls]
+      end
+
+      def class_for(name)
+        classes = {
+          'standard' => Kriterion::Standard,
+          'section'  => Kriterion::Section,
+          'item'     => Kriterion::Item,
+          'resource' => Kriterion::Resource,
+          'event'    => Kriterion::Event
+        }
+        classes[name]
+      end
 
       def find_children!(object)
         accepted_objects = [
