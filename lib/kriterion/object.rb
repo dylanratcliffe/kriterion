@@ -4,27 +4,40 @@ class Kriterion
       raise 'Mode must be :basic or :full' unless %i[basic full].include? mode
       hash = {}
 
+      # Add all instance variables to the hash without the @ sign
       instance_variables.each do |v|
         hash[v.to_s.gsub(/^@/, '')] = instance_variable_get(v.to_s)
       end
 
       if mode == :basic
         hash.reject do |k, _v|
-          %w[
-            sections
-            items
-            resources
-            events
-          ].include? k
+          full_keys.include? k
         end
       elsif mode == :full
-
+        expandable_keys.each do |key|
+          hash[key.to_s] = send(key).map { |x| x.to_h(:full) }
+        end
         hash
       end
     end
 
-    def expand(object)
-      binding.pry
+    def full_keys
+      %w[
+        sections
+        items
+        resources
+        events
+      ]
+    end
+
+    # Objects should deflault to not being expandable unless someone has
+    # specifided it
+    def expandable?
+      false
+    end
+
+    def expandable_keys
+      []
     end
 
     def find_section(name)

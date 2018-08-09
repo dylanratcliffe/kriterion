@@ -54,6 +54,17 @@ class Kriterion
       @@standards = backend.standards
     end
 
+    def expandable?
+      true
+    end
+
+    def expandable_keys
+      %i[
+        sections
+        items
+      ]
+    end
+
     def type
       :standard
     end

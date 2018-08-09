@@ -32,6 +32,14 @@ class Kriterion
       @unchanged_nodes  = hash['unchanged_nodes'] || []
     end
 
+    def expandable?
+      true
+    end
+
+    def expandable_keys
+      [:events]
+    end
+
     def ==(other)
       other.resource == resource
     end

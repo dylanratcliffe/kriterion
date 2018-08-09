@@ -38,5 +38,13 @@ class Kriterion
       parents.delete(id)
       parents.reverse
     end
+
+    def expandable?
+      true
+    end
+
+    def expandable_keys
+      [:resources]
+    end
   end
 end

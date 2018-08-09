@@ -21,6 +21,17 @@ class Kriterion
       @parent_uuid = data['parent_uuid']
     end
 
+    def expandable?
+      true
+    end
+
+    def expandable_keys
+      %i[
+        sections
+        items
+      ]
+    end
+
     def type
       :section
     end
