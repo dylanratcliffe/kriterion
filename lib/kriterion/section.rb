@@ -11,6 +11,8 @@ class Kriterion
     attr_accessor :sections
 
     def initialize(data)
+      super(data)
+
       @uuid        = data['uuid'] || SecureRandom.uuid
       @name        = data['name']
       @standard    = data['standard']
@@ -19,6 +21,17 @@ class Kriterion
       @sections    = data['sections'] || []
       @parent_type = data['parent_type']
       @parent_uuid = data['parent_uuid']
+    end
+
+    def expandable?
+      true
+    end
+
+    def expandable_keys
+      %i[
+        sections
+        items
+      ]
     end
 
     def type

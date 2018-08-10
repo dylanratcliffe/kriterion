@@ -1,9 +1,5 @@
 # Kriterion
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/kriterion`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -27,6 +23,8 @@ TODO: Write usage instructions here
 ## Development
 
 This project requires MongoDB and RestMQ to be up and working. You can run them up manually using the commands below, or run `docker-compose up` to spin up everything.
+
+To populate the queue with example reports, run `bundle exec ruby spec/populate_queue.rb http://localhost:8888`
 
 ### Docker Containers
 

@@ -1,67 +1,38 @@
 require 'json'
-require 'logger'
 require 'net/http'
 require 'benchmark'
 require 'kriterion'
-require 'kriterion/logs'
 require 'kriterion/item'
 require 'kriterion/report'
 require 'kriterion/metrics'
 require 'kriterion/section'
 require 'kriterion/standard'
+require 'kriterion/connector'
 
 require 'pry'
 
 class Kriterion
   class Worker
     include Kriterion::Logs
+    include Kriterion::Connector
 
-    attr_reader :uri
-    attr_reader :queue
     attr_reader :queue_uri
     attr_reader :standards
     attr_reader :backend
     attr_reader :metrics
 
     def initialize(opts = {})
-      logger.level = if opts[:debug]
-                       Kriterion::Logs::DEBUG
-                     else
-                       Kriterion::Logs::INFO
-                     end
+      @queue_uri, @metrics, @backend = Kriterion::Connector.connections(opts)
 
-      # Set up connections
-      @uri       = opts[:uri]
-      @queue     = opts[:queue]
-      @queue_uri = URI("#{@uri}/q/#{@queue}")
-      @metrics   = Kriterion::Metrics.new
-
-      # Set up the backend
-      # TODO: Clean this up and make fully dynamic
-      backend_name = opts[:backend] || 'mongodb'
-      case backend_name
-      when 'mongodb'
-        require 'kriterion/backend/mongodb'
-        Kriterion::Backend.set(
-          Kriterion::Backend::MongoDB.new(
-            hostname: opts[:mongo_hostname],
-            port:     opts[:mongo_port],
-            database: opts[:mongo_database],
-            metrics:  metrics
-          )
-        )
-      end
-
-      @backend = Kriterion::Backend.get
-
-      # TODO: Work out how workers are going to get the list of standards frmo the API runner
+      # TODO: Work out how workers are going to get the list of standards frmo
+      # the API runner
       # TODO: Remove placeholder code
       standards_dir   = File.expand_path('standards', Kriterion::ROOT)
       @standards      = Kriterion.standards([standards_dir])
     end
 
     def process_report(report)
-      report  = Kriterion::Report.new(report)
+      report = Kriterion::Report.new(report)
 
       # Check if the report contains any relevant resources
       standard_names     = standards.keys
@@ -90,7 +61,7 @@ class Kriterion
           # If the standard doesn't yet exist in the backed, add it
           standard = Kriterion::Standard.new(@standards[name])
           logger.debug "Adding starndard #{standard.name} to backend"
-          backend.add_standard(standard)
+          backend.ensure_standard(standard)
           # TODO: See if there is a better way to deal with this, the reason I'm
           # doing this is that I want to make sure that there is not difference
           # between a newly created object and one that came from the database
@@ -124,21 +95,10 @@ class Kriterion
               if previous.find_section(current)
                 previous.find_section(current)
               else
-                # This is a new section that does not yet exist in the database,
-                # we therefore need to get the details and all them all in
-                current_section_name = if previous.is_a? Kriterion::Standard
-                                         current
-                                       elsif previous.is_a? Kriterion::Section
-                                         [
-                                           previous.name,
-                                           current
-                                         ].join(standard.section_separator)
-                                       end
-
                 # Get the details from the standards database (name, description
                 # etc.)
                 current_section = @standards[name]['sections'].select do |s|
-                  s['name'] == current_section_name
+                  s['name'] == current
                 end[0]
 
                 if current_section.nil?
@@ -151,7 +111,7 @@ class Kriterion
                   current_section = Kriterion::Section.new(current_section)
 
                   # Add the section to the backend
-                  backend.add_section(current_section)
+                  backend.ensure_section(current_section)
                   current_section
                 end
               end
@@ -172,7 +132,7 @@ class Kriterion
                    item_details['parent_uuid']  = section.uuid
                    item_details['parent_type']  = section.type
                    item_details['section_path'] = captures
-                   backend.add_item(Kriterion::Item.new(item_details))
+                   backend.ensure_item(Kriterion::Item.new(item_details))
                  else
                    raise "Found muliple sections with the id #{section_tag}"
                  end
@@ -183,7 +143,7 @@ class Kriterion
           # Add the new resource to the backend if it doesn't exist
           unless item.resources.include? resource
             item.resources << resource
-            backend.add_resource(resource)
+            backend.ensure_resource(resource)
           end
 
           # Inform the database that this node is unchanged if we have no events
@@ -199,35 +159,18 @@ class Kriterion
             backend.add_event(event)
             event
           end
-
-          metrics[:update_compliance] += Benchmark.realtime do
-            # Finally update the compliance details for this resource and its
-            # parent item
-            backend.update_compliance! resource
-            backend.update_compliance! item
-
-            # Find all of the parent sections and update the compliance on them
-            # Don't recalculate the compliance of the standard yet, wait until
-            # the end.
-            item.parent_names(standard.section_separator).each do |parent|
-              # TODO: Complete this so that it updates the compliance of
-              # everything. It's probably better if we re-query this stuff from
-              # the database to reduce the chances of race conditions
-              result = backend.find_sections(
-                name: parent,
-                standard: standard.name
-              )
-              result.each { |r| backend.update_compliance! r }
-            end
-          end
         end
 
         # Reload the standard as new sections may have been added
         standard = backend.get_standard(name, recurse: true)
 
         metrics[:update_compliance] += Benchmark.realtime do
-          # Recalculate the compliance of a given standard once it is done
-          backend.update_compliance! standard
+          # Recalculate the compliance of a given standard once it is done (This
+          # also calculates the compliacne of all children and yeilds them to
+          # block)
+          standard.flush_compliance! do |child|
+            backend.update_compliance! child
+          end
         end
       end
     end
@@ -254,6 +197,7 @@ class Kriterion
             end
 
             metrics.print
+            metrics.reset!
           end
         rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
                Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError,

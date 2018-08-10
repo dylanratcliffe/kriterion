@@ -13,6 +13,8 @@ class Kriterion
     attr_accessor :resources
 
     def initialize(data)
+      super(data)
+
       @uuid         = data['uuid'] || SecureRandom.uuid
       @id           = data['id']
       @title        = data['title']
@@ -37,6 +39,18 @@ class Kriterion
 
       parents.delete(id)
       parents.reverse
+    end
+
+    def expandable?
+      true
+    end
+
+    def expandable_keys
+      [:resources]
+    end
+
+    def self.primary_key
+      :id
     end
   end
 end

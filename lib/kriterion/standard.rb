@@ -17,6 +17,7 @@ class Kriterion
     attr_accessor :items
 
     def initialize(data)
+      super(data)
       @uuid              = data['uuid'] || SecureRandom.uuid
       @name              = data['name']
       @date              = data['date']
@@ -52,6 +53,17 @@ class Kriterion
     def self.reload_all!
       backend = Kriterion::Backend.get
       @@standards = backend.standards
+    end
+
+    def expandable?
+      true
+    end
+
+    def expandable_keys
+      %i[
+        sections
+        items
+      ]
     end
 
     def type

@@ -30,6 +30,15 @@ class Kriterion
       @events           = hash['events'] || []
       @parent_uuid      = hash['parent_uuid']
       @unchanged_nodes  = hash['unchanged_nodes'] || []
+      @compliance       = hash['compliance']
+    end
+
+    def expandable?
+      true
+    end
+
+    def expandable_keys
+      [:events]
     end
 
     def ==(other)
@@ -37,6 +46,9 @@ class Kriterion
     end
 
     def compliance
+      # Returns cached value if it exists
+      return @compliance if @compliance
+
       compliant     = unchanged_nodes.count
       non_compliant = events.group_by(&:certname).count
       total         = compliant + non_compliant
@@ -55,6 +67,10 @@ class Kriterion
           'total'         => total
         }
       }
+    end
+
+    def self.primary_key
+      :title
     end
   end
 end

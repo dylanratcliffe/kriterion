@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'cri', '~> 2.10'
   spec.add_runtime_dependency 'httparty', '~> 0.16'
   spec.add_runtime_dependency 'mongo', '~> 2.5'
+  spec.add_runtime_dependency 'sinatra', '~> 2.0'
 
   spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'rake', '~> 10.0'

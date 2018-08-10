@@ -1,8 +1,17 @@
 version: '3'
 services:
   worker:
-    build: .
+    build:
+      context: docker/worker
+    image: kriterion-worker
     tty: true
+  api:
+    build:
+      context: docker/api
+    image: kriterion-api
+    tty: true
+    ports:
+      - "4567:4567"
   mongodb:
     image: mongo:latest
     ports:
