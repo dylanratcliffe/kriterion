@@ -1,14 +1,14 @@
 version: '3'
 services:
   worker:
-    build:
-      context: docker/worker
-    image: kriterion-worker
+    build: .
+    image: kriterion
+    command: worker
     tty: true
   api:
-    build:
-      context: docker/api
-    image: kriterion-api
+    build: .
+    image: kriterion
+    command: api
     tty: true
     ports:
       - "4567:4567"
