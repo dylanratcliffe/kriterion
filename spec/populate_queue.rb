@@ -22,8 +22,13 @@ puts "Found files:\n#{files.join("\n")}"
         request      = Net::HTTP::Post.new(uri.request_uri)
         puts "Uploading #{file}"
         request.body = URI.escape("value=#{File.read(file)}").gsub(';','%3B')
-        http.request(request)
-        puts "Completed upload #{file}"
+        response = http.request(request)
+        case response.code
+        when '200'
+          puts "Completed upload #{file}"
+        else
+          puts response.inspect
+        end
       end
     end
   end
