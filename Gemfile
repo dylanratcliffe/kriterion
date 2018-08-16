@@ -9,4 +9,6 @@ group :development do
   gem 'nokogiri'
   gem 'pry'
   gem 'pry-byebug'
+  gem 'kubeclient'
+  gem 'googleauth'
 end
