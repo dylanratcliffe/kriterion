@@ -31,11 +31,23 @@ class Kriterion
       @corrective_change = data['corrective_change']
       @certname          = data['certname']
       @resource          = data['resource']
+      @full_description  = "#{@certname}/#{@resource}/#{@property}: #{@message}"
+    end
+
+    def full_description
+      # We want to update this when it is called to ensure it is up to date.
+      # This could just be amethod instead of an instance variable but that
+      # would mean that it wouldn't get stored in the database, which we want.
+      @full_description = "#{@certname}/#{@resource}/#{@property}: #{@message}"
     end
 
     # Resources don't have compliance so we don't want this to do anything
     def compliance
       nil
+    end
+
+    def primary_key
+      :full_description
     end
   end
 end

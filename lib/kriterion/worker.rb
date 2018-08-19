@@ -56,7 +56,7 @@ class Kriterion
       end
 
       affected_standards.each do |name, resources|
-        standard = backend.get_standard(name, recurse: true)
+        standard = backend.find_standard({ name: name }, recurse: true)
         unless standard
           # If the standard doesn't yet exist in the backed, add it
           standard = Kriterion::Standard.new(@standards[name])
@@ -156,13 +156,16 @@ class Kriterion
             event          = Kriterion::Event.new(event)
             event.certname = report.certname
             event.resource = resource.resource
-            backend.add_event(event)
+            backend.ensure_event(event)
             event
           end
         end
 
         # Reload the standard as new sections may have been added
-        standard = backend.get_standard(name, recurse: true)
+        standard = backend.find_standard(
+          { name: name },
+          recurse: true
+        )
 
         metrics[:update_compliance] += Benchmark.realtime do
           # Recalculate the compliance of a given standard once it is done (This
