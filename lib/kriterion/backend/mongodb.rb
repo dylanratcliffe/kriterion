@@ -26,8 +26,8 @@ class Kriterion
       attr_reader :metrics
 
       def initialize(opts)
+        super(opts)
         logger.info 'Initializing MongoDB backend'
-        @metrics             = opts[:metrics] || Kriterion::Metrics.new
         @hostname            = opts[:hostname]
         @port                = opts[:port]
         @database            = opts[:database]

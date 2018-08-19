@@ -1,6 +1,15 @@
+require 'kriterion/metrics'
+
+
 class Kriterion
   class Backend
     @@backend = nil
+
+    attr_reader :metrics
+
+    def initialize(opts)
+      @metrics = opts[:metrics] || Kriterion::Metrics.new
+    end
 
     # This is the meat of what a backend is. This section defines the following
     # methods:
@@ -40,7 +49,11 @@ class Kriterion
       end
 
       define_method("find_#{thing}s") do |query, opts|
-        find(thing, query, opts)
+        result = nil
+        metrics[:"backend_find_#{thing}s"] += Benchmark.realtime do
+          result = find(thing, query, opts)
+        end
+        result
       end
 
       define_method("ensure_#{thing}") do |object|
@@ -49,7 +62,9 @@ class Kriterion
           pk => object.send(pk)
         }
 
-        insert(object) unless send("find_#{thing}", query, recurse: false)
+        metrics[:backend_insert] += Benchmark.realtime do
+          insert(object) unless send("find_#{thing}", query, recurse: false)
+        end
         object
       end
     end

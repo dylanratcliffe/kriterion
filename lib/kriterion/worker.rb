@@ -65,7 +65,10 @@ class Kriterion
           # TODO: See if there is a better way to deal with this, the reason I'm
           # doing this is that I want to make sure that there is not difference
           # between a newly created object and one that came from the database
-          standard = backend.get_standard(name, recurse: true)
+          standard = backend.find_standard(
+            { name: name },
+            recurse: true
+          )
         end
 
         resources.each do |resource|
