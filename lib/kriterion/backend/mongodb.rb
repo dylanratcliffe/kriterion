@@ -23,7 +23,6 @@ class Kriterion
       attr_reader :resources_db
       attr_reader :events_db
       attr_reader :standard_details_db
-      attr_reader :metrics
 
       def initialize(opts)
         super(opts)
