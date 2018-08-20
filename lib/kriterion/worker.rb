@@ -9,8 +9,6 @@ require 'kriterion/section'
 require 'kriterion/standard'
 require 'kriterion/connector'
 
-require 'pry'
-
 class Kriterion
   class Worker
     include Kriterion::Logs

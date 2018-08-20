@@ -3,8 +3,6 @@ require 'sinatra/base'
 require 'kriterion/logs'
 require 'kriterion/connector'
 
-require 'pry'
-
 class Kriterion
   class API < Sinatra::Application
     attr_accessor :queue_uri
