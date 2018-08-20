@@ -3,8 +3,6 @@ require 'sinatra/base'
 require 'kriterion/logs'
 require 'kriterion/connector'
 
-require 'pry'
-
 class Kriterion
   class API < Sinatra::Application
     attr_accessor :queue_uri
@@ -33,8 +31,42 @@ class Kriterion
 
     set :bind, '0.0.0.0'
 
+    get '/standards' do
+      backend.find_standards(
+        {},
+        recurse: options[:recurse]
+      ).map do |standard|
+        standard.to_h(options[:mode])
+      end.to_json
+    end
+
     get '/standards/:name' do |name|
-      backend.get_standard(name, recurse: true).to_h(:full).to_json
+      backend.find_standard(
+        { name: name },
+        recurse: options[:recurse]
+      ).to_h(options[:mode]).to_json
+    end
+
+    private
+
+    # Returns options that are relevant to the queries we will be doing based
+    # on the params that were passed
+    def options
+      level = params['level'] || 'full'
+      mode_options[level]
+    end
+
+    def mode_options
+      {
+        'basic' => {
+          recurse: false,
+          mode: :basic
+        },
+        'full' => {
+          recurse: true,
+          mode: :full
+        }
+      }
     end
   end
 end

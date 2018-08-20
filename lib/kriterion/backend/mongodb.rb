@@ -23,11 +23,10 @@ class Kriterion
       attr_reader :resources_db
       attr_reader :events_db
       attr_reader :standard_details_db
-      attr_reader :metrics
 
       def initialize(opts)
+        super(opts)
         logger.info 'Initializing MongoDB backend'
-        @metrics             = opts[:metrics] || Kriterion::Metrics.new
         @hostname            = opts[:hostname]
         @port                = opts[:port]
         @database            = opts[:database]
@@ -43,56 +42,23 @@ class Kriterion
         @standard_details_db = @client[:standard_details]
       end
 
-      [
-        'standard',
-        'section',
-        'item',
-        'resource'
-      ].each do |thing|
-        # Create the find_{thing} method that allows us to find any kind of
-        # object
-        define_method("find_#{thing}") do |string|
-          result = database_for(thing).find(
-            class_for(thing).primary_key => string
-          )
-          return result.first if result.count == 1
-          raise "Found > 1 standards with name: #{name}" if result.count > 1
-          nil
-        end
+      def find(type, query, opts)
+        database_for(type).find(query).map do |result|
+          # Sanitise the data if required
+          params = sanitise_data(type, result)
 
-        # Allows you to call find_{thing}s and pass in a mongodb query and
-        # return the output
-        define_method("find_#{thing}s") do |query|
-          database_for(thing).find(query).map do |result|
-            class_for(thing).new(result)
-          end
-        end
+          # Create the object and return in an array
+          object = class_for(type).new(params)
 
-        define_method("ensure_#{thing}") do |object|
-          unless send("find_#{thing}", object.send(object.primary_key))
-            insert_into_db(database_for(object), object)
-          end
+          # Find children if required
+          find_children!(object) if opts[:recurse]
+
           object
         end
       end
 
-      def get_standard(name, opts = {})
-        standard = nil
-        metrics[:backend_get_standard] += Benchmark.realtime do
-          # Set recursion to false by default
-          opts[:recurse] = opts[:recurse] || false
-
-          standard = sanitise_standard(find_standard(name))
-          return nil if standard.nil?
-
-          find_children!(standard) if opts[:recurse]
-        end
-
-        standard
-      end
-
-      def add_event(event)
-        insert_into_db(events_db, event)
+      def insert(object)
+        insert_into_db(database_for(object), object)
       end
 
       def add_unchanged_node(resource, certname)
@@ -130,9 +96,18 @@ class Kriterion
 
       private
 
+      def sanitise_data(type, data)
+        if type == :standard
+          return nil if data.nil?
+          # Compile the regex from a lazy-compiled BSON regex back to a ruby one
+          data['item_syntax'] = data['item_syntax'].compile
+        end
+        data  
+      end
+
       # Returns the database for a given object type
       def database_for(object)
-        cls = object.is_a?(String) ? class_for(object) : object.class
+        cls = class_for(object)
         databases = {
           Kriterion::Standard => @standards_db,
           Kriterion::Section  => @sections_db,
@@ -151,7 +126,10 @@ class Kriterion
           'resource' => Kriterion::Resource,
           'event'    => Kriterion::Event
         }
-        classes[name]
+        # If someone has passed in an object, just return the class
+        return name.class if classes.value? name.class
+
+        classes[name.to_s]
       end
 
       def find_children!(object)
@@ -234,27 +212,6 @@ class Kriterion
         result.map do |section|
           Kriterion::Section.new(section)
         end
-      end
-
-      def find_standard(name)
-        result = standards_db.find(name: name)
-        count  = result.count
-        case count
-        when 0
-          nil
-        when 1
-          result.first
-        else
-          raise "Found > 1 standards with name: #{name}"
-        end
-      end
-
-      # Takes a result and sanities it to Kriterion::Standard object
-      def sanitise_standard(result)
-        return nil if result.nil?
-        # Compile the regex from a lazy-compiled BSON regex back to a ruby one
-        result['item_syntax'] = result['item_syntax'].compile
-        Kriterion::Standard.new(result)
       end
     end
   end

@@ -9,8 +9,6 @@ require 'kriterion/section'
 require 'kriterion/standard'
 require 'kriterion/connector'
 
-require 'pry'
-
 class Kriterion
   class Worker
     include Kriterion::Logs
@@ -56,7 +54,7 @@ class Kriterion
       end
 
       affected_standards.each do |name, resources|
-        standard = backend.get_standard(name, recurse: true)
+        standard = backend.find_standard({ name: name }, recurse: true)
         unless standard
           # If the standard doesn't yet exist in the backed, add it
           standard = Kriterion::Standard.new(@standards[name])
@@ -65,7 +63,10 @@ class Kriterion
           # TODO: See if there is a better way to deal with this, the reason I'm
           # doing this is that I want to make sure that there is not difference
           # between a newly created object and one that came from the database
-          standard = backend.get_standard(name, recurse: true)
+          standard = backend.find_standard(
+            { name: name },
+            recurse: true
+          )
         end
 
         resources.each do |resource|
@@ -156,13 +157,16 @@ class Kriterion
             event          = Kriterion::Event.new(event)
             event.certname = report.certname
             event.resource = resource.resource
-            backend.add_event(event)
+            backend.ensure_event(event)
             event
           end
         end
 
         # Reload the standard as new sections may have been added
-        standard = backend.get_standard(name, recurse: true)
+        standard = backend.find_standard(
+          { name: name },
+          recurse: true
+        )
 
         metrics[:update_compliance] += Benchmark.realtime do
           # Recalculate the compliance of a given standard once it is done (This
