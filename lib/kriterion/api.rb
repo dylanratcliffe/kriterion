@@ -97,7 +97,10 @@ class Kriterion
       level = params['level'] || 'full'
 
       # Convert all other params to symbols for later use
-      sym_params = params.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+      sym_params = params.each_with_object({}) do |memo, (k, v)|
+        memo[k.to_sym] = v
+        memo
+      end
 
       # Return all data
       sym_params.merge(mode_options[level])
