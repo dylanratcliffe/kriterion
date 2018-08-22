@@ -39,35 +39,19 @@ class Kriterion
     end
 
     get '/standards' do
-      backend.find_standards(
-        {},
-        recurse: options[:recurse]
-      ).map do |standard|
-        standard.to_h(options[:mode])
-      end.to_json
+      find 'standards'
     end
 
     get '/standards/:name' do |name|
-      backend.find_standard(
-        { name: name },
-        recurse: options[:recurse]
-      ).to_h(options[:mode]).to_json
+      find 'standards', name: name
     end
 
     get '/sections' do
-      backend.find_sections(
-        { standard: options[:standard] },
-        recurse: options[:recurse]
-      ).map do |section|
-        section.to_h(options[:mode])
-      end.to_json
+      find 'sections', standard: options[:standard]
     end
 
     get '/sections/:uuid' do |uuid|
-      backend.find_section(
-        { uuid: uuid },
-        recurse: options[:recurse]
-      ).to_h(options[:mode]).to_json
+      find 'sections', uuid: uuid
     end
 
     get '/sections/:uuid/sections' do |uuid|
@@ -84,22 +68,27 @@ class Kriterion
     end
 
     get '/resources' do
-      backend.find_resources(
-        { parent_uuid: options[:item] },
-        recurse: options[:recurse]
-      ).map do |resource|
-        resource.to_h(options[:mode])
-      end.to_json
+      find 'resources', parent_uuid: options[:item]
     end
 
     get '/resources/:uuid' do |uuid|
-      backend.find_resource(
-        { uuid: uuid },
-        recurse: options[:recurse]
-      ).to_h(options[:mode]).to_json
+      find 'resources', uuid: uuid
     end
 
     private
+
+    # Finds things in the backend and returns them as JSON
+    def find(thing, query = {})
+      result = backend.send("find_#{thing}", query, recurse: options[:recurse])
+
+      if result.is_a? Array
+        result.map do |object|
+          object.to_h(options[:mode])
+        end.to_json
+      else
+        result.to_h(options[:mode]).to_json
+      end
+    end
 
     # Returns options that are relevant to the queries we will be doing based
     # on the params that were passed
