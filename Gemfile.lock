@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kriterion (0.0.1)
+    kriterion (0.1.0)
       cri (~> 2.10)
       httparty (~> 0.16)
       mongo (~> 2.5)
