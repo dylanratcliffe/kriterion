@@ -27,6 +27,7 @@ class Kriterion
       # TODO: Remove placeholder code
       standards_dir   = File.expand_path('standards', Kriterion::ROOT)
       @standards      = Kriterion.standards([standards_dir])
+      logger.info "Initialised Kritioner worker version #{Kriterion::VERSION}"
     end
 
     def process_report(report)
