@@ -1,0 +1,21 @@
+version: '3'
+services:
+  worker:
+    image: dylanratcliffe/kriterion:latest
+    command: worker
+    tty: true
+  api:
+    image: dylanratcliffe/kriterion:latest
+    command: api
+    tty: true
+    ports:
+      - "4567:4567"
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+  restmq:
+    image: pablozaiden/restmq:latest
+    ports:
+      - "6379:6379"
+      - "8888:8888"
