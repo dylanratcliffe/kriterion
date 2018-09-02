@@ -35,7 +35,10 @@ class Kriterion
 
     # Set headers and default values
     before do
-      headers 'Content-Type' => 'application/json'
+      headers(
+        'Content-Type'                => 'application/json',
+        'Access-Control-Allow-Origin' => '*'
+      )
     end
 
     get '/standards' do
