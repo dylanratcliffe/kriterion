@@ -1,5 +1,5 @@
 {
-  "name": "stig_ibm_zvm_using_ca_vm:secure",
+  "name": "stig_ibm_zvm_using_ca_vm_secure",
   "date": "2018-04-04",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "IBM z/VM Using CA VM:Secure Security Technical Implementation Guide",

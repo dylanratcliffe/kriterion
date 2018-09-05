@@ -16,7 +16,7 @@ main_page.search('td').each do |td|
     stig          = JSON.parse(open("https://www.stigviewer.com#{json_link}").read)['stig']
 
     # Map elements
-    standard['name'] = "stig_#{stig['slug']}"
+    standard['name'] = "stig_#{stig['slug']}".tr(':', '_')
     standard['date'] = stig['date']
     standard['description'] = stig['description']
     standard['title'] = stig['title']
