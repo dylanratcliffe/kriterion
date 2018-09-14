@@ -7,7 +7,7 @@ class Kriterion
 
     attr_reader :metrics
 
-    def initialize(opts)
+    def initialize(opts = {})
       @metrics = opts[:metrics] || Kriterion::Metrics.new
     end
 

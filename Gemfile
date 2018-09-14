@@ -11,4 +11,6 @@ group :development do
   gem 'pry-byebug'
   gem 'kubeclient'
   gem 'googleauth'
+  gem 'mocha'
+  gem 'rack-test'
 end

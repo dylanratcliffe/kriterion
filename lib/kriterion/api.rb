@@ -12,22 +12,22 @@ class Kriterion
     include Kriterion::Logs
 
     # We only every want to have one instance of this running at a time. This is
-    # required due to the way that Sinatra initialises things This adds the
+    # required due to the way that Sinatra initialises things, this adds the
     # initialize method etc.
     @@instance = nil
 
-    def initialize(opts = {})
+    def initialize(opts = nil)
       # If there is already an instance, copy the objects from that
       if @@instance
         @queue_uri = @@instance.queue_uri
         @metrics   = @@instance.metrics
         @backend   = @@instance.backend
-      else
+      elsif opts
         @queue_uri, @metrics, @backend = Kriterion::Connector.connections(opts)
         @@instance = self
       end
-      super()
-      logger.info "Initialised Kritioner API version #{Kriterion::VERSION}"
+      super
+      logger.info "Initialised Kriterion API version #{Kriterion::VERSION}"
     end
 
     set :bind, '0.0.0.0'
