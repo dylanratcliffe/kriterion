@@ -50,6 +50,8 @@ class Kriterion
           # Create the object and return in an array
           object = class_for(type).new(params)
 
+          require 'pry'
+          binding.pry
           # Find children if required
           find_children!(object) if opts[:recurse]
 
@@ -102,7 +104,7 @@ class Kriterion
           # Compile the regex from a lazy-compiled BSON regex back to a ruby one
           data['item_syntax'] = data['item_syntax'].compile
         end
-        data  
+        data
       end
 
       # Returns the database for a given object type
@@ -116,20 +118,6 @@ class Kriterion
           Kriterion::Event    => @events_db
         }
         databases[cls]
-      end
-
-      def class_for(name)
-        classes = {
-          'standard' => Kriterion::Standard,
-          'section'  => Kriterion::Section,
-          'item'     => Kriterion::Item,
-          'resource' => Kriterion::Resource,
-          'event'    => Kriterion::Event
-        }
-        # If someone has passed in an object, just return the class
-        return name.class if classes.value? name.class
-
-        classes[name.to_s]
       end
 
       def find_children!(object)

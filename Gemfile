@@ -13,4 +13,5 @@ group :development do
   gem 'googleauth'
   gem 'mocha'
   gem 'rack-test'
+  gem 'rubocop'
 end

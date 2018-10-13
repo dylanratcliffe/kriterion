@@ -84,20 +84,23 @@ class Kriterion
     def find(thing, query = {})
       result = backend.send("find_#{thing}", query, recurse: options[:recurse])
 
-      if result.is_a? Array
+      case result.class
+      when Array
         result.map do |object|
           object.to_h(options[:mode])
         end.to_json
-      else
+      when Kriterion::Object
         result.to_h(options[:mode]).to_json
+      else
+        {}.to_json
       end
     end
 
     # Returns options that are relevant to the queries we will be doing based
     # on the params that were passed
     def options
-      # Defualt level should be full
-      level = params['level'] || 'full'
+      # Defualt level should be basic
+      level = params['level'] || 'basic'
 
       # Convert all other params to symbols for later use
       sym_params = params.each_with_object({}) do |(k, v), memo|

@@ -79,6 +79,20 @@ class Kriterion
 
     private
 
+    def class_for(name)
+      classes = {
+        'standard' => Kriterion::Standard,
+        'section'  => Kriterion::Section,
+        'item'     => Kriterion::Item,
+        'resource' => Kriterion::Resource,
+        'event'    => Kriterion::Event
+      }
+      # If someone has passed in an object, just return the class
+      return name.class if classes.value? name.class
+
+      classes[name.to_s]
+    end
+
     # Validate options hash
     def validate_opts(opts)
       valid_keys = [
