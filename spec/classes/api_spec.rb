@@ -22,35 +22,6 @@ RSpec.describe Kriterion::API do
     end
   end
 
-  # context 'with a valid backend' do
-  #   before do
-  #     # Create the API and backend
-  #     @backend = Kriterion::Backend.new
-
-  #     # Simulate the non-critical methods.
-  #     insert_return = nil
-  #     @backend.stubs(:insert).with do |object|
-  #       insert_return = object
-  #       true
-  #     end.returns(insert_return)
-  #     @backend.stubs(:add_unchanged_node).returns(nil)
-  #     @backend.stubs(:update_compliance!).returns(nil)
-  #     @backend.stubs(:purge_events!).returns(nil)
-
-  #     # Simulate all required calls to the `#find` method. There will be many
-  #     # tests that require this so we will centralise the mocking as much as we
-  #     # can to reduce duplication
-  #     # TODO: This
-
-  #     @middleware  = Kriterion::API.new
-  #     @api         = @middleware.helpers
-  #     @api.backend = @backend
-
-  #     Kriterion::API.stubs(:new).returns(@api)
-  #     Kriterion::Backend.stubs(:new).returns(@backend)
-  #   end
-  # end
-
   describe 'endpoints' do
     before(:all) do
       @middleware  = Kriterion::API.new
@@ -80,28 +51,78 @@ RSpec.describe Kriterion::API do
       end
     end
 
-    describe ' the /sections endpoint' do
+    describe 'the /sections endpoint' do
+      require 'kriterion/section'
+
       it_should_behave_like 'a friendly endpoint:', 'sections'
 
       it 'should handle a standard param' do
-        skip 'Not yet implented'
+        backend.expects(:find_sections).with(
+          { standard: 'cool_standard' },
+          recurse: false
+        ).returns(nil)
+
+        get '/sections?standard=cool_standard'
+
+        expect(last_response).to be_ok
       end
 
       it 'should be able to return subsections' do
-        skip 'Not yet implented'
+        parent_section = Kriterion::Section.new({
+          'uuid' => 'a8ac86b2-3f6b-4663-8516-181fbc7faff7',
+          'name' => '1.1',
+        })
+
+        child_section = Kriterion::Section.new({
+          'uuid'        => 'b4536b56-e44b-4e75-9d2a-e22459ebff17',
+          'name'        => '1.1.1',
+          'parent_uuid' => 'a8ac86b2-3f6b-4663-8516-181fbc7faff7',
+        })
+
+        parent_section.sections << child_section
+
+        backend.expects(:find_sections).with(
+          { uuid: 'a8ac86b2-3f6b-4663-8516-181fbc7faff7' },
+          recurse: true
+        ).returns([parent_section])
+
+        get '/sections/a8ac86b2-3f6b-4663-8516-181fbc7faff7/sections'
+
+        expect(last_response).to be_ok
+        body = JSON.parse(last_response.body)
+        expect(body).to be_a(Array)
+        expect(body.length).to be(1)
+        expect(body[0]).to include(
+          'uuid'        => 'b4536b56-e44b-4e75-9d2a-e22459ebff17',
+          'name'        => '1.1.1',
+          'parent_uuid' => 'a8ac86b2-3f6b-4663-8516-181fbc7faff7'
+        )
       end
     end
 
     describe ' the /resources endpoint' do
       it_should_behave_like 'a friendly endpoint:', 'resources'
-      
+
       it 'should handle a item param' do
-        skip 'Not yet implented'
+        backend.expects(:find_resources).with(
+          { parent_uuid: 'b4536b56-e44b-4e75-9d2a-e22459ebff17' },
+          recurse: false
+        ).returns(nil)
+
+        get '/resources?item=b4536b56-e44b-4e75-9d2a-e22459ebff17'
+
+        expect(last_response).to be_ok
       end
 
       it 'should handle a passed uuid' do
-        skip 'Not yet implented'
-      end
+        backend.expects(:find_resources).with(
+          { uuid: 'b4536b56-e44b-4e75-9d2a-e22459ebff17' },
+          recurse: false
+        ).returns(nil)
+
+        get '/resources/b4536b56-e44b-4e75-9d2a-e22459ebff17'
+
+        expect(last_response).to be_ok      end
     end
   end
 end
