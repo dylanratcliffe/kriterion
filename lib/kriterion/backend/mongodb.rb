@@ -99,6 +99,7 @@ class Kriterion
       def sanitise_data(type, data)
         if type == :standard
           return nil if data.nil?
+
           # Compile the regex from a lazy-compiled BSON regex back to a ruby one
           data['item_syntax'] = data['item_syntax'].compile
         end

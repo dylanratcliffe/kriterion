@@ -84,7 +84,7 @@ class Kriterion
     def find(thing, query = {})
       result = backend.send("find_#{thing}", query, recurse: options[:recurse])
 
-      case result.class
+      case result
       when Array
         result.map do |object|
           object.to_h(options[:mode])
