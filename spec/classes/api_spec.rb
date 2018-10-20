@@ -100,7 +100,7 @@ RSpec.describe Kriterion::API do
       end
     end
 
-    describe ' the /resources endpoint' do
+    describe 'the /resources endpoint' do
       it_should_behave_like 'a friendly endpoint:', 'resources'
 
       it 'should handle a item param' do
@@ -122,7 +122,8 @@ RSpec.describe Kriterion::API do
 
         get '/resources/b4536b56-e44b-4e75-9d2a-e22459ebff17'
 
-        expect(last_response).to be_ok      end
+        expect(last_response).to be_ok
+      end
     end
   end
 end
