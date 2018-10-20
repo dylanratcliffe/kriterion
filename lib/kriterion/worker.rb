@@ -180,9 +180,9 @@ class Kriterion
       end
     end
 
-    def run
-      while true do
-        # Connect and check if there is anythong on the queue
+    def run(sleep_time = 3)
+      while keep_running?
+        # Connect and check if there is anything on the queue
         # TODO: Change this so that they listen properly
         logger.debug "GET #{queue_uri}"
         begin
@@ -191,7 +191,7 @@ class Kriterion
           case response.code
           when '204'
             logger.debug 'Queue empty, sleeping...'
-            sleep 3
+            sleep sleep_time
           when '200'
             logger.debug 'Got a report, parsing...'
             report = JSON.parse(JSON.parse(response.body)['value'])
@@ -209,12 +209,18 @@ class Kriterion
                Net::ProtocolError, Errno::ECONNREFUSED, SocketError => e
           logger.error "Error while running: #{e}"
           logger.info 'Sleeping...'
-          sleep 3
+          sleep sleep_time
         end
       end
     end
 
     private
+
+    # This method is provided to allow tests to control the number of times
+    # that the worker executes
+    def keep_running?
+      true
+    end
 
     def captures_to_sections(standard, captures)
       sections = []

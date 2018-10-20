@@ -12,22 +12,22 @@ class Kriterion
     include Kriterion::Logs
 
     # We only every want to have one instance of this running at a time. This is
-    # required due to the way that Sinatra initialises things This adds the
+    # required due to the way that Sinatra initialises things, this adds the
     # initialize method etc.
     @@instance = nil
 
-    def initialize(opts = {})
+    def initialize(opts = nil)
       # If there is already an instance, copy the objects from that
       if @@instance
         @queue_uri = @@instance.queue_uri
         @metrics   = @@instance.metrics
         @backend   = @@instance.backend
-      else
+      elsif opts
         @queue_uri, @metrics, @backend = Kriterion::Connector.connections(opts)
         @@instance = self
       end
-      super()
-      logger.info "Initialised Kritioner API version #{Kriterion::VERSION}"
+      super
+      logger.info "Initialised Kriterion API version #{Kriterion::VERSION}"
     end
 
     set :bind, '0.0.0.0'
@@ -84,20 +84,23 @@ class Kriterion
     def find(thing, query = {})
       result = backend.send("find_#{thing}", query, recurse: options[:recurse])
 
-      if result.is_a? Array
+      case result.class
+      when Array
         result.map do |object|
           object.to_h(options[:mode])
         end.to_json
-      else
+      when Kriterion::Object
         result.to_h(options[:mode]).to_json
+      else
+        {}.to_json
       end
     end
 
     # Returns options that are relevant to the queries we will be doing based
     # on the params that were passed
     def options
-      # Defualt level should be full
-      level = params['level'] || 'full'
+      # Defualt level should be basic
+      level = params['level'] || 'basic'
 
       # Convert all other params to symbols for later use
       sym_params = params.each_with_object({}) do |(k, v), memo|

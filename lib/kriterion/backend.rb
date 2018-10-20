@@ -1,13 +1,12 @@
 require 'kriterion/metrics'
 
-
 class Kriterion
   class Backend
     @@backend = nil
 
     attr_reader :metrics
 
-    def initialize(opts)
+    def initialize(opts = {})
       @metrics = opts[:metrics] || Kriterion::Metrics.new
     end
 
@@ -78,6 +77,20 @@ class Kriterion
     end
 
     private
+
+    def class_for(name)
+      classes = {
+        'standard' => Kriterion::Standard,
+        'section'  => Kriterion::Section,
+        'item'     => Kriterion::Item,
+        'resource' => Kriterion::Resource,
+        'event'    => Kriterion::Event
+      }
+      # If someone has passed in an object, just return the class
+      return name.class if classes.value? name.class
+
+      classes[name.to_s]
+    end
 
     # Validate options hash
     def validate_opts(opts)
