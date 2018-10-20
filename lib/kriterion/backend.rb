@@ -1,6 +1,5 @@
 require 'kriterion/metrics'
 
-
 class Kriterion
   class Backend
     @@backend = nil

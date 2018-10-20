@@ -1,6 +1,7 @@
 require 'bundler/setup'
 require 'kriterion'
 require 'rack/test'
+require 'json'
 
 ENV['RACK_ENV'] = 'test'
 
@@ -30,4 +31,28 @@ RSpec.configure do |config|
 
   config.formatter = :documentation
   config.mock_with :mocha
+end
+
+# Load in all reports and queue responses
+@reports   = []
+@responses = []
+
+def load_responses
+  Dir['spec/reports/*.json'].map do |file|
+    { 'value' => File.read(file) }.to_json
+  end
+end
+
+def load_reports
+  responses.map do |response|
+    JSON.parse(JSON.parse(response)['value'])
+  end
+end
+
+def responses
+  @responses ||= load_responses
+end
+
+def reports
+  @reports ||= load_reports
 end
