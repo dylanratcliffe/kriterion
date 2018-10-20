@@ -4,3 +4,4 @@ Style/ClassVars:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+  

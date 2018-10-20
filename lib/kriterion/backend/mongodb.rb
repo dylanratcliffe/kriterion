@@ -50,8 +50,6 @@ class Kriterion
           # Create the object and return in an array
           object = class_for(type).new(params)
 
-          require 'pry'
-          binding.pry
           # Find children if required
           find_children!(object) if opts[:recurse]
 
