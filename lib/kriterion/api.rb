@@ -78,6 +78,50 @@ class Kriterion
       find 'resources', uuid: uuid
     end
 
+    get '/items' do
+      case [options[:standard].nil?, options[:section].nil?]
+      when [true, false]
+        # Section supplied
+        if options[:recurse]
+          sections = backend.find_sections({ uuid: options[:section] }, recurse: true )
+          items    = []
+
+          # Loop over all the sections so that we get all child items
+          until sections.empty?
+            section = sections.pop
+            items << section.items
+            section.sections.each { |s| sections.push(s) }
+          end
+          items.flatten.map do |item|
+            item.to_h(options[:mode])
+          end.to_json
+        else
+          find 'items', parent_uuid: options[:section]
+        end
+      when [false, true]
+        # Standard supplied
+        find 'items', standard: options[:standard]
+      else
+        status 400
+        body 'Must specify either standard or section'
+      end
+    end
+
+    get '/items/:uuid' do |uuid|
+      find 'items', uuid: uuid
+    end
+
+    get '/events' do
+      resource = backend.find_resource(
+        { uuid: options[:resource] },
+        recurse: options[:recurse]
+      )
+
+      return [].to_json if resource.nil?
+
+      find 'events', resource: resource.resource
+    end
+
     private
 
     # Finds things in the backend and returns them as JSON

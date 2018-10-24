@@ -127,10 +127,8 @@ RSpec.describe Kriterion::API do
     end
 
     describe 'the /items endpoint' do
-      it_should_behave_like 'a friendly endpoint:', 'items'
-
       it 'should handle a standard param' do
-        backend.expects(:find_resources).with(
+        backend.expects(:find_items).with(
           { standard: 'cis_red_hat_enterprise_linux_7' },
           recurse: false
         ).returns(nil)
@@ -141,7 +139,7 @@ RSpec.describe Kriterion::API do
       end
 
       it 'should handle a section param' do
-        backend.expects(:find_resources).with(
+        backend.expects(:find_items).with(
           { parent_uuid: '8ca78225-8089-49d7-a5c3-34b63d1f5541' },
           recurse: false
         ).returns(nil)
@@ -153,11 +151,9 @@ RSpec.describe Kriterion::API do
     end
 
     describe 'the /events endpoint' do
-      it_should_behave_like 'a friendly endpoint:', 'events'
-
       it 'should handle a resource param' do
-        backend.expects(:find_resources).with(
-          { parent_uuid: '8ca78225-8089-49d7-a5c3-34b63d1f5541' },
+        backend.expects(:find_resource).with(
+          { uuid: '8ca78225-8089-49d7-a5c3-34b63d1f5541' },
           recurse: false
         ).returns(nil)
 

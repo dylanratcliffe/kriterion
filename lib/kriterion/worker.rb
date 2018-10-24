@@ -134,6 +134,7 @@ class Kriterion
                    item_details['parent_uuid']  = section.uuid
                    item_details['parent_type']  = section.type
                    item_details['section_path'] = captures
+                   item_details['standard']     = name
                    backend.ensure_item(Kriterion::Item.new(item_details))
                  else
                    raise "Found muliple sections with the id #{section_tag}"
