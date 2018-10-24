@@ -5,7 +5,7 @@ RSpec.shared_examples 'a friendly endpoint:' do |endpoint|
     # Need to work out a way to ensure that the mocks work
     backend.expects(:"find_#{endpoint}").with(
       instance_of(Hash),
-      recurse: false
+      recurse: false,
     ).returns(nil)
 
     get "/#{endpoint}"
@@ -16,7 +16,7 @@ RSpec.shared_examples 'a friendly endpoint:' do |endpoint|
   it 'should handle full mode' do
     backend.expects(:"find_#{endpoint}").with(
       instance_of(Hash),
-      recurse: true
+      recurse: true,
     ).returns(nil)
 
     get "/#{endpoint}?level=full"
@@ -27,7 +27,7 @@ RSpec.shared_examples 'a friendly endpoint:' do |endpoint|
   it 'should handle invalid data' do
     backend.expects(:"find_#{endpoint}").with(
       instance_of(Hash),
-      recurse: false
+      recurse: false,
     ).returns(nil)
 
     get "/#{endpoint}/lame_standard?isitooearlyfor=beer"
