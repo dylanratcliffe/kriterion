@@ -8,7 +8,7 @@ class Kriterion
         usage       'kriterion <subcommand>'
         summary     'Exposes Puppet\'s compliance information in a REST API'
 
-        flag   :h,  :help,  'show help for this command' do |value, cmd|
+        flag   :h,  :help, 'show help for this command' do |_value, cmd|
           puts cmd.help
           exit 0
         end
@@ -16,7 +16,7 @@ class Kriterion
         flag :d,  :debug, 'Enable debug logging'
         flag nil, :trace, 'Print stacktraces'
 
-        run do |opts, args, cmd|
+        run do |_opts, _args, cmd|
           puts cmd.help
           exit 0
         end

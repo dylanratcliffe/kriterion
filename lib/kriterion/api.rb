@@ -37,7 +37,7 @@ class Kriterion
     before do
       headers(
         'Content-Type'                => 'application/json',
-        'Access-Control-Allow-Origin' => '*'
+        'Access-Control-Allow-Origin' => '*',
       )
     end
 
@@ -61,7 +61,7 @@ class Kriterion
       # Get the main section
       parent = backend.find_section(
         { uuid: uuid },
-        recurse: true
+        recurse: true,
       )
 
       # Return all direct children
@@ -114,7 +114,7 @@ class Kriterion
     get '/events' do
       resource = backend.find_resource(
         { uuid: options[:resource] },
-        recurse: options[:recurse]
+        recurse: options[:recurse],
       )
 
       return [].to_json if resource.nil?
@@ -160,11 +160,11 @@ class Kriterion
       {
         'basic' => {
           recurse: false,
-          mode: :basic
+          mode: :basic,
         },
         'full' => {
           recurse: true,
-          mode: :full
+          mode: :full,
         }
       }
     end

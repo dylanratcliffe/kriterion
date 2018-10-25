@@ -66,7 +66,7 @@ class Kriterion
           # between a newly created object and one that came from the database
           standard = backend.find_standard(
             { name: name },
-            recurse: true
+            recurse: true,
           )
         end
 
@@ -129,7 +129,7 @@ class Kriterion
                    # The item does not exist, create it, add to the database,
                    # then return it
                    item_details = @standards[name]['items'].select do |i|
-                     i['id'].upcase == section_tag.upcase
+                     i['id'].casecmp(section_tag).zero?
                    end[0]
                    item_details['parent_uuid']  = section.uuid
                    item_details['parent_type']  = section.type

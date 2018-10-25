@@ -6,6 +6,7 @@ class Kriterion
 
     def to_h(mode = :basic)
       raise 'Mode must be :basic or :full' unless %i[basic full].include? mode
+
       hash = {}
 
       # Add all instance variables to the hash without the @ sign
@@ -70,7 +71,7 @@ class Kriterion
           'percentage'    => percentage,
           'compliant'     => compliant,
           'non_compliant' => non_compliant,
-          'total'         => total
+          'total'         => total,
         }
       }
     end

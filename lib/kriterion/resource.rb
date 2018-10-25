@@ -64,7 +64,7 @@ class Kriterion
           'percentage'    => percentage,
           'compliant'     => compliant,
           'non_compliant' => non_compliant,
-          'total'         => total
+          'total'         => total,
         }
       }
     end
