@@ -4,4 +4,20 @@ Style/ClassVars:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
-  
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+
+# I really just don't like this convention
+Layout/IndentHash:
+  Enabled: false
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma

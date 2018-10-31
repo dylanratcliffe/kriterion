@@ -42,7 +42,7 @@ RSpec.describe Kriterion::API do
       it 'should properly search when passed a name' do
         backend.expects(:find_standards).with(
           { name: 'lame_standard' },
-          recurse: false
+          recurse: false,
         ).returns(nil)
 
         get '/standards/lame_standard'
@@ -59,7 +59,7 @@ RSpec.describe Kriterion::API do
       it 'should handle a standard param' do
         backend.expects(:find_sections).with(
           { standard: 'cool_standard' },
-          recurse: false
+          recurse: false,
         ).returns(nil)
 
         get '/sections?standard=cool_standard'
@@ -68,22 +68,22 @@ RSpec.describe Kriterion::API do
       end
 
       it 'should be able to return subsections' do
-        parent_section = Kriterion::Section.new({
+        parent_section = Kriterion::Section.new(
           'uuid' => 'a8ac86b2-3f6b-4663-8516-181fbc7faff7',
           'name' => '1.1',
-        })
+        )
 
-        child_section = Kriterion::Section.new({
+        child_section = Kriterion::Section.new(
           'uuid'        => 'b4536b56-e44b-4e75-9d2a-e22459ebff17',
           'name'        => '1.1.1',
           'parent_uuid' => 'a8ac86b2-3f6b-4663-8516-181fbc7faff7',
-        })
+        )
 
         parent_section.sections << child_section
 
         backend.expects(:find_sections).with(
           { uuid: 'a8ac86b2-3f6b-4663-8516-181fbc7faff7' },
-          recurse: true
+          recurse: true,
         ).returns([parent_section])
 
         get '/sections/a8ac86b2-3f6b-4663-8516-181fbc7faff7/sections'
@@ -95,7 +95,7 @@ RSpec.describe Kriterion::API do
         expect(body[0]).to include(
           'uuid'        => 'b4536b56-e44b-4e75-9d2a-e22459ebff17',
           'name'        => '1.1.1',
-          'parent_uuid' => 'a8ac86b2-3f6b-4663-8516-181fbc7faff7'
+          'parent_uuid' => 'a8ac86b2-3f6b-4663-8516-181fbc7faff7',
         )
       end
     end
@@ -106,7 +106,7 @@ RSpec.describe Kriterion::API do
       it 'should handle a item param' do
         backend.expects(:find_resources).with(
           { parent_uuid: 'b4536b56-e44b-4e75-9d2a-e22459ebff17' },
-          recurse: false
+          recurse: false,
         ).returns(nil)
 
         get '/resources?item=b4536b56-e44b-4e75-9d2a-e22459ebff17'
@@ -117,10 +117,47 @@ RSpec.describe Kriterion::API do
       it 'should handle a passed uuid' do
         backend.expects(:find_resources).with(
           { uuid: 'b4536b56-e44b-4e75-9d2a-e22459ebff17' },
-          recurse: false
+          recurse: false,
         ).returns(nil)
 
         get '/resources/b4536b56-e44b-4e75-9d2a-e22459ebff17'
+
+        expect(last_response).to be_ok
+      end
+    end
+
+    describe 'the /items endpoint' do
+      it 'should handle a standard param' do
+        backend.expects(:find_items).with(
+          { standard: 'cis_red_hat_enterprise_linux_7' },
+          recurse: false,
+        ).returns(nil)
+
+        get '/items?standard=cis_red_hat_enterprise_linux_7'
+
+        expect(last_response).to be_ok
+      end
+
+      it 'should handle a section param' do
+        backend.expects(:find_items).with(
+          { parent_uuid: '8ca78225-8089-49d7-a5c3-34b63d1f5541' },
+          recurse: false,
+        ).returns(nil)
+
+        get '/items?section=8ca78225-8089-49d7-a5c3-34b63d1f5541'
+
+        expect(last_response).to be_ok
+      end
+    end
+
+    describe 'the /events endpoint' do
+      it 'should handle a resource param' do
+        backend.expects(:find_resource).with(
+          { uuid: '8ca78225-8089-49d7-a5c3-34b63d1f5541' },
+          recurse: false,
+        ).returns(nil)
+
+        get '/events?resource=8ca78225-8089-49d7-a5c3-34b63d1f5541'
 
         expect(last_response).to be_ok
       end

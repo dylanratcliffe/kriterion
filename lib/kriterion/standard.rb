@@ -1,4 +1,3 @@
-
 require 'kriterion/object'
 
 class Kriterion

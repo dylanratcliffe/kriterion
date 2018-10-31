@@ -6,7 +6,7 @@ RSpec.describe Kriterion::Worker do
     Kriterion::Worker.new(
       uri: 'http://127.0.0.1:5555/invalid',
       queue: 'foo',
-      backend: 'stub'
+      backend: 'stub',
     )
   end
 
@@ -42,7 +42,8 @@ RSpec.describe Kriterion::Worker do
         worker.expects(:keep_running?).returns(true).in_sequence(waiting)
         response.expects(:code).returns('200').in_sequence(waiting)
         response.expects(:body).returns(responses[0]).in_sequence(waiting)
-        worker.expects(:process_report).with(reports[0]).returns(nil).in_sequence(waiting)
+        worker.expects(:process_report).with(reports[0]).returns(nil)
+              .in_sequence(waiting)
         worker.expects(:keep_running?).returns(false).in_sequence(waiting)
 
         worker.run(0)

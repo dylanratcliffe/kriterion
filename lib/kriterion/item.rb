@@ -9,6 +9,7 @@ class Kriterion
     attr_reader :severity
     attr_reader :parent_uuid
     attr_reader :section_path
+    attr_reader :standard
 
     attr_accessor :resources
 
@@ -24,6 +25,7 @@ class Kriterion
       @parent_type  = data['parent_type']
       @parent_uuid  = data['parent_uuid']
       @resources    = data['resources'] || []
+      @standard     = data['standard']
     end
 
     def compliance

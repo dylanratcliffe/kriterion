@@ -65,7 +65,7 @@ class Kriterion
         resources_db.update_one(
           { resource: resource.resource },
           '$addToSet' => {
-            unchanged_nodes: certname
+            unchanged_nodes: certname,
           }
         )
       end
@@ -74,7 +74,7 @@ class Kriterion
         database_for(thing).update_one(
           { uuid: thing.uuid },
           '$set' => {
-            compliance: thing.compliance
+            compliance: thing.compliance,
           }
         )
       end
@@ -82,14 +82,14 @@ class Kriterion
       def purge_events!(certname)
         # Delete all events for this certname
         events_db.delete_many(
-          certname: certname
+          certname: certname,
         )
 
         # Delete all instances of this certname under "unchanged_nodes"
         resources_db.update_many(
           {}, # Don't pass a query as we want to purge everything
           '$pull' => { # Remove this node from unchanged nodes
-            unchanged_nodes: certname
+            unchanged_nodes: certname,
           }
         )
       end
@@ -114,7 +114,7 @@ class Kriterion
           Kriterion::Section  => @sections_db,
           Kriterion::Item     => @items_db,
           Kriterion::Resource => @resources_db,
-          Kriterion::Event    => @events_db
+          Kriterion::Event    => @events_db,
         }
         databases[cls]
       end
@@ -125,7 +125,7 @@ class Kriterion
           Kriterion::Section,
           Kriterion::Item,
           Kriterion::Resource,
-          Kriterion::Event
+          Kriterion::Event,
         ]
 
         unless accepted_objects.include?(object.class)
@@ -135,7 +135,7 @@ class Kriterion
         case object
         when Kriterion::Item
           result = resources_db.find(
-            parent_uuid: object.uuid
+            parent_uuid: object.uuid,
           )
 
           result.each do |resource|
@@ -145,7 +145,7 @@ class Kriterion
           end
         when Kriterion::Resource
           result = events_db.find(
-            resource: object.resource
+            resource: object.resource,
           )
 
           result.each do |event|
@@ -177,13 +177,14 @@ class Kriterion
       def insert_into_db(database, thing)
         result = database.insert_one(thing.to_h)
         raise "Insertion of #{thing} failed" unless result.ok?
+
         thing
       end
 
       def find_child_items(parent)
         results = items_db.find(
           parent_type: parent.type,
-          parent_uuid: parent.uuid
+          parent_uuid: parent.uuid,
         )
 
         results.map do |item|
@@ -194,7 +195,7 @@ class Kriterion
       def find_child_sections(parent)
         result = sections_db.find(
           parent_type: parent.type,
-          parent_uuid: parent.uuid
+          parent_uuid: parent.uuid,
         )
         result.map do |section|
           Kriterion::Section.new(section)

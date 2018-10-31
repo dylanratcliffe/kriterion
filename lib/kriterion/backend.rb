@@ -44,6 +44,7 @@ class Kriterion
         # Validate that we only have one result and return it
         return results.first if results.count == 1
         raise "Found > 1 #{thing} with name: #{name}" if results.count > 1
+
         nil
       end
 
@@ -58,7 +59,7 @@ class Kriterion
       define_method("ensure_#{thing}") do |object|
         pk    = object.primary_key
         query = {
-          pk => object.send(pk)
+          pk => object.send(pk),
         }
 
         metrics[:backend_insert] += Benchmark.realtime do
@@ -84,7 +85,7 @@ class Kriterion
         'section'  => Kriterion::Section,
         'item'     => Kriterion::Item,
         'resource' => Kriterion::Resource,
-        'event'    => Kriterion::Event
+        'event'    => Kriterion::Event,
       }
       # If someone has passed in an object, just return the class
       return name.class if classes.value? name.class
@@ -95,12 +96,11 @@ class Kriterion
     # Validate options hash
     def validate_opts(opts)
       valid_keys = [
-        :recurse
+        :recurse,
       ]
 
-      unless opts.keys.all? { |k| valid_keys.include?(k) }
-        raise "Options hash is invalid #{opts}"
-      end
+      raise "Options hash is invalid #{opts}" unless
+        opts.keys.all? { |k| valid_keys.include?(k) }
     end
   end
 end
