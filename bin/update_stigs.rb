@@ -3,9 +3,7 @@ require 'json'
 require 'open-uri'
 require 'pry'
 
-main_page = Nokogiri::HTML(open("https://www.stigviewer.com/stigs"))
-
-main_page.search('td').each do |td|
+def process_td(td)
   begin
     standard      = {}
     standard_link = td.children[1].attributes['href'].value
@@ -38,5 +36,26 @@ main_page.search('td').each do |td|
     puts 'Something went wrong, pretending it didn\'t happen'
   end
 end
+
+main_page   = Nokogiri::HTML(open("https://www.stigviewer.com/stigs"))
+@queue      = Queue.new
+NUM_THREADS = 30
+
+main_page.search('td').each do |td|
+  @queue.push(td)
+end
+
+@threads = Array.new(NUM_THREADS) do
+  Thread.new do
+    until @queue.empty?
+      # This will remove the first object from @queue
+      next_object = @queue.shift
+
+      process_td(next_object)
+    end
+  end
+end
+
+@threads.each(&:join)
 
 puts 'done'
