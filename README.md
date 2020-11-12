@@ -18,7 +18,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To create an example instance. Build and run the containers:
+
+```shell
+docker-compose up
+```
+
+Populate them
+
+```shell
+bundle exec ruby spec/populate_queue.rb http://localhost:8888
+```
+
+View the API: http://localhost:4567/reports
 
 ## Development
 
