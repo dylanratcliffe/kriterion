@@ -1,0 +1,53 @@
+{
+  "name": "stig_vmware_airwatch_v9.x_mdm",
+  "date": "2016-09-20",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "VMware AirWatch v9.x MDM Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-71627",
+      "title": "The AirWatch MDM Server must be configured with the Administrator roles:\na. MD user\nb. Server primary administrator\nc. Security configuration administrator\nd. Device user group administrator\ne. Auditor.",
+      "description": "Having several roles for the MDM Server supports separation of duties. This allows administrator-level privileges to be granted granularly, such as giving application management privileges to one group and security policy privileges to another group. This helps prevent administrators from intentionally or inadvertently altering other settings and configurations they may not understand or approve of, which can weaken overall security and increase the risk of compromise.\n\nServer primary administrator: responsible for server installation, initial configuration, and maintenance functions. Responsible for the setup and maintenance of Security configuration administrator and Auditor accounts. (Note: Many of these responsibilities are not AirWatch MDM Server Roles, but Host Operating System roles) \n\n-Security configuration administrator: responsible for security configuration of the server, setting up and maintenance of mobile device security policies, defining device user groups, setup and maintenance of device user group administrator accounts, and defining privileges of device user group administrators. (Note: Many of these responsibilities are not AirWatch MDM Server Roles, but Host Operating System roles) \n\n-Device user group administrator: responsible for maintenance of mobile device accounts, including setup, change of account configurations, and account deletion. Can only perform administrative functions assigned by the Security configuration administrator. \n\n-Auditor: responsible for reviewing and maintaining server and mobile device audit logs. (Note: Many of these responsibilities are not AirWatch MDM Server Roles, but Host Operating System roles)\n\nSFR ID: FMT_SMR.1.1(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-71629",
+      "title": "The AirWatch MDM Agent must be configured for the periodicity of reachability events for six hours or less.",
+      "description": "Mobile devices that do not enforce security policy or verify the status of the device are vulnerable to a variety of attacks. The key security function of MDM technology is to distribute mobile device security polices in such a manner that they are enforced on managed mobile devices. To accomplish this function, the AirWatch MDM Agent must verify the status and other key information of the managed device and report that status to the MDM server periodically.\n\nSFR ID: FMT_SMF_EXT.3.2",
+      "severity": "low"
+    },
+    {
+      "id": "V-71631",
+      "title": "The AirWatch MDM Agent must be configured to alert via the trusted channel to the MDM server for the following event: failure to install an application from the MAS server.",
+      "description": "Audit logs and alerts enable monitoring of security-relevant events and subsequent forensics when breaches occur. They help identify when the security posture of the device is not as expected, including when critical or security relevant applications have not fully installed on mobile devices under management of the MDM platform. This enables the MDM administrator to take an appropriate remedial action.\n\nSFR ID: FAU_ALT_EXT.2.1",
+      "severity": "medium"
+    },
+    {
+      "id": "V-71633",
+      "title": "The AirWatch MDM Agent must be configured to alert via the trusted channel to the MDM server for the following event: failure to update an application from the MAS server.",
+      "description": "Audit logs and alerts enable monitoring of security-relevant events and subsequent forensics when breaches occur. They help identify when the security posture of the device is not as expected, including when a critical or security relevant application was not properly updated on mobile devices under management of the MDM platform. This enables the MDM administrator to take an appropriate remedial action.\n\nSFR ID: FAU_ALT_EXT.2.1",
+      "severity": "medium"
+    },
+    {
+      "id": "V-71635",
+      "title": "The AirWatch MDM Server platform must be protected by a DoD-approved firewall.",
+      "description": "Most information systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Unneeded services and processes provide additional threat vectors and avenues of attack to the information system. The AirWatch MDM Server is a critical component of the mobility architecture and must be configured to only those ports, protocols, and services (PPS) necessary to support functionality, all others must be expressly disabled or removed. A DoD-approved firewall implements the required network restrictions. A host-based firewall is appropriate where the AirWatch MDM Server runs on a standalone platform. Network firewalls or other architectures may be preferred where the AirWatch MDM Server runs in a cloud or virtualized solution.\n\nSFR ID: FMT_SMF.1.1(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-71637",
+      "title": "The firewall protecting the AirWatch MDM Server platform must be configured to restrict all network traffic to and from all addresses with the exception of ports, protocols, and IP address ranges required to support AirWatch MDM Server and platform functions.",
+      "description": "Most information systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations. Since AirWatch MDM Server is a critical component of the mobility architecture and must be configured to only those ports, protocols, and services (PPS) necessary to support functionality, all others must be expressly disabled or removed. A firewall installed on the AirWatch MDM Server provides a protection mechanism to ensure unwanted service requests do not reach the AirWatch MDM Server and outbound traffic is limited to only AirWatch MDM Server functionality.\n\nSFR ID: FMT_SMF.1.1(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-71645",
+      "title": "The AirWatch MDM Server must leverage the MDM Platform user accounts and groups for AirWatch MDM Server user identification and authentication and the MDM Platform accounts must be implemented via an enterprise directory service.",
+      "description": "A comprehensive account management process that includes automation helps to ensure the accounts designated as requiring attention are consistently and promptly addressed. If an attacker compromises an account, the entire MDM Server infrastructure is at risk. Providing automated support functions for the management of accounts will ensure only active accounts will be granted access with the proper authorization levels. These objectives are best achieved by configuring the AirWatch MDM Server to leverage an enterprise authentication mechanism (e.g., Microsoft Active Directory Kerberos).\n\nSFR ID: FIA",
+      "severity": "medium"
+    }
+  ]
+}

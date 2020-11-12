@@ -1,8 +1,8 @@
 {
   "name": "stig_mozilla_firefox",
-  "date": "2018-04-02",
-  "description": "The Mozilla Firefox Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil",
-  "title": "Mozilla Firefox",
+  "date": "2019-12-12",
+  "description": "The Mozilla FireFox Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil",
+  "title": "Mozilla FireFox Security Technical Implementation Guide",
   "version": "4",
   "item_syntax": "^\\w-\\d+$",
   "section_separator": null,
@@ -27,7 +27,7 @@
     },
     {
       "id": "V-15772",
-      "title": "Firefox not configured to prompt user before download and opening for required file types.",
+      "title": "Firefox is not configured to prompt a user before downloading and opening required file types.",
       "description": "New file types cannot be added directly to the helper applications or plugins listing. Files with these extensions will not be allowed to use Firefox publicly available plugins and extensions to open.  The application will be configured to open these files using external applications only.  After a helper application or save to disk download action has been set, that action will be taken automatically for those types of files.  When the user receives a dialog box asking if you want to save the file or open it with a specified application, this indicates that a plugin does not exist. The user has not previously selected a download action or helper application to automatically use for that type of file. When prompted, if the user checks the option to Do this automatically for files like this from now on, then an entry will appear for that type of file in the plugins listing and this file type is automatically opened in the future. This can be a security issue.  New file types cannot be added directly to the Application plugin listing. ",
       "severity": "medium"
     },
@@ -53,12 +53,6 @@
       "id": "V-15776",
       "title": "FireFox is configured to use a password store with or without a master password.",
       "description": "Firefox can be set to store passwords for sites visited by the user.  These individual passwords are stored in a file and can be protected by a master password. Autofill of the password can then be enabled when the site is visited.  This feature could also be used to autofill the certificate pin which could lead to compromise of DoD information.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-15777",
-      "title": "History retention must be set to 40 days.",
-      "description": "This setting specifies the number of days that Firefox keeps track of the pages viewed in the History List. If you enable this policy setting, a user cannot set the number of days that Firefox keeps track of the pages viewed in the History List. The number of days that Firefox keeps track of the pages viewed in the History List must be specified. If you disable or do not configure this policy setting, a user can set the number of days that Firefox tracks views of pages in the History List.",
       "severity": "medium"
     },
     {
@@ -92,34 +86,10 @@
       "severity": "medium"
     },
     {
-      "id": "V-15987",
-      "title": "Firefox is configured to allow JavaScript to hide or change the status bar.",
-      "description": "When a user visits some webpages, JavaScript can hide or make changes to the browser’s appearance to hide unauthorized activity. This activity can help disguise an attack taking place in a minimized background window.  Determines whether the text in the browser status bar may be set by JavaScript.  Set and lock to True (default in Firefox) so that JavaScript access to preference settings for is disabled.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-15988",
-      "title": "Firefox is configured to allow JavaScript to change the status bar text.",
-      "description": "JavaScript can make changes to the browser’s appearance. This activity can help disguise an attack taking place in a minimized background window.  Webpage authors can disable many features of a popup window that they open. Setting these preferences to true will override the author's settings and ensure that the feature is enabled and present in any popup window.  This setting prevents the status bar from being hidden.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-15989",
-      "title": "Firefox is not configured to provide warnings when a user switches from a secure (SSL-enabled) to a non-secure page.",
-      "description": "Users may not be aware that the information being viewed under secure conditions in a previous page are not currently being viewed under the same security settings. ",
-      "severity": "medium"
-    },
-    {
       "id": "V-17988",
       "title": "Installed version of Firefox unsupported.",
       "description": "Use of versions of an application which are not supported by the vendor are not permitted. Vendors respond to security flaws with updates and patches. These updates are not available for unsupported version which can leave the application vulnerable to attack.",
       "severity": "high"
-    },
-    {
-      "id": "V-19741",
-      "title": "Firefox application is set to auto-update.",
-      "description": "Allowing software updates from non-trusted sites can introduce settings that will override a secured installation of the application. This can place DoD information at risk. If this setting is enabled, then there are many other default settings which point to untrusted sites which must be changed to point to an authorized update site that is not publicly accessible.",
-      "severity": "medium"
     },
     {
       "id": "V-19742",
@@ -148,7 +118,7 @@
     {
       "id": "V-64891",
       "title": "Extensions install must be disabled.",
-      "description": "A browser extension is a program that has been installed into the browser which adds functionality to it. Where a plug-in interacts only with a web page and usually a third party external application (Flash, Adobe Reader) an extension interacts with the browser program itself. Extensions are not embedded in web pages and must be downloaded and installed in order to work. Extensions allow browsers to avoid restrictions which apply to web pages. For example, a Chrome extension can be written to combine data from multiple domains and present it when a certain page is accessed which can be considered Cross Site Scripting. If a browser is configured to allow unrestricted use of extension then plug-ins can be loaded and installed from malicious sources and used on the browser. ",
+      "description": "A browser extension is a program that has been installed into the browser which adds functionality to it. Where a plug-in interacts only with a web page and usually a third party external application (Flash, Adobe Reader) an extension interacts with the browser program itself. Extensions are not embedded in web pages and must be downloaded and installed in order to work. Extensions allow browsers to avoid restrictions which apply to web pages. For example, an extension can be written to combine data from multiple domains and present it when a certain page is accessed which can be considered Cross Site Scripting. If a browser is configured to allow unrestricted use of extension then plug-ins can be loaded and installed from malicious sources and used on the browser.",
       "severity": "medium"
     },
     {
@@ -156,6 +126,12 @@
       "title": "Background submission of information to Mozilla must be disabled.",
       "description": "There should be no background submission of technical and other information from DoD computers to Mozilla with portions posted publically.",
       "severity": "medium"
+    },
+    {
+      "id": "V-97529",
+      "title": "Firefox Development Tools Must Be Disabled.",
+      "description": "Information needed by an attacker to begin looking for possible vulnerabilities in a web browser includes any information about the web browser and plug-ins or modules being used. When debugging or trace information is enabled in a production web browser, information about the web browser, such as web browser type, version, patches installed, plug-ins and modules installed, type of code being used by the hosted application, and any back-ends being used for data storage may be displayed. Since this information may be placed in logs and general messages during normal operation of the web browser, an attacker does not need to cause an error condition to gain this information.",
+      "severity": "low"
     }
   ]
 }

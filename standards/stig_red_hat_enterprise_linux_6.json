@@ -1,12 +1,24 @@
 {
   "name": "stig_red_hat_enterprise_linux_6",
-  "date": "2018-03-01",
+  "date": "2020-02-26",
   "description": "The Red Hat Enterprise Linux 6 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Red Hat Enterprise Linux 6 Security Technical Implementation Guide",
   "version": "1",
   "item_syntax": "^\\w-\\d+$",
   "section_separator": null,
   "items": [
+    {
+      "id": "V-100011",
+      "title": "The Red Hat Enterprise Linux operating system must not contain .shosts or shosts.equiv files.",
+      "description": "The .shosts and shosts.equiv files are used to configure host-based authentication for the system via SSH. Host-based authentication is not sufficient for preventing unauthorized access to the system, as it does not require interactive identification and authentication of a connection request, or for the use of two-factor authentication.",
+      "severity": "high"
+    },
+    {
+      "id": "V-100013",
+      "title": "The Red Hat Enterprise Linux operating system must be configured so that the SSH daemon is configured to only use Message Authentication Codes (MACs) employing FIPS 140-2 approved cryptographic hash algorithms.",
+      "description": "DoD information systems are required to use FIPS 140-2 approved cryptographic hash functions. The only SSHv2 hash algorithm meeting this requirement is SHA.",
+      "severity": "medium"
+    },
     {
       "id": "V-38437",
       "title": "Automated file system mounting tools must not be enabled unless needed.",
@@ -18,12 +30,6 @@
       "title": "Auditing must be enabled at boot by setting a kernel parameter.",
       "description": "Each process on the system carries an \"auditable\" flag which indicates whether its activities can be audited. Although \"auditd\" takes care of enabling this for all processes which launch after it does, adding the kernel argument ensures it is set for every process during boot.",
       "severity": "low"
-    },
-    {
-      "id": "V-38439",
-      "title": "The system must provide automated support for account management functions.",
-      "description": "A comprehensive account management process that includes automation helps to ensure the accounts designated as requiring attention are consistently and promptly addressed. Enterprise environments make user account management challenging and complex. A user management process requiring administrators to manually address account management functions adds risk of potential oversight.",
-      "severity": "medium"
     },
     {
       "id": "V-38443",
@@ -1559,6 +1565,54 @@
       "id": "V-72817",
       "title": "Wireless network adapters must be disabled.",
       "description": "The use of wireless networking can introduce many different attack vectors into the organization’s network. Common attack vectors such as malicious association and ad hoc networks will allow an attacker to spoof a wireless access point (AP), allowing validated systems to connect to the malicious AP and enabling the attacker to monitor and record network traffic. These malicious APs can also serve to create a man-in-the-middle attack or be used to create a denial of service to valid network resources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81441",
+      "title": "The audit system must be configured to audit all attempts to alter system time through adjtimex.",
+      "description": "Arbitrary changes to the system time can be used to obfuscate nefarious activities in log files, as well as to confuse network services that are highly dependent upon an accurate system time (such as sshd). All changes to the system time should be audited.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81443",
+      "title": "The Red Hat Enterprise Linux operating system must have an anti-virus solution installed.",
+      "description": "Virus scanning software can be used to protect a system from penetration from computer viruses and to limit their spread through intermediate systems. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81445",
+      "title": "The Red Hat Enterprise Linux operating system must mount /dev/shm with the nodev option.",
+      "description": "The \"nodev\" mount option causes the system to not interpret character or block special devices. Executing character or block special devices from untrusted file systems increases the opportunity for unprivileged users to attain unauthorized administrative access.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81447",
+      "title": "The Red Hat Enterprise Linux operating system must mount /dev/shm with the nosuid option.",
+      "description": "The \"nosuid\" mount option causes the system to not execute \"setuid\" and \"setgid\" files with owner privileges. This option must be used for mounting any file system not containing approved \"setuid\" and \"setguid\" files. Executing files from untrusted file systems increases the opportunity for unprivileged users to attain unauthorized administrative access.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81449",
+      "title": "The Red Hat Enterprise Linux operating system must mount /dev/shm with the noexec option.",
+      "description": "The \"noexec\" mount option causes the system to not execute binary files. This option must be used for mounting any file system not containing approved binary files as they may be incompatible. Executing files from untrusted file systems increases the opportunity for unprivileged users to attain unauthorized administrative access.",
+      "severity": "low"
+    },
+    {
+      "id": "V-92257",
+      "title": "System and Application account passwords must be changed at least annually.",
+      "description": "Any password, no matter how complex, can eventually be cracked. Therefore, system and application account passwords need to be changed periodically. If an organization fails to change the system and application account passwords at least annually, there is the risk that the account passwords could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-97229",
+      "title": "The Red Hat Enterprise Linux operating system must implement NIST FIPS-validated cryptography for the following: to provision digital signatures, to generate cryptographic hashes, and to protect data requiring data-at-rest protections in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.",
+      "description": "Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data. The operating system must implement cryptographic modules adhering to the higher standards approved by the federal government to ensure the algorithms have been tested and validated.",
+      "severity": "high"
+    },
+    {
+      "id": "V-97231",
+      "title": "The SSH daemon must be configured to only use Message Authentication Codes (MACs) employing FIPS 140-2 approved cryptographic hash algorithms.",
+      "description": "Approved algorithms required for compliance must impart some level of confidence in their implementation.",
       "severity": "medium"
     }
   ]

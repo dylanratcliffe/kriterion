@@ -1,6 +1,6 @@
 {
   "name": "stig_samsung_android_os_7_with_knox_2.x",
-  "date": "2017-10-18",
+  "date": "2019-10-01",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "Samsung Android OS 7 with Knox 2.x Security Technical Implementation Guide",
   "version": "1",
@@ -178,8 +178,8 @@
     {
       "id": "V-76571",
       "title": "The Samsung Android 7 with Knox must implement the management setting: Enable CC mode.",
-      "description": "CC mode implements several security controls required by the Mobile Device Functional Protection Profile (MDFPP). If CC mode is not implemented, DoD data is more at risk of being compromised, and the mobile device is more at risk of being compromised if lost or stolen.\n\nCC mode implements the following controls:\n- enables the OpenSSL FIPS crypto library\n- sets the password failure settings to wipe the device to 5 (5 failed consecutive attempts will wipe the device)\n- disables ODIN mode (download mode)\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
-      "severity": "medium"
+      "description": "CC mode implements several security controls required by the Mobile Device Functional Protection Profile (MDFPP). If CC mode is not implemented, DoD data is more at risk of being compromised, and the mobile device is more at risk of being compromised if lost or stolen. If CC Mode is not implemented, the device will not be operating in the NIAP-certified compliant CC mode of operation. \n\nCC mode implements the following controls:\n- enables the OpenSSL FIPS crypto library\n- sets the password failure settings to wipe the device to 5 (5 failed consecutive attempts will wipe the device)\n- disables ODIN mode (download mode)\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "high"
     },
     {
       "id": "V-76573",
@@ -287,12 +287,6 @@
       "id": "V-76609",
       "title": "The Samsung Android 7 with Knox must be configured to disable authentication mechanisms providing user access to protected data other than a Password Authentication Factor. Disable Face Recognition.",
       "description": "The Face Recognition feature allows users face to be registered and used to unlock the device. This technology would allow unauthorized users to have access to DoD sensitive data if compromised. By not permitting the use of non-password authentication mechanisms, users are forced to use passcodes that meet DoD passcode requirements.\n\nSFR ID: FMT_SMF_EXT.1.1 #23, FIA_UAU.5.1",
-      "severity": "medium"
-    },
-    {
-      "id": "V-76611",
-      "title": "The Samsung Android 7 with Knox must be configured to disable authentication mechanisms providing user access to protected data other than a Password Authentication Factor. Disable Iris Scanner.",
-      "description": "The Iris Scanner allows a user to unlock a mobile device without entering a passcode when a registered user Iris is recognized. This technology would allow unauthorized users to have access to DoD sensitive data if compromised. By not permitting the use of non-password authentication mechanisms, users are forced to use passcodes that meet DoD passcode requirements.\n\nSFR ID: FMT_SMF_EXT.1.1 #23, FIA_UAU.5.1",
       "severity": "medium"
     },
     {

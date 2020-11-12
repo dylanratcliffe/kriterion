@@ -1,6 +1,6 @@
 {
   "name": "stig_router_security_requirements_guide",
-  "date": "2018-01-26",
+  "date": "2020-02-25",
   "description": "The Router Security Requirements Guide (SRG) is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the NIST 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailbox@mail.mil.",
   "title": "Router Security Requirements Guide",
   "version": "3",
@@ -40,7 +40,7 @@
     {
       "id": "V-55733",
       "title": "The perimeter router must be configured to not be a Border Gateway Protocol (BGP) peer to an alternate gateway service provider.",
-      "description": "The perimeter router will not use a routing protocol to advertise NIPRNet addresses to alternate gateways. Most ISPs use BGP to share route information with other autonomous systems, that is, any network under a different administrative control and policy than a local site. If BGP is configured on the perimeter router, no BGP neighbors will be defined to peer routers from an autonomous system (AS) belonging to any alternate gateway. The only allowable method is a static route to reach the alternate gateway.",
+      "description": " ISPs use BGP to share route information with other autonomous systems (i.e. other ISPs and corporate networks). If the perimeter router was configured to BGP peer with an ISP, NIPRnet routes could be advertised to the ISP; thereby creating a backdoor connection from the Internet to the NIPRnet.",
       "severity": "high"
     },
     {
@@ -63,7 +63,7 @@
     },
     {
       "id": "V-55747",
-      "title": "The multicast Rendezvous Point (RP) router must be configured to filter Protocol Independent Multicast (PIM) Register messages received from the Designated Router (DR) for any undesirable multicast groups and Bogon sources.",
+      "title": "The multicast Rendezvous Point (RP) router must be configured to filter Protocol Independent Multicast (PIM) Register messages received from the Designated Router (DR) for any undesirable multicast groups and sources.",
       "description": "Real-time multicast traffic can entail multiple large flows of data. An attacker can flood a network segment with multicast packets, over-using the available bandwidth and thereby creating a denial-of-service (DoS) condition. Hence, it is imperative that register messages are accepted only for authorized multicast groups and sources.",
       "severity": "low"
     },
@@ -88,7 +88,7 @@
     {
       "id": "V-55761",
       "title": "The perimeter router must be configured to restrict it from accepting outbound IP packets that contain an illegitimate address in the source address field via egress filter or by enabling Unicast Reverse Path Forwarding (uRPF).",
-      "description": "A compromised host in an enclave can be used by a malicious actor as a platform to launch cyber attacks on third parties. This is a common practice in \"botnets\", which are a collection of compromised computers using malware to attack (usually distributed denial of service [DDoS]) other computers or networks. DDoS attacks frequently leverage IP source address spoofing, in which packets with false source IP addresses send traffic to multiple hosts, which then send return traffic to the hosts with the IP addresses that were forged. This can generate significant, even massive, amounts of traffic. Therefore, protection measures to counteract IP source address spoofing must be taken.\n\nThe router must not accept any outbound IP packets that contain an illegitimate address in the source address field by enabling uRPF strict mode or by implementing an egress access control list (ACL). uRPF provides an IP address spoof protection capability. When uRPF is enabled in strict mode, the packet must be received on the interface that the device would use to forward the return packet.",
+      "description": "A compromised host in an enclave can be used by a malicious platform to launch cyber attacks on third parties. This is a common practice in \"botnets\", which are a collection of compromised computers using malware to attack other computers or networks. DDoS attacks frequently leverage IP source address spoofing to send packets to multiple hosts that in turn will then send return traffic to the hosts with the IP addresses that were forged. This can generate significant amounts of traffic. Therefore, protection measures to counteract IP source address spoofing must be taken. When uRPF is enabled in strict mode, the packet must be received on the interface that the device would use to forward the return packet; thereby mitigating IP source address spoofing.",
       "severity": "high"
     },
     {
@@ -105,14 +105,14 @@
     },
     {
       "id": "V-55767",
-      "title": "The router must be configured to authenticate all routing protocol messages using NIST-validated FIPS 140-2 message authentication code algorithm.",
-      "description": "A rogue router could send a fictitious routing update to convince a site's perimeter router to send traffic to an incorrect or even a rogue destination. This diverted traffic could be analyzed to learn confidential information about the site's network or used to disrupt the network's ability to communicate with other networks. This is known as a \"traffic attraction attack\" and is prevented by configuring neighbor router authentication for routing updates. However, using clear-text authentication provides little benefit since an attacker can intercept traffic and view the authentication key. This would allow the attacker to use the authentication key in an attack.\n\nSince MD5 is vulnerable to \"birthday\" attacks and may be compromised, routing protocol authentication must use FIPS 140-2 validated algorithms and modules to encrypt the authentication key. This requirement applies to all IPv4 and IPv6 protocols that are used to exchange routing or packet forwarding information; this includes all Interior Gateway Protocols (such as OSPF, EIGRP, and IS-IS) and Exterior Gateway Protocols (such as BGP), MPLS-related protocols (such as LDP), and multicast-related protocols.",
+      "title": "The router must be configured to authenticate all routing protocol messages using NIST-validated FIPS 198-1 message authentication code algorithm.",
+      "description": "A rogue router could send a fictitious routing update to convince a site's perimeter router to send traffic to an incorrect or even a rogue destination. This diverted traffic could be analyzed to learn confidential information about the site's network or used to disrupt the network's ability to communicate with other networks. This is known as a \"traffic attraction attack\" and is prevented by configuring neighbor router authentication for routing updates. However, using clear-text authentication provides little benefit since an attacker can intercept traffic and view the authentication key. This would allow the attacker to use the authentication key in an attack.\n\nSince MD5 is vulnerable to \"birthday\" attacks and may be compromised, routing protocol authentication must use FIPS 198-1 validated algorithms and modules to encrypt the authentication key. This requirement applies to all IPv4 and IPv6 protocols that are used to exchange routing or packet forwarding information; this includes all Interior Gateway Protocols (such as OSPF, EIGRP, and IS-IS) and Exterior Gateway Protocols (such as BGP), MPLS-related protocols (such as LDP), and multicast-related protocols.",
       "severity": "medium"
     },
     {
       "id": "V-55769",
       "title": "The BGP router must be configured to enable the Generalized TTL Security Mechanism (GTSM).",
-      "description": "As described in RFC 3682, GTSM is designed to protect a router's IP-based control plane from DoS attacks. Many attacks focused on CPU load and line-card overload can be prevented by implementing GTSM on all Exterior Border Gateway Protocol speaking routers. \n\nGTSM is based on the fact that the vast majority of control plane peering is established between adjacent routers; that is, the Exterior Border Gateway Protocol peers are either between connecting interfaces or between loopback interfaces. Since TTL spoofing is considered nearly impossible, a mechanism based on an expected TTL value provides a simple and reasonably robust defense from infrastructure attacks based on forged control plane traffic.",
+      "description": "GTSM is designed to protect a router's IP-based control plane from DoS attacks. Many attacks focused on CPU load and line-card overload can be prevented by implementing GTSM on all Exterior Border Gateway Protocol speaking routers. \n\nGTSM is based on the fact that the vast majority of control plane peering is established between adjacent routers; that is, the Exterior Border Gateway Protocol peers are either between connecting interfaces or between loopback interfaces. Since TTL spoofing is considered nearly impossible, a mechanism based on an expected TTL value provides a simple and reasonably robust defense from infrastructure attacks based on forged control plane traffic.",
       "severity": "low"
     },
     {
@@ -166,7 +166,7 @@
     {
       "id": "V-78215",
       "title": "The router must be configured to restrict traffic destined to itself.",
-      "description": "The router must be able to securely handle specific control plane and management plane traffic that is destined to it. Using the ingress filter on forwarding interfaces is a method that has been used in the past to filter both forwarding path and receive path traffic. However, this method does not scale well as the number of interfaces grows and the size of the ingress filters grows. Applying a small and manageable filter directly on the router’s receive path to restrict this traffic is considered an industry best practice.",
+      "description": "The route processor handles traffic destined to the router—the key component used to build forwarding paths and is also instrumental with all network management functions. Hence, any disruption or DoS attack to the route processor can result in mission critical network outages. ",
       "severity": "high"
     },
     {
@@ -375,20 +375,20 @@
     },
     {
       "id": "V-78289",
-      "title": "The MPLS router with RSVP-TE enabled must be configured with message pacing to adjust maximum burst and maximum number of RSVP messages to an output queue based on the link speed and input queue size of adjacent core routers.",
-      "description": "RSVP-TE can be used to perform constraint-based routing when building LSP tunnels within the network core that will support QoS and traffic engineering requirements. RSVP-TE is also used to enable MPLS Fast Reroute, a network restoration mechanism that will reroute traffic onto a backup LSP in case of a node or link failure along the primary path. When there is a disruption in the MPLS core, such as a link flap or router reboot, the result is a significant amount of RSVP signaling, such as \"PathErr\" and \"ResvErr\" messages that need to be sent for every LSP using that link.\n\nWhen RSVP messages are sent out, they are sent either hop by hop or with the router alert bit set in the IP header. This means that every router along the path must examine the packet to determine if additional processing is required for these RSVP messages. If there is enough signaling traffic in the network, it is possible for an interface to receive more packets for its input queue than it can hold, resulting in dropped RSVP messages and hence slower RSVP convergence. Increasing the size of the interface input queue can help prevent dropping packets; however, there is still the risk of having a burst of signaling traffic that can fill the queue. The best solution is RSVP message pacing to control the rate at which RSVP messages are sent so the input queue on the other end of the link is not overloaded.",
+      "title": "The MPLS router with RSVP-TE enabled must be configured with message pacing or refresh reduction to adjust maximum number of RSVP messages to an output queue based on the link speed and input queue size of adjacent core routers.",
+      "description": "RSVP-TE can be used to perform constraint-based routing when building LSP tunnels within the network core that will support QoS and traffic engineering requirements. RSVP-TE is also used to enable MPLS Fast Reroute, a network restoration mechanism that will reroute traffic onto a backup LSP in case of a node or link failure along the primary path. When there is a disruption in the MPLS core, such as a link flap or router reboot, the result is a significant amount of RSVP signaling, such as \"PathErr\" and \"ResvErr\" messages that need to be sent for every LSP using that link.\n\nWhen RSVP messages are sent out, they are sent either hop by hop or with the router alert bit set in the IP header. This means that every router along the path must examine the packet to determine if additional processing is required for these RSVP messages. If there is enough signaling traffic in the network, it is possible for an interface to receive more packets for its input queue than it can hold, resulting in dropped RSVP messages and hence slower RSVP convergence. Increasing the size of the interface input queue can help prevent dropping packets; however, there is still the risk of having a burst of signaling traffic that can fill the queue. Solutions to mitigate this risk are RSVP message pacing or refresh reduction to control the rate at which RSVP messages are sent. RSVP refresh reduction includes the following features: RSVP message bundling, RSVP Message ID to reduce message processing overhead, Reliable delivery of RSVP messages using Message ID,  and summary refresh to reduce the amount of information transmitted every refresh interval.",
       "severity": "low"
     },
     {
       "id": "V-78291",
-      "title": "The MPLS edge routers must be configured to have TTL Propagation disabled.",
+      "title": "The MPLS router must be configured to have TTL Propagation disabled.",
       "description": "The head end of the label-switched path (LSP), the label edge router (LER) will decrement the IP packet's time-to-live (TTL) value by one and then copy the value to the MPLS TTL field. At each label-switched router (LSR) hop, the MPLS TTL value is decremented by one. The MPLS router that pops the label (either the penultimate LSR or the egress LER) will copy the packet's MPLS TTL value to the IP TTL field and decrement it by one.\n\nThis TTL propagation is the default behavior. Because the MPLS TTL is propagated from the IP TTL, a traceroute will list every hop in the path, be it routed or label switched, thereby exposing core nodes. With TTL propagation disabled, LER decrements the IP packet's TTL value by one and then places a value of 255 in the packet's MPLS TTL field, which is then decremented by one as the packet passes through each LSR in the MPLS core. Because the MPLS TTL never drops to zero, none of the LSP hops triggers an ICMP TTL exceeded message and consequently, these hops are not recorded in a traceroute. Hence, nodes within the MPLS core cannot be discovered by an attacker.",
       "severity": "medium"
     },
     {
       "id": "V-78293",
       "title": "The PE router must be configured to have each Virtual Routing and Forwarding (VRF) instance bound to the appropriate physical or logical interfaces to maintain traffic separation between all MPLS L3VPNs.",
-      "description": "The primary security model for an MPLS VPN infrastructure is traffic separation. Each CE-facing interface can only be associated to one VRF; that alone is the fundamental framework for traffic separation. Once a packet from the connecting CE reaches the PE router, a forwarding decision is made based on the forwarding table belonging to the VRF. The next hop will always point to another PE. As the packet traverses the label-switched path (LSP) between the two PE routers, it is encapsulated with a VPN header - the inner MPLS label mapping to the associated VPN.\n\nThe provider must guarantee the customer that data plane and control plane traffic from one VPN does not leak into another VPN or into the core, and that core traffic must not leak into any VPN. There is, however, the possibility of providing customer interconnections as well as the construction of an extranet to provide customers the ability to share common resources. Nevertheless, assuming correct operation and configuration of the MPLS core, the principles of separation prevail: VPNs are fully separated from each other so that intrusion from other VPNs or the core cannot occur. However, it is obvious that the greatest threat to the security model is human engineering; that is, misconfiguration of PE routers. For example, a customer-facing interface could be associated with the wrong VRF, prohibiting that site access to its proper VPN while providing access to another and vice versa.",
+      "description": "The primary security model for an MPLS L3VPN infrastructure is traffic separation. The service provider must guarantee the customer that traffic from one VPN does not leak into another VPN or into the core, and that core traffic must not leak into any VPN. Hence, it is imperative that each CE-facing interface can only be associated to one VRF—that alone is the fundamental framework for traffic separation.",
       "severity": "high"
     },
     {
@@ -412,7 +412,7 @@
     {
       "id": "V-78301",
       "title": "The PE router providing MPLS Virtual Private Wire Service (VPWS) must be configured to have the appropriate virtual circuit identification (VC ID) for each attachment circuit.",
-      "description": "VPWS is an L2VPN technology that provides a virtual circuit between two PE routers to forward Layer 2 frames between two customer-edge routers or switches through an MPLS-enabled IP core. The ingress PE router (virtual circuit head-end) encapsulates Ethernet frames inside MPLS packets using label stacking and forwards them across the MPLS network to the egress PE router (virtual circuit tail-end). During a virtual circuit setup, the J-PE routers exchange VC label bindings for the specified VC ID. The VC ID specifies a pseudowire associated with an ingress and egress PE router and the customer-facing attachment circuits. \n\nTo guarantee that all frames are forwarded onto the correct pseudowire and to the correct customer and attachment circuits, it is imperative that the correct VC ID is configured for each attachment circuit.",
+      "description": "VPWS is an L2VPN technology that provides a virtual circuit between two PE routers to forward Layer 2 frames between two customer-edge routers or switches through an MPLS-enabled IP core. The ingress PE router (virtual circuit head-end) encapsulates Ethernet frames inside MPLS packets using label stacking and forwards them across the MPLS network to the egress PE router (virtual circuit tail-end). During a virtual circuit setup, the PE routers exchange VC label bindings for the specified VC ID. The VC ID specifies a pseudowire associated with an ingress and egress PE router and the customer-facing attachment circuits.\n\nTo guarantee that all frames are forwarded onto the correct pseudowire and to the correct customer and attachment circuits, it is imperative that the correct VC ID is configured for each attachment circuit.",
       "severity": "high"
     },
     {
@@ -453,7 +453,7 @@
     },
     {
       "id": "V-78315",
-      "title": "The PE router must be configured with Unicast Reverse Path Forwarding (RPF) loose mode on all CE-facing interfaces.",
+      "title": "The PE router must be configured with Unicast Reverse Path Forwarding (uRPF) loose mode enabled on all CE-facing interfaces..",
       "description": "The uRPF feature is a defense against spoofing and denial-of-service (DoS) attacks by verifying if the source address of any ingress packet is reachable. To mitigate attacks that rely on forged source addresses, all provider edge routers must enable uRPF loose mode to guarantee that all packets received from a CE router contain source addresses that are in the route table.",
       "severity": "medium"
     },
@@ -471,15 +471,9 @@
     },
     {
       "id": "V-78321",
-      "title": "The PE or P router must be configured to implement a Quality-of-Service (QoS) policy in accordance with the QoS DoDIN Technical Profile.",
+      "title": "The P router must be configured to enforce a Quality-of-Service (QoS) policy in accordance with the QoS GIG Technical Profile.",
       "description": "Different applications have unique requirements and toleration levels for delay, jitter, bandwidth, packet loss, and availability. To manage the multitude of applications and services, a network requires a QoS framework to differentiate traffic and provide a method to manage network congestion. The Differentiated Services Model (DiffServ) is based on per-hop behavior by categorizing traffic into different classes and enabling each node to enforce a forwarding treatment to each packet as dictated by a policy.\n\nPacket markings such as IP Precedence and its successor, Differentiated Services Code Points (DSCP), were defined along with specific per-hop behaviors for key traffic types to enable a scalable QoS solution. DiffServ QoS categorizes network traffic, prioritizes it according to its relative importance, and provides priority treatment based on the classification. It is imperative that end-to-end QoS is implemented within the IP core network to provide preferred treatment for mission-critical applications.",
       "severity": "low"
-    },
-    {
-      "id": "V-78323",
-      "title": "The PE router must be configured to enforce a Quality-of-Service (QoS) policy so that all customer traffic receives forwarding treatment as specified in the service level agreement (SLA).",
-      "description": "QoS enables DISA to offer value-added IP services in accordance with SLAs, ensuring that customer requirements can be met while providing a method to provision the edge and core to accommodate those requirements.\n\nThe IP core will recognize and provide forwarding treatment of customer traffic according to the Differentiated Services Code Points (DSCP). Customers marking traffic within their DiffServ domain will be required to comply with the DSCP classification that has been approved by the DOD QoS Working Group. Non-compliance could enable a customer or even an attacker to rob bandwidth from other customers or mission-critical services.",
-      "severity": "medium"
     },
     {
       "id": "V-78325",
@@ -495,7 +489,7 @@
     },
     {
       "id": "V-78329",
-      "title": "The multicast Designated Router (DR) must be configured to rate limit the number of Protocol Independent Multicast (PIM) Register messages it will allow for each source-group (S, G) entry.",
+      "title": "The multicast Rendezvous Point (RP) must be configured to rate limit the number of Protocol Independent Multicast (PIM) Register messages.",
       "description": "When a new source starts transmitting in a PIM Sparse Mode network, the DR will encapsulate the multicast packets into register messages and forward them to the RP using unicast. This process can be taxing on the CPU for both the DR and the RP if the source is running at a high data rate and there are many new sources starting at the same time. This scenario can potentially occur immediately after a network failover. The rate limit for the number of register messages should be set to a relatively low value based on the known number of multicast sources within the multicast domain.",
       "severity": "medium"
     },
@@ -537,7 +531,7 @@
     },
     {
       "id": "V-78343",
-      "title": "The Multicast Source Discovery Protocol (MSDP) router must be configured to filter received source-active multicast advertisements for any undesirable multicast groups (e.g., auto-RP, source-specific, link-local, black listed, etc.) and Bogon sources.",
+      "title": " The Multicast Source Discovery Protocol (MSDP) router must be configured to filter received source-active multicast advertisements for any undesirable multicast groups and sources.",
       "description": "The interoperability of BGP extensions for interdomain multicast routing and MSDP enables seamless connectivity of multicast domains between autonomous systems. MP-BGP advertises the unicast prefixes of the multicast sources used by Protocol Independent Multicast (PIM) routers to perform RPF checks and build multicast distribution trees. MSDP is a mechanism used to connect multiple PIM sparse-mode domains, allowing RPs from different domains to share information about active sources. When RPs in peering multicast domains hear about active sources, they can pass on that information to their local receivers, thereby allowing multicast data to be forwarded between the domains. Configuring an import policy to block multicast advertisements for reserved, martian, single-source multicast, and any other undesirable multicast groups, as well as any source-group (S, G) states with Bogon source addresses, would assist in avoiding unwanted multicast traffic from traversing the core.",
       "severity": "low"
     },
@@ -570,6 +564,12 @@
       "title": "The out-of-band management (OOBM) gateway router must be configured to block any traffic destined to itself that is not sourced from the OOBM network or the NOC.",
       "description": "If the gateway router is not a dedicated device for the OOBM network, several safeguards must be implemented for containment of management and production traffic boundaries. It is imperative that hosts from the managed network are not able to access the OOBM gateway router.",
       "severity": "medium"
+    },
+    {
+      "id": "V-92243",
+      "title": "The BGP router must be configured to reject route advertisements from CE routers with an originating AS in the AS_PATH attribute that does not belong to that customer.",
+      "description": "Verifying the path a route has traversed will ensure that the local AS is not used as a transit network for unauthorized traffic. To ensure that the local AS does not carry any prefixes that do not belong to any customers, all PE routers must be configured to reject routes with an originating AS other than that belonging to the customer.",
+      "severity": "low"
     }
   ]
 }

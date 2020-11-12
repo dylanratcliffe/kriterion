@@ -1,0 +1,275 @@
+{
+  "name": "stig_vmw_vrealize_automation_7.x_vami",
+  "date": "2018-10-12",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "VMW vRealize Automation 7.x vAMI Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-90195",
+      "title": "The vAMI must use FIPS 140-2 approved ciphers when transmitting management data during remote access management sessions.",
+      "description": "Remote management access is accomplished by leveraging common communication protocols and establishing a remote connection to the application server via a network for the purposes of managing the application server. If cryptography is not used, then the session data traversing the remote connection could be intercepted and compromised. Types of management interfaces utilized by an application server include web-based HTTPS interfaces as well as command line-based management interfaces.",
+      "severity": "high"
+    },
+    {
+      "id": "V-90197",
+      "title": "The vAMI must restrict inbound connections from nonsecure zones.",
+      "description": "Encryption is critical for protection of remote access sessions. If encryption is not being used for integrity, malicious users may gain the ability to modify the application server configuration. The use of cryptography for ensuring integrity of remote access sessions mitigates that risk. Application servers utilize a web management interface and scripted commands when allowing remote access. Web access requires the use of TLS and scripted access requires using ssh or some other form of approved cryptography. Application servers must have a capability to enable a secure remote admin capability. FIPS 140-2 approved TLS versions include TLS V1.0 or greater. FIPS 140-2 approved TLS versions must be enabled and non-FIPS-approved SSL versions must be disabled. NIST SP 800-52 specifies the preferred configurations for Government systems.",
+      "severity": "high"
+    },
+    {
+      "id": "V-90199",
+      "title": "The vAMI configuration file must be owned by root.",
+      "description": "Log records can be generated from various components within the application server, (e.g., httpd, beans, etc.) From an application perspective, certain specific application functionalities may be logged, as well. The list of logged events is the set of events for which logs are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating log records (e.g., logable events, time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked). Application servers utilize role-based access controls in order to specify the individuals who are allowed to configure application component logable events. The application server must be configured to select which personnel are assigned the role of selecting which logable events are to be logged. The personnel or roles that can select logable events are only the ISSM (or individuals or roles appointed by the ISSM).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90201",
+      "title": "The vAMI must have sfcb logging enabled.",
+      "description": "Privileged commands are commands that change the configuration or data of the application server. Since this type of command changes the application server configuration and could possibly change the security posture of the application server, these commands need to be logged to show the full-text of the command executed. Without the full-text, reconstruction of harmful events or forensic analysis is not possible. Organizations can consider limiting the additional log information to only that information explicitly needed for specific log requirements. At a minimum, the organization must log either full-text recording of privileged commands or the individual identities of group users, or both. The organization must maintain log trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90203",
+      "title": "The vAMI must protect log information from unauthorized read access.",
+      "description": "If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity is difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to his or her advantage. Application servers contain admin interfaces that allow reading and manipulation of log records. Therefore, these interfaces should not allow unfettered access to those records. Application servers also write log data to log files that are stored on the OS, so appropriate file permissions must also be used to restrict access. Log information includes all information (e.g., log records, log settings, transaction logs, and log reports) needed to successfully log information system activity. Application servers must protect log information from unauthorized read access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90205",
+      "title": "The vAMI must protect log information from unauthorized modification.",
+      "description": "If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity is difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to his or her advantage. Application servers contain admin interfaces that allow reading and manipulation of log records. Therefore, these interfaces should not allow unfettered access to those records. Application servers also write log data to log files that are stored on the OS, so appropriate file permissions must also be used to restrict access. Log information includes all information (e.g., log records, log settings, transaction logs and log reports) needed to successfully log information system activity. Application servers must protect log information from unauthorized modification.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90207",
+      "title": "The vAMI must protect log information from unauthorized deletion.",
+      "description": "If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity is difficult, if not impossible, to achieve. Application servers contain admin interfaces that allow reading and manipulation of log records. Therefore, these interfaces should not allow for unfettered access to those records. Application servers also write log data to log files that are stored on the OS, so appropriate file permissions must also be used to restrict access. Log information includes all information (e.g., log records, log settings, transaction logs, and log reports) needed to successfully log information system activity. Application servers must protect log information from unauthorized deletion.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90209",
+      "title": "The vAMI log records must be backed up at least every seven days onto a different system or system component than the system or component being logged.",
+      "description": "Protection of log data includes assuring log data is not accidentally lost or deleted. Backing up log records to a different system or onto separate media from the system that the vAMI is actually running on helps to assure that in the event of a catastrophic system failure, the log records will be retained.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90211",
+      "title": "Patches, service packs, and upgrades to the vAMI must be verifiably signed using a digital certificate that is recognized and approved by the organization.",
+      "description": "Changes to any software components can have significant effects on the overall security of the application. Verifying software components have been digitally signed using a certificate that is recognized and approved by the organization ensures the software has not been tampered with and that it has been provided by a trusted vendor. Accordingly, patches, service packs, or application components must be signed with a certificate recognized and approved by the organization. Verifying the authenticity of the software prior to installation validates the integrity of the patch or upgrade received from a vendor. This ensures the software has not been tampered with and that it has been provided by a trusted vendor. Self-signed certificates are disallowed by this requirement. The application should not have to verify the software again. This requirement does not mandate DoD certificates for this purpose; however, the certificate used to verify the software must be from an approved CA.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90213",
+      "title": "The vAMI executable files and library must not be world-writeable.",
+      "description": "Application servers have the ability to specify that the hosted applications utilize shared libraries. The application server must have a capability to divide roles based upon duties wherein one project user (such as a developer) cannot modify the shared library code of another project user. The application server must also be able to specify that non-privileged users cannot modify any shared library code at all.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90215",
+      "title": "The vAMI installation procedures must be capable of being rolled back to a last known good configuration.",
+      "description": "Any changes to the components of the application server can have significant effects on the overall security of the system. In order to ensure a prompt response to failed application installations and application server upgrades, the application server must provide an automated rollback capability that allows the system to be restored to a previous known good configuration state prior to the application installation or application server upgrade.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90217",
+      "title": "The vAMI must not contain any unnecessary functions and only provide essential capabilities.",
+      "description": "Application servers provide a myriad of differing processes, features and functionalities. Some of these processes may be deemed to be unnecessary or too unsecure to run on a production DoD system. Application servers must provide the capability to disable or deactivate functionality and services that are deemed to be non-essential to the server mission or can adversely impact server performance, for example, disabling dynamic JSP reloading on production application servers as a best practice.",
+      "severity": "high"
+    },
+    {
+      "id": "V-90219",
+      "title": "The vAMI must use the sfcb HTTPS port for communication with Lighttpd.",
+      "description": "Some networking protocols may not meet organizational security requirements to protect data and components. Application servers natively host a number of various features, such as management interfaces, httpd servers and message queues. These features all run on TCPIP ports. This creates the potential that the vendor may choose to utilize port numbers or network services that have been deemed unusable by the organization. The application server must have the capability to both reconfigure and disable the assigned ports without adversely impacting application server operation capabilities. For a list of approved ports and protocols, reference the DoD ports and protocols web site at https://powhatan.iiie.disa.mil/ports/cal.html.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90221",
+      "title": "The vAMI must use a site-defined, user management system to uniquely identify and authenticate users (or processes acting on behalf of organizational users).",
+      "description": "To assure accountability and prevent unauthorized access, application server users must be uniquely identified and authenticated. This is typically accomplished via the use of a user store which is either local (OS-based) or centralized (LDAP) in nature. To ensure support to the enterprise, the authentication must utilize an enterprise solution.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90223",
+      "title": "The vAMI must transmit only encrypted representations of passwords.",
+      "description": "Passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised. Application servers have the capability to utilize either certificates (tokens) or user IDs and passwords in order to authenticate. When the application server transmits or receives passwords, the passwords must be encrypted.",
+      "severity": "high"
+    },
+    {
+      "id": "V-90225",
+      "title": "The vAMI private key must only be accessible to authenticated system administrators or the designated PKI Sponsor.",
+      "description": "The cornerstone of the PKI is the private key used to encrypt or digitally sign information. If the private key is stolen, this will lead to the compromise of the authentication and non-repudiation gained through PKI because the attacker can use the private key to digitally sign documents and can pretend to be the authorized user. Both the holders of a digital certificate and the issuing authority must protect the computers, storage devices, or whatever they use to keep the private keys. Java-based application servers utilize the Java keystore, which provides storage for cryptographic keys and certificates. The keystore is usually maintained in a file stored on the file system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-90227",
+      "title": "The vAMI must use approved versions of TLS.",
+      "description": "Encryption is only as good as the encryption modules utilized. Unapproved cryptographic module algorithms cannot be verified and cannot be relied upon to provide confidentiality or integrity, and DoD data may be compromised due to weak algorithms. The use of TLS provides confidentiality of data in transit between the application server and client. FIPS 140-2 approved TLS versions include TLS V1.0 or greater. TLS must be enabled and non-FIPS-approved SSL versions must be disabled. NIST SP 800-52 specifies the preferred configurations for Government systems.",
+      "severity": "high"
+    },
+    {
+      "id": "V-90229",
+      "title": "The vAMI must use sfcBasicPAMAuthentication for authentication of the remote administrator.",
+      "description": "This control focuses on communications protection at the session, versus packet level. At the application layer, session IDs are tokens generated by web applications to uniquely identify an application user's session. Web applications utilize session tokens or session IDs in order to establish application user identity. Proper use of session IDs addresses man-in-the-middle attacks, including session hijacking or insertion of false information into a session. Application servers must provide the capability to perform mutual authentication. Mutual authentication is when both the client and the server authenticate each other.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90231",
+      "title": "The vAMI must use _sfcBasicAuthenticate for initial authentication of the remote administrator.",
+      "description": "Unique session IDs are the opposite of sequentially generated session IDs, which can be easily guessed by an attacker. Unique session identifiers help to reduce predictability of session identifiers. Unique session IDs address man-in-the-middle attacks, including session hijacking or insertion of false information into a session. If the attacker is unable to identify or guess the session information related to pending application traffic, they will have more difficulty in hijacking the session or otherwise manipulating valid sessions. Application servers must generate a unique session identifier for each application session to prevent session hijacking.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90233",
+      "title": "The vAMI must have the correct authentication set for HTTPS connections.",
+      "description": "This requirement focuses on communications protection at the application session, versus network packet level. The intent of this control is to establish grounds for confidence at each end of a communications session in the ongoing identity of the other party and in the validity of the information being transmitted. Unique session IDs are the opposite of sequentially generated session IDs, which can be easily guessed by an attacker. Unique session identifiers help to reduce predictability of said identifiers. Unique session IDs address man-in-the-middle attacks, including session hijacking or insertion of false information into a session. If the attacker is unable to identify or guess the session information related to pending application traffic, they will have more difficulty in hijacking the session or otherwise manipulating valid sessions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90235",
+      "title": "The vAMI installation procedures must be part of a complete vRealize Automation deployment.",
+      "description": "Failure to a known secure state helps prevent a loss of confidentiality, integrity, or availability in the event of a failure of the information system or a component of the system. When an application is deployed to the vAMI, if the deployment process does not complete properly and without errors, there is the potential that some application files may not be deployed or may be corrupted and an application error may occur during runtime. The vAMI must be able to perform complete application deployments. A partial deployment can leave the server in an inconsistent state. Application servers may provide a transaction rollback function to address this issue.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90237",
+      "title": "The vAMI must fail to a secure state if system initialization fails, shutdown fails, or aborts fail.",
+      "description": "Fail-secure is a condition achieved by the vAMI in order to ensure that in the event of an operational failure, the system does not enter into an unsecure state where intended security properties no longer hold. Preserving information system state information also facilitates system restart and return to the operational mode of the organization with less disruption of mission-essential processes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90239",
+      "title": "The vAMI error logs must be reviewed.",
+      "description": "The structure and content of error messages need to be carefully considered by the organization and development team. Any application providing too much information in error logs and in administrative messages to the screen risks compromising the data and security of the application and system. The extent to which the application server is able to identify and handle error conditions is guided by organizational policy and operational requirements. Adequate logging levels and system performance capabilities need to be balanced with data protection requirements. The structure and content of error messages needs to be carefully considered by the organization and development team. Application servers must have the capability to log at various levels, which can provide log entries for potential security-related error events. An example is the capability for the application server to assign a criticality level to a failed logon attempt error message, a security-related error message being of a higher criticality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90241",
+      "title": "The vAMI account credentials must protected by site policies.",
+      "description": "Application servers provide remote access capability and must be able to enforce remote access policy requirements or work in conjunction with enterprise tools designed to enforce policy requirements. Automated monitoring and control of remote access sessions allows organizations to detect cyber attacks and also ensure ongoing compliance with remote access policies by logging connection activities of remote users. Examples of policy requirements include, but are not limited to, authorizing remote access to the information system, limiting access based on authentication credentials, and monitoring for unauthorized access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90243",
+      "title": "The vAMI sfcb config file must be group-owned by root.",
+      "description": "Log records can be generated from various components within the application server. The list of logged events is the set of events for which logs are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating log records (i.e., logable events). Application server log events may include, but are not limited to, HTTP, Database, and XML parsing activity. The application server must be capable of allowing defined individuals or roles to change the logging to be performed on all application server components, based on all selectable event criteria during a defined time threshold. The time threshold can be defined by such events as a change in the threat environment. The ability to change logging parameters during the threat would allow important forensic information to be gathered during the time duration of the threat.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90245",
+      "title": "The vAMI must utilize syslog.",
+      "description": "A clustered application server is made up of several servers working together to provide the user a failover and increased computing capability. To facilitate uniform logging in the event of an incident and later forensic investigation, the record format and logable events need to be uniform. This can be managed best from a centralized server. Without the ability to centrally manage the content captured in the log records, identification, troubleshooting, and correlation of suspicious behavior would be difficult and could lead to a delayed or incomplete analysis of an ongoing attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90247",
+      "title": "The vAMI configuration file must be protected from unauthorized access.",
+      "description": "When dealing with access restrictions pertaining to change control, it should be noted that any changes to the software and/or application server configuration can potentially have significant effects on the overall security of the system. Access restrictions for changes also include application software libraries. If the application server provides automatic code deployment capability, (where updates to applications hosted on the application server are automatically performed, usually by the developers' IDE tool), it must also provide a capability to restrict the use of automatic application deployment. Automatic code deployments are allowable in a development environment, but not in production.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90249",
+      "title": "The vAMI must implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.",
+      "description": "Cryptography is only as strong as the encryption modules/algorithms employed to encrypt the data. Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. NSA has developed Type 1 algorithms for protecting classified information. The Committee on National Security Systems (CNSS) National Information Assurance Glossary (CNSS Instruction No. 4009) defines Type 1 products as: 'Cryptographic equipment, assembly or component classified or certified by NSA for encrypting and decrypting classified and sensitive national security information when appropriately keyed. Developed using established NSA business processes and containing NSA-approved algorithms are used to protect systems requiring the most stringent protection mechanisms.' NSA-approved cryptography is required to be used for classified information system processing. The application server must utilize NSA-approved encryption modules when protecting classified data. This means using AES and other approved encryption modules.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90251",
+      "title": "The vAMI must have the keepaliveTimeout enabled.",
+      "description": "DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity. To reduce the possibility or effect of a DoS, the application server must employ defined security safeguards. These safeguards will be determined by the placement of the application server and the type of applications being hosted within the application server framework. There are many examples of technologies that exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or restricting the number of sessions the application opens at one time). Employing increased capacity and bandwidth, combined with service redundancy or clustering, may reduce the susceptibility to some DoS attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90253",
+      "title": "The vAMI must have the keepaliveMaxRequest enabled.",
+      "description": "DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity. To reduce the possibility or effect of a DoS, the application server must employ defined security safeguards. These safeguards will be determined by the placement of the application server and the type of applications being hosted within the application server framework. There are many examples of technologies that exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or restricting the number of sessions the application opens at one time). Employing increased capacity and bandwidth, combined with service redundancy or clustering, may reduce the susceptibility to some DoS attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90255",
+      "title": "The vAMI must use approved versions of TLS.",
+      "description": "Preventing the disclosure of transmitted information requires that the application server take measures to employ some form of cryptographic mechanism in order to protect the information during transmission. This is usually achieved through the use of Transport Layer Security (TLS).Transmission of data can take place between the application server and a large number of devices/applications external to the application server. Examples are a web client used by a user, a backend database, a log server, or other application servers in an application server cluster. If data is transmitted unencrypted, the data then becomes vulnerable to disclosure. The disclosure may reveal user identifier/password combinations, website code revealing business logic, or other user personal information. FIPS 140-2 approved TLS versions include TLS V1.0 or greater. TLS must be enabled and non-FIPS-approved SSL versions must be disabled. NIST SP 800-52 specifies the preferred configurations for Government systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90257",
+      "title": "The vAMI sfcb must have HTTPS enabled.",
+      "description": "Preventing the disclosure or modification of transmitted information requires that application servers take measures to employ approved cryptography in order to protect the information during transmission over the network. This is usually achieved through the use of Transport Layer Security (TLS), SSL VPN, or IPsec tunnel. If data in transit is unencrypted, it is vulnerable to disclosure and modification. If approved cryptographic algorithms are not used, encryption strength cannot be assured. FIPS 140-2 approved TLS versions include TLS V1.0 or greater. TLS must be enabled and non-FIPS-approved SSL versions must be disabled. NIST SP 800-52 specifies the preferred configurations for Government systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90259",
+      "title": "The vAMI sfcb must have HTTP disabled.",
+      "description": "Information can be either unintentionally or maliciously disclosed or modified during reception, including, for example, during aggregation, at protocol transformation points, and during packing/unpacking. These unauthorized disclosures or modifications compromise the confidentiality or integrity of the information. Protecting the confidentiality and integrity of received information requires that application servers take measures to employ approved cryptography in order to protect the information during transmission over the network. This is usually achieved through the use of Transport Layer Security (TLS), SSL VPN, or IPsec tunnel. The application server must utilize approved encryption when receiving transmitted data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90261",
+      "title": "The vAMI must have security-relevant software updates installed within the time period directed by an authoritative source (e.g. IAVM, CTOs, DTMs, and STIGs).",
+      "description": "Security flaws with software applications are discovered daily. Vendors are constantly updating and patching their products to address newly discovered security vulnerabilities. Organizations (including any contractor to the organization) are required to promptly install security-relevant software updates (e.g., patches, service packs, and hot fixes) to production systems after thorough testing of the patches within a lab environment. Flaws discovered during security assessments, continuous monitoring, incident response activities, or information system error handling must also be addressed expeditiously.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90263",
+      "title": "The vAMI must log all successful login events.",
+      "description": "Logging the access to the application server allows the system administrators to monitor user accounts. By logging successful/unsuccessful logons, the system administrator can determine if an account is compromised (e.g., frequent logons) or is in the process of being compromised (e.g., frequent failed logons) and can take actions to thwart the attack. Logging successful logons can also be used to determine accounts that are no longer in use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90265",
+      "title": "The vAMI must enable logging.",
+      "description": "Without generating log records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. Privileged activities would occur through the management interface. This interface can be web-based or can be command line utilities. Whichever method is used by the application server, these activities must be logged.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90267",
+      "title": "The vAMI must have PAM logging enabled.",
+      "description": "Determining when a user has accessed the management interface is important to determine the timeline of events when a security incident occurs. Generating these events, especially if the management interface is accessed via a stateless protocol like HTTP, the log events will be generated when the user performs a logon (start) and when the user performs a logoff (end). Without these events, the user and later investigators cannot determine the sequence of events and therefore cannot determine what may have happened and by whom it may have been done. The generation of start and end times within log events allow the user to perform their due diligence in the event of a security breach.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90269",
+      "title": "The vAMI must log all login events.",
+      "description": "Being able to work on a system through multiple views into the application allows a user to work more efficiently and more accurately. Before environments with windowing capabilities or multiple desktops, a user would log onto the application from different workstations or terminals. With today's workstations, this is no longer necessary and may signal a compromised session or user account. When concurrent logons are made from different workstations to the management interface, a log record needs to be generated. This allows the system administrator to investigate the incident and to be aware of the incident.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90271",
+      "title": "The vAMI sfcb server certificate must only be accessible to authenticated system administrators or the designated PKI Sponsor.",
+      "description": "An asymmetric encryption key must be protected during transmission. The public portion of an asymmetric key pair can be freely distributed without fear of compromise, and the private portion of the key must be protected. The application server will provide software libraries that applications can programmatically utilize to encrypt and decrypt information. These application server libraries must use NIST-approved or NSA-approved key management technology and processes when producing, controlling, or distributing symmetric and asymmetric keys.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90273",
+      "title": "If the vAMI uses PKI Class 3 or Class 4 certificates, the certificates must be DoD- or CNSS-approved.\n\nIf the vAMI does not use PKI Class 3 or Class 4 certificates, this requirement is Not Applicable.",
+      "description": "Class 3 PKI certificates are used for servers and software signing rather than for identifying individuals. Class 4 certificates are used for business-to-business transactions. Utilizing unapproved certificates not issued or approved by DoD or CNS creates an integrity risk. The vAMI must utilize approved DoD or CNS Class 3 or Class 4 certificates for software signing and business-to-business transactions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90275",
+      "title": "The vAMI must utilize syslog.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration. Protecting log data is important during a forensic investigation to ensure investigators can track and understand what may have occurred. Off-loading should be set up as a scheduled task but can be configured to be run manually, if other processes during the off-loading are manual. Off-loading is a common process in information systems with limited log storage capacity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90277",
+      "title": "The vAMI must be configured to listen on a specific IPv4 address.",
+      "description": "Configuring the application to implement organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoD that reflects the most restrictive security posture consistent with operational requirements. Configuration settings are the set of parameters that can be changed that affect the security posture and/or functionality of the system. Security-related parameters are those parameters impacting the security state of the application, including the parameters required to satisfy other security control requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90279",
+      "title": "The vAMI must be configured to listen on a specific network interface.",
+      "description": "Configuring the application to implement organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoD that reflects the most restrictive security posture consistent with operational requirements. Configuration settings are the set of parameters that can be changed that affect the security posture and/or functionality of the system. Security-related parameters are those parameters impacting the security state of the application, including the parameters required to satisfy other security control requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90281",
+      "title": "The application server must remove all export ciphers to protect the confidentiality and integrity of transmitted information.",
+      "description": "During the initial setup of a Transport Layer Security (TLS) connection to the application server, the client sends a list of supported cipher suites in order of preference. The application server will reply with the cipher suite it will use for communication from the client list. If an attacker can intercept the submission of cipher suites to the application server and place, as the preferred cipher suite, a weak export suite, the encryption used for the session becomes easy for the attacker to break, often within minutes to hours.",
+      "severity": "medium"
+    }
+  ]
+}

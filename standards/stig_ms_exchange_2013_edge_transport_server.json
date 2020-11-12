@@ -1,6 +1,6 @@
 {
   "name": "stig_ms_exchange_2013_edge_transport_server",
-  "date": "2017-01-04",
+  "date": "2019-03-11",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "MS Exchange 2013 Edge Transport Server Security Technical Implementation Guide",
   "version": "1",
@@ -23,12 +23,6 @@
       "id": "V-69787",
       "title": "Exchange must have accepted domains configured.",
       "description": "Exchange may be configured to accept email for multiple domain names. This setting identifies the domains for which the server will accept mail. This check verifies the email server is not accepting email for unauthorized domains.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-69789",
-      "title": "Exchange must have auto-forwarding of email to remote domains disabled or restricted.",
-      "description": "Attackers can use automated messages to determine whether a user account is active, in the office, traveling, and so on. An attacker might use this information to conduct future attacks. Ensure Automatic Forwards to remote domains are disabled, except for enterprise email that must be restricted to forward-only to .mil and .gov. domains.\n\nBefore enabling this setting, first configure a remote domain.",
       "severity": "medium"
     },
     {
@@ -104,12 +98,6 @@
       "severity": "medium"
     },
     {
-      "id": "V-69815",
-      "title": "Exchange internal Send connectors must use domain security (mutual authentication Transport Layer Security).",
-      "description": "The Simple Mail Transfer Protocol (SMTP) connector is used by Exchange to send and receive messages from server to server. Several controls work together to provide security between internal servers. This setting controls the authentication method used for communications between servers. With this feature enabled, only servers capable of supporting domain authentication will be able to send and receive mail within the domain.\n\nThe use of secure communication prevents eavesdroppers from reading or modifying communications between mail clients and servers. While sensitive message bodies should be encrypted by the sender at the client, requiring a secure connection from server to server adds protection by encrypting the sender and recipient information that cannot be encrypted by the sender.  \n\nIndividually, channel security and encryption can be compromised by attackers. Used together, email becomes a more difficult target, and security is heightened. Failure to enable this feature gives eavesdroppers an opportunity to read or modify messages between servers.",
-      "severity": "medium"
-    },
-    {
       "id": "V-69817",
       "title": "Exchange Internet-facing Receive connectors must offer Transport Layer Security (TLS) before using basic authentication.",
       "description": "Sending unencrypted email over the Internet increases the risk that messages can be intercepted or altered. TLS is designed to protect confidentiality and data integrity by encrypting email messages between servers and thereby reducing the risk of eavesdropping, interception, and alteration. This setting forces Exchange to offer TLS before using basic authentication.",
@@ -130,12 +118,6 @@
     {
       "id": "V-69823",
       "title": "Exchange Global Outbound Message size must be controlled.",
-      "description": "Email system availability depends in part on best practice strategies for setting tuning configurations. Message size limits should be set to 10 megabytes at most but often are smaller, depending on the organization. The key point in message size is that it should be set globally, and it should not be set to \"unlimited\". Selecting \"unlimited\" on either field is likely to result in abuse and can contribute to excessive server disk space consumption. \n\nMessage size limits may also be applied on Send and Receive connectors, public folders, and the user account in Active Directory. Changes at these lower levels are discouraged, as the single global setting is usually sufficient. This practice prevents conflicts that could impact availability and simplifies server administration.",
-      "severity": "low"
-    },
-    {
-      "id": "V-69825",
-      "title": "Exchange Global Inbound Message size must be controlled.",
       "description": "Email system availability depends in part on best practice strategies for setting tuning configurations. Message size limits should be set to 10 megabytes at most but often are smaller, depending on the organization. The key point in message size is that it should be set globally, and it should not be set to \"unlimited\". Selecting \"unlimited\" on either field is likely to result in abuse and can contribute to excessive server disk space consumption. \n\nMessage size limits may also be applied on Send and Receive connectors, public folders, and the user account in Active Directory. Changes at these lower levels are discouraged, as the single global setting is usually sufficient. This practice prevents conflicts that could impact availability and simplifies server administration.",
       "severity": "low"
     },
@@ -266,24 +248,6 @@
       "severity": "medium"
     },
     {
-      "id": "V-69883",
-      "title": "The Exchange Global Recipient Count Limit must be set.",
-      "description": "Email system availability depends in part on best practice strategies for setting tuning configurations. The Global Recipient Count Limit field is used to control the maximum number of recipients that can be specified in a single message sent from this server. Its primary purpose is to minimize the chance of an internal sender spamming other recipients, since spam messages often have a large number of recipients. Spam prevention can originate from both outside and inside organizations. While inbound spam is evaluated as it arrives, controls such as this one help prevent spam that might originate inside the organization. \n\nThe Recipient Count Limit is global to the Exchange implementation. Lower-level refinements are possible; however, in this configuration strategy, setting the value once at the global level ensures a more available system by eliminating potential conflicts among multiple settings. A value of less than or equal to 5000 is probably larger than is needed for most organizations but is small enough to minimize usefulness to spammers and is easily handled by Exchange. An unexpanded distribution is handled as one recipient. Specifying “unlimited” may result in abuse.",
-      "severity": "low"
-    },
-    {
-      "id": "V-69885",
-      "title": "Exchange must not send automated replies to remote domains.",
-      "description": "Attackers can use automated messages to determine whether a user account is active, in the office, traveling, and so on. An attacker might use this information to conduct future attacks. Remote users will not receive automated \"Out of Office\" delivery reports. This setting can be used to determine if all the servers in the organization can send \"Out of Office\" messages.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-69887",
-      "title": "Exchange  external/Internet-bound automated response messages must be disabled.",
-      "description": "Spam originators, in an effort to refine mailing lists, sometimes monitor transmissions for automated bounce-back messages. Automated messages include such items as \"Out of Office\" responses, nondelivery messages, and automated message forwarding.\n\nAutomated bounce-back messages can be used by a third party to determine if users exist on the server. This can result in the disclosure of active user accounts to third parties, paving the way for possible future attacks.",
-      "severity": "medium"
-    },
-    {
       "id": "V-69889",
       "title": "The Exchange Recipient filter must be enabled.",
       "description": "Email system availability depends in part on best practice strategies for setting tuning configurations. Careful tuning reduces the risk that system or network congestion will contribute to availability impacts. \n\nFilters that govern inbound email evaluation can significantly reduce spam, phishing, and spoofed emails. Messages from blank senders, known spammers, or zero-day attack modifications must be enabled to be effective.",
@@ -344,12 +308,6 @@
       "severity": "medium"
     },
     {
-      "id": "V-69909",
-      "title": "Exchange must strip hyperlink email sources from non-.mil domains.",
-      "description": "Active hyperlinks within an email are susceptible to attacks of malicious software or malware. The hyperlink could lead to a malware infection or redirect the website to another fraudulent website without the user's consent or knowledge. \n\nExchange does not have a built-in message filtering capability. DoD Enterprise Email (DEE) has created a custom resolution to filter messages from non-.mil users that have hyperlinks in the message body. The hyperlink within the messages will be modified, preventing end users from automatically clicking links.",
-      "severity": "high"
-    },
-    {
       "id": "V-69911",
       "title": "The Exchange application directory must be protected from unauthorized access.",
       "description": "Default product installations may provide more generous access permissions than are necessary to run the application. By examining and tailoring access permissions to more closely provide the least amount of privilege possible, attack vectors that align with user permissions are less likely to access more highly secured areas.",
@@ -383,18 +341,6 @@
       "id": "V-69921",
       "title": "The Exchange SMTP automated banner response must not reveal server details.",
       "description": "Automated connection responses occur as a result of FTP or Telnet connections when connecting to those services. They report a successful connection by greeting the connecting client and stating the name, release level, and (often) additional information about the responding product. While useful to the connecting client, connection responses can also be used by a third party to determine operating system or product release levels on the target server. The result can include disclosure of configuration information to third parties, paving the way for possible future attacks. For example, when querying the SMTP service on port 25, the default response looks similar to this one: \n\n220 exchange.mydomain.org Microsoft ESMTP MAIL Service, Version: 6.0.3790.211 ready at Wed, 2 Feb 2005 23:40:00 -0500\n\nChanging the response to hide local configuration details reduces the attack profile of the target.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-69923",
-      "title": "Exchange must not send nondelivery reports to remote domains.",
-      "description": "Attackers can use automated messages to determine whether a user account is active, in the office, traveling, and so on. An attacker might use this information to conduct future attacks. Ensure that nondelivery reports to remote domains are disabled. Before enabling this setting, first configure a remote domain using the EMC or the New-RemoteDomain cmdlet.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-69925",
-      "title": "Exchange must not send delivery reports to remote domains.",
-      "description": "Attackers can use automated messages to determine whether a user account is active, in the office, traveling, and so on. An attacker might use this information to conduct future attacks. Ensure that delivery reports to remote domains are disabled. Before enabling this setting, first configure a remote domain using the EMC or the New-RemoteDomain cmdlet.",
       "severity": "medium"
     },
     {

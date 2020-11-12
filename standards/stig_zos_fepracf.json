@@ -1,0 +1,47 @@
+{
+  "name": "stig_zos_fepracf",
+  "date": "2020-01-23",
+  "description": "None",
+  "title": "zOS FEP for RACF STIG",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-6900",
+      "title": "All hardware components of the FEPs are not placed in secure locations where they cannot be stolen, damaged, or disturbed",
+      "description": "If components of the FEPs are not properly protected they can be stolen, damaged, or disturbed.  Without adequate physical security, unauthorized users can access the control panel, the operator console, and the diskette drive of the service subsystem.  Therefore, they can interfere with the normal operations of the FEPs.  Improper control of FEP components could compromise network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6901",
+      "title": "Procedures are not in place  to restrict access to FEP functions of the service subsystem from operator consoles (local and/or remote), and to restrict access to the diskette drive of the service subsystem.",
+      "description": "If components of the FEPs are not properly protected they can be stolen, damaged, or disturbed.  Without adequate physical security, unauthorized users can access the control panel, the operator console, and the diskette drive of the service subsystem.  Therefore, they can interfere with the normal operations of the FEPs.  Improper control of FEP components could compromise network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6902",
+      "title": "A documented procedure is not available instructing how to load and dump the FEP NCP (Network Control Program).",
+      "description": "If components of the FEPs are not properly protected they can be stolen, damaged, or disturbed.  Without adequate physical security, unauthorized users can access the control panel, the operator console, and the diskette drive of the service subsystem.  Therefore, they can interfere with the normal operations of the FEPs.  Improper control of FEP components could compromise network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6903",
+      "title": "An active log is not available to keep track of all hardware upgrades and software changes made to the FEP (Front End Processor).",
+      "description": "If components of the FEPs are not properly protected they can be stolen, damaged, or disturbed.  Without adequate physical security, unauthorized users can access the control panel, the operator console, and the diskette drive of the service subsystem.  Therefore, they can interfere with the normal operations of the FEPs.  Improper control of FEP components could compromise network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6904",
+      "title": "NCP (Net Work Control Program) Data set access authorization does not restricts UPDATE and/or ALLOCATE access to appropriate personnel.",
+      "description": "If components of the FEPs are not properly protected they can be stolen, damaged, or disturbed.  Without adequate physical security, unauthorized users can access the control panel, the operator console, and the diskette drive of the service subsystem.  Therefore, they can interfere with the normal operations of the FEPs.  Improper control of FEP components could compromise network operations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6905",
+      "title": "A password control is not in place to restrict access to the service subsystem via the operator consoles (local and/or remote) and a key-lock switch is not used to protect the modem supporting the remote console of the service subsystem.",
+      "description": "If components of the FEPs are not properly protected they can be stolen, damaged, or disturbed.  Without adequate physical security, unauthorized users can access the control panel, the operator console, and the diskette drive of the service subsystem.  Therefore, they can interfere with the normal operations of the FEPs.  Improper control of FEP components could compromise network operations.",
+      "severity": "medium"
+    }
+  ]
+}

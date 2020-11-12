@@ -1,6 +1,6 @@
 {
   "name": "stig_aix_6.1",
-  "date": "2018-04-10",
+  "date": "2018-09-18",
   "description": "The AIX Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems. Comments or proposed revisions to this document should be sent via email to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailbox@mail.mil.",
   "title": "AIX 6.1 SECURITY TECHNICAL IMPLEMENTATION GUIDE",
   "version": "1",
@@ -304,7 +304,7 @@
     {
       "id": "V-12010",
       "title": "Unencrypted FTP must not be used on the system.",
-      "description": "FTP is typically unencrypted and, therefore, presents confidentiality and integrity risks.  FTP may be protected by encryption in certain cases, such as when used in a Kerberos environment.   SFTP and FTPS are encrypted alternatives to FTP.",
+      "description": "FTP is typically unencrypted and, therefore, presents confidentiality and integrity risks. FTP may be protected by encryption in certain cases, such as when used in a Kerberos environment. SFTP and FTPS are encrypted alternatives to FTP.",
       "severity": "medium"
     },
     {

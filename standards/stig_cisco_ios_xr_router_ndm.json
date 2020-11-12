@@ -1,0 +1,395 @@
+{
+  "name": "stig_cisco_ios_xr_router_ndm",
+  "date": "2020-02-24",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Cisco IOS XR Router NDM Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-96371",
+      "title": "The Cisco router must be configured to limit the number of concurrent management sessions to an organization-defined number.",
+      "description": "Device management includes the ability to control the number of administrators and management sessions that manage a device. Limiting the number of allowed administrators and sessions per administrator based on account type, role, or access type is helpful in limiting risks related to DoS attacks.\n\nThis requirement addresses concurrent sessions for administrative accounts and does not address concurrent sessions by a single administrator via multiple administrative accounts. The maximum number of concurrent sessions should be defined based upon mission needs and the operational environment for each system. At a minimum, limits must be set for SSH, HTTPS, account of last resort, and root account sessions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96373",
+      "title": "The network element must provide automated support for account management functions.",
+      "description": "If account management functions are not automatically enforced, an attacker could gain privileged access to a vital element of the network security architecture.\n\nAccount management functions include: assignment of group or role membership; identifying account type; specifying user access authorizations (i.e., privileges); account removal, update, or termination; and administrative alerts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96375",
+      "title": "The Cisco router must automatically remove or disable temporary user accounts after 72 hours.",
+      "description": "Temporary accounts are established as part of normal account activation procedures when there is a need for short-term accounts without the demand for immediacy in account activation. If temporary accounts remain active when no longer needed, they may be used to gain unauthorized access. The risk is greater for the network device since these accounts have elevated privileges. To mitigate this risk, automated termination of all temporary accounts must be set upon account creation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96377",
+      "title": "The Cisco router must automatically disable accounts after a 35-day period of account inactivity.",
+      "description": "Since the accounts in the network device are privileged or system-level accounts, account management is vital to the security of the network device. Inactive accounts could be reactivated or compromised by unauthorized users, allowing exploitation of vulnerabilities and undetected access to the network device. \n\nThis control does not apply to the account of last resort or root account. DoD prohibits local user accounts on the device, except for an account of last resort and (where applicable) a root account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96379",
+      "title": "The Cisco router must be configured to enforce approved authorizations for controlling the flow of management information within the device based on control policies.",
+      "description": "A mechanism to detect and prevent unauthorized communication flow must be configured or provided as part of the system design. If management information flow is not enforced based on approved authorizations, the network device may become compromised. Information flow control regulates where management information is allowed to travel within a network device. The flow of all management information must be monitored and controlled so it does not introduce any unacceptable risk to the network device or data. \n\nApplication-specific examples of enforcement occur in systems that employ rule sets or establish configuration settings that restrict information system services or message-filtering capability based on message content (e.g., implementing key word searches or using document characteristics).\n\nApplications providing information flow control must be able to enforce approved authorizations for controlling the flow of management information within the system in accordance with applicable policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96381",
+      "title": "The Cisco router must be configured to enforce the limit of three consecutive invalid logon attempts after which time lock out the user account from accessing the device for 15 minutes.",
+      "description": "By limiting the number of failed login attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96383",
+      "title": "The Cisco router must be configured to display the Standard Mandatory DoD Notice and Consent Banner before granting access to the device.",
+      "description": "Display of the DoD-approved use notification before granting access to the network device ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96385",
+      "title": "Upon successful login, the Cisco router must notify the administrator of the date and time of the last login.",
+      "description": "Administrators need to be aware of activity that occurs regarding their network device management account. Providing administrators with information regarding the date and time of their last successful login allows them to determine if any unauthorized activity has occurred. This incorporates all methods of login, including, but not limited to, SSH, HTTP, HTTPS, and physical connectivity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96387",
+      "title": "Upon successful login, the Cisco router must notify the administrator of the number of unsuccessful login attempts since the last successful login.",
+      "description": "Administrators need to be aware of activity that occurs regarding their network device management account. Providing administrators with information regarding the number of unsuccessful attempts made to login to their account allows them to determine if any unauthorized activity has occurred. Without this information, the administrator may not be aware that unauthorized activity has occurred. This incorporates all methods of login, including, but not limited to, SSH, HTTP, HTTPS, and physical connectivity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96389",
+      "title": "The Cisco router must notify the administrator of changes to access and/or privilege parameters of the administrators account that occurred since the last logon.",
+      "description": "Providing administrators with information regarding security-related changes to their account allows them to determine if any unauthorized activity has occurred. Changes to the account could be an indication of the account being compromised. Hence, without notification to the administrator, the compromise could go undetected if other controls were not in place to mitigate this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96393",
+      "title": "The Cisco router must be configured to generate audit records when successful/unsuccessful attempts to logon with access privileges occur.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96395",
+      "title": "The Cisco router must produce audit records containing information to establish when (date and time) the events occurred.",
+      "description": "It is essential for security personnel to know what is being done, what was attempted, where it was done, when it was done, and by whom it was done in order to compile an accurate risk assessment. Logging the date and time of each detected event provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured network device. In order to establish and correlate the series of events leading up to an outage or attack, it is imperative the date and time are recorded in all log records.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96397",
+      "title": "The Cisco router must produce audit records containing information to establish where the events occurred.",
+      "description": "In order to compile an accurate risk assessment and provide forensic analysis, it is essential for security personnel to know where events occurred, such as device hardware components, device software modules, session identifiers, filenames, host names, and functionality.\n\nAssociating information about where the event occurred within the network device provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96399",
+      "title": "The Cisco router must alert the ISSO and SA (at a minimum) in the event of an audit processing failure.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without this notification, the security personnel may be unaware of an impending failure of the audit capability and system operation may be adversely affected. \n\nAudit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96401",
+      "title": "The Cisco router must use cryptographic mechanisms to protect the integrity of audit information at rest.",
+      "description": "Audit records may be tampered with. If the integrity of audit data were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.\n\nProtection of audit records and audit data, including audit configuration settings, is of critical importance. Cryptographic mechanisms are the industry-established standard used to protect the integrity of audit data. An example of a cryptographic mechanism is the computation and application of a cryptographic-signed hash using asymmetric cryptography.\n\nThis requirement is not intended to cause a new cryptographic hash to be generated every time a record is added to a log file.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96403",
+      "title": "The Cisco router must be configured to be configured to prohibit the use of all unnecessary and nonsecure functions and services.",
+      "description": "Network devices are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the network device must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved. Some network devices have capabilities enabled by default; if these capabilities are not necessary, they must be disabled. If a particular capability is used, then it must be documented and approved.",
+      "severity": "high"
+    },
+    {
+      "id": "V-96405",
+      "title": "The Cisco router must uniquely identify and authenticate organizational administrators (or processes acting on behalf of organizational administrators).",
+      "description": "To assure accountability and prevent unauthenticated access, organizational administrators must be uniquely identified and authenticated for all network management accesses to prevent potential misuse and compromise of the system.\n\nThis control does not apply to the root account (when applicable) or the account of last resort which are considered to be authorized shared accounts.",
+      "severity": "high"
+    },
+    {
+      "id": "V-96407",
+      "title": "The Cisco router must be configured with only one local account to be used as the account of last resort in the event the authentication server is unavailable.",
+      "description": "Authentication for administrative (privileged level) access to the device is required at all times. An account can be created on the device's local database for use when the authentication server is down or connectivity between the device and the authentication server is not operable. This account is referred to as the account of last resort since it is intended to be used as a last resort and when immediate administrative access is absolutely necessary.\n\nThe account of last resort logon credentials must be stored in a sealed envelope and kept in a safe. The safe must be periodically audited to verify the envelope remains sealed. The signature of the auditor and the date of the audit should be added to the envelope as a record. Administrators should secure the credentials and disable the root account (if possible) when not needed for system administration functions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96409",
+      "title": "The Cisco router must use multifactor authentication for network access to privileged accounts.",
+      "description": "Multifactor authentication requires using two or more factors to achieve authentication. Factors include: \n\n(i) something a user knows (e.g., password/PIN); \n(ii) something a user has (e.g., cryptographic identification device, token); or \n(iii) something a user is (e.g., biometric). \n\nA privileged account is defined as an information system account with authorizations of a privileged user.\n\nNetwork access is defined as access to an information system by a user (or a process acting on behalf of a user) communicating through a network (e.g., LAN, WAN, or the Internet).\n\nThis requirement does not apply to the account of last resort or root account. DoD prohibits local user accounts on the device, except for an account of last resort and (where applicable) a root account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96411",
+      "title": "The Cisco router must use multifactor authentication for local access to privileged accounts.",
+      "description": "Multifactor authentication is defined as using two or more factors to achieve authentication. \n\nFactors include: \n(i) Something a user knows (e.g., password/PIN); \n(ii) Something a user has (e.g., cryptographic identification device, token); or \n(iii) Something a user is (e.g., biometric). \n\nTo assure accountability and prevent unauthenticated access, privileged users must utilize multifactor authentication to prevent potential misuse and compromise of the system. \n\nLocal access is defined as access to an organizational information system by a user (or process acting on behalf of a user) communicating through a direct connection without the use of a network. \n\nApplications integrating with the DoD Active Directory and utilizing the DoD CAC are examples of compliant multifactor authentication solutions.\n\nThis control does not apply to the account of last resort or root account. DoD prohibits local user accounts on the device, except for an account of last resort and (where applicable) a root account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96413",
+      "title": "The Cisco router must be configured to implement replay-resistant authentication mechanisms for network access to privileged accounts.",
+      "description": "A replay attack may enable an unauthorized user to gain access to the application. Authentication sessions between the authenticator and the application validating the user credentials must not be vulnerable to a replay attack.\n\nAn authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message. \n\nTechniques used to address this include protocols using nonces (e.g., numbers generated for a specific one-time use) or challenges (e.g., TLS, WS_Security). Additional techniques include time-synchronous or challenge-response one-time authenticators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96415",
+      "title": "The Cisco router must disable identifiers (individuals, groups, roles, and devices) after 35 days of inactivity.",
+      "description": "Inactive identifiers pose a risk to network devices. Attackers that are able to exploit an inactive identifier can potentially obtain and maintain undetected access to the device. Owners of inactive accounts may not notice if unauthorized access to their account has been obtained. \n\nNetwork devices need to track periods of inactivity and disable application identifiers after 35 days of inactivity.\n\nThis control does not apply to the account of last resort or root account. DoD prohibits local user accounts on the device, except for an account of last resort and (where applicable) a root account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96417",
+      "title": "The Cisco router must enforce 24 hours as the minimum password lifetime.",
+      "description": "Enforcing a minimum password lifetime helps prevent repeated password changes to defeat the password reuse or history enforcement requirement.\n\nRestricting this setting limits the user's ability to change their password. Passwords need to be changed at specific policy-based intervals; however, if the network device allows the user to immediately and continually change their password, then the password could be repeatedly changed in a short period of time to defeat the organization's policy regarding password reuse.\n\nThis control does not include root account or the account of last resort. For network devices, implementation of this requirement could cause emergency maintenance issues if applied to these local accounts. For example, after maintenance by maintenance personnel who are not normally authorized access to these passwords, the passwords will need to be changed. This is the same as the requirement to change the password when a system administrator with knowledge of the passwords for the root or account of last resort leaves the organization.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96419",
+      "title": "The Cisco router must enforce a 60-day maximum password lifetime restriction.",
+      "description": "Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed at specific intervals. \n\nOne method of minimizing this risk is to use complex passwords and periodically change them. If the network device does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the passwords could be compromised. \n\nThis requirement does not include root account or the account of last resort which are meant for access to the network device in case of failure.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96421",
+      "title": "The Cisco router must be configured to terminate all network connections associated with device management after 10 minutes of inactivity.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element. \n\nTerminating network connections associated with communications sessions includes, for example, de-allocating associated TCP/IP address/port pairs at the operating system level, or de-allocating networking assignments at the application level if multiple application sessions are using a single, operating system-level network connection. This does not mean that the device terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.",
+      "severity": "high"
+    },
+    {
+      "id": "V-96423",
+      "title": "The Cisco router must activate a system alert message, send an alarm, and/or automatically shut down when a component failure is detected.",
+      "description": "Predictable failure prevention requires organizational planning to address device failure issues. If components key to maintaining the device's security fail to function, the device could continue operating in an insecure state. If appropriate actions are not taken when a network device failure occurs, a denial of service condition may occur which could result in mission failure since the network would be operating without a critical security monitoring and prevention function. Upon detecting a failure of network device security components, the network device must activate a system alert message, send an alarm, or shut down.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96425",
+      "title": "The Cisco router must generate alerts that can be forwarded to the administrators and ISSO when accounts are created.",
+      "description": "Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply create a new account. Notification of account creation is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail which documents the creation of accounts and notifies administrators and Information System Security Officers (ISSO). Such a process greatly reduces the risk that accounts will be surreptitiously created and provides logging that can be used for forensic purposes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96427",
+      "title": "The Cisco router must generate alerts that can be forwarded to the administrators and ISSO when accounts are modified.",
+      "description": "Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply modify an existing account. Notification of account modification is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail which documents the modification of device administrator accounts and notifies administrators and ISSO. Such a process greatly reduces the risk that accounts will be surreptitiously modified and provides logging that can be used for forensic purposes.\n\nThe network device must generate the alert. Notification may be done by a management server. This control applies to locally defined accounts, including the root account and the account of last resort.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96429",
+      "title": "The Cisco router must generate alerts that can be forwarded to the administrators and ISSO when accounts are disabled.",
+      "description": "When application accounts are disabled, administrator accessibility is affected. Accounts are utilized for identifying individual device administrators or for identifying the device processes themselves. \n\nIn order to detect and respond to events that affect administrator accessibility and device processing, devices must audit account disabling actions and, as required, notify the appropriate individuals so they can investigate the event. Such a capability greatly reduces the risk that device accessibility will be negatively affected for extended periods of time and also provides logging that can be used for forensic purposes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96431",
+      "title": "The Cisco router must generate alerts that can be forwarded to the administrators and ISSO when accounts are removed.",
+      "description": "When application accounts are removed, administrator accessibility is affected. Accounts are utilized for identifying individual device administrators or for identifying the device processes themselves. \n\nIn order to detect and respond to events that affect administrator accessibility and device processing, devices must audit account removal actions and, as required, notify the appropriate individuals so they can investigate the event. Such a capability greatly reduces the risk that device accessibility will be negatively affected for extended periods of time and also provides logging that can be used for forensic purposes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96435",
+      "title": "The Cisco router must notify System Administrators (SAs) and Information System Security Officers (ISSMs) when accounts are created, or enabled when previously disabled.",
+      "description": "Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply enable a new or disabled account. Notification of account enabling is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail which documents the creation of application user accounts and notifies SAs and ISSMs. Such a process greatly reduces the risk that accounts will be surreptitiously enabled and provides logging that can be used for forensic purposes.\n\nIn order to detect and respond to events that affect network administrator accessibility and device processing, network devices must audit account enabling actions and, as required, notify the appropriate individuals so they can investigate the event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96437",
+      "title": "The Cisco router must be configured to be compliant with at least one IETF Internet standard authentication protocol.",
+      "description": "Protecting access authorization information (i.e., access control decisions) ensures that authorization information cannot be altered, spoofed, or otherwise compromised during transmission.\n\nIn distributed information systems, authorization processes and access control decisions may occur in separate parts of the systems. In such instances, authorization information is transmitted securely so timely access control decisions can be enforced at the appropriate locations. To support the access control decisions, it may be necessary to transmit, as part of the access authorization information, supporting security attributes. This is because, in distributed information systems, there are various access control decisions that need to be made, and different entities (e.g., services) make these decisions in a serial fashion, each requiring some security attributes to make the decisions.\n\nThe network device must be compliant with at least one IETF standard authentication protocol such as Remote Authentication Dial-In User Service (RADIUS), Extensible Authentication Protocol (EAP), Lightweight Directory Access Protocol (LDAP), and Terminal Access Controller Access-Control System Plus (TACACS+). Protocols that are clearly defined in IETF RFC Internet standards (a.k.a. full standards), and are capable of securely conveying authorization information, are suitable for use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96439",
+      "title": "The Cisco router must automatically lock the account until the locked account is released by an administrator when three unsuccessful login attempts in 15 minutes are exceeded.",
+      "description": "By limiting the number of failed login attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced. Limits are imposed by locking the account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96441",
+      "title": "The Cisco router must notify the administrator, upon successful logon (access), of the location of last logon (terminal or IP address) in addition to the date and time of the last logon (access).",
+      "description": "Administrators need to be aware of activity that occurs regarding their account. Providing them with information deemed important by the organization may aid in the discovery of unauthorized access or thwart a potential attacker. \n\nOrganizations should consider the risks to the specific information system being accessed and the threats presented by the device to the environment when configuring this option. An excessive or unnecessary amount of information presented to the administrator at logon is not recommended.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96443",
+      "title": "The Cisco router must be configured to allocate audit record storage capacity in accordance with organization-defined audit record storage requirements.",
+      "description": "In order to ensure network devices have a sufficient storage capacity in which to write the audit logs, they need to be able to allocate audit record storage capacity. The task of allocating audit record storage capacity is usually performed during initial device setup if it is modifiable. \n\nThe value for the organization-defined audit record storage requirement will depend on the amount of storage available on the network device, the anticipated volume of logs, the frequency of transfer from the network device to centralized log servers, and other factors.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96445",
+      "title": "The Cisco router must generate an immediate alert when allocated audit record storage volume reaches 75% of repository maximum audit record storage capacity.",
+      "description": "If security personnel are not notified immediately upon storage volume utilization reaching 75%, they are unable to plan for storage capacity expansion. This could lead to the loss of audit information. Note that while the network device must generate the alert, notification may be done by a management server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96447",
+      "title": "The Cisco router must be configured to generate an alert for all audit failure events.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability and system operation may be adversely affected. \n\nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96449",
+      "title": "The Cisco router must be configured to synchronize its clock with the primary and secondary time sources using redundant authoritative time sources.",
+      "description": "The loss of connectivity to a particular authoritative time source will result in the loss of time synchronization (free-run mode) and increasingly inaccurate time stamps on audit events and other functions. \n\nMultiple time sources provide redundancy by including a secondary source. Time synchronization is usually a hierarchy; clients synchronize time to a local source while that source synchronizes its time to a more accurate source. The network device must utilize an authoritative time server and/or be configured to use redundant authoritative time sources. This requirement is related to the comparison done in CCI-001891.\n\nDoD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DoD network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96451",
+      "title": "The Cisco router must record time stamps for audit records that meet a granularity of one second for a minimum degree of precision.",
+      "description": "Without sufficient granularity of time stamps, it is not possible to adequately determine the chronological order of records. Time stamps generated by the application include date and time. Granularity of time measurements refers to the degree of synchronization between information system clocks and reference clocks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96453",
+      "title": "The Cisco router must be configured to record time stamps for log records that can be mapped to Coordinated Universal Time (UTC) or Greenwich Mean Time (GMT).",
+      "description": "If time stamps are not consistently applied and there is no common time reference, it is difficult to perform forensic analysis.\n\nTime stamps generated by the application include date and time. Time is commonly expressed in UTC, a modern continuation of GMT, or local time with an offset from UTC.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96455",
+      "title": "The Cisco router must generate an alert that will then be sent to the ISSO, ISSM, and other designated personnel (deemed appropriate by the local organization) when the unauthorized installation of software is detected.",
+      "description": "Unauthorized software not only increases risk by increasing the number of potential vulnerabilities, it also can contain malicious code. Sending an alert (in real time) when unauthorized software is detected allows designated personnel to take action on the installation of unauthorized software. Note that while the device must generate the alert, the notification may be done by a management server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96457",
+      "title": "The Cisco router must require users to re-authenticate when privilege escalation or role changes occur.",
+      "description": "Without re-authentication, users may access resources or perform tasks for which they do not have authorization.\n\nWhen devices provide the capability to change security roles, it is critical the user re-authenticate.\n\nIn addition to the re-authentication requirements associated with session locks, organizations may require re-authentication of individuals and/or devices in other situations, including (but not limited to) the following circumstances.\n\n(i) When authenticators change;\n(ii) When roles change;\n(iii) When security categories of information systems change;\n(iv) When the execution of privileged functions occurs;\n(v) After a fixed period of time; or\n(vi) Periodically.\n\nWithin the DoD, the minimum circumstances requiring re-authentication are privilege escalation and role changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96459",
+      "title": "The Cisco router must accept Personal Identity Verification (PIV) credentials.",
+      "description": "The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access.\n\nDoD has mandated the use of the CAC to support identity management and personal authentication for systems covered under HSPD 12, as well as a primary component of layered protection for national security systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96461",
+      "title": "The Cisco router must electronically verify Personal Identity Verification (PIV) credentials.",
+      "description": "The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access.\n\nDoD has mandated the use of the CAC to support identity management and personal authentication for systems covered under HSPD 12, as well as a primary component of layered protection for national security systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96463",
+      "title": "The Cisco router must be configured to authenticate SNMP messages using a FIPS-validated Keyed-Hash Message Authentication Code (HMAC).",
+      "description": "Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity. Bidirectional authentication provides stronger safeguards to validate the identity of other devices for connections that are of greater risk.\n\nA local connection is any connection with a device communicating without the use of a network. A network connection is any connection with a device that communicates through a network (e.g., local area or wide area network, Internet). A remote connection is any connection with a device communicating through an external network (e.g., the Internet).\n\nBecause of the challenges of applying this requirement on a large scale, organizations are encouraged to only apply the requirement to those limited number (and type) of devices that truly need to support this capability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96465",
+      "title": "The Cisco router must be configured to encrypt SNMP messages using a FIPS 140-2 approved algorithm.",
+      "description": "Without the strong encryption that is provided by the SNMP Version 3 User-based Security Model (USM), an unauthorized user can gain access to network management information that can be used to create a network outage.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96467",
+      "title": "The Cisco router must be configured to authenticate NTP sources using authentication that is cryptographically based.",
+      "description": "If Network Time Protocol is not authenticated, an attacker can introduce a rogue NTP server. This rogue server can then be used to send incorrect time information to network devices, which will make log timestamps inaccurate and affect scheduled actions. NTP authentication is used to prevent this tampering by authenticating the time source.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96469",
+      "title": "The Cisco router must dynamically manage identifiers.",
+      "description": "Dynamic identifier management prevents disruption of operations by minimizing the need for system restarts. Dynamic establishment of new identifiers will occur while the system is operational. New identifiers or changes to existing identifiers must take effect without the need for a system or session restart. Pre-established trust relationships and mechanisms with appropriate authorities (e.g., Active Directory or authentication server) which validate each identifier are essential to prevent unauthorized access by changed or revoked accounts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96471",
+      "title": "The Cisco router must allow the use of a temporary password for system logons with an immediate change to a permanent password.",
+      "description": "Without providing this capability, an account may be created without a password. Non-repudiation cannot be guaranteed once an account is created if a user is not forced to change the temporary password upon initial login.\n\nTemporary passwords are typically used to allow access to applications when new accounts are created or passwords are changed. It is common practice for administrators to create temporary passwords for user accounts that allow the users to log in yet force them to change the password once they have successfully authenticated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96473",
+      "title": "The Cisco router must be configured to use FIPS-validated Keyed-Hash Message Authentication Code (HMAC) to protect the integrity of remote maintenance sessions.",
+      "description": "Unapproved mechanisms that are used for authentication to the cryptographic module are not verified and therefore cannot be relied upon to provide confidentiality or integrity, and DoD data may be compromised.\n\nNonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the Internet) or an internal network. \n\nCurrently, HMAC is the only FIPS-approved algorithm for generating and verifying message/data authentication codes in accordance with FIPS 198-1. Products that are FIPS 140-2 validated will have an HMAC that meets specification; however, the option must be configured for use as the only message authentication code use d for authentication to cryptographic modules.",
+      "severity": "high"
+    },
+    {
+      "id": "V-96475",
+      "title": "The Cisco router must be configured to implement cryptographic mechanisms to protect the confidentiality of remote maintenance sessions.",
+      "description": "This requires the use of secure protocols instead of their unsecured counterparts, such as SSH instead of telnet, SCP instead of FTP, and HTTPS instead of HTTP. If unsecured protocols (lacking cryptographic mechanisms) are used for sessions, the contents of those sessions will be susceptible to eavesdropping, potentially putting sensitive data (including administrator passwords) at risk of compromise and potentially allowing hijacking of maintenance sessions.",
+      "severity": "high"
+    },
+    {
+      "id": "V-96477",
+      "title": "The Cisco router must be configured to off-load log records onto a different system than the system being audited.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96479",
+      "title": "The Cisco router must notify the administrator of the number of successful logon attempts occurring during an organization-defined time period.",
+      "description": "Administrators need to be aware of activity that occurs regarding their network device management account. Providing administrators with information regarding the date and time of their last successful login allows the administrator to determine if any unauthorized activity has occurred. This incorporates all methods of login including, but not limited to, SSH, HTTP, HTTPS, and physical connectivity. The organization-defined time period is dependent on the frequency with which administrators typically log in to the network device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96481",
+      "title": "The Cisco router must use automated mechanisms to alert security personnel to threats identified by authoritative sources (e.g., CTOs) and in accordance with CJCSM 6510.01B.",
+      "description": "By immediately displaying an alarm message, potential security violations can be identified more quickly even when administrators are not logged into the network device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96483",
+      "title": "The Cisco router must be configured to use an authentication server for the purpose of authenticating users prior to granting administrative access.",
+      "description": "Centralized management of user accounts and authentication increases the administrative access to the router. This control is particularly important protection against the insider threat. With robust centralized management, audit records for administrator account access to the organization's network devices can be more readily analyzed for trends and anomalies. The alternative method of defining administrator accounts on each device exposes the device configuration to remote access authentication attacks and system administrators with multiple authenticators for each network device.",
+      "severity": "high"
+    },
+    {
+      "id": "V-96485",
+      "title": "The Cisco router must employ automated mechanisms to centrally apply authentication settings.",
+      "description": "The use of authentication servers or other centralized management servers for providing centralized authentication services is required for network device management. Maintaining local administrator accounts for daily usage on each network device without centralized management is not scalable or feasible. Without centralized management, it is likely that credentials for some network devices will be forgotten, leading to delays in administration, which itself leads to delays in remediating production problems and in addressing compromises in a timely fashion.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96487",
+      "title": "The Cisco router must employ automated mechanisms to centrally verify authentication settings.",
+      "description": "The use of authentication servers or other centralized management servers for providing centralized authentication services is required for network device management. Maintaining local administrator accounts for daily usage on each network device without centralized management is not scalable or feasible. Without centralized management, it is likely that credentials for some network devices will be forgotten, leading to delays in administration, which itself leads to delays in remediating production problems and in addressing compromises in a timely fashion.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96489",
+      "title": "The Cisco router must employ automated mechanisms to detect the addition of unauthorized components or devices.",
+      "description": "This requirement addresses configuration management of the network device. The network device must automatically detect the installation of unauthorized software or hardware onto the device itself. Monitoring may be accomplished on an ongoing basis or by periodic monitoring. Automated mechanisms can be implemented within the network device and/or in another separate information system or device. If the addition of unauthorized components or devices is not automatically detected, then such components or devices could be used for malicious purposes, such as transferring sensitive data to removable media for compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96491",
+      "title": "The Cisco router must be configured to back up the configuration when changes occur.",
+      "description": "System-level information includes default and customized settings and security attributes, including ACLs that relate to the network device configuration, as well as software required for the execution and operation of the device. Information system backup is a critical step in ensuring system integrity and availability. If the system fails and there is no backup of the system-level information, a denial of service condition is possible for all who utilize this critical network component.\n\nThis control requires the network device to support the organizational central backup process for system-level information associated with the network device. This function may be provided by the network device itself; however, the preferred best practice is a centralized backup rather than each network device performing discrete backups.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96493",
+      "title": "The Cisco router must employ automated mechanisms to assist in the tracking of security incidents.",
+      "description": "Despite the investment in perimeter defense technologies, enclaves are still faced with detecting, analyzing, and remediating network breaches and exploits that have made it past the network device. An automated incident response infrastructure allows network operations to immediately react to incidents by identifying, analyzing, and mitigating any network device compromise. Incident response teams can perform root cause analysis, determine how the exploit proliferated, and identify all affected nodes, as well as contain and eliminate the threat.\n\nThe network device assists in the tracking of security incidents by logging detected security events. The audit log and network device application logs capture different types of events. The audit log tracks audit events occurring on the components of the network device. The application log tracks the results of the network device content filtering function. These logs must be aggregated into a centralized server and can be used as part of the organization's security incident tracking and analysis.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96495",
+      "title": "The Cisco router must be configured to obtain its public key certificates from an appropriate certificate policy through an approved service provider.",
+      "description": "For user certificates, each organization obtains certificates from an approved, shared service provider, as required by OMB policy. For federal agencies operating a legacy public key infrastructure cross-certified with the Federal Bridge Certification Authority (CA) at medium assurance or higher, this Certification Authority will suffice.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96497",
+      "title": "The Cisco router must be configured to send log data to a syslog server for the purpose of forwarding alerts to the administrators and the ISSO.",
+      "description": "The aggregation of log data kept on a syslog server can be used to detect attacks and trigger an alert to the appropriate security personnel. The stored log data can used to detect weaknesses in security that enable the network IA team to find and address these weaknesses before breaches can occur. Reviewing these logs, whether before or after a security breach, are important in showing whether someone is an internal employee or an outside threat.",
+      "severity": "high"
+    },
+    {
+      "id": "V-96499",
+      "title": "The Cisco router must be configured to send SNMP traps and notifications to the SNMP manager for the purpose of sending alarms and notifying appropriate personnel as required by specific events.",
+      "description": "If appropriate actions are not taken when a network device failure occurs, a denial of service condition may occur which could result in mission failure since the network would be operating without a critical security monitoring and prevention function. Upon detecting a failure of any router components, the router must activate a system alert message, send an alarm, or shut down. By immediately displaying an alarm message, potential security violations can be identified more quickly even when administrators are not logged into the device. This can be facilitated by the router sending SNMP traps to the SNMP manager that can then have the necessary action taken by automatic or operator intervention.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-96501",
+      "title": "The Cisco router must be running an IOS release that is currently supported by Cisco Systems.",
+      "description": "Network devices running an unsupported operating system lack current security fixes required to mitigate the risks associated with recent vulnerabilities. Running a supported release also enables operations to maintain a stable and reliable network provided by improved quality of service and security features.",
+      "severity": "high"
+    }
+  ]
+}

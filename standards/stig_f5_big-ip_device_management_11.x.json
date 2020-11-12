@@ -1,6 +1,6 @@
 {
   "name": "stig_f5_big-ip_device_management_11.x",
-  "date": "2017-06-27",
+  "date": "2019-12-20",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "F5 BIG-IP Device Management 11.x Security Technical Implementation Guide",
   "version": "1",
@@ -9,7 +9,7 @@
   "items": [
     {
       "id": "V-60091",
-      "title": "The BIG-IP appliance must be configured to limit the number of concurrent sessions to one (1) for each administrator account and/or administrator account type.",
+      "title": "The BIG-IP appliance must limit the number of concurrent sessions to the Configuration Utility to 10 or an organization-defined number.",
       "description": "Device management includes the ability to control the number of administrators and management sessions that manage a device. Limiting the number of allowed administrators and sessions per administrator is helpful in limiting risks related to DoS attacks.\n\nThis requirement addresses concurrent sessions for administrative accounts and does not address concurrent sessions by a single administrator via multiple administrative accounts. The maximum number of concurrent sessions should be defined based upon mission needs and the operational environment for each system.",
       "severity": "medium"
     },
@@ -461,6 +461,12 @@
       "id": "V-60255",
       "title": "The BIG-IP appliance must be configured to use mechanisms meeting the requirements of applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for authentication to a cryptographic module.",
       "description": "Unapproved mechanisms that are used for authentication to the cryptographic module are not verified and therefore cannot be relied upon to provide confidentiality or integrity, and DoD data may be compromised.\n\nNetwork devices utilizing encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules.\n\nFIPS 140-2 is the current standard for validating that mechanisms used to access cryptographic modules utilize authentication that meets DoD requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-97729",
+      "title": "The F5 BIG-IP must ensure SSH is disabled for root user logon to prevent remote access using the root account.",
+      "description": "The F5 BIG-IP shell must be locked down to limit the ability to modify the configuration through the shell. Preventing attackers from remotely accessing management functions using root account mitigates the risk that unauthorized individuals or processes may gain superuser access to information or privileges. Additionally, the audit records for actions taken using the group account will not identify the specific person who took the actions.",
       "severity": "medium"
     }
   ]

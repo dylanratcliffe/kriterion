@@ -1,0 +1,35 @@
+{
+  "name": "stig_citrix_xendesktop_7.x_delivery_controller",
+  "date": "2020-03-27",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Citrix XenDesktop 7.x Delivery Controller Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-81403",
+      "title": "Delivery Controller must limit the number of concurrent sessions to an organization-defined number for all accounts and/or account types.",
+      "description": "Application management includes the ability to control the number of users and user sessions that utilize an application. Limiting the number of allowed users and sessions per user is helpful in limiting risks related to Denial-of-Service (DoS) attacks.\n\nThis requirement may be met via the application or by using information system session control provided by a web server with specialized session management capabilities. If it has been specified that this requirement will be handled by the application, the capability to limit the maximum number of concurrent single user sessions must be designed and built into the application. \n\nThis requirement addresses concurrent sessions for information system accounts and does not address concurrent sessions by single users via multiple system accounts. The maximum number of concurrent sessions should be defined based on mission needs and the operational environment for each system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81407",
+      "title": "Delivery Controller must be configured to disable non-essential capabilities.",
+      "description": "It is detrimental for applications to provide or install by default functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nApplications are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include but are not limited to advertising software or browser plug-ins not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81409",
+      "title": "Delivery Controller must implement NIST FIPS-validated cryptography for the following: to provision digital signatures; to generate cryptographic hashes; and to protect unclassified information requiring confidentiality and cryptographic protection in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.",
+      "description": "Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data. The application must implement cryptographic modules adhering to the higher standards approved by the Federal Government since this provides assurance they have been tested and validated.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81411",
+      "title": "Delivery Controller must be configured in accordance with the security configuration settings based on DoD security configuration or implementation guidance, including STIGs, NSA configuration guides, CTOs, and DTMs.",
+      "description": "Configuring the application to implement organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoD that reflects the most restrictive security posture consistent with operational requirements. \n\nConfiguration settings are the set of parameters that can be changed that affects the security posture and/or functionality of the system. Security-related parameters are parameters impacting the security state of the application, including the parameters required to satisfy other security control requirements.",
+      "severity": "medium"
+    }
+  ]
+}

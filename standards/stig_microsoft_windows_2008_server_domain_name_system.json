@@ -1,6 +1,6 @@
 {
   "name": "stig_microsoft_windows_2008_server_domain_name_system",
-  "date": "2018-04-05",
+  "date": "2019-12-19",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Microsoft Windows 2008 Server Domain Name System Security Technical Implementation Guide",
   "version": "1",

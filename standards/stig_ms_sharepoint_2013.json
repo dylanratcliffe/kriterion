@@ -1,6 +1,6 @@
 {
   "name": "stig_ms_sharepoint_2013",
-  "date": "2018-04-02",
+  "date": "2019-09-30",
   "description": "Developed by Microsoft in coordination with DISA for use in the DoD. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "MS SharePoint 2013 Security Technical Implementation Guide",
   "version": "1",
@@ -94,32 +94,32 @@
     {
       "id": "V-59965",
       "title": "SharePoint must implement required cryptographic protections using cryptographic modules complying with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.",
-      "description": "Cryptography is only as strong as the encryption modules/algorithms employed to encrypt the data.\n\nUse of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data.",
+      "description": "Certain encryption types are no longer considered secure.  This setting configures a minimum encryption type for SharePoint. Different versions of the Windows Server OS, and versions of SharePoint will have different suites available.",
       "severity": "high"
     },
     {
       "id": "V-59967",
       "title": "SharePoint must employ FIPS-validated cryptography to protect unclassified information.",
-      "description": "Cryptography is only as strong as the encryption modules/algorithms employed to encrypt the data.\n\nUse of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data.",
+      "description": "Certain encryption types are no longer considered secure.  This setting configures a minimum encryption type for SharePoint. Different versions of the Windows Server OS, and versions of SharePoint will have different suites available.",
       "severity": "high"
     },
     {
       "id": "V-59969",
       "title": "SharePoint must employ NSA-approved cryptography to protect classified information.",
-      "description": "Cryptography is only as strong as the encryption modules/algorithms employed to encrypt the data. Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data.\n\nNSA has developed Type 1 algorithms for protecting classified information. The Committee on National Security Systems (CNSS) National Information Assurance Glossary (CNSS Instruction No. 4009) defines Type 1 products as:\n\n\"Cryptographic equipment, assembly or component classified or certified by NSA for encrypting and decrypting classified and sensitive national security information when appropriately keyed. Developed using established NSA business processes and containing NSA-approved algorithms\nused to protect systems requiring the most stringent protection mechanisms.\"\n\nNSA-approved cryptography is required to be used for classified information system processing.",
+      "description": "Certain encryption types are no longer considered secure.  This setting configures a minimum encryption type for SharePoint. Different versions of the Windows Server OS, and versions of SharePoint will have different suites available.",
       "severity": "high"
     },
     {
       "id": "V-59971",
       "title": "SharePoint must employ FIPS-validated cryptography to protect unclassified information when such information must be separated from individuals who have the necessary clearances yet lack the necessary access approvals.",
-      "description": "Cryptography is only as strong as the encryption modules/algorithms employed to encrypt the data. Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. FIPS 140-2 Security Requirements for Cryptographic Modules can be found at the following web site: http://csrc.nist.gov/publications/fips/fips140-2/fips1402.pdf.\n\nAlthough persons may have a security clearance, they may not have a \"need to know\" and are required to be separated from the information in question. Applications must employ FIPS-validated cryptography to protect unclassified information from those individuals who have no \"need to know\".",
+      "description": "Certain encryption types are no longer considered secure.  This setting configures a minimum encryption type for SharePoint. Different versions of the Windows Server OS, and versions of SharePoint will have different suites available.",
       "severity": "high"
     },
     {
       "id": "V-59973",
       "title": "SharePoint must validate the integrity of security attributes exchanged between systems.",
       "description": "When data is exchanged between information systems, the security attributes associated with said data need to be maintained.\n\nSecurity attributes are an abstraction representing the basic properties or characteristics of an entity with respect to safeguarding information, typically associated with internal data structures (e.g., records, buffers, files) within the information system and used to enable the implementation of access control and flow control policies, reflect special dissemination, handling or distribution instructions, or support other aspects of the information security policy.\n\nSecurity attributes may be explicitly or implicitly associated with the information contained within the information system.",
-      "severity": "high"
+      "severity": "medium"
     },
     {
       "id": "V-59975",
@@ -166,7 +166,7 @@
     {
       "id": "V-59989",
       "title": "SharePoint must use mechanisms for authentication to a cryptographic module that meet the requirements of applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for such authentication.",
-      "description": "Encryption is only as good as the encryption modules utilized. Unapproved cryptographic module algorithms cannot be verified, and cannot be relied upon to provide confidentiality or integrity and DoD data may be compromised due to weak algorithms.\n\nApplications utilizing encryption are required to use approved encryption modules that meet the requirements of applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nFIPS 140-2 is the current standard for validating cryptographic modules and NSA Type-X (where X=1, 2, 3, 4) products are NSA certified hardware based encryption modules.",
+      "description": "Certain encryption types are no longer considered secure.  This setting configures a minimum encryption type for SharePoint. Different versions of the Windows Server OS, and versions of SharePoint will have different suites available.",
       "severity": "high"
     },
     {

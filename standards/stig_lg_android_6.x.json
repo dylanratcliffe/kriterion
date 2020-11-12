@@ -1,6 +1,6 @@
 {
   "name": "stig_lg_android_6.x",
-  "date": "2016-05-05",
+  "date": "2019-02-21",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "LG Android 6.x Security Technical Implementation Guide",
   "version": "1",
@@ -276,6 +276,12 @@
       "title": "LG Android 6.x must implement the management setting: Disable allow copy and paste between Work Profile and personal space.\n\nThis requirement is only valid for activation type COPE#2.",
       "description": "Allowing movement of data between the container and personal side will result in both personal data and sensitive DoD data being placed in the same space. This can potentially result in DoD data being transmitted to non-authorized recipients via personal email accounts or social applications. Disabling this feature mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
       "severity": "medium"
+    },
+    {
+      "id": "V-91783",
+      "title": "Only authorized versions of the LG Android OS must be used.",
+      "description": "The LG Android OS 6 is no longer supported by LG and therefore, may contain security vulnerabilities. The LG Android OS 6 is not authorized within the DoD. ",
+      "severity": "high"
     }
   ]
 }

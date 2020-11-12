@@ -1,6 +1,6 @@
 {
   "name": "stig_cisco_ios_xe_release_3_ndm",
-  "date": "2018-03-08",
+  "date": "2018-12-20",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "Cisco IOS XE Release 3 NDM Security Technical Implementation Guide",
   "version": "1",

@@ -1,0 +1,305 @@
+{
+  "name": "stig_ibm_mq_appliance_v9.0_ndm",
+  "date": "2017-06-06",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "IBM MQ Appliance v9.0 NDM Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-74923",
+      "title": "Access to the MQ Appliance network device must limit the number of concurrent sessions to an organization-defined number for each administrator account and/or administrator account type.",
+      "description": "MQ Appliance device management includes the ability to control the number of administrators and management sessions that manage a device. Limiting the number of allowed administrators and sessions per administrator is helpful in limiting risks related to DoS attacks. \n\nThis requirement addresses concurrent sessions for administrative accounts and does not address concurrent sessions by a single administrator via multiple administrative accounts. The maximum number of concurrent sessions should be defined based upon mission needs and the operational environment for each system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74925",
+      "title": "Access to the MQ Appliance network element must use two or more authentication servers for the purpose of granting administrative access.",
+      "description": "All accounts used for access to the MQ Appliance network device are privileged or system-level accounts. Therefore, if account management functions are not automatically enforced, an attacker could gain privileged access to a vital element of the network security architecture. \n\nThe use of Authentication, Authorization, and Accounting (AAA) affords the best methods for controlling user access, authorization levels, and activity logging. By enabling AAA on the routers in conjunction with an authentication server such as TACACS+ or RADIUS, the administrators can easily add or remove user accounts, add or remove command authorizations, and maintain a log of user activity. \n\nThe use of an authentication server provides the capability to assign device administrators to tiered groups that contain their privilege level, which is used for authorization of specific commands. \n\nThis control does not include emergency administration accounts that provide access to the MQ Appliance network device components in case of network failure. There must be only one such locally defined account. All other accounts must be defined. All other accounts must be created and managed on the site's authentication server (e.g., RADIUS, LDAP, or Active Directory). This requirement is applicable to account management functions provided by the MQ Appliance network device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74927",
+      "title": "The MQ Appliance network device access must automatically disable accounts after a 35-day period of account inactivity.",
+      "description": "Since the accounts in the MQ Appliance network device are privileged or system-level accounts, account management is vital to the security of the MQ Appliance network device. Inactive accounts could be reactivated or compromised by unauthorized users, allowing exploitation of vulnerabilities and undetected access to the MQ Appliance network device. \n\nThis control does not include emergency administration accounts, which are meant for access to the MQ Appliance network device components in case of network failure.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74929",
+      "title": "The MQ Appliance network device must enforce the limit of three consecutive invalid logon attempts by a user during a 15-minute time period.",
+      "description": "By limiting the number of failed logon attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute forcing, is reduced.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74931",
+      "title": "The MQ Appliance network device must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the device.",
+      "description": "Display of the DoD-approved use notification before granting access to the MQ Appliance network device ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. \n\nSystem use notifications are required only for access via logon interfaces with human users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74933",
+      "title": "The MQ Appliance network device must notify the administrator of changes to access and/or privilege parameters of the administrator account that occurred since the last logon.",
+      "description": "Providing administrators with information regarding security-related changes to their account allows them to determine if any unauthorized activity has occurred. Changes to the account could be an indication of the account being compromised. Hence, without notification to the administrator, the compromise could go undetected if other controls were not in place to mitigate this risk. \n\nUsing a syslog logging target, the MQ Appliance logs all changes to access or privilege parameters. Logging may be set to the following logging levels in descending order of criticality: debug, info, notice, warn, error, alert, emerg. The default is notice.\n\nIt is the responsibility of the sysadmin to configure the triggers necessary to send alerts based upon information received at the syslog server. To meet the requirement, the sysadmin must trigger notification upon receiving the following audit event: 0x8240001f. Changes to access and/or privilege parameters will fall into this event category. Ask the admin to provide evidence these alerts are configured.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74935",
+      "title": "The MQ Appliance network device must protect against an individual (or process acting on behalf of an individual) falsely denying having performed organization-defined actions to be covered by non-repudiation.",
+      "description": "This requirement supports non-repudiation of actions taken by an administrator and is required in order to maintain the integrity of the configuration management process. All configuration changes to the MQ Appliance network device are logged, and administrators authenticate with two-factor authentication before gaining administrative access. Together, these processes will ensure the administrators can be held accountable for the configuration changes they implement. \n\nUsing a syslog logging target, the MQ Appliance logs configuration changes to the device. Logging may be set to the following logging levels in descending order of criticality: debug, info, notice, warn, error, alert, emerg. The default is notice.\n\nSatisfies: SRG-APP-000080-NDM-000220, SRG-APP-000095-NDM-000225, SRG-APP-000097-NDM-000227, SRG-APP-000098-NDM-000228, SRG-APP-000100-NDM-000230, SRG-APP-000319-NDM-000283",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74937",
+      "title": "The MQ Appliance network device must alert the Information System Security Officer (ISSO) and System Administrator (SA) (at a minimum) in the event of an audit processing failure.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without this notification, the security personnel may be unaware of an impending failure of the audit capability and system operation may be adversely affected. \n\nAudit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded. \n\nUsing a syslog logging target, the MQ Appliance logs audit events, including audit processing failures. Logging may be set to the following logging levels in descending order of criticality: debug, info, notice, warn, error, alert, emerg. The default is notice. \n\nThe MQ appliance is configured to create the event in the logs that will be used to send an alert. The alerting process must be performed by a third-party alerting utility, centralized log management, or SIEM.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74939",
+      "title": "The MQ Appliance network device must back up audit records at least every seven days onto a different system or system component than the system or component being audited.",
+      "description": "Protection of log data includes assuring log data is not accidentally lost or deleted. Regularly backing up audit records to a different system or onto separate media than the system being audited helps to assure, in the event of a catastrophic system failure, the audit records will be retained. This helps to ensure a compromise of the information system being audited does not also result in a compromise of the audit records. \n\nUsing a syslog logging target, the MQ Appliance logs audit events, including the continuous backup of audit records. Logging may be set to the following logging levels in descending order of criticality: debug, info, notice, warn, error, alert, emerg. The default is notice.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74941",
+      "title": "The MQ Appliance network device must uniquely identify and authenticate organizational administrators (or processes acting on behalf of organizational administrators).",
+      "description": "To assure accountability and prevent unauthenticated access to the MQ Appliance, organizational administrators must be uniquely identified and authenticated for all network management accesses to prevent potential misuse and compromise of the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74943",
+      "title": "In the event the authentication server is unavailable, the MQ Appliance must provide one local account created for emergency administration use.",
+      "description": "Authentication for administrative (privileged level) access to the MQ Appliance is required at all times. An account can be created on the device's local database for use in an emergency, such as when the authentication server is down or connectivity between the device and the authentication server is not operable. This account is also referred to as the account of last resort since the emergency administration account is strictly intended to be used only as a last resort and immediate administrative access is absolutely necessary. \n\nThe number of emergency administration accounts is restricted to at least one, but no more than operationally required as determined by the Information System Security Officer (ISSO). The emergency administration account logon credentials must be stored in a sealed envelope and kept in a safe. \n\nMQ provides the Fallback user account to provide access to the MQ appliance in the event the centralized authentication server is not available.v",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74945",
+      "title": "The MQ Appliance network device must use multifactor authentication for network access to privileged accounts.",
+      "description": "Multifactor authentication requires using two or more factors to achieve authenticated access to the MQ Appliance. Factors include: \n\n(i) something a user knows (e.g., password/PIN); \n(ii) something a user has (e.g., cryptographic identification device, token); or \n(iii) something a user is (e.g., biometric). \n\nWithout the use of multifactor authentication, the ease of access to privileged functions is greatly increased. \n\nNetwork access is defined as access to an information system by a user (or a process acting on behalf of a user) communicating through a network (e.g., local area network, wide area network, or the Internet).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74947",
+      "title": "When connecting to the MQ Appliance network device using the WebGUI, it must implement replay-resistant authentication mechanisms for network access to privileged accounts.",
+      "description": "A replay attack may enable an unauthorized user to gain access to the MQ Appliance. Authentication sessions between the authenticator and the application validating the user credentials must not be vulnerable to a replay attack. \n\nAn authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message. \n\nTechniques used to address this include protocols using nonces (e.g., numbers generated for a specific one-time use) or challenges (e.g., TLS, WS_Security). Additional techniques include time-synchronous or challenge-response one-time authenticators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74949",
+      "title": "The MQ Appliance network device must enforce a minimum 15-character password length.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. Password length is one factor of several that helps to determine strength and how long it takes to crack a password. \n\nThe shorter the password, the lower the number of possible combinations that need to be tested before the password is compromised. Use of more characters in a password helps to exponentially increase the time and/or resources required to compromise the password. \n\nFor LDAP authentication, the authentication server is responsible for enforcing password policy. When the LDAP server is not available, password policy is enforced by the MQ Appliance's RBM password policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74951",
+      "title": "The MQ Appliance network device must prohibit password reuse for a minimum of five generations.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nTo meet password policy requirements, passwords need to be changed at specific policy-based intervals. \n\nIf the MQ Appliance network device allows the user to consecutively reuse their password when that password has exceeded its defined lifetime, the end result is a password that is not changed as per policy requirements. \n\nFor LDAP authentication, the authentication server is responsible for enforcing password policy. When the LDAP server is not available, password policy is enforced by the MQ Appliance's RBM Password Policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74953",
+      "title": "The MQ Appliance network device must enforce password complexity by requiring that at least one upper-case character be used.",
+      "description": "Use of a complex passwords helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password is, the greater the number of possible combinations that need to be tested before the password is compromised. \n\nFor LDAP authentication, the authentication server is responsible for enforcing password policy. When the LDAP server is not available, password policy is enforced by the MQ Appliance's RBM Password Policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74955",
+      "title": "The MQ Appliance network device must enforce password complexity by requiring that at least one lower-case character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised. \n\nFor LDAP authentication, the authentication server is responsible for enforcing password policy. When the LDAP server is not available, password policy is enforced by the MQ Appliance's RBM Password Policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74957",
+      "title": "The MQ Appliance network device must enforce password complexity by requiring that at least one numeric character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised. \n\nFor LDAP authentication, the authentication server is responsible for enforcing password policy. When the LDAP server is not available, password policy is enforced by the MQ Appliance's RBM Password Policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74959",
+      "title": "The MQ Appliance network device must enforce password complexity by requiring that at least one special character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised. \n\nFor LDAP authentication, the authentication server is responsible for enforcing password policy. When the LDAP server is not available, password policy is enforced by the MQ Appliance's RBM Password Policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74961",
+      "title": "Authorization for access to the MQ Appliance network device must enforce a 60-day maximum password lifetime restriction.",
+      "description": "Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed at specific intervals. \n\nOne method of minimizing this risk is to use complex passwords and periodically change them. If the MQ Appliance network device does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the passwords could be compromised. \n\nThis requirement does not include emergency administration accounts meant for access to the MQ Appliance network device in case of failure. These accounts are not required to have maximum password lifetime restrictions. \n\nFor LDAP authentication, the authentication server is responsible for enforcing password policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74969",
+      "title": "WebGUI access to the MQ Appliance network device, when using PKI-based authentication, must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.",
+      "description": "Without path validation, an informed trust decision by the relying party cannot be made when presented with any certificate not already explicitly trusted. \n\nA trust anchor is an authoritative entity represented via a public key and associated data. It is used in the context of public key infrastructures, X.509 digital certificates, and DNSSEC. \n\nWhen there is a chain of trust, usually the top entity to be trusted becomes the trust anchor; it can be, for example, a Certification Authority (CA). A certification path starts with the subject certificate and proceeds through a number of intermediate certificates up to a trusted root certificate, typically issued by a trusted CA. \n\nThis requirement verifies that a certification path to an accepted trust anchor is used for certificate validation and that the path includes status information. Path validation is necessary for a relying party to make an informed trust decision when presented with any certificate not already explicitly trusted. Status information for certification paths includes certificate revocation lists or online certificate status protocol responses. Validation of the certificate status information is out of scope for this requirement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74971",
+      "title": "WebGUI access to the MQ Appliance network device must map the authenticated identity to the user account for PKI-based authentication.",
+      "description": "Authorization for access to any MQ Appliance network device requires an approved and assigned individual account identifier. To ensure only the assigned individual is using the account, the account must be bound to a user certificate when PKI-based authentication is implemented.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74973",
+      "title": "The MQ Appliance network device must use mechanisms meeting the requirements of applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for authentication to a cryptographic module.",
+      "description": "Unapproved mechanisms that are used for authentication to the cryptographic module are not verified and therefore cannot be relied upon to provide confidentiality or integrity, and DoD data may be compromised. \n\nMQ Appliance network devices utilizing encryption are required to use FIPS-compliant mechanisms for authenticating to cryptographic modules. \n\nFIPS 140-2 is the current standard for validating that mechanisms used to access cryptographic modules utilize authentication that meets DoD requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74975",
+      "title": "The WebGUI of the MQ Appliance network device must terminate all sessions and network connections when nonlocal device maintenance is completed.",
+      "description": " If an MQ Appliance device management session or connection remains open after management is completed, it may be hijacked by an attacker and used to compromise or damage the MQ Appliance network device. \n\nNonlocal MQ Appliance device management and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the Internet) or an internal network. \n\nIn the event the remote node has abnormally terminated or an upstream link from the managed device is down, the management session will be terminated, thereby freeing device resources and eliminating any possibility of an unauthorized user being orphaned to an open idle session of the managed device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74977",
+      "title": "The WebGUI of the MQ Appliance network device must terminate all network connections associated with a device management session at the end of the session, or the session must be terminated after 10 minutes of inactivity except to fulfill documented and validated mission requirements.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element. \n\nTerminating network connections associated with communications sessions includes, for example, deallocating associated TCP/IP address/port pairs at the operating system level or deallocating networking assignments at the application level if multiple application sessions are using a single, operating system-level network connection. This does not mean that the device terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74979",
+      "title": "The SSH CLI of the MQ Appliance network device must terminate all network connections associated with a device management session at the end of the session, or the session must be terminated after 10 minutes of inactivity except to fulfill documented and validated mission requirements.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element. \n\nTerminating network connections associated with communications sessions includes, for example, deallocating associated TCP/IP address/port pairs at the operating system level or deallocating networking assignments at the application level if multiple application sessions are using a single, operating system-level network connection. This does not mean that the device terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74981",
+      "title": "The MQ Appliance network device must generate unique session identifiers using a FIPS 140-2 approved random number generator.",
+      "description": "Sequentially generated session IDs can be easily guessed by an attacker. Employing the concept of randomness in the generation of unique session identifiers helps to protect against brute-force attacks to determine future session identifiers. \n\nUnique session IDs address man-in-the-middle attacks, including session hijacking or insertion of false information into a session. If the attacker is unable to identify or guess the session information related to pending application traffic, they will have more difficulty in hijacking the session or otherwise manipulating valid sessions. \n\nThis requirement is applicable to devices that use a web interface for MQ Appliance device management.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74983",
+      "title": "The MQ Appliance network device must activate a system alert message, send an alarm, and/or automatically shut down when a component failure is detected.",
+      "description": "Predictable failure prevention requires organizational planning to address device failure issues. If components key to maintaining the device's security fail to function, the device could continue operating in an insecure state. \n\nIf appropriate actions are not taken when an MQ Appliance network device failure occurs, a denial of service condition may occur, which could result in mission failure since the network would be operating without a critical security monitoring and prevention function. \n\nUpon detecting a failure of MQ Appliance network device security components, the MQ Appliance network device must activate a system alert message, send an alarm, or shut down. \n\nWith failure notification enabled, an error report can be sent to a designated recipient or uploaded to a specific location after the appliance returns to service from an unscheduled outage. \n\nThis error report can contain diagnostic details. Intrusion detection will provide a warning and restart in Fail-Safe mode. (See https://ibm.biz/Bd4NJ5)",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74985",
+      "title": "The MQ Appliance network device must generate account activity alerts that are forwarded to the administrators and Information System Security Officer (ISSO). Activity includes, creation, removal, modification and re-enablement after being previously disabled.",
+      "description": "Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply create a new account. Notification of account creation is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail that documents the creation of accounts and notifies administrators and ISSOs. Such a process greatly reduces the risk that accounts will be surreptitiously created and provides logging that can be used for forensic purposes. \n\nUsing a syslog logging target, the MQ Appliance logs audit events, including when accounts are created. Logging may be set to the following logging levels in descending order of criticality: debug, info, notice, warn, error, alert, emerg. The default is notice. \n\nIt is the responsibility of the sysadmin to configure the triggers necessary to send alerts based upon information received at the syslog server. To meet the current requirement, the sysadmin must configure trigger notifications upon receiving the following audit events in the syslog server: 0x8240001f and 0x810001f0. Changes to access and/or privilege parameters will fall into this event category.\n\nSatisfies: SRG-APP-000291-NDM-000275, SRG-APP-000292-NDM-000276, SRG-APP-000293-NDM-000277, SRG-APP-000294-NDM-000278, SRG-APP-000319-NDM-000283, SRG-APP-000320-NDM-000284",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74987",
+      "title": "The MQ Appliance network device must automatically terminate a network administrator session after organization-defined conditions or trigger events requiring session disconnect.",
+      "description": "Automatic session termination addresses the termination of administrator-initiated logical sessions in contrast to the termination of network connections that are associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever an administrator (or process acting on behalf of a user) accesses an MQ Appliance network device. Such administrator sessions can be terminated (and thus terminate network administrator access) without terminating network sessions. \n\nSession termination terminates all processes associated with an administrator's logical session, except processes specifically created by the administrator (i.e., session owner) to continue after the session is terminated. \n\nConditions or trigger events requiring automatic session termination can include, for example, organization-defined periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use. These conditions will vary across environments and MQ Appliance network device types.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74989",
+      "title": "The MQ Appliance network device must terminate shared/group account credentials when members leave the group.",
+      "description": "A shared/group account credential is a shared form of authentication that allows multiple individuals to access the MQ Appliance network device using a single account. If shared/group account credentials are not terminated when individuals leave the group, the user that left the group can still gain access even though they are no longer authorized. \n\nThe only local account on the MQ Appliance should be the emergency admin account of last resort referred to as the \"Fallback user\". \n\nThis account is automatically inactive and not accessible as long as LDAP access is enabled. If network access to the LDAP server is lost, the MQ appliance will automatically enable the Fallback user account to allow for emergency administrative access. \n\nIf a former admin knows the Fallback user password, still has network access, and can force the MQ appliance to not communicate with the LDAP server, they could access the MQ appliance using the Fallback user credentials. \n\nThe Fallback user account password must be changed whenever MQ administrators leave the group/team or if their roles change and they no longer require access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74991",
+      "title": "The MQ Appliance network device must notify the administrator, upon successful logon (access), of the location of last logon (terminal or IP address) in addition to the result, date and time of the last logon (access).",
+      "description": "Administrators need to be aware of activity that occurs regarding their account. Providing them with information deemed important by the organization may aid in the discovery of unauthorized access or thwart a potential attacker. \n\nOrganizations should consider the risks to the specific information system being accessed and the threats presented by the device to the environment when configuring this option. An excessive or unnecessary amount of information presented to the administrator at logon is not recommended.\n\nMQ provides logon information including date, time and source IP information in event logs. A third party log monitoring solution that monitors the logs for unsuccessful logons and corresponding date, time and location information must be utilized to provide the notification.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74993",
+      "title": "The MQ Appliance network device must generate an immediate alert when allocated audit record storage volume reaches 75 percent of repository maximum audit record storage capacity.",
+      "description": "If security personnel are not notified immediately upon storage volume utilization reaching 75 percent, they are unable to plan for storage capacity expansion. This could lead to the loss of audit information. Note that while the MQ Appliance network device must generate the alert, notification may be done by a management server. \n\nAt the syslog server, set up event notification triggers for the following event codes: 0x80c0006a, 0x82400067, 0x00330034, 0x80400080. \n\nNote: The above notifications will occur if there is an interruption in logging information being sent to its intended external logging target. Configuring notification of storage capacity events occurring at the external logging server (e.g., 75 percent capacity) is the responsibility of that server's server administrator.\n\nSatisfies: SRG-APP-000359-NDM-000294, SRG-APP-000360-NDM-000295",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74995",
+      "title": "The MQ Appliance network device must compare internal information system clocks at least every 24 hours with an authoritative time server.",
+      "description": "Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. Sources outside of the configured acceptable allowance (drift) may be inaccurate. Additionally, unnecessary synchronization may have an adverse impact on system performance and may indicate malicious activity. Synchronizing internal information system clocks provides uniformity of time stamps for information systems with multiple system clocks and systems connected over a network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74997",
+      "title": "The MQ Appliance network device must synchronize internal information system clocks to the authoritative time source when the time difference is greater than the organization-defined time period.",
+      "description": "Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. \n\nSynchronizing internal information system clocks provides uniformity of time stamps for information systems with multiple system clocks and systems connected over a network. Organizations should consider setting time periods for different types of systems (e.g., financial, legal, or mission-critical systems). Organizations should also consider endpoints that may not have regular access to the authoritative time server (e.g., mobile, teleworking, and tactical endpoints). This requirement is related to the comparison done every 24 hours in CCI-001891 because a comparison must be done in order to determine the time difference. \n\nThe organization-defined time period will depend on multiple factors, most notably the granularity of time stamps in audit logs. For example, if time stamps only show to the nearest second, there is no need to have accuracy of a tenth of a second in clocks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74999",
+      "title": "The MQ Appliance network device must be configured to synchronize internal information system clocks with the primary and secondary time sources located in different geographic regions using redundant authoritative time sources.",
+      "description": "The loss of connectivity to a particular authoritative time source will result in the loss of time synchronization (free-run mode) and increasingly inaccurate time stamps on audit events and other functions. \n\nMultiple time sources provide redundancy by including a secondary source. Time synchronization is usually a hierarchy; clients synchronize time to a local source while that source synchronizes its time to a more accurate source. The MQ Appliance network device must use an authoritative time server and/or be configured to use redundant authoritative time sources. This requirement is related to the comparison done in CCI-001891. \n\nDoD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DoD network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75001",
+      "title": "WebGUI access to the MQ Appliance network device must accept Personal Identity Verification (PIV) credentials.",
+      "description": "The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access. \n\nDoD has mandated the use of the CAC to support identity management and personal authentication for systems covered under HSPD 12, as well as a primary component of layered protection for national security systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75003",
+      "title": "WebGUI access to the MQ Appliance network device must electronically verify Personal Identity Verification (PIV) credentials.",
+      "description": "The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access. \n\nDoD has mandated the use of the CAC to support identity management and personal authentication for systems covered under HSPD 12, as well as a primary component of layered protection for national security systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75005",
+      "title": "The MQ Appliance network device must prohibit the use of cached authenticators after an organization-defined time period.",
+      "description": "Some authentication implementations can be configured to use cached authenticators. \n\nIf cached authentication information is out of date, the validity of the authentication information may be questionable. \n\nThe organization-defined time period should be established for each device depending on the nature of the device; for example, a device with just a few administrators in a facility with spotty network connectivity may merit a longer caching time period than a device with many administrators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75007",
+      "title": "Applications used for nonlocal maintenance sessions using the MQ Appliance WebGUI must implement cryptographic mechanisms to protect the confidentiality and integrity of nonlocal maintenance and diagnostic communications.",
+      "description": "This requires the use of secure protocols instead of their unsecured counterparts, such as SSH instead of telnet, SCP instead of FTP, and HTTPS instead of HTTP. If unsecured protocols (lacking cryptographic mechanisms) are used for sessions, the contents of those sessions will be susceptible to manipulation, potentially allowing alteration and hijacking of maintenance sessions.\n\nSatisfies: SRG-APP-000411-NDM-000330, SRG-APP-000412-NDM-000331",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75009",
+      "title": "The MQ Appliance network device must generate audit records when concurrent logons from different workstations occur.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nUsing a syslog logging target, the MQ Appliance logs all logons to the device-, including the source, time and date, and identity of the user. Logging may be set to the following logging levels in descending order of criticality: debug, info, notice, warn, error, alert, emerg. The default is notice. \n\nAudit records can be generated from various components within the MQ Appliance network device (e.g., module or policy filter). \n\nIt is the responsibility of the sysadmin to configure the triggers necessary to send alerts based upon information received at the syslog server. The sysadmin can trigger notifications upon receiving the following audit event: 0x81000033. This is the logon event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75011",
+      "title": "The MQ Appliance network device must generate audit records for all account creations, modifications, disabling, and termination events.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nUsing a syslog logging target, the MQ Appliance logs all audit events, including account creations, modifications, disabling, and termination events. Logging may be set to the following logging levels in descending order of criticality: debug, info, notice, warn, error, alert, emerg. The default is notice. \n\nAudit records can be generated from various components within the MQ Appliance network device (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75013",
+      "title": "The MQ Appliance network device must off-load audit records onto a different system or media than the system being audited.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration. Using a syslog logging target, the MQ Appliance logs all audit records to the syslog. Logging may be set to the following logging levels in descending order of criticality: debug, info, notice, warn, error, alert, emerg. The default is notice. \n\nOff-loading is a common process in information systems with limited audit storage capacity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75015",
+      "title": "The MQ Appliance network device must use automated mechanisms to alert security personnel to threats identified by authoritative sources (e.g., CTOs) and in association with CJCSM 6510.01B.",
+      "description": "By immediately displaying an alarm message, potential security violations can be identified more quickly even when administrators are not logged into the MQ Appliance network device. An example of a mechanism to facilitate this would be through the use of SNMP traps. \n\nUsing a syslog logging target, the MQ Appliance logs all audit and system events. Logging may be set to the following logging levels in descending order of criticality: debug, info, notice, warn, error, alert, emerg. The default is notice.\n\nIt is the responsibility of the sysadmin to configure the triggers necessary to send alerts based upon information received at the syslog server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75017",
+      "title": "Administrative accounts for device management must be configured on the authentication server and not the MQ Appliance network device itself (except for the emergency administration account).",
+      "description": "The use of authentication servers or other centralized management servers for providing centralized authentication services is required for network MQ Appliance device management. Maintaining local administrator accounts for daily usage on each MQ Appliance network device without centralized management is not scalable or feasible. Without centralized management, it is likely that credentials for some MQ Appliance network devices will be forgotten, leading to delays in administration, which itself leads to delays in remediating production problems and in addressing compromises in a timely fashion. \n\nAdministrative accounts for network MQ Appliance device management must be configured on the authentication server and not the MQ Appliance network device itself. The only exception is for the emergency administration account (also known as the account of last resort), which is configured locally on each device. Note that more than one emergency administration account may be permitted if approved.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75019",
+      "title": "Access to the MQ Appliance network device must employ automated mechanisms to centrally apply authentication settings.",
+      "description": "The use of authentication servers or other centralized management servers for providing centralized authentication services is required for network MQ Appliance device management. Maintaining local administrator accounts for daily usage on each MQ Appliance network device without centralized management is not scalable or feasible. Without centralized management, it is likely that credentials for some MQ Appliance network devices will be forgotten, leading to delays in administration, which itself leads to delays in remediating production problems and in addressing compromises in a timely fashion.\n\nSatisfies: SRG-APP-000516-NDM-000337, SRG-APP-000516-NDM-000338, SRG-APP-000325-NDM-000285",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75021",
+      "title": "The MQ Appliance network device must support organizational requirements to conduct backups of system level information contained in the information system when changes occur or weekly, whichever is sooner.",
+      "description": "System-level information includes default and customized settings and security attributes, including ACLs that relate to the MQ Appliance network device configuration, as well as software required for the execution and operation of the device. Information system backup is a critical step in ensuring system integrity and availability. If the system fails and there is no backup of the system-level information, a denial of service condition is possible for all who utilize this critical network component. \n\nThis control requires the MQ Appliance network device to support the organizational central backup process for system-level information associated with the MQ Appliance network device. This function may be provided by the MQ Appliance network device itself; however, the preferred best practice is a centralized backup rather than each MQ Appliance network device performing discrete backups.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75023",
+      "title": "The MQ Appliance network device must obtain its public key certificates from an appropriate certificate policy through an approved service provider.",
+      "description": "For user certificates, each organization obtains certificates from an approved, shared service provider as required by OMB policy. For federal agencies operating a legacy public key infrastructure cross-certified with the Federal Bridge Certification Authority at medium assurance or higher, this Certification Authority will suffice.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75025",
+      "title": "SSH CLI access to the MQ Appliance management interface must be restricted to approved management workstations.",
+      "description": "The approved method for authenticating to systems is via two-factor authentication. Two-factor authentication is defined as using something you have (e.g., CAC or token) and something you know (e.g., PIN). The SSH CLI in MQ does not have the native ability to use multifactor authentication. This increases the risk of user account compromise. Restricting access to the MQ SSH management interface helps to mitigate this risk. Access must be restricted to only those management workstations or networks that require access.",
+      "severity": "medium"
+    }
+  ]
+}

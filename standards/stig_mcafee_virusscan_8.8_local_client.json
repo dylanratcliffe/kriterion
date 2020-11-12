@@ -1,6 +1,6 @@
 {
   "name": "stig_mcafee_virusscan_8.8_local_client",
-  "date": "2018-04-04",
+  "date": "2018-07-09",
   "description": "The McAfee VirusScan 8.8 Local Client STIG is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the NIST 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "McAfee VirusScan 8.8 Local Client STIG",
   "version": "5",
@@ -327,7 +327,7 @@
     },
     {
       "id": "V-59365",
-      "title": "McAfee VirusScan Access Protection Rules Common Standard Protection must be set to block and report when common all programs are run from the Temp folder.",
+      "title": "McAfee VirusScan Access Protection Rules Anti-spyware Maximum Protection must be set to block and report when block execution of all programs from temp folder.",
       "description": "This rule will block any executable from running from the Temp directory; however, this rule is much more restrictive in that it stops nearly all processes from launching in the Temp folder. This provides the most protection, but also has a higher chance of blocking a legitimate application from being installed.\nIntention: Most viruses need to be run once by a person before infecting a computer. This can be done in many ways, such as opening an executable attachment in an email, downloading a program from the Internet, etc. For example, <http://vil.nai.com/vil/content/v_101034.htm>.\nAn executable needs to exist on the disk before Windows can run it. A common way for applications to achieve this is to save the file in the user’s or system’s Temp directory and then run it.\nOne purpose of this rule is to enforce advice that is frequently given to people: “don’t open attachments from email.” The other purpose of this rule is to close security holes introduced by application bugs. Older versions of Outlook and Internet Explorer are notorious for automatically executing code without the user needing to do anything but preview an email or view a website.\nRisks: All applications that are protected by these rules offer alternatives to running executables, such as saving them somewhere else on the disk and running from there. So the downside of the rules is that users may need to learn a few extra steps before doing things they can do more quickly now.\nNote: Enabling this rule may prevent some applications from functioning outright.",
       "severity": "medium"
     },

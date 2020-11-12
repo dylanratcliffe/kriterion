@@ -1,0 +1,59 @@
+{
+  "name": "stig_samsung_sds_emm_v1.5.x",
+  "date": "2017-01-20",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.\n",
+  "title": "Samsung SDS EMM v1.5.x Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-73201",
+      "title": "Before establishing a user session, the Samsung SDS EMM server must display an administrator-specified advisory notice and consent warning message regarding use of the Samsung SDS EMM server.",
+      "description": "Note: The advisory notice and consent warning message is not required if the General Purpose OS or Network Device displays an advisory notice and consent warning message when the administrator logs on to the General Purpose OS or Network Device prior to accessing the Samsung SDS EMM server or Samsung SDS EMM server platform.\n\nThe Samsung SDS EMM server/server platform is required to display the DoD-approved system use notification message or banner before granting access to the system that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. This ensures the legal requirements for auditing and monitoring are met. \n\nThe approved DoD text must be used as specified in KS referenced in DoDI 8500.01.\n\nThe non-bracketed text below must be used without any changes as the warning banner. \n\n[A. Use this banner for desktops, laptops, and other devices accommodating banners of 1300 characters. The banner shall be implemented as a click-through banner at logon (to the extent permitted by the operating system), meaning it prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating “OK.”]\n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. \nBy using this IS (which includes any device attached to this IS), you consent to the following conditions: \n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. \n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\n\n[B. For Blackberries and other PDAs/PEDs with severe character limitations:]\nI've read & consent to terms in IS user agreem't.\n\nSFR ID: FMT_SMF_EXT.1.1(2) Refinement",
+      "severity": "low"
+    },
+    {
+      "id": "V-73203",
+      "title": "The Samsung SDS EMM server must be configured with the Administrator roles: a. MD user; b. Server primary administrator; c. Security configuration administrator; d. Device user group administrator; and e. Auditor.",
+      "description": "Having several roles for the Samsung SDS EMM server supports separation of duties. This allows administrator-level privileges to be granted granularly, such as giving application management privileges to one group and security policy privileges to another group. This helps prevent administrators from intentionally or inadvertently altering other settings and configurations they may not understand or approve of, which can weaken overall security and increase the risk of compromise.\n\n- Server primary administrator: responsible for server installation, initial configuration, and maintenance functions. Responsible for the setup and maintenance of Security configuration administrator and Auditor accounts.\n- Security configuration administrator: responsible for security configuration of the server, setting up and maintenance of mobile device security policies, defining device user groups, setup and maintenance of device user group administrator accounts, and defining privileges of device user group administrators.\n- Device user group administrator: responsible for maintenance of mobile device accounts, including setup, change of account configurations, and account deletion. Can only perform administrative functions assigned by the Security configuration administrator.\n- Auditor: responsible for reviewing and maintaining server and mobile device audit logs.\n\nSFR ID: FMT_SMR.1.1(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73205",
+      "title": "The Samsung SDS EMM server must be configured to transfer MD audit logs and Samsung SDS EMM server logs to another server for analysis and reporting.",
+      "description": "Audit logs enable monitoring of security-relevant events and subsequent forensics when breaches occur. Since the Samsung SDS EMM server has limited capability to store MD log files and perform analysis and reporting of MD log files, the Samsung SDS EMM server must have the capability to transfer log files to an audit log management server.\n\nSFR ID: FMT_SMF.1.1(2) Refinement, f",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73207",
+      "title": "The Samsung SDS EMM server or platform must initiate a session lock after a 15-minute period of inactivity.",
+      "description": "A session time-out lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence. Rather than relying on the user to manually lock their application session prior to vacating the vicinity, applications need to be able to identify when a user's application session has idled and take action to initiate the session lock.\n\nThe session lock is implemented at the point where session activity can be determined and/or controlled. This is typically at the operating system-level and results in a system lock but may be at the application-level where the application interface window is secured instead.\n\nSFR ID: FMT_SMF.1.1(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73209",
+      "title": "The Samsung SDS EMM server platform must be protected by a DoD-approved firewall.",
+      "description": "Most information systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Unneeded services and processes provide additional threat vectors and avenues of attack to the information system. The Samsung SDS EMM server is a critical component of the mobility architecture and must be configured to only those ports, protocols, and services (PPS) necessary to support functionality, all others must be expressly disabled or removed. A DoD-approved firewall implements the required network restrictions. A host-based firewall is appropriate where the Samsung SDS EMM server runs on a standalone platform. Network firewalls or other architectures may be preferred where the Samsung SDS EMM server runs in a cloud or virtualized solution.\n\nSFR ID: FMT_SMF.1.1(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73211",
+      "title": "The firewall protecting the Samsung SDS EMM server platform must be configured to restrict all network traffic to and from all addresses with the exception of ports, protocols, and IP address ranges required to support Samsung SDS EMM server and platform functions.",
+      "description": "Most information systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations. Since Samsung SDS EMM server is a critical component of the mobility architecture and must be configured to only those ports, protocols, and services (PPS) necessary to support functionality, all others must be expressly disabled or removed. A firewall installed on the Samsung SDS EMM server provides a protection mechanism to ensure unwanted service requests do not reach the Samsung SDS EMM server and outbound traffic is limited to only Samsung SDS EMM server functionality.\n\nSFR ID: FMT_SMF.1.1(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73213",
+      "title": "The firewall protecting the Samsung SDS EMM server platform must be configured so that all allowed ports, protocols, and services are approved for DoD use (on the DoD Ports, Protocols, Services Management (PPSM) Category Assurance Levels (CAL) list).",
+      "description": "All ports, protocols, and services used on DoD networks must be approved and registered via the DoD Ports, Protocols, Services Management (PPSM) process. This is to insure that a risk assessment has been completed before a new port, protocol, or service is configured on a DoD network and has been approved by proper DoD authorities. Otherwise, the new port, protocol, or service could cause a vulnerability to the DoD network, which could be exploited by an adversary.\n\nSFR ID: FMT_SMF.1.1(1) Refinement",
+      "severity": "medium"
+    },
+    {
+      "id": "V-73215",
+      "title": "The Samsung SDS EMM agent must be configured for the periodicity of reachability events for six hours or less.",
+      "description": "Mobile devices that do not enforce security policy or verify the status of the device are vulnerable to a variety of attacks. The key security function of MDM technology is to distribute mobile device security polices in such a manner that they are enforced on managed mobile devices. To accomplish this function, the Samsung SDS EMM agent must verify the status and other key information of the managed device and report that status to the MDM server periodically.\n\nSFR ID: FMT_SMF_EXT.3.2",
+      "severity": "low"
+    }
+  ]
+}

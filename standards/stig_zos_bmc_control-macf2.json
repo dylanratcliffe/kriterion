@@ -1,6 +1,6 @@
 {
   "name": "stig_zos_bmc_control-macf2",
-  "date": "2017-03-22",
+  "date": "2019-09-26",
   "description": "None",
   "title": "z/OS BMC CONTROL-M for ACF2 STIG",
   "version": "None",
@@ -45,7 +45,7 @@
     },
     {
       "id": "V-18014",
-      "title": "BMC CONTROL-M configuration/parameter values are not specified properly.",
+      "title": "BMC CONTROL-M configuration/parameter values must be specified properly.",
       "description": "BMC CONTROL-M configuration/parameters control the security and operational characteristics of products.  If these parameter values are improperly specified, security and operational controls may be weakened.  This exposure may threaten the availability of the product applications, and compromise the confidentiality of customer data.",
       "severity": "medium"
     },

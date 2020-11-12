@@ -1,6 +1,6 @@
 {
   "name": "stig_adobe_acrobat_reader_dc_continuous_track",
-  "date": "2018-03-14",
+  "date": "2019-07-06",
   "description": "This Security Technical Implementation Guide is published as a\ntool to improve the security of Department of Defense (DoD) information\nsystems. The requirements are derived from the National Institute of\nStandards and Technology (NIST) 800-53 and related documents. Comments or\nproposed revisions to this document should be sent via e-mail to the\nfollowing address: disa.stig_spt@mail.mil.",
   "title": "Adobe Acrobat Reader DC Continuous Track Security Technical Implementation Guide",
   "version": "1",
@@ -122,12 +122,6 @@
       "severity": "low"
     },
     {
-      "id": "V-65665",
-      "title": "Adobe Reader DC must disable the ability to specify Host-Based Privileged Locations.",
-      "description": "Privileged Locations allow the user to selectively trust files, folders, and hosts to bypass some security restrictions, such as enhanced security and protected view. By default, the user can create privileged locations through the GUI.\n\nDisabling Host-Based Privileged Locations disables and locks the end user's ability to add hosts as a privileged location prevents them from assigning trust and thereby exempting that location from enhanced security restrictions.",
-      "severity": "medium"
-    },
-    {
       "id": "V-65667",
       "title": "Adobe Reader DC must disable the ability to add Trusted Files and Folders.",
       "description": "Privileged Locations allow the user to selectively trust files, folders, and hosts to bypass some security restrictions, such as enhanced security and protected view. By default, the user can create privileged locations through the GUI.\n\nDisabling Trusted Files and Folders disables and locks the end user's ability to add folders and files as a privileged location prevents them from assigning trust and thereby exempting that location from enhanced security restrictions.",
@@ -137,12 +131,6 @@
       "id": "V-65669",
       "title": "Adobe Reader DC must disable the ability to elevate IE Trusts to Privileged Locations.",
       "description": "Privileged Locations allow the user to selectively trust files, folders, and hosts to bypass some security restrictions, such as enhanced security and protected view. By default, the user can create privileged locations through the GUI.\n\nDisabling IE Trusts to Privileged Locations disables and locks the end user's ability to treat IE trusted sites as a privileged location prevents them from assigning trust and thereby exempting that location from enhanced security restrictions.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-65671",
-      "title": "Adobe Reader DC must disable the ability to elevate (trusts) certified documents as a Privileged Location.",
-      "description": "Privileged Locations allow the user to selectively trust files, folders, and hosts to bypass some security restrictions, such as enhanced security and protected view. By default, the user can create privileged locations through the GUI.\n\nDisabling certified documents disables and locks the end user's ability to elevate certified documents as a privileged location.",
       "severity": "medium"
     },
     {

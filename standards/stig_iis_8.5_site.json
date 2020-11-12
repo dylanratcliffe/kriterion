@@ -1,18 +1,12 @@
 {
   "name": "stig_iis_8.5_site",
-  "date": "2018-04-06",
+  "date": "2020-03-27",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "IIS 8.5 Site Security Technical Implementation Guide",
   "version": "1",
   "item_syntax": "^\\w-\\d+$",
   "section_separator": null,
   "items": [
-    {
-      "id": "V-76773",
-      "title": "The IIS 8.5 websites MaxConnections setting must be configured to limit the number of allowed simultaneous session requests.",
-      "description": "Resource exhaustion can occur when an unlimited number of concurrent requests are allowed on a website, facilitating a Denial of Service attack. Mitigating this kind of attack will include limiting the number of concurrent HTTP/HTTPS requests per IP address and may include, where feasible, limiting parameter values associated with keepalive (i.e., a parameter used to limit the amount of time a connection may be inactive).",
-      "severity": "medium"
-    },
     {
       "id": "V-76775",
       "title": "The IIS 8.5 website session state must be enabled.",
@@ -68,18 +62,6 @@
       "severity": "medium"
     },
     {
-      "id": "V-76793",
-      "title": "The log information from the IIS 8.5 website must be protected from unauthorized modification.",
-      "description": "A major tool in exploring the website use, attempted use, unusual conditions, and problems are the access and error logs. In the event of a security incident, these logs can provide the SA and the web manager with valuable information. Failure to protect log files could enable an attacker to modify the log file data or falsify events to mask an attacker's activity.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-76795",
-      "title": "The log information from the IIS 8.5 website must be protected from unauthorized deletion.",
-      "description": "A major tool in exploring the website use, attempted use, unusual conditions, and problems are the access and error logs. In the event of a security incident, these logs can provide the SA and the web manager with valuable information. Failure to protect log files could enable an attacker to modify the log file data or falsify events to mask an attacker's activity.",
-      "severity": "medium"
-    },
-    {
       "id": "V-76797",
       "title": "The IIS 8.5 website must have Multipurpose Internet Mail Extensions (MIME) that invoke OS shell programs disabled.",
       "description": "Controlling what a user of a hosted application can access is part of the security posture of the web server. Any time a user can access more functionality than is needed for the operation of the hosted application poses a security issue. A user with too much access can view information that is not needed for the user's job role, or the user could use the function in an unintentional manner.\n\nA MIME tells the web server what type of program various file types and extensions are and what external utilities or programs are needed to execute the file type.\n\nA shell is a program that serves as the basic interface between the user and the operating system, so hosted application users must not have access to these programs. Shell programs may execute shell escapes and can then perform unauthorized activities that could damage the security posture of the web server.",
@@ -88,7 +70,7 @@
     {
       "id": "V-76799",
       "title": "Mappings to unused and vulnerable scripts on the IIS 8.5 website must be removed.",
-      "description": "IIS 8.5 will either allow or deny script execution based on file extension. The ability to control script execution is controlled through two features with IIS 8.5, Request Filtering and \"Handler Mappings\".\n\nFor \"Handler Mappings\", the ISSO must document and approve all allowable file extensions the website allows (white list) and denies (black list) by the website. The white list and black list will be compared to the \"Handler Mappings\" in IIS 8. \"Handler Mappings\" at the site level take precedence over \"Handler Mappings\" at the server level.",
+      "description": "IIS 8.5 will either allow or deny script execution based on file extension. The ability to control script execution is controlled through two features with IIS 8.5, “Request Filtering” and \"Handler Mappings\".\n\nFor \"Request Filtering\", the ISSO must document and approve all allowable file extensions the website allows (white list) and denies (black list) by the website. The white list and black list will be compared to the \"Request Filtering\" in IIS 8. \"Request Filtering\" at the site level take precedence over \"Request Filtering\" at the server level.",
       "severity": "medium"
     },
     {
@@ -182,12 +164,6 @@
       "severity": "medium"
     },
     {
-      "id": "V-76831",
-      "title": "The IIS 8.5 website must prevent a web content directory from being displayed.",
-      "description": "The goal is to control the web users experience in navigating any portion of the web document root directories. Ensuring all web content directories have at least the equivalent of an index.html file is a significant factor to accomplish this end. Also, enumeration techniques, such as URL parameter manipulation, rely upon being able to obtain information about the web server’s directory structure by locating directories with default pages. This practice helps ensure the anonymous web user will not obtain directory browsing information or an error message revealing the server type and version.",
-      "severity": "medium"
-    },
-    {
       "id": "V-76835",
       "title": "Warning and error messages displayed to clients must be modified to minimize the identity of the IIS 8.5 website, patches, loaded modules, and directory paths.",
       "description": "HTTP error pages contain information that could enable an attacker to gain access to an information system. Failure to prevent the sending of HTTP error pages with full information to remote requesters exposes internal configuration information to potential attackers.",
@@ -231,13 +207,13 @@
     },
     {
       "id": "V-76849",
-      "title": "The IIS 8.5 website must only accept client certificates issued by DoD PKI or DoD-approved PKI Certification Authorities (CAs).",
+      "title": "The IIS 8.5 private website have a server certificate issued by DoD PKI or DoD-approved PKI Certification Authorities (CAs).",
       "description": "The use of a DoD PKI certificate ensures clients the private website they are connecting to is legitimate, and is an essential part of the DoD defense-in-depth strategy.",
       "severity": "medium"
     },
     {
       "id": "V-76851",
-      "title": "The IIS 8.5 website must employ cryptographic mechanisms (TLS) preventing the unauthorized disclosure of information, user identifies and passwords during transmission. and at rest.",
+      "title": "The IIS 8.5 private website must employ cryptographic mechanisms (TLS) and require client certificates.",
       "description": "When data is written to digital media, such as hard drives, mobile computers, external/removable hard drives, personal digital assistants, flash/thumb drives, etc., there is risk of data loss and data compromise. User identities and passwords stored on the hard drive of the hosting hardware must be encrypted to protect the data from easily being discovered and used by an unauthorized user to access the hosted applications. The cryptographic libraries and functionality used to store and retrieve the user identifiers and passwords must be part of the web server.\n\nPreventing the disclosure of transmitted information requires that the web server take measures to employ some form of cryptographic mechanism in order to protect the information during transmission. This is usually achieved through the use of Transport Layer Security (TLS). \n\nTransmission of data can take place between the web server and a large number of devices/applications external to the web server. Examples are a web client used by a user, a backend database, an audit server, or other web servers in a web cluster. \n\nIf data is transmitted unencrypted, the data then becomes vulnerable to disclosure. The disclosure may reveal user identifier/password combinations, website code revealing business logic, or other user personal information.\n\nAlso satisfies: SRG-APP-000439-WSR-000151",
       "severity": "medium"
     },
@@ -311,12 +287,6 @@
       "id": "V-76881",
       "title": "The application pools rapid fail protection settings for each IIS 8.5 website must be managed.",
       "description": "Windows Process Activation Service (WAS) manages application pool configuration and may flag a worker process as unhealthy and shut it down. The rapid fail protection must be set to a suitable value. A lack of response from the worker process might mean the worker process does not have a thread to respond to the ping request, or that it is hanging for some other reason. The ping interval and ping response time may need adjustment to gain access to timely information about application pool health without triggering false, unhealthy conditions.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-76883",
-      "title": "The Content Location header on the IIS 8.5 website must not contain proprietary IP addresses.",
-      "description": "When using static HTML pages, a Content-Location header is added to the response. The Internet Information Server (IIS) Content-Location may reference the IP address of the server, rather than the Fully Qualified Domain Name (FQDN) or Hostname. This header may expose internal IP addresses that are usually hidden or masked behind a Network Address Translation (NAT) firewall or proxy server. There is a value that can be modified in the IIS metabase to change the default behavior from exposing IP addresses, to sending the FQDN instead.",
       "severity": "medium"
     },
     {

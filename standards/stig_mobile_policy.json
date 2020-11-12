@@ -1,6 +1,6 @@
 {
   "name": "stig_mobile_policy",
-  "date": "2016-09-01",
+  "date": "2018-09-07",
   "description": "This STIG provides policy, training, and operating procedure security controls for the use of mobile devices and systems in the DoD environment. This STIG applies to any mobile operating system device used to store, process, transmit, or receive DoD information. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "Mobile Policy Security Technical Implementation Guide (STIG)",
   "version": "2",
@@ -15,13 +15,25 @@
     },
     {
       "id": "V-13982",
-      "title": "All users of mobile devices or wireless devices must sign a user agreement before the mobile or wireless device is issued to the user and the user agreement used at the site must include required content. ",
+      "title": "All users of mobile devices or wireless devices must sign a user agreement before the mobile or wireless device is issued to the user and the user agreement used at the site must include required content.",
       "description": "Lack of user training and understanding of responsibilities to safeguard wireless technology is a significant vulnerability to the enclave. Once policies are established, users must be trained to these requirements or the risk to the network remains.\n\nUser agreements are particularly important for mobile and remote users since there is a high risk of loss, theft, or compromise. Thus, this signed agreement is a good best practice to help ensure the site is confirming the user is aware of the risks and proper procedures.",
       "severity": "low"
     },
     {
+      "id": "V-14894",
+      "title": "All wireless network devices, such as wireless Intrusion Detection System (IDS) and wireless routers, access points, gateways, and controllers  must be located in a secure room with limited access or otherwise secured to prevent tampering or theft.",
+      "description": "DoD data and the network could be exposed to attack if wireless network devices are not physically protected. The Network Security Officer (NSO) will ensure all wireless network devices (i.e., IDS, routers, servers, Remote Access System (RAS), firewalls, WLAN access points, etc.), wireless management, and email servers are located in a secure room with limited access or otherwise secured to prevent tampering or theft.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-15782",
+      "title": "Personnally owned or contractor owned CMDs must not be used to transmit, receive, store, or process DoD information or connect to DoD networks. ",
+      "description": "The use of unauthorized personally-owned CMDs to receive, store, process, or transmit DoD data could expose sensitive DoD data to unauthorized people. The DoD CIO currently prohitibits the use of personally owned or contractor owned CMDs (Bring Your Own Device – BYOD).",
+      "severity": "medium"
+    },
+    {
       "id": "V-19813",
-      "title": "Computers with an embedded wireless system must have the radio removed before the computer is used to transfer, receive, store, or process classified information, unless the wireless system has been certified via the DoD Commercial Solutions for Classified (CSfC) program.",
+      "title": "Computers with an embedded wireless system must have the radio removed or otherwise physically disable the radio hardware before the computer is used to transfer, receive, store, or process classified information, unless the wireless system has been certified via the DoD Commercial Solutions for Classified (CSfC) program.",
       "description": "With the increasing popularity of wireless networking, most laptops have wireless NICs (network interface cards) installed on the laptop motherboard. Although the system administrator may disable these embedded NICs, the user may purposefully or accidentally enable the device. These devices may also inadvertently transmit ambient sound or electronic signals. Therefore, simply disabling the transmit capability is an inadequate solution for computers processing classified information. In addition, embedded wireless cards do not meet DoD security requirements for classified wireless usage.",
       "severity": "high"
     },

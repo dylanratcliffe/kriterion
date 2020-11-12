@@ -1,6 +1,6 @@
 {
   "name": "stig_apple_ios_11",
-  "date": "2018-02-15",
+  "date": "2018-09-19",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "Apple iOS 11 Security Technical Implementation Guide",
   "version": "1",
@@ -59,18 +59,6 @@
       "id": "V-78375",
       "title": "Apple iOS must not display notifications (calendar information) when the device is locked.",
       "description": "Many mobile devices display notifications (including calendar information) on the lock screen so users can obtain relevant information in a timely manner without having to frequently unlock the phone to determine if there are new notifications. However, in many cases, these notifications can contain sensitive information. When they are available on the lock screen, an adversary can see them merely by being in close physical proximity to the device. Configuring the MOS to not send notifications to the lock screen mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #19",
-      "severity": "medium"
-    },
-    {
-      "id": "V-78377",
-      "title": "Apple iOS must be configured to disable authentication mechanisms providing user access to protected data other than a Password Authentication Factor, including [selection: Touch ID).",
-      "description": "The fingerprint reader can be used to authenticate the user in order to unlock the mobile device. At this time, the Apple iOS Touch ID has not been evaluated by the NIAP to confirm it meets the security requirements of the MDFPP or been approved for DoD use on mobile devices. This technology could allow unauthorized users to have access to DoD sensitive data if compromised. By not permitting the use of non-password authentication mechanisms, users are forced to use passcodes that meet DoD passcode requirements.\n\nSFR ID: FMT_SMF_EXT.1.1 #23, FIA_UAU.5.1",
-      "severity": "medium"
-    },
-    {
-      "id": "V-78379",
-      "title": "Apple iOS must be configured to disable authentication mechanisms providing user access to protected data other than a Password Authentication Factor, including [selection: Face ID).",
-      "description": "Facial recognition systems can be used to authenticate the user in order to unlock the mobile device. At this time, the Apple iOS Face ID has not been evaluated by the NIAP to confirm it meets the security requirements of the MDFPP or been approved for DoD use on mobile devices. This technology could allow unauthorized users to have access to DoD sensitive data if compromised. By not permitting the use of non-password authentication mechanisms, users are forced to use passcodes that meet DoD passcode requirements.\n\nSFR ID: FMT_SMF_EXT.1.1 #23, FIA_UAU.5.1",
       "severity": "medium"
     },
     {
@@ -264,6 +252,12 @@
       "title": "Apple iOS must not allow backup to remote systems (managed applications data stored in iCloud).",
       "description": "Storing data with a non-DoD cloud provider may leave the data vulnerable to breach. Disabling non-DoD cloud services mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #45",
       "severity": "medium"
+    },
+    {
+      "id": "V-81067",
+      "title": "Only authorized versions of the Apple iOS must be used.",
+      "description": "Apple iOS 11 is no longer supported by Apple and therefore, may contain security vulnerabilities. Apple iOS 11 is not authorized within the DoD six weeks after the public release of iOS 12.",
+      "severity": "high"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "stig_apple_os_x_10.12",
-  "date": "2018-04-09",
+  "date": "2018-12-24",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "Apple OS X 10.12 Security Technical Implementation Guide",
   "version": "1",

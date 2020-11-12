@@ -1,6 +1,6 @@
 {
   "name": "stig_zos_icsfracf",
-  "date": "2015-06-22",
+  "date": "2018-09-21",
   "description": "None",
   "title": "z/OS ICSF for RACF STIG",
   "version": "None",
@@ -29,6 +29,12 @@
       "id": "V-17454",
       "title": "IBM Integrated Crypto Service Facility (ICSF) Started task(s) must be properly defined to the STARTED resource class for RACF.",
       "description": "Access to product resources should be restricted to only those individuals responsible for the application connectivity and who have a requirement to access these resources.  Improper control of product resources could potentially compromise the operating system, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18014",
+      "title": "IBM Integrated Crypto Service Facility (ICSF) Configuration parameters must be correctly specified.",
+      "description": "IBM Integrated Crypto Service Facility (ICSF) product has the ability to use privileged functions and/or have access to sensitive data. Failure to properly configure parameter values could potentially the integrity of the base product which could result in compromising the operating system or sensitive data.",
       "severity": "medium"
     }
   ]

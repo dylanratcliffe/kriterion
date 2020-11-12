@@ -1,6 +1,6 @@
 {
   "name": "stig_wlan_bridge",
-  "date": "2018-03-01",
+  "date": "2019-02-26",
   "description": "This STIG contains the technical security controls for the operation of a WLAN bridge in the DoD environment.",
   "title": "WLAN Bridge Security Technical Implementation Guide (STIG)",
   "version": "6",
@@ -152,12 +152,6 @@
       "severity": "high"
     },
     {
-      "id": "V-3515",
-      "title": "The WLAN must use AES-CCMP to protect data-in-transit.",
-      "description": "AES-CCMP provides all required WLAN security services for data in transit. The other encryption protocol available for IEEE 802.11i compliant robust security networks and WPA2 certified solutions is the Temporal Key Integrity Protocol (TKIP). TKIP relies on the RC4 cipher, which has known vulnerabilities. Some WLANs also rely on Wireless Equivalent Privacy (WEP), which also uses RC4, and is easily cracked in minutes on active WLANs. Use of protocols other than AES-CCMP places DoD WLANs at greater risk of security breaches than other available approaches.",
-      "severity": "medium"
-    },
-    {
       "id": "V-3966",
       "title": "In the event the authentication server is unavailable, the network device must have a single local account of last resort defined.",
       "description": "Authentication for administrative access to the device is required at all times. A single account of last resort can be created on the device's local database for use in an emergency such as when the authentication server is down or connectivity between the device and the authentication server is not operable. The console or local account of last resort logon credentials must be stored in a sealed envelope and kept in a safe.",
@@ -204,6 +198,18 @@
       "title": "The auxiliary port must be disabled unless it is connected to a secured modem providing encryption and authentication.",
       "description": "The use of POTS lines to modems connecting to network devices provides clear text of authentication traffic over commercial circuits that could be captured and used to compromise the network.  Additional war dial attacks on the device could degrade the device and the production network.\n\nSecured modem devices must be able to authenticate users and must negotiate a key exchange before full encryption takes place.  The modem will provide full encryption capability (Triple DES) or stronger.  The technician who manages these devices will be authenticated using a key fob and granted access to the appropriate maintenance port, thus the technician will gain access to the managed device (router, switch, etc.).  The token provides a method of strong (two-factor) user authentication.  The token works in conjunction with a server to generate one-time user passwords that will change values at second intervals.  The user must know a personal identification number (PIN) and possess the token to be allowed access to the device.",
       "severity": "low"
+    },
+    {
+      "id": "V-92237",
+      "title": "WLAN components must be FIPS 140-2 certified.",
+      "description": "If the DoD WLAN components (WLAN AP, controller, or client) are not NIST FIPS 140-2 (Cryptographic Module Validation Program – CMVP) certified, the WLAN system may not adequately protect sensitive unclassified DoD data from compromise during transmission.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92239",
+      "title": "WLAN components must be Wi-Fi Alliance certified with WPA2 or WPA3.",
+      "description": null,
+      "severity": "medium"
     }
   ]
 }

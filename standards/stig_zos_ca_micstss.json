@@ -1,6 +1,6 @@
 {
   "name": "stig_zos_ca_micstss",
-  "date": "2015-01-15",
+  "date": "2019-06-26",
   "description": "None",
   "title": "z/OS CA MICS for TSS STIG",
   "version": "None",
@@ -16,7 +16,7 @@
     {
       "id": "V-21592",
       "title": "CA MICS Resource Management User data sets must be properly protected.",
-      "description": "CA MICS Resource Management User data sets have the ability to use privileged functions and/or have access to sensitive data.  Failure to properly restrict access to these data sets could result in violating the integrity of the base product which could result in compromising the operating system or sensitive data.",
+      "description": "CA MICS Resource Management User datasets contain sensitive data obtained through the MICS data collection process. Failure to properly identify and restrict access to these data sets could result in unauthorized access to sensitive data.",
       "severity": "medium"
     }
   ]

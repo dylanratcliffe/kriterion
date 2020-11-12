@@ -1,6 +1,6 @@
 {
   "name": "stig_microsoft_windows_2012_server_domain_name_system",
-  "date": "2018-04-05",
+  "date": "2020-03-23",
   "description": "The Microsoft Windows 2012 Server Domain Name System Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Microsoft Windows 2012 Server Domain Name System Security Technical Implementation Guide",
   "version": "1",
@@ -238,7 +238,7 @@
     {
       "id": "V-58621",
       "title": "The Windows 2012 DNS Servers zone files must not include CNAME records pointing to a zone with lesser security for more than six months.",
-      "description": "The use of CNAME records for exercises, tests, or zone-spanning aliases should be temporary (e.g., to facilitate a migration). When a host name is an alias for a record in another zone, an adversary has two points of attack: the zone in which the alias is defined and the zone authoritative for the alias's canonical name. This configuration also reduces the speed of client resolution because it requires a second lookup after obtaining the canonical name. Furthermore, in the case of an authoritative name server, this information is promulgated throughout the enterprise to caching servers and thus compounds the vulnerability.",
+      "description": "The use of CNAME records for exercises, tests, or zone-spanning (pointing to zones with lesser security) aliases should be temporary (e.g., to facilitate a migration) and not be in place for more than six months. When a host name is an alias for a record in another zone, an adversary has two points of attack: the zone in which the alias is defined and the zone authoritative for the alias's canonical name. This configuration also reduces the speed of client resolution because it requires a second lookup after obtaining the canonical name. Furthermore, in the case of an authoritative name server, this information is promulgated throughout the enterprise to caching servers and thus compounds the vulnerability.",
       "severity": "medium"
     },
     {
@@ -255,7 +255,7 @@
     },
     {
       "id": "V-58627",
-      "title": "When IPv6 protocol is installed, the server must also be configured to answer for IPv6 AAAA records.",
+      "title": "IPv6 protocol must be disabled unless the Windows 2012 DNS server is configured to answer for and hosting IPv6 AAAA records.",
       "description": "To prevent the possibility of a denial of service in relation to an IPv4 DNS server trying to respond to IPv6 requests, the server should be configured not to listen on any of its IPv6 interfaces unless it does contain IPv6 AAAA resource records in one of the zones.",
       "severity": "medium"
     },

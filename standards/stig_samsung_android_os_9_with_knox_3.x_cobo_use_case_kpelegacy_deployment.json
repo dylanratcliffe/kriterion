@@ -1,0 +1,251 @@
+{
+  "name": "stig_samsung_android_os_9_with_knox_3.x_cobo_use_case_kpelegacy_deployment",
+  "date": "2020-02-24",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Samsung Android OS 9 with Knox 3.x COBO Use Case KPE(Legacy) Deployment Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-92953",
+      "title": "Samsung Android must be configured to prevent users from adding personal email accounts to the work email app.",
+      "description": "If the user is able to add a personal email account (POP3, IMAP, EAS) to the work email app, it could be used to forward sensitive DoD data to unauthorized recipients. Restricting email account addition to the administrator or restricting email account addition to whitelisted accounts mitigates this vulnerability.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92955",
+      "title": "Samsung Android must be configured to enforce the system application disable list.",
+      "description": "The system application disable list controls user access to/execution of all core and preinstalled applications. \n\nCore application: Any application integrated into Samsung Android by Google or Samsung. \n\nPreinstalled application: Additional noncore applications included in the Samsung Android build by Google, Samsung, or the wireless carrier. \n\nSome system applications can compromise DoD data or upload users' information to non-DoD-approved servers. A user must be blocked from using such applications that exhibit behavior that can result in compromise of DoD data or DoD user information. \n\nThe site administrator must analyze all preinstalled applications on the device and disable all applications not approved for DoD use by configuring the system application disable list.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92957",
+      "title": "Samsung Android must be configured to enforce an application installation policy by specifying an application whitelist that restricts applications by the following characteristics: list of digital signatures, list of package names.",
+      "description": "The application whitelist, in addition to controlling the installation of applications on the mobile device, must control user access to/execution of all core and preinstalled applications, or the mobile device must provide an alternate method of restricting user access to/execution of core and preinstalled applications. \n\nCore application: Any application integrated into the operating system by the operating system or mobile device vendors. \n\nPreinstalled application: Additional noncore applications included in the operating system build by the operating system vendor, mobile device vendor, or wireless carrier. \n\nRequiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications. \n\nThe application whitelist, in addition to controlling the installation of applications on the mobile device, must control user access to/execution of all core applications (included in the operating system by the operating system vendor) and preinstalled applications (provided by the mobile device vendor and wireless carrier), or the mobile device must provide an alternate method of restricting user access to/execution of core and preinstalled applications.\n\nSFR ID: FMT_SMF_EXT.1.1 #8b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92959",
+      "title": "The Samsung Android whitelist must be configured to not include applications with the following characteristics: - back up mobile device data to non-DoD cloud servers (including user and application access to cloud backup services); - transmit mobile device diagnostic data to non-DoD servers; - voice assistant application if available when the mobile device is locked; - voice dialing application if available when the mobile device is locked; - allows synchronization of data or applications between devices associated with the user; and - allows unencrypted (or encrypted but not FIPS 140-2 validated) data sharing with other mobile devices or printers.",
+      "description": "Requiring all authorized applications to be in an application whitelist prevents the execution of any applications (e.g., unauthorized, malicious) that are not part of the whitelist. Failure to configure an application whitelist properly could allow unauthorized and malicious applications to be downloaded, installed, and executed on the mobile device, causing a compromise of DoD data accessible by these applications. Applications with the listed characteristics have features that can cause the compromise of sensitive DoD data or have features with no known application in the DoD environment. \n\nApplication note: The application whitelist, in addition to controlling the installation of applications on the mobile device, must control user access to/execution of all core and preinstalled applications, or the mobile device must provide an alternate method of restricting user access to/execution of core and preinstalled applications. \n\nCore application: Any application integrated into the operating system by the operating system or mobile device vendors. \n\nPreinstalled application: Additional noncore applications included in the operating system build by the operating system vendor, mobile device vendor, or wireless carrier.\n\nSFR ID: FMT_SMF_EXT.1.1 #8b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93569",
+      "title": "Samsung Android must be configured to enforce an application installation policy by specifying one or more authorized application repositories, including [DoD-approved commercial app repository, MDM server, mobile application store]: - disallow unknown app installation sources.",
+      "description": "Forcing all applications to be installed from authorized application repositories can prevent unauthorized and malicious applications from being installed and executed on mobile devices. Allowing such installations and executions could cause a compromise of DoD data accessible by these unauthorized/malicious applications.\n\nSFR ID: FMT_SMF_EXT.1.1 #8a",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93573",
+      "title": "Samsung Android must be configured to enable the Knox audit log.",
+      "description": "Audit logs enable monitoring of security-relevant events and subsequent forensics when breaches occur. They help identify attacks so that breaches can be prevented or limited in their scope, and they facilitate analysis to improve performance and security. The requirement statement lists key events for which the system must generate an audit record.\n\nSFR ID: FAU_GEN.1.1 #8",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93575",
+      "title": "Samsung Android must be configured to not display the following notifications when the device is locked: all notifications.",
+      "description": "Many mobile devices display notifications on the lock screen so that users can obtain relevant information in a timely manner without having to frequently unlock the phone to determine if there are new notifications. However, in many cases, these notifications can contain sensitive information. When they are available on the lock screen, an adversary can see them merely by being in close physical proximity to the device. Configuring the mobile operating system to redact the contents of the notifications when the device is locked mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #19",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93577",
+      "title": "Samsung Android device users must complete required training.",
+      "description": "The security posture of Samsung devices requires the device user to configure several required policy rules on their device. User-Based Enforcement (UBE) is required for these controls. In addition, if the Authorizing Official (AO) has approved the use of an unmanaged personal space, the user must receive training on risks. If a user is not aware of their responsibilities and does not comply with UBE requirements, the security posture of the Samsung mobile device may become compromised and DoD sensitive data may become compromised.\n\nSFR ID: NA",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93579",
+      "title": "Any accessory that provides wired networking capabilities to a Samsung Android device must not be connected to a DoD network (for example: DeX Station [LAN port], USB to Ethernet adapter, etc.).",
+      "description": "If a Samsung Android device uses an accessory that provides wired networking capabilities, and that accessory is connected to a DoD network, then the Samsung Android device would also be connected to the DoD network. Samsung Android devices most likely have a number of personal apps installed that may include malware or have high-risk behaviors (for example, offloading data from the phone to third-party servers outside the United States). In addition, smartphones do not generally meet security requirements for computer devices to connect directly to DoD networks. \n\nNote: Samsung DeX mode (with input devices) will not work unless the \"USB host mode exception list\" is configured (see requirement KNOX-09-000755 for more information).\n\nSFR ID: FMT_MOF_EXT.1.2 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93581",
+      "title": "Samsung Android must be configured to enforce a minimum password length of six characters.",
+      "description": "Password strength is a measure of the effectiveness of a password in resisting guessing and brute force attacks. The ability to crack a password is a function of how many attempts an adversary is permitted, how quickly an adversary can do each attempt, and the size of the password space. The longer the minimum length of the password is, the larger the password space. Having a too-short minimum password length significantly reduces password strength, increasing the chance of password compromise and resulting device and data compromise.\n\nSFR ID: FMT_SMF_EXT.1.1 #1a",
+      "severity": "low"
+    },
+    {
+      "id": "V-93583",
+      "title": "Samsung Android must be configured to not allow passwords that include more than two repeating or sequential characters.",
+      "description": "Password strength is a measure of the effectiveness of a password in resisting guessing and brute force attacks. Passwords that contain repeating or sequential characters are significantly easier to guess than those that do not contain repeating or sequential characters. Therefore, disallowing repeating or sequential characters increases password strength and decreases risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #1b",
+      "severity": "low"
+    },
+    {
+      "id": "V-93585",
+      "title": "Samsung Android must be configured to lock the display after 15 minutes (or less) of inactivity.",
+      "description": "The screen lock timeout must be set to a value that helps protect the device from unauthorized access. Having a too-long timeout would increase the window of opportunity for adversaries who gain physical access to the mobile device through loss, theft, etc. Such devices are much more likely to be in an unlocked state when acquired by an adversary, thus granting immediate access to the data on the mobile device. The maximum timeout period of 15 minutes has been selected to balance functionality and security; shorter timeout periods may be appropriate depending on the risks posed to the mobile device.\n\nSFR ID: FMT_SMF_EXT.1.1 #2b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93587",
+      "title": "Samsung Android must be configured to not allow more than 10 consecutive failed authentication attempts.",
+      "description": "The more attempts an adversary has to guess a password, the more likely the adversary will enter the correct password and gain access to resources on the device. Setting a limit on the number of attempts mitigates this risk. Setting the limit at 10 or less gives authorized users the ability to make a few mistakes when entering the password but still provides adequate protection against dictionary or brute force attacks on the password.\n\nSFR ID: FMT_SMF_EXT.1.1 #2c, FIA_AFL_EXT.1.5",
+      "severity": "low"
+    },
+    {
+      "id": "V-93589",
+      "title": "Samsung Android must be configured to disable trust agents. Note: This requirement is not applicable (NA) for specific biometric authentication factors included in the products Common Criteria evaluation.",
+      "description": "Trust agents allow a user to unlock a mobile device without entering a passcode when the mobile device is, for example, connected to a user-selected Bluetooth device or in a user-selected location. This technology would allow unauthorized users to have access to DoD sensitive data if compromised. By not permitting the use of non-password authentication mechanisms, users are forced to use passcodes that meet DoD passcode requirements.\n\nSFR ID: FMT_SMF_EXT.1.1 #23, FIA_UAU.5.1",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93591",
+      "title": "Samsung Android must be configured to disable Face Recognition. Note: This requirement is not applicable (NA) for specific biometric authentication factors included in the products Common Criteria evaluation.",
+      "description": "The Face Recognition feature allows a user's face to be registered and used to unlock the device. This technology would allow unauthorized users to have access to DoD sensitive data if compromised. By not permitting the use of non-password authentication mechanisms, users are forced to use passcodes that meet DoD passcode requirements.\n\nSFR ID: FMT_SMF_EXT.1.1 #23, FIA_UAU.5.1",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93593",
+      "title": "Samsung Android must be configured to disable automatic completion of Samsung Internet browser text input.",
+      "description": "The autofill functionality in the web browser allows the user to complete a form that contains sensitive information, such as personally identifiable information (PII), without previous knowledge of the information. By allowing the use of autofill functionality, an adversary who learns a user's Samsung Android device password, or who otherwise is able to unlock the device, may be able to further breach other systems by relying on the autofill feature to provide information unknown to the adversary. By disabling the autofill functionality, the risk of an adversary gaining further information about the device's user or compromising other systems is significantly mitigated.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93595",
+      "title": "Samsung Android must be configured to disable multi-user modes.",
+      "description": "Multi-user mode allows multiple users to share a mobile device by providing a degree of separation between user data. To date, no mobile device with multi-user mode features meets DoD requirements for access control, data separation, and non-repudiation for user accounts. In addition, the MDFPP does not include design requirements for multi-user account services. Disabling multi-user mode mitigates the risk of not meeting DoD multi-user account security policies.\n\nSFR ID: FMT_SMF_EXT.1.1 #47b",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93597",
+      "title": "Samsung Android must be configured to disable all Bluetooth profiles except HSP (Headset Profile), HFP (HandsFree Profile), SPP (Serial Port Profile), A2DP (Advanced Audio Distribution Profile), AVRCP (Audio/Video Remote Control Profile), and PBAP (Phone Book Access Profile).",
+      "description": "Some Bluetooth profiles provide the capability for remote transfer of sensitive DoD data without encryption or otherwise do not meet DoD IT security policies and therefore should be disabled.\n\nSFR ID: FMT_SMF_EXT.1.1 #18h",
+      "severity": "low"
+    },
+    {
+      "id": "V-93599",
+      "title": "Samsung Android must be configured to disable USB mass storage mode.",
+      "description": "USB mass storage mode enables the transfer of data and software from one device to another. This software can include malware. When USB mass storage is enabled on a mobile device, it becomes a potential vector for malware and unauthorized data exfiltration. Prohibiting USB mass storage mode mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #39a",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93601",
+      "title": "Samsung Android must be configured to enable Knox Common Criteria (CC) Mode.",
+      "description": "The Knox Platform for Enterprise (KPE) CC Mode feature is a superset of other features and behavioral changes that are mandatory MDFPP requirements. If CC Mode is not implemented, the device will not be operating in the NIAP-certified compliant CC mode of operation. \n\nCC Mode implements the following behavioral/functional changes: \n\n- FOTA signature verification uses additional SHA-512 signature check. \n- Download Mode is disabled and all updates will occur via FOTA only. \n- IKEv1 operates in Main Mode only. \n- HTTPS audit logging in enabled. \n- Certificates without a Subject Alternative Name (SAN) field are rejected. \n- Certificates that do not pass Strict Host Name verification are rejected. \n- Certificates provided by servers must have the Extended Key Usage field set as Server Authentication. \n- Allows only authenticated Bluetooth connections. \n- Additional Key Zeroization is performed.\n\nFollowing is the list of prerequisites the user/MDM has to set in addition to calling CC Mode API to be fully compliant with the MDFPP requirements and the Samsung device Common Criteria certification:\n- Screen lock type: Alphanumeric or complex of type password, face disabled\n- Password Attempts: 1 <= value <= 30 and wipe after exceeding\n- No password recovery and history\n- Certificate revocation check enabled, OCSP check enabled\n- Secure start-up or strong protection enabled\n- SD Card encryption enabled\n\nFor reference, the STIGIDs for the policies above are as follows:\nFor KPE(AE):\n- KNOX-09-000710: Enable CC mode\n- KNOX-09-001440: Minimum password quality\n- KNOX-09-000500: Disable face\n- KNOX-09-000430/(KNOX-09-000440): Max password failures for local wipe\n- KNOX-09-001370/(KNOX-09-001360): Password recovery\n- KNOX-09-001390/(KNOX-09-001400): Password history length\n- KNOX-09-001050/(KNOX-09-001040): Revocation check\n- KNOX-09-001340/(KNOX-09-001330): OCSP check\n- KNOX-09-001420: Secure Startup\n- KNOX-09-000980: Enable external storage encryption or disallow mount physical media\n\nFor KPE(Legacy): Add '5' to the end of the requirement number for above and in addition: \n- KNOX-09-001475: Minimum password quality for workspace\n\nNote: STIGIDs listed above not in parentheses are personal space requirements. STIGIDs in parentheses are workspace requirements.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "high"
+    },
+    {
+      "id": "V-93603",
+      "title": "Samsung Android must be configured to disallow configuration of date and time.",
+      "description": "Determining the correct time a particular application event occurred on a system is critical when conducting forensic analysis and investigating system events. \n\nPeriodically synchronizing internal clocks with an authoritative time source is necessary to correctly correlate the timing of events that occur across the enterprise. The three authoritative time sources for Samsung Android are an authoritative time server that is synchronized with redundant United States Naval Observatory (USNO) time servers as designated for the appropriate DoD network (NIPRNet or SIPRNet), or the Global Positioning System (GPS), or the wireless carrier. \n\nTime stamps generated by the audit system in Samsung Android must include both date and time. The time may be expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93605",
+      "title": "Samsung Android must be configured to enforce a USB host mode exception list. Note: This configuration allows DeX mode (with input devices), which is DoD-approved for use.",
+      "description": "The USB host mode feature allows USB devices to connect to the device (e.g., USB flash drives, USB mouse, USB keyboard) using a micro USB-to-USB adapter cable. The USB host mode exception list allows selected USB devices to operate while disallowing others based on their USB device class. \n\nWith some USB device classes, a user can copy sensitive DoD information to external USB storage unencrypted, resulting in compromise of DoD data. However, some USB device classes, such as Human Interface Devices (HID), do not allow data to be copied. \n\nDisabling all USB devices except for HID mitigates the risk of compromising sensitive DoD data. \n\nThis allows for DeX mode to be used with a USB keyboard and mouse without compromising DoD data.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93607",
+      "title": "Samsung Android must be configured to disable the Share Via List feature.",
+      "description": "e Share Via List feature allows the transfer of data between nearby Samsung devices via Android Beam, Wi-Fi Direct, Link Sharing, and Share to Device. If sharing were enabled, sensitive DoD data could be compromised.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93609",
+      "title": "Samsung Android must be configured to disallow outgoing beam.",
+      "description": "Outgoing beam allows transfer of data through near field communication (NFC) and Bluetooth by touching two unlocked devices together. If it were enabled, sensitive DoD data could be transmitted.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93611",
+      "title": "Samsung Android must be configured to enforce that Wi-Fi Sharing is disabled.",
+      "description": "Wi-Fi sharing is an optional configuration of Wi-Fi Tethering/Mobile Hotspot, which allows the device to share its Wi-Fi connection with other wirelessly connected devices instead of its mobile (cellular) connection. \n\nWi-Fi sharing grants the \"other\" device access to a corporate Wi-Fi network and may possibly bypass the network access control mechanisms. This risk can be partially mitigated by requiring the use of a preshared key for personal hotspots.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93613",
+      "title": "Samsung Android must be configured to not allow backup of [all applications, configuration data] to locally connected systems.",
+      "description": "Data on mobile devices is protected by numerous mechanisms, including user authentication, access control, and cryptography. When the data is backed up to an external system (either locally connected or cloud-based), many if not all of these mechanisms are no longer present. This leaves the backed-up data vulnerable to attack. Disabling backup to external systems mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #40",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93615",
+      "title": "Samsung Android must be configured to not allow backup of [all applications, configuration data] to remote systems.",
+      "description": "Backups to remote systems (including cloud backup) can leave data vulnerable to breach on the external systems, which often offer less protection than the mobile operating system. Where the remote backup involves a cloud-based solution, the backup capability is often used to synchronize data across multiple devices. In this case, DoD devices may synchronize DoD sensitive information to a user's personal device or other unauthorized computers that are vulnerable to breach. Disallowing remote backup mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #40",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93617",
+      "title": "Samsung Android must be configured to disable developer modes.",
+      "description": "Developer modes expose features of the mobile operating system that are not available during standard operation. An adversary may leverage a vulnerability inherent in a developer mode to compromise the confidentiality, integrity, and availability of DoD sensitive information. Disabling developer modes mitigates this risk.\n\nSFR ID: FMT_SMF_EXT.1.1 #26",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93619",
+      "title": "Samsung Android must be configured to enable authentication of personal hotspot connections to the device using a preshared key.",
+      "description": "If no authentication is required to establish personal hotspot connections, an adversary may be able to use that device to perform attacks on other devices or networks without detection. A sophisticated adversary may also be able to exploit unknown system vulnerabilities to access information and computing resources on the device. Requiring authentication to establish personal hotspot connections mitigates this risk. \n\nApplication note: If hotspot functionality is permitted, it must be authenticated via a preshared key. There is no requirement to enable hotspot functionality.\n\nSFR ID: FMT_SMF_EXT.1.1 #41a",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93621",
+      "title": "Samsung Android must be configured to enable encryption for data at rest on removable storage media or alternately, the use of removable storage media must be disabled.",
+      "description": "The mobile operating system must ensure the data being written to the mobile device's removable media is protected from unauthorized access. If data at rest is unencrypted, it is vulnerable to disclosure. Even if the operating system enforces permissions on data access, an adversary can read removable media directly, thereby circumventing operating system controls. Encrypting the data ensures confidentiality is protected even when the operating system is not running.\n\nSFR ID: FMT_SMF_EXT.1.1 #21, #47f",
+      "severity": "high"
+    },
+    {
+      "id": "V-93623",
+      "title": "Samsung Android must be configured to enable Certificate Revocation List (CRL) status checking.",
+      "description": "A CRL allows a certificate issuer to revoke a certificate for any reason, including improperly issued certificates and compromise of the private keys. Checking the revocation status of the certificate mitigates the risk associated with using a compromised certificate.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93625",
+      "title": "Samsung Android must have the DoD root and intermediate PKI certificates installed.",
+      "description": "DoD root and intermediate PKI certificates are used to verify the authenticity of PKI certificates of users and web services. If the root and intermediate certificates are not available, an adversary could falsely sign a certificate in such a way that it could not be detected. Providing access to the DoD root and intermediate PKI certificates greatly diminishes the risk of this attack.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93627",
+      "title": "Samsung Android must be configured to display the DoD advisory warning message at startup or each time the user unlocks the device.",
+      "description": "The mobile operating system is required to display the DoD-approved system use notification message or banner before granting access to the system that provides privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. Required banners help ensure that DoD can audit and monitor the activities of mobile device users without legal restriction. \n\nSystem use notification messages can be displayed when individuals first access or unlock the mobile device. The banner must be implemented as a \"click-through\" banner at device unlock (to the extent permitted by the operating system). A \"click-through\" banner prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating \"OK.\" \n\nThe approved DoD text must be used exactly as required in the KS referenced in DoDI 8500.01. For devices accommodating banners of 1300 characters, the banner text is: \n\nYou are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only. \nBy using this IS (which includes any device attached to this IS), you consent to the following conditions: \n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations. \n-At any time, the USG may inspect and seize data stored on this IS. \n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose. \n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy. \n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details. \n\nFor devices with severe character limitations, the banner text is: \n\nI've read & consent to terms in IS user agreem't. \n\nThe administrator must configure the banner text exactly as written without any changes.\n\nSFR ID: FMT_SMF_EXT.1.1 #36",
+      "severity": "low"
+    },
+    {
+      "id": "V-93629",
+      "title": "Samsung Android devices must have the latest available Samsung Android operating system installed.",
+      "description": "Required security features are not available in earlier operating system versions. In addition, there may be known vulnerabilities in earlier versions.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "high"
+    },
+    {
+      "id": "V-93631",
+      "title": "Samsung Android must be configured to enable the Online Certificate Status Protocol (OCSP).",
+      "description": "OCSP is a protocol for obtaining the revocation status of a certificate. It addresses problems associated with using Certificate Revocation Lists (CRLs). When OCSP is enabled, it is used prior to CRL checking. If OCSP could not get a decisive response about a certificate, it will then try to use CRL checking. The OCSP response server must be listed in the certificate information under Authority Info Access. \n\nThis feature must be enabled for a Samsung Android device to be in the NIAP-certified Common Criteria (CC) mode of operation.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93633",
+      "title": "Samsung Android must be configured to not enable Microsoft Exchange ActiveSync (EAS) password recovery. This requirement is not applicable if not using Microsoft EAS.",
+      "description": "Password Recovery is a feature of Microsoft EAS. Exceeding the Password Attempts limit triggers the Lock screen to open a Password Recovery Mode. \n\nThis feature must be disabled for a Samsung Android device to be in the NIAP-certified Common Criteria (CC) mode of operation. \n\nIf Microsoft EAS Password Recovery is enabled, the Samsung device will be out of compliance with the CC mode configuration. This requirement is configured on the Exchange server. It is the responsibility of the DoD mobile service provider to ensure the Exchange server has been configured in compliance with the requirement.\n\nThe requirement is only applicable if using Microsoft Exchange ActiveSync in the device (personal side).\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93635",
+      "title": "Samsung Android must be configured to set the password history with a length of 0.",
+      "description": "Password History Length controls the number of most recently used Passwords stored in the Password History list. \n\nThe Password History list does not store the actual value of the previous passwords but instead calculates the hash value of the passwords. When the user attempts to set a new password, the hash value of the password is first calculated and the Password History list is checked to determine if it already contains a matching value, rejecting the password if it does. If the password is accepted, the oldest entry in the Password History list is removed, and the newly calculated password hash is added to the list. \n\nThe MDFPP requires that values derived from passwords are destroyed when no longer needed; therefore, the calculated hash values of previous passwords should not be stored in the Password History list. \n\nThis feature must be configured for a Samsung Android device to be in the NIAP-certified Common Criteria (CC) mode of operation.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93637",
+      "title": "Samsung Android must be configured to enforce that Secure Startup is enabled. This requirement is Not Applicable (NA) to Galaxy S10 (or newer) devices.",
+      "description": "Secure Startup protects the Samsung Android device by requiring the user password to be entered before the device starts up. When Secure Startup is enabled, the default cryptographic keys are replaced with keys derived from the user password. \n\nThis feature must be enabled for a Samsung Android device to be in the NIAP-certified Common Criteria (CC) mode of operation.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93639",
+      "title": "Samsung Android must be configured to enable a screen-lock policy that will lock the display after a period of inactivity.",
+      "description": "The screen-lock timeout helps protect the device from unauthorized access. Devices without a screen-lock timeout provide an opportunity for adversaries who gain physical access to the mobile device through loss, theft, etc. Such devices are much more likely to be in an unlocked state when acquired by an adversary, thus granting immediate access to the data on the mobile device and possibly access to DoD networks. \n\nSetting a lock type enables a screen-lock policy, and each lock type has a password strength. Password strength is a measure of the effectiveness of a password in resisting guessing and brute force attacks. The ability to crack a password is a function of how many attempts an adversary is permitted, how quickly an adversary can do each attempt, and the size of the password space. A minimum level of complexity is needed to ensure a simple password or easily guessed password is not used. \n\nConfiguring a minimum password complexity mitigates both the risk associated with an adversary acquiring a device in an unlocked state and a screen lock type with a weak authentication factor.\n\nSFR ID: FMT_SMF_EXT.1.1 #2a",
+      "severity": "medium"
+    },
+    {
+      "id": "V-93641",
+      "title": "Samsung Android must be configured to enforce that Strong Protection is enabled. This requirement is Not Applicable (NA) for devices older than Galaxy S10.",
+      "description": "Strong Protection protects the Samsung Android devices that use File Based Encryption (FBE). When Strong Protection is enabled, the default cryptographic keys used to protect the user's apps and data are replaced with keys derived from the user password.\n\nThis feature must be enabled for a Samsung Android device to be in the NIAP-certified CC mode of operation.\n\nSFR ID: FMT_SMF_EXT.1.1 #47",
+      "severity": "medium"
+    }
+  ]
+}

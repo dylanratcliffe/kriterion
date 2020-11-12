@@ -1,0 +1,623 @@
+{
+  "name": "stig_central_log_server_security_requirements_guide",
+  "date": "2020-03-18",
+  "description": "This Security Requirements Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Central Log Server Security Requirements Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-100015",
+      "title": "The Central Log Server must automatically terminate a user session after organization-defined conditions or trigger events requiring session disconnect.",
+      "description": "Automatic session termination addresses the termination of user-initiated logical sessions in contrast to the termination of network connections that are associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever a user (or process acting on behalf of a user) accesses an organizational information system. Such user sessions can be terminated (and thus terminate user access) without terminating network sessions.\n\nSession termination terminates all processes associated with a user's logical session except those processes that are specifically created by the user (i.e., session owner) to continue after the session is terminated. \n\nConditions or trigger events requiring automatic session termination can include, for example, organization-defined periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use.\n\nThis capability is typically reserved for specific application system functionality where the system owner, data owner, or organization requires additional assurance. Based upon requirements and events specified by the data or application owner, the application developer must incorporate logic into the application that will provide a control mechanism that disconnects users upon the defined event trigger. The methods for incorporating this requirement will be determined and specified on a case by case basis during the application design and development stages.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100017",
+      "title": "The Central Log Server must provide a logout capability for user initiated communication session.",
+      "description": "If a user cannot explicitly end an application session, the session may remain open and be exploited by an attacker; this is referred to as a zombie session.\n\nInformation resources to which users gain access via authentication include, for example, local workstations, databases, and password-protected websites/web-based services. However, for some types of interactive sessions including, for example, file transfer protocol (FTP) sessions, information systems typically send logout messages as final messages prior to terminating sessions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100019",
+      "title": "The Central Log Server must display an explicit logout message to users indicating the reliable termination of authenticated communications sessions.",
+      "description": "If a user cannot explicitly end an application session, the session may remain open and be exploited by an attacker; this is referred to as a zombie session. Users need to be aware of whether or not the session has been terminated.\n\nInformation resources to which users gain access via authentication include, for example, local workstations, databases, and password-protected websites/web-based services. Logout messages for web page access, for example, can be displayed after authenticated sessions have been terminated. However, for some types of interactive sessions including, for example, file transfer protocol (FTP) sessions, information systems typically send logout messages as final messages prior to terminating sessions.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100021",
+      "title": "The Central Log Server must notify system administrators and ISSO when accounts are created.",
+      "description": "Once an attacker establishes access to an application, the attacker often attempts to create a persistent method of re-establishing access. One way to accomplish this is for the attacker to simply create a new account. Sending notification of account creation events to the system administrator and ISSO is one method for mitigating this risk.\n\nTo address access requirements, many application developers choose to integrate their applications with enterprise-level authentication/access/auditing mechanisms that meet or exceed access control policy requirements. Such integration allows the application developer to off-load those access control functions and focus on core application features and functionality.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100025",
+      "title": "The Central Log Server must automatically audit account creation.",
+      "description": "Once an attacker establishes access to a system, the attacker often attempts to create a persistent method of re-establishing access. One way to accomplish this is for the attacker to simply create a new account. Auditing of account creation is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail documents the creation of application user accounts and, as required, notifies administrators and/or application owners exists. Such a process greatly reduces the risk that accounts will be surreptitiously created and provides logging that can be used for forensic purposes. \n\nTo address access requirements, many application developers choose to integrate their applications with enterprise-level authentication/access/auditing mechanisms meeting or exceeding access control policy requirements. Such integration allows the application developer to off-load those access control functions and focus on core application features and functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100027",
+      "title": "The Central Log Server must automatically audit account modification.",
+      "description": "Once an attacker establishes access to a system, the attacker often attempts to create a persistent method of re-establishing access. One way to accomplish this is for the attacker to simply modify an existing account. Auditing of account creation is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail documents the creation of application user accounts and, as required, notifies administrators and/or application owners exists. Such a process greatly reduces the risk that accounts will be surreptitiously created and provides logging that can be used for forensic purposes. \n\nTo address access requirements, many application developers choose to integrate their applications with enterprise-level authentication/access/auditing mechanisms meeting or exceeding access control policy requirements. Such integration allows the application developer to off-load those access control functions and focus on core application features and functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100029",
+      "title": "The Central Log Server must automatically audit account disabling actions.",
+      "description": "When application accounts are disabled, user accessibility is affected. Once an attacker establishes access to an application, the attacker often attempts to disable authorized accounts to disrupt services or prevent the implementation of countermeasures. Auditing account disabling actions provides logging that can be used for forensic purposes.\n\nTo address access requirements, many application developers choose to integrate their applications with enterprise-level authentication/access/audit mechanisms meeting or exceeding access control policy requirements. Such integration allows the application developer to off-load those access control functions and focus on core application features and functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100031",
+      "title": "The Central Log Server must automatically audit account removal actions.",
+      "description": "When application accounts are removed, user accessibility is affected. Once an attacker establishes access to an application, the attacker often attempts to remove authorized accounts to disrupt services or prevent the implementation of countermeasures. Auditing account removal actions provides logging that can be used for forensic purposes.\n\nTo address access requirements, many application developers choose to integrate their applications with enterprise-level authentication/access/audit mechanisms meeting or exceeding access control policy requirements. Such integration allows the application developer to off-load those access control functions and focus on core application features and functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100033",
+      "title": "The Central Log Server must enforce the limit of three consecutive invalid logon attempts by a user during a 15 minute time period.",
+      "description": "By limiting the number of failed login attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute forcing, is reduced. Limits are imposed by locking the account. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100035",
+      "title": "The Central Log Server must automatically lock the account until the locked account is released by an administrator when three unsuccessful login attempts in 15 minutes are exceeded.",
+      "description": "By limiting the number of failed login attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute forcing, is reduced. Limits are imposed by locking the account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100037",
+      "title": "The Central Log Server must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the Central Log Server.",
+      "description": "Display of the DoD-approved use notification before granting access to the application ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.\n\nThe banner must be formatted in accordance with DTM-08-060. Use the following verbiage for applications that can accommodate banners of 1300 characters:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n \nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\n\"I've read & consent to terms in IS user agreem't.\"",
+      "severity": "low"
+    },
+    {
+      "id": "V-100039",
+      "title": "The Central Log Server must retain the Standard Mandatory DoD Notice and Consent Banner on the screen until users acknowledge the usage conditions and take explicit actions to log on for further access.",
+      "description": "The banner must be acknowledged by the user prior to allowing the user access to the application. This provides assurance that the user has seen the message and accepted the conditions for access. If the consent banner is not acknowledged by the user, DoD will not be in compliance with system use notifications required by law. \n\nTo establish acceptance of the application usage policy, a click-through banner at application logon is required. The application must prevent further activity until the user executes a positive action to manifest agreement by clicking on a box indicating \"OK\".",
+      "severity": "low"
+    },
+    {
+      "id": "V-100041",
+      "title": "The Central Log Server must generate audit records when successful/unsuccessful logon attempts occur.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident, or identify those responsible for one. \n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100043",
+      "title": "The Central Log Server must initiate session auditing upon startup.",
+      "description": "If auditing is enabled late in the startup process, the actions of some start-up processes may not be audited. Some audit systems also maintain state information only available if auditing is enabled before a given process is created.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100045",
+      "title": "The Central Log Server must produce audit records containing information to establish what type of events occurred.",
+      "description": "Without establishing what type of event occurred, it would be difficult to establish, correlate, and investigate the events relating to an incident, or identify those responsible for one. \n\nAudit record content that may be necessary to satisfy the requirement of this policy includes, for example, time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nAssociating event types with detected events in the application and audit logs provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured application.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100047",
+      "title": "The Central Log Server must produce audit records containing information to establish when (date and time) the events occurred.",
+      "description": "Without establishing when events occurred, it is impossible to establish, correlate, and investigate the events relating to an incident.\n\nIn order to compile an accurate risk assessment, and provide forensic analysis, it is essential for security personnel to know when events occurred (date and time). \n\nAssociating event types with detected events in the application and audit logs provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured application.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100049",
+      "title": "The Central Log Server must produce audit records containing information to establish where the events occurred.",
+      "description": "Without establishing where events occurred, it is impossible to establish, correlate, and investigate the events relating to an incident.\n\nIn order to compile an accurate risk assessment, and provide forensic analysis, it is essential for security personnel to know where events occurred, such as application components, modules, session identifiers, filenames, host names, and functionality. \n\nAssociating information about where the event occurred within the application provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured application. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-100051",
+      "title": "The Central Log Server must produce audit records containing information to establish the source of the events.",
+      "description": "Without establishing the source of the event, it is impossible to establish, correlate, and investigate the events leading up to an outage or attack.\n\nIn addition to logging where events occur within the application, the application must also produce audit records that identify the application itself as the source of the event.\n\nIn the case of centralized logging, the source would be the application name accompanied by the host or client name. \n\nIn order to compile an accurate risk assessment, and provide forensic analysis, it is essential for security personnel to know the source of the event, particularly in the case of centralized logging.\n\nAssociating information about the source of the event within the application provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured application. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-100053",
+      "title": "The Central Log Server must produce audit records that contain information to establish the outcome of the events.",
+      "description": "Without information about the outcome of events, security personnel cannot make an accurate assessment as to whether an attack was successful or if changes were made to the security state of the system.\n\nEvent outcomes can include indicators of event success or failure and event-specific results (e.g., the security state of the information system after the event occurred). As such, they also provide a means to measure the impact of an event and help authorized personnel to determine the appropriate response.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100055",
+      "title": "The Central Log Server must generate audit records containing information that establishes the identity of any individual or process associated with the event.",
+      "description": "Without information that establishes the identity of the subjects (i.e., users or processes acting on behalf of users) associated with the events, security personnel cannot determine responsibility for the potentially harmful event.\n\nEvent identifiers (if authenticated or otherwise known) include, but are not limited to, user database tables, primary key values, user names, or process identifiers.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100057",
+      "title": "The Central Log Server must protect audit information from any type of unauthorized read access.",
+      "description": "If audit data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity is difficult if not impossible to achieve. In addition, access to audit records provides information an attacker could potentially use to his or her advantage.\n\nTo ensure the veracity of audit data, the information system and/or the application must protect audit information from any and all unauthorized access. This includes read, write, and copy access.\n\nThis requirement can be achieved through multiple methods which will depend upon system architecture and design. Commonly employed methods for protecting audit information include least privilege permissions as well as restricting the location and number of log file repositories.\n\nAdditionally, applications with user interfaces to audit records should not allow for the unfettered manipulation of or access to those records via the application. If the application provides access to the audit data, the application becomes accountable for ensuring audit information is protected from unauthorized access.\n\nAudit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit information system activity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100059",
+      "title": "The Central Log Server must protect audit information from unauthorized modification.",
+      "description": "If audit data were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve. \n\nTo ensure the veracity of audit data, the information system and/or the application must protect audit information from unauthorized modification. \n\nThis requirement can be achieved through multiple methods, which will depend upon system architecture and design. Some commonly employed methods include ensuring log files receive the proper file system permissions, and limiting log data locations. \n\nApplications providing a user interface to audit data will leverage user permissions and roles identifying the user accessing the data and the corresponding rights that the user enjoys in order to make access decisions regarding the modification of audit data.\n\nAudit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit information system activity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100061",
+      "title": "The Central Log Server must protect audit information from unauthorized deletion.",
+      "description": "If audit data were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve. \n\nTo ensure the veracity of audit data, the information system and/or the application must protect audit information from unauthorized deletion. This requirement can be achieved through multiple methods, which will depend upon system architecture and design. \n\nSome commonly employed methods include: ensuring log files receive the proper file system permissions utilizing file system protections, restricting access, and backing up log data to ensure log data is retained. \n\nApplications providing a user interface to audit data will leverage user permissions and roles identifying the user accessing the data and the corresponding rights the user enjoys in order make access decisions regarding the deletion of audit data.\n\nAudit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit information system activity. Audit information may include data from other applications or be included with the audit application itself.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100063",
+      "title": "The Central Log Server must protect audit tools from unauthorized access.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit data.\n\nApplications providing tools to interface with audit data will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys in order make access decisions regarding the access to audit tools.\n\nAudit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100065",
+      "title": "The Central Log Server must protect audit tools from unauthorized modification.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit data.\n\nApplications providing tools to interface with audit data will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys in order make access decisions regarding the modification of audit tools.\n\nAudit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100067",
+      "title": "The Central Log Server must protect audit tools from unauthorized deletion.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit data.\n\nApplications providing tools to interface with audit data will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys in order make access decisions regarding the deletion of audit tools.\n\nAudit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100069",
+      "title": "The Central Log Server must be configured to disable non-essential capabilities.",
+      "description": "It is detrimental for applications to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nApplications are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include, but are not limited to, advertising software or browser plug-ins not related to requirements or providing a wide array of functionality not required for every mission, but cannot be disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100071",
+      "title": "The Central Log Server must require users to reauthenticate when organization-defined circumstances or situations require reauthentication.",
+      "description": "Without reauthentication, users may access resources or perform tasks for which they do not have authorization. \n\nWhen applications provide the capability to change security roles or escalate the functional capability of the application, it is critical the user reauthenticate.\n\nIn addition to the reauthentication requirements associated with session locks, organizations may require reauthentication of individuals and/or devices in other situations, including (but not limited to) the following circumstances.\n\n(i) When authenticators change; \n(ii) When roles change; \n(iii) When security categories of information systems change; \n(iv) When the execution of privileged functions occurs; \n(v) After a fixed period of time; or\n(vi) Periodically.\n\nWithin the DoD, the minimum circumstances requiring reauthentication are privilege escalation and role changes.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100073",
+      "title": "The Central Log Server must use FIPS-validated SHA-2 or higher hash function for digital signature generation and verification (non-legacy use).",
+      "description": "Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nTo protect the integrity of the authenticator and authentication mechanism used for the cryptographic module used by the network device, the application, operating system, or protocol must be configured to use one of the following hash functions for hashing the password or other authenticator in accordance with SP 800-131Ar1: SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, SHA-512/256, SHA3-224, SHA3-256, SHA3-384, and SHA3-512.\n\nFor digital signature verification, SP800-131Ar1 allows SHA-1 for legacy use where needed.",
+      "severity": "high"
+    },
+    {
+      "id": "V-100075",
+      "title": "The Central Log Server must only allow the use of DoD PKI established certificate authorities for verification of the establishment of protected sessions.",
+      "description": "Untrusted Certificate Authorities (CA) can issue certificates, but they may be issued by organizations or individuals that seek to compromise DoD systems or by organizations with insufficient security controls. If the CA used for verifying the certificate is not a DoD-approved CA, trust of this CA has not been established.\n\nThe DoD will only accept PKI certificates obtained from a DoD-approved internal or external certificate authority. Reliance on CAs for the establishment of secure sessions includes, for example, the use of TLS certificates. \n\nThis requirement focuses on communications protection for the application session rather than for the network packet.\n\nThis requirement applies to applications that utilize communications sessions. This includes, but is not limited to, web-based applications and Service-Oriented Architectures (SOA).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81105",
+      "title": "The Central Log Server must be configured to protect the data sent from hosts and devices from being altered in a way that may prevent the attribution of an action to an individual (or process acting on behalf of an individual).",
+      "description": "Without non-repudiation, it is impossible to positively attribute an action to an individual (or process acting on behalf of an individual).\n\nThe records stored by the Central Log Server must be protected against such alteration as removing the identifier. A hash is one way of performing this function. The server must not allow the removal of identifiers or date/time, or it must severely restrict the ability to do so. Additionally, the log administrator access and activity with the user account information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81107",
+      "title": "The Central Log Server must be configured to aggregate log records from organization-defined devices and hosts within its scope of coverage.",
+      "description": "If the application is not configured to collate records based on the time when the events occurred, the ability to perform forensic analysis and investigations across multiple components is significantly degraded. Centralized log aggregation must also include logs from databases and servers (e.g., Windows) that do not natively send logs using the syslog protocol.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81109",
+      "title": "Time stamps recorded on the log records in the Central Log Server must be configured to synchronize to within one second of the host server or, if NTP is configured directly in the log server, the NTP time source must be the same as the host and devices within its scope of coverage.",
+      "description": "If the application is not configured to collate records based on the time when the events occurred, the ability to perform forensic analysis and investigations across multiple components is significantly degraded. If the SIEM or other Central Log Server is out of sync with the host and devices for which it stores event logs, this may impact the accuracy of the records stored.\n\nLog records are time correlated if the time stamps in the individual log records can be reliably related to the time stamps in other log records to achieve a time ordering of the records within an organization-defined level of tolerance.\n\nThis requirement applies only to applications that compile system-wide log records for multiple systems or system components.\n\nNote: The actual configuration and security requirements for NTP is handled in the host OS or NDM STIGs that are also required as part of a Central Log Server review.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81111",
+      "title": "Where multiple log servers are installed in the enclave, each log server must be configured to aggregate log records to a central aggregation server or other consolidated events repository.",
+      "description": "Log servers (e.g., syslog servers) are often used on network segments to consolidate from the devices and hosts on that network segment. However, this does not achieve compliance with the DoD requirement for a centralized enclave log server.\n\nTo comply with this requirement, create a central log server that aggregates multiple log servers or use another method to ensure log analysis and management is centrally managed and available to enterprise forensics and analysis tools. This server is often called a log aggregator, SIEM, or events server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81113",
+      "title": "The Central Log Server log records must be configured to use the syslog protocol or another industry standard format (e.g., Windows event protocol) that can be used by typical analysis tools.",
+      "description": "Without a standardized format for log records, the ability to perform forensic analysis may be more difficult. Standardization facilitates production of event information that can be more readily analyzed and correlated.\n\nLog information that is normalized to common standards promotes interoperability and exchange of such information between dissimilar devices and information systems. \n\nIf logging mechanisms within applications that send records to the centralized audit system do not conform to standardized formats, the audit system may convert the records into a standardized format when compiling system-wide audit trails. Thus, although the application and other system components should send the information in a standardized format, ultimately the audit aggregation server is responsible for ensuring the records are compiled to meet this requirement.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81115",
+      "title": "The Central Log Server must be configured to retain the DoD-defined attributes of the log records sent by the devices and hosts.",
+      "description": "Log records can be generated from various components within the application (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating log records.\n\nDoD has defined a list of information or attributes that must be included in the log record, including date, time, source, destination, module, severity level (category of information), etc. Other log record content that may be necessary to satisfy the requirement of this policy includes, for example, time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81117",
+      "title": "The Central Log Server must be configured to allow only the Information System Security Manager (ISSM) (or individuals or roles appointed by the ISSM) to select which auditable events are to be retained.",
+      "description": "Without restricting which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent the auditing of critical events. Misconfigured audits may degrade the system's performance by overwhelming the audit log. Misconfigured audits may also make it more difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n \nThe list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating log records.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81119",
+      "title": "The Central Log Server must be configured to perform analysis of log records across multiple devices and hosts in the enclave that can be reviewed by authorized individuals.",
+      "description": "Successful incident response and auditing relies on timely, accurate system information and analysis to allow the organization to identify and respond to potential incidents in a proficient manner. If the application does not provide the ability to centrally review the application logs, forensic analysis is negatively impacted.\n\nSegregation of logging data to multiple disparate computer systems is counterproductive and makes log analysis and event notification difficult to implement and manage, particularly when the system or application has multiple logging components written to different locations or systems.\n\nAutomated mechanisms for centralized reviews and analyses include, for example, Security Information and Event Management (SIEM) products.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81121",
+      "title": "The Central Log Server must be configured to perform on-demand filtering of the log records for events of interest based on organization-defined criteria.",
+      "description": "The ability to specify the event criteria that are of interest provides the persons reviewing the logs with the ability to quickly isolate and identify these events without having to review entries that are of little or no consequence to the investigation. Without this capability, forensic investigations are impeded. \n\nEvents of interest can be identified by the content of specific log record fields including, for example, identities of individuals, event types, event locations, event times, event dates, system resources involved, IP addresses involved, or information objects accessed. Organizations may define audit event criteria to any degree of granularity required; for example, locations selectable by general networking location (e.g., by network or subnetwork) or by specific information system component. This requires applications to be configured to customize log record reports based on organization-defined criteria.\n\nSummary reports provide oversight for security devices, helping to identify when a device is not detecting or blocking to the extent one would expect. A simple “top 10” list of what was detected and blocked, with a count by severity, can help prioritize security responses. Operational reports detailing the source hosts for any given malware can then direct remediation responses.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81123",
+      "title": "The Central Log Server must be configured to use internal system clocks to generate time stamps for log records.",
+      "description": "Without an internal clock used as the reference for the time stored on each event to provide a trusted common reference for the time, forensic analysis would be impeded. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. \n\nIf the internal clock is not used, the system may not be able to provide time stamps for log messages. Additionally, externally generated time stamps may not be accurate. Applications can use the capability of an operating system or purpose-built module for this purpose.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81125",
+      "title": "The Central Log Server must be configured to back up the log records repository at least every seven days onto a different system or system component other than the system or component being audited.",
+      "description": "Protection of log data includes ensuring log data is not accidentally lost or deleted. Backing up log records to a different system or onto separate media than the system being audited on an organizationally defined frequency helps to ensure that in the event of a catastrophic system failure, the log records will be retained. \n\nThis helps to ensure that a compromise of the information system being audited does not also result in a compromise of the log records.\n\nThis requirement only applies to applications that have a native backup capability for log records. Operating system backup requirements cover applications that do not provide native backup functions.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81127",
+      "title": "The Central Log Server system backups must be stored on media capable of guaranteeing file integrity for a minimum of five years.",
+      "description": "If backups are not properly processed, protected, and stored on appropriate media, recovery from a system failure or implementation of a contingency plan would not include the data necessary to fully recover in the time required to ensure continued mission support.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81129",
+      "title": "The Central Log Server must be configured to perform audit reduction that supports on-demand reporting requirements.",
+      "description": "The ability to generate on-demand reports, including after the audit data has been subjected to audit reduction, greatly facilitates the organization's ability to generate incident reports as needed to better handle larger-scale or more complex security incidents.\n\nAudit reduction is a process that manipulates collected audit information and organizes such information in a summary format that is more meaningful to analysts. The report generation capability provided by the application must support on-demand (i.e., customizable, ad hoc, and as-needed) reports.\n\nThis requirement is specific to applications with audit reduction capabilities; however, applications need to support on-demand audit review and analysis.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81131",
+      "title": "For devices and hosts within its scope of coverage, the Central Log Server must be configured to notify the System Administrator (SA) and Information System Security Officer (ISSO) when account modification events are received.",
+      "description": "When application accounts are modified, user accessibility is affected. Accounts are used for identifying individual users or for identifying the application processes themselves. Sending notification of account modification events to the SA and ISSO is one method for mitigating this risk. Such a function greatly reduces the risk that application accessibility will be negatively affected for extended periods of time and also provides logging that can be used for forensic purposes.\n\nNotification may be configured to be sent by the device, SNMP server, or the Central Log Server. The best practice is for these notifications to be sent by a robust events management server.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81133",
+      "title": "For devices and hosts within its scope of coverage, the Central Log Server must notify the System Administrator (SA) and Information System Security Officer (ISSO) when events indicating account disabling actions are received.",
+      "description": "When application accounts are disabled, user accessibility is affected. Accounts are used for identifying individual users or for identifying the application processes themselves. Sending notification of account disabling events to the SA and ISSO is one method for mitigating this risk. Such a function greatly reduces the risk that application accessibility will be negatively affected for extended periods of time and also provides logging that can be used for forensic purposes.\n\nNotification may be configured to be sent by the device, SNMP server, or Central Log Server. The best practice is for these notifications to be sent by a robust events management server.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81135",
+      "title": "For devices and hosts within its scope of coverage, the Central Log Server must notify the System Administrator (SA) and Information System Security Officer (ISSO) when events indicating account removal actions are received.",
+      "description": "When application accounts are removed, user accessibility is affected. Accounts are used for identifying users or for identifying the application processes themselves. Sending notification of account removal events to the SA and ISSO is one method for mitigating this risk. Such a function greatly reduces the risk that application accessibility will be negatively affected for extended periods of time and also provides logging that can be used for forensic purposes.\n\nNotification may be configured to be sent by the device, SNMP server, or Central Log Server. The best practice is for these notifications to be sent by a robust events management server.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81137",
+      "title": "The System Administrator (SA) and Information System Security Manager (ISSM) must configure the retention of the log records based on criticality level, event type, and/or retention period, at a minimum.",
+      "description": "If authorized individuals do not have the ability to modify auditing parameters in response to a changing threat environment, the organization may not be able to respond effectively and important forensic information may be lost.\n\nThe organization must define and document log retention requirements for each device and host and then configure the Central Log Sever to comply with the required retention period.\n\nThis requirement enables organizations to extend or limit auditing as necessary to meet organizational requirements. Auditing that is limited to conserve information system resources may be extended to address certain threat situations. In addition, auditing may be limited to a specific set of events to facilitate audit reduction, analysis, and reporting. Organizations can establish time thresholds in which audit actions are changed; for example, in near real time, within minutes, or within hours.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81139",
+      "title": "The Central Log Server must be configured so changes made to the level and type of log records stored in the centralized repository must take effect immediately without the need to reboot or restart the application.",
+      "description": "If authorized individuals do not have the ability to modify auditing parameters in response to a changing threat environment, the organization may not be able to respond effectively and important forensic information may be lost.\n\nThis requirement enables organizations to extend or limit auditing as necessary to meet organizational requirements. Auditing that is limited to conserve information system resources may be extended to address certain threat situations. In addition, auditing may be limited to a specific set of events to facilitate audit reduction, analysis, and reporting. Organizations can establish time thresholds in which audit actions are changed; for example, in near real time, within minutes, or within hours.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81141",
+      "title": "The Central Log Server must be configured to allow selection, capture, and view of all events related to a user session, host, or device when required by authorized users.",
+      "description": "If the system is not configured to select a user session to capture and view or produce a report, investigations into suspicious or harmful events would be hampered by the volume of information captured. The volume of information captured may also adversely impact the operation for the network.\n\nThis only includes auditable events. The Central Log Server (i.e., SIEM, syslog server) should be able to correlate across multiple devices and hosts within its span of control to provide an aggregated view of the single user's activity.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81143",
+      "title": "The Central Log Server must be configured for centralized management of the events repository for the purposes of configuration, analysis, and reporting.",
+      "description": "If the application is not configured to centrally manage the content captured in the log records, identification, troubleshooting, and correlation of suspicious behavior would be difficult and could lead to a delayed or incomplete analysis of an ongoing attack.\n\nThe content captured in log records must be managed from a central location (necessitating automation). Centralized management of log records and logs provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records. Application components requiring centralized audit log management must be configured to support centralized management.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81145",
+      "title": "The Central Log Server must be configured to off-load log records onto a different system or media than the system being audited.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity. Although this may be part of the operating system function, for the enterprise events management system, this is most often a function managed through the application since it is a critical function and requires the use of a large amount of external storage.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81147",
+      "title": "The Central Log Server must be configured to send an immediate alert to the System Administrator (SA) and Information System Security Officer (ISSO) (at a minimum) when allocated log record storage volume reaches 75 percent of the repository maximum log record storage capacity.",
+      "description": "If security personnel are not notified immediately upon storage volume utilization reaching 75 percent, they are unable to plan for storage capacity expansion. \n\nAlthough this may be part of the operating system function, for the enterprise events management system, this is most often a function managed through the application since it is a critical function and requires the use of a large amount of external storage.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81149",
+      "title": "For the host and devices within its scope of coverage, the Central Log Server must be configured to send a real-time alert to the System Administrator (SA) and Information System Security Officer (ISSO) (at a minimum) of all audit failure events, such as loss of communications with hosts and devices, or if log records are no longer being received.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit function and application operation may be adversely affected. \n\nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less). User-configurable controls on the Central Log Server help avoid generating excessive numbers of alert messages. Define realistic alerting limits and thresholds to avoid creating excessive numbers of alerts for noncritical events.\n\nThis requirement must be mapped to the severity levels used by the system to denote a failure, active attack, attack involving multiple systems, and other critical notifications, at a minimum. However, note that the IDS/IDPS and other monitoring systems may already be configured for direct notification of many types of critical security alerts.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81151",
+      "title": "The Central Log Server must be configured to send an immediate alert to the System Administrator (SA) or Information System Security Officer (ISSO) if communication with the host and devices within its scope of coverage is lost.",
+      "description": "If the system were to continue processing after audit failure, actions could be taken on the system that could not be tracked and recorded for later forensic analysis. To perform this function, some type of heartbeat configuration with all of the devices and hosts must be configured.\n\nBecause of the importance of ensuring mission/business continuity, organizations may determine that the nature of the audit failure is not so severe that it warrants a complete shutdown of the application supporting the core organizational missions/business operations. In those instances, partial application shutdowns or operating in a degraded mode may be viable alternatives. \n\nThis requirement applies to each audit data storage repository (i.e., distinct information system component where log records are stored), the centralized audit storage capacity of organizations (i.e., all audit data storage repositories combined), or both.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81153",
+      "title": "The Central Log Server must be configured to perform on-demand sorting of log records for events of interest based on the content of organization-defined audit fields within log records.",
+      "description": "The ability to sort the log records to better view events of interest provides the persons reviewing the logs with the ability to quickly isolate and identify these events without having to review entries that are of little or no consequence to the investigation. Without this capability, forensic investigations are impeded.\n\nThis requires applications to be configured to sort log record reports based on organization-defined criteria.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81155",
+      "title": "The Central Log Server must be configured to perform on-demand searches of log records for events of interest based on the content of organization-defined audit fields within log records.",
+      "description": "The ability to search the log records to better view events of interest provides the persons reviewing the logs with the ability to quickly isolate and identify these events without having to review entries that are of little or no consequence to the investigation. Without this capability, forensic investigations are impeded.\n\nThis requires applications to provide the capability to search log record reports based on organization-defined criteria.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81157",
+      "title": "The Central Log Server must be configured to perform audit reduction that supports on-demand audit review and analysis.",
+      "description": "The ability to perform on-demand audit review and analysis, including after the audit data has been subjected to audit reduction, greatly facilitates the organization's ability to generate incident reports as needed to better handle larger-scale or more complex security incidents. \n\nAudit reduction is a technique used to reduce the volume of log records to facilitate a manual review. Audit reduction does not alter original log records. The report generation capability provided by the application must support on-demand (i.e., customizable, ad hoc, and as-needed) reports.\n\nThis requirement is specific to applications with audit reduction capabilities; however, applications need to support on-demand audit review and analysis.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81159",
+      "title": "The Central Log Server must be configured to perform audit reduction that supports after-the-fact investigations of security incidents.",
+      "description": "If the audit reduction capability does not support after-the-fact investigations, it is difficult to establish, correlate, and investigate the events leading up to an outage or attack or identify those responses for one. This capability is also required to comply with applicable Federal laws and DoD policies.\n\nAudit reduction capability must support after-the-fact investigations of security incidents either natively or through the use of third-party tools. \n\nThis requirement is specific to applications with audit reduction capabilities.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81161",
+      "title": "The Central Log Server must be configured to generate on-demand audit review and analysis reports.",
+      "description": "The report generation capability must support on-demand review and analysis to facilitate the organization's ability to generate incident reports as needed to better handle larger-scale or more complex security incidents. \n\nReport generation must be capable of generating on-demand (i.e., customizable, ad hoc, and as-needed) reports. On-demand reporting allows personnel to report issues more rapidly to more effectively meet reporting requirements. Collecting log data and aggregating it to present the data in a single, consolidated report achieves this objective. \n\nAudit reduction and report generation capabilities do not always reside on the same information system or within the same organizational entities conducting auditing activities. The audit reduction capability can include, for example, modern data mining techniques with advanced data filters to identify anomalous behavior in log records. The report generation capability provided by the information system can generate customizable reports. Time ordering of log records can be a significant issue if the granularity of the timestamp in the record is insufficient.\n\nThis requirement is specific to applications with report generation capabilities; however, applications need to support on-demand audit review and analysis.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81163",
+      "title": "The Central Log Server must be configured to generate reports that support on-demand reporting requirements.",
+      "description": "The report generation capability must support on-demand reporting to facilitate the organization's ability to generate incident reports as needed to better handle larger-scale or more complex security incidents\n\nThe report generation capability provided by the application must be capable of generating on-demand (i.e., customizable, ad hoc, and as-needed) reports. On-demand reporting allows personnel to report issues more rapidly to more effectively meet reporting requirements. Collecting log data and aggregating it to present the data in a single, consolidated report achieves this objective. \n\nThis requirement is specific to applications with report generation capabilities; however, applications need to support on-demand reporting requirements.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81165",
+      "title": "The Central Log Server must be configured to generate reports that support after-the-fact investigations of security incidents.",
+      "description": "If the report generation capability does not support after-the-fact investigations, it is difficult to establish, correlate, and investigate the events leading up to an outage or attack or identify those responses for one. This capability is also required to comply with applicable Federal laws and DoD policies.\n\nThe report generation capability must support after-the-fact investigations of security incidents either natively or through the use of third-party tools.\n\nThis requirement is specific to applications with report generation capabilities; however, applications need to support on-demand reporting requirements.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81167",
+      "title": "The Central Log Server must be configured to perform audit reduction that does not alter original content or time ordering of log records.",
+      "description": "If the audit reduction capability alters the content or time ordering of log records, the integrity of the log records is compromised, and the records are no longer usable for forensic analysis. Time ordering refers to the chronological organization of records based on time stamps. The degree of time stamp precision can affect this.\n\nAudit reduction is a process that manipulates collected audit information and organizes such information in a summary format that is more meaningful to analysts.\n\nThis requirement is specific to applications with audit reduction capabilities; however, applications need to support on-demand audit review and analysis.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81169",
+      "title": "The Central Log Server must be configured to generate reports that do not alter original content or time ordering of log records.",
+      "description": "If the audit report generation capability alters the original content or time ordering of log records, the integrity of the log records is compromised, and the records are no longer usable for forensic analysis. Time ordering refers to the chronological organization of records based on time stamps. The degree of time stamp precision can affect this.\n\nThe report generation capability provided by the application can generate customizable reports.\n\nThis requirement is specific to applications with audit reduction capabilities; however, applications need to support on-demand audit review and analysis.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81171",
+      "title": "Upon receipt of the log record from hosts and devices, the Central Log Server must be configured to record time stamps of the time of receipt that can be mapped to Coordinated Universal Time (UTC).",
+      "description": "If time stamps are not consistently applied and there is no common time reference, it is difficult to perform forensic analysis.\n\nTime stamps generated by the application include date and time. Time is commonly expressed in UTC, a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81173",
+      "title": "The Central Log Server must be configured to record time stamps for when log records are received by the log server that meet a granularity of one second for a minimum degree of precision.",
+      "description": "Without sufficient granularity of time stamps, it is not possible to adequately determine the chronological order of records. \n\nTime stamps generated by the application include date and time. Granularity of time measurements refers to the degree of synchronization between information system clocks and reference clocks.\n\nNote: The actual configuring and security requirements for NTP is handled in the host OS or NDM STIGs that are also required as part of a Central Log Server review.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81177",
+      "title": "The Central Log Server must be configured to off-load interconnected systems in real time and off-load standalone systems weekly, at a minimum.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity. Although this may be part of the operating system function, for the enterprise events management system, this is most often a function managed through the application since it is a critical function and requires the use of a large amount of external storage.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81179",
+      "title": "The Central Log Server must be configured to retain the identity of the original source host or device where the event occurred as part of the log record.",
+      "description": "In this case the information producer is the device based on IP address or some other identifier of the device producing the information. The source of the record must be bound to the record using cryptographic means.\n\nSome events servers allow the administrator to retain only portions of the record sent by devices and hosts.\n\nThis requirement applies to log aggregation servers with the role of fulfilling the DoD requirement for a central log repository. The syslog, SIEM, or other event servers must retain this information with each log record to support incident investigations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81181",
+      "title": "The Central Log Server that aggregates log records from hosts and devices must be configured to use TCP for transmission.",
+      "description": "If the default UDP protocol is used for communication between the hosts and devices to the Central Log Server, then log records that do not reach the log server are not detected as a data loss. The use of TCP to transport log records to the log servers improves delivery reliability, adds data integrity, and gives the option to encrypt the traffic if the log server communication is not protected using a management network (preferred) or VPN based on mission requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81183",
+      "title": "The Central Log Server must be configured to notify the System Administrator (SA) and Information System Security Officer (ISSO), at a minimum, when an attack is detected on multiple devices and hosts within its scope of coverage.",
+      "description": "Notification may be configured to be sent by the device, SNMP server, or Central Log Server. The best practice is for these notifications to be sent by a robust events management server. \n\nThis is a function provided by most enterprise-level SIEMs. If the Central Log Server does not provide this function, it must forward the log records to a log server that does.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81185",
+      "title": "The Central Log Server must be configured to automatically create trouble tickets for organization-defined threats and events of interest as they are detected in real time (within seconds).",
+      "description": "In most Central Log Server products today, log review (threat detection), can be automated by creating correlation content matching the organizational-defined Events of Interest (e.g., account change actions, privilege command use, and other AU and AC family controls) to automatically notify or automatically create trouble tickets for threats as they are detected in real time. Auditors have repeatedly expressed a strong preference for automated ticketing. They are also more likely to follow up on the threat and action items needed to address the detected issues if the ticketing process is automated.\n\nThis is a function provided by most enterprise-level SIEMs. If the Central Log Server does not provide this function, it must forward the log records to a log server that does.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81187",
+      "title": "For devices and hosts within the scope of coverage, the Central Log Server must be configured to automatically aggregate events that indicate account actions.",
+      "description": "If the Central Log Server is configured to filter or remove account log records transmitted by devices and hosts within its scope of coverage, forensic analysis tools will be less effective at detecting and reporting on important attack vectors. A comprehensive account management process must include capturing log records for the creation of user accounts and notification of administrators and/or application owners. Such a process greatly reduces the risk that accounts will be surreptitiously created and provides logging that can be used for forensic purposes. \n\nThis requirement addresses the concern that the Central Log Server may be configured to filter out certain levels of information, which may result in the discarding of DoD-required accounting actions addressed in the AC-2 (4) controls such as creation, modification, deletion, and removal of privileged accounts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81189",
+      "title": "The Central Log Server must be configured with the organization-defined severity or criticality levels of each event that is being sent from individual devices or hosts.",
+      "description": "This supports prioritization functions, which is a major reason why centralized management is a requirement in DoD. This includes different features that help highlight the important events over less critical security events. This may be accomplished by correlating security events with vulnerability data or other asset information. Prioritization algorithms often use severity information provided by the original log source as well. The criticality levels used by the site and the actions that are taken based on the levels established for each system are documented in the SSP. These levels and actions can only be leveraged for alerts, notifications, and reports which correlate asset information if they are configured in the Central Log Server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81191",
+      "title": "Analysis, viewing, and indexing functions, services, and applications used as part of the Central Log Server must be configured to comply with DoD-trusted path and access requirements.",
+      "description": "Analysis, viewing, and indexing functions, services, and applications, such as analysis tools and other vendor-provided applications, must be secured. Software used to perform additional functions, which resides on the server, must also be secured or could provide a vector for unauthorized access to the events repository.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81281",
+      "title": "The Central Log Server must be configured to uniquely identify and authenticate organizational users (or processes acting on behalf of organizational users).",
+      "description": "To assure accountability and prevent unauthenticated access, organizational users must be identified and authenticated to prevent potential misuse and compromise of the system. \n\nOrganizational users include organizational employees or individuals the organization deems to have equivalent status of employees (e.g., contractors). Organizational users (and any processes acting on behalf of users) must be uniquely identified and authenticated for all accesses.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81283",
+      "title": "For accounts using password authentication, the Central Log Server must be configured to store only cryptographic representations of passwords.",
+      "description": "Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read and easily compromised. Use of passwords for authentication is intended only for limited situations and should not be used as a replacement for two-factor CAC-enabled authentication. \n\nExamples of situations where a user ID and password might be used include:\n\n- When the user does not use a CAC and is not a current DoD employee, member of the military, or DoD contractor.\n\n- When a user has been officially designated as temporarily unable to present a CAC for some reason (lost, damaged, not yet issued, broken card reader) (i.e., Temporary Exception User) and to satisfy urgent organizational needs must be temporarily permitted to use user ID/password authentication until the problem with CAC use has been remedied.\n\n- When the application is publicly available and or hosting publicly releasable data requiring some degree of need-to-know protection.\n\nIf the password is already encrypted and not a plaintext password, this meets this requirement. Implementation of this requirement requires configuration of a FIPS-approved cipher block algorithm and block cipher modes for encryption. This method uses a one-way hashing encryption algorithm with a salt value to validate a user's password without having to store the actual password. Performance and time required to access are factors that must be considered, and the one-way hash is the most feasible means of securing the password and providing an acceptable measure of password security.\n\nVerifying the user knows a password is performed using a password verifier. In its simplest form, a password verifier is a computational function that is capable of creating a hash of a password and determining if the value provided by the user matches the hash. A more secure version of verifying a user knowing a password is to store the result of an iterating hash function and a large random salt value as follows:\n\nH0 = H(pwd, H(salt))\nHn = H(Hn-1,H(salt))\n\nIn the above, \"n\" is a cryptographically-strong random [*3] number. \"Hn\" is stored along with the salt. When the application wishes to verify that the user knows a password, it simply repeats the process and compares \"Hn\" with the stored \"Hn\". A salt is essentially a fixed-length cryptographically strong random value.\n\nAnother method is using a keyed-hash message authentication code (HMAC). HMAC calculates a message authentication code via a cryptographic hash function used in conjunction with an encryption key. The key must be protected as with any private key.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81285",
+      "title": "For accounts using password authentication, the Central Log Server must use FIPS-validated SHA-1 or later protocol to protect the integrity of the password authentication process.",
+      "description": "Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.\n\nThe information system must specify the hash algorithm used for authenticating passwords. Implementation of this requirement requires configuration of FIPS-approved cipher block algorithm and block cipher modes for encryption.\n\nThis requirement applies to all accounts, including authentication server; Authorization, Authentication, and Accounting (AAA); and local accounts such as the root account and the account of last resort.\n\nThis requirement only applies to components where this is specific to the function of the device (e.g., TLS VPN or ALG). This does not apply to authentication for the purpose of configuring the device itself (management).",
+      "severity": "high"
+    },
+    {
+      "id": "V-81287",
+      "title": "The Central Log Server, when utilizing PKI-based authentication, must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.",
+      "description": "Without path validation, an informed trust decision by the relying party cannot be made when presented with any certificate not already explicitly trusted.\n\nA trust anchor is an authoritative entity represented via a public key and associated data. It is used in the context of public key infrastructures, X.509 digital certificates, and DNSSEC. \n\nWhen there is a chain of trust, usually the top entity to be trusted becomes the trust anchor; it can be, for example, a Certification Authority (CA). A certification path starts with the subject certificate and proceeds through a number of intermediate certificates up to a trusted root certificate, typically issued by a trusted CA. \n\nThis requirement verifies that a certification path to an accepted trust anchor is used to for certificate validation and that the path includes status information. Path validation is necessary for a relying party to make an informed trust decision when presented with any certificate not already explicitly trusted. Status information for certification paths includes certificate revocation lists or online certificate status protocol responses. Validation of the certificate status information is out of scope for this requirement.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81289",
+      "title": "The Central Log Server, when using PKI-based authentication, must enforce authorized access to the corresponding private key.",
+      "description": "If the private key is discovered, an attacker can use the key to authenticate as an authorized user and gain access to the network infrastructure.\n\nThe cornerstone of the PKI is the private key used to encrypt or digitally sign information. \n\nIf the private key is stolen, this will lead to the compromise of the authentication and non-repudiation gained through PKI because the attacker can use the private key to digitally sign documents and pretend to be the authorized user. \n\nBoth the holders of a digital certificate and the issuing authority must protect the computers, storage devices, or whatever they use to keep the private keys.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81291",
+      "title": "The Central Log Server must obfuscate authentication information during the authentication process so that the authentication is not visible.",
+      "description": "To prevent the compromise of authentication information such as passwords during the authentication process, the feedback from the information system must not provide any information that would allow an unauthorized user to compromise the authentication mechanism. \n\nObfuscation of user-provided information when typed into the system is a method used in addressing this risk. \n\nFor example, displaying asterisks when a user types in a password is an example of obscuring feedback of authentication information.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81295",
+      "title": "The Central Log Server must use FIPS-validated SHA-1 or higher hash function to protect the integrity of keyed-hash message authentication code (HMAC), Key Derivation Functions (KDFs), Random Bit Generation, hash-only applications, and digital signature verification (legacy use only).",
+      "description": "Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nTo protect the integrity of the authenticator and authentication mechanism used for the cryptographic module used by the Central Log Server must be configured to use one of the following hash functions for hashing the password or other authenticator in accordance with SP 800-131Ar1: SHA-1, SHA-224, SHA-256, SHA-384, SHA-512, SHA-512/224, SHA-512/256, SHA3-224, SHA3-256, SHA3-384, and SHA3-512.\n\nApplications also include HMAC, KDFs, Random Bit Generation, and hash-only applications (e.g., hashing passwords and using SHA-1 or higher to compute a checksum). For digital signature verification, SP800-131Ar1 allows SHA-1 for legacy use where needed.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81297",
+      "title": "The Central Log Server must be configured to enforce approved authorizations for logical access to information and system resources in accordance with applicable access control policies.",
+      "description": "To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoD-approved PKIs, all DoD systems (e.g., networks, web servers, and web portals) must be properly configured to incorporate access control methods that do not rely solely on the possession of a certificate for access. Successful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement. \n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system. \n\nThis requirement is applicable to access control enforcement applications (e.g., authentication servers) and other applications that perform information and system access control functions.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81301",
+      "title": "The Central Log Server must be configured to protect the confidentiality and integrity of transmitted information.",
+      "description": "Without protection of the transmitted information, confidentiality and integrity may be compromised since unprotected communications can be intercepted and either read or altered. \n\nThis requirement applies only to those applications that are either distributed or can allow access to data non-locally. Use of this requirement will be limited to situations where the data owner has a strict requirement for ensuring data integrity and confidentiality is maintained at every step of the data transfer and handling process. When transmitting data, applications need to leverage transmission protection mechanisms, such as TLS, SSL VPNs, or IPSEC.\n\nCommunication paths outside the physical protection of a controlled boundary are exposed to the possibility of interception and modification. Protecting the confidentiality and integrity of organizational information can be accomplished by physical means (e.g., employing physical distribution systems) or by logical means (e.g., employing cryptographic techniques). If physical means of protection are employed, then logical means (cryptography) do not have to be employed, and vice versa.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81303",
+      "title": "The Central Log Server must implement NIST FIPS-validated cryptography for the following: to provision digital signatures; to generate cryptographic hashes; and/or to protect unclassified information requiring confidentiality and cryptographic protection.",
+      "description": "FIPS 140-2 precludes the use of unvalidated cryptography for the cryptographic protection of sensitive or valuable data within Federal systems. Unvalidated cryptography is viewed by NIST as providing no protection to the information or data. In effect, the data would be considered unprotected plaintext. If the agency specifies that the information or data be cryptographically protected, then FIPS 140-2 is applicable. In essence, if cryptography is required, it must be validated. Cryptographic modules that have been approved for classified use may be used in lieu of modules that have been validated against the FIPS 140-2 standard.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81307",
+      "title": "The Central Log Server must use multifactor authentication for network access to privileged user accounts.",
+      "description": "Without the use of multifactor authentication, the ease of access to privileged functions is greatly increased. \n\nMultifactor authentication requires using two or more factors to achieve authentication. \n\nFactors include: \n(i) something a user knows (e.g., password/PIN); \n(ii) something a user has (e.g., cryptographic identification device, token); or \n(iii) something a user is (e.g., biometric). \n\nA privileged account is defined as an information system account with authorizations of a privileged user. \n\nNetwork access is defined as access to an information system by a user (or a process acting on behalf of a user) communicating through a network (e.g., local area network, wide area network, or the Internet).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81309",
+      "title": "The Central Log Server must use multifactor authentication for network access to non-privileged user accounts.",
+      "description": "To assure accountability and prevent unauthenticated access, non-privileged users must utilize multifactor authentication to prevent potential misuse and compromise of the system. \n\nMultifactor authentication uses two or more factors to achieve authentication. \n\nFactors include:\n(i) Something you know (e.g., password/PIN); \n(ii) Something you have (e.g., cryptographic identification device, token); or \n(iii) Something you are (e.g., biometric). \n\nA non-privileged account is any information system account with authorizations of a non-privileged user. \n\nNetwork access is any access to an application by a user (or process acting on behalf of a user) where said access is obtained through a network connection.\n\nApplications integrating with the DoD Active Directory and utilize the DoD CAC are examples of compliant multifactor authentication solutions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81313",
+      "title": "The Central Log Server must use multifactor authentication for local access using privileged user accounts.",
+      "description": "To assure accountability and prevent unauthenticated access, privileged users must utilize multifactor authentication to prevent potential misuse and compromise of the system. \n\nMultifactor authentication is defined as: using two or more factors to achieve authentication. \n\nFactors include: \n(i) Something a user knows (e.g., password/PIN); \n(ii) Something a user has (e.g., cryptographic identification device, token); or \n(iii) Something a user is (e.g., biometric). \n\nA privileged account is defined as an information system account with authorizations of a privileged user. \n\nLocal access is defined as access to an organizational information system by a user (or process acting on behalf of a user) communicating through a direct connection without the use of a network. \n\nApplications integrating with the DoD Active Directory and utilize the DoD CAC are examples of compliant multifactor authentication solutions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81315",
+      "title": "The Central Log Server must be configured to use multifactor authentication for network access to privileged accounts such that one of the factors is provided by a device separate from the system gaining access.",
+      "description": "Using an authentication device, such as a CAC or token that is separate from the information system, ensures that even if the information system is compromised, that compromise will not affect credentials stored on the authentication device. \n\nMultifactor solutions that require devices separate from information systems gaining access include, for example, hardware tokens providing time-based or challenge-response authenticators and smart cards, such as the U.S. Government Personal Identity Verification card and the DoD common access card.\n\nA privileged account is any information system account with authorizations of a privileged user. \n\nNetwork access is any access to an application by a user (or process acting on behalf of a user) where said access is obtained through a network connection.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81317",
+      "title": "The Central Log Server must use FIPS-validated SHA-1 or higher hash function to provide replay-resistant authentication mechanisms for network access to privileged accounts.",
+      "description": "A replay attack may enable an unauthorized user to gain access to the application. Authentication sessions between the authenticator and the application validating the user credentials must not be vulnerable to a replay attack.\n\nAnti-replay is a cryptographically based mechanism; thus, it must use FIPS-approved algorithms. An authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message. Note that the anti-replay service is implicit when data contains monotonically increasing sequence numbers and data integrity is assured. Use of DoD PKI is inherently compliant with this requirement for user and device access. Use of Transport Layer Security (TLS), including application protocols, such as HTTPS and DNSSEC, that use TLS/SSL as the underlying security protocol is also complaint.\n\nConfigure the information system to use the hash message authentication code (HMAC) algorithm for authentication services to Kerberos, SSH, web management tool, and any other access method.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81319",
+      "title": "The Central Log Server must disable accounts (individuals, groups, roles, and devices) after 35 days of inactivity.",
+      "description": "Inactive identifiers pose a risk to systems and applications. Attackers that are able to exploit an inactive identifier can potentially obtain and maintain undetected access to the application. Owners of inactive accounts will not notice if unauthorized access to their user account has been obtained. \n\nApplications need to track periods of inactivity and disable application identifiers after 35 days of inactivity. \n\nManagement of user identifiers is not applicable to shared information system accounts (e.g., guest and anonymous accounts). It is commonly the case that a user account is the name of an information system account associated with an individual.\n\nTo avoid having to build complex user management capabilities directly into their application, wise developers leverage the underlying OS or other user account management infrastructure (AD, LDAP) that is already in place within the organization and meets organizational user account management requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81321",
+      "title": "The Central Log Server must be configured to enforce a minimum 15-character password length.",
+      "description": "The shorter the password, the lower the number of possible combinations that need to be tested before the password is compromised.\n\nPassword complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. Password length is one factor of several that helps to determine strength and how long it takes to crack a password. The shorter the password, the lower the number of possible combinations that need to be tested before the password is compromised. \n\nUse of more characters in a password helps to exponentially increase the time and/or resources required to compromise the password.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81323",
+      "title": "The Central Log Server must be configured to accept the DoD CAC credential to support identity management and personal authentication.",
+      "description": "The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access.\n\nDoD has mandated the use of the CAC to support identity management and personal authentication for systems covered under HSPD 12, as well as a primary component of layered protection for national security systems.\n\nIf the application cannot meet this requirement, the risk may be mitigated through use of an authentication server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81327",
+      "title": "The Central Log Server must be configured to electronically verify the DoD CAC credential.",
+      "description": "The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access.\n\nDoD has mandated the use of the CAC to support identity management and personal authentication for systems covered under HSPD 12, as well as a primary component of layered protection for national security systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81331",
+      "title": "For locally created accounts in the application, the Central Log Server must be configured to allow the use of a temporary password for system logons with an immediate change to a permanent password.",
+      "description": "Without providing this capability, an account may be created without a password. Non-repudiation cannot be guaranteed once an account is created if a user is not forced to change the temporary password upon initial logon. \n\nTemporary passwords are typically used to allow access to applications when new accounts are created or passwords are changed. It is common practice for administrators to create temporary passwords for user accounts that allow the users to log on, yet force them to change the password once they have successfully authenticated.\n\nThe risk can be mitigated by allowing only the account of last resort to be configured locally. This requirement does not apply to that account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81335",
+      "title": "The Central Log Server must be configured to prohibit password reuse for a minimum of five generations.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nTo meet password policy requirements, passwords need to be changed at specific policy-based intervals. \n\nIf the information system or application allows the user to consecutively reuse their password when that password has exceeded its defined lifetime, the end result is a password that is not changed as per policy requirements.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81337",
+      "title": "The Central Log Server must be configured to enforce password complexity by requiring that at least one upper-case character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password is, the greater the number of possible combinations that need to be tested before the password is compromised.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81339",
+      "title": "The Central Log Server must be configured to enforce password complexity by requiring that at least one lower-case character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81345",
+      "title": "The Central Log Server must be configured to enforce password complexity by requiring that at least one numeric character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81349",
+      "title": "The Central Log Server must be configured to enforce password complexity by requiring that at least one special character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \n\nPassword complexity is one factor in determining how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised. \n\nSpecial characters are those characters that are not alphanumeric. Examples include: ~ ! @ # $ % ^ *.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81353",
+      "title": "The Central Log Server must be configured to require the change of at least 8 of the total number of characters when passwords are changed.",
+      "description": "If the application allows the user to consecutively reuse extensive portions of passwords, this increases the chances of password compromise by increasing the window of opportunity for attempts at guessing and brute-force attacks.\n\nThe number of changed characters refers to the number of changes required with respect to the total number of positions in the current password. In other words, characters may be the same within the two passwords; however, the positions of the like characters must be different.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81355",
+      "title": "The Central Log Server must be configured to enforce 24 hours/1 day as the minimum password lifetime.",
+      "description": "Enforcing a minimum password lifetime helps prevent repeated password changes to defeat the password reuse or history enforcement requirement.\n\nRestricting this setting limits the user's ability to change their password. Passwords need to be changed at specific policy based intervals; however, if the application allows the user to immediately and continually change their password, then the password could be repeatedly changed in a short period of time to defeat the organization's policy regarding password reuse.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81359",
+      "title": "The Central Log Server must be configured to enforce a 60-day maximum password lifetime restriction.",
+      "description": "Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed at specific intervals. \n\nOne method of minimizing this risk is to use complex passwords and periodically change them. If the application does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the system and/or application passwords could be compromised. \n\nThis requirement does not include emergency administration accounts that are meant for access to the application in case of failure. These accounts are not required to have maximum password lifetime restrictions.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81363",
+      "title": "The Central Log Server must map the authenticated identity to the individual user or group account for PKI-based authentication.",
+      "description": "Without mapping the certificate used to authenticate to the user account, the ability to determine the identity of the individual user or group will not be available for forensic analysis.",
+      "severity": "low"
+    }
+  ]
+}

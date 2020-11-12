@@ -1,6 +1,6 @@
 {
   "name": "stig_active_directory_forest",
-  "date": "2016-12-19",
+  "date": "2018-05-30",
   "description": "This STIG provides focused security requirements for the AD or Active Directory Domain Services (AD DS) element for Windows Servers operating systems. These requirements apply to the forest and can typically be reviewed once per AD Forest. The separate Active Directory Domain STIG contains domain level requirements. Systems must also be reviewed using the applicable Windows STIG. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Active Directory Forest Security Technical Implementation Guide (STIG)",
   "version": "2",
@@ -34,7 +34,7 @@
     {
       "id": "V-8557",
       "title": "The Windows Time Service on the forest root PDC Emulator must be configured to acquire its time from an external time source.",
-      "description": "When the Windows Time service is used to synchronize time on client computers (workstations and servers) throughout an AD forest, the forest root domain PDC Emulator is the normal default to provide the authoritative time source for the entire forest. To obtain an accurate time for itself, the forest root domain PDC Emulator acts as a client to an external time source.\n\nIf the Windows Time service on the forest root domain PDC Emulator is not configured to acquire the time from a proper source, it may cause time service clients throughout the forest to operate with the inaccurate time setting.\n\nWhen a Windows computer operates with an inaccurate time setting, access to resources on computers with the accurate time might be denied. This is notably true when Kerberos authentication is utilized. Operation with an inaccurate time setting can reduce the value of audit data and invalidate it as a source of forensic evidence in an incident investigation.\n\nFurther Policy Details: \nThe Windows Time service is the preferred time synchronization tool for Windows domain controllers. This check is Not Applicable for Component locations that do not have the AD forest root domain on site. This check must be performed on the domain controller in the *forest root domain* that holds the PDC Emulator FSMO role. ",
+      "description": "When the Windows Time service is used to synchronize time on client computers (workstations and servers) throughout an AD forest, the forest root domain PDC Emulator is the normal default to provide the authoritative time source for the entire forest. To obtain an accurate time for itself, the forest root domain PDC Emulator acts as a client to an external time source.\n\nIf the Windows Time service on the forest root domain PDC Emulator is not configured to acquire the time from a proper source, it may cause time service clients throughout the forest to operate with the inaccurate time setting.\n\nWhen a Windows computer operates with an inaccurate time setting, access to resources on computers with the accurate time might be denied. This is notably true when Kerberos authentication is utilized. Operation with an inaccurate time setting can reduce the value of audit data and invalidate it as a source of forensic evidence in an incident investigation.",
       "severity": "medium"
     }
   ]

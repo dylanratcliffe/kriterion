@@ -1,6 +1,6 @@
 {
   "name": "stig_windows_2008_domain_controller",
-  "date": "2018-03-07",
+  "date": "2019-06-18",
   "description": "The Windows 2008 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  The requirements were developed from DoD consensus, as well as the Windows 2008 Security Guide and security templates published by Microsoft Corporation.  Comments or proposed revisions to this document should be sent via e-mail to the following address:  disa.stig_spt@mail.mil.",
   "title": "Windows 2008 Domain Controller Security Technical Implementation Guide",
   "version": "6",
@@ -344,15 +344,9 @@
       "severity": "high"
     },
     {
-      "id": "V-14224",
-      "title": "The system does not have a backup administrator account",
-      "description": "This check verifies that a backup administrator account has been created to ensure system availability in the event that no administrators are able or available to access the system.  The built-in administrator account may be used for this purpose.  The IAO will ensure the backup administrator account is stored in a secure location. ",
-      "severity": "medium"
-    },
-    {
       "id": "V-14225",
-      "title": "Administrator Passwords are changed when necessary.",
-      "description": "This check verifies that the passwords for the default and backup administrator accounts are changed at least annually or when any member of the administrative team leaves the organization.\n",
+      "title": "The Windows 2008 password for the built-in Administrator account must be changed at least annually or when a member of the administrative team leaves the organization.",
+      "description": "The longer a password is in use, the greater the opportunity for someone to gain unauthorized knowledge of the password. The password for the built-in Administrator account must be changed at least annually or when any member of the administrative team leaves the organization.\n\nOrganizations that use an automated tool, such as Microsoft's Local Administrator Password Solution (LAPS), on domain-joined systems can configure this to occur more frequently. LAPS will change the password every 30 days by default.",
       "severity": "medium"
     },
     {
@@ -1161,8 +1155,8 @@
     },
     {
       "id": "V-3472",
-      "title": "The system is configured to use an unauthorized time server.",
-      "description": "The Windows Time Service controls time synchronization settings.  Time synchronization is essential for authentication and auditing purposes.  If the Windows Time Service is used, it should synchronize with a secure, authorized time source.   Domain joined systems are automatically configured to synchronize with domain controllers.  If an NTP server is configured it should synchronize with a secure, authorized time source.  ",
+      "title": "The time service must synchronize with an appropriate DoD time source.",
+      "description": "The Windows Time Service controls time synchronization settings. Time synchronization is essential for authentication and auditing purposes. If the Windows Time Service is used, it must synchronize with a secure, authorized time source. Domain joined systems are automatically configured to synchronize with domain controllers. If an NTP server is configured, it must synchronize with a secure, authorized time source. ",
       "severity": "low"
     },
     {
@@ -1269,8 +1263,8 @@
     },
     {
       "id": "V-40237",
-      "title": "The US DoD CCEB Interoperability Root CA cross-certificate must be installed in the Untrusted Certificates Store on unclassified systems.",
-      "description": "To ensure users do not experience denial of service when performing certificate-based authentication to DoD websites due to the system chaining to a root other than DoD Root CAs, the US DoD CCEB Interoperability Root CA cross-certificate must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.",
+      "title": "The US DoD CCEB Interoperability Root CA cross-certificates must be installed in the Untrusted Certificates Store on unclassified systems.",
+      "description": "To ensure users do not experience denial of service when performing certificate-based authentication to DoD websites due to the system chaining to a root other than DoD Root CAs, the US DoD CCEB Interoperability Root CA cross-certificates must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.",
       "severity": "medium"
     },
     {
@@ -1469,6 +1463,12 @@
       "id": "V-8327",
       "title": "Windows services that are critical for directory server operation must be configured for automatic startup.",
       "description": "Active Directory (AD) is dependent on several Windows services. If one or more of these services is not configured for automatic startup, AD functions may be partially or completely unavailable until the services are manually started. This could result in a failure to replicate data or to support client authentication and authorization requests.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91777",
+      "title": "The password for the krbtgt account on a domain must be reset at least every 180 days.",
+      "description": "The krbtgt account acts as a service account for the Kerberos Key Distribution Center (KDC) service. The account and password are created when a domain is created and the password is typically not changed. If the krbtgt account is compromised, attackers can create valid Kerberos Ticket Granting Tickets (TGT).\n\nThe password must be changed twice to effectively remove the password history. Changing once, waiting for replication to complete and changing again reduces the risk of issues. Changing twice in rapid succession forces clients to re-authenticate (including application services) but is desired if a compromise is suspected.",
       "severity": "medium"
     }
   ]

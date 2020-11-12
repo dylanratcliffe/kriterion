@@ -1,0 +1,173 @@
+{
+  "name": "stig_storage_area_network",
+  "date": "2019-06-28",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Storage Area Network STIG",
+  "version": "2",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-6605",
+      "title": "The default zone visibility setting is not set to “none”.",
+      "description": "If the default zone visibility setting is set to \"none\", new clients brought into the SAN will not be allowed access to any SAN zone they are not explicitly placed into.\nThe IAO/NSO will ensure that the default zone visibility setting, if available, is set to “none”.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6608",
+      "title": "Hard zoning is not used to protect the SAN.",
+      "description": "Risk:  In a SAN environment, we potentially have data with differing levels or need-to-know stored on the same \"system\".  A high level of assurance that a valid entity (user/system/process) of one set of data is not inadvertently given access to data that is unauthorized. Depending on the data and implementation, lack of hard zoning could provide access to classifed, administrative configuration, or other privileged information.\n\nA zone is considered to be \"hard\" if it is hardware enforced.  In other words, it is considered “hard” in that they are always enforced by the destination ASIC. \"Soft\" zoning is more flexible but is also more vulnerable.    \n\nIn \"soft\" or WWN-enforced zoning, however, the HBA on the initiating devices store a copy of the name server entries, which were discovered in the last IO scan/discovery. It is possible for the HBA to include old addresses, which are no longer allowed in the newly established zoning rules. So your goal is to mitigate this risk in some way.\n\nIf hardware enforced zoning is used this is not an issue as the destination port will not allow any access regardless of what the OS/HBA “thinks” it has access to. \n\nSupplementary Note: Registry State Change Notifications ( RSCN ) storms in large SAN deployments are another factor of which the system administrator must be aware. RSCNs are a broadcast function that allows notification to registered devices when a state change occurs within a SAN topology. These changes could be as simple as a cable being unplugged or a new HBA being connected. When such changes take place, all members would have to be notified of the change and conflicts would have to be resolved, before the name servers are updated. In large configurations it could take a long time for the entire system to stabilize, impairing performance. Effective zoning on the switch would help in minimizing RSCN storms, as only devices within a zone would get notified of state changes. It would also be ideal to make note of business critical servers and make changes to zones and fabrics that affect these servers at non business critical times. Tape fabrics could also be separated from disk fabric (although this comes at a cost). Statistics of RSCN's are available from a few switch vendors. Monitoring these consistently and considering these before expansion of SAN's would help you with effective storage deployments. ",
+      "severity": "high"
+    },
+    {
+      "id": "V-6610",
+      "title": "The SANs are not compliant with overall network security architecture, appropriate enclave, and data center security requirements in the Network Infrastructure STIG and the Enclave STIG",
+      "description": "Inconsistencies with the Network Infrastructure STIG, the Enclave STIG, and the SAN implementation can lead to the creation of vulnerabilities in the network or the enclave.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6613",
+      "title": "All security related patches are not installed.",
+      "description": "Failure to install security related patches leaves the SAN open to attack by exploiting known vulnerabilities.\nThe IAO/NSO will ensure that all security-related patches are installed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6619",
+      "title": "Prior to installing SAN components (servers, switches, and management stations) onto the DOD network infrastructure, components are not configured to meet the applicable STIG requirements.",
+      "description": "Many SAN components (servers, switches, management stations) have security requirements from other STIGs.  It will be verified that all requirement are complied with.\nThe IAO/NSO will ensure that prior to installing SAN components (servers, switches, and management stations) onto the DOD network infrastructure, components are configured to meet the applicable STIG requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6622",
+      "title": "Servers and other hosts are not compliant with applicable Operating System (OS) STIG requirements.",
+      "description": "SAN servers and other hosts are hardware software combinations that actually run under the control of a native OS found on the component.  This OS may be UNIX, LNIX, Windows, etc.  The underlying OS must be configured to be compliant with the applicable STIG to ensure that they do not insert known vulnerabilities into the DOD network infrastructure.\nThe IAO/NSO will ensure that servers and other hosts are compliant with applicable Operating System (OS) STIG requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6623",
+      "title": "Vendor supported, DOD approved, anti-virus software is not installed and configured on all SAN servers in accordance with the applicable operating system STIG on SAN servers and management devices and kept up-to-date with the most recent virus definition tables.",
+      "description": "The SAN servers and other hosts are subject to virus and worm attacks as are any systems running an OS.  If the anti-virus software is not installed or the virus definitions are not maintained on these systems, this could expose the entire enclave network to exploits of known vulnerabilities.\nThe IAO/NSO will ensure that vendor supported, DOD approved, anti-virus software is installed and configured on all SAN servers in accordance with the applicable operating system STIG on SAN servers and management devices and kept up-to-date with the most recent virus definition tables.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6628",
+      "title": "A current drawing of the site’s SAN topology that includes all external and internal links, zones, and all interconnected equipment is not being maintained.",
+      "description": "A drawing of the SAN topology gives the IAO and other interested individuals a pictorial representation of the SAN.  This can be helpful in diagnosing potential security problems.\nThe IAO/NSO will maintain a current drawing of the site’s SAN topology that includes all external and internal links, zones, and all interconnected equipment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6631",
+      "title": "All the network level devices interconnected to the SAN are not located in a secure room with limited access.",
+      "description": "If the network level devices are not located in a secure area they can be tampered with which could lead to a denial of service if the device is powered off or sensitive data can be compromised by a tap connected to the device.\nThe IAO/NSO will ensure that all the network level devices interconnected to the SAN are located in a secure room with limited access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6632",
+      "title": "Individual user accounts with passwords are not set up and maintained for the SAN fabric switch.",
+      "description": "Without identification and authentication unauthorized users could reconfigure the SAN or disrupt its operation by logging in to the fabric switch and executing unauthorized commands.\nThe IAO/NSO will ensure individual user accounts with passwords are set up and maintained for the SAN fabric switch in accordance with the guidance contained in Appendix B, CJCSM and the Network Infrastructure STIG.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6633",
+      "title": "The SAN must be configured to use bidirectional authentication.",
+      "description": "Switch-to-switch management traffic does not have to be encrypted. Bidirectional authentication ensures that a rogue switch cannot be inserted and be auto configured to join the fabric.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6634",
+      "title": "The fabric switches must use DoD-approved PKI rather than proprietary or self-signed device certificates.",
+      "description": "DOD PKI supplies better protection from malicious attacks than userid/password authentication and should be used anytime it is feasible.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6635",
+      "title": "Network management ports on the SAN fabric switches except those needed to support the operational commitments of the sites are not disabled.",
+      "description": "Enabled network management ports that are not required expose the SAN fabric switch and the entire network to unnecessary vulnerabilities.  By disabling these unneeded ports the exposure profile of the device and network is diminished.\nThe IAO/NSO will disable all network management ports on the SAN fabric switches except those needed to support the operational commitments of the sites.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6636",
+      "title": "SAN management is not accomplished using the out-of-band or direct connection method.",
+      "description": "Removing the management traffic from the production network diminishes the security profile of the SAN servers by allowing all the management ports to be closed on the production network.\nThe IAO/NSO will ensure that SAN management is accomplished using the out-of-band or direct connection method.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6637",
+      "title": "Communications from the management console to the SAN fabric are not protected strong two-factor authentication.",
+      "description": "Using two-factor authentication between the SAN management console and the fabric enhances the security of the communications carrying privileged functions.  It is harder for an unauthorized management console to take control of the SAN.\n\nThe preferred solution for two-factor authentication is DoD PKI implemented on the CAC or Alternative (Alt) token.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6638",
+      "title": "The manufacturer’s default PKI keys have not been changed prior to attaching the switch to the SAN Fabric.",
+      "description": "If the manufacturer's default PKI keys are allowed to remain active on the device, it can be accessed by a malicious individual with access to the default key.\nThe IAO/NSO will ensure that the manufacturer’s default PKI keys are changed prior to attaching the switch to the SAN Fabric.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6639",
+      "title": "The SAN is not configured to use FIPS 140-1/2 validated encryption algorithm to protect management-to-fabric communications.",
+      "description": "The communication between the SAN management consol and the SAN fabric carries sensitive privileged configuration data.  This data's confidentiality will be protected with FIPS 140-1/2 validate algorithm for encryption.  Configuration data could be used to create a denial of service by disrupting the SAN fabric.\nThe storage administrator will configure the SAN to use FIPS 140-1/2 validated encryption algorithm to protect management-to-fabric communications.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6645",
+      "title": "All SAN management consoles and ports are not password protected.",
+      "description": "Without password protection malicious users can create a denial of service by disrupting the SAN or allow the compromise of sensitive date by reconfiguring the SAN topography.\nThe IAO/NSO will ensure that all SAN management consoles and ports are password protected.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6646",
+      "title": "The manufacturer’s default passwords have not been changed for all SAN management software.",
+      "description": "The changing of passwords from the default value blocks malicious users with knowledge of the default passwords for the manufacturer's SAN Management software from creating a denial of service by disrupting the SAN or reconfigure the SAN topology leading to a compromise of sensitive data.\nThe IAO/NSO will ensure that the manufacturer’s default passwords are changed for all SAN management software.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6647",
+      "title": "The SAN fabric zoning lists are not based on a policy of Deny-by-Default with blocks on all services and protocols not required on the given port or by the site.",
+      "description": "By using the Deny-by-Default based policy, any service or protocol not required by a port and overlooked in the zoning list will be denied access.  If Deny-by-Default based policy was not used any overlooked service or protocol not required by a port could have access to sensitive data compromising that data.\nThe IAO/NSO will ensure that SAN fabric zoning lists are based on a policy of Deny-by-Default with blocks on all services and protocols not required on the given port or by the site.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6648",
+      "title": "Attempts to access ports, protocols, or services that are denied are not logged..",
+      "description": "Logging or auditing of failed access attempts is a necessary component for the forensic investigation of security incidents.  Without logging there is no way to demonstrate that the access attempt was made or when it was made.  Additionally a pattern of access failures cannot be demonstrated to assert that an intended attack was being made as apposed to an accidental intrusion.\nThe IAO/NSO will ensure that all attempts to any port, protocol, or service that is denied are logged.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6652",
+      "title": "Simple Network Management Protocol (SNMP) is used and it is not configured in accordance with the guidance contained in the Network Infrastructure STIG.",
+      "description": "There are vulnerabilities in some implementations and some configurations of SNMP.  Therefore if SNMP is used the guidelines found in the Network Infrastructure STIG in selecting a version of SNMP to use and how to configure it will be followed.\n\nIf Simple Network Management Protocol (SNMP) is used, the IAO/NSO will ensure it is configured in accordance with the guidance contained in the Network Infrastructure STIG.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6656",
+      "title": "Unauthorized IP addresses are allowed Simple Network Management Protocol (SNMP) access to the SAN devices.",
+      "description": "SNMP, by virtue of what it is designed to do, can be a large security risk. Because SNMP can obtain device information and set device parameters, unauthorized users can cause damage.  Restricting IP address that can access SNMP on the SAN devices will further limit the possibility of malicious access being made.\nThe IAO/NSO will ensure that only authorized IP addresses are allowed Simple Network Management Protocol (SNMP) access to the SAN devices.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6657",
+      "title": "The IP addresses of the hosts permitted SNMP access to the SAN management devices do not belong to the internal network.",
+      "description": "SNMP, by virtue of what it is designed to do, can be a large security risk. Because SNMP can obtain device information and set device parameters, unauthorized users can cause damage.  Therefore access to a SAN device from an IP address outside of the internal network will not be allowed.\nThe IAO/NSO will ensure IP addresses of the hosts that are permitted SNMP access to the SAN management devices belong to the internal network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6660",
+      "title": "End-user platforms are directly attached to the Fibre Channel network or access storage devices directly.",
+      "description": "End-user platforms should only be connected to servers that run applications that access the data found on the SAN devices.  SANs do not supply a robust user identification and authentication platform.  They depend on the servers and applications to authenticate the users and restrict access to users as required.\nThe IAO/NSO will ensure that end-user platforms are not directly attached to the Fibre Channel network and may not access storage devices directly.",
+      "severity": "low"
+    },
+    {
+      "id": "V-6661",
+      "title": "Fabric switch configurations and management station configuration are not archived and/or copies of the operating system and other critical software for all SAN components are not stored in a fire rated container or are not collocated with the operational software.",
+      "description": ".Backup and recovery procedures are critical to the security and availability of the SAN system.  If a system is compromised, shut down, or otherwise not available for service, this could hinder the availability of resources to the warfighter.\nThe IAO/NSO will ensure that all fabric switch configurations and management station configuration are archived and copies of the operating system and other critical software for all SAN components are stored in a fire rated container or otherwise not collocated with the operational software.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-7081",
+      "title": "SAN components are not configured with fixed IP addresses.",
+      "description": "Without fixed IP address filtering or restricting of access based on IP addressing will not function correctly allowing unauthorized access to SAN components or creating a denial of service by blocking legitimate traffic from authorized components.  The storage administrator will ensure that all SAN components are configured to use static IP addresses.",
+      "severity": "medium"
+    }
+  ]
+}

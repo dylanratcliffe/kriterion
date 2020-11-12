@@ -1,6 +1,6 @@
 {
   "name": "stig_infrastructure_router",
-  "date": "2018-03-06",
+  "date": "2018-11-27",
   "description": "Infrastructure Router Security Technical Implementation Guide ",
   "title": "Infrastructure Router Security Technical Implementation Guide ",
   "version": "8",
@@ -136,7 +136,7 @@
     {
       "id": "V-17817",
       "title": "Traffic from the managed network is able to access the OOBM gateway router",
-      "description": "If the gateway router is not a dedicated device for the OOBM network, several safeguards must be implemented for containment of management and production traffic boundaries. It is imperative that hosts from the managed network are not able to access the OOBM gateway rouiter.",
+      "description": "If the gateway router is not a dedicated device for the OOBM network, several safeguards must be implemented for containment of management and production traffic boundaries. It is imperative that hosts from the managed network are not able to access the OOBM gateway router.",
       "severity": "medium"
     },
     {

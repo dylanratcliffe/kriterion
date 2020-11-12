@@ -1,0 +1,815 @@
+{
+  "name": "stig_apple_os_x_10.13",
+  "date": "2020-03-24",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Apple OS X 10.13 Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-81463",
+      "title": "The macOS system must conceal, via the session lock, information previously visible on the display with a publicly viewable image.",
+      "description": "A default screen saver must be configured for all users, as the screen saver will act as a session time-out lock for the system and must conceal the contents of the screen from unauthorized users. The screen saver must not display any sensitive information or reveal the contents of the locked session screen. Publicly viewable images can include static or dynamic images such as patterns used with screen savers, photographic images, solid colors, a clock, a battery life indicator, or a blank screen.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81465",
+      "title": "The macOS system must be configured to disable hot corners.",
+      "description": "Although hot corners can be used to initiate a session lock or launch useful applications, they can also be configured to disable an automatic session lock from initiating. Such a configuration introduces the risk that a user might forget to manually lock the screen before stepping away from the computer.\n\nA session time-out lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence. Rather than relying on the user to manually lock their operating system session prior to vacating the vicinity, operating systems need to be able to identify when a user's session has idled and take action to initiate the session lock.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81467",
+      "title": "The macOS system must be configured to prevent Apple Watch from terminating a session lock.",
+      "description": "Users must be prompted to enter their passwords when unlocking the screen saver. The screen saver acts as a session lock and prevents unauthorized users from accessing the current user's account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81469",
+      "title": "The macOS system must initiate a session lock after a 15-minute period of inactivity.",
+      "description": "A screen saver must be enabled and set to require a password to unlock. The timeout should be set to 15 minutes of inactivity. This mitigates the risk that a user might forget to manually lock the screen before stepping away from the computer.\n\nA session time-out lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence. Rather than relying on the user to manually lock their operating system session prior to vacating the vicinity, operating systems need to be able to identify when a user's session has idled and take action to initiate the session lock.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81471",
+      "title": "The macOS system must retain the session lock until the user reestablishes access using established identification and authentication procedures.",
+      "description": "Users must be prompted to enter their passwords when unlocking the screen saver. The screen saver acts as a session lock and prevents unauthorized users from accessing the current user's account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81473",
+      "title": "The macOS system must initiate the session lock no more than five seconds after a screen saver is started.",
+      "description": "A screen saver must be enabled and set to require a password to unlock. An excessive grace period impacts the ability for a session to be truly locked, requiring authentication to unlock.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81475",
+      "title": "The macOS system must monitor remote access methods and generate audit records when successful/unsuccessful attempts to access/modify privileges occur.",
+      "description": "Frequently, an attacker that successfully gains access to a system has only gained access to an account with limited privileges, such as a guest account or a service account. The attacker must attempt to change to another user account with normal or elevated privileges in order to proceed. Auditing successful and unsuccessful attempts to switch to another user account and the escalation of privileges mitigates this risk.\n\nSatisfies: SRG-OS-000032-GPOS-00013, SRG-OS-000064-GPOS-00033, SRG-OS-000462-GPOS-00206",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81477",
+      "title": "The macOS system must implement DoD-approved encryption to protect the confidentiality and integrity of remote access sessions including transmitted data and data during preparation for transmission.",
+      "description": "Without confidentiality and integrity protection mechanisms, unauthorized individuals may gain access to sensitive information via a remote access session.\n\nRemote access is access to DoD non-public information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nEncryption provides a means to secure the remote connection to prevent unauthorized access to the data traversing the remote access connection (e.g., Remote Desktop Protocol [RDP]), thereby providing a degree of confidentiality. The encryption strength of a mechanism is selected based on the security categorization of the information.\n\nSatisfies: SRG-OS-000033-GPOS-00014, SRG-OS-000423-GPOS-00187, SRG-OS-000424-GPOS-00188, SRG-OS-000425-GPOS-00189, SRG-OS-000426-GPOS-00190",
+      "severity": "high"
+    },
+    {
+      "id": "V-81479",
+      "title": "The macOS system must be configured to disable rshd service.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.\n\nThe \"rshd\" service must be disabled.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81481",
+      "title": "The macOS system must enforce requirements for remote connections to the information system.",
+      "description": "The Screen Sharing feature allows remote users to view or control the desktop of the current user. A malicious user can take advantage of screen sharing to gain full access to the system remotely, either with stolen credentials or by guessing the username and password. Disabling Screen Sharing mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81483",
+      "title": "The macOS system must be configured with Bluetooth turned off unless approved by the organization.",
+      "description": "The Bluetooth kernel extension must be disabled, as wireless access introduces unnecessary security risks. Disabling Bluetooth support with a configuration profile mitigates this risk.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81485",
+      "title": "The macOS system must be configured with Wi-Fi support software disabled.",
+      "description": "Use of Wi-Fi to connect to unauthorized networks may facilitate the exfiltration of mission data.\n\nSatisfies: SRG-OS-000300-GPOS-00118, SRG-OS-000480-GPOS-00227",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81487",
+      "title": "The macOS system must be configured with Infrared [IR] support disabled.",
+      "description": "IR kernel support must be disabled to prevent users from controlling the system with IR devices. By default, if IR is enabled, the system will accept IR control from any remote device.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81489",
+      "title": "The macOS system must be configured with automatic actions disabled for blank CDs.",
+      "description": "Applications should not be configured to launch automatically when a disk is inserted. This potentially circumvents anti-virus software and allows malicious users to craft disks that can exploit user applications. Disabling Automatic Actions for blank CDs mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81491",
+      "title": "The macOS system must be configured with automatic actions disabled for blank DVDs.",
+      "description": "Applications should not be configured to launch automatically when a disk is inserted. This potentially circumvents anti-virus software and allows malicious users to craft disks that can exploit user applications. Disabling Automatic Actions for blank DVDs mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81493",
+      "title": "The macOS system must be configured with automatic actions disabled for music CDs.",
+      "description": "Applications should not be configured to launch automatically when a disk is inserted. This potentially circumvents anti-virus software and allows malicious users to craft disks that can exploit user applications. Disabling Automatic Actions for music CDs mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81497",
+      "title": "The macOS system must be configured with automatic actions disabled for picture CDs.",
+      "description": "Applications should not be configured to launch automatically when a disk is inserted. This potentially circumvents anti-virus software and allows malicious users to craft disks that can exploit user applications. Disabling Automatic Actions for picture CDs mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81499",
+      "title": "The macOS system must be configured with automatic actions disabled for video DVDs.",
+      "description": "Applications should not be configured to launch automatically when a disk is inserted. This potentially circumvents anti-virus software and allows malicious users to craft disks that can exploit user applications. Disabling Automatic Actions for video DVDs mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81501",
+      "title": "The macOS system must automatically remove or disable temporary user accounts after 72 hours.",
+      "description": "If temporary user accounts remain active when no longer needed or for an excessive period, these accounts may be targeted by attackers to gain unauthorized access. To mitigate this risk, automated termination of all temporary accounts must be set upon account creation.\n\nTemporary accounts are established as part of normal account activation procedures when there is a need for short-term accounts without the demand for immediacy in account activation.\n\nIf temporary accounts are used, the operating system must be configured to automatically terminate these types of accounts after a DoD-defined time period of 72 hours.\n\nTo address access requirements, many operating systems may be integrated with enterprise-level authentication/access mechanisms that meet or exceed access control policy requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81503",
+      "title": "The macOS system must automatically remove or disable emergency accounts after the crisis is resolved or within 72 hours.",
+      "description": "Emergency administrator accounts are privileged accounts established in response to crisis situations where the need for rapid account activation is required. Therefore, emergency account activation may bypass normal account authorization processes. If these accounts are automatically disabled, system maintenance during emergencies may not be possible, thus adversely affecting system availability.\n\nEmergency administrator accounts are different from infrequently used accounts (i.e., local logon accounts used by system administrators when network or normal logon/access is not available). Infrequently used accounts also remain available and are not subject to automatic termination dates. However, an emergency administrator account is normally a different account created for use by vendors or system maintainers.\n\nTo address access requirements, many operating systems can be integrated with enterprise-level authentication/access mechanisms that meet or exceed access control policy requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81505",
+      "title": "The macOS system must generate audit records for all account creations, modifications, disabling, and termination events; privileged activities or other system-level access; all kernel module load, unload, and restart actions; all program initiations; and organizationally defined events for all non-local maintenance and diagnostic sessions.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. Audit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000004-GPOS-00004, SRG-OS-000239-GPOS-00089, SRG-OS-000240-GPOS-00090, SRG-OS-000241-GPOS-00091, SRG-OS-000327-GPOS-00127, SRG-OS-000392-GPOS-00172, SRG-OS-000471-GPOS-00215, SRG-OS-000471-GPOS-00216, SRG-OS-000476-GPOS-00221, SRG-OS-000477-GPOS-00222",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81507",
+      "title": "The macOS system must be configured to disable SMB File Sharing unless it is required.",
+      "description": "File Sharing is usually non-essential and must be disabled if not required. Enabling any service increases the attack surface for an intruder. By disabling unnecessary services, the attack surface is minimized.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81509",
+      "title": "The macOS system must be configured to disable Apple File (AFP) Sharing.",
+      "description": "File Sharing is non-essential and must be disabled. Enabling any service increases the attack surface for an intruder. By disabling unnecessary services, the attack surface is minimized.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81511",
+      "title": "The macOS system must be configured to disable the Network File System (NFS) daemon unless it is required.",
+      "description": "If the system does not require access to NFS file shares or is not acting as an NFS server, support for NFS is non-essential and NFS services must be disabled. NFS is a network file system protocol supported by UNIX-like operating systems. Enabling any service increases the attack surface for an intruder. By disabling unnecessary services, the attack surface is minimized.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81513",
+      "title": "The macOS system must be configured to disable the Network File System (NFS) lock daemon unless it is required.",
+      "description": "If the system does not require access to NFS file shares or is not acting as an NFS server, support for NFS is non-essential and NFS services must be disabled. NFS is a network file system protocol supported by UNIX-like operating systems. Enabling any service increases the attack surface for an intruder. By disabling unnecessary services, the attack surface is minimized.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81515",
+      "title": "The macOS system must be configured to disable the Network File System (NFS) stat daemon unless it is required.",
+      "description": "If the system does not require access to NFS file shares or is not acting as an NFS server, support for NFS is non-essential and NFS services must be disabled. NFS is a network file system protocol supported by UNIX-like operating systems. Enabling any service increases the attack surface for an intruder. By disabling unnecessary services, the attack surface is minimized.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81517",
+      "title": "The macOS system firewall must be configured with a default-deny policy.",
+      "description": "An approved firewall must be installed and enabled to work in concert with the macOS Application Firewall. When configured correctly, firewalls protect computers from network attacks by blocking or limiting access to open network ports.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81519",
+      "title": "The macOS system must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the operating system.",
+      "description": "Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.\n\nThe banner must be formatted in accordance with DTM-08-060.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81521",
+      "title": "The macOS system must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the system via SSH.",
+      "description": "Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.\n\nThe banner must be formatted in accordance with DTM-08-060.\n\nSatisfies: SRG-OS-000023-GPOS-00006, SRG-OS-000024-GPOS-00007",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81523",
+      "title": "The macOS system must be configured so that any connection to the system must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the system.",
+      "description": "Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.\n\nThe banner must be formatted in accordance with DTM-08-060.\n\nSatisfies: SRG-OS-000023-GPOS-00006, SRG-OS-000024-GPOS-00007, SRG-OS-000228-GPOS-00088",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81525",
+      "title": "The macOS system must generate audit records for DoD-defined events such as successful/unsuccessful logon attempts, successful/unsuccessful direct access attempts, starting and ending time for user access, and concurrent logons to the same account from different sources.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000470-GPOS-00214, SRG-OS-000472-GPOS-00217, SRG-OS-000473-GPOS-00218, SRG-OS-000475-GPOS-00220",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81527",
+      "title": "The macOS system must initiate session audits at system startup, using internal clocks with time stamps for audit records that meet a minimum granularity of one second and can be mapped to Coordinated Universal Time (UTC) or Greenwich Mean Time (GMT), in order to generate audit records containing information to establish what type of events occurred, the identity of any individual or process associated with the event, including individual identities of group account users, establish where the events occurred, source of the event, and outcome of the events including all account enabling actions, full-text recording of privileged commands, and information about the use of encryption for access wireless access to and from the system.",
+      "description": "Without establishing what type of events occurred, when they occurred, and by whom it would be difficult to establish, correlate, and investigate the events leading up to an outage or attack.\n\nAudit record content that may be necessary to satisfy this requirement includes, for example, time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nAssociating event types with detected events in the operating system audit logs provides a means of investigating an attack, recognizing resource utilization or capacity thresholds, or identifying an improperly configured operating system.\n\nSatisfies: SRG-OS-000037-GPOS-00015, SRG-OS-000038-GPOS-00016, SRG-OS-000039-GPOS-00017, SRG-OS-000040-GPOS-00018, SRG-OS-000041-GPOS-00019, SRG-OS-000042-GPOS-00020, SRG-OS-000042-GPOS-00021, SRG-OS-000055-GPOS-00026, SRG-OS-000254-GPOS-00095, SRG-OS-000255-GPOS-00096, SRG-OS-000255-GPOS-00096, SRG-OS-000299-GPOS-00117, SRG-OS-000303-GPOS-00120, SRG-OS-000358-GPOS-00145, SRG-OS-000359-GPOS-00146",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81529",
+      "title": "The macOS system must enable System Integrity Protection.",
+      "description": "The System Integrity Protection is vital to prevent unauthorized and unintended information transfer via shared system resources, protect audit tools from unauthorized access, modification, and deletion, limit privileges to change software resident within software libraries, limit the ability of non-privileged users to grant other users direct access to the contents of their home directories/folders.\n\nSIP also ensures the presence of an audit record generation capability for DoD-defined auditable events for all operating system components, supports on-demand and after-the-fact reporting requirements, does not alter original content or time ordering of audit records.\n\nSatisfies: SRG-OS-000051-GPOS-00024, SRG-OS-000054-GPOS-00025, SRG-OS-000062-GPOS-00031, SRG-OS-000122-GPOS-00063, SRG-OS-000138-GPOS-00069, SRG-OS-000256-GPOS-00097, SRG-OS-000257-GPOS-00098, SRG-OS-000258-GPOS-00099, SRG-OS-000259-GPOS-00100, SRG-OS-000348-GPOS-00136, SRG-OS-000349-GPOS-00137, SRG-OS-000350-GPOS-00138, SRG-OS-000351-GPOS-00139, SRG-OS-000352-GPOS-00140, SRG-OS-000353-GPOS-00141, SRG-OS-000354-GPOS-00142, SRG-OS-000480-GPOS-00228, SRG-OS-000480-GPOS-00230",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81531",
+      "title": "The macOS system must allocate audit record storage capacity to store at least one weeks worth of audit records when audit records are not immediately sent to a central audit record storage facility.",
+      "description": "The audit service must be configured to require that records are kept for seven days or longer before deletion when there is no central audit record storage facility. When \"expire-after\" is set to \"7d\", the audit service will not delete audit logs until the log data is at least seven days old.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81533",
+      "title": "The macOS system must provide an immediate warning to the System Administrator (SA) and Information System Security Officer (ISSO) (at a minimum) when allocated audit record storage volume reaches 75 percent of repository maximum audit record storage capacity.",
+      "description": "The audit service must be configured to require a minimum percentage of free disk space in order to run. This ensures that audit will notify the administrator that action is required to free up more disk space for audit logs.\n\nWhen \"minfree\" is set to 25 percent, security personnel are notified immediately when the storage volume is 75 percent full and are able to plan for audit record storage capacity expansion.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81535",
+      "title": "The macOS system must provide an immediate real-time alert to the System Administrator (SA) and Information System Security Officer (ISSO), at a minimum, of all audit failure events requiring real-time alerts.",
+      "description": "The audit service should be configured to immediately print messages to the console or email administrator users when an auditing failure occurs. It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability and system operation may be adversely affected.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81537",
+      "title": "The macOS system must, for networked systems, compare internal information system clocks at least every 24 hours with a server that is synchronized to one of the redundant United States Naval Observatory (USNO) time servers or a time server designated for the appropriate DoD network (NIPRNet/SIPRNet) and/or the Global Positioning System (GPS).",
+      "description": "Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. Sources outside of the configured acceptable allowance (drift) may be inaccurate.\n\nSynchronizing internal information system clocks provides uniformity of time stamps for information systems with multiple system clocks and systems connected over a network. \n\nOrganizations should consider endpoints that may not have regular access to the authoritative time server (e.g., mobile, teleworking, and tactical endpoints).\n\nSatisfies: SRG-OS-000355-GPOS-00143, SRG-OS-000356-GPOS-00144",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81539",
+      "title": "The macOS system must be configured with audit log files owned by root.",
+      "description": "The audit service must be configured to create log files with the correct ownership to prevent regular users from reading audit logs. Audit logs contain sensitive data about the system and users. If log files are set to only be readable and writable by root or administrative users with sudo, the risk is mitigated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81541",
+      "title": "The macOS system must be configured with audit log folders owned by root.",
+      "description": "The audit service must be configured to create log files with the correct ownership to prevent regular users from reading audit logs. Audit logs contain sensitive data about the system and about users. If log files are set to be readable and writable only by root or administrative users with sudo, the risk is mitigated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81543",
+      "title": "The macOS system must be configured with audit log files group-owned by wheel.",
+      "description": "The audit service must be configured to create log files with the correct group ownership to prevent regular users from reading audit logs. Audit logs contain sensitive data about the system and users. If log files are set to be readable and writable only by root or administrative users with sudo, the risk is mitigated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81545",
+      "title": "The macOS system must be configured with audit log folders group-owned by wheel.",
+      "description": "The audit service must be configured to create log files with the correct group ownership to prevent regular users from reading audit logs. Audit logs contain sensitive data about the system and about users. If log files are set to be readable and writable only by root or administrative users with sudo, the risk is mitigated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81547",
+      "title": "The macOS system must be configured with audit log files set to mode 440 or less permissive.",
+      "description": "The audit service must be configured to create log files with the correct permissions to prevent regular users from reading audit logs. Audit logs contain sensitive data about the system and about users. If log files are set to be readable and writable only by root or administrative users with sudo, the risk is mitigated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81549",
+      "title": "The macOS system must be configured with audit log folders set to mode 700 or less permissive.",
+      "description": "The audit service must be configured to create log folders with the correct permissions to prevent regular users from reading audit logs. Audit logs contain sensitive data about the system and users. If log folders are set to be readable and writable only by root or administrative users with sudo, the risk is mitigated.\n\nSatisfies: SRG-OS-000057-GPOS-00027, SRG-OS-000058-GPOS-00028, SRG-OS-000059-GPOS-00029",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81551",
+      "title": "The macOS system must be configured so that log files must not contain access control lists (ACLs).",
+      "description": "The audit service must be configured to create log files with the correct permissions to prevent regular users from reading audit logs. Audit logs contain sensitive data about the system and users. If log files are set to be readable and writable only by root or administrative users with sudo, the risk is mitigated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81553",
+      "title": "The macOS system must be configured so that log folders must not contain access control lists (ACLs).",
+      "description": "The audit service must be configured to create log folders with the correct permissions to prevent regular users from reading audit logs. Audit logs contain sensitive data about the system and users. If log folders are set to be readable and writable only by root or administrative users with sudo, the risk is mitigated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81555",
+      "title": "The macOS system must have the security assessment policy subsystem enabled.",
+      "description": "Any changes to the hardware, software, and/or firmware components of the information system and/or application can potentially have significant effects on the overall security of the system.\n\nAccordingly, software defined by the organization as critical must be signed with a certificate that is recognized and approved by the organization.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81557",
+      "title": "The macOS system must be configured to disable the application FaceTime.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.\n\nThe application FaceTime establishes connections to Apple's iCloud, despite using security controls to disable iCloud access.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "low"
+    },
+    {
+      "id": "V-81559",
+      "title": "The macOS system must be configured to disable the application Messages.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.\n\nThe application Messages establishes connections to Apple's iCloud, despite using security controls to disable iCloud access.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "low"
+    },
+    {
+      "id": "V-81561",
+      "title": "The macOS system must be configured to disable the iCloud Calendar services.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.\n\nThe application Calendar establishes connections to Apple's iCloud, despite using security controls to disable iCloud access.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "low"
+    },
+    {
+      "id": "V-81563",
+      "title": "The macOS system must be configured to disable the iCloud Reminders services.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.\n\nThe application Reminders establishes connections to Apple's iCloud, despite using security controls to disable iCloud access.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "low"
+    },
+    {
+      "id": "V-81565",
+      "title": "The macOS system must be configured to disable iCloud Address Book services.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.\n\nThe application Address Book establishes connections to Apple's iCloud, despite using security controls to disable iCloud access.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "low"
+    },
+    {
+      "id": "V-81567",
+      "title": "The macOS system must be configured to disable the iCloud Mail services.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.\n\nThe application Mail establishes connections to Apple's iCloud, despite using security controls to disable iCloud access.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "low"
+    },
+    {
+      "id": "V-81569",
+      "title": "The macOS system must be configured to disable the iCloud Notes services.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.\n\nThe application Notes establishes connections to Apple's iCloud, despite using security controls to disable iCloud access.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "low"
+    },
+    {
+      "id": "V-81571",
+      "title": "The macOS system must cover or disable the built-in or attached camera when not in use.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nFailing to disconnect from collaborative computing devices (i.e. cameras) can result in subsequent compromises of organizational information. Providing easy methods to physically disconnect from such devices after a collaborative computing session helps to ensure that participants actually carry out the disconnect activity without having to go through complex and tedious procedures.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81573",
+      "title": "The macOS system must be configured to disable the system preference pane for iCloud.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.\n\nThe system preference panes for iCloud and Internet Accounts must be disabled.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81575",
+      "title": "The macOS system must be configured to disable the system preference pane for Internet Accounts.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.\n\nThe system preference panes for iCloud and Internet Accounts must be disabled.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81577",
+      "title": "The macOS system must be configured to disable the system preference pane for Siri.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.\n\nThe system preference panes for Siri and dictation must be disabled.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81579",
+      "title": "The macOS system must be configured to disable Siri and dictation.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.\n\nThe system preference panes for Siri and dictation must be disabled.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81599",
+      "title": "The macOS system must be configured to disable sending diagnostic and usage data to Apple.",
+      "description": "To prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., VPN and IPS); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the operating system must support the organizational requirements, providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality of life issues.\n\nSending diagnostic and usage data to Apple must be disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81601",
+      "title": "The macOS system must be configured to disable the iCloud Find My Mac service.",
+      "description": "To prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., VPN and IPS); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the operating system must support the organizational requirements, providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality-of-life issues.\n\nFind My Mac must be disabled.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81603",
+      "title": "The macOS system must be configured to disable Location Services.",
+      "description": "To prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., VPN and IPS); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the operating system must support the organizational requirements, providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality-of-life issues.\n\nLocation Services must be disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81605",
+      "title": "The macOS system must be configured to disable Bonjour multicast advertising.",
+      "description": "To prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., VPN and IPS); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the operating system must support the organizational requirements, providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality of life issues.\n\nBonjour multicast advertising must be disabled on the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81607",
+      "title": "The macOS system must be configured to disable the UUCP service.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nExamples of non-essential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.\n\nThe system must not have the UUCP service active.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81609",
+      "title": "The macOS system must disable the Touch ID feature.",
+      "description": "The Touch ID feature permits users to add additional fingerprints to unlock the host. These fingerprints may be for the user or anyone else. Because unauthorized users may gain access to the system, the use of Touch ID must be limited.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81611",
+      "title": "The macOS system must obtain updates from a DoD-approved update server.",
+      "description": "Software update configuration. Point to DOD approved update server. Configure for automatic install of critical updates.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81613",
+      "title": "The macOS system must not have a root account.",
+      "description": "To assure individual accountability and prevent unauthorized access, organizational users must be individually identified and authenticated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81615",
+      "title": "The macOS system must not have a guest account.",
+      "description": "Only authorized individuals should be allowed to obtain access to operating system components. Permitting access via a guest account provides unauthenticated access to any person.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81617",
+      "title": "The macOS system must unload tftpd.",
+      "description": "The \"tftp\" service must be disabled as it sends all data in a clear-text form that can be easily intercepted and read. The data needs to be protected at all times during transmission, and encryption is the standard method for protecting data in transit. \n\nIf the data is not encrypted during transmission, it can be plainly read (i.e., clear text) and easily compromised. Disabling ftp is one way to mitigate this risk. Administrators should be instructed to use an alternate service for data transmission that uses encryption, such as SFTP.\n\nAdditionally, the \"tftp\" service uses UDP, which is not secure.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81619",
+      "title": "The macOS system must disable Siri pop-ups.",
+      "description": "Users (and any processes acting on behalf of users) need to be uniquely identified and authenticated for all accesses other than those accesses explicitly identified and documented by the organization, which outlines specific user actions that can be performed on the Ubuntu operating system without identification or authentication.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81621",
+      "title": "The macOS system must disable iCloud Back to My Mac feature.",
+      "description": "The Back to My Mac is an iCloud feature permitting users to connect to a Mac, AirPort Disk, or Time Capsule using another Mac or another Internet connected device. When connected users can transfer data and see a live version of the screen content.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81623",
+      "title": "The macOS system must disable iCloud Keychain synchronization.",
+      "description": "Requiring individuals to be authenticated with an individual authenticator prior to using a group authenticator allows for traceability of actions, as well as adding an additional level of protection of the actions that can be taken with group account knowledge.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81625",
+      "title": "The macOS system must disable iCloud document synchronization.",
+      "description": "Operating systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., VPN and IPS); however, doing so increases risk over limiting the services provided by any one component. \n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81627",
+      "title": "The macOS system must disable iCloud bookmark synchronization.",
+      "description": "To prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81629",
+      "title": "The macOS system must disable iCloud Photo Library.",
+      "description": "To support the requirements and principles of least functionality, the operating system must support the organizational requirements, providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality-of-life issues.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81631",
+      "title": "The macOS system must disable iCloud Desktop And Documents.",
+      "description": "To prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nSatisfies: SRG-OS-000095-GPOS-00049, SRG-OS-000370-GPOS-00155",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81633",
+      "title": "The macOS system must require individuals to be authenticated with an individual authenticator prior to using a group authenticator.",
+      "description": "Administrators must never log in directly as root. To assure individual accountability and prevent unauthorized access, logging in as root over a remote connection must be disabled. Administrators should only run commands as root after first authenticating with their individual user names and passwords.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81635",
+      "title": "The macOS system must implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.",
+      "description": "Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data. The operating system must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.\n\nSatisfies: SRG-OS-000112-GPOS-00057, SRG-OS-000113-GPOS-00058, SRG-OS-000396-GPOS-00176",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81637",
+      "title": "The macOS system must enforce password complexity by requiring that at least one numeric character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. Password complexity is one factor of several that determines how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81639",
+      "title": "The macOS system must enforce password complexity by requiring that at least one special character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity or strength is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. Password complexity is one factor in determining how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised. Special characters are those characters that are not alphanumeric. Examples include: ~ ! @ # $ % ^ *.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81641",
+      "title": "The macOS system must enforce a minimum 15-character password length.",
+      "description": "The minimum password length must be set to 15 characters. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. Password length is one factor of several that helps to determine strength and how long it takes to crack a password. The use of more characters in a password helps to exponentially increase the time and/or resources required to compromise the password.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81643",
+      "title": "The macOS system must not use telnet.",
+      "description": "The \"telnet\" service must be disabled as it sends all data in a clear-text form that can be easily intercepted and read. The data needs to be protected at all times during transmission, and encryption is the standard method for protecting data in transit. \n\nIf the data is not encrypted during transmission, it can be plainly read (i.e., clear text) and easily compromised. Disabling telnet is one way to mitigate this risk. Administrators should be instructed to use an alternate service for remote access sessions, non-local maintenance sessions, and diagnostic communications that uses encryption, such as SSH.\n\nSatisfies: SRG-OS-000074-GPOS-00042, SRG-OS-000125-GPOS-00065, SRG-OS-000250-GPOS-00093, SRG-OS-000393-GPOS-00173, SRG-OS-000394-GPOS-00174",
+      "severity": "high"
+    },
+    {
+      "id": "V-81645",
+      "title": "The macOS system must not use unencrypted FTP.",
+      "description": "The \"ftp\" service must be disabled as it sends all data in a clear-text form that can be easily intercepted and read. The data needs to be protected at all times during transmission, and encryption is the standard method for protecting data in transit. \n\nIf the data is not encrypted during transmission, it can be plainly read (i.e., clear text) and easily compromised. Disabling ftp is one way to mitigate this risk. Administrators should be instructed to use an alternate service for data transmission that uses encryption, such as SFTP.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81647",
+      "title": "The macOS system must allow only applications downloaded from the App Store or properly signed to run.",
+      "description": "Gatekeeper settings must be configured correctly to only allow the system to run applications downloaded from the Mac App Store or applications signed with a valid Apple Developer ID code. Administrator users will still have the option to override these settings on a per-app basis. Gatekeeper is a security feature that ensures that applications must be digitally signed by an Apple-issued certificate in order to run. Digital signatures allow the macOS host to verify that the application has not been modified by a malicious third party.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81649",
+      "title": "The macOS system must be configured so that end users cannot override Gatekeeper settings.",
+      "description": "Gatekeeper must be configured with a configuration profile to prevent regular users from overriding its setting. If regular users are allowed to disable Gatekeeper or set it to a less restrictive setting, malware could be introduced into the system. Gatekeeper is a security feature that ensures applications must be digitally signed by an Apple-issued certificate in order to run. Digital signatures allow the macOS host to verify the application has not been modified by a malicious third party.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81651",
+      "title": "The macOS system must be configured with the SSH daemon ClientAliveInterval option set to 900 or less.",
+      "description": "SSH should be configured to log users out after a 15-minute interval of inactivity and to wait only 30 seconds before timing out logon attempts. Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session or an incomplete logon attempt will also free up resources committed by the managed network element.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81653",
+      "title": "The macOS system must be configured with the SSH daemon ClientAliveCountMax option set to 0.",
+      "description": "SSH should be configured to log users out after a 15-minute interval of inactivity and to wait only 30 seconds before timing out logon attempts. Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session or an incomplete logon attempt will also free up resources committed by the managed network element.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81655",
+      "title": "The macOS system must be configured with the SSH daemon LoginGraceTime set to 30 or less.",
+      "description": "SSH should be configured to log users out after a 15-minute interval of inactivity and to wait only 30 seconds before timing out logon attempts. Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session or an incomplete logon attempt will also free up resources committed by the managed network element.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81657",
+      "title": "The macOS system must issue or obtain public key certificates under an appropriate certificate policy from an approved service provider.",
+      "description": "DoD-approved certificates must be installed to the System Keychain so they will be available to all users.\n\nFor user certificates, each organization obtains certificates from an approved, shared service provider, as required by OMB policy. For federal agencies operating a legacy public key infrastructure cross-certified with the Federal Bridge Certification Authority at medium assurance or higher, this Certification Authority will suffice. This control focuses on certificates with a visibility external to the information system and does not include certificates related to internal system operations; for example, application-specific time services.\n\nSatisfies: SRG-OS-000066-GPOS-00034, SRG-OS-000478-GPOS-00223",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81659",
+      "title": "The macOS system must implement cryptographic mechanisms to protect the confidentiality and integrity of all information at rest.",
+      "description": "Information at rest refers to the state of information when it is located on a secondary storage device (e.g., disk drive and tape drive) within an organizational information system. Mobile devices, laptops, desktops, and storage devices can be lost or stolen, and the contents of their data storage (e.g., hard drives and non-volatile memory) can be read, copied, or altered. By encrypting the system hard drive, the confidentiality and integrity of any data stored on the system is ensured. FileVault Disk Encryption mitigates this risk.\n\nSatisfies: SRG-OS-000185-GPOS-00079, SRG-OS-000404-GPOS-00183, SRG-OS-000405-GPOS-00184",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81661",
+      "title": "The macOS system must employ automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously where HBSS is used; 30 days for any additional internal network scans not covered by HBSS; and annually for external scans by Computer Network Defense Service Provider (CNDSP).",
+      "description": "An approved tool for continuous network scanning must be installed and configured to run.\n\nWithout the use of automated mechanisms to scan for security flaws on a continuous and/or periodic basis, the operating system or other system components may remain vulnerable to the exploits presented by undetected software flaws.\n\nTo support this requirement, the operating system may have an integrated solution incorporating continuous scanning using HBSS and periodic scanning using other tools, as specified in the requirement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81663",
+      "title": "The macOS system must restrict the ability of individuals to use USB storage devices.",
+      "description": "External hard drives, such as USB, must be disabled for users. USB hard drives are a potential vector for malware and can be used to exfiltrate sensitive data if an approved data-loss prevention (DLP) solution is not installed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81665",
+      "title": "The macOS system must be configured to not allow iTunes file sharing.",
+      "description": "Connections to unauthorized iOS devices (e.g., iPhones, iPods, and iPads) open the system to possible compromise via exfiltration of system data. Disabling the iTunes file sharing blocks connections to iOS devices.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81667",
+      "title": "The macOS system must not allow an unattended or automatic logon to the system.",
+      "description": "When automatic logons are enabled, the default user account is automatically logged on at boot time without prompting the user for a password. Even if the screen is later locked, a malicious user would be able to reboot the computer to log on. Disabling automatic logons mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81669",
+      "title": "The macOS system logon window must be configured to prompt for username and password, rather than show a list of users.",
+      "description": "The logon window must be configured to prompt all users for both a username and a password. By default, the system displays a list of known users at the logon screen. This gives an advantage to an attacker with physical access to the system, as the attacker would only have to guess the password for one of the listed accounts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81671",
+      "title": "The macOS firewall must have logging enabled.",
+      "description": "Firewall logging must be enabled. This ensures that malicious network activity will be logged to the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81673",
+      "title": "The macOS system must be configured so that Bluetooth devices are not allowed to wake the computer.",
+      "description": "A session lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not want to log out because of the temporary nature of the absence.\n\nThe session lock is implemented at the point where session activity can be determined.\n\nRegardless of where the session lock is determined and implemented, once invoked, the session lock must remain in place until the user reauthenticates. No other activity aside from reauthentication must unlock the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81675",
+      "title": "The macOS system must be configured with Bluetooth Sharing disabled.",
+      "description": "Bluetooth sharing allows users to wirelessly transmit files between the macOS host and Bluetooth-enabled devices, including personally owned cellphones and tablets. A malicious user might introduce viruses or malware onto the system or extract sensitive files. Disabling Bluetooth Sharing mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81677",
+      "title": "The macOS system must be configured to disable Remote Apple Events.",
+      "description": "It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions).\n\nExamples of non-essential capabilities include but are not limited to games, software packages, tools, and demonstration software not related to requirements or providing a wide array of functionality not required for every mission but that cannot be disabled.\n\nRemote Apple Events must be disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81679",
+      "title": "The macOS system must be configured with the sudoers file configured to authenticate users on a per -tty basis.",
+      "description": "The \"sudo\" command must be configured to prompt for the administrator's password at least once in each newly opened Terminal window or remote logon session, as this prevents a malicious user from taking advantage of an unlocked computer or an abandoned logon session to bypass the normal password prompt requirement. \n\nWithout the \"tty_tickets\" option, all open local and remote logon sessions would be authenticated to use sudo without a password for the duration of the configured password timeout window.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81681",
+      "title": "The macOS Application Firewall must be enabled.",
+      "description": "The Application Firewall is the built-in firewall that comes with macOS and must be enabled. Firewalls protect computers from network attacks by blocking or limiting access to open network ports. Application firewalls limit which applications are allowed to communicate over the network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81683",
+      "title": "The macOS system must be configured with all public directories owned by root or an application account.",
+      "description": "All public directories must be owned by \"root\", the local admin user, or an application account. Directory owners have permission to delete any files contained in that directory, even if the files are owned by other user accounts. By setting the owner to an administrator or application account, regular users will not be permitted to delete each other's files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81685",
+      "title": "The macOS system must be configured with the finger service disabled.",
+      "description": "The \"finger\" service has had several security vulnerabilities in the past and is not a necessary service. It is disabled by default; enabling it would increase the attack surface of the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81687",
+      "title": "The macOS system must be configured with the sticky bit set on all public directories.",
+      "description": "The sticky bit must be set on all public directories, as it prevents users with write access to the directory from deleting or renaming files that belong to other users inside it.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81689",
+      "title": "The macOS system must be configured with the prompt for Apple ID and iCloud disabled.",
+      "description": "The prompt for Apple ID and iCloud must be disabled, as it might mislead new users into creating unwanted Apple IDs and iCloud storage accounts upon their first logon.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81691",
+      "title": "The macOS system must be configured so that users do not have Apple IDs signed into iCloud.",
+      "description": "Users should not sign into iCloud, as this leads to the possibility that sensitive data could be saved to iCloud storage or that users could inadvertently introduce viruses or malware previously saved to iCloud from other systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81693",
+      "title": "The macOS system must be configured with iTunes Music Sharing disabled.",
+      "description": "When iTunes Music Sharing is enabled, the computer starts a network listening service that shares the contents of the user's music collection with other users in the same subnet. Unnecessary network services should always be disabled because they increase the attack surface of the system. Disabling iTunes Music Sharing mitigates this risk.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81695",
+      "title": "All setuid executables on the macOS system must be documented.",
+      "description": "Very few of the executables that come preinstalled on the macOS host have the \"setuid\" bit set, and administrators should never add the \"setuid\" bit to any executable that does not already have it set by the vendor. Executables with the \"setuid\" bit set allow anyone that executes them to be temporarily assigned the UID of the file owner. In practice, this almost always is the root account. While some vendors depend on this file attribute for proper operation, security problems can result if \"setuid\" is assigned to programs allowing reading and writing of files, or shell escapes, as this could lead to unprivileged users gaining privileged access to files and directories on the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81697",
+      "title": "The macOS system must not accept source-routed IPv4 packets.",
+      "description": "A source-routed packet attempts to specify the network path the packet should take. If the system is not configured to block the incoming source-routed packets, an attacker can redirect the system's network traffic. Configuring the system to drop incoming source-routed IPv4 packets mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81699",
+      "title": "The macOS system must ignore IPv4 ICMP redirect messages.",
+      "description": "ICMP redirects are broadcast to reshape network traffic. A malicious user could craft fake redirect packets and try to force all network traffic to pass through a network sniffer. If the system is not configured to ignore these packets, it could be susceptible to this kind of attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81701",
+      "title": "The macOS system must not have IP forwarding for IPv4 enabled.",
+      "description": "IP forwarding for IPv4 must not be enabled, as only authorized systems should be permitted to operate as routers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81703",
+      "title": "The macOS system must not have IP forwarding for IPv6 enabled.",
+      "description": "IP forwarding for IPv6 must not be enabled, as only authorized systems should be permitted to operate as routers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81705",
+      "title": "The macOS system must not send IPv4 ICMP redirects by default.",
+      "description": "ICMP redirects are broadcast to reshape network traffic. A malicious user could use the system to send fake redirect packets and try to force all network traffic to pass through a network sniffer. Disabling ICMP redirect broadcasts mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81707",
+      "title": "The macOS system must not send IPv6 ICMP redirects by default.",
+      "description": "ICMP redirects are broadcast to reshape network traffic. A malicious user could use the system to send fake redirect packets and try to force all network traffic to pass through a network sniffer. Disabling ICMP redirect broadcasts mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81711",
+      "title": "The macOS system must prevent local applications from generating source-routed packets.",
+      "description": "A source-routed packet attempts to specify the network path that the system should take. If the system is not configured to block the sending of source-routed packets, an attacker can redirect the system's network traffic.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81713",
+      "title": "The macOS system must not process Internet Control Message Protocol [ICMP] timestamp requests.",
+      "description": "ICMP timestamp requests reveal information about the system and can be used to determine which operating system is installed. Precise time data can also be used to launch time-based attacks against the system. Configuring the system to drop incoming ICMPv4 timestamp requests mitigates these risks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81715",
+      "title": "The macOS system must have unused network devices disabled.",
+      "description": "If an unused network device is left enabled, a user might be able to activate it at a later time. Unused network devices should be disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81717",
+      "title": "The macOS system must be configured to disable Internet Sharing.",
+      "description": "To prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., VPN and IPS); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the operating system must support the organizational requirements, providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality of life issues.\n\nInternet Sharing must be disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81719",
+      "title": "The macOS system must be configured to disable Web Sharing.",
+      "description": "To prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., VPN and IPS); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the operating system must support the organizational requirements, providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality of life issues.\n\nWeb Sharing is non-essential and must be disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81721",
+      "title": "The macOS system must enforce an account lockout time period of 15 minutes in which a user makes three consecutive invalid logon attempts.",
+      "description": "Setting a lockout time period of 15 minutes is an effective deterrent against brute forcing that also makes allowances for legitimate mistakes by users. When three invalid logon attempts are made, the account will be locked.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81723",
+      "title": "The macOS system must enforce account lockout after the limit of three consecutive invalid logon attempts by a user.",
+      "description": "By limiting the number of failed logon attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute forcing, is reduced. Limits are imposed by locking the account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81725",
+      "title": "The macOS system must enforce the limit of three consecutive invalid logon attempts by a user before the user account is locked.",
+      "description": "By limiting the number of failed logon attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute forcing, is reduced. Limits are imposed by locking the account. Setting a lockout expiration of 15 minutes is an effective deterrent against brute forcing that also makes allowances for legitimate mistakes by users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81727",
+      "title": "The macOS system must shut down by default upon audit failure (unless availability is an overriding concern).",
+      "description": "The audit service should shut down the computer if it is unable to audit system events. Once audit failure occurs, user and system activity is no longer recorded and malicious activity could go undetected. Audit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded. Responses to audit failure depend on the nature of the failure mode.\n\nWhen availability is an overriding concern, other approved actions in response to an audit failure are as follows: \n\n(i) If the failure was caused by the lack of audit record storage capacity, the operating system must continue generating audit records if possible (automatically restarting the audit service if necessary), overwriting the oldest audit records in a first-in-first-out manner. \n\n(ii) If audit records are sent to a centralized collection server and communication with this server is lost or the server fails, the operating system must queue audit records locally until communication is restored or until the audit records are retrieved manually. Upon restoration of the connection to the centralized collection server, action should be taken to synchronize the local audit data with the collection server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81729",
+      "title": "The macOS system must use a DoD antivirus program.",
+      "description": "An approved antivirus product must be installed and configured to run.\n\nMalicious software can establish a base on individual desktops and servers. Employing an automated mechanism to detect this type of software will aid in elimination of the software from the operating system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81731",
+      "title": "The macOS system must be configured to disable AirDrop.",
+      "description": "To prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nOperating systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., VPN and IPS); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the operating system must support the organizational requirements, providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality of life issues.\n\nAirDrop must be disabled.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81733",
+      "title": "The macOS system must be integrated into a directory services infrastructure.",
+      "description": "Distinct user account databases on each separate system cause problems with username and password policy enforcement. Most approved directory services infrastructure solutions allow centralized management of users and passwords.",
+      "severity": "high"
+    },
+    {
+      "id": "V-81735",
+      "title": "The macOS system must enforce a 60-day maximum password lifetime restriction.",
+      "description": "Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed periodically.\n\nOne method of minimizing this risk is to use complex passwords and periodically change them. If the operating system does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the operating system passwords could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81737",
+      "title": "The macOS system must prohibit password reuse for a minimum of five generations.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. If the information system or application allows the user to consecutively reuse their password when that password has exceeded its defined lifetime, the end result is a password that is not changed as per policy requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81739",
+      "title": "The macOS system must be configured with system log files owned by root and group-owned by wheel or admin.",
+      "description": "System logs should only be readable by root or admin users. System logs frequently contain sensitive information that could be used by an attacker. Setting the correct owner mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81741",
+      "title": "The macOS system must be configured with system log files set to mode 640 or less permissive.",
+      "description": "System logs should only be readable by root or admin users. System logs frequently contain sensitive information that could be used by an attacker. Setting the correct permissions mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81743",
+      "title": "The macOS system must be configured with access control lists (ACLs) for system log files to be set correctly.",
+      "description": "System logs should only be readable by root or admin users. System logs frequently contain sensitive information that could be used by an attacker. Setting the correct ACLs mitigates this risk.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81745",
+      "title": "The macOS system must audit the enforcement actions used to restrict access associated with changes to the system.",
+      "description": "By auditing access restriction enforcement, changes to application and OS configuration files can be audited. Without auditing the enforcement of access restrictions, it will be difficult to identify attempted attacks and an audit trail will not be available for forensic investigation.\n\nEnforcement actions are the methods or mechanisms used to prevent unauthorized changes to configuration settings. Enforcement action methods may be as simple as denying access to a file based on the application of file permissions (access restriction). Audit items may consist of lists of actions blocked by access restrictions or changes identified after the fact.\n\nSatisfies: SRG-OS-000365-GPOS-00152, SRG-OS-000458-GPOS-00203, SRG-OS-000461-GPOS-00205, SRG-OS-000463-GPOS-00207, SRG-OS-000465-GPOS-00209, SRG-OS-000466-GPOS-00210, SRG-OS-000467-GPOS-00211, SRG-OS-000468-GPOS-00212, SRG-OS-000474-GPOS-00219",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81747",
+      "title": "The macOS system must be configured to lock the user session when a smart token is removed.",
+      "description": "A session lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not want to log out because of the temporary nature of the absence.\n\nThe session lock is implemented at the point where session activity can be determined. Rather than be forced to wait for a period of time to expire before the user session can be locked, operating systems need to provide users with the ability to manually invoke a session lock so users may secure their session should they need to temporarily vacate the immediate physical vicinity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81749",
+      "title": "The macOS system must enable certificate for smartcards.",
+      "description": "To prevent untrusted certificates the certificates on a smartcard card must be valid in these ways: its issuer is system-trusted, the certificate is not expired, its \"valid-after\" date is in the past, and it passes CRL and OCSP checking.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81751",
+      "title": "The macOS system must prohibit user installation of software without explicit privileged status.",
+      "description": "Allowing regular users to install software, without explicit privileges, creates the risk that untested or potentially malicious software will be installed on the system. Explicit privileges (escalated or administrative privileges) provide the regular user with explicit capabilities and control that exceeds the rights of a regular user.\n\nOperating system functionality will vary, and while users are not permitted to install unapproved software, there may be instances where the organization allows the user to install approved software packages, such as from an approved software repository.\n\nThe operating system or software configuration management utility must enforce control of software installation by users based upon what types of software installations are permitted (e.g., updates and security patches to existing software) and what types of installations are prohibited (e.g., software whose pedigree with regard to being potentially malicious is unknown or suspect) by the organization.",
+      "severity": "medium"
+    }
+  ]
+}

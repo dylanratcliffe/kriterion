@@ -1,6 +1,6 @@
 {
   "name": "stig_ms_sql_server_2016_database",
-  "date": "2018-03-09",
+  "date": "2019-12-12",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "MS SQL Server 2016 Database Security Technical Implementation Guide",
   "version": "1",
@@ -10,12 +10,6 @@
     {
       "id": "V-79061",
       "title": "SQL Server databases must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals.",
-      "description": "Enterprise environments make account management for applications and databases challenging and complex. A manual process for account management functions adds the risk of a potential oversight or other error. Managing accounts for the same person in multiple places is inefficient and prone to problems with consistency and synchronization.\n\nA comprehensive application account management process that includes automation helps to ensure that accounts designated as requiring attention are consistently and promptly addressed. \n\nExamples include, but are not limited to, using automation to take action on multiple accounts designated as inactive, suspended, or terminated, or by disabling accounts located in non-centralized account stores, such as multiple servers. Account management functions can also include: assignment of group or role membership; identifying account type; specifying user access authorizations (i.e., privileges); account removal, update, or termination; and administrative alerts. The use of automated mechanisms can include, for example: using email or text messaging to notify account managers when users are terminated or transferred; using the information system to monitor account usage; and using automated telephone notification to report atypical system account usage.\n\nSQL Server must be configured to automatically utilize organization-level account management functions, and these functions must immediately enforce the organization's current account policy. \n\nAutomation may be comprised of differing technologies that when placed together contain an overall mechanism supporting an organization's automated account management requirements.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-79063",
-      "title": "SQL Server must integrate with an organization-level authentication/access mechanism providing account management and automation for all users, groups, roles, and any other principals.",
       "description": "Enterprise environments make account management for applications and databases challenging and complex. A manual process for account management functions adds the risk of a potential oversight or other error. Managing accounts for the same person in multiple places is inefficient and prone to problems with consistency and synchronization.\n\nA comprehensive application account management process that includes automation helps to ensure that accounts designated as requiring attention are consistently and promptly addressed. \n\nExamples include, but are not limited to, using automation to take action on multiple accounts designated as inactive, suspended, or terminated, or by disabling accounts located in non-centralized account stores, such as multiple servers. Account management functions can also include: assignment of group or role membership; identifying account type; specifying user access authorizations (i.e., privileges); account removal, update, or termination; and administrative alerts. The use of automated mechanisms can include, for example: using email or text messaging to notify account managers when users are terminated or transferred; using the information system to monitor account usage; and using automated telephone notification to report atypical system account usage.\n\nSQL Server must be configured to automatically utilize organization-level account management functions, and these functions must immediately enforce the organization's current account policy. \n\nAutomation may be comprised of differing technologies that when placed together contain an overall mechanism supporting an organization's automated account management requirements.",
       "severity": "medium"
     },
@@ -81,19 +75,19 @@
     },
     {
       "id": "V-79085",
-      "title": "The Database Master Key encryption password must meet DOD password complexity requirements.",
+      "title": "The Database Master Key encryption password must meet DOD password complexity requirements. ",
       "description": "Weak passwords may be easily guessed. When passwords are used to encrypt keys used for encryption of sensitive data, then the confidentiality of all data encrypted using that key is at risk.",
       "severity": "medium"
     },
     {
       "id": "V-79087",
-      "title": "The Database Master Key must be encrypted by the Service Master Key, where a Database Master Key is required and another encryption method has not been specified.",
+      "title": "The Database Master Key must be encrypted by the Service Master Key, where a Database Master Key is required and another encryption method has not been specified. ",
       "description": "When not encrypted by the Service Master Key, system administrators or application administrators may access and use the Database Master Key to view sensitive data that they are not authorized to view. Where alternate encryption means are not feasible, encryption by the Service Master Key may be necessary. To help protect sensitive data from unauthorized access by DBAs, mitigations may be in order. Mitigations may include automatic alerts or other audit events when the Database Master Key is accessed outside of the application or by a DBA account.",
       "severity": "medium"
     },
     {
       "id": "V-79089",
-      "title": "The Certificate used for encryption must be backed up, stored offline and off-site.",
+      "title": "The Certificate used for encryption must be backed up, stored offline and off-site. ",
       "description": "Backup and recovery of the Certificate used for encryption is critical to the complete recovery of the database. Not having this key can lead to loss of data during recovery.",
       "severity": "medium"
     },

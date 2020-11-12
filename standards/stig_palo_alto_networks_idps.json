@@ -1,6 +1,6 @@
 {
   "name": "stig_palo_alto_networks_idps",
-  "date": "2015-11-17",
+  "date": "2019-12-20",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Palo Alto Networks IDPS Security Technical Implementation Guide",
   "version": "1",
@@ -21,8 +21,8 @@
     },
     {
       "id": "V-62651",
-      "title": "The Palo Alto Networks security platform must capture traffic of detected/blocked malicious code.",
-      "description": "Associating event outcome with detected events in the log provides a means of investigating an attack or suspected attack.\n\nThe logs should identify what servers, destination addresses, applications, or databases were potentially attacked by logging communications traffic between the target and the attacker. All commands that were entered by the attacker (such as account creations, changes in permissions, files accessed, etc.) during the session should also be logged.\n\nPacket captures of attack traffic can be used by forensic tools for analysis for example, to determine if an alert is real or a false alarm or for forensics for threat intelligence.",
+      "title": "The Palo Alto Networks security platform must capture traffic of detected/dropped malicious code.",
+      "description": "Associating event outcome with detected events in the log provides a means of investigating an attack or suspected attack.\n\nThe logs should identify what servers, destination addresses, applications, or databases were potentially attacked by logging communications traffic between the target and the attacker. All commands that were entered by the attacker (such as account creations, changes in permissions, files accessed, etc.) during the session should also be logged when capturing for forensic analysis.\n\nPacket captures of attack traffic can be used by forensic tools for analysis for example, to determine if an alert is real or a false alarm or for forensics for threat intelligence. Configure the packet capture filters so that the CPU is not overloaded.  There are many reasons for a packet capture. This requirement addresses the case where the capture is based on forensics for a detected malicious attack and the traffic is being captured in association with that traffic. Filtering should be engaged to facilitate forensics.",
       "severity": "medium"
     },
     {
@@ -39,7 +39,7 @@
     },
     {
       "id": "V-62657",
-      "title": "The Palo Alto Networks security platform must detect and block any prohibited mobile or otherwise malicious code at the enclave boundary.",
+      "title": "The Palo Alto Networks security platform must detect and deny any prohibited mobile or otherwise malicious code at the enclave boundary.",
       "description": "Mobile code is defined as software modules obtained from remote systems, transferred across a network, and then downloaded and executed on a local system without explicit installation or execution by the recipient. Examples of mobile code include JavaScript, VBScript, Java applets, ActiveX controls, Flash animations, Shockwave videos, and macros embedded within Microsoft Office documents. Mobile code can be exploited to attack a host. It can be sent as an e-mail attachment or embedded in other file formats not traditionally associated with executable code.\n\nWhile the IDPS cannot replace the anti-virus and host-based IDS (HIDS) protection installed on the network's endpoints, vendor or locally created sensor rules can be implemented, which provide preemptive defense against both known and zero-day vulnerabilities. Many of the protections may provide defenses before vulnerabilities are discovered and rules or blacklist updates are distributed by anti-virus or malicious code solution vendors.",
       "severity": "medium"
     },
@@ -51,13 +51,13 @@
     },
     {
       "id": "V-62661",
-      "title": "The Palo Alto Networks security platform must detect and block any prohibited mobile or otherwise malicious code at internal boundaries.",
-      "description": "Mobile code is defined as software modules obtained from remote systems, transferred across a network, and then downloaded and executed on a local system without explicit installation or execution by the recipient. Examples of mobile code include JavaScript, VBScript, Java applets, ActiveX controls, Flash animations, Shockwave videos, and macros embedded within Microsoft Office documents. Mobile code can be exploited to attack a host. It can be sent as an e-mail attachment or embedded in other file formats not traditionally associated with executable code.\n\nWhile the IDPS cannot replace the anti-virus and host-based IDS (HIDS) protection installed on the network's endpoints, vendor or locally created sensor rules can be implemented, which provide preemptive defense against both known and zero-day vulnerabilities. Many of the protections may provide defenses before vulnerabilities are discovered and rules or blacklist updates are distributed by anti-virus or malicious code solution vendors.\n\nThe Palo Alto Networks security platform allows customized profiles to be used to perform antivirus inspection for traffic between zones.  Antivirus, anti-spyware, and vulnerability protection features require a specific license.  There is a default Antivirus Profile; the profile inspects all of the listed protocol decoders for viruses, and generates alerts for SMTP, IMAP, and POP3 protocols while blocking for FTP, HTTP, and SMB protocols.  However, these default actions cannot be edited and the values for the FTP, HTTP, and SMB protocols do not meet the requirement, so customized profiles must be used.",
+      "title": "The Palo Alto Networks security platform must detect and drop any prohibited mobile or otherwise malicious code at internal boundaries.",
+      "description": "Mobile code is defined as software modules obtained from remote systems, transferred across a network, and then downloaded and executed on a local system without explicit installation or execution by the recipient. Examples of mobile code include JavaScript, VBScript, Java applets, ActiveX controls, Flash animations, Shockwave videos, and macros embedded within Microsoft Office documents. Mobile code can be exploited to attack a host. It can be sent as an e-mail attachment or embedded in other file formats not traditionally associated with executable code.\n\nWhile the IDPS cannot replace the anti-virus and host-based IDS (HIDS) protection installed on the network's endpoints, vendor or locally created sensor rules can be implemented, which provide preemptive defense against both known and zero-day vulnerabilities. Many of the protections may provide defenses before vulnerabilities are discovered and rules or blacklist updates are distributed by anti-virus or malicious code solution vendors.\n\nThe Palo Alto Networks security platform allows customized profiles to be used to perform antivirus inspection for traffic between zones. Antivirus, anti-spyware, and vulnerability protection features require a specific license. There is a default Antivirus Profile; the profile inspects all of the listed protocol decoders for viruses, and generates alerts for SMTP, IMAP, and POP3 protocols while dropping for FTP, HTTP, and SMB protocols. However, these default actions cannot be edited and the values for the FTP, HTTP, and SMB protocols do not meet the requirement, so customized profiles must be used.",
       "severity": "medium"
     },
     {
       "id": "V-62663",
-      "title": "The Palo Alto Networks security platform must send an immediate (within seconds) alert to, at a minimum, the SCA when malicious code is detected.",
+      "title": "The Palo Alto Networks security platform must send an immediate (within seconds) alert to, at a minimum, the SA when malicious code is detected.",
       "description": "Without an alert, security personnel may be unaware of an impending failure of the audit capability, and the ability to perform forensic analysis and detect rate-based and other anomalies will be impeded.\n\nThe IDPS generates an immediate (within seconds) alert which notifies designated personnel of the incident. Sending a message to an unattended log or console does not meet this requirement since that will not be seen immediately. These messages should include a severity level indicator or code as an indicator of the criticality of the incident.\n\nWhen the Palo Alto Networks security platform blocks malicious code, it also generates a record in the threat log.  This message has a medium severity.",
       "severity": "medium"
     },

@@ -1,6 +1,6 @@
 {
   "name": "stig_infrastructure_l3_switch_secure_technical_implementation_guide_-_cisco",
-  "date": "2018-03-02",
+  "date": "2018-11-27",
   "description": "Infrastructure L3 Switch Secure Technical Implementation Guide - Cisco",
   "title": "Infrastructure L3 Switch Secure Technical Implementation Guide - Cisco",
   "version": "8",
@@ -136,7 +136,7 @@
     {
       "id": "V-17817",
       "title": "Traffic from the managed network is able to access the OOBM gateway router",
-      "description": "If the gateway router is not a dedicated device for the OOBM network, several safeguards must be implemented for containment of management and production traffic boundaries. It is imperative that hosts from the managed network are not able to access the OOBM gateway rouiter.",
+      "description": "If the gateway router is not a dedicated device for the OOBM network, several safeguards must be implemented for containment of management and production traffic boundaries. It is imperative that hosts from the managed network are not able to access the OOBM gateway router.",
       "severity": "medium"
     },
     {
@@ -611,12 +611,6 @@
       "id": "V-5623",
       "title": "Port trunking must be disabled on all access ports (do not configure trunk on, desirable, non-negotiate, or auto--only off).",
       "description": "Double encapsulation can be initiated by an attacker who has access to a switch port belonging to the native VLAN of the trunk port. Knowing the victims MAC address and with the victim attached to a different switch belonging to the same trunk group, thereby requiring the trunk link and frame tagging, the malicious user can begin the attack by sending frames with two sets of tags. The outer tag that will have the attackers VLAN ID (probably the well-known and omnipresent VLAN 1) is stripped off by the switch, and the inner tag that will have the victims VLAN ID is used by the switch as the next hop and sent out the trunk port.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-5624",
-      "title": "The ISSO/NSO will ensure if 802.1x Port Authentication is implemented, re-authentication must occur every 60 minutes.",
-      "description": "Eliminating unauthorized access to the network from inside the enclave is vital to keeping a network secure. Internal access to the private network is enabled by simply connecting a workstation or laptop to a wall plate or access point located in the work area.",
       "severity": "medium"
     },
     {

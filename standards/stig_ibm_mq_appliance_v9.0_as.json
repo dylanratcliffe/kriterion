@@ -1,0 +1,269 @@
+{
+  "name": "stig_ibm_mq_appliance_v9.0_as",
+  "date": "2017-06-09",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "IBM MQ Appliance V9.0 AS Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-74727",
+      "title": "The MQ Appliance messaging server must protect against an individual (or process acting on behalf of an individual) falsely denying having performed organization-defined actions to be covered by non-repudiation.",
+      "description": "Non-repudiation of actions taken is required in order to messaging service application integrity. Examples of particular actions taken by individuals include creating information, sending a message, approving information (e.g., indicating concurrence or signing a contract), and receiving a message. \n\nNon-repudiation protects individuals against later claims by an author of not having authored a particular document, a sender of not having transmitted a message, a receiver of not having received a message, or a signatory of not having signed a document. \n\nTypical messaging server actions requiring non-repudiation will be related to application deployment among developers/users and administrative actions taken by admin personnel.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74729",
+      "title": "The MQ Appliance messaging server must implement cryptography mechanisms to protect the integrity of the remote access session.",
+      "description": "Encryption is critical for protection of remote access sessions. If encryption is not being used for integrity, malicious users may gain the ability to modify the messaging server configuration. The use of cryptography for ensuring integrity of remote access sessions mitigates that risk.\n\nMessaging servers utilize a web management interface and scripted commands when allowing remote access. Web access requires the use of TLS and scripted access requires using ssh or some other form of approved cryptography. Messaging servers must have a capability to enable a secure remote admin capability.\n\nFIPS 140-2 approved TLS versions include TLS V1.0 or greater.\n\nFIPS 140-2 approved TLS versions must be enabled and non-FIPS-approved SSL versions must be disabled.\n\nNIST SP 800-52 specifies the preferred configurations for government systems.\n\nSatisfies: SRG-APP-000015-AS-000010, SRG-APP-000126-AS-000085, SRG-APP-000231-AS-000133, SRG-APP-000231-AS-000156, SRG-APP-000428-AS-000265, SRG-APP-000429-AS-000157, SRG-APP-000441-AS-000258, SRG-APP-000442-AS-000259",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74741",
+      "title": "The MQ Appliance messaging server must off-load log records onto a different system or media from the system being logged.",
+      "description": "Information system logging capability is critical for accurate forensic analysis. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, filenames involved, access control or flow control rules invoked.\n\nOff-loading is a common process in information systems with limited log storage capacity.\n\nCentralized management of log records provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records. Messaging servers and their related components are required to off-load log records onto a different system or media than the system being logged.\n\nAn HA configuration provides real-time synchronous replication of the logs to a mirrored MQ Appliance.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74743",
+      "title": "The MQ Appliance messaging server must synchronize internal MQ Appliance messaging server clocks to an authoritative time source when the time difference is greater than the organization-defined time period.",
+      "description": "Determining the correct time a particular application event occurred on a system is critical when conducting forensic analysis and investigating system events.\n\nSynchronization of internal messaging server clocks is needed in order to correctly correlate the timing of events that occur across multiple systems. To meet this requirement, the organization will define an authoritative time source and have each system synchronize when the time difference is greater than a defined time period.  The industry standard for the threshold is 1ms.",
+      "severity": "low"
+    },
+    {
+      "id": "V-74745",
+      "title": "The MQ Appliance messaging server must compare internal MQ Appliance messaging server clocks at least every 24 hours with an authoritative time source.",
+      "description": "Determining the correct time a particular application event occurred on a system is critical when conducting forensic analysis and investigating system events.\n\nSynchronization of system clocks is needed in order to correctly correlate the timing of events that occur across multiple systems. To meet this requirement, the organization will define an authoritative time source and have each system compare its internal clock at least every 24 hours.",
+      "severity": "low"
+    },
+    {
+      "id": "V-74747",
+      "title": "The MQ Appliance messaging server must implement NSA-approved cryptography to protect classified information in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.",
+      "description": "Cryptography is only as strong as the encryption modules/algorithms employed to encrypt the data. Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data.\n\nNSA has developed Type 1 algorithms for protecting classified information. The Committee on National Security Systems (CNSS) National Information Assurance Glossary (CNSS Instruction No. 4009) defines Type 1 products as:\n\n\"Cryptographic equipment, assembly or component classified or certified by NSA for encrypting and decrypting classified and sensitive national security information when appropriately keyed. Developed using established NSA business processes and containing NSA-approved algorithms are used to protect systems requiring the most stringent protection mechanisms.\" \n\nNSA-approved cryptography is required to be used for classified information system processing.\n\nThe messaging server must utilize NSA-approved encryption modules when protecting classified data. This means using AES and other approved encryption modules.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74749",
+      "title": "The MQ Appliance WebGUI interface to the messaging server must prohibit the use of cached authenticators after one hour.",
+      "description": "When the messaging server is using PKI authentication, a local revocation cache must be stored for instances when the revocation cannot be authenticated through the network, but if cached authentication information is out of date, the validity of the authentication information may be questionable.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74801",
+      "title": "The MQ Appliance messaging server must provide an immediate warning to the SA and ISSO, at a minimum, when allocated log record storage volume reaches 75% of maximum log record storage capacity.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process logs as required.  Log processing failures include software/hardware errors, failures in the log capturing mechanisms, and log storage capacity being reached or exceeded.  Notification of the storage condition will allow administrators to take actions so that logs are not lost.  This requirement can be met by configuring the messaging server to utilize a dedicated logging tool that meets this requirement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74805",
+      "title": "The MQ Appliance messaging server must automatically terminate a SSH user session after organization-defined conditions or trigger events requiring a session disconnect.",
+      "description": "An attacker can take advantage of CLI user sessions that are left open, thus bypassing the user authentication process.\n\nTo thwart the vulnerability of open and unused user sessions, the messaging server must be configured to close the sessions when a configured condition or trigger event is met.\n\nSession termination terminates all processes associated with a user's logical session except those processes that are specifically created by the user (i.e., session owner) to continue after the session is terminated.\n\nConditions or trigger events requiring automatic session termination can include, for example, periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74813",
+      "title": "The MQ Appliance must automatically terminate a WebGUI user session after 600 seconds of idle time.",
+      "description": "An attacker can take advantage of WebGUI user sessions that are left open, thus bypassing the user authentication process.\n\nTo thwart the vulnerability of open and unused user sessions, the messaging server must be configured to close the sessions when a configured condition or trigger event is met.\n\nSession termination terminates all processes associated with a user's logical session except those processes that are specifically created by the user (i.e., session owner) to continue after the session is terminated.\n\nConditions or trigger events requiring automatic session termination can include, for example, periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74815",
+      "title": "The MQ Appliance SSH interface to the messaging server must prohibit the use of cached authenticators after 600 seconds.",
+      "description": "When the messaging server is using PKI authentication, a local revocation cache must be stored for instances when the revocation cannot be authenticated through the network, but if cached authentication information is out of date, the validity of the authentication information may be questionable.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74831",
+      "title": "The MQ Appliance messaging server must install security-relevant software updates within the time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).",
+      "description": "Security flaws with software applications are discovered daily. Vendors are constantly updating and patching their products to address newly discovered security vulnerabilities. Organizations (including any contractor to the organization) are required to promptly install security-relevant software updates (e.g., patches, service packs, and hot fixes) to production systems after thorough testing of the patches within a lab environment. Flaws discovered during security assessments, continuous monitoring, incident response activities, or information system error handling must also be addressed expeditiously.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74835",
+      "title": "The MQ Appliance messaging server must use DoD- or CNSS-approved PKI Class 3 or Class 4 certificates.",
+      "description": "Class 3 PKI certificates are used for servers and software signing rather than for identifying individuals. Class 4 certificates are used for business-to-business transactions. Utilizing unapproved certificates not issued or approved by DoD or CNS creates an integrity risk. The messaging server must utilize approved DoD or CNS Class 3 or Class 4 certificates for software signing and business-to-business transactions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74847",
+      "title": "The MQ Appliance messaging server, when categorized as a high level system, must be in a high-availability (HA) cluster.",
+      "description": "A high level system is a system that handles data vital to the organization's operational readiness or effectiveness of deployed or contingency forces.  A high level system must maintain the highest level of integrity and availability.  By HA clustering the messaging server, the hosted application and data are given a platform that is load-balanced and provided high-availability.\n\nRudimentary instructions for determining if HA is set up are included here. To ensure proper configuration, system HA design steps must be taken and implemented. Reference vendor documentation for complete instructions on setting up HA: https://ibm.biz/BdicC7\n\nNote: The queue manager’s data (queues, queue messages etc.) are replicated from the appliance in the primary HA role (first appliance) to the appliance in the secondary HA role (second appliance).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74849",
+      "title": "The MQ Appliance messaging server must use encryption strength in accordance with the categorization of the management data during remote access management sessions.",
+      "description": "Remote management access is accomplished by leveraging common communication protocols and establishing a remote connection to the messaging server via a network for the purposes of managing the messaging server. If cryptography is not used, then the session data traversing the remote connection could be intercepted and compromised. \n\nTypes of management interfaces utilized by a messaging server include web-based HTTPS interfaces as well as command line-based management interfaces.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74851",
+      "title": "The MQ Appliance messaging server must, at a minimum, transfer the logs of interconnected systems in real time, and transfer the logs of standalone systems weekly.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration.  Protecting log data is important during a forensic investigation to ensure investigators can track and understand what may have occurred.  Off-loading should be set up as a scheduled task but can be configured to be run manually, if other processes during the off-loading are manual.\n\nOff-loading is a common process in information systems with limited log storage capacity.  \n\nThe MQ appliance is designed to be used in a redundant configuration which will ensure duplicates of log activity are created.\n\nRudimentary instructions for determining if HA is set up are included here. To ensure proper configuration, system HA design steps must be taken and implemented. Reference vendor documentation for complete instructions on setting up HA: https://ibm.biz/BdicC7\n\nNote: The queue manager’s data (queues, queue messages etc.) are replicated from the appliance in the primary HA role (first appliance) to the appliance in the secondary HA role (second appliance).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74853",
+      "title": "The MQ Appliance messaging server must provide centralized management and configuration of the content to be captured in log records generated by all application components.",
+      "description": "A clustered messaging server is made up of several servers working together to provide the user a failover and increased computing capability.  To facilitate uniform logging in the event of an incident and later forensic investigation, the record format and logable events need to be uniform.  This can be managed best from a centralized server.\n\nWithout the ability to centrally manage the content captured in the log records, identification, troubleshooting, and correlation of suspicious behavior would be difficult and could lead to a delayed or incomplete analysis of an ongoing attack.\n\nThe MQ appliance is designed to be used in a redundant HQ configuration which will provide a means of centralized management of log activity.\n\nRudimentary instructions for determining if HA is set up are included here. To ensure proper configuration, system HA design steps must be taken and implemented. Reference vendor documentation for complete instructions on setting up HA: https://ibm.biz/BdicC7\n\nNote: The queue manager’s data (queues, queue messages etc.) are replicated from the appliance in the primary HA role (first appliance) to the appliance in the secondary HA role (second appliance).\n\nRef.: Configuring high availability queue managers  https://goo.gl/xAqNTX",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74859",
+      "title": "The MQ Appliance messaging server must employ approved cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission.",
+      "description": "Preventing the disclosure or modification of transmitted information requires that messaging servers take measures to employ approved cryptography in order to protect the information during transmission over the network. This is usually achieved through the use of Transport Layer Security (TLS), SSL VPN, or IPsec tunnel.\n\nIf data in transit is unencrypted, it is vulnerable to disclosure and modification. If approved cryptographic algorithms are not used, encryption strength cannot be assured.\n\nFIPS 140-2 approved TLS versions include TLS V1.0 or greater.\n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled.  NIST SP 800-52 specifies the preferred configurations for government systems.\n\nTo achieve FIPS 140-2 compliance on Windows, UNIX, and Linux systems, all key repositories have been created and manipulated using only FIPS-compliant software, such as runmqakm with the -fips option.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74861",
+      "title": "The MQ Appliance messaging server must remove all export ciphers to protect the confidentiality and integrity of transmitted information.",
+      "description": "During the initial setup of a Transport Layer Security (TLS) connection to the messaging server, the client sends a list of supported cipher suites in order of preference.  The messaging server will reply with the cipher suite it will use for communication from the client list.  If an attacker can intercept the submission of cipher suites to the messaging server and place, as the preferred cipher suite, a weak export suite, the encryption used for the session becomes easy for the attacker to break, often within minutes to hours.\n\nTo achieve FIPS 140-2 compliance on Windows, UNIX, and Linux systems, all key repositories have been created and manipulated using only FIPS-compliant software, such as runmqakm with the -fips option.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74863",
+      "title": "The MQ Appliance messaging server must protect the confidentiality and integrity of transmitted information through the use of an approved TLS version.",
+      "description": "Preventing the disclosure of transmitted information requires that the messaging server take measures to employ some form of cryptographic mechanism in order to protect the information during transmission.  This is usually achieved through the use of Transport Layer Security (TLS).\n\nTransmission of data can take place between the messaging server and a large number of devices/applications external to the messaging server.  Examples are a web client used by a user, a backend database, a log server, or other messaging servers (and clients) in a messaging server cluster.\n\nIf data is transmitted unencrypted, the data then becomes vulnerable to disclosure.  The disclosure may reveal user identifier/password combinations, website code revealing business logic, or other user personal information.\n\nFIPS 140-2 approved TLS versions include TLS V1.0 or greater.\n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled.  NIST SP 800-52 specifies the preferred configurations for government systems.\n\nTo achieve FIPS 140-2 compliance on Windows, UNIX, and Linux systems, all key repositories have been created and manipulated using only FIPS-compliant software, such as runmqakm with the -fips option.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74877",
+      "title": "The MQ Appliance messaging server must produce log records containing information to establish what type of events occurred.",
+      "description": "Information system logging capability is critical for accurate forensic analysis. Without being able to establish what type of event occurred, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible. \n\nLog record content that may be necessary to satisfy the requirement of this control includes time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nMessaging servers must log all relevant log data that pertains to the messaging server. Examples of relevant data include, but are not limited to, Java Virtual Machine (JVM) activity, HTTPD/Web server activity, and messaging server-related system process activity.\n\nSatisfies: SRG-APP-000095-AS-000056, SRG-APP-000093-AS-000054, SRG-APP-000096-AS-000059, SRG-APP-000097-AS-000060, SRG-APP-000098-AS-000061, SRG-APP-000099-AS-000062, SRG-APP-000100-AS-000063, SRG-APP-000101-AS-000072",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74879",
+      "title": "The MQ Appliance messaging server must identify potentially security-relevant error conditions.",
+      "description": "The structure and content of error messages need to be carefully considered by the organization and development team. Any application providing too much information in error logs and in administrative messages to the screen risks compromising the data and security of the application and system. The extent to which the messaging server is able to identify and handle error conditions is guided by organizational policy and operational requirements. Adequate logging levels and system performance capabilities need to be balanced with data protection requirements.\n\nThe structure and content of error messages needs to be carefully considered by the organization and development team.\n\nMessaging servers must have the capability to log at various levels which can provide log entries for potential security-related error events.\n\nAn example is the capability for the messaging server to assign a criticality level to a failed logon attempt error message, a security-related error message being of a higher criticality.\n\nInstructions for using the amqsevt sample program to display instrumentation events may be found at the following URL: https://ibm.biz/BdsCzY.\n\nSatisfies: SRG-APP-000266-AS-000168, SRG-APP-000091-AS-000052",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74883",
+      "title": "The MQ Appliance messaging server must alert the SA and ISSO, at a minimum, in the event of a log processing failure.",
+      "description": "Logs are essential to monitor the health of the system, investigate changes that occurred to the system, or investigate a security incident. When log processing fails, the events during the failure can be lost. To minimize the timeframe of the log failure, an alert needs to be sent to the SA and ISSO at a minimum.\n\nLog processing failures include, but are not limited to, failures in the messaging server log capturing mechanisms or log storage capacity being reached or exceeded. In some instances, it is preferred to send alarms to individuals rather than to an entire group. Messaging servers must be able to trigger an alarm and send an alert to, at a minimum, the SA and ISSO in the event there is a messaging server log processing failure.\n\nIt is the responsibility of the MQ system administrator to monitor the SYSTEM.ADMIN.PERFM.EVENT queue and provide appropriate notification. \n\nAll MQ installations provide a sample program, amqsevt. This program reads messages from event queues, and formats them into readable strings.\n\nAn event logging failure would be indicated by one of the following return codes: MQRC_Q_FULL, MQRC_Q_MGR_NOT_ACTIVE, or MQRC_Q_DEPTH_HIGH\n\nNote: Any MQ monitoring solution that connects to MQ as a client may be used to monitor event queues.\n\nSatisfies: SRG-APP-000108-AS-000067, SRG-APP-000360-AS-000066",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74885",
+      "title": "The MQ Appliance messaging server must protect against or limit the effects of all types of Denial of Service (DoS) attacks by employing operationally-defined security safeguards.",
+      "description": "DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity. To reduce the possibility or effect of a DoS, the messaging server must employ defined security safeguards. These safeguards will be determined by the placement of the messaging server and the type of applications being hosted within the messaging server framework.\n\nThere are many examples of technologies that exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or restricting the number of sessions the application opens at one time). Employing increased capacity and bandwidth, combined with service redundancy or clustering, may reduce the susceptibility to some DoS attacks.\n\nNote: IBM recommends that neither MQ server nor the MQ Appliance be placed in the DMZ where it could be vulnerable to DoS attacks. IBM recommends that this protection be provided by a firewall: https://ibm.biz/BdraMj\n\nFor internal queue managers, You can restrict the total number of incoming connections by setting the MaxConnectionThreads property: https://ibm.biz/BdraMZ\n\nSatisfies: SRG-APP-000435-AS-000163, SRG-APP-000001-AS-000001",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74887",
+      "title": "The MQ Appliance messaging server must accept FICAM-approved third-party credentials.",
+      "description": "Access may be denied to legitimate users if FICAM-approved third-party credentials are not accepted.\n\nThis requirement typically applies to organizational information systems that are accessible to non-federal government agencies and other partners. This allows federal government relying parties to trust such credentials at their approved assurance levels.\n\nThird-party credentials are those credentials issued by non-federal government entities approved by the Federal Identity, Credential, and Access Management (FICAM) Trust Framework Solutions initiative.\n\nSatisfies: SRG-APP-000404-AS-000249, SRG-APP-000405-AS-000250",
+      "severity": "low"
+    },
+    {
+      "id": "V-74889",
+      "title": "The MQ Appliance messaging server must provide a log reduction capability that supports on-demand reporting requirements.",
+      "description": "The ability to generate on-demand reports, including after the log data has been subjected to log reduction, greatly facilitates the organization's ability to generate incident reports as needed to better handle larger-scale or more complex security incidents.\n\nLog reduction is a process that manipulates collected log information and organizes such information in a summary format that is more meaningful to analysts. The report generation capability provided by the application must support on-demand (i.e., customizable, ad-hoc, and as-needed) reports.\n\nTo fully understand and investigate an incident within the components of the messaging server, the messaging server, when providing a reduction capability, must provide an on-demand reporting capability.\n\nInstructions for using the amqsevt sample program to display instrumentation events may be found at the following URL: https://ibm.biz/BdsCzY\n\nSatisfies: SRG-APP-000181-AS-000255, SRG-APP-000355-AS-000055",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74891",
+      "title": "The MQ Appliance messaging server must be configured to fail over to another system in the event of log subsystem failure.",
+      "description": "This requirement is dependent upon system MAC and availability. If the system MAC and availability do not specify redundancy requirements, this requirement is NA.\n\nIt is critical that, when a system is at risk of failing to process logs as required, it detects and takes action to mitigate the failure.\n\nMessaging servers must be capable of failing over to another system which can handle application and logging functions upon detection of an application log processing failure. This will allow continual operation of the application and logging functions while minimizing the loss of operation for the users and loss of log data.\n\nTo ensure proper configuration, system HA design steps must be taken and implemented. Reference vendor documentation for complete instructions on setting up HA: https://ibm.biz/BdicC7\n\nSatisfies: SRG-APP-000109-AS-000070, SRG-APP-000109-AS-000068, SRG-APP-000125-AS-000084",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74893",
+      "title": "The MQ Appliance messaging server must provide a clustering capability.",
+      "description": "This requirement is dependent upon system criticality and confidentiality requirements. If the system categorization and confidentiality levels do not specify redundancy requirements, this requirement is NA.\n\nFailure to a known secure state helps prevent a loss of confidentiality, integrity, or availability in the event of a failure of the information system or a component of the system. When application failure is encountered, preserving application state facilitates application restart and return to the operational mode of the organization with less disruption of mission/business processes.\n\nClustering of multiple messaging servers is a common approach to providing fail-safe application availability when system MAC and confidentiality levels require redundancy.\n\nSatisfies: SRG-APP-000225-AS-000154, SRG-APP-000225-AS-000166",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74895",
+      "title": "The MQ Appliance messaging server must ensure authentication of both SSH client and server during the entire session.",
+      "description": "This control focuses on communications protection at the session, versus packet level.\n\nAt the application layer, session IDs are tokens generated by web applications to uniquely identify an application user's session. Web applications utilize session tokens or session IDs in order to establish application user identity. Proper use of session IDs addresses man-in-the-middle attacks, including session hijacking or insertion of false information into a session.\n\nMessaging servers must provide the capability to perform mutual authentication. Mutual authentication is when both the client and the server authenticate each other.\n\nSatisfies: SRG-APP-000219-AS-000147, SRG-APP-000223-AS-000150, SRG-APP-000223-AS-000151",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74897",
+      "title": "The MQ Appliance messaging server must uniquely identify all network-connected endpoint devices before establishing any connection.",
+      "description": "Without identifying devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity.\n\nFor distributed messaging servers and components, the decisions regarding the validation of identification claims may be made by services separate from the messaging server. In such situations, it is necessary to provide the identification decisions (as opposed to the actual identifiers) to the services that need to act on those decisions. Note: Following are the cipher specs available for MQ: https://ibm.biz/BdrJGp",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74899",
+      "title": "Access to the MQ Appliance messaging server must utilize encryption when using LDAP for authentication.",
+      "description": "Passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission. \n\nMessaging servers have the capability to utilize LDAP directories for authentication. If LDAP connections are not protected during transmission, sensitive authentication credentials can be stolen. When the messaging server utilizes LDAP, the LDAP traffic must be encrypted.\n\nNote: Multiple alternative LDAP hosts may be listed in the CONNAME parameter, separated by commas.\n\nReview IBM product documentation for the LDAP fields required when setting up a communication link with the LDAP server.\n\nSee https://ibm.biz/BdiBGu and https://ibm.biz/BdixXz for a detailed description of these options.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74901",
+      "title": "The MQ Appliance messaging server must map the authenticated identity to the individual messaging user or group account for PKI-based authentication.",
+      "description": "The cornerstone of PKI is the private key used to encrypt or digitally sign information. The key by itself is a cryptographic value that does not contain specific user information, but the key can be mapped to a user. Without mapping the certificate used to authenticate to the user account, the ability to determine the identity of the individual user or group will not be available for forensic analysis.\n\nMessaging servers must provide the capability to utilize and meet requirements of the DoD Enterprise PKI infrastructure for application authentication.\n\nNote: Two or more alternative LDAP hosts may be listed, in the CONNAME parameter, separated by commas.\n\nReview IBM product documentation for the LDAP fields required when setting up a communication link with the LDAP server.\n\nSee https://ibm.biz/BdiBGu for a detailed description of these options.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74903",
+      "title": "The MQ Appliance must disable identifiers (individuals, groups, roles, and devices) after 35 days of inactivity.",
+      "description": "Inactive identifiers pose a risk to systems and applications. Attackers that are able to exploit an inactive identifier can potentially obtain and maintain undetected access to the application. Owners of inactive accounts will not notice if unauthorized access to their user account has been obtained. \n\nApplications need to track periods of inactivity and disable application identifiers after 35 days of inactivity. \n\nManagement of user identifiers is not applicable to shared information system accounts (e.g., guest and anonymous accounts). It is commonly the case that a user account is the name of an information system account associated with an individual.\n\nTo avoid having to build complex user management capabilities directly into their application, wise developers leverage the underlying OS or other user account management infrastructure (AD, LDAP) that is already in place within the organization and meets organizational user account management requirements.\n\nReview IBM product documentation for the LDAP fields required when setting up a communication link with the LDAP server.\n\nNote: Multiple alternative LDAP hosts may be listed in the CONNAME parameter, separated by commas.\n\nReview IBM product documentation for the LDAP fields required when setting up a communication link with the LDAP server.\n\nSee https://ibm.biz/BdiBGu and https://ibm.biz/BdixXz for a detailed description of these options.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74905",
+      "title": "The MQ Appliance messaging server must use an enterprise user management system to uniquely identify and authenticate users (or processes acting on behalf of organizational users).",
+      "description": "To assure accountability and prevent unauthorized access, application server users must be uniquely identified and authenticated. This is typically accomplished via the use of a user store which is either local (OS-based) or centralized (LDAP) in nature.\n\nTo ensure support to the enterprise, the authentication must utilize an enterprise solution.\n\nReview IBM product documentation for the LDAP fields required when setting up a communication link with the LDAP server.\n\nSee https://ibm.biz/BdsRRk for a detailed description of these options.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74907",
+      "title": "The MQ Appliance messaging server management interface must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the system.",
+      "description": "Messaging servers are required to display the Standard Mandatory DoD Notice and Consent Banner before granting access to the system management interface, providing privacy and security notices consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance that states that: \n\n(i) users are accessing a U.S. Government information system; \n(ii) system usage may be monitored, recorded, and subject to audit; \n(iii) unauthorized use of the system is prohibited and subject to criminal and civil penalties; and \n(iv) the use of the system indicates consent to monitoring and recording.\n\nSystem use notification messages can be implemented in the form of warning banners displayed when individuals log on to the information system. \n\nSystem use notification is intended only for information system access including an interactive logon interface with a human user, and is not required when an interactive interface does not exist. \n\nUse this banner for desktops, laptops, and other devices accommodating banners of 1300 characters. The banner shall be implemented as a click-through banner at logon (to the extent permitted by the operating system), meaning it prevents further activity on the information system unless and until the user executes a positive action to manifest agreement by clicking on a box indicating \"OK\".\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n-At any time, the USG may inspect and seize data stored on this IS.\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74909",
+      "title": "The MQ Appliance messaging server must generate log records for access and authentication events.",
+      "description": "Log records can be generated from various components within the messaging server. From a messaging server perspective, certain specific messaging server functionalities may be logged as well. The messaging server must allow the definition of what events are to be logged. As conditions change, the number and types of events to be logged may change, and the messaging server must be able to facilitate these changes.\n\nThe minimum list of logged events should be those pertaining to system startup and shutdown, system access, and system authentication events.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74911",
+      "title": "The MQ Appliance messaging server must generate a unique session identifier using a FIPS 140-2 approved random number generator.",
+      "description": "The messaging server will use session IDs to communicate between modules or applications within the messaging server and between the messaging server and users. The session ID allows the application to track the communications along with credentials that may have been used to authenticate users or modules.\n\nUnique session IDs are the opposite of sequentially generated session IDs which can be easily guessed by an attacker. Unique session identifiers help to reduce predictability of said identifiers.\n\nUnique session IDs address man-in-the-middle attacks, including session hijacking or insertion of false information into a session. If the attacker is unable to identify or guess the session information related to pending application traffic, they will have more difficulty in hijacking the session or otherwise manipulating valid sessions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74913",
+      "title": "The MQ Appliance messaging server must authenticate all network-connected endpoint devices before establishing any connection.",
+      "description": "Device authentication requires unique identification and authentication that may be defined by type, by specific device, or by a combination of type and device.\n\nDevice authentication is accomplished via the use of certificates and protocols such as SSL mutual authentication.\n\nDevice authentication is performed when the messaging server is providing web services capabilities and data protection requirements mandate the need to establish the identity of the connecting device before the connection is established.\n\nThe most common way devices (endpoints) may connect an MQ Appliance MQ queue manager is as an MQ client. In order to ensure unique identification of network-connected devices, mutual authentication using CA-signed TLS certificates should be configured. \n\nNote: Following are the cipher specs available for MQ: https://ibm.biz/BdrJGp",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74915",
+      "title": "The MQ Appliance messaging server must authenticate all endpoint devices before establishing a local, remote, and/or network connection using bidirectional authentication that is cryptographically based.",
+      "description": "Device authentication requires unique identification and authentication that may be defined by type, by specific device, or by a combination of type and device.\n\nBidirectional authentication provides stronger safeguards to validate the identity of other devices for connections that are of greater risk.\n\nDevice authentication is performed when the messaging server is providing web services capabilities and data protection requirements mandate the need to establish the identity of the connecting device before the connection is established.\n\nThe most common way devices (endpoints) may connect an MQ Appliance MQ queue manager is as an MQ client. In order to ensure unique identification of network-connected devices, mutual authentication using CA-signed TLS certificates must be configured. \n\nNote: Following are the cipher specs available for MQ: https://ibm.biz/BdrJGp",
+      "severity": "high"
+    },
+    {
+      "id": "V-74917",
+      "title": "MQ Appliance messaging servers must use NIST-approved or NSA-approved key management technology and processes.",
+      "description": "An asymmetric encryption key must be protected during transmission. The public portion of an asymmetric key pair can be freely distributed without fear of compromise, and the private portion of the key must be protected. The messaging server will provide software libraries that applications can programmatically utilize to encrypt and decrypt information. These messaging server libraries must use NIST-approved or NSA-approved key management technology and processes when producing, controlling, or distributing symmetric and asymmetric keys.\n\nThe most common way devices (endpoints) may connect an MQ Appliance MQ queue manager is as an MQ client. In order to ensure unique identification of network-connected devices, mutual authentication using CA-signed TLS certificates should be configured. \n\nNote: Following are the cipher specs available for MQ: https://ibm.biz/BdrJGp",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74919",
+      "title": "The MQ Appliance messaging server must utilize FIPS 140-2 approved encryption modules when authenticating users and processes.",
+      "description": "Encryption is only as good as the encryption modules utilized. Unapproved cryptographic module algorithms cannot be verified and cannot be relied upon to provide confidentiality or integrity, and DoD data may be compromised due to weak algorithms. The use of TLS provides confidentiality of data in transit between the messaging server and client. FIPS 140-2 approved TLS versions include TLS V1.0 or greater. \n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled. NIST SP 800-52 specifies the preferred configurations for government systems.\n\nTo achieve FIPS 140-2 compliance on Windows, UNIX, and Linux systems, all key repositories have been created and manipulated using only FIPS-compliant software, such as runmqakm with the -fips option.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-74921",
+      "title": "The MQ Appliance messaging server must provide access logging that ensures users who are granted a privileged role (or roles) have their privileged activity logged.",
+      "description": "In order to be able to provide a forensic history of activity, the messaging server must ensure users who are granted a privileged role or those who utilize a separate distinct account when accessing privileged functions or data have their actions logged.\n\nIf privileged activity is not logged, no forensic logs can be used to establish accountability for privileged actions that occur on the system.\n\nInstructions for using the amqsevt sample program to display instrumentation events may be found at the following URL: https://ibm.biz/BdsCzY\n\nSatisfies: SRG-APP-000343-AS-000030, SRG-APP-000016-AS-000013, SRG-APP-000495-AS-000220, SRG-APP-000499-AS-000224, SRG-APP-000503-AS-000228, SRG-APP-000504-AS-000229, SRG-APP-000509-AS-000234",
+      "severity": "medium"
+    },
+    {
+      "id": "V-75029",
+      "title": "The MQ Appliance messaging server must only allow the use of DoD PKI-established certificate authorities for verification of the establishment of protected (messaging) sessions.",
+      "description": "Untrusted Certificate Authorities (CA) can issue certificates, but they may be issued by organizations or individuals that seek to compromise DoD systems or by organizations with insufficient security controls. If the CA used for verifying the certificate is not a DoD-approved CA, trust of this CA has not been established.\n\nThe DoD will only accept PKI certificates obtained from a DoD-approved internal or external certificate authority. Reliance on CAs for the establishment of secure sessions includes, for example, the use of SSL/TLS certificates.  The messaging server must only allow the use of DoD PKI-established certificate authorities for verification.",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "stig_zos_tss",
-  "date": "2018-04-04",
+  "date": "2019-12-12",
   "description": "None",
   "title": "z/OS TSS STIG",
   "version": "None",
@@ -243,7 +243,7 @@
     },
     {
       "id": "V-194",
-      "title": "TSS MODIFY output does not specify \"ACTIVE DIAGTRAP ENTRIES: ON = 00\".",
+      "title": "TSS MODIFY output must specify ACTIVE DIAGTRAP ENTRIES: ON = 00.",
       "description": "The DIAGTRAP Control Option is used to produce a diagnostic dump.\n\nThe system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during migration process or contingency plan activation.",
       "severity": "medium"
     },
@@ -291,7 +291,7 @@
     },
     {
       "id": "V-201",
-      "title": "The IOTRACE Control option is not set to (OFF)",
+      "title": "The IOTRACE Control option must be set to (OFF).",
       "description": "The IOTRACE Control Option controls a diagnostic trace for use by technical support.  The trace is produced on the TRACE/LOG data set.\n\nThe system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during migration process or contingency plan activation.",
       "severity": "medium"
     },
@@ -309,7 +309,7 @@
     },
     {
       "id": "V-205",
-      "title": "The MODE Control Option is not set to (FAIL).",
+      "title": "The MODE Control Option must be set to (FAIL).",
       "description": "The MODE Control Option selects the security mode in which TSS will operate for all facilities.\n\nThe system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during migration process or contingency plan activation.",
       "severity": "high"
     },
@@ -453,7 +453,7 @@
     },
     {
       "id": "V-228",
-      "title": "Default ACID has not been properly defined.",
+      "title": "Default ACID must be properly defined.",
       "description": "The default ACID will be applied to any job that does not have a valid ACID associated with it.  The FAIL mode ensures that access requests not conforming to the existing rule will fail.  If the default ACID is allowed to successfully execute any batch job, there is a loss of accountability.  Additionally, a job could modify or delete critical data and could potentially damage the system.",
       "severity": "medium"
     },
@@ -681,13 +681,13 @@
     },
     {
       "id": "V-3222",
-      "title": "PROFILE.TCPIP configuration statements for the TN3270 Telnet Server are not properly specified.",
+      "title": "PROFILE.TCPIP configuration statements for the TN3270 Telnet Server must be properly specified.",
       "description": "The PROFILE.TCPIP configuration file provides system operation and configuration parameters for the TN3270 Telnet Server.  Several of these parameters have potential impact to system security.  Failure to code the appropriate values could result in unexpected operations and degraded security.  This exposure may result in unauthorized access impacting data integrity or the availability of some system services.",
       "severity": "medium"
     },
     {
       "id": "V-3223",
-      "title": "VTAM session setup controls for the TN3270 Telnet Server are not properly specified. ",
+      "title": "VTAM session setup controls for the TN3270 Telnet Server must be properly specified. \n\n",
       "description": "After a connection from a Telnet client to the TN3270 Telnet Server has been established, the process of session setup with a VTAM application occurs.  A number of BEGINVTAM statements must be coded in a specific configuration to ensure adequate control to VTAM applications is maintained.  Failure to code the appropriate statements could result in unauthorized access to the host and application resources.  This exposure may impact data integrity or the availability of some system services.",
       "severity": "medium"
     },
@@ -723,7 +723,7 @@
     },
     {
       "id": "V-3231",
-      "title": "The warning banner for the z/OS UNIX Telnet Server is not specified or not properly specified.",
+      "title": "The warning banner for the z/OS UNIX Telnet Server must be properly specified",
       "description": "A logon banner can be used to inform users about the environment during the initial logon.  Logon banners are used to warn users against unauthorized entry and the possibility of legal action for unauthorized users, and advise all users that system use constitutes consent to monitoring.  Failure to display a logon warning banner without this type of information could adversely impact the ability to prosecute unauthorized users and users who abuse the system.",
       "severity": "medium"
     },
@@ -759,7 +759,7 @@
     },
     {
       "id": "V-3237",
-      "title": "The warning banner for the FTP Server is not specified properely.",
+      "title": "The warning banner for the FTP Server must be specified properly.",
       "description": "A logon banner can be used to inform users about the environment during the initial logon.  In the DISA environment, logon banners are used to warn users against unauthorized entry and the possibility of legal action for unauthorized users, and advise all users that system use constitutes consent to monitoring.  Failure to display a logon warning banner without this type of information could adversely impact the ability to prosecute unauthorized users and users who abuse the system.",
       "severity": "medium"
     },
@@ -891,7 +891,7 @@
     },
     {
       "id": "V-3900",
-      "title": "Vendor-supplied user accounts for the WebSphere Application Server are defined to the ACP.",
+      "title": "Vendor-supplied user accounts for the WebSphere Application Server must be defined to the ACP.",
       "description": "Vendor-supplied user accounts are defined to the ACP with factory-set passwords during the installation of the WebSphere Application Server (WAS).  These user accounts are common to all WAS environments and have access to restricted resources and functions.  Failure to delete vendor-supplied user accounts from the ACP may lead to unauthorized access.  This exposure could compromise the integrity and availability of system services, applications, and customer data.",
       "severity": "high"
     },
@@ -933,7 +933,7 @@
     },
     {
       "id": "V-4850",
-      "title": "Allocate access to system user catalogs are not limited to system programmers only.  ",
+      "title": "Allocate access to system user catalogs must be limited to system programmers only.",
       "description": "System catalogs are the basis for locating all files on the system.  Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
       "severity": "medium"
     },
@@ -951,7 +951,7 @@
     },
     {
       "id": "V-5627",
-      "title": "The hosts identified by the NSINTERADDR statement will be properly protected.",
+      "title": "The hosts identified by the NSINTERADDR statement must be properly protected.",
       "description": "If the hosts identified by NSINTERADDR statement are not properly protected they can be stolen, damaged, or disturbed. Without adequate physical security, unauthorized users can access the host and the hosts' components. Therefore, they can interfere with the normal operations of the host. Improper control of hosts and the hosts' components could compromise network operations.",
       "severity": "medium"
     },
@@ -1137,7 +1137,7 @@
     },
     {
       "id": "V-6945",
-      "title": "z/OS UNIX BPXPRMxx security parameters in PARMLIB are not properly specified.",
+      "title": "z/OS UNIX BPXPRMxx security parameters in PARMLIB must be properly specified.",
       "description": "Parameter settings in PARMLIB and /etc specify values for z/OS UNIX security controls.  The parameters impact HFS data access and operating system services.  Undesirable values can allow users to gain inappropriate privileges that could impact data integrity or the availability of some system services.",
       "severity": "medium"
     },
@@ -1185,7 +1185,7 @@
     },
     {
       "id": "V-6960",
-      "title": "Websphere MQ \"switch\" profiles are improperly defined to the MQADMIN class.",
+      "title": "Websphere MQ switch profiles must be properly defined to the MQADMIN class.\n\n",
       "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
       "severity": "high"
     },
@@ -1197,7 +1197,7 @@
     },
     {
       "id": "V-6962",
-      "title": "WebSphere MQ MQCONN Class resources are protected improperly.",
+      "title": "WebSphere MQ MQCONN Class resources must be protected properly.",
       "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
       "severity": "medium"
     },
@@ -1347,7 +1347,7 @@
     },
     {
       "id": "V-6991",
-      "title": "UID(0) is improperly assigned.",
+      "title": "UID(0) must be properly assigned.",
       "description": "User identifiers (ACF2 logonids, RACF userids, and Top Secret ACIDs), groups, and started tasks that use z/OS UNIX facilities are defined to an ACP with attributes including UID and GID.  If these attributes are not correctly defined, data access or command privilege controls could be compromised.",
       "severity": "high"
     },
@@ -1389,7 +1389,7 @@
     },
     {
       "id": "V-7120",
-      "title": "CICS logonid(s) do not have time-out limit set to 15 minutes.",
+      "title": "CICS logonid(s) must be configured with proper timeout and signon limits.",
       "description": "CICS is a transaction-processing product that provides programmers with the facilities to develop interactive applications. Improperly defined or controlled CICS userids (i.e., region, default, and terminal users) may provide an exposure and vulnerability within the CICS environment.  This could result in the compromise of the confidentiality, integrity, and availability of the CICS region, applications, and customer data.",
       "severity": "medium"
     },
@@ -1461,7 +1461,7 @@
     },
     {
       "id": "V-7555",
-      "title": "Control options for the Top Secret CICS facilities do not meet minimum requirements.",
+      "title": "Control options for the Top Secret CICS facilities must meet minimum requirements.",
       "description": "TSS CICS facilities define the security controls in effect for CICS regions.  Failure to code the appropriate values could result in degraded security.  This exposure may result in unauthorized access impacting the confidentiality, integrity, and availability of the CICS region, applications, and customer data.",
       "severity": "medium"
     },
@@ -1509,8 +1509,8 @@
     },
     {
       "id": "V-86",
-      "title": "The review of AC=1 modules in APF authorized libraries will be reviewed annually and documentation verifying the modules integrity is available.",
-      "description": "The review of AC=1 modules that reside in APF authorized libraries will be reviewed annually.  The IAO will maintain documentation identifying the integrity and justification of Vendor APF authorized libraries.  For non-vendor APF authorized libraries, the source and documentation identifying the integrity and justification that describes the AC=1 module process will be maintained by the IAO.  Sites have undocumented and/or unauthorized AC=1 modules have a possible risk to the confidentiality, integrity, and availability of the system and present a clear risk to the operating system, ACP, and customer data.",
+      "title": "The review of AC=1 modules in APF authorized libraries must be reviewed annually and documentation verifying the modules integrity must be available.",
+      "description": "The review of AC=1 modules that reside in APF authorized libraries must be reviewed annually.  The IAO will maintain documentation identifying the integrity and justification of Vendor APF authorized libraries.  For non-vendor APF authorized libraries, the source and documentation identifying the integrity and justification that describes the AC=1 module process will be maintained by the IAO.  Sites have undocumented and/or unauthorized AC=1 modules have a possible risk to the confidentiality, integrity, and availability of the system and present a clear risk to the operating system, ACP, and customer data.",
       "severity": "medium"
     },
     {

@@ -1,6 +1,6 @@
 {
   "name": "stig_solaris_11_sparc",
-  "date": "2018-04-10",
+  "date": "2020-02-26",
   "description": "Developed by Oracle in coordination with DISA for the DoD.\n\nThe Solaris 11 (SPARC) Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Solaris 11 SPARC Security Technical Implementation Guide",
   "version": "1",
@@ -339,8 +339,8 @@
     },
     {
       "id": "V-47919",
-      "title": "The rpcbind service must be configured for local only services.",
-      "description": "The portmap and rpcbind services increase the attack surface of the system and should only be used when needed. The portmap or rpcbind services are used by a variety of services using remote procedure calls (RPCs).",
+      "title": "The rpcbind service must be configured for local only services unless organizationally defined.",
+      "description": "The portmap and rpcbind services increase the attack surface of the system and should only be used when needed. The portmap or rpcbind services are used by a variety of services using remote procedure calls (RPCs).  The organization may define and document the limited use of services (for example NFS) that may use these services with approval from their Authorizing Official.",
       "severity": "medium"
     },
     {
@@ -416,27 +416,9 @@
       "severity": "medium"
     },
     {
-      "id": "V-47945",
-      "title": "The operating system must employ automated mechanisms to alert security personnel of any organization-defined inappropriate or unusual activities with security implications.",
-      "description": "Intrusion detection and prevention capabilities must be architected and implemented to prevent non-privileged users from circumventing such protections. This can be accomplished through the use of user roles, use of proper systems permissions, auditing, logging, etc.",
-      "severity": "low"
-    },
-    {
-      "id": "V-47947",
-      "title": "The operating system must protect information obtained from intrusion-monitoring tools from unauthorized access, modification, and deletion.",
-      "description": "Intrusion detection and prevention capabilities must be architected and implemented to prevent non-privileged users from accessing, modifying, or deleting information derived from intrusion-monitoring tools.\n\nThis can be accomplished through the use of user roles, use of proper systems permissions, auditing, logging, etc.",
-      "severity": "low"
-    },
-    {
       "id": "V-47949",
       "title": "The operating system must automatically terminate temporary accounts within 72 hours.",
       "description": "If temporary user accounts remain active when no longer needed or for an excessive period, these accounts may be used to gain unauthorized access. To mitigate this risk, automated termination of all temporary accounts must be set upon account creation. \n\nTemporary accounts are established as part of normal account activation procedures when there is a need for short-term accounts without the demand for immediacy in account activation. \n\nIf temporary accounts are used, the operating system must be configured to automatically terminate these types of accounts after a DoD-defined time period of 72 hours.\n\nWhen temporary and emergency accounts are created, there is a risk the temporary account may remain in place and active after the need for the account no longer exists.\n\nTo address this, in the event temporary accounts are required, accounts designated as temporary in nature must be automatically terminated after 72 hours. Such a process and capability greatly reduces the risk of accounts being misused, hijacked, or data compromised.",
-      "severity": "low"
-    },
-    {
-      "id": "V-47951",
-      "title": "Intrusion detection and prevention capabilities must be architected and implemented to prevent non-privileged users from circumventing such protections.",
-      "description": "Non-privileged users must not be able to alter intrusion detection and prevention systems to ensure these systems work properly.\n\nThis can be accomplished through the use of user roles, use of proper systems permissions, auditing, logging, etc.",
       "severity": "low"
     },
     {
@@ -473,12 +455,6 @@
       "id": "V-47963",
       "title": "The operating system must prevent non-privileged users from circumventing malicious code protection capabilities.",
       "description": "In order to minimize potential negative impact to the organization caused by malicious code, it is imperative that malicious code is identified and eradicated prior to entering protected enclaves via operating system entry and exit points. \n\nThe requirement states that AV and malware protection applications must be used at entry and exit points. For the operating system, this means an anti-virus application must be installed on machines that are the entry and exit points.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-47965",
-      "title": "The operating system must employ automated mechanisms to determine the state of system components with regard to flaw remediation using the following frequency: continuously, where HBSS is used; 30 days, for any additional internal network scans not covered by HBSS; and annually, for external scans by Computer Network Defense Service Provider (CNDSP).",
-      "description": "Without the use of automated mechanisms to scan for security flaws on a continuous and/or periodic basis, the operating system or other system components may remain vulnerable to the exploits presented by undetected software flaws.",
       "severity": "medium"
     },
     {
@@ -621,7 +597,7 @@
     },
     {
       "id": "V-48017",
-      "title": "The centralized process core dump data directory must be group-owned by root, bin, or sys.",
+      "title": "The centralized process core dump data directory must be group-owned by root.",
       "description": "Process core dumps contain the memory in use by the process when it crashed. Any data the process was handling may be contained in the core file, and it must be protected accordingly. If the centralized process core dump data directory is not group-owned by a system group, the core dumps contained in the directory may be subject to unauthorized access.",
       "severity": "medium"
     },
@@ -1421,6 +1397,18 @@
       "id": "V-72827",
       "title": "Wireless network adapters must be disabled.",
       "description": "The use of wireless networking can introduce many different attack vectors into the organization’s network. Common attack vectors such as malicious association and ad hoc networks will allow an attacker to spoof a wireless access point (AP), allowing validated systems to connect to the malicious AP and enabling the attacker to monitor and record network traffic. These malicious APs can also serve to create a man-in-the-middle attack or be used to create a denial-of-service to valid network resources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91209",
+      "title": "Systems using OpenSSH must be configured per site policy to only allow access by approved networks or hosts.",
+      "description": "If ssh’s configuration file does not contain the appropriate rules for allowing and denying access to the system’s network resources, the system may be accessible to unauthorized hosts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-95717",
+      "title": "The system must be configured to store any process core dumps in a specific, centralized directory.",
+      "description": "Specifying a centralized location for core file creation allows for the centralized protection of core files. Process core dumps contain the memory in use by the process when it crashed. Any data the process was handling may be contained in the core file, and it must be protected accordingly. If process core dump creation is not configured to use a centralized directory, core dumps may be created in a directory that does not have appropriate ownership or permissions configured, which could result in unauthorized access to the core dumps.",
       "severity": "medium"
     }
   ]

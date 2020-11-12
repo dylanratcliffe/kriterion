@@ -1,6 +1,6 @@
 {
   "name": "stig_windows_server_2016",
-  "date": "2018-03-07",
+  "date": "2019-12-12",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "Windows Server 2016 Security Technical Implementation Guide",
   "version": "1",
@@ -22,7 +22,7 @@
     {
       "id": "V-73221",
       "title": "Only administrators responsible for the member server or standalone system must have Administrator rights on the system.",
-      "description": "An account that does not have Administrator duties must not have Administrator rights. Such rights would allow the account to bypass or modify required security restrictions on that machine and make it vulnerable to attack.\n\nSystem administrators must log on to systems using only accounts with the minimum level of authority necessary.\n\nFor domain-joined member servers, the Domain Admins group must be replaced by a domain member server administrator group (see V-36433 in the Active Directory Domain STIG). Restricting highly privileged accounts from the local Administrators group helps mitigate the risk of privilege escalation resulting from credential theft attacks. \n\nSystems dedicated to the management of Active Directory (AD admin platforms, see V-36436 in the Active Directory Domain STIG) are exempt from this. AD admin platforms may use the Domain Admins group or a domain administrative group created specifically for AD admin platforms (see V-43711 in the Active Directory Domain STIG).\n\nStandard user accounts must not be members of the built-in Administrators group.",
+      "description": "An account that does not have Administrator duties must not have Administrator rights. Such rights would allow the account to bypass or modify required security restrictions on that machine and make it vulnerable to attack.\n\nSystem administrators must log on to systems using only accounts with the minimum level of authority necessary.\n\nFor domain-joined member servers, the Domain Admins group must be replaced by a domain member server administrator group (see V-36433 in the Active Directory Domain STIG). Restricting highly privileged accounts from the local Administrators group helps mitigate the risk of privilege escalation resulting from credential theft attacks.\n\nStandard user accounts must not be members of the built-in Administrators group.",
       "severity": "high"
     },
     {
@@ -69,9 +69,9 @@
     },
     {
       "id": "V-73237",
-      "title": "Domain-joined systems must have a Trusted Platform Module (TPM) enabled and ready for use.",
+      "title": "Windows Server 2016 domain-joined systems must have a Trusted Platform Module (TPM) enabled and ready for use.",
       "description": "Credential Guard uses virtualization-based security to protect data that could be used in credential theft attacks if compromised. A number of system requirements must be met in order for Credential Guard to be configured and enabled properly. Without a TPM enabled and ready for use, Credential Guard keys are stored in a less secure method using software.",
-      "severity": "low"
+      "severity": "medium"
     },
     {
       "id": "V-73239",
@@ -135,7 +135,7 @@
     },
     {
       "id": "V-73261",
-      "title": "Accounts must require passwords.",
+      "title": "Windows Server 2016 accounts must require passwords.",
       "description": "The lack of password protection enables anyone to gain access to the information system, which opens a backdoor opportunity for intruders to compromise the system as well as other resources. Accounts on a system must require passwords.",
       "severity": "medium"
     },
@@ -155,12 +155,6 @@
       "id": "V-73267",
       "title": "Non-system-created file shares on a system must limit access to groups that require it.",
       "description": "Shares on a system provide network access. To prevent exposing sensitive information, where shares are necessary, permissions must be reconfigured to give the minimum access to accounts that require it.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-73269",
-      "title": "The Host Based Security System (HBSS) McAfee Agent must be installed.",
-      "description": "The McAfee Agent is the client side distributed component of McAfee ePolicy Orchestrator (McAfee ePO), which provides a secure communication channel between the ePO server and managed point products.",
       "severity": "medium"
     },
     {
@@ -285,49 +279,49 @@
     },
     {
       "id": "V-73311",
-      "title": "The number of allowed bad logon attempts must be configured to three or less.",
+      "title": "Windows Server 2016 must have the number of allowed bad logon attempts configured to three or less.",
       "description": "The account lockout feature, when enabled, prevents brute-force password attacks on the system. The higher this value is, the less effective the account lockout feature will be in protecting the local system. The number of bad logon attempts must be reasonably small to minimize the possibility of a successful password attack while allowing for honest errors made during normal user logon.",
       "severity": "medium"
     },
     {
       "id": "V-73313",
-      "title": "The period of time before the bad logon counter is reset must be configured to 15 minutes or greater.",
+      "title": "Windows Server 2016 must have the period of time before the bad logon counter is reset configured to 15 minutes or greater.",
       "description": "The account lockout feature, when enabled, prevents brute-force password attacks on the system. This parameter specifies the period of time that must pass after failed logon attempts before the counter is reset to \"0\". The smaller this value is, the less effective the account lockout feature will be in protecting the local system.\n\nSatisfies: SRG-OS-000021-GPOS-00005, SRG-OS-000329-GPOS-00128",
       "severity": "medium"
     },
     {
       "id": "V-73315",
-      "title": "The password history must be configured to 24 passwords remembered.",
+      "title": "Windows Server 2016 password history must be configured to 24 passwords remembered.",
       "description": "A system is more vulnerable to unauthorized access when system users recycle the same password several times without being required to change to a unique password on a regularly scheduled basis. This enables users to effectively negate the purpose of mandating periodic password changes. The default value is \"24\" for Windows domain systems. DoD has decided this is the appropriate value for all Windows systems.",
       "severity": "medium"
     },
     {
       "id": "V-73317",
-      "title": "The maximum password age must be configured to 60 days or less.",
+      "title": "Windows Server 2016 maximum password age must be configured to 60 days or less.",
       "description": "The longer a password is in use, the greater the opportunity for someone to gain unauthorized knowledge of the passwords. Scheduled changing of passwords hinders the ability of unauthorized system users to crack passwords and gain access to a system.",
       "severity": "medium"
     },
     {
       "id": "V-73319",
-      "title": "The minimum password age must be configured to at least one day.",
+      "title": "Windows Server 2016 minimum password age must be configured to at least one day.",
       "description": "Permitting passwords to be changed in immediate succession within the same day allows users to cycle passwords through their history database. This enables users to effectively negate the purpose of mandating periodic password changes.",
       "severity": "medium"
     },
     {
       "id": "V-73321",
-      "title": "The minimum password length must be configured to 14 characters.",
+      "title": "Windows Server 2016 minimum password length must be configured to 14 characters.",
       "description": "Information systems not protected with strong password schemes (including passwords of minimum length) provide the opportunity for anyone to crack the password, thus gaining access to the system and compromising the device, information, or the local network.",
       "severity": "medium"
     },
     {
       "id": "V-73323",
-      "title": "The built-in Windows password complexity policy must be enabled.",
+      "title": "Windows Server 2016 must have the built-in Windows password complexity policy enabled.",
       "description": "The use of complex passwords increases their strength against attack. The built-in Windows password complexity policy requires passwords to contain at least three of the four types of characters (numbers, upper- and lower-case letters, and special characters) and prevents the inclusion of user names or parts of user names.\n\nSatisfies: SRG-OS-000069-GPOS-00037, SRG-OS-000070-GPOS-00038, SRG-OS-000071-GPOS-00039, SRG-OS-000266-GPOS-00101",
       "severity": "medium"
     },
     {
       "id": "V-73325",
-      "title": "Reversible password encryption must be disabled.",
+      "title": "Windows Server 2016 reversible password encryption must be disabled.",
       "description": "Storing passwords using reversible encryption is essentially the same as storing clear-text versions of the passwords, which are easily compromised. For this reason, this policy must never be enabled.",
       "severity": "high"
     },
@@ -729,8 +723,8 @@
     },
     {
       "id": "V-73497",
-      "title": "WDigest Authentication must be disabled.",
-      "description": "When the WDigest Authentication protocol is enabled, plain-text passwords are stored in the Local Security Authority Subsystem Service (LSASS), exposing them to theft. WDigest is disabled by default in Windows 10. This setting ensures this is enforced.",
+      "title": "WDigest Authentication must be disabled on Windows Server 2016.",
+      "description": "When the WDigest Authentication protocol is enabled, plain-text passwords are stored in the Local Security Authority Subsystem Service (LSASS), exposing them to theft. WDigest is disabled by default in Windows Server 2016. This setting ensures this is enforced.",
       "severity": "medium"
     },
     {
@@ -777,21 +771,15 @@
     },
     {
       "id": "V-73513",
-      "title": "Virtualization-based security must be enabled with the platform security level configured to Secure Boot or Secure Boot with DMA Protection.",
+      "title": "Windows Server 2016 virtualization-based security must be enabled with the platform security level configured to Secure Boot or Secure Boot with DMA Protection.",
       "description": "Virtualization Based Security (VBS) provides the platform for the additional security features Credential Guard and virtualization-based protection of code integrity. Secure Boot is the minimum security level, with DMA protection providing additional memory protection. DMA Protection requires a CPU that supports input/output memory management unit (IOMMU).",
-      "severity": "low"
+      "severity": "medium"
     },
     {
       "id": "V-73515",
-      "title": "Credential Guard must be running on domain-joined systems.",
+      "title": "Windows Server 2016 must be running Credential Guard on domain-joined member servers.",
       "description": "Credential Guard uses virtualization-based security to protect data that could be used in credential theft attacks if compromised. This authentication information, which was stored in the Local Security Authority (LSA) in previous versions of Windows, is isolated from the rest of operating system and can only be accessed by privileged system software.",
-      "severity": "low"
-    },
-    {
-      "id": "V-73517",
-      "title": "Virtualization-based protection of code integrity must be enabled on domain-joined systems.",
-      "description": "Virtualization-based protection of code integrity enforces kernel mode memory protections as well as protecting Code Integrity validation paths. This isolates the processes from the rest of the operating system and can only be accessed by privileged system software.",
-      "severity": "low"
+      "severity": "high"
     },
     {
       "id": "V-73521",
@@ -897,7 +885,7 @@
     },
     {
       "id": "V-73559",
-      "title": "Windows SmartScreen must be enabled.",
+      "title": "Windows Server 2016 Windows SmartScreen must be enabled.",
       "description": "Windows SmartScreen helps protect systems from programs downloaded from the internet that may be malicious. Enabling SmartScreen will warn users of potentially malicious programs.",
       "severity": "medium"
     },
@@ -1047,8 +1035,8 @@
     },
     {
       "id": "V-73609",
-      "title": "The US DoD CCEB Interoperability Root CA cross-certificate must be installed in the Untrusted Certificates Store on unclassified systems.",
-      "description": "To ensure users do not experience denial of service when performing certificate-based authentication to DoD websites due to the system chaining to a root other than DoD Root CAs, the US DoD CCEB Interoperability Root CA cross-certificate must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.\n\nSatisfies: SRG-OS-000066-GPOS-00034, SRG-OS-000403-GPOS-00182",
+      "title": "The US DoD CCEB Interoperability Root CA cross-certificates must be installed in the Untrusted Certificates Store on unclassified systems.",
+      "description": "To ensure users do not experience denial of service when performing certificate-based authentication to DoD websites due to the system chaining to a root other than DoD Root CAs, the US DoD CCEB Interoperability Root CA cross-certificates must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.\n\nSatisfies: SRG-OS-000066-GPOS-00034, SRG-OS-000403-GPOS-00182",
       "severity": "medium"
     },
     {
@@ -1083,13 +1071,13 @@
     },
     {
       "id": "V-73623",
-      "title": "The built-in administrator account must be renamed.",
+      "title": "Windows Server 2016 built-in administrator account must be renamed.",
       "description": "The built-in administrator account is a well-known account subject to attack. Renaming this account to an unidentified name improves the protection of this account and the system.",
       "severity": "medium"
     },
     {
       "id": "V-73625",
-      "title": "The built-in guest account must be renamed.",
+      "title": "Windows Server 2016 built-in guest account must be renamed.",
       "description": "The built-in guest account is a well-known user account on all Windows systems and, as initially installed, does not require a password. This can allow access to system resources by unauthorized users. Renaming this account to an unidentified name improves the protection of this account and the system.",
       "severity": "medium"
     },
@@ -1190,12 +1178,6 @@
       "severity": "medium"
     },
     {
-      "id": "V-73659",
-      "title": "The amount of idle time required before suspending a session must be configured to 15 minutes or less.",
-      "description": "Open sessions can increase the avenues of attack on a system. This setting is used to control when a computer disconnects an inactive SMB session. If client activity resumes, the session is automatically reestablished. This protects critical and sensitive network data from exposure to unauthorized personnel with physical access to the computer.\n\nSatisfies: SRG-OS-000163-GPOS-00072, SRG-OS-000279-GPOS-00109",
-      "severity": "medium"
-    },
-    {
       "id": "V-73661",
       "title": "The setting Microsoft network server: Digitally sign communications (always) must be configured to Enabled.",
       "description": "The server message block (SMB) protocol provides the basis for many network operations. Digitally signed SMB packets aid in preventing man-in-the-middle attacks. If this policy is enabled, the SMB server will only communicate with an SMB client that performs SMB packet signing.\n\nSatisfies: SRG-OS-000423-GPOS-00187, SRG-OS-000424-GPOS-00188",
@@ -1224,12 +1206,6 @@
       "title": "Anonymous enumeration of shares must not be allowed.",
       "description": "Allowing anonymous logon users (null session connections) to list all account names and enumerate all shared resources can provide a map of potential points to attack the system.",
       "severity": "high"
-    },
-    {
-      "id": "V-73671",
-      "title": "Windows Server 2016 must be configured to prevent the storage of passwords and credentials.",
-      "description": "This setting controls the storage of passwords and credentials for network authentication on the local system. Such credentials must not be stored on the local machine, as that may lead to account compromise.\n\nSatisfies: SRG-OS-000373-GPOS-00157, SRG-OS-000373-GPOS-00156",
-      "severity": "medium"
     },
     {
       "id": "V-73673",
@@ -1270,7 +1246,7 @@
     {
       "id": "V-73685",
       "title": "Kerberos encryption types must be configured to prevent the use of DES and RC4 encryption suites.",
-      "description": "Certain encryption types are no longer considered secure. The DES and RC4 encryption suites must not be used for Kerberos encryption.",
+      "description": "Certain encryption types are no longer considered secure. The DES and RC4 encryption suites must not be used for Kerberos encryption.\n\nNote: Organizations with domain controllers running earlier versions of Windows where RC4 encryption is enabled, selecting \"The other domain supports Kerberos AES Encryption\" on domain trusts, may be required to allow client communication across the trust relationship.",
       "severity": "medium"
     },
     {
@@ -1278,12 +1254,6 @@
       "title": "Windows Server 2016 must be configured to prevent the storage of the LAN Manager hash of passwords.",
       "description": "The LAN Manager hash uses a weak encryption algorithm and there are several tools available that use this hash to retrieve account passwords. This setting controls whether a LAN Manager hash of the password is stored in the SAM the next time the password is changed.",
       "severity": "high"
-    },
-    {
-      "id": "V-73689",
-      "title": "Windows Server 2016 must be configured to force users to log off when their allowed logon hours expire.",
-      "description": "Limiting logon hours can help protect data by allowing access only during specified times. This setting controls whether users are forced to log off when their allowed logon hours expire. If logon hours are set for users, this must be enforced.",
-      "severity": "medium"
     },
     {
       "id": "V-73691",
@@ -1319,12 +1289,6 @@
       "id": "V-73701",
       "title": "Windows Server 2016 must be configured to use FIPS-compliant algorithms for encryption, hashing, and signing.",
       "description": "This setting ensures the system uses algorithms that are FIPS-compliant for encryption, hashing, and signing. FIPS-compliant algorithms meet specific standards established by the U.S. Government and must be the algorithms used for all OS encryption functions.\n\nSatisfies: SRG-OS-000033-GPOS-00014, SRG-OS-000478-GPOS-00223",
-      "severity": "medium"
-    },
-    {
-      "id": "V-73703",
-      "title": "Windows Server 2016 must be configured to require case insensitivity for non-Windows subsystems.",
-      "description": "This setting controls the behavior of non-Windows subsystems when dealing with the case of arguments or commands. Case sensitivity could lead to the access of files or commands that must be restricted. To prevent this from happening, case insensitivity restrictions must be required.",
       "severity": "medium"
     },
     {
@@ -1379,18 +1343,6 @@
       "id": "V-73721",
       "title": "User Account Control must virtualize file and registry write failures to per-user locations.",
       "description": "User Account Control (UAC) is a security mechanism for limiting the elevation of privileges, including administrative accounts, unless authorized. This setting configures non-UAC-compliant applications to run in virtualized file and registry entries in per-user locations, allowing them to run.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-73723",
-      "title": "A screen saver must be enabled on the system.",
-      "description": "Unattended systems are susceptible to unauthorized use and must be locked when unattended. Enabling a password-protected screen saver to engage after a specified period of time helps protects critical and sensitive data from exposure to unauthorized personnel with physical access to the computer.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-73725",
-      "title": "The screen saver must be password protected.",
-      "description": "Unattended systems are susceptible to unauthorized use and must be locked when unattended. Enabling a password-protected screen saver to engage after a specified period of time helps protects critical and sensitive data from exposure to unauthorized personnel with physical access to the computer.",
       "severity": "medium"
     },
     {
@@ -1635,7 +1587,7 @@
     },
     {
       "id": "V-73809",
-      "title": "The built-in guest account must be disabled.",
+      "title": "Windows Server 2016 built-in guest account must be disabled.",
       "description": "A system faces an increased vulnerability threat if the built-in guest account is not disabled. This is a known account that exists on all Windows systems and cannot be deleted. This account is initialized during the installation of the operating system with no password assigned.",
       "severity": "medium"
     },
@@ -1655,6 +1607,36 @@
       "id": "V-78127",
       "title": "Orphaned security identifiers (SIDs) must be removed from user rights on Windows 2016.",
       "description": "Accounts or groups given rights on a system may show up as unresolved SIDs for various reasons including deletion of the accounts or groups.  If the account or group objects are reanimated, there is a potential they may still have rights no longer intended.  Valid domain accounts or groups may also show up as unresolved SIDs if a connection to the domain cannot be established for some reason.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90355",
+      "title": "Secure Boot must be enabled on Windows Server 2016 systems.",
+      "description": "Secure Boot is a standard that ensures systems boot only to a trusted operating system. Secure Boot is required to support additional security features in Windows Server 2016, including Virtualization Based Security and Credential Guard. If Secure Boot is turned off, these security features will not function.",
+      "severity": "low"
+    },
+    {
+      "id": "V-90357",
+      "title": "Windows 2016 systems must have Unified Extensible Firmware Interface (UEFI) firmware and be configured to run in UEFI mode, not Legacy BIOS.",
+      "description": "UEFI provides additional security features in comparison to legacy BIOS firmware, including Secure Boot. UEFI is required to support additional security features in Windows Server 2016, including Virtualization Based Security and Credential Guard. Systems with UEFI that are operating in \"Legacy BIOS\" mode will not support these security features.",
+      "severity": "low"
+    },
+    {
+      "id": "V-90359",
+      "title": "Windows 2016 must be configured to audit Object Access - Other Object Access Events successes.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks. Audit logs are necessary to provide a trail of evidence in case the system or network is compromised. Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAuditing for other object access records events related to the management of task scheduler jobs and COM+ objects.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90361",
+      "title": "Windows 2016 must be configured to audit Object Access - Other Object Access Events failures.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks. Audit logs are necessary to provide a trail of evidence in case the system or network is compromised. Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAuditing for other object access records events related to the management of task scheduler jobs and COM+ objects.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91779",
+      "title": "The password for the krbtgt account on a domain must be reset at least every 180 days.",
+      "description": "The krbtgt account acts as a service account for the Kerberos Key Distribution Center (KDC) service. The account and password are created when a domain is created and the password is typically not changed. If the krbtgt account is compromised, attackers can create valid Kerberos Ticket Granting Tickets (TGT).\n\nThe password must be changed twice to effectively remove the password history.Changing once, waiting for replication to complete and the amount of time equal to or greater than the maximum Kerberos ticket lifetime, and changing again reduces the risk of issues.",
       "severity": "medium"
     }
   ]

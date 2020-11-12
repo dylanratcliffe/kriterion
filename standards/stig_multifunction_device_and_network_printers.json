@@ -1,6 +1,6 @@
 {
   "name": "stig_multifunction_device_and_network_printers",
-  "date": "2017-12-07",
+  "date": "2019-10-07",
   "description": "Multifunction Device and Network Printers (MFD) STIG includes the computing requirements for Multifunction Device and Network Printers operating to support the DoD. The Multifunction Device and Network Printers STIG must also be applied for each site using Multifunction Devices and Network Printers. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Multifunction Device and Network Printers STIG",
   "version": "2",
@@ -9,20 +9,20 @@
   "items": [
     {
       "id": "V-6777",
-      "title": "A network protocol other than TCP/IP is enabled on a MFD or printer.",
-      "description": "The greater the number of protocols allowed active on the network the more vulnerabilities there will be available to be exploited.\nThe SA will ensure the only network protocol used is TCP/IP all others are disabled.",
+      "title": "The MFD or Network Printer must not enable network protocols other than TCP/IP.",
+      "description": "The greater the number of protocols allowed active on the network the more vulnerabilities there will be available to be exploited. This also prevents accidental implementation of a “call-home” feature that is not allowed.",
       "severity": "medium"
     },
     {
       "id": "V-6779",
-      "title": "A firewall or router rule is not used to block all ingress and egress traffic from the enclave perimeter to the MFD or printer.",
-      "description": "Access to the MFD or printer from outside the enclave network could lead to a denial of service caused by a large number of large print files being sent to the device.  Ability for the MFD or printer to access addresses outside the enclave network could lead to a compromise of sensitive data caused by forwarding a print file to a location outside of the enclave network.  This is good defence in depth practice.\nThe SA will ensure there is a firewall or router rule to block all ingress and egress traffic from the enclave perimeter to the MFD or printer.",
+      "title": "A firewall or router rule must block all ingress and egress traffic from the enclave perimeter to the MFD or Network Printer.",
+      "description": "Access to the MFD or printer from outside the enclave network could lead to a denial of service caused by a large number of large print files being sent to the device. Ability for the MFD or printer to access addresses outside the enclave network could lead to a compromise of sensitive data caused by forwarding a print file to a location outside of the enclave network. This also prevents accidental implementation of a “call-home” feature that is not allowed.",
       "severity": "medium"
     },
     {
       "id": "V-6780",
-      "title": "A MFD or a printer device is not flash upgradeable or is not configured to use the most current firmware available.",
-      "description": "MFD devices or printers utilizing old firmware can expose the network to known vulnerabilities leading to a denial of service or a compromise of sensitive data.\nThe SA will ensure devices are flash upgradeable and are configured to use the most current firmware available",
+      "title": "The MFD or Network Printer must employ the most current firmware available.",
+      "description": "MFD devices or printers utilizing old firmware can expose the network to known vulnerabilities leading to a denial of service or a compromise of sensitive data. While the MFD must use the most current firmware available, it must not use a “call-home” feature that is not allowed.",
       "severity": "medium"
     },
     {
@@ -33,8 +33,8 @@
     },
     {
       "id": "V-6782",
-      "title": "The MFD does not maintain its configuration state (passwords, service settings etc) after a power down or reboot.",
-      "description": "If the MFD does not maintain it state over a power down or reboot, it will expose the network to all of the vulnerabilities that where mitigated by the modifications made to its configuration state.\nThe SA will ensure the MFD maintains its configuration state (passwords, service settings etc) after a power down or reboot.",
+      "title": "The MFD or Network Printer must maintain configuration state (e.g., passwords, service settings) after a power down or restart.",
+      "description": "If the MFD does not maintain it state over a power down or restart, it will expose the network to all of the vulnerabilities that where mitigated by the modifications made to its configuration state. This also prevents accidental implementation of a “call-home” feature that is not allowed.",
       "severity": "high"
     },
     {
@@ -126,6 +126,12 @@
       "title": "The device is not configured to prevent non-printer administrators from altering the global configuration of the device.",
       "description": "If unauthorized users can alter the global configuration of the MFD they can remove all security.  This can lead to the compromise of sensitive data or the compromise of the network the MFD is attached to.",
       "severity": "high"
+    },
+    {
+      "id": "V-97711",
+      "title": "The MFD must be configured to prohibit the use of all unnecessary and/or nonsecure functions, physical and logical ports, protocols, and/or services.",
+      "description": "In order to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable unused or unnecessary physical and logical ports/protocols on information systems.\n\nMFDs are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the MFD must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved. Some network devices have capabilities enabled by default; if these capabilities are not necessary, they must be disabled. If a particular capability is used, then it must be documented and approved.",
+      "severity": "medium"
     }
   ]
 }

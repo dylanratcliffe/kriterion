@@ -1,6 +1,6 @@
 {
   "name": "stig_jboss_eap_6.3",
-  "date": "2017-03-20",
+  "date": "2019-09-30",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "JBoss EAP 6.3 Security Technical Implementation Guide",
   "version": "1",

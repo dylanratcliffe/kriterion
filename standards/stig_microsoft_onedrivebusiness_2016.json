@@ -1,6 +1,6 @@
 {
   "name": "stig_microsoft_onedrivebusiness_2016",
-  "date": "2017-01-23",
+  "date": "2020-03-23",
   "description": "The Microsoft OneDrive for Business 2016 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the NIST 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Microsoft OneDrive for Business 2016 Security Technical Implementation Guide",
   "version": "1",

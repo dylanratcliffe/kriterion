@@ -1,6 +1,6 @@
 {
   "name": "stig_microsoft_internet_explorer_11",
-  "date": "2018-04-02",
+  "date": "2019-10-24",
   "description": "The Microsoft Internet Explorer 11 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil",
   "title": "Microsoft Internet Explorer 11 Security Technical Implementation Guide",
   "version": "1",
@@ -41,12 +41,6 @@
       "id": "V-46501",
       "title": "The Initialize and script ActiveX controls not marked as safe property must be disallowed (Internet zone).",
       "description": "ActiveX controls that are not marked safe for scripting should not be executed. Although this is not a complete security measure for a control to be marked safe for scripting, if a control is not marked safe, it should not be initialized and executed. This setting causes both unsafe and safe controls to be initialized and scripted, ignoring the Script ActiveX controls marked safe for scripting option. This increases the risk of malicious code being loaded and executed by the browser. If you enable this policy setting, ActiveX controls are run, loaded with parameters and scripted without setting object safety for untrusted data or scripts. If you disable this policy setting, ActiveX controls that cannot be made safe are not loaded with parameters or scripted. This setting is not recommended, except for secure and administered zones.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-46505",
-      "title": "Font downloads must be disallowed (Internet zone).",
-      "description": "Downloads of fonts can sometimes contain malicious code. It is possible that a font could include malformed data that would cause Internet Explorer to crash when it attempts to load and render the font. This policy setting allows you to manage whether pages of the zone may download HTML fonts. If you enable this policy setting, HTML fonts can be downloaded automatically. If you enable this policy setting and \"Prompt\" is selected in the drop-down box, users are queried whether to allow HTML fonts to download. If you disable this policy setting, HTML fonts are prevented from downloading.",
       "severity": "medium"
     },
     {
@@ -173,12 +167,6 @@
       "id": "V-46583",
       "title": "File downloads must be disallowed (Restricted Sites zone).",
       "description": "Sites located in the Restricted Sites Zone are more likely to contain malicious payloads and therefore downloads from this zone should be blocked. Files should not be able to be downloaded from sites that are considered restricted. This policy setting allows you to manage whether file downloads are permitted from the zone. This option is determined by the zone of the page with the link causing the download, not the zone from which the file is delivered.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-46585",
-      "title": "Font downloads must be disallowed (Restricted Sites zone).",
-      "description": "It is possible that a font could include malformed data that would cause Internet Explorer to crash when it attempts to load and render the font. Downloads of fonts can sometimes contain malicious code. Files should not be downloaded from restricted sites. This policy setting allows you to manage whether pages of the zone may download HTML fonts.",
       "severity": "medium"
     },
     {
@@ -834,6 +822,12 @@
       "title": "VBScript must not be allowed to run in Internet Explorer (Restricted Sites zone).",
       "description": "This policy setting allows the management of whether VBScript can be run on pages from the specified zone in Internet Explorer. By selecting \"Enable\" in the drop-down box, VBScript can run without user intervention. By selecting \"Prompt\" in the drop-down box, users are asked to choose whether to allow VBScript to run. By selecting \"Disable\" in the drop-down box, VBScript is prevented from running. If this policy setting is not configured or disabled, VBScript will run without user intervention.",
       "severity": "medium"
+    },
+    {
+      "id": "V-97527",
+      "title": "Internet Explorer Development Tools Must Be Disabled.",
+      "description": "Information needed by an attacker to begin looking for possible vulnerabilities in a web browser includes any information about the web browser and plug-ins or modules being used. When debugging or trace information is enabled in a production web browser, information about the web browser, such as web browser type, version, patches installed, plug-ins and modules installed, type of code being used by the hosted application, and any back-ends being used for data storage may be displayed. Since this information may be placed in logs and general messages during normal operation of the web browser, an attacker does not need to cause an error condition to gain this information.",
+      "severity": "low"
     }
   ]
 }

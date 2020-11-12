@@ -1,6 +1,6 @@
 {
   "name": "stig_ms_exchange_2013_mailbox_server",
-  "date": "2017-04-06",
+  "date": "2019-12-23",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "MS Exchange 2013 Mailbox Server Security Technical Implementation Guide",
   "version": "1",
@@ -371,12 +371,6 @@
       "id": "V-70061",
       "title": "Exchange must provide Mailbox databases in a highly available and redundant configuration.",
       "description": "To protect Exchange Server mailbox databases and the data they contain by configuring Mailbox servers and databases for high availability and site resilience.\n\nA database availability group (DAG) is a component of the Mailbox server high availability and site resilience framework built into Microsoft Exchange Server 2013. A DAG is a group of Mailbox servers that hosts a set of databases and provides automatic database-level recovery from failures that affect individual servers or databases.\nA DAG is a boundary for mailbox database replication and database and server switchovers and failovers. \n\nAny server in a DAG can host a copy of a mailbox database from any other server in the DAG. When a server is added to a DAG, it works with the other servers in the DAG to provide automatic recovery from failures that affect mailbox databases, such as a disk, server, or network failure.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-70063",
-      "title": "Exchange Internal Send connectors must use an authentication level.",
-      "description": "The Simple Mail Transfer Protocol (SMTP) connector is used by Exchange to send and receive messages from server to server. Several controls work together to provide security between internal servers. This setting controls the encryption method used for communications between servers. With this feature enabled, only servers capable of supporting Transport Layer Security (TLS) will be able to send and receive mail within the domain.\n\nThe use of secure communication prevents eavesdroppers from reading or modifying communications between mail clients and servers. While sensitive message bodies should be encrypted by the sender at the client, requiring a secure connection from server to server adds protection by encrypting the sender and recipient information that cannot be encrypted by the sender. \n\nIndividually, channel security and encryption can be compromised by attackers. Used together, email becomes a more difficult target, and security is heightened. Failure to enable this feature gives eavesdroppers an opportunity to read or modify messages between servers.",
       "severity": "medium"
     },
     {

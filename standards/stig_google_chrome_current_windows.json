@@ -1,8 +1,8 @@
 {
   "name": "stig_google_chrome_current_windows",
-  "date": "2018-03-13",
+  "date": "2019-12-03",
   "description": "The Google Chrome Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil",
-  "title": "Google Chrome Current Windows STIG",
+  "title": "Google Chrome Current Windows Security Technical Implementation Guide",
   "version": "1",
   "item_syntax": "^\\w-\\d+$",
   "section_separator": null,
@@ -86,12 +86,6 @@
       "severity": "medium"
     },
     {
-      "id": "V-44757",
-      "title": "3D Graphics APIs must be disabled.",
-      "description": "Disable support for 3D graphics APIs. Enabling this setting prevents web pages from accessing the graphics processing unit (GPU). Specifically, web pages cannot access the WebGL API and plugins cannot use the Pepper 3D API. Disabling this setting or leaving it not set potentially allows web pages to use the WebGL API and plugins to use the Pepper 3D API. The default settings of the browser may still require command line arguments to be passed in order to use these APIs. Chrome uses WebGL to render graphics using the GPU. There are few sites that currently take advantage of this feature. Since there is unlikely to be an operational impact, it is recommended that this feature is turned off in order to reduce the attack surface.",
-      "severity": "medium"
-    },
-    {
       "id": "V-44759",
       "title": "Google Data Synchronization must be disabled.",
       "description": "Disables data synchronization in Google Chrome using Google-hosted synchronization services and prevents users from changing this setting. If you enable this setting, users cannot change or override this setting in Google Chrome. If this policy is left not set the user will be able to enable Google Sync.  Google Sync is used to sync information between different user devices, this data is then stored on Google owned servers. The synced data may consist of information such as email, calendars, viewing history, etc. This feature must be disabled because the organization does not have control over the servers the data is stored on.",
@@ -104,12 +98,6 @@
       "severity": "medium"
     },
     {
-      "id": "V-44763",
-      "title": "AutoFill must be disabled.",
-      "description": "This AutoComplete feature suggests possible matches when users are filling in forms. It is possible that this feature will cache sensitive data and store it in the user's profile, where it might not be protected as rigorously as required by organizational policy. If you enable this setting or do not set a value, AutoFill will remain under the control of the user. This will allow them to configure AutoFill profiles and to switch AutoFill on or off at their own discretion.",
-      "severity": "medium"
-    },
-    {
       "id": "V-44765",
       "title": "Cloud print sharing must be disabled.",
       "description": "Policy enables Google Chrome to act as a proxy between Google Cloud Print and legacy printers connected to the machine. If this setting is enabled or not configured, users can enable the cloud print proxy by authentication with their Google account. If this setting is disabled, users cannot enable the proxy, and the machine will not be allowed to share it’s printers with Google Cloud Print. If this policy is not set, this will be enabled but the user will be able to change it.",
@@ -117,7 +105,7 @@
     },
     {
       "id": "V-44769",
-      "title": "Network prediction must be enabled.",
+      "title": "Network prediction must be disabled.",
       "description": "Enables network prediction in Google Chrome and prevents users from changing this setting. If you enable or disable this setting, users cannot change or override this setting in Google Chrome. If this policy is left not set, this will be disabled but the user will be able to change it.",
       "severity": "medium"
     },
@@ -177,7 +165,7 @@
     },
     {
       "id": "V-44805",
-      "title": "The version of Google Chrome running on the system must be the most current available.",
+      "title": "The version of Google Chrome running on the system must be a supported version.",
       "description": "Google Chrome is being continually updated by the vendor in order to address identified security vulnerabilities. Running an older version of the browser can introduce security vulnerabilities to the system.",
       "severity": "medium"
     },
@@ -206,10 +194,70 @@
       "severity": "medium"
     },
     {
-      "id": "V-79933",
-      "title": "AutoFill for Credit Cards must be disabled.",
-      "description": "Enabling Google Chrome's AutoFill feature allows users to auto complete credit card and address information in web forms using previously stored information. If you disable this setting, Autofill will never suggest, or fill credit card information, nor will it save additional credit card information that the user might submit while browsing the web. If you enable this setting or do not set a value, then users will be able to control the overall autofill feature (including credit cards) in the UI.",
+      "id": "V-81581",
+      "title": "Autoplay must be disabled.",
+      "description": "Allows you to control if videos can play automatically (without user consent) with audio content in Google Chrome.\nIf the policy is set to “True”, Google Chrome is allowed to autoplay media. If the policy is set to “False”, Google Chrome is not allowed to autoplay media. The “AutoplayWhitelist” policy can be used to override this for certain URL patterns. By default, Google Chrome is not allowed to autoplay media. The “AutoplayWhitelist” policy can be used to override this for certain URL patterns.",
       "severity": "medium"
+    },
+    {
+      "id": "V-81583",
+      "title": "Chrome must be configured to allow only TLS.",
+      "description": "If this policy is not configured then Google Chrome uses a default minimum version, which is TLS 1.0. Otherwise, it may be set to one of the following values: \"tls1\", \"tls1.1\" or \"tls1.2\".\nWhen set, Google Chrome will not use SSL/TLS versions less than the specified version. An unrecognized value will be ignored.\n\"tls1\" = TLS 1.0\n\"tls1.1\" = TLS 1.1\n\"tls1.2\" = TLS 1.2",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81585",
+      "title": "Safe Browsing Extended Reporting must be disabled.",
+      "description": "Enables Google Chrome's Safe Browsing Extended Reporting and prevents users from changing this setting. Extended Reporting sends some system information and page content to Google servers to help detect dangerous apps and sites.\nIf the setting is set to \"True\", then reports will be created and sent whenever necessary (such as when a security interstitial is shown).\nIf the setting is set to \"False\", reports will never be sent.\nIf this policy is set to \"True\" or \"False\", the user will not be able to modify the setting.\nIf this policy is left unset, the user will be able to change the setting and decide whether to send reports or not.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81587",
+      "title": "WebUSB must be disabled.",
+      "description": "Allows you to set whether websites are allowed to get access to connected USB devices. Access can be completely blocked, or the user can be asked every time a website wants to get access to connected USB devices.\nIf this policy is left not set, ”3” will be used, and the user will be able to change it.\n2 = Do not allow any site to request access to USB devices via the WebUSB API\n3 = Allow sites to ask the user to grant access to a connected USB device",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81589",
+      "title": "URLs must be whitelisted for Autoplay use.",
+      "description": "Controls the whitelist of URL patterns that autoplay will always be enabled on.\nIf the “AutoplayAllowed” policy is set to “True” then this policy will have no effect.\nIf the “AutoplayAllowed” policy is set to “False” then any URL patterns set in this policy will still be allowed to play.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81591",
+      "title": "Chrome Cleanup must be disabled.",
+      "description": "If set to “False”, prevents Chrome Cleanup from scanning the system for unwanted software and performing cleanups. Manually triggering Chrome Cleanup from chrome://settings/cleanup is disabled.\nIf set to “True” or unset, Chrome Cleanup periodically scans the system for unwanted software and should any be found, will ask the user if they wish to remove it. Manually triggering Chrome Cleanup from chrome://settings is enabled.\nThis policy is available only on Windows instances that are joined to a Microsoft Active Directory domain.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81593",
+      "title": "Chrome Cleanup reporting must be disabled.",
+      "description": "If unset, should Chrome Cleanup detect unwanted software, it may report metadata about the scan to Google in accordance with policy set by “SafeBrowsingExtendedReportingEnabled”. Chrome Cleanup will then ask the user if they wish to clean up the unwanted software. The user can choose to share results of the cleanup with Google to assist with future unwanted software detection. These results contain file metadata and registry keys as described by the Chrome Privacy Whitepaper.\nIf set to “false”, should Chrome Cleanup detect unwanted software, it will not report metadata about the scan to Google, overriding any policy set by “SafeBrowsingExtendedReportingEnabled”. Chrome Cleanup will ask the user if they wish to clean up the unwanted software. Results of the cleanup will not be reported to Google and the user will not have the option to do so.\nIf set to “true”, should Chrome Cleanup detect unwanted software, it may report metadata about the scan to Google in accordance with policy set by “SafeBrowsingExtendedReportingEnabled”. Chrome Cleanup will ask the user if they wish to clean up the unwanted software. Results of the cleanup will be reported to Google and the user will not have the option to prevent it.\nThis policy is available only on Windows instances that are joined to a Microsoft Active Directory domain.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81597",
+      "title": "Google Cast must be disabled.",
+      "description": "If this policy is set to ”True” or is not set, Google Cast will be enabled, and users will be able to launch it from the app menu, page context menus, media controls on Cast-enabled websites, and (if shown) the “Cast toolbar” icon.\nIf this policy set to ”False”, Google Cast will be disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91203",
+      "title": "Anonymized data collection must be disabled.",
+      "description": "Enable URL-keyed anonymized data collection in Google Chrome and prevent users from changing this setting.\nURL-keyed anonymized data collection sends URLs of pages the user visits to Google to make searches and browsing better.\nIf you enable this policy, URL-keyed anonymized data collection is always active.\nIf you disable this policy, URL-keyed anonymized data collection is never active.\nIf this policy is left not set, URL-keyed anonymized data collection will be enabled but the user will be able to change it.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91205",
+      "title": "Collection of WebRTC event logs must be disabled.",
+      "description": "If the policy is set to “true”, Google Chrome is allowed to collect WebRTC event logs from Google services (e.g., Google Meet), and upload those logs to Google.\nIf the policy is set to “false”, or is unset, Google Chrome may not collect nor upload such logs.\nThese logs contain diagnostic information helpful when debugging issues with audio or video calls in Chrome, such as the time and size of sent and received RTP packets, feedback about congestion on the network, and metadata about time and quality of audio and video frames. These logs do not contain audio or video contents from the call.\nThis data collection by Chrome can only be triggered by Google's web services, such as Google Hangouts or Google Meet.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-97525",
+      "title": "Chrome development tools must be disabled.",
+      "description": "Information needed by an attacker to begin looking for possible vulnerabilities in a web browser includes any information about the web browser and plug-ins or modules being used. When debugging or trace information is enabled in a production web browser, information about the web browser, such as web browser type, version, patches installed, plug-ins and modules installed, type of code being used by the hosted application, and any back-ends being used for data storage may be displayed. Since this information may be placed in logs and general messages during normal operation of the web browser, an attacker does not need to cause an error condition to gain this information.",
+      "severity": "low"
     }
   ]
 }

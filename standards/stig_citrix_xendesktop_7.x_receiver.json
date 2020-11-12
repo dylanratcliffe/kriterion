@@ -1,0 +1,23 @@
+{
+  "name": "stig_citrix_xendesktop_7.x_receiver",
+  "date": "2018-08-28",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Citrix XenDesktop 7.x Receiver Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-81427",
+      "title": "Citrix Receiver must implement DoD-approved encryption.",
+      "description": "Without confidentiality protection mechanisms, unauthorized individuals may gain access to sensitive information via a remote access session. \n\nRemote access is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless. \n\nEncryption provides a means to secure the remote connection to prevent unauthorized access to the data traversing the remote access connection thereby providing a degree of confidentiality. The encryption strength of mechanism is selected based on the security categorization of the information.\n\nSatisfies: SRG-APP-000014, SRG-APP-000015, SRG-APP-000142, SRG-APP-000219, SRG-APP-000416, SRG-APP-000427, SRG-APP-000439, SRG-APP-000440, SRG-APP-000441, SRG-APP-000442, SRG-APP-000514",
+      "severity": "high"
+    },
+    {
+      "id": "V-81429",
+      "title": "Citrix Receiver must accept Personal Identity Verification (PIV) credentials.",
+      "description": "The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access.\n\nDoD has mandated the use of the CAC to support identity management and personal authentication for systems covered under HSPD 12, as well as a primary component of layered protection for national security systems.\n\nSatisfies: SRG-APP-000391, SRG-APP-000392",
+      "severity": "medium"
+    }
+  ]
+}

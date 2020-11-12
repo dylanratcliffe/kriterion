@@ -1,0 +1,335 @@
+{
+  "name": "stig_vmw_vrealize_automation_7.x_ha_proxy",
+  "date": "2018-10-12",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "VMW vRealize Automation 7.x HA Proxy Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-89139",
+      "title": "HAProxy must use a logging mechanism that is configured to alert the ISSO and SA in the event of a processing failure.",
+      "description": "An accurate and current audit trail is essential for maintaining a record of system activity. If the logging system fails, the SA must be notified and must take prompt action to correct the problem. Minimally, the system must log this event and the SA will receive this notification during the daily system log review. If feasible, active alerting (such as e-mail or paging) should be employed consistent with the site's established operations management systems and procedures.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89141",
+      "title": "HAProxy log files must not be accessible to unauthorized users.",
+      "description": "The HAProxy log files provide audit data useful to the discovery of suspicious behavior. The log files may contain usernames and passwords in clear text as well as other information that could aid a malicious user with unauthorized access attempts to the database. Generation and protection of these files helps support security monitoring efforts.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89143",
+      "title": "HAProxy log files must be protected from unauthorized modification.",
+      "description": "Log data is essential in the investigation of events. If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity would be difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to their advantage since each event record might contain communication ports, protocols, services, trust relationships, user names, etc.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89145",
+      "title": "HAProxy log files must be protected from unauthorized deletion.",
+      "description": "Log data is essential in the investigation of events. If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity would be difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to their advantage since each event record might contain communication ports, protocols, services, trust relationships, user names, etc.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89147",
+      "title": "HAProxy log files must be backed up onto a different system or media.",
+      "description": "Log data is essential in the investigation of events. If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity would be difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to their advantage since each event record might contain communication ports, protocols, services, trust relationships, user names, etc.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89149",
+      "title": "HAProxy files must be verified for their integrity (checksums) before being added to the build systems.",
+      "description": "Being able to verify that a patch, upgrade, certificate, etc., being added to the web server is unchanged from the producer of the file is essential for file validation and non-repudiation of the information.\n\nThe HAProxy web server files on vRA must be part of a documented build process. Checksums of the production files must be available to verify their integrity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89151",
+      "title": "HAProxy expansion modules must be verified for their integrity (checksums) before being added to the build systems.",
+      "description": "Being able to verify that a patch, upgrade, certificate, etc., being added to the web server is unchanged from the producer of the file is essential for file validation and non-repudiation of the information.\n\nExpansion that are installed on the production HAProxy web server on vRA must be part of a documented build process. Checksums of the production files must be available to verify their integrity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89153",
+      "title": "HAProxy must limit access to the statistics feature.",
+      "description": "A web server can provide many features, services, and processes. Some of these may be deemed unnecessary or too unsecure to be accessible on a production DoD system. \n\nHAProxy provide a statistics page, which will display web browser statistics from any web browser if HAProxy has not been configured to connect the server statistics to a UNIX socket.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89155",
+      "title": "HAProxy must not contain any documentation, sample code, example applications, and tutorials.",
+      "description": "Web server documentation, sample code, example applications, and tutorials may be an exploitable threat to a web server because this type of code has not been evaluated and approved. A production web server must only contain components that are operationally necessary (e.g., compiled code, scripts, web-content, etc.). \n\nAny documentation, sample code, example applications, and tutorials must be removed from a production web server. To make certain that the documentation and code are not installed or uninstalled completely; the web server must offer an option as part of the installation process to exclude these packages or to uninstall the packages if necessary.",
+      "severity": "high"
+    },
+    {
+      "id": "V-89157",
+      "title": "HAProxy must be run in a chroot jail.",
+      "description": "Chroot is an operation that changes the apparent root directory for the current running process and their children. A program that is run in such a modified environment cannot access files and commands outside that environmental directory tree. This modified environment is called a chroot jail.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89159",
+      "title": "HAProxy frontend servers must be bound to a specific port.",
+      "description": "The web server must be configured to listen on a specified IP address and port. Without specifying an IP address and port for the web server to utilize, the web server will listen on all IP addresses available to the hosting server. If the web server has multiple IP addresses, i.e., a management IP address, the web server will also accept connections on the management IP address.\n\nAccessing the hosted application through an IP address normally used for non-application functions opens the possibility of user access to resources, utilities, files, ports, and protocols that are protected on the desired application IP address.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89161",
+      "title": "HAProxy must use SSL/TLS protocols in order to secure passwords during transmission from the client.",
+      "description": "Data used to authenticate, especially passwords, needs to be protected at all times, and encryption is the standard method for protecting authentication data during transmission. Even when data is passed through a load balancer, data used to authenticate users must be sent via SSL/TLS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89163",
+      "title": "HAProxy must perform RFC 5280-compliant certification path validation if PKI is being used.",
+      "description": "The DoD standard for authentication is DoD-approved PKI certificates. A certificate’s certification path is the path from the end entity certificate to a trusted root certification authority (CA). Certification path validation is necessary for a relying party to make an informed decision regarding acceptance of an end entity certificate. Certification path validation includes checks such as certificate issuer trust, time validity and revocation status for each certificate in the certification path. Revocation status information for CA and subject certificates in a certification path is commonly provided via certificate revocation lists (CRLs) or online certificate status protocol (OCSP) responses.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89165",
+      "title": "HAProxys private key must have access restricted.",
+      "description": "HAProxy's private key is used to prove the identity of the server to clients and securely exchange the shared secret key used to encrypt communications between the web server and clients.\n\nOnly authenticated system administrators or the designated PKI Sponsor for the web server must have access to the web server's private key. \n\nBy gaining access to the private key, an attacker can pretend to be an authorized server and decrypt the encrypted traffic between a client and the web server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89167",
+      "title": "HAProxy must be configured to use only FIPS 140-2 approved ciphers.",
+      "description": "Use of cryptography to provide confidentiality and non-repudiation is not effective unless strong methods are employed with its use. Many earlier encryption methods and modules have been broken and/or overtaken by increasing computing power. The NIST FIPS 140-2 cryptographic standards provide proven methods and strengths to employ cryptography effectively.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89169",
+      "title": "HAProxy must prohibit anonymous users from editing system files.",
+      "description": "Allowing anonymous users the capability to change the web server or the hosted application will not generate proper log information that can then be used for forensic reporting in the case of a security issue. Allowing anonymous users to make changes will also grant change capabilities to anybody without forcing a user to authenticate before the changes can be made.",
+      "severity": "high"
+    },
+    {
+      "id": "V-89171",
+      "title": "The HAProxy baseline must be documented and maintained.",
+      "description": "Without maintenance of a baseline of current HAProxy software, monitoring for changes cannot be complete and unauthorized changes to the software can go undetected. Changes to HAProxy could be the result of intentional or unintentional actions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89173",
+      "title": "HAProxy must be configured to validate the configuration files during start and restart events.",
+      "description": "Failure in a known state can address safety or security in accordance with the mission/business needs of the organization. Failure in a known secure state helps prevent a loss of confidentiality, integrity, or availability in the event of a failure of the information system or a component of the system. Failure in a known safe state helps prevent systems from failing to a state that may cause loss of data or unauthorized access to system resources. Applications or systems that fail suddenly and with no incorporated failure state planning may leave the hosting system available but with a reduced security protection capability. Preserving information system state information also facilitates system restart and return to the operational mode of the organization with less disruption of mission/business processes. An example is a firewall that blocks all traffic rather than allowing all traffic when a firewall component fails. This prevents an attacker from forcing a failure of the system in order to obtain access. \n\nWeb servers must fail to a known consistent state. Validating the server's configuration file during start and restart events can help to minimize the risk of an unexpected server failure during system start.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89175",
+      "title": "HAProxy must limit the amount of time that half-open connections are kept alive.",
+      "description": "A web server can limit the ability of the web server being used in a DoS attack through several methods. The methods employed will depend upon the hosted applications and their resource needs for proper operation. \n\nAn example setting that could be used to limit the ability of the web server being used in a DoS attack is to limit the amount of time that a half-open connection is kept alive.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89177",
+      "title": "HAProxy must provide default error files.",
+      "description": "Information needed by an attacker to begin looking for possible vulnerabilities in a web server includes any information about the web server, backend systems being accessed, and plug-ins or modules being used. \n\nWeb servers will often display error messages to client users displaying enough information to aid in the debugging of the error. The information given back in error messages may display the web server type, version, patches installed, plug-ins and modules installed, type of code being used by the hosted application, and any backends being used for data storage. \n\nThis information could be used by an attacker to blueprint what type of attacks might be successful. The information given to users must be minimized to not aid in the blueprinting of the web server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89179",
+      "title": "HAProxy must not be started with the debug switch.",
+      "description": "Information needed by an attacker to begin looking for possible vulnerabilities in a web server includes any information about the web server and plug-ins or modules being used. When debugging or trace information is enabled in a production web server, information about the web server, such as web server type, version, patches installed, plug-ins and modules installed, type of code being used by the hosted application, and any backends being used for data storage may be displayed. Since this information may be placed in logs and general messages during normal operation of the web server, an attacker does not need to cause an error condition to gain this information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89181",
+      "title": "HAProxy must set an absolute timeout on sessions.",
+      "description": "Leaving sessions open indefinitely is a major security risk. An attacker can easily use an already authenticated session to access the hosted application as the previously authenticated user. By closing sessions after an absolute period of time, the user is forced to re-authenticate guaranteeing the session is still in use. Enabling an absolute timeout for sessions closes sessions that are still active. Examples would be a runaway process accessing the web server or an attacker using a hijacked session to slowly probe the web server.\n\nHAProxy provides a 'tune.ssl.lifetime' parameter, which will set an absolute timeout on SSL sessions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89183",
+      "title": "HAProxy must set an inactive timeout on sessions.",
+      "description": "Leaving sessions open indefinitely is a major security risk. An attacker can easily use an already authenticated session to access the hosted application as the previously authenticated user. By closing sessions after a set period of inactivity, the web server can make certain that those sessions that are not closed through the user logging out of an application are eventually closed. \n\nAcceptable values are \"5\" minutes for high-value applications, \"10\" minutes for medium-value applications, and \"20\" minutes for low-value applications.\n\nHAProxy provides an appsession parameter, which will invalidate an inactive cookie after a configurable amount of time.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89185",
+      "title": "HAProxy must redirect all http traffic to use https.",
+      "description": "Remote access to the web server is any access that communicates through an external, non-organization-controlled network. Remote access can be used to access hosted applications or to perform management functions.\n\nA web server can be accessed remotely and must be able to enforce remote access policy requirements or work in conjunction with enterprise tools designed to enforce policy requirements. \n\nvRA can be configured to redirect unencrypted, http port 80, traffic to use the encrypted, https port 443.",
+      "severity": "high"
+    },
+    {
+      "id": "V-89187",
+      "title": "HAProxy must restrict inbound connections from nonsecure zones.",
+      "description": "Remote access to the web server is any access that communicates through an external, non-organization-controlled network. Remote access can be used to access hosted applications or to perform management functions. A web server can be accessed remotely and must be capable of restricting access from what the DoD defines as nonsecure zones. Nonsecure zones are defined as any IP, subnet, or region that is defined as a threat to the organization. The nonsecure zones must be defined for public web servers logically located in a DMZ, as well as private web servers with perimeter protection devices. By restricting access from nonsecure zones, through internal web server access list, the web server can stop or slow denial of service (DoS) attacks on the web server.\n\nAs the web server for the vRA Virtual Appliance Management Interface (vAMI), Lighttpd is the primary remote access management system for vRA. Lighttpd must be configured to restrict inbound connections from nonsecure zones. To accomplish this, the SSL engine must be enabled. The SSL engine forces Lighttpd to only listen via secure protocols.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89189",
+      "title": "HAProxy must be configured to use syslog.",
+      "description": "There are many aspects of appropriate web server logging for security. Storage capacity must be adequate. ISSO and SA must receive warnings and alerts when storage capacity is filled to 75%.\n\nWriting events to a centralized management audit system offers many benefits to the enterprise over having dispersed logs. Centralized management of audit records and logs provides for efficiency in maintenance and management of records, enterprise analysis of events, and backup and archiving of event records enterprise-wide. The web server and related components are required to be capable of writing logs to centralized audit log servers.\n\nThis requirement can be met by configuring the web server to utilize a dedicated log tool that meets this requirement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89191",
+      "title": "HAProxy must not impede the ability to write specified log record content to an audit log server.",
+      "description": "Writing events to a centralized management audit system offers many benefits to the enterprise over having dispersed logs. Centralized management of audit records and logs provides for efficiency in maintenance and management of records, enterprise analysis of events, and backup and archiving of event records enterprise-wide. The web server and related components are required to be capable of writing logs to centralized audit log servers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89193",
+      "title": "HAProxy must be configurable to integrate with an organizations security infrastructure.",
+      "description": "A web server will typically utilize logging mechanisms for maintaining a historical log of activity that occurs within a hosted application. This information can then be used for diagnostic purposes, forensics purposes, or other purposes relevant to ensuring the availability and integrity of the hosted application. While it is important to log events identified as being critical and relevant to security, it is equally important to notify the appropriate personnel in a timely manner so they are able to respond to events as they occur. Manual review of the web server logs may not occur in a timely manner, and each event logged is open to interpretation by a reviewer. By integrating the web server into an overall or organization-wide log review, a larger picture of events can be viewed, and analysis can be done in a timely and reliable manner.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89195",
+      "title": "HAProxy must use the httplog option.",
+      "description": "If time stamps are not consistently applied and there is no common time reference, it is difficult to perform forensic analysis across multiple devices and log records.\n\nTime stamps generated by the web server include date and time. Time is commonly expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89197",
+      "title": "HAProxy libraries, and configuration files must only be accessible to privileged users.",
+      "description": "A web server can be modified through parameter modification, patch installation, upgrades to the web server or modules, and security parameter changes. With each of these changes, there is the potential for an adverse effect such as a DoS, web server instability, or hosted application instability.\n\nTo limit changes to the web server and limit exposure to any adverse effects from the changes, files such as the web server application files, libraries, and configuration files must have permissions and ownership set properly to only allow privileged users access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89199",
+      "title": "HAProxy psql-local frontend must be bound to port 5433.",
+      "description": "Web servers provide numerous processes, features, and functionalities that utilize TCP/IP ports. Some of these processes may be deemed unnecessary or too unsecure to run on a production system.\n\nThe HAProxy load balancer in the vRA appliance listens to port 5433 on behalf of the PostgreSQL service.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89201",
+      "title": "HAProxy vcac frontend must be bound to ports 80 and 443.",
+      "description": "Web servers provide numerous processes, features, and functionalities that utilize TCP/IP ports. Some of these processes may be deemed unnecessary or too unsecure to run on a production system.\n\nThe HAProxy load balancer in the vRA appliance listens to ports 80 and 443 on behalf of the vcac service.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89203",
+      "title": "HAProxy vro frontend must be bound to the correct port 8283.",
+      "description": "Web servers provide numerous processes, features, and functionalities that utilize TCP/IP ports. Some of these processes may be deemed unnecessary or too unsecure to run on a production system.\n\nThe HAProxy load balancer in the vRA appliance listens to ports 8283 on behalf of the vro configuration service.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89205",
+      "title": "HAProxy must be configured with FIPS 140-2 compliant ciphers for https connections.",
+      "description": "Transport Layer Security (TLS) is optional for a public web server. However, if authentication is being performed, then the use of the TLS protocol is required. \n\nWithout the use of TLS, the authentication data would be transmitted unencrypted and would become vulnerable to disclosure. Using TLS along with DoD PKI certificates for encryption of the authentication data protects the information from being accessed by all parties on the network. To further protect the authentication data, the web server must use a FIPS 140-2 approved TLS version and all non-FIPS-approved SSL versions must be disabled. \n\nFIPS 140-2 approved TLS versions include TLS V1.0 or greater. NIST SP 800-52 specifies the preferred configurations for government systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89207",
+      "title": "HAProxy must be protected from being stopped by a non-privileged user.",
+      "description": "An attacker has at least two reasons to stop a web server. The first is to cause a DoS, and the second is to put in place changes the attacker made to the web server configuration. \n\nTo prohibit an attacker from stopping the HAProxy process must be owned by \"root\".",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89209",
+      "title": "HAProxy must be configured to use SSL/TLS.",
+      "description": "Data exchanged between the user and the web server can range from static display data to credentials used to log into the hosted application. Even when data appears to be static, the non-displayed logic in a web page may expose business logic or trusted system relationships. The integrity of all the data being exchanged between the user and web server must always be trusted. To protect the integrity and trust, encryption methods should be used to protect the complete communication session.\n\nIn order to protect the integrity and confidentiality of the remote sessions, HAProxy uses SSL/TLS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89211",
+      "title": "HAProxy must set the no-sslv3 value on all client ports.",
+      "description": "Transport Layer Security (TLS) is a required transmission protocol for a web server hosting controlled information. The use of TLS provides confidentiality of data in transit between the web server and client. FIPS 140-2 approved TLS versions must be enabled and non-FIPS-approved SSL versions must be disabled.",
+      "severity": "high"
+    },
+    {
+      "id": "V-89213",
+      "title": "HAProxy must remove all export ciphers.",
+      "description": "During the initial setup of a Transport Layer Security (TLS) connection to the web server, the client sends a list of supported cipher suites in order of preference. The web server will reply with the cipher suite it will use for communication from the client list. If an attacker can intercept the submission of cipher suites to the web server and place, as the preferred cipher suite, a weak export suite, the encryption used for the session becomes easy for the attacker to break, often within minutes to hours.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89215",
+      "title": "HAProxy must have the latest approved security-relevant software updates installed.",
+      "description": "All vRA components, to include Lighttpd, are under VMware configuration management control. The CM process ensures that all patches, functions, and modules have been thoroughly tested before being introduced into the production version.\n\nBy using the most current version of Lighttpd, the Lighttpd server will always be using the most stable and known baseline.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89217",
+      "title": "HAProxy must set the maxconn value.",
+      "description": "Limiting the total number of connections that a server is allowed to open prevents an attacker from overloading a web server. Overloading the server will prevent it from managing other tasks besides serving web requests.\n\nThis setting works together with per-client limits to mitigate against DDoS attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90297",
+      "title": "HAProxy must limit the amount of time that an http request can be received.",
+      "description": "Resource exhaustion can occur when an unlimited number of concurrent requests are allowed on a web site, facilitating a denial of service attack. Mitigating this kind of attack will include limiting the parameter values associated with keepalive, (i.e., a parameter used to limit the amount of time a connection may be inactive).\n\nHAProxy provides an http-request timeout parameter that set the maximum allowed time to wait for a complete HTTP request. Setting this parameter will mitigate slowloris DoS attacks. Slowloris tries to keep many connections to the target web server open and hold them open as long as possible. It accomplishes this by opening connections to the target web server and sending a partial request. Periodically, it will send subsequent HTTP headers, adding to—but never completing—the request.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90299",
+      "title": "HAProxy must enable cookie-based persistence in a backend.",
+      "description": "Session management is the practice of protecting the bulk of the user authorization and identity information. As a load balancer, HAProxy must participate in session management in order to set the session management cookie. Additionally, HAProxy must also ensure that the backend server which started the session with the client is forwarded subsequent requests from the client.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90301",
+      "title": "HAProxy must be configured with FIPS 140-2 compliant ciphers for https connections.",
+      "description": "Transport Layer Security (TLS) is optional for a public web server. However, if authentication is being performed, then the use of the TLS protocol is required. \n\nWithout the use of TLS, the authentication data would be transmitted unencrypted and would become vulnerable to disclosure. Using TLS along with DoD PKI certificates for encryption of the authentication data protects the information from being accessed by all parties on the network. To further protect the authentication data, the web server must use a FIPS 140-2 approved TLS version and all non-FIPS-approved SSL versions must be disabled. \n\nFIPS 140-2 approved TLS versions include TLS V1.0 or greater. NIST SP 800-52 specifies the preferred configurations for government systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90303",
+      "title": "HAProxy must be configured to use TLS for https connections.",
+      "description": "Data exchanged between the user and the web server can range from static display data to credentials used to log into the hosted application. Even when data appears to be static, the non-displayed logic in a web page may expose business logic or trusted system relationships. The integrity of all the data being exchanged between the user and web server must always be trusted. To protect the integrity and trust, encryption methods should be used to protect the complete communication session.\n\nIn order to protect the integrity and confidentiality of the remote sessions, HAProxy uses SSL/TLS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90305",
+      "title": "HAProxy must be configured to use syslog.",
+      "description": "Remote access to the web server is any access that communicates through an external, non-organization-controlled network. Remote access can be used to access hosted applications or to perform management functions. \n\nBy providing remote access information to an external monitoring system, the organization can monitor for cyber attacks and monitor compliance with remote access policies. The organization can also look at data organization wide and determine an attack or anomaly is occurring on the organization which might not be noticed if the data were kept local to the web server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90307",
+      "title": "HAProxy must generate log records for system startup and shutdown.",
+      "description": "Logging must be comprehensive to be useful for both intrusion monitoring and security investigations. Recording the start and stop events of HAProxy will provide useful information to investigators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90309",
+      "title": "HAProxy must log what type of events occurred.",
+      "description": "Ascertaining the correct type of event that occurred is important during forensic analysis. The correct determination of the event and when it occurred is important in relation to other events that happened at that same time. \n\nWithout sufficient information establishing what type of log event occurred, investigation into the cause of event is severely hindered. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, file names involved, access control, or flow control rules invoked.\n\nWhen configured for httplog, HAProxy logs uses the Common Log Format (CLF). The CLF format, a World Wide Web Consortium standard, captures the type of web server event in addition to other useful information. This will enable forensic analysis of server events in case of a malicious event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90311",
+      "title": "HAProxy must log when events occurred.",
+      "description": "Ascertaining when an event occurred is important during forensic analysis. The correct determination of the event and when it occurred is important in relation to other events that happened at that same time. \n\nWithout sufficient information establishing when an event occurred, investigation into the cause of event is severely hindered. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, file names involved, access control, or flow control rules invoked.\n\nWhen configured for httplog, HAProxy logs uses the Common Log Format (CLF). The CLF format, a World Wide Web Consortium standard, captures the time of a web server event in addition to other useful information. This will enable forensic analysis of server events in case of a malicious event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90313",
+      "title": "HAProxy must log where events occurred.",
+      "description": "Ascertaining where an event occurred is important during forensic analysis. The correct determination of the event and where on the web server it occurred is important in relation to other events that happened at that same time. \n\nWithout sufficient information establishing where an event occurred, investigation into the cause of event is severely hindered. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, file names involved, access control, or flow control rules invoked.\n\nWhen configured for httplog, HAProxy logs uses the Common Log Format (CLF). The CLF format, a World Wide Web Consortium standard, captures the local resource that was the target of a web server event in addition to other useful information. This will enable forensic analysis of server events in case of a malicious event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90315",
+      "title": "HAProxy must log the source of events.",
+      "description": "Ascertaining the source of an event is important during forensic analysis. The correct determination of the event and what client requested the resource is important in relation to other events that happened at that same time. \n\nWithout sufficient information establishing the source of an event, investigation into the cause of event is severely hindered. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, file names involved, access control, or flow control rules invoked.\n\nWhen configured for httplog, HAProxy logs uses the Common Log Format (CLF). The CLF format, a World Wide Web Consortium standard, captures the client IP address that requested the web server event in addition to other useful information. This will enable forensic analysis of server events in case of a malicious event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90317",
+      "title": "HAProxy must log the outcome of events.",
+      "description": "Ascertaining the outcome of an event is important during forensic analysis. The correct determination of the event and its outcome is important in relation to other events that happened at that same time. \n\nWithout sufficient information establishing the outcome of an event, investigation into the cause of event is severely hindered. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, file names involved, access control, or flow control rules invoked.\n\nWhen configured for httplog, HAProxy logs uses the Common Log Format (CLF). The CLF format, a World Wide Web Consortium standard, captures the success or failure of the web server event in addition to other useful information. This will enable forensic analysis of server events in case of a malicious event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90319",
+      "title": "HAProxy must log the session ID from the request headers.",
+      "description": "Ascertaining the identity of the requestor of an event is important during forensic analysis. The correct determination of identity of the requestor of the event and its outcome is important in relation to other events that happened at that same time. \n\nWithout sufficient information establishing the identity of the requestor of an event, investigation into the cause of event is severely hindered. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, file names involved, access control, or flow control rules invoked.\n\nWhen configured for httplog, HAProxy logs uses the Common Log Format (CLF). The CLF format, a World Wide Web Consortium standard, captures the request headers of the web server event in addition to other useful information. This will enable forensic analysis of server events in case of a malicious event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90321",
+      "title": "HAProxy session IDs must be sent to the client using SSL/TLS.",
+      "description": "The HTTP protocol is a stateless protocol. To maintain a session, a session identifier is used. The session identifier is a piece of data that is used to identify a session and a user. If the session identifier is compromised by an attacker, the session can be hijacked. By encrypting the session identifier, the identifier becomes more difficult for an attacker to hijack, decrypt, and use before the session has expired.\n\nIn order to protect the integrity and confidentiality of the remote sessions, HAProxy uses SSL/TLS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90323",
+      "title": "HAProxy must maintain the confidentiality and integrity of information during reception.",
+      "description": "Data exchanged between the user and the web server can range from static display data to credentials used to log into the hosted application. Even when data appears to be static, the non-displayed logic in a web page may expose business logic or trusted system relationships. The integrity of all the data being exchanged between the user and web server must always be trusted. To protect the integrity and trust, encryption methods should be used to protect the complete communication session.\n\nIn order to protect the integrity and confidentiality of the remote sessions, HAProxy uses SSL/TLS.",
+      "severity": "medium"
+    }
+  ]
+}

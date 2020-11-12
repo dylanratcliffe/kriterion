@@ -1,6 +1,6 @@
 {
   "name": "stig_vmware_vsphere_esxi_6.0",
-  "date": "2017-07-11",
+  "date": "2019-01-04",
   "description": "The VMware vSphere ESXi Version 6 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "VMware vSphere ESXi 6.0 Security Technical Implementation Guide",
   "version": "1",

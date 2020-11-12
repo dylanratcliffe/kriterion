@@ -1,6 +1,6 @@
 {
   "name": "stig_zos_icsfacf2",
-  "date": "2015-06-22",
+  "date": "2018-09-21",
   "description": "None",
   "title": "z/OS ICSF for ACF2 STIG",
   "version": "None",
@@ -23,6 +23,12 @@
       "id": "V-17452",
       "title": "IBM Integrated Crypto Service Facility (ICSF) Started Task name is not properly identified / defined to the system ACP.",
       "description": "IBM Integrated Crypto Service Facility (ICSF) requires a started task that will be restricted to certain resources, datasets and other system functions. By defining the started task as a userid to the system ACP, It allows the ACP to control the access and authorized users that require these capabilities. Failure to properly control these capabilities, could compromise of the operating system environment, ACP, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-18014",
+      "title": "IBM Integrated Crypto Service Facility (ICSF) Configuration parameters must be correctly specified.",
+      "description": "IBM Integrated Crypto Service Facility (ICSF) product has the ability to use privileged functions and/or have access to sensitive data. Failure to properly configure parameter values could potentially the integrity of the base product which could result in compromising the operating system or sensitive data.",
       "severity": "medium"
     }
   ]

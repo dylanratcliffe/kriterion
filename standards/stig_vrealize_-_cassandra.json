@@ -1,0 +1,347 @@
+{
+  "name": "stig_vrealize_-_cassandra",
+  "date": "2017-06-06",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "vRealize - Cassandra Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-72617",
+      "title": "The Cassandra database must produce audit records containing sufficient information to establish the outcome (success or failure) of the events.",
+      "description": "Information system auditing capability is critical for accurate forensic analysis. Without information about the outcome of events, security personnel cannot make an accurate assessment as to whether an attack was successful or if changes were made to the security state of the system.\n\nEvent outcomes can include indicators of event success or failure and event-specific results (e.g., the security state of the information system after the event occurred). As such, they also provide a means to measure the impact of an event and help authorized personnel to determine the appropriate response.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72619",
+      "title": "The Cassandra database must include additional, more detailed, organization-defined information in the audit records for audit events identified by type, location, or subject.",
+      "description": "Information system auditing capability is critical for accurate forensic analysis. Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information. To support analysis, some types of events will need information to be logged that exceeds the basic requirements of event type, time stamps, location, source, outcome, and user identity. If additional information is not available, it could negatively impact forensic investigations into user actions or other malicious events.\n\nThe organization must determine what additional information is required for complete analysis of the audited events. The additional information required is dependent on the type of information (e.g., sensitivity of the data and the environment within which it resides). At a minimum, the organization must employ either full-text recording of privileged commands or the individual identities of group users, or both. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise. \n\nExamples of detailed information the organization may require in audit records are full-text recording of privileged commands or the individual identities of group account users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72621",
+      "title": "The Cassandra database must have the correct authorizer value.",
+      "description": "Authentication with a DoD-approved PKI certificate does not necessarily imply authorization to access the DBMS.  To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoD-approved PKIs, all DoD systems, including databases, must be properly configured to implement access control policies. \n\nSuccessful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement. \n\nAccess control policies include identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system. \n\nThis requirement is applicable to access control enforcement applications, a category that includes database management systems.  If the DBMS does not follow applicable policy when approving access, it may be in conflict with networks or other applications in the information system. This may result in users either gaining or being denied access inappropriately and in conflict with applicable policy.",
+      "severity": "high"
+    },
+    {
+      "id": "V-72623",
+      "title": "The Cassandra database must provide audit record generation capability for DoD-defined auditable events within all database components.",
+      "description": "Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the DBMS (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoD has defined the list of events for which the DBMS will provide an audit record generation capability as the following: \n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities, or other system-level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nOrganizations may define additional events requiring continuous or ad hoc auditing.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72625",
+      "title": "The Cassandra database must allow only the ISSM (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited.",
+      "description": "Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent or interfere with the auditing of critical events.\n\nSuppression of auditing could permit an adversary to evade detection.\n\nMisconfigured audits can degrade the system's performance by overwhelming the audit log. Misconfigured audits may also make it more difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72627",
+      "title": "The Cassandra database must be able to generate audit records when privileges/permissions are retrieved.",
+      "description": "Under some circumstances, it may be useful to monitor who/what is reading privilege/permission/role information. Therefore, it must be possible to configure auditing to do this. DBMSs typically make such information available through views or functions.\n\nThis requirement addresses explicit requests for privilege/permission/role membership information. It does not refer to the implicit retrieval of privileges/permissions/role memberships that the DBMS continually performs to determine if any and every action on the database is permitted.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72629",
+      "title": "The Cassandra database must be able to generate audit records when unsuccessful attempts to retrieve privileges/permissions occur.",
+      "description": "Under some circumstances, it may be useful to monitor who/what is reading privilege/permission/role information. Therefore, it must be possible to configure auditing to do this. DBMSs typically make such information available through views or functions.\n\nThis requirement addresses explicit requests for privilege/permission/role membership information. It does not refer to the implicit retrieval of privileges/permissions/role memberships that the DBMS continually performs to determine if any and every action on the database is permitted.\n\nTo aid in diagnosis, it is necessary to keep track of failed attempts in addition to the successful ones.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72631",
+      "title": "The Cassandra database must initiate session auditing upon startup.",
+      "description": "Session auditing is for use when a user's activities are under investigation. To be sure of capturing all activity during those periods when session auditing is in use, it needs to be in operation for the whole time the DBMS is running.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72633",
+      "title": "The Cassandra database must produce audit records containing sufficient information to establish what type of events occurred.",
+      "description": "Information system auditing capability is critical for accurate forensic analysis. Without establishing what type of event occurred, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit record content that may be necessary to satisfy the requirement of this policy includes, for example, time stamps, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nAssociating event types with detected events in the application and audit logs provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured application. \n\nDatabase software is capable of a range of actions on data stored within the database. It is important, for accurate forensic analysis, to know exactly what actions were performed. This requires specific information regarding the event type an audit record is referring to. If event type information is not recorded and stored with the audit record, the record itself is of very limited use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72635",
+      "title": "The Cassandra database must produce audit records containing time stamps to establish when the events occurred.",
+      "description": "Information system auditing capability is critical for accurate forensic analysis. Without establishing when events occurred, it is impossible to establish, correlate, and investigate the events relating to an incident.\n\nIn order to compile an accurate risk assessment and provide forensic analysis, it is essential for security personnel to know the date and time when events occurred.\n\nAssociating the date and time with detected events in the application and audit logs provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured application. \n\nDatabase software is capable of a range of actions on data stored within the database. It is important, for accurate forensic analysis, to know exactly when specific actions were performed. This requires the date and time an audit record is referring to. If date and time information is not recorded and stored with the audit record, the record itself is of very limited use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72637",
+      "title": "The Cassandra database logs must be protected from unauthorized read access.",
+      "description": "If audit data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity is difficult, if not impossible, to achieve. In addition, access to audit records provides information an attacker could potentially use to his or her advantage.\n\nTo ensure the veracity of audit data, the information system and/or the application must protect audit information from any and all unauthorized access. This includes read, write, copy, etc.\n\nThis requirement can be achieved through multiple methods which will depend upon system architecture and design. Some commonly employed methods include ensuring log files enjoy the proper file system permissions utilizing file system protections and limiting log data location. \n\nAdditionally, applications with user interfaces to audit records should not allow for the unfettered manipulation of or access to those records via the application. If the application provides access to the audit data, the application becomes accountable for ensuring that audit information is protected from unauthorized access.\n\nAudit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit information system activity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72639",
+      "title": "The Cassandra database logs must have the correct owner.",
+      "description": "If audit data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve. \n\nTo ensure the veracity of audit data the information system and/or the application must protect audit information from unauthorized modification. \n\nThis requirement can be achieved through multiple methods that will depend upon system architecture and design. Some commonly employed methods include ensuring log files enjoy the proper file system permissions and limiting log data locations. \n\nApplications providing a user interface to audit data will leverage user permissions and roles identifying the user accessing the data and the corresponding rights that the user enjoys in order to make access decisions regarding the modification of audit data.\n\nAudit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit information system activity. \n\nModification of database audit data could mask the theft of, or the unauthorized modification of, sensitive data stored in the database.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72641",
+      "title": "The Cassandra database log configuration file must be protected from unauthorized read access.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. \n\nDepending upon the log format and application, system and application log tools may provide the only means to manipulate and manage application and system log data. It is, therefore, imperative that access to audit tools be controlled and protected from unauthorized access. \n\nApplications providing tools to interface with audit data will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys in order make access decisions regarding the access to audit tools.\n\nAudit tools include, but are not limited to, OS-provided audit tools, vendor-provided audit tools, and open source audit tools needed to successfully view and manipulate audit information system activity and records. \n\nIf an attacker were to gain access to audit tools, he could analyze audit logs for system weaknesses or weaknesses in the auditing itself. An attacker could also manipulate logs to hide evidence of malicious activity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72643",
+      "title": "The Cassandra database log configuration file must have the correct owner.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit data.\n\nApplications providing tools to interface with audit data will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys in order make access decisions regarding the modification of audit tools.\n\nAudit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72645",
+      "title": "The Cassandra database log configuration file must have the correct group-owner.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit data.\n\nApplications providing tools to interface with audit data will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys in order make access decisions regarding the deletion of audit tools.\n\nAudit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72647",
+      "title": "The Cassandra software, including configuration files, must be stored in dedicated directories, or direct-access storage device (DASD) pools, separate from the host OS and other applications.",
+      "description": "When dealing with change control issues, it should be noted any changes to the hardware, software, and/or firmware components of the information system and/or application can potentially have significant effects on the overall security of the system.\n\nMultiple applications can provide a cumulative negative effect. A vulnerability and subsequent exploit to one application can lead to an exploit of other applications sharing the same security context. For example, an exploit to a web server process that leads to unauthorized administrative access to host system directories can most likely lead to a compromise of all applications hosted by the same system. Database software not installed using dedicated directories both threatens and is threatened by other hosted applications. Access controls defined for one application may by default provide access to the other application's database objects or directories. Any method that provides any level of separation of security context assists in the protection between applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72649",
+      "title": "Database objects (including but not limited to tables, indexes, storage, stored procedures, functions, triggers, links to software external to the DBMS, etc.) must be owned by database/DBMS principals authorized for ownership.",
+      "description": "Within the database, object ownership implies full privileges to the owned object, including the privilege to assign access to the owned objects to other subjects. Database functions and procedures can be coded using definer's rights. This allows anyone who utilizes the object to perform the actions if they were the owner. If not properly managed, this can lead to privileged actions being taken by unauthorized individuals.\n\nConversely, if critical tables or other objects rely on unauthorized owner accounts, these objects may be lost when an account is removed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72651",
+      "title": "The role(s)/group(s) used to modify database structure (including but not necessarily limited to tables, indexes, storage, etc.) and logic modules (stored procedures, functions, triggers, links to software external to the DBMS, etc.) must be restricted to authorized users.",
+      "description": "If the DBMS were to allow any user to make changes to database structure or logic, those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nAccordingly, only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.\n\nUnmanaged changes that occur to the database software libraries or configuration can lead to unauthorized or compromised installations.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72653",
+      "title": "Unused Cassandra database components, software, and database objects must be removed.",
+      "description": "Information systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions).\n\nIt is detrimental for software products to provide, or install by default, functionality exceeding requirements or mission objectives. \n\nDBMSs must adhere to the principles of least functionality by providing only essential capabilities.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72655",
+      "title": "The Cassandra Server must be configured to prohibit or restrict the use of organization-defined functions, ports, protocols, and/or services, as defined in the PPSM CAL and vulnerability assessments.",
+      "description": "In order to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols/services on information systems.\n\nApplications are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the application must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality of life issues.\n\nDatabase Management Systems using ports, protocols, and services deemed unsafe are open to attack through those ports, protocols, and services. This can allow unauthorized access to the database and through the database to other components of the information system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72657",
+      "title": "The Cassandra Server must uniquely identify and authenticate organizational users (or processes acting on behalf of organizational users).",
+      "description": "To assure accountability and prevent unauthenticated access, organizational users must be identified and authenticated to prevent potential misuse and compromise of the system. \n\nOrganizational users include organizational employees or individuals the organization deems to have equivalent status of employees (e.g., contractors). Organizational users (and any processes acting on behalf of users) must be uniquely identified and authenticated for all accesses, except the following:\n\n(i) Accesses explicitly identified and documented by the organization. Organizations document specific user actions that can be performed on the information system without identification or authentication; and\n\n(ii) Accesses that occur through authorized use of group authenticators without individual authentication. Organizations may require unique identification of individuals in group accounts (e.g., shared privilege accounts) or for detailed accountability of individual activity.",
+      "severity": "high"
+    },
+    {
+      "id": "V-72659",
+      "title": "The Cassandra database must enforce the DoD standards for password complexity and lifetime.",
+      "description": "Native DBMS authentication may be used only when circumstances make it unavoidable. In such cases, the DoD standards for password complexity and lifetime must be implemented.  The rules must be enforced using available configuration parameters or custom code.",
+      "severity": "high"
+    },
+    {
+      "id": "V-72661",
+      "title": "The Cassandra database log configuration file must set internode encryption.",
+      "description": "The DoD standard for authentication is DoD-approved PKI certificates.\n\nAuthentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires AO approval.\n\nIn such cases, passwords need to be protected at all times, and encryption is the standard method for protecting passwords during transmission.\n\nDBMS passwords sent in clear text format across the network are vulnerable to discovery by unauthorized users. Disclosure of passwords may easily lead to unauthorized access to the database.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72663",
+      "title": "The Cassandra Server must use NIST FIPS 140-2 validated cryptographic modules for cryptographic operations.",
+      "description": "Use of weak or not validated cryptographic algorithms undermines the purposes of utilizing encryption and digital signatures to protect data. Weak algorithms can be easily broken and not validated cryptographic modules may not implement algorithms correctly. Unapproved cryptographic modules or algorithms should not be relied on for authentication, confidentiality or integrity. Weak cryptography could allow an attacker to gain access to and modify data stored in the database as well as the administration settings of the DBMS.\n\nApplications, including DBMSs, utilizing cryptography are required to use approved NIST FIPS 140-2 validated cryptographic modules that meet the requirements of applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance. \n\nThe security functions validated as part of FIPS 140-2 for cryptographic modules are described in FIPS 140-2 Annex A.\n\nNSA Type-X (where X=1, 2, 3, 4) products are NSA-certified, hardware-based encryption modules.",
+      "severity": "high"
+    },
+    {
+      "id": "V-72665",
+      "title": "The Cassandra Server must protect the confidentiality and integrity of all information at rest.",
+      "description": "This control is intended to address the confidentiality and integrity of information at rest in non-mobile devices and covers user information and system information. Information at rest refers to the state of information when it is located on a secondary storage device (e.g., disk drive, tape drive) within an organizational information system. Applications and application users generate information throughout the course of their application use. \n\nUser data generated, as well as application-specific configuration data, needs to be protected. Organizations may choose to employ different mechanisms to achieve confidentiality and integrity protections, as appropriate. \n\nIf the confidentiality and integrity of application data is not protected, the data will be open to compromise and unauthorized modification.",
+      "severity": "high"
+    },
+    {
+      "id": "V-72667",
+      "title": "The Cassandra Server must isolate security functions from non-security functions.",
+      "description": "An isolation boundary provides access control and protects the integrity of the hardware, software, and firmware that perform security functions. \n\nSecurity functions are the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based.\n\nDevelopers and implementers can increase the assurance in security functions by employing well-defined security policy models; structured, disciplined, and rigorous hardware and software development techniques; and sound system/security engineering principles. \n\nDatabase Management Systems typically separate security functionality from non-security functionality via separate databases or schemas. Database objects or code implementing security functionality should not be commingled with objects or code implementing application logic. When security and non-security functionality are commingled, users who have access to non-security functionality may be able to access security functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72669",
+      "title": "Access to database files must be limited to relevant processes and to authorized, administrative users.",
+      "description": "Applications, including DBMSs, must prevent unauthorized and unintended information transfer via shared system resources. Permitting only DBMS processes and authorized, administrative users to have access to the files where the database resides helps ensure that those files are not shared inappropriately and are not open to backdoor access and manipulation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72671",
+      "title": "The Cassandra Server must reveal detailed error messages only to the ISSO, ISSM, SA, and DBA.",
+      "description": "If the DBMS provides too much information in error logs and administrative messages to the screen, this could lead to compromise. The structure and content of error messages need to be carefully considered by the organization and development team. The extent to which the information system is able to identify and handle error conditions is guided by organizational policy and operational requirements. \n\nSome default DBMS error messages can contain information that could aid an attacker in, among others things, identifying the database type, host address, or state of the database. Custom errors may contain sensitive customer information. \n\nIt is important that detailed error messages be visible only to those who are authorized to view them; that general users receive only generalized acknowledgment that errors have occurred; and that these generalized messages appear only when relevant to the user's task. For example, a message along the lines of, \"An error has occurred. Unable to save your changes. If this problem persists, please contact your help desk\" would be relevant. A message such as \"Warning: your transaction generated a large number of page splits\" would likely not be relevant. \n\nAdministrative users authorized to review detailed error messages typically are the ISSO, ISSM, SA and DBA. Other individuals or roles may be specified according to organization-specific needs, with DBA approval.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72673",
+      "title": "The Cassandra Server must utilize centralized management of the content captured in audit records generated by all components of the system.",
+      "description": "Without the ability to centrally manage the content captured in the audit records, identification, troubleshooting, and correlation of suspicious behavior would be difficult and could lead to a delayed or incomplete analysis of an ongoing attack.\n\nThe content captured in audit records must be managed from a central location (necessitating automation). Centralized management of audit records and logs provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records. \n\nThe DBMS may write audit records to database tables, to files in the file system, to other kinds of local repository, or directly to a centralized log management system. Whatever the method used, it must be compatible with off-loading the records to the centralized system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72675",
+      "title": "The Cassandra Server must record time stamps, in audit records and application data that can be mapped to Coordinated Universal Time (UTC, formerly GMT).",
+      "description": "If time stamps are not consistently applied and there is no common time reference, it is difficult to perform forensic analysis.\n\nTime stamps generated by the DBMS must include date and time. Time is commonly expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC. \n\nSome DBMS products offer a data type called TIMESTAMP that is not a representation of date and time. Rather, it is a database state counter and does not correspond to calendar and clock time. This requirement does not refer to that meaning of TIMESTAMP.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72677",
+      "title": "The Cassandra Server must generate time stamps, for audit records and application data, with a minimum granularity of one second.",
+      "description": "Without sufficient granularity of time stamps, it is not possible to adequately determine the chronological order of records. \n\nTime stamps generated by the DBMS must include date and time. Granularity of time measurements refers to the precision available in time stamp values. Granularity coarser than one second is not sufficient for audit trail purposes. Time stamp values are typically presented with three or more decimal places of seconds; however, the actual granularity may be coarser than the apparent precision. For example, SQL Server's GETDATE()/CURRENT_TMESTAMP values are presented to three decimal places, but the granularity is not one millisecond: it is about 1/300 of a second.\n\nSome DBMS products offer a data type called TIMESTAMP that is not a representation of date and time. Rather, it is a database state counter and does not correspond to calendar and clock time. This requirement does not refer to that meaning of TIMESTAMP.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72679",
+      "title": "The Cassandra database must protect the truststore file.",
+      "description": "Failure to provide logical access restrictions associated with changes to configuration may have significant effects on the overall security of the system. \n\nWhen dealing with access restrictions pertaining to change control, it should be noted that any changes to the hardware, software, and/or firmware components of the information system can potentially have significant effects on the overall security of the system. \n\nAccordingly, only qualified and authorized individuals should be allowed to obtain access to system components for the purposes of initiating changes, including upgrades and modifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72681",
+      "title": "The Cassandra Server must disable network functions, ports, protocols, and services deemed by the organization to be nonsecure, in accord with the Ports, Protocols, and Services Management (PPSM) guidance.",
+      "description": "Use of nonsecure network functions, ports, protocols, and services exposes the system to avoidable threats.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72687",
+      "title": "The Cassandra Server must implement cryptographic mechanisms preventing the unauthorized disclosure of information at rest.",
+      "description": "DBMSs handling data requiring \"data at rest\" protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest. These cryptographic mechanisms may be native to the DBMS or implemented via additional software or operating system/file system settings, as appropriate to the situation.\n\nSelection of a cryptographic mechanism is based on the need to protect the integrity of organizational information. The strength of the mechanism is commensurate with the security category and/or classification of the information. Organizations have the flexibility to either encrypt all information on storage devices (i.e., full disk encryption) or encrypt specific data structures (e.g., files, records, or fields). \n\nThe decision whether and what to encrypt rests with the data owner and is also influenced by the physical measures taken to secure the equipment and media on which the information resides.",
+      "severity": "high"
+    },
+    {
+      "id": "V-72689",
+      "title": "When invalid inputs are received, the Cassandra Server must behave in a predictable and documented manner that reflects organizational and system objectives.",
+      "description": "A common vulnerability is unplanned behavior when invalid inputs are received. This requirement guards against adverse or unintended system behavior caused by invalid inputs, where information system responses to the invalid input may be disruptive or cause the system to fail into an unsafe state.\n\nThe behavior will be derived from the organizational and system requirements and includes, but is not limited to, notification of the appropriate personnel, creating an audit record, and rejecting invalid input.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72691",
+      "title": "Security-relevant software updates to the Cassandra Server must be installed within the time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).",
+      "description": "Security flaws with software applications, including database management systems, are discovered daily. Vendors are constantly updating and patching their products to address newly discovered security vulnerabilities. Organizations (including any contractor to the organization) are required to promptly install security-relevant software updates (e.g., patches, service packs, and hot fixes). Flaws discovered during security assessments, continuous monitoring, incident response activities, or information system error handling must also be addressed expeditiously. \n\nOrganization-defined time periods for updating security-relevant software may vary based on a variety of factors including, for example, the security category of the information system or the criticality of the update (i.e., severity of the vulnerability related to the discovered flaw). \n\nThis requirement will apply to software patch management solutions that are used to install patches across the enclave and also to applications themselves that are not part of that patch management solution. For example, many browsers today provide the capability to install their own patch software. Patch criticality, as well as system criticality, will vary. Therefore, the tactical situations regarding the patch management process will also vary. This means that the time period utilized must be a configurable parameter. Time frames for application of security-relevant software updates may be dependent upon the Information Assurance Vulnerability Management (IAVM) process.\n\nThe application will be configured to check for and install security-relevant software updates within an identified time period from the availability of the update. The specific time period will be defined by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).",
+      "severity": "high"
+    },
+    {
+      "id": "V-72693",
+      "title": "The Cassandra Server must be able to generate audit records when security objects are accessed.",
+      "description": "Changes to the security configuration must be tracked.\n\nThis requirement applies to situations where security data is retrieved or modified via data manipulation operations, as opposed to via specialized security functionality.\n\nIn an SQL environment, types of access include, but are not necessarily limited to:\n\nSELECT\nINSERT\nUPDATE\nDELETE\nEXECUTE",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72695",
+      "title": "The Cassandra Server must generate audit records when unsuccessful attempts to access security objects occur.",
+      "description": "Changes to the security configuration must be tracked.\n\nThis requirement applies to situations where security data is retrieved or modified via data manipulation operations, as opposed to via specialized security functionality.\n\nIn an SQL environment, types of access include, but are not necessarily limited to:\n\nSELECT\nINSERT\nUPDATE\nDELETE\nEXECUTE\n\nTo aid in diagnosis, it is necessary to keep track of failed attempts in addition to the successful ones.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72697",
+      "title": "The Cassandra Server must generate audit records when privileges/permissions are added.",
+      "description": "Changes in the permissions, privileges, and roles granted to users and roles must be tracked. Without an audit trail, unauthorized elevation or restriction of individuals' and groups' privileges could go undetected. Elevated privileges give users access to information and functionality that they should not have; restricted privileges wrongly deny access to authorized users.\n\nIn an SQL environment, adding permissions is typically done via the GRANT command, or, in the negative, the DENY command.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72699",
+      "title": "The Cassandra Server must generate audit records when unsuccessful attempts to add privileges/permissions occur.",
+      "description": "Failed attempts to change the permissions, privileges, and roles granted to users and roles must be tracked. Without an audit trail, unauthorized attempts to elevate or restrict individuals' and groups' privileges could go undetected. \n\nIn an SQL environment, adding permissions is typically done via the GRANT command, or, in the negative, the DENY command. \n\nTo aid in diagnosis, it is necessary to keep track of failed attempts in addition to the successful ones.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72701",
+      "title": "The Cassandra Server must generate audit records when privileges/permissions are modified.",
+      "description": "Changes in the permissions, privileges, and roles granted to users and roles must be tracked. Without an audit trail, unauthorized elevation or restriction of individuals' and groups' privileges could go undetected. Elevated privileges give users access to information and functionality that they should not have; restricted privileges wrongly deny access to authorized users.\n\nIn an SQL environment, modifying permissions is typically done via the GRANT, REVOKE, and DENY commands.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72703",
+      "title": "The Cassandra Server must generate audit records when unsuccessful attempts to modify privileges/permissions occur.",
+      "description": "Failed attempts to change the permissions, privileges, and roles granted to users and roles must be tracked. Without an audit trail, unauthorized attempts to elevate or restrict individuals' and groups' privileges could go undetected. \n\nIn an SQL environment, modifying permissions is typically done via the GRANT, REVOKE, and DENY commands. \n\nTo aid in diagnosis, it is necessary to keep track of failed attempts in addition to the successful ones.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72705",
+      "title": "The Cassandra Server must generate audit records when security objects are modified.",
+      "description": "Changes in the database objects (tables, views, procedures, functions) that record and control permissions, privileges, and roles granted to users and roles must be tracked. Without an audit trail, unauthorized changes to the security subsystem could go undetected. The database could be severely compromised or rendered inoperative.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72707",
+      "title": "The Cassandra Server must generate audit records when unsuccessful attempts to modify security objects occur.",
+      "description": "Changes in the database objects (tables, views, procedures, functions) that record and control permissions, privileges, and roles granted to users and roles must be tracked. Without an audit trail, unauthorized changes to the security subsystem could go undetected. The database could be severely compromised or rendered inoperative.\n\nTo aid in diagnosis, it is necessary to keep track of failed attempts in addition to the successful ones.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72709",
+      "title": "The Cassandra Server must generate audit records when privileges/permissions are deleted.",
+      "description": "Changes in the permissions, privileges, and roles granted to users and roles must be tracked. Without an audit trail, unauthorized elevation or restriction of individuals' and groups' privileges could go undetected. Elevated privileges give users access to information and functionality that they should not have; restricted privileges wrongly deny access to authorized users.\n\nIn an SQL environment, deleting permissions is typically done via the REVOKE or DENY command.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72711",
+      "title": "The Cassandra Server must generate audit records when unsuccessful attempts to delete privileges/permissions occur.",
+      "description": "Failed attempts to change the permissions, privileges, and roles granted to users and roles must be tracked. Without an audit trail, unauthorized attempts to elevate or restrict individuals' and groups' privileges could go undetected. \n\nIn an SQL environment, deleting permissions is typically done via the REVOKE or DENY command. \n\nTo aid in diagnosis, it is necessary to keep track of failed attempts in addition to the successful ones.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72713",
+      "title": "The Cassandra Server must generate audit records when security objects are deleted.",
+      "description": "The removal of security objects from the database/DBMS would seriously degrade a system's information assurance posture. If such an event occurs, it must be logged.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72715",
+      "title": "The Cassandra Server must generate audit records when unsuccessful attempts to delete security objects occur.",
+      "description": "The removal of security objects from the database/DBMS would seriously degrade a system's information assurance posture. If such an action is attempted, it must be logged.\n\nTo aid in diagnosis, it is necessary to keep track of failed attempts in addition to the successful ones.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72717",
+      "title": "The Cassandra Server must generate audit records when categories of information (e.g., classification levels/security levels) are deleted.",
+      "description": "Changes in categories of information must be tracked. Without an audit trail, unauthorized access to protected data could go undetected.\n\nFor detailed information on categorizing information, refer to FIPS Publication 199, Standards for Security Categorization of Federal Information and Information Systems, and FIPS Publication 200, Minimum Security Requirements for Federal Information and Information Systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72719",
+      "title": "The Cassandra Server must generate audit records for all privileged activities or other system-level access.",
+      "description": "Without tracking privileged activity, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nSystem documentation should include a definition of the functionality considered privileged.\n\nA privileged function in this context is any operation that modifies the structure of the database, its built-in logic, or its security settings. This would include all Data Definition Language (DDL) statements and all security-related statements. In an SQL environment, it encompasses, but is not necessarily limited to:\n\nCREATE\nALTER\nDROP\nGRANT\nREVOKE\nDENY\n\nThere may also be Data Manipulation Language (DML) statements that, subject to context, should be regarded as privileged. Possible examples in SQL include:\n\nTRUNCATE TABLE;\nDELETE, or\nDELETE affecting more than n rows, for some n, or\nDELETE without a WHERE clause;\n\nUPDATE or\nUPDATE affecting more than n rows, for some n, or\nUPDATE without a WHERE clause;\n\nany SELECT, INSERT, UPDATE, or DELETE to an application-defined security table executed by other than a security principal.\n\nDepending on the capabilities of the DBMS and the design of the database and associated applications, audit logging may be achieved by means of DBMS auditing features, database triggers, other mechanisms, or a combination of these.\n\nNote that it is particularly important to audit, and tightly control, any action that weakens the implementation of this requirement itself, since the objective is to have a complete audit trail of all administrative activity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72721",
+      "title": "The Cassandra Server must generate audit records when unsuccessful attempts to execute privileged activities or other system-level access occur.",
+      "description": "Without tracking privileged activity, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nSystem documentation should include a definition of the functionality considered privileged.\n\nA privileged function in this context is any operation that modifies the structure of the database, its built-in logic, or its security settings. This would include all Data Definition Language (DDL) statements and all security-related statements. In an SQL environment, it encompasses, but is not necessarily limited to:\n\nCREATE\nALTER\nDROP\nGRANT\nREVOKE\nDENY\n\nNote that it is particularly important to audit, and tightly control, any action that weakens the implementation of this requirement itself, since the objective is to have a complete audit trail of all administrative activity.\n\nTo aid in diagnosis, it is necessary to keep track of failed attempts in addition to the successful ones.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72723",
+      "title": "The Cassandra Server must be able to generate audit records when successful accesses to objects occur.",
+      "description": "Without tracking all or selected types of access to all or selected objects (tables, views, procedures, functions, etc.), it would be difficult to establish, correlate, and investigate the events relating to an incident, or identify those responsible for one. \n\nIn an SQL environment, types of access include, but are not necessarily limited to:\n\nSELECT\nINSERT\nUPDATE\nDELETE\nEXECUTE",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72725",
+      "title": "The Cassandra Server must generate audit records when unsuccessful accesses to objects occur.",
+      "description": "Without tracking all or selected types of access to all or selected objects (tables, views, procedures, functions, etc.), it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nIn an SQL environment, types of access include, but are not necessarily limited to:\n\nSELECT\nINSERT\nUPDATE\nDELETE\nEXECUTE\n\nTo aid in diagnosis, it is necessary to keep track of failed attempts in addition to the successful ones.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72733",
+      "title": "The Cassandra Server must off-load audit data to a separate log management facility; this must be continuous and in near real time for systems with a network connection to the storage facility and weekly or more often for stand-alone systems.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity. \n\nThe DBMS may write audit records to database tables, to files in the file system, to other kinds of local repository, or directly to a centralized log management system. Whatever the method used, it must be compatible with off-loading the records to the centralized system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-72735",
+      "title": "The DBMS must be configured in accordance with the security configuration settings based on DoD security configuration and implementation guidance, including STIGs, NSA configuration guides, CTOs, DTMs, and IAVMs.",
+      "description": "Configuring the DBMS to implement organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoD that reflects the most restrictive security posture consistent with operational requirements. \n\nIn addition to this SRG, sources of guidance on security and information assurance exist. These include NSA configuration guides, CTOs, DTMs, and IAVMs. The DBMS must be configured in compliance with guidance from all such relevant sources.",
+      "severity": "low"
+    },
+    {
+      "id": "V-72751",
+      "title": "The Cassandra database logs must have the correct group-owner.",
+      "description": "If audit data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.\n\nTo ensure the veracity of audit data, the information system and/or the application must protect audit information from unauthorized deletion. This requirement can be achieved through multiple methods which will depend upon system architecture and design.\n\nSome commonly employed methods include: ensuring log files enjoy the proper file system permissions utilizing file system protections; restricting access; and backing up log data to ensure log data is retained.\n\nApplications providing a user interface to audit data will leverage user permissions and roles identifying the user accessing the data and the corresponding rights the user enjoys in order make access decisions regarding the deletion of audit data.\n\nAudit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit information system activity.\n\nDeletion of database audit data could mask the theft of, or the unauthorized modification of, sensitive data stored in the database.",
+      "severity": "medium"
+    }
+  ]
+}

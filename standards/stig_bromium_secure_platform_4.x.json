@@ -1,0 +1,179 @@
+{
+  "name": "stig_bromium_secure_platform_4.x",
+  "date": "2018-05-11",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Bromium Secure Platform 4.x Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-80423",
+      "title": "The Bromium Enterprise Controller (BEC) must set the number of concurrent sessions to 1.",
+      "description": "Application management includes the ability to control the number of users and user sessions that utilize an application. Limiting the number of allowed users and sessions per user is helpful in limiting risks related to denial-of-service (DoS) attacks.\n\nThis requirement addresses concurrent sessions for information system accounts and does not address concurrent sessions by single users via multiple system accounts. The maximum number of concurrent sessions should be defined based on mission needs and the operational environment for each system.\n\nEdit the BEC configuration file (C:\\ProgramData\\Bromium\\BMS\\settings.json) to set the concurrent session parameter. The options are \"unlimited\" and \"1\". Unlimited is not a valid selection in DoD.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80425",
+      "title": "The Bromium Enterprise Controller (BEC) lockout_delay_base in the settings.json file must be set to a minimum of 10 and the lockout_delay_scale must be set to 1 at a minimum.",
+      "description": "By limiting the number of failed logon attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute forcing, is reduced. Limits are imposed by locking the account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80427",
+      "title": "The Bromium Enterprise Controller (BEC) must be configured for authorized system administrators to capture and log content related to a Bromium vSentry client.",
+      "description": "Without the capability to capture and log all content related to a user session, investigations into suspicious user activity would be hampered.\n\nBy default, untrusted file, web, and application activity is captured for each user on the BEC. Additional custom rules can be created within the \"Policy\" section of the BEC. The security administrator can determine if additional rules are needed based on organization-based requirements and the mission.\n\nThe Bromium monitoring module includes a base monitoring policy that detects malicious file, registry, process, and network activity. The monitoring module also features the ability to create custom rules to monitor user activity, such as:\n\n1. Read operations on files and registry settings;\n2. Write operations on files and registry settings;\n3. Read/write operations on files and registry settings; and\n4. Processes being launched.",
+      "severity": "low"
+    },
+    {
+      "id": "V-80429",
+      "title": "The Bromium Enterprise Controller (BEC) must generate a log record that can be sent to the central log server, which will alert the system administrator (SA) and Information System Security Officer (ISSO), at a minimum,  when a Bromium vSentry client has not connected to the BEC for logging or policy update purposes for an organization-defined time period.",
+      "description": "It is critical for the appropriate personnel to be aware if an endpoint fails to connect to the management server within a defined time period. Without this notification, the security personnel may be unaware of an impending failure of the event capture capability, malicious activity, or insider threat.\n\nFailure for a vSentry client to report in may be caused by network failures, unauthorized users escalating privileges to disable the security software, altering local hostname resolution settings, etc.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80431",
+      "title": "The Bromium Enterprise Controller (BEC) must protect the BEC Web Console from unauthorized access.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit data.\n\nThe BEC Web console can gives a view of events, threat conditions, policies, and client information and thus is considered an audit tool. BEC does not allow the integration of other audit tool provided by third-party vendors. The BEC Web console access is configured in Settings >> Users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80433",
+      "title": "The Bromium Enterprise Controller (BEC) must protect BEC Web console  from unauthorized modification.",
+      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit data.\n\nThe BEC Web console can gives a view of events, threat conditions, policies, and client information and thus is considered an audit tool. BEC does not allow the integration of other audit tool provided by third-party vendors. The BEC Web console access is configured in Settings >> Users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80435",
+      "title": "The Bromium Enterprise Controller (BEC) must remove all local Bromium accounts after setup is complete and use the account recovery procedures to recover the local account if network access using the Bromium Account of Last Resort is required.",
+      "description": "Since Bromium multifactor authentication is implemented through use of the enclave's directory service, the Bromium account of last resort cannot comply with the DoD requirement for multifactor authentication. Since local account password complexity requirements are not met, a weak password could be hacked, giving immediate privileged access to the BEC.\n\nBromium, Inc. recommends that the setup account and any other local accounts be removed from the BEC application. In the event of a system-wide failure to connect to the authentication server, system recovery, or other organization-defined emergency, an authorized and credentialed administrator of the host server, can recover the setup account or create another account when needed.  When the emergency is over, the account must once again be removed.\n\nNote: Either create a new account and password or change the password in order to comply with BROM-00-000690.",
+      "severity": "high"
+    },
+    {
+      "id": "V-80437",
+      "title": "The Bromium vSentry client must automatically terminate a micro-virtual machine (VM) when any malicious activities are detected within the micro-VM.",
+      "description": "Execution of malicious code represents an immediate threat to the security posture of the endpoint. Automatic session termination addresses the termination of user-initiated logical sessions in contrast to the termination of network connections that are associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever a user (or process acting on behalf of a user) accesses an organizational information system. Such user sessions can be terminated (and thus terminate user access) without terminating network sessions.\n\nThe DoD has selected automatic termination as the default response. However, this does not fully leverage Bromium's ability to capture near-real-time forensic data as an attack occurs. Note that the malicious code is in a micro-VM, thus it cannot impact the endpoint processes outside of the VM. \n\nNote: Letting a known harmful program run is restricted to testing platforms, for forensics collection, or when justified by mission needs. STIG provides guidance to prevent the vClients from running known malicious applications or closing the micro-VM with malicious code is detected.",
+      "severity": "high"
+    },
+    {
+      "id": "V-80439",
+      "title": "The Bromium vSentry client must automatically capture and forward payloads (Malware Manifest) that were downloaded and determined to be malicious to the management console.",
+      "description": "Automatic session termination addresses the termination of user-initiated logical sessions in contrast to the termination of network connections that are associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever a user (or process acting on behalf of a user) accesses an organizational information system. Such user sessions can be terminated (and thus terminate user access) without terminating network sessions.\n\nForensic analysis is essential in discovering the tools, tactics, and methodologies used by the attacker, which aids in the prevention of future attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80441",
+      "title": "The Bromium Enterprise Controller (BEC) must be configured to immediately disconnect or disable remote access to the BEC.",
+      "description": "Without the ability to immediately disconnect or disable remote access, an attack or other compromise would not be immediately stopped.\n\nApplications must have the capability to immediately disconnect current users remotely accessing the information system and/or disable further remote access. The speed of disconnect or disablement varies based on the criticality of missions/business functions and the need to eliminate immediate or future remote access to organizational information systems.\n\nThe remote access application (e.g., VPN client) may implement features, such as automatic disconnect (or user-initiated disconnect) in case of adverse information based on an indicator of compromise or attack.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80443",
+      "title": "The Bromium Enterprise Controller (BEC) must change the password for the Account of Last Resort when an individual with knowledge of the password leaves the group.",
+      "description": "If shared/group account credentials are not terminated when individuals leave the group, the user who left the group can still gain access even though they are no longer authorized. A shared/group account credential is a shared form of authentication that allows multiple individuals to access the application using a single account. There may also be instances when specific user actions need to be performed on the information system without unique user identification or authentication. Examples of credentials include passwords and group membership certificates.\n\nNote: Other passwords that should be considered for rotation or changes include the password to decrypt the malware manifest and the service account used to connect BEC to SQL Server.-Note: If the Account of Last Resort has been removed after installation and configuration per vendor-recommended best practice, there is no need to rotate this password.  \n\nNote: If the Account of Last Resort has been removed after installation and configuration per vendor-recommended best practice, there is no need to rotate this password.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80445",
+      "title": "The Bromium Enterprise Controller (BEC) must be configured so that organization-identified administrator roles have permission to change, based on selectable criteria, the types of Bromium vSentry client events that are captured in the events log and stored in the SQL database with immediate effect.",
+      "description": "If authorized individuals do not have the ability to modify auditing parameters in response to a changing threat environment, the organization may not be able to respond effectively and important forensic information may be lost.\n\nThis requirement enables organizations to extend or limit auditing as necessary to meet organizational requirements. Auditing that is limited to conserve information system resources may be extended to address certain threat situations. In addition, auditing may be limited to a specific set of events to facilitate audit reduction, analysis, and reporting. Organizations can establish time thresholds in which audit actions are changed (for example, near real-time, within minutes, or within hours).\n\nDoD requires that privileges be assigned to roles and groups rather than individual user accounts.\n\nThe BEC audit log (\"history.log\") is configured by default to capture all administrator activity. This cannot be disabled.\n\nRoles/Groups:\nUsers are assigned to groups, and groups are assigned to roles. Roles can be customized to include or disable all admin privileges on the Controller. The Administrator role is configured by default; additional roles can be customized and defined by the site.\n\nThe event log setting within the endpoint policy editor is selectable via list. Filtering log events is recommended via the event server (e.g., SIEM or syslog).\n\nAny modifications to the event criteria take effect immediately upon change. \n\nA default policy must be created for each BEC. DoD requires the Logging level in the default policy to be set to \"Event\" at a minimum unless there are overriding operational and incident requirements.",
+      "severity": "low"
+    },
+    {
+      "id": "V-80447",
+      "title": "The Bromium Enterprise Controller (BEC) must be configured to permit only authorized users to remotely view, in real time (within seconds of event occurring), all content related to an established Bromium vSentry client session.",
+      "description": "Without the capability to remotely view/hear all content related to a user session, investigations into suspicious user activity would be hampered. Real-time monitoring allows authorized personnel to take action before additional damage is done. The ability to observe user sessions as they are happening allows for interceding in ongoing events that after-the-fact review of captured content would not allow.\n\nThe Bromium monitoring module can capture end-user activity related to applications, processes, files, registry activity, and file activity. Custom rules can also be created to report on desired activity and conditions. Event data is sent back to the BEC without having to access the endpoint.",
+      "severity": "low"
+    },
+    {
+      "id": "V-80449",
+      "title": "The Bromium Enterprise Controller (BEC) must send log records to a central log server (i.e., syslog server).",
+      "description": "Without the ability to centrally manage the content captured in the audit records, identification, troubleshooting, and correlation of suspicious behavior would be difficult and could lead to a delayed or incomplete analysis of an ongoing attack.\n\nThis requirement requires that the content captured in audit records be managed from a central location (necessitating automation). Centralized management of audit records and logs provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records. Application components requiring centralized audit log management must have the capability to support centralized management.\n\nNote: The central log server must be configured with alerts and notifications that are required by the various requirements in this STIG. It must also be configured to alert the ISSO and system administrator when communications is lost with the BEC.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80451",
+      "title": "The Bromium Enterprise Controller (BEC) must send history.log records to a central log server (i.e., syslog server).",
+      "description": "Without the ability to centrally manage the content captured in the audit records, identification, troubleshooting, and correlation of suspicious behavior would be difficult and could lead to a delayed or incomplete analysis of an ongoing attack.\n\nHistory.log contains log records of administrative actions such as adding users or changing user privileges. This requirement requires that the content captured in audit records be managed from a central location (necessitating automation). Centralized management of audit records and logs provides for efficiency in maintenance and management of records, as well as the backup and archiving of those records. Application components requiring centralized audit log management must have the capability to support centralized management.\n\nNote: The central log server must be configured with alerts and notifications that are required by the various requirements in this STIG. It must also be configured to alert the ISSO and system administrator when communications is lost with the BEC.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80453",
+      "title": "The Bromium Enterprise Controller (BEC) must manage log record storage capacity so history.log does not exceed physical drive space capacity allocated by the database administrator (DBA) and system administrator.",
+      "description": "To ensure applications have a sufficient storage capacity in which to write the audit logs, applications need to be able to allocate audit record storage capacity.\n\nThe task of allocating audit record storage capacity is usually performed during initial installation of the application and is closely associated with the DBA and system administrator roles. The DBA or system administrator will usually coordinate the allocation of physical drive space with the application owner/installer and the application will prompt the installer to provide the capacity information, the physical location of the disk, or both.\n\nThe BEC administrator must work with site DBA and system administrator to obtain storage allocation requirements for \"history.log\".\n\nTypical database disk storage consumption is 5 K per day per device. See \"Database and Network Usage Guidelines\" section in the Bromium Secure Platform Deployment Guide at https://documentation.bromium.com/4_0/Deployment%20Guide/Bromium_Secure_Platform_Deployment_Guide_4_0_Update_3.pdf.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80455",
+      "title": "The Bromium Enterprise Controller (BEC) must generate a log record that can be sent to the central log server, which will alert the system administrator (SA) and Information System Security Officer (ISSO), at a minimum, when it is unable to connect to the SQL database.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability and system operation may be adversely affected. \n\nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less).\n\nUpon loss of connection to the SQL Server, BEC will:\n1. Immediately create a number of log entries in \"default.log\" and \"worker.log\"; \n2. Refuse connections from the endpoints, which will result in the endpoints automatically storing local events (for future transfer when the SQL connection is restored); and\n3. Immediately notify the BEC administrator during logon via the management console interface.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80457",
+      "title": "The Bromium Enterprise Controller (BEC) must be configured to provide report generation that supports on-demand reporting requirements for threat events.",
+      "description": "The report generation function must support on-demand review and analysis to facilitate the organization's ability to generate incident reports as needed to better handle larger-scale or more complex security incidents. \n\nOn-demand reporting allows personnel to report issues more rapidly to more effectively meet reporting requirements. Collecting log data and aggregating it to present the data in a single, consolidated report achieves this objective.",
+      "severity": "low"
+    },
+    {
+      "id": "V-80459",
+      "title": "The Bromium Enterprise Controller (BEC) must be configured to provide report generation that supports after-the-fact investigations of security incidents.",
+      "description": "If the report generation capability does not support after-the-fact investigations, it is difficult to establish, correlate, and investigate the events leading up to an outage or attack, or identify those responses for one. This capability is also required to comply with applicable Federal laws and DoD policies.\n\nThe report generation capability must support after-the-fact investigations of security incidents either natively or through the use of third-party tools.",
+      "severity": "low"
+    },
+    {
+      "id": "V-80461",
+      "title": "The Bromium vSentry client must prohibit user installation of software except for clients that are explicitly approved by the ISSM or other authorizing official.",
+      "description": "Allowing regular users to install software without explicit privileges creates the risk that untested or potentially malicious software will be installed on the system. Explicit privileges (escalated or administrative privileges) provide the regular user with explicit capabilities and control that exceed the rights of a regular user.\n\nApplication functionality will vary, and while users are not permitted to install unapproved applications, there may be instances where the organization allows the user to install approved software packages, such as from an approved software repository. \n\nThe application must enforce software installation by users based on what types of software installations are permitted (e.g., updates and security patches to existing software) and what types of installations are prohibited (e.g., software whose pedigree with regard to being potentially malicious is unknown or suspect) by the organization. \n\nThis requirement applies, for example, to applications that provide the ability to extend application functionality (e.g., plug-ins, add-ons) and software management applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80463",
+      "title": "The Bromium Enterprise Controller (BEC) Update Interval must be set to a maximum of one hour.",
+      "description": "Without reauthenticating the endpoint, unidentified or unknown devices may be introduced, thereby facilitating malicious activity.\n\nThe BEC Update Interval setting controls the frequency of check-ins for policy updates, remote commands and a Bromium vSentry event data. The value set is in seconds. During the update connection with the BEC, the Bromium vSentry client's device certificate is reauthenticated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80465",
+      "title": "If the Host Based Security System (HBSS) is not installed to monitor the Bromium Enterprise Controller (BEC) application, processes, and registry settings, the Bromium Protection agent must be installed on the BEC server.",
+      "description": "Installing the Bromium Protection agent on the BEC server will allow for monitoring and alerting on attempts to attack critical files, applications, processes, and registry settings on the BEC server, as well as attempts at executing unauthorized code in memory. All alerts will be sent to the BEC management server (along with any designated syslog destinations). Upon receipt of the alert, the system administrator must investigate and take appropriate action.\n\nDoD requires the use of HBSS on all hosts, thus the Bromium Protection agent cannot be used to fulfill the requirement for HBSS. The Bromium Protection agent does not provide signature based antivirus or IDPS functions. However, it will monitor and notify the device memory as required by this CCI. The agent is compatible with HBSS and can be run at the same time. Installation of the agent is not mandatory unless there is a mission essential reason HBSS cannot be installed on the BEC host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-80467",
+      "title": "The Bromium vSentry client must include exceptions for HBSS to ensure interoperability and protect from attacks on critical files, applications, processes, registry settings, and attempts at executing unauthorized code in memory.",
+      "description": "The monitoring agent will monitor and alert on attempts to attack critical files, applications, processes, and registry settings associated with the Bromium vSentry application itself, as well as attempts at executing unauthorized code in memory. All alerts will be sent to the BEC management server (along with any designated syslog destinations). Upon receipt of the alert, the system administrator must investigate and take appropriate action.\n\nHBSS must be tuned to allow exceptions for the Bromium protection agent. Exceptions are detailed in the Bromium Secure Platform Deployment Guide at https://documentation.bromium.com/4_0/Deployment%20Guide/Bromium_Secure_Platform_Deployment_Guide_4_0_Update_3.pdf. Alert on attempts to attack critical files, applications, processes, registry settings, and attempts at executing unauthorized code in memory.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80469",
+      "title": "The Bromium Enterprise Controller (BEC) must have the base policy Logging Level set to Debug.",
+      "description": "The default policy logging level captures the maximum level of data available to the administrator for forensic purposes and troubleshooting. This is required for analyzing Indicators of Compromise (IOCs) that may necessitate an alert from the events server and action by the system administrator.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80471",
+      "title": "The Bromium monitoring module installed on the Bromium Enterprise Controller (BEC) or Bromium vSentry must generate an event and forward to the central log server when anomalies in the operation of security functions of the BEC or Bromium vSentry application are discovered.",
+      "description": "If anomalies are not acted upon, security functions may fail to secure the system. \n\nSecurity function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Security functionality includes but is not limited to establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters.\n\nEvent generation is enabled by default; configuration is required for the BEC server to automatically forward events to the site's event server (e.g., syslog, SIEM).",
+      "severity": "low"
+    },
+    {
+      "id": "V-80479",
+      "title": "The Bromium Enterprise Controller (BEC) must forward an event to the central log server when isolation is disabled on any protected Bromium vSentry client.",
+      "description": "Disabling isolation on the endpoint is a potential indicator of compromise of insider threat. In production deployments, the ability to disable Bromium isolation is not available to non-privileged users.",
+      "severity": "high"
+    },
+    {
+      "id": "V-80481",
+      "title": "The Bromium Enterprise Controller (BEC) must be configured to allow authorized administrators to create organization-defined custom rules to support mission and business requirements.",
+      "description": "Without the capability to create custom rules specific to the business and mission needs of the organization, detection of suspicious user activity would be hampered.\n\nAdditional custom rules can be created within the \"Policy\" section of the BEC. The security administrator can determine if additional rules are needed based on organization requirements and mission.\n\nThe Bromium monitoring module includes a base monitoring policy that detects malicious file, registry, process, and network activity. The monitoring module also features the ability to create custom rules to monitor such user activity as:\n\n1. Read operations on files and registry settings;\n2. Write operations on files and registry settings;\n3. Read/write operations on files and registry settings; and\n4. Processes being launched.",
+      "severity": "low"
+    },
+    {
+      "id": "V-80483",
+      "title": "The Bromium Enterprise Controller (BEC) must have Threat Intelligence lookup disabled.",
+      "description": "The Enable Threat Intelligence lookup setting controls whether the controller obtains and displays threat information from Bromium Threat Intelligence, which needs an external connection to Bromium resources, which is not allowed. Optionally, the site can deploy an internal/trusted instance of the Threat Intelligence server.",
+      "severity": "low"
+    }
+  ]
+}

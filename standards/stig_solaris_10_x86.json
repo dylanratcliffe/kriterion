@@ -1,8 +1,8 @@
 {
   "name": "stig_solaris_10_x86",
-  "date": "2018-04-10",
+  "date": "2020-02-26",
   "description": "The Solaris 10 (X86) Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
-  "title": "SOLARIS 10 X86 SECURITY TECHNICAL IMPLEMENTATION GUIDE",
+  "title": "Solaris 10 X86 Security Technical Implementation Guide",
   "version": "1",
   "item_syntax": "^\\w-\\d+$",
   "section_separator": null,
@@ -219,8 +219,8 @@
     },
     {
       "id": "V-11984",
-      "title": "All skeleton files and directories (typically in /etc/skel) must be owned by bin.",
-      "description": "If the skeleton files are not protected, unauthorized personnel could change user startup parameters and possibly jeopardize user files.  Failure to give ownership of sensitive files or utilities to bin provides the designated owner and unauthorized users with the potential to access sensitive information or change the system configuration which could weaken the system's security posture.",
+      "title": "All skeleton files and directories (typically in /etc/skel) must be owned by root.",
+      "description": "If the skeleton files are not protected, unauthorized personnel could change user startup parameters and possibly jeopardize user files.  Failure to give ownership of sensitive files or utilities to root provides the designated owner and unauthorized users with the potential to access sensitive information or change the system configuration which could weaken the system's security posture.",
       "severity": "medium"
     },
     {
@@ -2433,7 +2433,7 @@
     },
     {
       "id": "V-792",
-      "title": "Manual page files must have mode 0644 or less permissive.",
+      "title": "Manual page files must have mode 0655 or less permissive.",
       "description": "If manual pages are compromised, misleading information could be inserted, causing actions that may compromise the system.",
       "severity": "low"
     },
@@ -2640,6 +2640,18 @@
       "title": "The alias file must have mode 0644 or less permissive.",
       "description": "Excessive permissions on the aliases file may permit unauthorized modification.  If the alias file is modified by an unauthorized user, they may modify the file to run malicious code or redirect email.",
       "severity": "medium"
+    },
+    {
+      "id": "V-833",
+      "title": "Files executed through a mail aliases file must be owned by root and must reside within a directory owned and writable only by root.",
+      "description": "If a file executed through a mail aliases file is not owned and writable only by root, it may be subject to unauthorized modification.  Unauthorized modification of files executed through aliases may allow unauthorized users to attain root privileges.",
+      "severity": "high"
+    },
+    {
+      "id": "V-835",
+      "title": "Sendmail logging must not be set to less than nine in the sendmail.cf file.",
+      "description": "If Sendmail is not configured to log at level 9, system logs may not contain the information necessary for tracking unauthorized use of the Sendmail service.",
+      "severity": "low"
     },
     {
       "id": "V-836",

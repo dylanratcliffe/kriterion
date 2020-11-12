@@ -1,6 +1,6 @@
 {
   "name": "stig_network_infrastructure_policy",
-  "date": "2017-12-07",
+  "date": "2019-12-10",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Network Infrastructure Policy Security Technical Implementation Guide",
   "version": "9",
@@ -14,12 +14,6 @@
       "severity": "high"
     },
     {
-      "id": "V-12072",
-      "title": "Unclassified wireless devices must not be allowed in a Sensitive Compartmented Information Facility (SCIF) unless approved by the SCIF Cognizant Security Authority (CSA) in accordance with Intelligence Community Directive (ICD) 503, ICD 705, DIA SCIF policy requirements, the Authorizing Official (AO) and local Special Security officer (SSO).",
-      "description": "Emanations from computing devices in the secured area may be transmitted or picked up inadvertently by wireless devices.",
-      "severity": "high"
-    },
-    {
       "id": "V-12101",
       "title": "All Releasable Local Area Network (REL LAN) environments must be documented in the System Security Authorization Agreement (SSAA).",
       "description": "The ISSM will ensure Releasable Local Area Network (REL LAN) environments are documented in the SSAA.",
@@ -29,12 +23,6 @@
       "id": "V-12102",
       "title": "Annual reviews must be performed on all Releasable Local Area Network (REL LAN) environments.",
       "description": "The ISSM will ensure Releasable Local Area Network (REL LAN) reviews are performed annually.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-12106",
-      "title": "Unclassified wireless devices must not be operated in Secure Spaces (as defined in DoDI 8420.01) unless required conditions are followed.",
-      "description": "The operation of electronic equipment and emanations must be controlled in and around areas where sensitive information is kept or processed.  Sites should post signs and train users to this requirement to mitigate this vulnerability.",
       "severity": "medium"
     },
     {
@@ -82,7 +70,7 @@
     {
       "id": "V-14738",
       "title": "Tunneling of classified traffic across an unclassified IP transport network or service provider backbone must be documented in the enclaves security authorization package and an Approval to Connect (ATC), or an Interim ATC must be issued by DISA prior to implementation.",
-      "description": "CJCSI 6211.02E instruction establishes policy and responsibilities for the connection of any information systems to the Defense Information Systems Network (DISN) provided transport. Enclosure E mandates that the CC/S/A document all IP tunnels transporting classified communication traffic in the enclave’s security authorization package prior to implementation. An ATC or IATC amending the current connection approval must be in place prior to implementation.",
+      "description": "CJCSI 6211.02D instruction establishes policy and responsibilities for the connection of any information systems to the Defense Information Systems Network (DISN) provided transport. Enclosure E mandates that the CC/S/A document all IP tunnels transporting classified communication traffic in the enclave’s security authorization package prior to implementation. An ATC or IATC amending the current connection approval must be in place prior to implementation.",
       "severity": "medium"
     },
     {
@@ -188,33 +176,9 @@
       "severity": "low"
     },
     {
-      "id": "V-18596",
-      "title": "The site must conduct continuous wireless Intrusion Detection System (IDS) scanning.",
-      "description": "DoD networks are at risk and DoD data could be compromised if wireless scanning is not conducted to identify unauthorized WLAN clients and access points connected to or attempting to connect to the network.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-19900",
-      "title": "The cryptography implemented by the Wireless Local Area Network (WLAN) components must be FIPS 140-2 validated.",
-      "description": "Most known security breaches of cryptography result from improper implementation of the cryptography, not flaws in the cryptographic algorithms themselves. FIPS 140-2 validation provides assurance that cryptography is implemented correctly, and is required for Federal Government uses of cryptography in non-classified applications.",
-      "severity": "medium"
-    },
-    {
       "id": "V-23735",
       "title": "The organization must encrypt all network device configurations while stored offline.",
       "description": "If a network device's non-volatile memory is lost without a recent configuration stored in an offline location, it may take time to recover that segment of the network.  Users connected directly to the switch or router will be without service for a longer than acceptable time. Encrypting the configuration stored offline protects the data at rest and provides additional security to prevent tampering and potentially cause a network outage if the configuration were to be put into service.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-25319",
-      "title": "DoD Components providing Internet-only guest access must use separate WLAN or logical segmentation of the host WLAN (e.g., separate service set identifier (SSID) and virtual LAN) or DoD network.",
-      "description": "If the access point or its supporting authentication server is placed in front of the perimeter firewall, then it has no firewall protection against an attack.  If the access point or its supporting authentication server is placed behind the perimeter firewall (on the internal network), then any breach of these devices could lead to attacks on other DoD information systems.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-30255",
-      "title": "The Wireless Local Area Network (WLAN) must be Wi-Fi Protected Access 2 (WPA2)-Enterprise certified by the Wi-Fi Alliance.",
-      "description": "The Wi-Fi Alliance WPA2-Enterprise certification means the WLAN equipment can support DoD requirements, most notably EAP-TLS and AES-CCMP.  If the equipment has not been WPA-Enterprise certified, then the equipment may not have the required security functionality to protect DoD networks and information.",
       "severity": "medium"
     },
     {
@@ -264,12 +228,6 @@
       "title": "Label Distribution Protocol (LDP) must be synchronized with the Interior Gateway Protocol (IGP) to minimize packet loss when an IGP adjacency is established prior to LDP peers completing label exchange.",
       "description": "Packet loss can occur when an IGP adjacency is established and the router begins forwarding packets using the new adjacency before the LDP label exchange completes between the peers on that link. Packet loss can also occur if an LDP session closes and the router continues to forward traffic using the link associated with the LDP peer rather than an alternate pathway with a fully synchronized LDP session. The MPLS LDP-IGP Synchronization feature provides a means to synchronize LDP with OSPF or IS-IS to minimize MPLS packet loss. When an IGP adjacency is established on a link but LDP-IGP synchronization is not yet achieved or is lost, the IGP will advertise the max-metric on that link.",
       "severity": "low"
-    },
-    {
-      "id": "V-66359",
-      "title": "VLAN Trunk Protocol (VTP) messages must be authenticated with a hash function using the most secured cryptographic algorithm available.",
-      "description": "VLAN Trunk Protocol (VTP) provides central management of VLAN domains, thus reducing administration in a switched network. When configuring a new VLAN on a VTP server, the VLAN is distributed through all switches in the domain. This reduces the need to configure the same VLAN everywhere. VTP pruning preserves bandwidth by preventing VLAN traffic (unknown MAC, broadcast, multicast) from being sent down trunk links when not needed, that is, there are no access switch ports in neighboring switches belonging to such VLANs. An attack can force a digest change for the VTP domain enabling a rogue device to become the VTP server, which could allow unauthorized access to previously blocked VLANs or allow the addition of unauthorized switches into the domain. Authenticating VTP messages with a cryptographic hash function can reduce the risk of the VTP domain's being compromised.",
-      "severity": "medium"
     },
     {
       "id": "V-66361",

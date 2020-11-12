@@ -1,6 +1,6 @@
 {
   "name": "stig_postgresql_9.x",
-  "date": "2018-02-27",
+  "date": "2020-03-23",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "PostgreSQL 9.x Security Technical Implementation Guide",
   "version": "1",
@@ -153,8 +153,8 @@
     },
     {
       "id": "V-72893",
-      "title": "PostgreSQL must provide an immediate real-time alert to appropriate support staff of all audit failure events requiring real-time alerts.",
-      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability, and system operation may be adversely affected. \n\nThe appropriate support staff include, at a minimum, the ISSO and the DBA/SA.\n\nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less).\n\nThe necessary monitoring and alerts may be implemented using features of PostgreSQL, the OS, third-party software, custom code, or a combination of these. The term \"the system\" is used to encompass all of these.",
+      "title": "PostgreSQL must provide an immediate real-time alert to appropriate support staff of all audit log failures.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability, and system operation may be adversely affected. \n\nThe appropriate support staff include, at a minimum, the ISSO and the DBA/SA.\n\nA failure of database auditing will result in either the database continuing to function without auditing or in a complete halt to database operations. When audit processing fails, appropriate personnel must be alerted immediately to avoid further downtime or unaudited transactions\n\nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less).\n\nThe necessary monitoring and alerts may be implemented using features of PostgreSQL, the OS, third-party software, custom code, or a combination of these. The term \"the system\" is used to encompass all of these.",
       "severity": "medium"
     },
     {
@@ -512,12 +512,6 @@
       "severity": "medium"
     },
     {
-      "id": "V-73021",
-      "title": "PostgreSQL must provide the capability for authorized users to capture, record, and log all content related to a user session.",
-      "description": "Without the capability to capture, record, and log all content related to a user session, investigations into suspicious user activity would be hampered.\n\nTypically, this PostgreSQL capability would be used in conjunction with comparable monitoring of a user's online session, involving other software components such as operating systems, web servers and front-end user applications. The current requirement, however, deals specifically with PostgreSQL.",
-      "severity": "medium"
-    },
-    {
       "id": "V-73023",
       "title": "The system must provide a warning to appropriate support staff when allocated audit record storage volume reaches 75% of maximum audit record storage capacity.",
       "description": "Organizations are required to use a central log management system, so, under normal conditions, the audit space allocated to PostgreSQL on its own server will not be an issue. However, space will still be required on PostgreSQL server for audit records in transit, and, under abnormal conditions, this could fill up. Since a requirement exists to halt processing upon audit failure, a service outage would result.\n\nIf support personnel are not notified immediately upon storage volume utilization reaching 75%, they are unable to plan for storage capacity expansion. \n\nThe appropriate support staff include, at a minimum, the ISSO and the DBA/SA.",
@@ -664,7 +658,7 @@
     {
       "id": "V-73071",
       "title": "The DBMS must be configured on a platform that has a NIST certified FIPS 140-2 installation of OpenSSL.",
-      "description": "Postgres uses OpenSSL for the underlying encryption layer. Currently only Red Hat Enterprise Linux is certified as a FIPS 140-2 distribution of OpenSSL. For other operating systems, users must obtain or build their own FIPS 140-2 OpenSSL libraries.",
+      "description": "PostgreSQL uses OpenSSL for the underlying encryption layer. It must be installed on an operating system that contains a certified FIPS 140-2 distribution of OpenSSL. For other operating systems, users must obtain or build their own FIPS 140-2 OpenSSL libraries.",
       "severity": "high"
     },
     {

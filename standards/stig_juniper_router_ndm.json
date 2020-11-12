@@ -1,0 +1,329 @@
+{
+  "name": "stig_juniper_router_ndm",
+  "date": "2020-02-24",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "Juniper Router NDM Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-91093",
+      "title": "The Juniper router must be configured to limit the number of concurrent management sessions to an organization-defined number.",
+      "description": "Device management includes the ability to control the number of administrators and management sessions that manage a device. Limiting the number of allowed administrators and sessions per administrator based on account type, role, or access type is helpful in limiting risks related to DoS attacks.\n\nThis requirement addresses concurrent sessions for administrative accounts and does not address concurrent sessions by a single administrator via multiple administrative accounts. The maximum number of concurrent sessions should be defined based upon mission needs and the operational environment for each system. At a minimum, limits must be set for SSH, HTTPS, account of last resort, and root account sessions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91095",
+      "title": "The Juniper router must be configured to automatically audit account creation.",
+      "description": "Upon gaining access to a network device, an attacker will often first attempt to create a persistent method of reestablishing access. One way to accomplish this is to create a new account. Notification of account creation helps to mitigate this risk. Auditing account creation provides the necessary reconciliation that account management procedures are being followed. Without this audit trail, personnel without the proper authorization may gain access to critical network nodes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91097",
+      "title": "The Juniper router must be configured to automatically audit account modification.",
+      "description": "Since the accounts in the network device are privileged or system-level accounts, account management is vital to the security of the network device. Account management by a designated authority ensures access to the network device is being controlled in a secure manner by granting access to only authorized personnel with the appropriate and necessary privileges. Auditing account modification along with an automatic notification to appropriate individuals will provide the necessary reconciliation that account management procedures are being followed. If modifications to management accounts are not audited, reconciliation of account management procedures cannot be tracked.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91099",
+      "title": "The Juniper router must be configured to automatically audit account disabling actions.",
+      "description": "Account management, as a whole, ensures access to the network device is being controlled in a secure manner by granting access to only authorized personnel. Auditing account disabling actions will support account management procedures. When device management accounts are disabled, user or service accessibility may be affected. Auditing also ensures authorized active accounts remain enabled and available for use when required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91101",
+      "title": "The Juniper router must be configured to automatically audit account removal actions.",
+      "description": "Account management, as a whole, ensures access to the network device is being controlled in a secure manner by granting access to only authorized personnel. Auditing account removal actions will support account management procedures. When device management accounts are terminated, user or service accessibility may be affected. Auditing also ensures authorized active accounts remain enabled and available for use when required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91103",
+      "title": "The Juniper router must be configured to enforce approved authorizations for controlling the flow of management information within the device based on control policies.",
+      "description": "A mechanism to detect and prevent unauthorized communication flow must be configured or provided as part of the system design. If management information flow is not enforced based on approved authorizations, the network device may become compromised. Information flow control regulates where management information is allowed to travel within a network device. The flow of all management information must be monitored and controlled so it does not introduce any unacceptable risk to the network device or data. \n\nApplication-specific examples of enforcement occur in systems that employ rule sets or establish configuration settings that restrict information system services or message-filtering capability based on message content (e.g., implementing key word searches or using document characteristics).\n\nApplications providing information flow control must be able to enforce approved authorizations for controlling the flow of management information within the system in accordance with applicable policy.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91105",
+      "title": "The Juniper router must be configured to enforce the limit of three consecutive invalid logon attempts after which time lock out the user account from accessing the device for 15 minutes.",
+      "description": "By limiting the number of failed login attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91107",
+      "title": "The Juniper router must be configured to display the Standard Mandatory DoD Notice and Consent Banner before granting access to the device.",
+      "description": "Display of the DoD-approved use notification before granting access to the network device ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91109",
+      "title": "The Juniper router must be configured to protect against an individual falsely denying having performed organization-defined actions to be covered by non-repudiation.",
+      "description": "This requirement supports non-repudiation of actions taken by an administrator and is required in order to maintain the integrity of the configuration management process. All configuration changes to the network device are logged, and administrators authenticate with two-factor authentication before gaining administrative access. Together, these processes will ensure the administrators can be held accountable for the configuration changes they implement.\n\nTo meet this requirement, the network device must log administrator access and activity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91113",
+      "title": "The Juniper router must be configured to allow only the ISSM (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited.",
+      "description": "Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent the auditing of critical events. Misconfigured audits may degrade the system's performance by overwhelming the audit log. Misconfigured audits may also make it more difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91115",
+      "title": "The Juniper router must be configured to generate audit records when successful/unsuccessful attempts to logon with access privileges occur.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91117",
+      "title": "The Juniper router must be configured to generate audit records containing the full-text recording of privileged commands.",
+      "description": "Reconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information. \n\nOrganizations consider limiting the additional audit information to only that information explicitly needed for specific audit requirements. The additional information required is dependent on the type of information (i.e., sensitivity of the data and the environment within which it resides). At a minimum, the organization must audit full-text recording of privileged commands. The organization must maintain audit trails in sufficient detail to reconstruct events to determine the cause and impact of compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91119",
+      "title": "The Juniper router must be configured to protect audit information from unauthorized modification.",
+      "description": "Audit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit network device activity.\n\nIf audit data were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve. \n\nTo ensure the veracity of audit data, the network device must protect audit information from unauthorized modification. \n\nThis requirement can be achieved through multiple methods, which will depend upon system architecture and design. Some commonly employed methods include ensuring log files receive the proper file system permissions and limiting log data locations. \n\nNetwork devices providing a user interface to audit data will leverage user permissions and roles identifying the user accessing the data and the corresponding rights that the user enjoys in order to make access decisions regarding the modification of audit data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91121",
+      "title": "The Juniper router must be configured to protect audit information from unauthorized deletion.",
+      "description": "Audit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit information system activity.\n\nIf audit data were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve. \n\nTo ensure the veracity of audit data, the network device must protect audit information from unauthorized deletion. This requirement can be achieved through multiple methods, which will depend upon system architecture and design. Some commonly employed methods include: ensuring log files receive the proper file system permissions utilizing file system protections, restricting access, and backing up log data to ensure log data is retained. \n\nNetwork devices providing a user interface to audit data will leverage user permissions and roles identifying the user accessing the data and the corresponding rights the user enjoys in order to make access decisions regarding the deletion of audit data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91123",
+      "title": "The Juniper router must be configured to limit privileges to change the software resident within software libraries.",
+      "description": "Changes to any software components of the network device can have significant effects on the overall security of the network. Therefore, only qualified and authorized individuals should be allowed administrative access to the network device for implementing any changes or upgrades. If the network device were to enable non-authorized users to make changes to software libraries, those changes could be implemented without undergoing testing, validation, and approval.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91125",
+      "title": "The Juniper router must be configured to be configured to prohibit the use of all unnecessary and nonsecure functions and services.",
+      "description": "Network devices are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the network device must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved. Some network devices have capabilities enabled by default; if these capabilities are not necessary, they must be disabled. If a particular capability is used, then it must be documented and approved.",
+      "severity": "high"
+    },
+    {
+      "id": "V-91127",
+      "title": "The Juniper router must be configured with only one local account to be used as the account of last resort in the event the authentication server is unavailable.",
+      "description": "Authentication for administrative (privileged level) access to the device is required at all times. An account can be created on the device's local database for use when the authentication server is down or connectivity between the device and the authentication server is not operable. This account is referred to as the account of last resort since it is intended to be used as a last resort and when immediate administrative access is absolutely necessary.\n\nThe account of last resort logon credentials must be stored in a sealed envelope and kept in a safe. The safe must be periodically audited to verify the envelope remains sealed. The signature of the auditor and the date of the audit should be added to the envelope as a record. Administrators should secure the credentials and disable the root account (if possible) when not needed for system administration functions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91129",
+      "title": "The Juniper router must be configured to implement replay-resistant authentication mechanisms for network access to privileged accounts.",
+      "description": "A replay attack may enable an unauthorized user to gain access to the application. Authentication sessions between the authenticator and the application validating the user credentials must not be vulnerable to a replay attack.\n\nAn authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message. \n\nTechniques used to address this include protocols using nonces (e.g., numbers generated for a specific one-time use) or challenges (e.g., TLS, WS_Security). Additional techniques include time-synchronous or challenge-response one-time authenticators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91131",
+      "title": "The Juniper router must be configured to enforce a minimum 15-character password length.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. Password length is one factor of several that helps to determine strength and how long it takes to crack a password.\n\nThe shorter the password, the lower the number of possible combinations that need to be tested before the password is compromised. Use of more characters in a password helps to exponentially increase the time and/or resources required to compromise the password.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91133",
+      "title": "The Juniper router must be configured to enforce password complexity by requiring that at least one upper-case character be used.",
+      "description": "Use of a complex passwords helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.\n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password is, the greater the number of possible combinations that need to be tested before the password is compromised.\n\nMultifactor authentication (MFA) is required for all administrative and user accounts on network devices, except for an account of last resort and (where applicable) a root account. Passwords should only be used when MFA using PKI is not available, and for the account of last resort and root account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91135",
+      "title": "The Juniper router must be configured to enforce password complexity by requiring that at least one lower-case character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.\n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.\n\nMultifactor authentication (MFA) is required for all administrative and user accounts on network devices, except for an account of last resort and (where applicable) a root account. Passwords should only be used when MFA using PKI is not available, and for the account of last resort and root account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91137",
+      "title": "The Juniper router must be configured to enforce password complexity by requiring that at least one numeric character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.\n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.\n\nMultifactor authentication (MFA) is required for all administrative and user accounts on network devices, except for an account of last resort and (where applicable) a root account. Passwords should only be used when MFA using PKI is not available, and for the account of last resort and root account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91139",
+      "title": "The Juniper router must be configured to enforce password complexity by requiring that at least one special character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.\n\nPassword complexity is one factor of several that determine how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.\n\nMultifactor authentication (MFA) is required for all administrative and user accounts on network devices, except for an account of last resort and (where applicable) a root account. Passwords should only be used when MFA using PKI is not available, and for the account of last resort and root account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91141",
+      "title": "The Juniper router must be configured to terminate all network connections associated with device management after 10 minutes of inactivity.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element. \n\nTerminating network connections associated with communications sessions includes, for example, de-allocating associated TCP/IP address/port pairs at the operating system level, or de-allocating networking assignments at the application level if multiple application sessions are using a single, operating system-level network connection. This does not mean that the device terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.",
+      "severity": "high"
+    },
+    {
+      "id": "V-91145",
+      "title": "The Juniper router must be configured to automatically audit account enabling actions.",
+      "description": "Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply enable a new or disabled account. Notification of account enabling is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail which documents the creation of application user accounts and notifies administrators and Information System Security Officers (ISSO). Such a process greatly reduces the risk that accounts will be surreptitiously created and provides logging that can be used for forensic purposes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91147",
+      "title": "The Juniper router must be configured to be compliant with at least one IETF Internet standard authentication protocol.",
+      "description": "Protecting access authorization information (i.e., access control decisions) ensures that authorization information cannot be altered, spoofed, or otherwise compromised during transmission.\n\nIn distributed information systems, authorization processes and access control decisions may occur in separate parts of the systems. In such instances, authorization information is transmitted securely so timely access control decisions can be enforced at the appropriate locations. To support the access control decisions, it may be necessary to transmit, as part of the access authorization information, supporting security attributes. This is because, in distributed information systems, there are various access control decisions that need to be made, and different entities (e.g., services) make these decisions in a serial fashion, each requiring some security attributes to make the decisions.\n\nThe network device must be compliant with at least one IETF standard authentication protocol such as Remote Authentication Dial-In User Service (RADIUS), Extensible Authentication Protocol (EAP), Lightweight Directory Access Protocol (LDAP), and Terminal Access Controller Access-Control System Plus (TACACS+). Protocols that are clearly defined in IETF RFC Internet standards (a.k.a. full standards), and are capable of securely conveying authorization information, are suitable for use.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91149",
+      "title": "The Juniper router must be configured to audit the execution of privileged functions.",
+      "description": "Misuse of privileged functions, either intentionally or unintentionally by authorized users, or by unauthorized external entities that have compromised information system accounts, is a serious and ongoing concern and can have significant adverse impacts on organizations. Auditing the use of privileged functions is one way to detect such misuse and identify the risk from insider threats and the advanced persistent threat.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91151",
+      "title": "The Juniper router must be configured to provide the organization-identified individuals or roles to change the auditing to be performed based on all selectable event criteria within near-real-time.",
+      "description": "If authorized individuals do not have the ability to modify auditing parameters in response to a changing threat environment, the organization may not be able to effectively respond, and important forensic information may be lost.\n\nThis requirement enables organizations to extend or limit auditing as necessary to meet organizational requirements. Auditing that is limited to conserve information system resources may be extended to address certain threat situations. In addition, auditing may be limited to a specific set of events to facilitate audit reduction, analysis, and reporting. Organizations can establish time thresholds in which audit actions are changed, for example, near-real-time, within minutes, or within hours.\n\nThe individuals or roles to change the auditing are dependent on the security configuration of the network device--for example, it may be configured to allow only some administrators to change the auditing, while other administrators can review audit logs but not reconfigure auditing. Because this capability is so powerful, organizations should be extremely cautious about only granting this capability to fully authorized security personnel.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91153",
+      "title": "The Juniper router must be configured to allocate audit record storage capacity in accordance with organization-defined audit record storage requirements.",
+      "description": "In order to ensure network devices have a sufficient storage capacity in which to write the audit logs, they need to be able to allocate audit record storage capacity.  The task of allocating audit record storage capacity is usually performed during initial device setup if it is modifiable. \n\nThe value for the organization-defined audit record storage requirement will depend on the amount of storage available on the network device, the anticipated volume of logs, the frequency of transfer from the network device to centralized log servers, and other factors.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91155",
+      "title": "The Juniper router must be configured to generate an alert for all audit failure events.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability and system operation may be adversely affected. \n\nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91157",
+      "title": "The Juniper router must be configured to synchronize its clock with the primary and secondary time sources using redundant authoritative time sources.",
+      "description": "The loss of connectivity to a particular authoritative time source will result in the loss of time synchronization (free-run mode) and increasingly inaccurate time stamps on audit events and other functions. \n\nMultiple time sources provide redundancy by including a secondary source. Time synchronization is usually a hierarchy; clients synchronize time to a local source while that source synchronizes its time to a more accurate source. The network device must utilize an authoritative time server and/or be configured to use redundant authoritative time sources. This requirement is related to the comparison done in CCI-001891.\n\nDoD-approved solutions consist of a combination of a primary and secondary time source using a combination or multiple instances of the following: a time server designated for the appropriate DoD network (NIPRNet/SIPRNet); United States Naval Observatory (USNO) time servers; and/or the Global Positioning System (GPS). The secondary time source must be located in a different geographic region than the primary time source.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91159",
+      "title": "The Juniper router must be configured to record time stamps for log records that can be mapped to Coordinated Universal Time (UTC) or Greenwich Mean Time (GMT).",
+      "description": "If time stamps are not consistently applied and there is no common time reference, it is difficult to perform forensic analysis.\n\nTime stamps generated by the application include date and time. Time is commonly expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91161",
+      "title": "The Juniper router must be configured to prohibit installation of software without explicit privileged status.",
+      "description": "Allowing anyone to install software, without explicit privileges, creates the risk that untested or potentially malicious software will be installed on the system.  This requirement applies to code changes and upgrades for all network devices.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91163",
+      "title": "The Juniper router must be configured to authenticate SNMP messages using a FIPS-validated Keyed-Hash Message Authentication Code (HMAC).",
+      "description": "Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity. Bidirectional authentication provides stronger safeguards to validate the identity of other devices for connections that are of greater risk.\n\nA local connection is any connection with a device communicating without the use of a network. A network connection is any connection with a device that communicates through a network (e.g., local area or wide area network, Internet). A remote connection is any connection with a device communicating through an external network (e.g., the Internet).\n\nBecause of the challenges of applying this requirement on a large scale, organizations are encouraged to only apply the requirement to those limited number (and type) of devices that truly need to support this capability.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91165",
+      "title": "The Juniper router must be configured to encrypt SNMP messages using a FIPS 140-2 approved algorithm.",
+      "description": "Without the strong encryption that is provided by the SNMP Version 3 User-based Security Model (USM), an unauthorized user can gain access to network management information that can be used to create a network outage.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91167",
+      "title": "The Juniper router must be configured to authenticate NTP sources using authentication that is cryptographically based.",
+      "description": "If Network Time Protocol is not authenticated, an attacker can introduce a rogue NTP server. This rogue server can then be used to send incorrect time information to network devices, which will make log timestamps inaccurate and affect scheduled actions. NTP authentication is used to prevent this tampering by authenticating the time source.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91169",
+      "title": "The Juniper router must be configured to use FIPS-validated Keyed-Hash Message Authentication Code (HMAC) to protect the integrity of remote maintenance sessions.",
+      "description": "Unapproved mechanisms that are used for authentication to the cryptographic module are not verified and therefore cannot be relied upon to provide confidentiality or integrity, and DoD data may be compromised.\n\nNonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the Internet) or an internal network. \n\nCurrently, HMAC is the only FIPS-approved algorithm for generating and verifying message/data authentication codes in accordance with FIPS 198-1. Products that are FIPS 140-2 validated will have an HMAC that meets specification; however, the option must be configured for use as the only message authentication code used for authentication to cryptographic modules.\n\nSeparate requirements for configuring applications and protocols used by each application (e.g., SNMPv3, SSHv2, NTP, HTTPS, and other protocols and applications that require server/client authentication) are required to implement this requirement. Where SSH is used, the SSHv2 protocol suite is required because it includes Layer 7 protocols such as SCP and SFTP, which can be used for secure file transfers.",
+      "severity": "high"
+    },
+    {
+      "id": "V-91171",
+      "title": "The Juniper router must be configured to implement cryptographic mechanisms to protect the confidentiality of remote maintenance sessions.",
+      "description": "This requires the use of secure protocols instead of their unsecured counterparts, such as SSH instead of telnet, SCP instead of FTP, and HTTPS instead of HTTP. If unsecured protocols (lacking cryptographic mechanisms) are used for sessions, the contents of those sessions will be susceptible to eavesdropping, potentially putting sensitive data (including administrator passwords) at risk of compromise and potentially allowing hijacking of maintenance sessions.",
+      "severity": "high"
+    },
+    {
+      "id": "V-91173",
+      "title": "The Juniper router must be configured to protect against known types of Denial of Service (DoS) attacks by employing organization-defined security safeguards.",
+      "description": "DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity.\n\nThis requirement addresses the configuration of network devices to mitigate the impact of DoS attacks that have occurred or are ongoing on device availability. For each network device, known and potential DoS attacks must be identified and solutions for each type implemented. A variety of technologies exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or restricting the number of sessions the device opens at one time). Employing increased capacity and bandwidth, combined with service redundancy, may reduce the susceptibility to some DoS attacks.\n\nThe security safeguards cannot be defined at the DoD level because they vary according to the capabilities of the individual network devices and the security controls applied on the adjacent networks (for example, firewalls performing packet filtering to block DoS attacks).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91175",
+      "title": "The Juniper router must be configured to generate log records when administrator privileges are modified.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91177",
+      "title": "The Juniper router must be configured to generate log records when administrator privileges are deleted.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91179",
+      "title": "The Juniper router must be configured to generate audit records when successful/unsuccessful logon attempts occur.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91181",
+      "title": "The Juniper router must be configured to generate log records for privileged activities.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91183",
+      "title": "The Juniper router must be configured to generate log records when concurrent logons from different workstations occur.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the network device (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91185",
+      "title": "The Juniper router must be configured to off-load log records onto a different system than the system being audited.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91187",
+      "title": "The Juniper router must be configured to generate log records for a locally developed list of auditable events.",
+      "description": "Auditing and logging are key components of any security architecture. Logging the actions of specific events provides a means to investigate an attack; to recognize resource utilization or capacity thresholds; or to identify an improperly configured network device. If auditing is not comprehensive, it will not be useful for intrusion monitoring, security investigations, and forensic analysis.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91189",
+      "title": "The Juniper router must be configured to use an authentication server for the purpose of authenticating users prior to granting administrative access.",
+      "description": "Centralized management of user accounts and authentication increases the administrative access to the router. This control is particularly important protection against the insider threat. With robust centralized management, audit records for administrator account access to the organization's network devices can be more readily analyzed for trends and anomalies. The alternative method of defining administrator accounts on each device exposes the device configuration to remote access authentication attacks and system administrators with multiple authenticators for each network device.",
+      "severity": "high"
+    },
+    {
+      "id": "V-91191",
+      "title": "The Juniper router must be configured to support organizational requirements to conduct backups of the configuration when changes occur.",
+      "description": "System-level information includes default and customized settings and security attributes, including ACLs that relate to the network device configuration, as well as software required for the execution and operation of the device. Information system backup is a critical step in ensuring system integrity and availability. If the system fails and there is no backup of the system-level information, a denial of service condition is possible for all who utilize this critical network component.\n\nThis control requires the network device to support the organizational central backup process for system-level information associated with the network device. This function may be provided by the network device itself; however, the preferred best practice is a centralized backup rather than each network device performing discrete backups.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91193",
+      "title": "The Juniper router must be configured to obtain its public key certificates from an appropriate certificate policy through an approved service provider.",
+      "description": "For user certificates, each organization obtains certificates from an approved, shared service provider, as required by OMB policy. For federal agencies operating a legacy public key infrastructure cross-certified with the Federal Bridge Certification Authority at medium assurance or higher, this Certification Authority will suffice.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91195",
+      "title": "The Juniper router must be configured to send log data to a syslog server for the purpose of forwarding alerts to the administrators and the ISSO.",
+      "description": "Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of reestablishing access. One way to accomplish this is for the attacker to simply create a new account. Notification of account creation is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail which documents the creation of accounts and notifies administrators and Information System Security Officers (ISSOs). Such a process greatly reduces the risk that accounts will be surreptitiously created and provides logging that can be used for forensic purposes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91197",
+      "title": "The Juniper router must be configured to send SNMP traps and notifications to the SNMP manager for the purpose of sending alarms and notifying appropriate personnel as required by specific events.",
+      "description": "If appropriate actions are not taken when a network device failure occurs, a denial of service condition may occur which could result in mission failure since the network would be operating without a critical security monitoring and prevention function. Upon detecting a failure of any router components, the router must activate a system alert message, send an alarm, or shut down. By immediately displaying an alarm message, potential security violations can be identified more quickly even when administrators are not logged into the device. This can be facilitated by the router sending SNMP traps to the SNMP manager that can then have the necessary action taken by automatic or operator intervention.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91199",
+      "title": "The Juniper router must be configured with a master password that is used to generate encrypted keys for shared secrets.",
+      "description": "By default, shared secrets in a Junos configuration only use an obfuscation algorithm ($9$ format), which is not very strong and can easily be decrypted. Strong encryption for configured secrets can be enabled by configuring a master password to be used as input to the password based key derivation function (PBKDF2) to generate an encryption key. The key is used as input to the Advanced Encryption Standard in Galois/Counter Mode (AES256-GCM).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-91201",
+      "title": "The Juniper router must be running a Junos release that is currently supported by Juniper Networks.",
+      "description": "Network devices running an unsupported operating system lack current security fixes required to mitigate the risks associated with recent vulnerabilities. Running a supported release also enables operations to maintain a stable and reliable network provided by improved quality of service and security features.",
+      "severity": "high"
+    }
+  ]
+}

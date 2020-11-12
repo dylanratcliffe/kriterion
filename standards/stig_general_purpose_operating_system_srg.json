@@ -1,6 +1,6 @@
 {
   "name": "stig_general_purpose_operating_system_srg",
-  "date": "2016-04-25",
+  "date": "2019-07-01",
   "description": "The General Purpose Operating System Security Requirements Guide (SRG) is published as a tool to improve the security of Department of Defense (DoD) information systems. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.\n",
   "title": "General Purpose Operating System SRG",
   "version": "1",
@@ -35,12 +35,6 @@
       "id": "V-56579",
       "title": "The operating system must enforce the limit of three consecutive invalid logon attempts by a user during a 15-minute time period.",
       "description": "By limiting the number of failed logon attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-force attacks, is reduced. Limits are imposed by locking the account.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-56581",
-      "title": "The operating system must employ a deny-all, allow-by-exception firewall policy for allowing connections to other systems.",
-      "description": "Failure to restrict network connectivity only to authorized systems permits inbound connections from malicious systems. It also permits outbound connections that may facilitate exfiltration of DoD data.",
       "severity": "medium"
     },
     {
@@ -93,7 +87,7 @@
     },
     {
       "id": "V-56599",
-      "title": "The operating system must, at a minimum, off-load interconnected systems in real time and off-load standalone systems weekly.",
+      "title": "The operating system must, at a minimum, off-load audit data from interconnected systems in real time and off-load audit data from standalone systems weekly.",
       "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity.",
       "severity": "medium"
     },
@@ -603,7 +597,7 @@
     },
     {
       "id": "V-56773",
-      "title": "The operating system must only allow the use of DoD PKI-established certificate authorities for verification of the establishment of protected sessions.",
+      "title": "The operating system must only allow the use of DoD PKI-established certificate authorities for authentication in the establishment of protected sessions to the operating system.",
       "description": "Untrusted Certificate Authorities (CA) can issue certificates, but they may be issued by organizations or individuals that seek to compromise DoD systems or by organizations with insufficient security controls. If the CA used for verifying the certificate is not a DoD-approved CA, trust of this CA has not been established.\n\nThe DoD will only accept PKI-certificates obtained from a DoD-approved internal or external certificate authority. Reliance on CAs for the establishment of secure sessions includes, for example, the use of SSL/TLS certificates.",
       "severity": "medium"
     },
@@ -1103,18 +1097,6 @@
       "id": "V-57239",
       "title": "The operating system must provide the capability for assigned IMOs/ISSOs or designated SAs to change the auditing to be performed on all operating system components, based on all selectable event criteria in near real time.",
       "description": "If authorized individuals do not have the ability to modify auditing parameters in response to a changing threat environment, the organization may not be able to effectively respond, and important forensic information may be lost.\n\nThis requirement enables organizations to extend or limit auditing as necessary to meet organizational requirements. Auditing that is limited to conserve information system resources may be extended to address certain threat situations. In addition, auditing may be limited to a specific set of events to facilitate audit reduction, analysis, and reporting.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-57241",
-      "title": "The operating system must provide the capability for authorized users to select a user session to capture/record or view/hear.",
-      "description": "Without the capability to select a user session to capture/record or view/hear, investigations into suspicious or harmful events would be hampered by the volume of information captured. The volume of information captured may also adversely impact the operation of the network.\n\nSession audits may include monitoring keystrokes, screen monitoring software, remote desktop recording, screen mirroring, and recording information and/or file transfers.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-57243",
-      "title": "The operating system must provide the capability for authorized users to remotely view/hear, in real time, all content related to an established user session from a component separate from the operating system being monitored.",
-      "description": "Without the capability to remotely view/hear all content related to a user session, investigations into suspicious user activity would be hampered. Real-time monitoring allows authorized personnel to take action before additional damage is done. The ability to observe user sessions as they are happening allows for interceding in ongoing events that after-the-fact review of captured content would not allow.",
       "severity": "medium"
     },
     {

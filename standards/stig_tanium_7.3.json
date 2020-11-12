@@ -1,0 +1,623 @@
+{
+  "name": "stig_tanium_7.3",
+  "date": "2019-02-22",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Tanium 7.3 Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-92033",
+      "title": "Tanium must centrally review and analyze audit records from multiple components within the system.",
+      "description": "Successful incident response and auditing relies on timely, accurate system information and analysis in order to allow the organization to identify and respond to potential incidents in a proficient manner. If the application does not provide the ability to centrally review the application logs, forensic analysis is negatively impacted.\n\nSegregation of logging data to multiple disparate computer systems is counterproductive and makes log analysis and log event alarming difficult to implement and manage, particularly when the system or application has multiple logging components written to different locations or systems.\n\nAutomated mechanisms for centralized reviews and analyses include, for example, Security Information Management products.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92035",
+      "title": "Tanium must implement organization-defined automated security responses if baseline configurations are changed in an unauthorized manner.",
+      "description": "Unauthorized changes to the baseline configuration could make the system vulnerable to various attacks or allow unauthorized access to the system. Changes to information system configurations can have unintended side effects, some of which may be relevant to security.\n\nDetecting such changes and providing an automated response can help avoid unintended, negative consequences that could ultimately affect the security state of the application. Examples of security responses include, but are not limited to the following: halting application processing; halting selected application functions; or issuing alerts/notifications to organizational personnel when there is an unauthorized modification of a configuration item.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92037",
+      "title": "Tanium must employ a deny-all, permit-by-exception (whitelist) policy to allow the execution of authorized software programs.",
+      "description": "Utilizing a whitelist provides a configuration management method for allowing the execution of only authorized software. Using only authorized software decreases risk by limiting the number of potential vulnerabilities.\n\nThe organization must identify authorized software programs and permit execution of authorized software. The process used to identify software programs that are authorized to execute on organizational information systems is commonly referred to as whitelisting.\n\nVerification of whitelisted software can occur either prior to execution or at system startup.\n\nThis requirement applies to configuration management applications or similar types of applications designed to manage system processes and configurations (e.g., HBSS and software wrappers).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92039",
+      "title": "The vulnerability scanning application must implement privileged access authorization to all Tanium information systems and infrastructure components for selected organization-defined vulnerability scanning activities.",
+      "description": "In certain situations, the nature of the vulnerability scanning may be more intrusive, or the information system component that is the subject of the scanning may contain highly sensitive information. Privileged access authorization to selected system components facilitates more thorough vulnerability scanning and also protects the sensitive nature of such scanning.\n\nThe vulnerability scanning application must utilize privileged access authorization for the scanning account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92041",
+      "title": "The Tanium endpoint must have the Tanium Servers public key in its installation.",
+      "description": "Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nRemote access is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nSatisfies: SRG-APP-000015, SRG-APP-000158, SRG-APP-000394",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92043",
+      "title": "Access to Tanium logs on each endpoint must be restricted by permissions.",
+      "description": "For the Tanium Client software to run without impact from external negligent or malicious changes, the permissions on the Tanium log files and their directory must be restricted.\n\nTanium is deployed with a Client Hardening Solution. This solution, when applied, will ensure directory permissions are in place.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92045",
+      "title": "The Tanium cryptographic signing capabilities must be enabled on the Tanium Clients to safeguard the authenticity of communications sessions when answering requests from the Tanium Server.",
+      "description": "All of Tanium's signing capabilities should be enabled upon install. Tanium supports the cryptographic signing and verification before execution of all Sensors, Questions, Actions, Sensor Libraries, File Shards, etc. Enabling signing does away with the ability of an attacker to conduct Man in the Middle (MitM) attacks for the purposes of remote code execution and precludes the modification of the aforementioned data elements in transit. Additionally, Tanium supports object level signing for content ingested into the Tanium platform. This allows for the detection and rejection of changes to objects (sensors, actions, etc.) by even a privileged user within Tanium.\n\nTanium has built-in signing capabilities enabled by default when installed. Cryptographic signing and verification of all Sensors, Questions, Actions, Sensor Libraries, File Shards, etc. before execution will be enforced by Tanium.\n\nSigning will prevent MitM remote code execution attacks and will protect data element in transit. Tanium also supports object level signing for content within the Tanium platform.\n\nSatisfies: SRG-APP-000131, SRG-APP-000219",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92047",
+      "title": "Firewall rules must be configured on the Tanium Endpoints for Client-to-Server communications.",
+      "description": "In addition to the client-to-server TCP communication that takes place over port 17472, Tanium Clients also communicate to other Tanium-managed computers over port 17472. The Tanium environment can perform hundreds or thousands of times faster than other security or systems management tools because the Tanium Clients communicate in secure, linearly-controlled peer-to-peer rings. Because clients dynamically communicate with other nearby agents based on proximity and latency, rings tend to form automatically to match a customer's topology--endpoints in California will form one ring while endpoints in Germany will form a separate ring.\n\nhttps://docs.tanium.com/platform_install/platform_install/reference_network_ports.html.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92049",
+      "title": "Control of the Tanium Client service must be restricted to SYSTEM access only for all managed clients.",
+      "description": "The reliability of the Tanium client's ability to operate depends upon controlling access to the Tanium client service. By restricting access to SYSTEM access only, the non-Tanium system administrator will not have the ability to impact operability of the service.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92051",
+      "title": "The ability to uninstall the Tanium Client service must be disabled on all managed clients.",
+      "description": "By default, end users have the ability to uninstall software on their clients. In the event the Tanium Client software is uninstalled, the Tanium Server is unable to manage the client and must redeploy to the client. Preventing the software from being displayed in the client's Add/Remove Programs will lessen the risk of the software being uninstalled by non-Tanium System Administrators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92053",
+      "title": "The permissions on the Tanium Client directory must be restricted to only the SYSTEM account on all managed clients.",
+      "description": "By restricting access to the Tanium Client directory on managed clients, the Tanium client's ability to operate and function as designed will be protected from malicious attack and unintentional modifications by end users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92055",
+      "title": "Tanium endpoint files must be excluded from on-access antivirus actions.",
+      "description": "Similar to any other host-based applications, the Tanium Client is subject to the restrictions other System-level software may place on an operating environment. That is to say that Antivirus, IPS, Encryption, or other security and management stack software may disallow the Client from working as expected.\n\nhttps://docs.tanium.com/platform_install/platform_install/reference_host_system_security_exceptions.html.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92057",
+      "title": "The Tanium Client Deployment Tool (CDT) must not be configured to use the psexec method of deployment.",
+      "description": "When using the Tanium Client Deployment Tool (CDT), using psexec represents an increased vulnerability as the NTLM hash and clear text passwords of the authenticating user is exposed in the memory of the remote system.\n\nTo mitigate this vulnerability, the psexec method of deployment must not be used.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92059",
+      "title": "Tanium endpoint files must be protected from file encryption actions.",
+      "description": "Similar to any other host-based applications, the Tanium Client is subject to the restrictions other System-level software may place on an operating environment. That is to say that Antivirus, Encryption, or other security and management stack software may disallow the Client from working as expected.\n\nhttps://docs.tanium.com/platform_install/platform_install/reference_host_system_security_exceptions.html.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92061",
+      "title": "The Tanium application must restrict the ability of individuals to place too much impact upon the network, which might result in a Denial of Service (DoS) event on the network by using RandomSensorDelayInSeconds.",
+      "description": "DoS is a condition where a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity.\n\nIndividuals of concern can include hostile insiders or external adversaries that have successfully breached the information system and are using the system as a platform to launch cyberattacks on third-parties.\n\nApplications and application developers must take the steps needed to ensure users cannot use an authorized application to launch DoS attacks against other systems and networks. For example, applications may include mechanisms that throttle network traffic so users are not able to generate unlimited network traffic via the application. Limiting system resources that are allocated to any user to a bare minimum may also reduce the ability of users to launch some DoS attacks.\n\nThe methods employed to counter this risk will be dependent upon the application layer methods that can be used to exploit it.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92063",
+      "title": "Tanium endpoint files must be excluded from host-based intrusion prevention intervention.",
+      "description": "Similar to any other host-based applications, the Tanium Client is subject to the restrictions other System-level software may place on an operating environment. Antivirus, IPS, Encryption, or other security and management stack software may disallow the Tanium Server from working as expected.\n\nhttps://docs.tanium.com/platform_install/platform_install/reference_host_system_security_exceptions.html.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92065",
+      "title": "The Tanium application must retain the session lock until the user reestablishes access using established identification and authentication procedures.",
+      "description": "A session lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system, but does not want to log out because of the temporary nature of the absence.\n\nThe session lock is implemented at the point where session activity can be determined. This is typically determined and performed at the operating system-level, but in some instances it may be at the application-level.\n\nRegardless of where the session lock is determined and implemented, once invoked the session lock shall remain in place until the user re-authenticates. No other system or application activity aside from re-authentication shall unlock the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92067",
+      "title": "The Tanium Application Server must be configured with a connector to sync to Microsoft Active Directory for account management functions.",
+      "description": "By restricting access to the Tanium Server to only Microsoft Active Directory, user accounts and related permissions can be strictly monitored. Account management will be under the operational responsibility of the System Administrator for the Windows Operation System Active Directory.\n\nSatisfies: SRG-APP-000233, SRG-APP-000317",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92069",
+      "title": "The Tanium Application Server must be configured to only use Microsoft Active Directory for account management functions.",
+      "description": "By restricting access to the Tanium Server to only Microsoft Active Directory, user accounts and related permissions can be strictly monitored. Account management will be under the operational responsibility of the System Administrator for the Windows Operation System Active Directory.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92071",
+      "title": "Tanium Computer Groups must be used to restrict console users from affecting changes to unauthorized computers.",
+      "description": "Computer Groups allow a site running Tanium to assign responsibility of specific Computer Groups to specific Tanium console users. By doing so, a desktop administrator, for example, will not have the ability to enforce an action against a high visibility server.\n\nFor large sites, it is crucial to have the Computer Groups and while a smaller site might not seem to require Computer Groups, creating them provides for a cleaner implementation. All sites will be required to have some kind of Computer Groups configured other than the default \"All Computers\".",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92073",
+      "title": "Documentation identifying Tanium console users, their respective functional roles, and computer groups must be maintained.",
+      "description": "System access should be reviewed periodically to verify that all Tanium users are assigned the appropriate functional role, with the least privileged access possible to perform assigned tasks being the recommended best practice. Users who have been removed from the documentation should no longer be configured as a Tanium Console User. Consider removing users that have not logged onto the system within a predetermined time frame.\n\nWhen using Active Directory synchronization, as is required by this STIG, User Roles assignments are via the LDAP Sync.\n\nTo change a Tanium user's functional role, their Active Directory account needs to be assigned to the AD security group, which correlates with the applicable functional role.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92075",
+      "title": "Role-based system access must be configured to least privileged access to Tanium Server functions through the Tanium interface.",
+      "description": "User accessibility to various Tanium Server functions performed via the console can be restricted by functional roles, a combination of User Role(s), and Content Set(s) assigned through User Group membership. Functional roles are assigned to users via Active Directory Group membership.\n\nSystem access should be reviewed periodically to verify that all Tanium users are assigned the appropriate functional role, with the least privileged access possible to perform assigned tasks being the recommended best practice. Consider removing users that have not logged onto the system within a predetermined time frame.",
+      "severity": "high"
+    },
+    {
+      "id": "V-92077",
+      "title": "Tanium console users User Roles must be validated against the documentation for User Roles.",
+      "description": "System access should be reviewed periodically to verify that all Tanium users are assigned the appropriate role, with the least privileged access possible to perform assigned tasks being the recommended best practice. Users who have been removed from the documentation should no longer be configured as a Tanium Console User. Consider removing users that have not logged onto the system within a predetermined time frame.\n\nWhen using Active Directory synchronization, as is required by this STIG, User Roles assignments are via the LDAP Sync, AD security groups correlate, one to one, to Tanium User Roles.\n\nTo change a Tanium user's User Role, their Active Directory account needs to be moved to the AD security group, which correlates with the applicable User Role.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92079",
+      "title": "Documentation identifying Tanium console users and their respective Computer Group rights must be maintained.",
+      "description": "System access should be reviewed periodically to verify that all Tanium users are assigned the appropriate role, with the least privileged access possible to perform assigned tasks being the recommended best practice. Users who have been removed from the documentation should no longer be configured as a Tanium Console User. Consider removing users that have not logged onto the system within a predetermined time frame.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92081",
+      "title": "Tanium console users Computer Group rights must be validated against the documentation for Computer Group rights.",
+      "description": "System access should be reviewed periodically to verify that all Tanium users are assigned the appropriate role, with the least privileged access possible to perform assigned tasks being the recommended best practice. Users who have been removed from the documentation should no longer be configured as a Tanium Console User. Consider removing users that have not logged onto the system within a predetermined time frame.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92083",
+      "title": "Common Access Card (CAC)-based authentication must be enabled on the Tanium Server for network access with privileged accounts.",
+      "description": "To assure accountability and prevent unauthenticated access, organizational users must be identified and authenticated to prevent potential misuse and compromise of the system.\n\nOrganizational users include organizational employees or individuals the organization deems to have equivalent status of employees (e.g., contractors). Organizational users (and any processes acting on behalf of users) must be uniquely identified and authenticated for all accesses, except the following:\n\n(i) Accesses explicitly identified and documented by the organization. Organizations document specific user actions that can be performed on the information system without identification or authentication; and\n(ii) Accesses that occur through authorized use of group authenticators without individual authentication. Organizations may require unique identification of individuals in group accounts (e.g., shared privilege accounts) or for detailed accountability of individual activity.\n\nThis not only meets a common requirement in the Federal space but adds a critical layer of security to the user authentication process.\n\nSatisfies: SRG-APP-000149, SRG-APP-000151",
+      "severity": "high"
+    },
+    {
+      "id": "V-92085",
+      "title": "Firewall rules must be configured on the Tanium Server for Console-to-Server communications.",
+      "description": "An HTML5 based application, the Tanium Console runs from any device with a browser that supports HTML5. For security, the HTTP and SOAP communication to the Tanium Server is SSL encrypted, so the Tanium Server installer configures the server to listen for HTTP and SOAP requests on port 443. Without a proper connection to the Tanium Server, access to the system capabilities could be denied.\n\nPort Needed: To Tanium Server over TCP port 443.\n\nNetwork firewall rules:\n\nAllow HTTP traffic on TCP port 443 from any computer on the internal network to the Tanium Server device.\n\nhttps://docs.tanium.com/platform_install/platform_install/reference_network_ports.html.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92087",
+      "title": "The publicly accessible Tanium application must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the application.",
+      "description": "Display of a standardized and approved use notification before granting access to the publicly accessible application ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.\n\nThe banner must be formatted in accordance with DTM-08-060. Use the following verbiage for desktops, laptops, and other devices accommodating banners of 1300 characters:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nUse the following verbiage for operating systems that have severe limitations on the number of characters that can be displayed in the banner:\n\n\"I've read & consent to terms in IS user agreem't.\"\n\nSatisfies: SRG-APP-000070, SRG-APP-000068, SRG-APP-000069",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92089",
+      "title": "Tanium must alert the ISSO and SA (at a minimum) in the event of an audit processing failure.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without this notification, the security personnel may be unaware of an impending failure of the audit capability and system operation may be adversely affected.\n\nAudit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded.\n\nThis requirement applies to each audit data storage repository (i.e., distinct information system component where audit records are stored), the centralized audit storage capacity of organizations (i.e., all audit data storage repositories combined), or both.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92091",
+      "title": "Flaw remediation Tanium applications must employ automated mechanisms to determine the state of information system components with regard to flaw remediation using the following frequency: continuously, where HBSS is used; 30 days, for any additional internal network scans not covered by HBSS; and annually, for external scans by Computer Network Defense Service Provider (CNDSP).",
+      "description": "Without the use of automated mechanisms to scan for security flaws on a continuous and/or periodic basis, the system components may remain vulnerable to the exploits presented by undetected software flaws.\n\nTo support this requirement, the flaw remediation application may have automated mechanisms that perform automated scans for security-relevant software updates (e.g., patches, service packs, and hot fixes) and security vulnerabilities of the information system components being monitored. For example, a method of compliance would be an integrated solution incorporating continuous scanning using HBSS and periodic scanning using other tools as specified in the requirement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92093",
+      "title": "Tanium must notify SA and ISSO when accounts are created.",
+      "description": "Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of re-establishing access. One way to accomplish this is for the attacker to simply create a new account. Notification of account creation is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail, which documents the creation of application user accounts and notifies administrators and Information System Security Officers (ISSO) exists. Such a process greatly reduces the risk that accounts will be surreptitiously created and provides logging that can be used for forensic purposes.\n\nTo address access requirements, many application developers choose to integrate their applications with enterprise-level authentication/access/auditing mechanisms that meet or exceed access control policy requirements. Such integration allows the application developer to off-load those access control functions and focus on core application features and functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92095",
+      "title": "Tanium must notify SA and ISSO when accounts are modified.",
+      "description": "Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of re-establishing access. One way to accomplish this is for the attacker to simply modify an existing account. Notification of account modification is one method for mitigating this risk. A comprehensive account management process will ensure an audit trail, which documents the creation of application user accounts and notifies administrators and Information System Security Officers (ISSO) exists. Such a process greatly reduces the risk that accounts will be surreptitiously created and provides logging that can be used for forensic purposes.\n\nTo address access requirements, many application developers choose to integrate their applications with enterprise-level authentication/access/auditing mechanisms that meet or exceed access control policy requirements. Such integration allows the application developer to off-load those access control functions and focus on core application features and functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92097",
+      "title": "The Tanium application must notify SA and ISSO of account enabling actions.",
+      "description": "Once an attacker establishes initial access to a system, the attacker often attempts to create a persistent method of re-establishing access. One way to accomplish this is for the attacker to simply enable a new or disabled account. Notification of account enabling is one method for mitigating this risk. A comprehensive account management process will ensure the existence of an audit trail, which documents the creation of application user accounts and notifies administrators and ISSOs. Such a process greatly reduces the risk that accounts will be surreptitiously enabled and provides logging that can be used for forensic purposes.\n\nIn order to detect and respond to events that affect user accessibility and application processing, applications must audit account enabling actions and, as required, notify the appropriate individuals so they can investigate the event.\n\nTo address access requirements, many application developers choose to integrate their applications with enterprise-level authentication/access/auditing mechanisms that meet or exceed access control policy requirements. Such integration allows the application developer to off-load those access control functions and focus on core application features and functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92099",
+      "title": "The Tanium application must provide an immediate warning to the SA and ISSO (at a minimum) when allocated audit record storage volume reaches 75% of repository maximum audit record storage capacity.",
+      "description": "If security personnel are not notified immediately upon storage volume utilization reaching 75%, they are unable to plan for storage capacity expansion.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92101",
+      "title": "The Tanium enterprise audit log reduction option must be configured to provide alerts based off Tanium audit data.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability and system operation may be adversely affected.\n\nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92103",
+      "title": "Common Access Card (CAC)-based authentication must be enabled and enforced on the Tanium Server for all access and all accounts.",
+      "description": "To assure accountability and prevent unauthenticated access, organizational users must be identified and authenticated to prevent potential misuse and compromise of the system.\n\nOrganizational users include organizational employees or individuals the organization deems to have equivalent status of employees (e.g., contractors). Organizational users (and any processes acting on behalf of users) must be uniquely identified and authenticated for all accesses, except the following:\n\n(i) Accesses explicitly identified and documented by the organization. Organizations document specific user actions that can be performed on the information system without identification or authentication; and\n(ii) Accesses that occur through authorized use of group authenticators without individual authentication. Organizations may require unique identification of individuals in group accounts (e.g., shared privilege accounts) or for detailed accountability of individual activity.\n\nSatisfies: SRG-APP-000148, SRG-APP-000005, SRG-APP-000150, SRG-APP-000152, SRG-APP-000080, SRG-APP-000156, SRG-APP-000177, SRG-APP-000185, SRG-APP-000186, SRG-APP-000190, SRG-APP-000315, SRG-APP-000316, SRG-APP-000391, SRG-APP-000392, SRG-APP-000402, SRG-APP-000403",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92105",
+      "title": "Tanium must notify SA and ISSO for account disabling actions.",
+      "description": "When application accounts are disabled, user accessibility is affected. Accounts are utilized for identifying individual application users or for identifying the application processes themselves.\n\nIn order to detect and respond to events that affect user accessibility and application processing, applications must audit account disabling actions and, as required, notify the appropriate individuals so they can investigate the event. Such a capability greatly reduces the risk that application accessibility will be negatively affected for extended periods of time and also provides logging that can be used for forensic purposes.\n\nTo address access requirements, many application developers choose to integrate their applications with enterprise-level authentication/access/auditing mechanisms that meet or exceed access control policy requirements. Such integration allows the application developer to off-load those access control functions and focus on core application features and functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92107",
+      "title": "Tanium must notify SA and ISSO for account removal actions.",
+      "description": "When application accounts are removed, user accessibility is affected. Accounts are utilized for identifying individual application users or for identifying the application processes themselves.\n\nIn order to detect and respond to events that affect user accessibility and application processing, applications must audit account removal actions and, as required, notify the appropriate individuals so they can investigate the event. Such a capability greatly reduces the risk that application accessibility will be negatively affected for extended periods of time and also provides logging that can be used for forensic purposes.\n\nTo address access requirements, many application developers choose to integrate their applications with enterprise-level authentication/access/auditing mechanisms that meet or exceed access control policy requirements. Such integration allows the application developer to off-load those access control functions and focus on core application features and functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92109",
+      "title": "The Tanium application must prohibit user installation of software without explicit privileged status.",
+      "description": "Allowing regular users to install software, without explicit privileges, creates the risk that untested or potentially malicious software will be installed on the system. Explicit privileges (escalated or administrative privileges) provide the regular user with explicit capabilities and control that exceeds the rights of a regular user.\n\nApplication functionality will vary, and while users are not permitted to install unapproved applications, there may be instances where the organization allows the user to install approved software packages such as from an approved software repository.\n\nThe application must enforce software installation by users based upon what types of software installations are permitted (e.g., updates and security patches to existing software) and what types of installations are prohibited (e.g., software whose pedigree with regard to being potentially malicious is unknown or suspect) by the organization.\n\nThis requirement applies, for example, to applications that provide the ability to extend application functionality (e.g., plug-ins, add-ons) and software management applications.\n\nSatisfies: SRG-APP-000378, SRG-APP-000380, SRG-APP-000121, SRG-APP-000122, SRG-APP-000123",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92111",
+      "title": "Documentation defining Tanium functional roles must be maintained.",
+      "description": "System access should be reviewed periodically to verify that all Tanium users are assigned the appropriate role, with the least privileged access possible to perform assigned tasks being the recommended best practice. Users who have been removed from the documentation should no longer be configured as a Tanium Console User. Consider removing users that have not logged onto the system within a predetermined time frame.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92113",
+      "title": "The Tanium database(s) must be installed on a separate system.",
+      "description": "Failure to protect organizational information from data mining may result in a compromise of information.\n\nData storage objects include, for example, databases, database records, and database fields. Data mining prevention and detection techniques include, for example: limiting the types of responses provided to database queries, limiting the number/frequency of database queries to increase the work factor needed to determine the contents of such databases, and notifying organizational personnel when atypical database queries or accesses occur.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92115",
+      "title": "The Tanium application database must be dedicated to only the Tanium application.",
+      "description": "Failure to protect organizational information from data mining may result in a compromise of information.\n\nData storage objects include, for example, databases, database records, and database fields. Data mining prevention and detection techniques include, for example: limiting the types of responses provided to database queries; limiting the number/frequency of database queries to increase the work factor needed to determine the contents of such databases; and notifying organizational personnel when atypical database queries or accesses occur.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92117",
+      "title": "The access to the Tanium SQL database must be restricted. Only the designated database administrator(s) can have elevated privileges to the Tanium SQL database.",
+      "description": "After the Tanium Server has been installed and the Tanium databases created, only the Tanium Receiver, Tanium Module, and Tanium connection manager (ad sync) service needs to access the SQL Server database.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92119",
+      "title": "The Tanium Server installers account database permissions must be reduced to an appropriate level.",
+      "description": "Creating the tanium and tanium_archive databases through the Tanium Server installer program or using the database create SQL scripts requires Sysadmin-level permissions. Once the databases have been created, the Tanium Server and Apache services must be configured to execute under an account that holds at least the dbo role on both databases.\n\nPost-installation, if the account used to configure the Tanium Server services to access the remote SQL database server holds only the Database Owner role, rather than the sysadmin role, consider granting this account the View Server State permission on the SQL Server. While not strictly necessary, this dynamic management view enables the Tanium Server to access data faster than the dbo role alone.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92121",
+      "title": "Firewall rules must be configured on the Tanium Server for Server-to-Database communications.",
+      "description": "The Tanium Server can use either a SQL Server RDBMS installed locally to the same device as the Tanium Server application or a remote dedicated or shared SQL Server instance. Using a local SQL Server database typically requires no changes to network firewall rules since all communication remains on the Tanium application server device. To access database resources installed to a remote device, however, the Tanium Server service communicates over the port reserved for SQL, by default port 1433, to the database.\n\nPort Needed: Tanium Server to Remote SQL Server over TCP port 1433.\n\nNetwork firewall rules:\n\nAllow TCP traffic on port 1433 from the Tanium Server device to the remote device hosting the SQL Server RDBMS.\n\nhttps://docs.tanium.com/platform_install/platform_install/reference_network_ports.html.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92123",
+      "title": "SQL stored queries or procedures installed during Tanium installation must be removed from the Tanium Server.",
+      "description": "Failure to protect organizational information from data mining may result in a compromise of information.\n\nData storage objects include, for example, databases, database records, and database fields. Data mining prevention and detection techniques include, for example: limiting the types of responses provided to database queries; limiting the number/frequency of database queries to increase the work factor needed to determine the contents of such databases; and notifying organizational personnel when atypical database queries or accesses occur.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92125",
+      "title": "The Tanium Server must protect the confidentiality and integrity of transmitted information, in preparation to be transmitted and data at rest, with cryptographic signing capabilities enabled to protect the authenticity of communications sessions when making requests from Tanium Clients.",
+      "description": "Without protection of the transmitted information, confidentiality and integrity may be compromised since unprotected communications can be intercepted and either read or altered.\n\nThis requirement applies only to those applications that are either distributed or can allow access to data non-locally. Use of this requirement will be limited to situations where the data owner has a strict requirement for ensuring data integrity and confidentiality is maintained at every step of the data transfer and handling process. When transmitting data, applications need to leverage transmission protection mechanisms, such as TLS, SSL VPNs, or IPsec.\n\nCommunication paths outside the physical protection of a controlled boundary are exposed to the possibility of interception and modification. Protecting the confidentiality and integrity of organizational information can be accomplished by physical means (e.g., employing physical distribution systems) or by logical means (e.g., employing cryptographic techniques). If physical means of protection are employed, then logical means (cryptography) do not have to be employed, and vice versa.\n\nSatisfies: SRG-APP-000429, SRG-APP-000440, SRG-APP-000441",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92127",
+      "title": "The Tanium Application Server console must be configured to initiate a session lock after a 15-minute period of inactivity.",
+      "description": "The Tanium Console, when CAC is enabled, will initiate a session lock based upon the ActivClient or other Smart Card software.\n\nBy initiating the session lock, the console will be locked and not allow unauthorized access by anyone other than the original user.\n\nAlthough this setting does not apply when CAC is enabled, it should be explicitly disabled in the event CAC authentication is ever broken or removed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92129",
+      "title": "Tanium Trusted Content providers must be documented.",
+      "description": "A Tanium Sensor, also called content, enables an organization to gather real-time inventory, configuration, and compliance data elements from managed computers. Sensors gather specific information from the local device and then write the results to the computer's standard output channel. The Tanium Client captures that output and forwards the results through the platform's unique \"ring\" architecture for display in the Tanium Console.\n\nThe language used for Sensor development is based on the scripting engine available on the largest number of devices under management as well as the scripting experience and background of the people who will be responsible for creating new Sensors. VBScript and PowerShell are examples of common scripting languages used for developing sensors.\n\nBecause errors in scripting can and will provide errant feedback at best and will impact functionality of the endpoint to which the content is directed, it is imperative to ensure content is only accepted from trusted sources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92131",
+      "title": "Content providers must provide their public key to the Tanium administrator to import for validating signed content.",
+      "description": "A Tanium Sensor, also called content, enables an organization to gather real-time inventory, configuration, and compliance data elements from managed computers. Sensors gather specific information from the local device and then write the results to the computer's standard output channel. The Tanium Client captures that output and forwards the results through the platform's unique \"ring\" architecture for display in the Tanium Console.\n\nThe language used for Sensor development is based on the scripting engine available on the largest number of devices under management as well as the scripting experience and background of the people who will be responsible for creating new Sensors. VBScript and PowerShell are examples of common scripting languages used for developing sensors.\n\nBecause errors in scripting can and will provide errant feedback at best and will impact functionality of the endpoint to which the content is directed, it is imperative to ensure content is only accepted from trusted sources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92133",
+      "title": "Tanium public keys of content providers must be validated against documented trusted content providers.",
+      "description": "A Tanium Sensor, also called content, enables an organization to gather real-time inventory, configuration, and compliance data elements from managed computers. Sensors gather specific information from the local device and then write the results to the computer's standard output channel. The Tanium Client captures that output and forwards the results through the platform's unique \"ring\" architecture for display in the Tanium Console.\n\nThe language used for Sensor development is based on the scripting engine available on the largest number of devices under management as well as the scripting experience and background of the people who will be responsible for creating new Sensors. VBScript and PowerShell are examples of common scripting languages used for developing sensors.\n\nBecause errors in scripting can and will provide errant feedback at best and will impact functionality of the endpoint to which the content is directed, it is imperative to ensure content is only accepted from trusted sources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92135",
+      "title": "The Tanium Action Approval feature must be enabled for two-person integrity when deploying actions to endpoints.",
+      "description": "The Tanium Action Approval feature provides a \"four eyes\" control mechanism designed to achieve a high-level of security and reduce the possibility of error for critical operations.\n\nWhen this feature is enabled, an action configured by one Tanium console user will require a second Tanium console user with a role of Action Approver (or higher) to approve the action before it is deployed to targeted computers.\n\nWhile this system slows workflow, the reliability of actions deployed will be greater on the Packaging and Targeting.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92137",
+      "title": "The Tanium documentation identifying recognized and trusted Intel streams must be maintained.",
+      "description": "An IOC stream is a series or stream of IOCs that are imported from a vendor based on a subscription service. An IOC stream can be downloaded manually or on a scheduled basis. The items in an IOC stream can be separately manipulated after they are imported.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92139",
+      "title": "The Tanium Detect must be configured to receive IOC streams only from trusted sources.",
+      "description": "An IOC stream is a series or stream of intel that are imported from a vendor based on a subscription service or manually downloaded and placed in a folder. Detect can be configured to retrieve the IOC content on a regularly scheduled basis. The items in an IOC stream can be separately manipulated after they are imported.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92141",
+      "title": "The Tanium Connect module must be configured to forward Tanium Detect events to identified destinations.",
+      "description": "Indicators of Compromise (IOC) are artifacts, which are observed on the network or system that indicates computer intrusion. The Tanium Detect module detects, manages, and analyzes systems intrusion in real time. The module also responds to those detections.\n\nBy forwarding Detect events using Tanium Connect, the necessary forensic evidence supporting a compromise is retained.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92143",
+      "title": "The Tanium cryptographic signing capabilities must be enabled on the Tanium Server.",
+      "description": "All of Tanium's signing capabilities should be enabled upon install. Tanium supports the cryptographic signing and verification before execution of all Sensors, Questions, Actions, Sensor Libraries, File Shards, etc. Enabling signing does away with the ability of an attacker to conduct Man in the Middle (MitM) attacks for the purposes of remote code execution and precludes the modification of the aforementioned data elements in transit. Additionally, Tanium supports object level signing for content ingested into the Tanium platform. This allows for the detection and rejection of changes to objects (sensors, actions, etc.) by even a privileged user within Tanium.\n\nTanium has built-in signing capabilities enabled by default when installed. Cryptographic signing and verification of all Sensors, Questions, Actions, Sensor Libraries, File Shards, etc. before execution will be enforced by Tanium.\n\nSigning will prevent MitM remote code execution attacks and will protect data element in transit. Tanium also supports object level signing for content within the Tanium platform.\n\nSatisfies: SRG-APP-000131, SRG-APP-000233, SRG-APP-000317",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92145",
+      "title": "The Tanium Server must be configured to only allow signed content to be imported.",
+      "description": "Changes to any software components can have significant effects on the overall security of the application. Verifying software components have been digitally signed using a certificate that is recognized and approved by the organization ensures the software has not been tampered with and that it has been provided by a trusted vendor.\n\nAccordingly, patches, service packs, or application components must be signed with a certificate recognized and approved by the organization.\n\nVerifying the authenticity of the software prior to installation validates the integrity of the patch or upgrade received from a vendor. This ensures the software has not been tampered with and that it has been provided by a trusted vendor. Self-signed certificates are disallowed by this requirement. The application should not have to verify the software again. This requirement does not mandate DoD certificates for this purpose; however, the certificate used to verify the software must be from an approved CA.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92147",
+      "title": "All installation files originally downloaded to the Tanium Server must be configured to download to a location other than the Tanium Server directory.",
+      "description": "Typically, the Tanium Server stores the Package Source Files that it downloads from the Internet and server shares or files uploaded through the Tanium Console in a subdirectory of the server's installation directory called Downloads. To ensure package files are not accessible to non-authorized functions, the files must be re-located to outside of the server's installation directory.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92149",
+      "title": "Firewall rules must be configured on the Tanium Server for Client-to-Server communications.",
+      "description": "In addition to the client-to-server TCP communication that takes place over port 17472, Tanium Clients also communicate to other Tanium-managed computers over port 17472. The Tanium environment can perform hundreds or thousands of times faster than other security or systems management tools because the Tanium Clients communicate in secure, linearly-controlled peer-to-peer rings. Because clients dynamically communicate with other nearby agents based on proximity and latency, rings tend to form automatically to match a customer's topology--endpoints in California will form one ring while endpoints in Germany will form a separate ring.\n\nhttps://docs.tanium.com/platform_install/platform_install/reference_network_ports.html",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92151",
+      "title": "Firewall rules must be configured on the Tanium Zone Server for Client-to-Zone Server communications.",
+      "description": "In customer environments using the Tanium Zone Server, a Tanium Client may be configured to point to a Zone Server instead of a Tanium Server. The communication requirements for these Clients are identical to the Server-to-Client requirements.\n\nhttps://docs.tanium.com/platform_install/platform_install/reference_network_ports.html",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92153",
+      "title": "The Tanium Application Server must be configured to prohibit or restrict the use of organization-defined functions, ports, protocols, and/or services, as defined in the PPSM CAL and vulnerability assessments.",
+      "description": "In order to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nApplications are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., email and web services); however, doing so increases risk over limiting the services provided by any one component.\n\nTo support the requirements and principles of least functionality, the application must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality of life issues.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92155",
+      "title": "The Tanium Server certificates must have Extended Key Usage entries for the serverAuth object TLS Web Server Authentication and the clientAuth object TLS Web Client Authentication.",
+      "description": "Information can be either unintentionally or maliciously disclosed or modified during reception including, for example, during aggregation, at protocol transformation points, and during packing/unpacking. These unauthorized disclosures or modifications compromise the confidentiality or integrity of the information.\n\nThis requirement applies only to those applications that are either distributed or can allow access to data non-locally. Use of this requirement will be limited to situations where the data owner has a strict requirement for ensuring data integrity and confidentiality is maintained at every step of the data transfer and handling process. When receiving data, applications need to leverage protection mechanisms, such as TLS, SSL VPNs, or IPsec.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92157",
+      "title": "The Tanium Server certificate and private/public keys directory must be protected with appropriate permissions.",
+      "description": "If the private key is discovered, an attacker can use the key to authenticate as an authorized user and gain access to the network infrastructure.\n\nThe cornerstone of the PKI is the private key used to encrypt or digitally sign information.\n\nIf the private key is stolen, this will lead to the compromise of the authentication and non-repudiation gained through PKI because the attacker can use the private key to digitally sign documents and pretend to be the authorized user.\n\nBoth the holders of a digital certificate and the issuing authority must protect the computers, storage devices, or whatever they use to keep the private keys.",
+      "severity": "high"
+    },
+    {
+      "id": "V-92159",
+      "title": "The Tanium Module server must be installed on a separate system.",
+      "description": "Unauthorized access to the Tanium Server is protected by disabling the Module Server service on the Tanium Server and by configuring the Module Server on a separate system.\n\nWhen X509 smartcard certificates (CAC or PIV tokens) are used for access to the Tanium Server, the Tanium Module server must be on a separate system.\n\nIn order to restrict access to the Tanium Server resulting from an attack on the Module Server, it is recommended that the Tanium Module Server be installed on a separate system or VM from the Tanium Server. Adding to this recommendation, if the Tanium Server is configured to accept X509 Smartcard certificates (also referred to as CAC or PIV tokens) in lieu of username/password logon, the requirement becomes explicit and the Tanium Module Server must be installed on a separate system or VM.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92161",
+      "title": "The Tanium Server directory must be restricted with appropriate permissions.",
+      "description": "Discretionary Access Control (DAC) is based on the notion that individual users are \"owners\" of objects and therefore have discretion over who should be authorized to access the object and in which mode (e.g., read or write). Ownership is usually acquired as a consequence of creating the object or via specified ownership assignment. DAC allows the owner to determine who will have access to objects they control. An example of DAC includes user controlled file permissions.\n\nWhen discretionary access control policies are implemented, subjects are not constrained with regard to what actions they can take with information for which they have already been granted access. Thus, subjects that have been granted access to information are not prevented from passing (i.e., the subjects have the discretion to pass) the information to other subjects or objects. A subject that is constrained in its operation by Mandatory Access Control policies is still able to operate under the less rigorous constraints of this requirement. Thus, while Mandatory Access Control imposes constraints preventing a subject from passing information to another subject operating at a different sensitivity level, this requirement permits the subject to pass the information to any subject at the same sensitivity level. The policy is bounded by the information system boundary. Once the information is passed outside of the control of the information system, additional means may be required to ensure the constraints remain in effect. While the older, more traditional definitions of discretionary access control require identity-based access control, that limitation is not required for this use of discretionary access control.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92163",
+      "title": "The Tanium Server http directory and sub-directories must be restricted with appropriate permissions.",
+      "description": "Discretionary Access Control (DAC) is based on the notion that individual users are \"owners\" of objects and therefore have discretion over who should be authorized to access the object and in which mode (e.g., read or write). Ownership is usually acquired as a consequence of creating the object or via specified ownership assignment. DAC allows the owner to determine who will have access to objects they control. An example of DAC includes user controlled file permissions.\n\nWhen discretionary access control policies are implemented, subjects are not constrained with regard to what actions they can take with information for which they have already been granted access. Thus, subjects that have been granted access to information are not prevented from passing (i.e., the subjects have the discretion to pass) the information to other subjects or objects. A subject that is constrained in its operation by Mandatory Access Control policies is still able to operate under the less rigorous constraints of this requirement. Thus, while Mandatory Access Control imposes constraints preventing a subject from passing information to another subject operating at a different sensitivity level, this requirement permits the subject to pass the information to any subject at the same sensitivity level. The policy is bounded by the information system boundary. Once the information is passed outside of the control of the information system, additional means may be required to ensure the constraints remain in effect. While the older, more traditional definitions of discretionary access control require identity-based access control, that limitation is not required for this use of discretionary access control.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92165",
+      "title": "The permissions on the Tanium Server registry keys must be restricted to only the Tanium service account and the [Tanium Admins] group.",
+      "description": "Discretionary Access Control (DAC) is based on the notion that individual users are \"owners\" of objects and therefore have discretion over who should be authorized to access the object and in which mode (e.g., read or write). Ownership is usually acquired as a consequence of creating the object or via specified ownership assignment. DAC allows the owner to determine who will have access to objects they control. An example of DAC includes user controlled file permissions.\n\nWhen discretionary access control policies are implemented, subjects are not constrained with regard to what actions they can take with information for which they have already been granted access. Thus, subjects that have been granted access to information are not prevented from passing (i.e., the subjects have the discretion to pass) the information to other subjects or objects. A subject that is constrained in its operation by Mandatory Access Control policies is still able to operate under the less rigorous constraints of this requirement. Thus, while Mandatory Access Control imposes constraints preventing a subject from passing information to another subject operating at a different sensitivity level, this requirement permits the subject to pass the information to any subject at the same sensitivity level. The policy is bounded by the information system boundary. Once the information is passed outside of the control of the information system, additional means may be required to ensure the constraints remain in effect. While the older, more traditional definitions of discretionary access control require identity-based access control, that limitation is not required for this use of discretionary access control.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92167",
+      "title": "The Tanium Server Logs and TDL_Logs directories must be restricted with appropriate permissions.",
+      "description": "Discretionary Access Control (DAC) is based on the notion that individual users are \"owners\" of objects and therefore have discretion over who should be authorized to access the object and in which mode (e.g., read or write). Ownership is usually acquired as a consequence of creating the object or via specified ownership assignment. DAC allows the owner to determine who will have access to objects they control. An example of DAC includes user controlled file permissions.\n\nWhen discretionary access control policies are implemented, subjects are not constrained with regard to what actions they can take with information for which they have already been granted access. Thus, subjects that have been granted access to information are not prevented from passing (i.e., the subjects have the discretion to pass) the information to other subjects or objects. A subject that is constrained in its operation by Mandatory Access Control policies is still able to operate under the less rigorous constraints of this requirement. Thus, while Mandatory Access Control imposes constraints preventing a subject from passing information to another subject operating at a different sensitivity level, this requirement permits the subject to pass the information to any subject at the same sensitivity level. The policy is bounded by the information system boundary. Once the information is passed outside of the control of the information system, additional means may be required to ensure the constraints remain in effect. While the older, more traditional definitions of discretionary access control require identity-based access control, that limitation is not required for this use of discretionary access control.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92169",
+      "title": "All Active Directory accounts synchronized with Tanium for non-privileged functions must be non-privileged domain accounts.",
+      "description": "Tanium has the ability to synchronize with Active Directory for Tanium account management. Tanium advises that all replicated accounts for non-privileged level functions should be non-privileged domain accounts. In doing so, should a vulnerability in the industry standard OpenSSL libraries used by Tanium ever come to light, no privileged account information could be gained by an attacker. This is simply good housekeeping and should be exercised with any such platform product.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92171",
+      "title": "A Tanium connector must be configured to send log data to an external audit log reduction capable system.",
+      "description": "While the Tanium Server records audit log entries to the Tanium SQL database, retrieval and aggregation of log data through the Tanium console is not efficient.\n\nThe Tanium Connect module allows for SIEM connectors in order to facilitate forensic data retrieval and aggregation efficiently. Consult documentation at https://docs.tanium.com/connect/connect/index.html for supported Connections.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92173",
+      "title": "File integrity monitoring of critical executables that Tanium uses must be configured.",
+      "description": "Tanium inherently watches files and their respective hash values for change but while Tanium can do file integrity checks of critical executables, it is important to conduct File Integrity Monitoring (FIM) via an outside service such as Host Based Security System (HBSS) or similar security suites with FIM capability. These technologies provide independent monitoring of critical Tanium and system binaries.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92175",
+      "title": "Firewall rules must be configured on the Tanium module server to allow Server-to-Module Server communications from the Tanium Server.",
+      "description": "The Tanium Module Server is used to extend the functionality of Tanium through the use of various workbenches. The Tanium Module Server requires communication with the Tanium Server on port 17477. Without a proper connection from the Tanium Server to the Tanium Module Server, access to the system capabilities could be denied.\n\nhttps://docs.tanium.com/platform_install/platform_install/reference_network_ports.html.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92177",
+      "title": "Firewall rules must be configured on the Tanium Server for Server-to-Module Server communications.",
+      "description": "The Tanium Module Server is used to extend the functionality of Tanium through the use of various workbenches. The Tanium Module Server requires communication with the Tanium Server on port 17477.  Without a proper connection from the Tanium Server to the Tanium Module Server, access to the system capabilities could be denied.\n\nhttps://docs.tanium.com/platform_install/platform_install/reference_network_ports.html.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92179",
+      "title": "Firewall rules must be configured on the Tanium Server for Server-to-Zone Server communications.",
+      "description": "If you are using the Tanium Zone Server to proxy traffic from Tanium-managed computers on less trusted network segments to the Tanium Server on the core network, then the Tanium Zone Server Hub, typically installed to the Tanium Server device, must be able to connect to the Zone Server(s) in the DMZ. This is the only configuration that requires you to allow outbound traffic on port 17472 from the Tanium Server device. The ZoneServerList.txt configuration file located in the Tanium Zone Server Hub's installation folder identifies the addresses of the destination Zone Servers. See the Zone Server Configuration page for more details.\n\nPort Needed: Tanium Server to Zone Server over TCP port 17472.\n\nNetwork firewall rules:\n\nAllow TCP traffic on port 17472 from the Zone Server Hub, usually the Tanium Server device, to the destination DMZ devices(s) hosting the Zone Server(s).\n\nEndpoint firewall rules - for additional security, configure the following endpoint firewall rules:\n\nAllow TCP traffic outbound on port 17472 from only the Zone Server Hub process running on the Tanium Server device.\n\nAllow TCP traffic inbound on port 17472 to only the Zone Server process running on the designated Zone Server device(s).\n\nhttps://docs.tanium.com/platform_install/platform_install/reference_network_ports.html.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92181",
+      "title": "The SSLHonorCipherOrder must be configured to disable weak encryption algorithms on the Tanium Server.",
+      "description": "Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The application must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92183",
+      "title": "The Tanium Server certificate must be signed by a DoD Certificate Authority.",
+      "description": "The Tanium Server has the option to use a \"self-signed\" certificate or a Trusted Certificate Authority signed certificate for SSL connections. During evaluations of Tanium in Lab settings, customers often conclude that a \"self-signed\" certificate is an acceptable risk. However, in production environments it is critical that a SSL certificate signed by a Trusted Certificate Authority be used on the Tanium Server in lieu of an untrusted and insecure \"self-signed\" certificate.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92185",
+      "title": "Any Tanium configured EMAIL RESULTS connectors must be configured to enable TLS/SSL to encrypt communications.",
+      "description": "Information can be either unintentionally or maliciously disclosed or modified during preparation for transmission including, for example, during aggregation, at protocol transformation points, and during packing/unpacking. These unauthorized disclosures or modifications compromise the confidentiality or integrity of the information.\n\nThis requirement applies only to those applications that are either distributed or can allow access to data non-locally. Use of this requirement will be limited to situations where the data owner has a strict requirement for ensuring data integrity and confidentiality is maintained at every step of the data transfer and handling process. When transmitting data, applications need to leverage transmission protection mechanisms, such as TLS, SSL VPNs, or IPsec.\n\nAn example of this would be the SMTP queue. The SMTP mail protocol places email messages into a centralized queue prior to transmission. If someone were to modify an email message contained in the queue and the SMTP protocol did not check to ensure the email message was not modified while it was stored in the queue, a modified email could be sent.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92187",
+      "title": "Tanium Server files must be excluded from on-access antivirus actions.",
+      "description": "Similar to any other host-based applications, the Tanium Server is subject to the restrictions other System-level software may place on an operating environment. Antivirus, IPS, Encryption, or other security and management stack software may disallow the Tanium Server from working as expected.\n\nhttps://docs.tanium.com/platform_install/platform_install/reference_host_system_security_exceptions.html.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92189",
+      "title": "Tanium Server files must be protected from file encryption actions.",
+      "description": "Similar to any other host-based applications, the Tanium Server is subject to the restrictions other System-level software may place on an operating environment. Antivirus, Encryption, or other security and management stack software may disallow the Tanium Server from working as expected.\n\nhttps://docs.tanium.com/platform_install/platform_install/reference_host_system_security_exceptions.html.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92191",
+      "title": "The SSLCipherSuite must be configured to disable weak encryption algorithms on the Tanium Server.",
+      "description": "Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The application must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92193",
+      "title": "The Tanium max_soap_sessions_total setting must be explicitly enabled to limit the number of simultaneous sessions.",
+      "description": "Application management includes the ability to control the number of users and user sessions that utilize an application. Limiting the number of allowed users and sessions per user is helpful in limiting risks related to DoS attacks.\n\nThis requirement may be met via the application or by utilizing information system, session control provided by a web server with specialized session management capabilities. If it has been specified that this requirement will be handled by the application, the capability to limit the maximum number of concurrent single user sessions must be designed and built into the application.\n\nThis requirement addresses concurrent sessions for information system accounts and does not address concurrent sessions by single users via multiple system accounts. The maximum number of concurrent sessions should be defined based upon mission needs and the operational environment for each system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92195",
+      "title": "The Tanium max_soap_sessions_per_user setting must be explicitly enabled to limit the number of simultaneous sessions.",
+      "description": "Application management includes the ability to control the number of users and user sessions that utilize an application. Limiting the number of allowed users and sessions per user is helpful in limiting risks related to DoS attacks.\n\nThis requirement may be met via the application or by utilizing information system session control provided by a web server with specialized session management capabilities. If it has been specified that this requirement will be handled by the application, the capability to limit the maximum number of concurrent single user sessions must be designed and built into the application.\n\nThis requirement addresses concurrent sessions for information system accounts and does not address concurrent sessions by single users via multiple system accounts. The maximum number of concurrent sessions should be defined based upon mission needs and the operational environment for each system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92197",
+      "title": "The Tanium soap_max_keep_alive setting must be explicitly enabled to limit the number of simultaneous sessions.",
+      "description": "Application management includes the ability to control the number of users and user sessions that utilize an application. Limiting the number of allowed users and sessions per user is helpful in limiting risks related to DoS attacks.\n\nThis requirement may be met via the application or by utilizing information system session control provided by a web server with specialized session management capabilities. If it has been specified that this requirement will be handled by the application, the capability to limit the maximum number of concurrent single user sessions must be designed and built into the application.\n\nThis requirement addresses concurrent sessions for information system accounts and does not address concurrent sessions by single users via multiple system accounts. The maximum number of concurrent sessions should be defined based upon mission needs and the operational environment for each system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92199",
+      "title": "The Tanium documentation identifying recognized and trusted folders for Detect Local Directory Source must be maintained.",
+      "description": "An IOC stream is a series or \"stream\" of IOCs that are imported from a vendor based on a subscription service or manually downloaded and placed in a folder. Detect can be configured to retrieve the IOC content on a regularly scheduled basis. The items in an IOC stream can be separately manipulated after they are imported.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92201",
+      "title": "The Tanium Detect Local Directory Source must be configured to restrict access to only authorized maintainers of Intel.",
+      "description": "An IOC stream is a series or \"\"stream\"\" of intel that are imported from a vendor based on a subscription service or manually downloaded and placed in a folder. Detect can be configured to retrieve the IOC content on a regularly scheduled basis. The items in an IOC stream can be separately manipulated after they are imported.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92203",
+      "title": "The Tanium documentation identifying recognized and trusted SCAP sources must be maintained.",
+      "description": "NIST validated SCAP XML documents are provided from several possible sources such as DISA, NIST, and the other non-government entities. These documents are used as the basis of compliance definitions leveraged to automate compliance auditing of systems. These documents are updated on different frequencies and must be manually downloaded on regular intervals and imported in order to be current. Non-approved SCAP definitions lead to a false sense of security when evaluating an enterprise environment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92205",
+      "title": "The Tanium documentation identifying recognized and trusted OVAL feeds must be maintained.",
+      "description": "OVAL XML documents are provided from several possible sources such as the CIS open source repository, or any number of vendor/3rd party paid repositories. These documents are used to automate the passive validation of vulnerabilities on systems and therefore require a reasonable level of confidence in their origin. Non-approved OVAL definitions lead to a false sense of security when evaluating an enterprise environment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92207",
+      "title": "Tanium Comply must be configured to receive SCAP content only from trusted sources.",
+      "description": "NIST-validated SCAP XML documents are provided from several possible sources such as DISA, NIST, and the other non-government entities. These documents are used as the basis of compliance definitions leveraged to automate compliance auditing of systems. These documents are updated on different frequencies and must be manually downloaded on regular intervals and imported in order to be current. Non-approved SCAP definitions lead to a false sense of security when evaluating an enterprise environment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92209",
+      "title": "Tanium Comply must be configured to receive OVAL feeds only from trusted sources.",
+      "description": "OVAL XML documents are provided from several possible sources such as the CIS open source repository, or any number of vendor/3rd party paid repositories. These documents are used to automate the passive validation of vulnerabilities on systems and therefore require a reasonable level of confidence in their origin. Non-approved OVAL definitions lead to a false sense of security when evaluating an enterprise environment.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92211",
+      "title": "The Tanium application must be configured in a High-Availability (HA) setup to ensure minimal loss of data and minimal disruption to mission processes in the event of a system failure.",
+      "description": "Failure to a known state can address safety or security in accordance with the mission/business needs of the organization. Failure to a known secure state helps prevent a loss of confidentiality, integrity, or availability in the event of a failure of the information system or a component of the system. Preserving application state information helps to facilitate application restart and return to the operational mode of the organization with less disruption to mission-essential processes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92213",
+      "title": "The bandwidth consumption for the Tanium Application server must be limited.",
+      "description": "DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity.\n\nIn the case of application DoS attacks, care must be taken when designing the application to ensure the application makes the best use of system resources. SQL queries have the potential to consume large amounts of CPU cycles if they are not tuned for optimal performance. Web services containing complex calculations requiring large amounts of time to complete can bog down if too many requests for the service are encountered within a short period of time.\n\nThe methods employed to meet this requirement will vary depending upon the technology the application utilizes. However, a variety of technologies exist to limit or, in some cases, eliminate the effects of application related DoS attacks. Employing increased capacity and bandwidth combined with specialized application layer protection devices and service redundancy may reduce the susceptibility to some DoS attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92215",
+      "title": "The Tanium SQL Server RDBMS must be configured with sufficient free space to ensure audit logging is not impacted.",
+      "description": "In order to ensure Tanium has sufficient storage capacity in which to write the audit logs, the SQL Server RDMBS must be configured with sufficient free space.\n\nConsult the server sizing documents located at https://docs.tanium.com/platform_install/platform_install/reference_host_system_sizing_guidelines.html to determine how much free space should be allocated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92217",
+      "title": "The Tanium application must limit the bandwidth used in communicating with endpoints to prevent a Denial of Service (DoS) condition at the server.",
+      "description": "DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity.\n\nThis requirement addresses the configuration of applications to mitigate the impact of DoS attacks that have occurred or are ongoing on application availability. For each application, known and potential DoS attacks must be identified and solutions for each type implemented. A variety of technologies exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or restricting the number of sessions the application opens at one time). Employing increased capacity and bandwidth, combined with service redundancy, may reduce the susceptibility to some DoS attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92219",
+      "title": "The Tanium Application Server must install security-relevant software updates within the time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).",
+      "description": "Security flaws with software applications are discovered daily. Vendors are constantly updating and patching their products to address newly discovered security vulnerabilities. Organizations (including any contractor to the organization) are required to promptly install security-relevant software updates (e.g., patches, service packs, and hot fixes). Flaws discovered during security assessments, continuous monitoring, incident response activities, or information system error handling must also be addressed expeditiously.\n\nOrganization-defined time periods for updating security-relevant software may vary based on a variety of factors including, for example, the security category of the information system or the criticality of the update (i.e., severity of the vulnerability related to the discovered flaw).\n\nThis requirement will apply to software patch management solutions that are used to install patches across the enclave and to applications themselves that are not part of that patch management solution. For example, many browsers today provide the capability to install their own patch software. Patch criticality, as well as system criticality will vary. Therefore, the tactical situations regarding the patch management process will also vary. This means that the time period utilized must be a configurable parameter. Time frames for application of security-relevant software updates may be dependent upon the Information Assurance Vulnerability Management (IAVM) process.\n\nThe application will be configured to check for and install security-relevant software updates within an identified time period from the availability of the update. The specific time period will be defined by an authoritative source (e.g. IAVM, CTOs, DTMs, and STIGs).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92221",
+      "title": "Tanium Server files must be excluded from host-based intrusion prevention intervention.",
+      "description": "Similar to any other host-based applications, the Tanium Server is subject to the restrictions other System-level software may place on an operating environment. Antivirus, IPS, Encryption, or other security and management stack software may disallow the Tanium Server from working as expected.\n\nhttps://docs.tanium.com/platform_install/platform_install/reference_host_system_security_exceptions.html.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92223",
+      "title": "The Tanium application must set an absolute timeout for sessions.",
+      "description": "Automatic session termination addresses the termination of user-initiated logical sessions in contrast to the termination of network connections that are associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever a user (or process acting on behalf of a user) accesses an organizational information system. Such user sessions can be terminated (and thus terminate user access) without terminating network sessions.\n\nSession termination terminates all processes associated with a user's logical session except those processes that are specifically created by the user (i.e., session owner) to continue after the session is terminated.\n\nConditions or trigger events requiring automatic session termination can include, for example, organization-defined periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use.\n\nThis capability is typically reserved for specific application system functionality where the system owner, data owner, or organization requires additional assurance. Based upon requirements and events specified by the data or application owner, the application developer must incorporate logic into the application that will provide a control mechanism that disconnects users upon the defined event trigger. The methods for incorporating this requirement will be determined and specified on a case-by-case basis during the application design and development stages.\n\nLeaving sessions open indefinitely is a major security risk. An attacker can easily use an already authenticated session to access the hosted application as the previously authenticated user. By closing sessions after an absolute period of time, the user is forced to re-authenticate, guaranteeing the session is still in use. Enabling an absolute timeout for sessions closes sessions that are still active.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92225",
+      "title": "The Tanium application must set an inactive timeout for sessions.",
+      "description": "Leaving sessions open indefinitely is a major security risk. An attacker can easily use an already authenticated session to access the hosted application as the previously authenticated user. By closing sessions after a set period of inactivity, the web server can make certain that sessions that are not closed through the user logging out of an application are eventually closed.\n\nAcceptable values are 5 minutes for high-value applications, 10 minutes for medium-value applications, and 20 minutes for low-value applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92227",
+      "title": "The Tanium application service must be protected from being stopped by a non-privileged user.",
+      "description": "DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity.\n\nThis requirement addresses the configuration of applications to mitigate the impact of DoS attacks that have occurred or are ongoing on application availability. For each application, known and potential DoS attacks must be identified and solutions for each type implemented. A variety of technologies exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or restricting the number of sessions the application opens at one time). Employing increased capacity and bandwidth, combined with service redundancy, may reduce the susceptibility to some DoS attacks.\n\nA web server not properly tuned may become overwhelmed and cause a DoS condition even with expected traffic from users. To avoid a DoS, the web server must be tuned to handle the expected traffic for the hosted applications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92229",
+      "title": "The Tanium web server must be tuned to handle the operational requirements of the hosted application.",
+      "description": "DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity.\n\nThis requirement addresses the configuration of applications to mitigate the impact of DoS attacks that have occurred or are ongoing on application availability. For each application, known and potential DoS attacks must be identified and solutions for each type implemented. A variety of technologies exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or restricting the number of sessions the application opens at one time). Employing increased capacity and bandwidth, combined with service redundancy, may reduce the susceptibility to some DoS attacks.\n\nAn attacker has at least two reasons to stop a web server. The first is to cause a Denial of Service (DoS), and the second is to put in place changes the attacker made to the web server configuration. \n\nTo prohibit an attacker from stopping the web server, the process ID (pid) of the web server and the utilities used to start/stop the web server must be protected from access by non-privileged users. By knowing the pid and having access to the web server utilities, a non-privileged user has a greater capability of stopping the server, whether intentionally or unintentionally.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92231",
+      "title": "The Tanium application, SQL and Module servers must all be configured to communicate using TLS 1.2 Strict Only.",
+      "description": "Without protection of the transmitted information, confidentiality and integrity may be compromised since unprotected communications can be intercepted and either read or altered.\n\nThis requirement applies only to those applications that are either distributed or can allow access to data non-locally. Use of this requirement will be limited to situations where the data owner has a strict requirement for ensuring data integrity and confidentiality is maintained at every step of the data transfer and handling process. When transmitting data, applications need to leverage transmission protection mechanisms, such as TLS, SSL VPNs, or IPsec. FIPS 140-2 approved TLS versions must be enabled, and non-FIPS-approved SSL versions must be disabled. NIST SP 800-52 defines the approved TLS versions for government applications.\n\nCommunication paths outside the physical protection of a controlled boundary are exposed to the possibility of interception and modification. Protecting the confidentiality and integrity of organizational information can be accomplished by physical means (e.g., employing physical distribution systems) or by logical means (e.g., employing cryptographic techniques). If physical means of protection are employed, then logical means (cryptography) do not have to be employed, and vice versa.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92233",
+      "title": "The Tanium application must be configured to communicate using TLS 1.2 Strict Only.",
+      "description": "Without protection of the transmitted information, confidentiality and integrity may be compromised since unprotected communications can be intercepted and either read or altered.\n\nThis requirement applies only to those applications that are either distributed or can allow access to data non-locally. Use of this requirement will be limited to situations where the data owner has a strict requirement for ensuring data integrity and confidentiality is maintained at every step of the data transfer and handling process. When transmitting data, applications need to leverage transmission protection mechanisms, such as TLS, SSL VPNs, or IPsec. FIPS 140-2 approved TLS versions must be enabled, and non-FIPS-approved SSL versions must be disabled. NIST SP 800-52 defines the approved TLS versions for government applications.\n\nCommunication paths outside the physical protection of a controlled boundary are exposed to the possibility of interception and modification. Protecting the confidentiality and integrity of organizational information can be accomplished by physical means (e.g., employing physical distribution systems) or by logical means (e.g., employing cryptographic techniques). If physical means of protection are employed, then logical means (cryptography) do not have to be employed, and vice versa.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92235",
+      "title": "The Tanium application must be configured to communicate using TLS 1.2 Strict Only.",
+      "description": "Without protection of the transmitted information, confidentiality and integrity may be compromised since unprotected communications can be intercepted and either read or altered.\n\nThis requirement applies only to those applications that are either distributed or can allow access to data non-locally. Use of this requirement will be limited to situations where the data owner has a strict requirement for ensuring data integrity and confidentiality is maintained at every step of the data transfer and handling process. When transmitting data, applications need to leverage transmission protection mechanisms, such as TLS, SSL VPNs, or IPsec. FIPS 140-2 approved TLS versions must be enabled, and non-FIPS-approved SSL versions must be disabled. NIST SP 800-52 defines the approved TLS versions for government applications.\n\nCommunication paths outside the physical protection of a controlled boundary are exposed to the possibility of interception and modification. Protecting the confidentiality and integrity of organizational information can be accomplished by physical means (e.g., employing physical distribution systems) or by logical means (e.g., employing cryptographic techniques). If physical means of protection are employed, then logical means (cryptography) do not have to be employed, and vice versa.",
+      "severity": "medium"
+    }
+  ]
+}

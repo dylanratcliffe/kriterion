@@ -1,6 +1,6 @@
 {
   "name": "stig_mcafee_vsel_1.92.0_local_client",
-  "date": "2016-03-31",
+  "date": "2020-03-24",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "McAfee VSEL 1.9/2.0 Local Client Security Technical Implementation Guide",
   "version": "1",
@@ -203,12 +203,6 @@
       "id": "V-63133",
       "title": "The McAfee VirusScan Enterprise for Linux 1.9.x/2.0.x On-Demand scanner must be configured to include all local drives and their sub-directories.",
       "description": "When scanning for malware, excluding specific file types will increase the risk of a malware-infected file going undetected. By configuring anti-virus software to scan all file types, the scanner has a higher success rate at detecting and eradicating malware.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-63135",
-      "title": "The McAfee VirusScan Enterprise for Linux 1.9.x/2.0.x On-Demand scanner must be enabled to scan mounted volumes when mounted volumes point to a network server without an anti-virus solution installed.",
-      "description": "Mounting network volumes to other network systems introduces a path for malware to be introduced. It is imperative to protect Linux systems from malware introduced from those other network systems by either ensuring the remote systems are protected or by scanning files from those systems when they are accessed.",
       "severity": "medium"
     },
     {

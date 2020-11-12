@@ -1,6 +1,6 @@
 {
   "name": "stig_zos_compuware_abend-aidtss",
-  "date": "2015-09-25",
+  "date": "2018-07-06",
   "description": "None",
   "title": "z/OS Compuware Abend-AID for TSS STIG",
   "version": "None",
@@ -33,13 +33,13 @@
     },
     {
       "id": "V-17947",
-      "title": "Compuware Abend-AID resources will be properly defined and protected.",
+      "title": "Compuware Abend-AID resources must be properly defined and protected.",
       "description": "Compuware Abend-AID can run with sensitive system privileges, and potentially can circumvent system controls.  Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data.  Many utilities assign resource controls that can be granted to system programmers only in greater than read authority.  Resources are also granted to certain non systems personnel with read only authority.",
       "severity": "medium"
     },
     {
       "id": "V-18014",
-      "title": "Compuware Abend-AID external security options will be specified properly.",
+      "title": "Compuware Abend-AID external security options must be specified properly.",
       "description": "Compuware Abend-AID offers external security interfaces that are controlled by parameters specified in FDBDPARM DD statement of the started task procedures.  These interfaces provide security controls for Abend-AID.  Without proper controls to ensure that security is active, the integrity of the Compuware Abend-AID System and the confidentiality of data stored on the system may be compromised.",
       "severity": "medium"
     },

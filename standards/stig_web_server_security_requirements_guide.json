@@ -1,6 +1,6 @@
 {
   "name": "stig_web_server_security_requirements_guide",
-  "date": "2015-08-28",
+  "date": "2019-03-20",
   "description": "The Web Server SRG is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the NIST 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailbox@mail.mil.",
   "title": "Web Server Security Requirements Guide",
   "version": "2",
@@ -567,7 +567,7 @@
     },
     {
       "id": "V-56033",
-      "title": "The web server must install security-relevant software updates within the configured time period directed by an authoritative source (e.g. IAVM, CTOs, DTMs, and STIGs).",
+      "title": "The web server must install security-relevant software updates within the configured time period directed by an authoritative source (e.g., IAVM, CTOs, DTMs, and STIGs).",
       "description": "Security flaws with software applications are discovered daily. Vendors are constantly updating and patching their products to address newly discovered security vulnerabilities. Organizations (including any contractor to the organization) are required to promptly install security-relevant software updates (e.g., patches, service packs, and hot fixes). Flaws discovered during security assessments, continuous monitoring, incident response activities, or information system error handling must also be addressed expeditiously. \n\nThe web server will be configured to check for and install security-relevant software updates from an authoritative source within an identified time period from the availability of the update. By default, this time period will be every 24 hours.",
       "severity": "medium"
     },

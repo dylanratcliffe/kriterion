@@ -1,6 +1,6 @@
 {
   "name": "stig_voice_video_session_management_security_requirements_guide",
-  "date": "2017-12-28",
+  "date": "2018-07-10",
   "description": "This Security Requirements Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Voice Video Session Management Security Requirements Guide",
   "version": "1",
@@ -17,13 +17,13 @@
       "id": "V-62051",
       "title": "The Voice Video Session Manager must enforce registration of only approved Voice Video endpoints prior to operation.",
       "description": "Authentication must not automatically give an entity access to an asset. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Registration authenticates and authorizes endpoints with the Voice Video Session Manager.\n\nFor most VoIP systems, registration is the process of centrally recording the user ID, endpoint MAC address, service/policy profile with 2 stage authentication prior to authorizing the establishment of the session and user service. The event of successful registration creates the session record immediately. VC systems register using a similar process with a gatekeeper. Without enforcing registration, an adversary could impersonate a legitimate device on the Voice Video network.",
-      "severity": "medium"
+      "severity": "high"
     },
     {
       "id": "V-62053",
       "title": "The Voice Video Session Manager must disable (prevent) auto-registration of Voice Video endpoints.",
       "description": "Authentication must not automatically give an entity access to an asset. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Registration authenticates and authorizes endpoints with the Voice Video Session Manager.\n\nFor most VoIP systems, registration is the process of centrally recording the user ID, endpoint MAC address, service/policy profile with 2 stage authentication prior to authorizing the establishment of the session and user service. The event of successful registration creates the session record immediately. VC systems register using a similar process with a gatekeeper. Auto-registration is an automatic means of detecting and registering a Voice Video endpoint on the network with a session manager and then downloading its configuration to the instrument. Auto-registration allows unauthorized instruments to be added or moved without authorization, possibly allowing theft of services or other malicious attack. Configuring the firewall to deny registration (port 1719, etc.) is another layer of defense.",
-      "severity": "medium"
+      "severity": "high"
     },
     {
       "id": "V-62055",
@@ -35,7 +35,7 @@
       "id": "V-62057",
       "title": "The Voice Video Session Manager must control flow outside the enclave based on approved dial plans.",
       "description": "Information flow control regulates where information is allowed to travel within a network and between interconnected networks. The flow of all network traffic must be monitored and controlled so it does not introduce any unacceptable risk to the network infrastructure or data. \n\nFor voice and video session managers, session flow of information is controlled by dial plans that coordinate connections between endpoints. Dial plans can also reduce connection costs in some cases, relying on routes across the DoDIN rather than over commercial services. Session managers can routes connections to known commercial services and DoD providers. Using DoDIN network paths reduces the risk of an adversary to intercept calls. However, dial plans can be mimicked and therefore are only part of a defense in depth approach.",
-      "severity": "medium"
+      "severity": "high"
     },
     {
       "id": "V-62059",
@@ -113,7 +113,7 @@
       "id": "V-62089",
       "title": "The Voice Video Session Manager must only use of ports, protocols, and services allowed per the Ports, Protocols, and Services Management (PPSM) Category Assurance List (CAL) and Vulnerability Assessments (VAs).",
       "description": "In order to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nNetwork elements are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., VPN and IPS); however, doing so increases risk over limiting the services provided by any one component. \n\nTo support the requirements and principles of least functionality, the network element must support the organizational requirements providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality of life issues.\n\nRequires further clarification from NIST.",
-      "severity": "medium"
+      "severity": "high"
     },
     {
       "id": "V-62091",
@@ -131,13 +131,13 @@
       "id": "V-62095",
       "title": "The Voice Video Session Manager must use encryption for signaling and media traffic.",
       "description": "All signaling and media traffic from a Voice Video Session Manager must be encrypted. Network elements utilizing encryption are required to use FIPS compliant mechanisms for authenticating to cryptographic modules. FIPS 140-2 is the current standard for validating that mechanisms used to access cryptographic modules utilize authentication that meets DoD requirements. Unapproved mechanisms used for authentication to the cryptographic module are not verified, and therefore cannot be relied upon to provide confidentiality or integrity and DoD data may be compromised.\n\nVoice Video protocol suites include SIP, SCCP, and H.323. Each of these protocol suites uses different methodologies for securing transmitted signaling. The H.323 protocol suite relies on the H.235 series, which describes security within H.323, including security for both signaling and media. For SIP protocol, the DoD has created the AS-SIP protocol, which provides for implementing Transport Layer Security (TLS), Multi-Level Precedence and Preemption (MLPP), reliance on Secure Real-Time Transport Protocol (SRTP) for media streams, and Differentiated Services Code Point (DSCP) for traffic management through priority packet routing. To secure SCCP, TLS must be implemented with the protocol.",
-      "severity": "medium"
+      "severity": "high"
     },
     {
       "id": "V-62097",
       "title": "The Voice Video Session Manager must terminate all network connections associated with a communications session at the end of the session, or the session must be terminated after 15 minutes of inactivity.",
       "description": "Terminating network connections associated with communications sessions includes, for example, de-allocating associated TCP/IP address/port pairs at the operating system level, and de-allocating networking assignments at the application level if multiple application sessions are using a single, operating system level network connection.\n\nVoice Video Session Managers do not conduct media session; they conduct the session termination signaling. Endpoints and border elements conduct the media sessions and de-allocate those resources. However, sessions that do not receive a response from the far end may require the session manager to request termination of communication sessions.",
-      "severity": "medium"
+      "severity": "high"
     },
     {
       "id": "V-62099",
@@ -155,7 +155,7 @@
       "id": "V-62103",
       "title": "The Voice Video Session Manager must protect the authenticity of communications sessions.",
       "description": "Authenticity protection provides protection against man-in-the-middle attacks/session hijacking and the insertion of false information into sessions.\n\nThis requirement focuses on communications protection for the application session rather than for the network packet and establishes grounds for confidence at both ends of communications sessions in ongoing identities of other parties and in the validity of information transmitted. VC and UC require the use of TLS mutual authentication (two-way/bidirectional) for authenticity.",
-      "severity": "medium"
+      "severity": "high"
     },
     {
       "id": "V-62105",
@@ -245,19 +245,19 @@
       "id": "V-62133",
       "title": "The Voice Video Session Manager must protect the confidentiality of transmitted configuration files, signaling, and media streams.",
       "description": "Without protection of the transmitted information, confidentiality and integrity may be compromised as unprotected communications can be intercepted and either read or altered. Communication paths outside the physical protection of a controlled boundary are exposed to the possibility of interception and modification.\n\nVoice Video protocol suites include SIP, SCCP, and H.323. Each of these protocol suites uses different methodologies for securing transmitted signaling. The H.323 protocol suite relies on the H.235 series, which describes security within H.323, including security for both signaling and media. For SIP protocol, the DoD has created the AS-SIP protocol, which provides for implementing Transport Layer Security (TLS), Multi-Level Precedence and Preemption (MLPP), reliance on Secure Real-Time Transport Protocol (SRTP) for media streams, and Differentiated Services Code Point (DSCP) for traffic management through priority packet routing. To secure SCCP, TLS must be implemented with the protocol.\n\nNote: It is expected that this requirement be used to address each protocol individually. A separate STIG requirement for each protocol used identifying the methods to protect the confidentiality and integrity of transmitted control information (including registration files) and media streams must be produced.",
-      "severity": "medium"
+      "severity": "high"
     },
     {
       "id": "V-62135",
       "title": "The Voice Video Session Manager must protect the integrity of transmitted configuration files, signaling, and media streams.",
       "description": "Without protection of the transmitted information, confidentiality and integrity may be compromised as unprotected communications can be intercepted and either read or altered. Communication paths outside the physical protection of a controlled boundary are exposed to the possibility of interception and modification.\n\nVoice Video protocol suites include SIP, SCCP, and H.323. Each of these protocol suites uses different methodologies for securing transmitted signaling. The H.323 protocol suite relies on the H.235 series, which describes security within H.323, including security for both signaling and media. For SIP protocol, the DoD has created the AS-SIP protocol, which provides for implementing Transport Layer Security (TLS), Multi-Level Precedence and Preemption (MLPP), reliance on Secure Real-Time Transport Protocol (SRTP) for media streams, and Differentiated Services Code Point (DSCP) for traffic management through priority packet routing. To secure SCCP, TLS must be implemented with the protocol.\n\nNote: It is expected that this requirement be used to address each protocol individually. A separate STIG requirement for each protocol used identifying the methods to protect the confidentiality and integrity of transmitted control information (including registration files) and media streams must be produced.",
-      "severity": "medium"
+      "severity": "high"
     },
     {
       "id": "V-62137",
       "title": "The Voice Video Session Manager must implement NIST FIPS-validated cryptography to generate cryptographic hashes and to protect sensitive unclassified information.",
       "description": "Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The network element must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.\n\nVoice Video protocol suites include SIP, SCCP, and H.323. Each of these protocol suites uses different methodologies for securing transmitted signaling. The H.323 protocol suite relies on the H.235 series, which describes security within H.323, including security for both signaling and media. For SIP protocol, the DoD has created the AS-SIP protocol, which provides for implementing Transport Layer Security (TLS), Multi-Level Precedence and Preemption (MLPP), reliance on Secure Real-Time Transport Protocol (SRTP) for media streams, and Differentiated Services Code Point (DSCP) for traffic management through priority packet routing. To secure SCCP, TLS must be implemented with the protocol.",
-      "severity": "medium"
+      "severity": "high"
     },
     {
       "id": "V-62139",
@@ -291,14 +291,14 @@
     },
     {
       "id": "V-62149",
-      "title": "The Voice Video Session Manager must apply 802.1Q VLAN tags to signaling and media traffic.",
-      "description": "When network elements do not dynamically reconfigure the data security attributes as data is created and combined, the possibility exists that security attributes will not correctly reflect the data with which they are associated. For the Voice Video Session Manager, the use of 802.1q tags on media and signaling, and the use of VLANs provides this layer of security. VLANs facilitate access and traffic control for voice video system components and enhanced QoS.\n\nVirtualized networking is used to separate voice video traffic from other types of traffic, such as data, management, and other special types. VLANs provide segmentation at layer 2. Virtual Routing and Forwarding (VRF) provides segmentation at layer 3, and works with Multiprotocol Label Switching (MPLS) for enterprise and WAN environments. When VRF is used without MPLS, it is referred to as VRF lite. For Voice Video systems, VLANs and VRFs are used to separate media and signaling streams from all other traffic.",
+      "title": "The Voice Video Session Manager must apply 802.1Q VLAN tags to signaling and media traffic or be in a private subnet.",
+      "description": "When network elements do not dynamically reconfigure the data security attributes as data is created and combined, the possibility exists that security attributes will not correctly reflect the data with which they are associated. For the Voice Video Session Manager, the use of 802.1q tags on media and signaling, and the use of VLANs provides this layer of security. VLANs facilitate access and traffic control for voice video system components and enhanced QoS.\n\nVirtualized networking is used to separate voice video traffic from other types of traffic, such as data, management, and other special types. VLANs provide segmentation at layer 2. Virtual Routing and Forwarding (VRF) provides segmentation at layer 3, and works with Multiprotocol Label Switching (MPLS) for enterprise and WAN environments. When VRF is used without MPLS, it is referred to as VRF lite. For Voice Video systems, subnets, VLANs, and VRFs are used to separate media and signaling streams from all other traffic.",
       "severity": "medium"
     },
     {
       "id": "V-62151",
       "title": "The Voice Video Session Manager must use a voice or video VLAN, separate from all other VLANs.",
-      "description": "When network elements do not dynamically reconfigure the data security attributes as data is created and combined, the possibility exist that security attributes will not correctly reflect the data with which they are associated. For the Voice Video Session Manager, the use of 802.1q tags on media and signaling, and the use of VLANs provides this layer of security. VLANs facilitate access and traffic control for voice video system components and enhanced QoS.\n\nVirtualized networking is used to separate voice video traffic from other types of traffic, such as data, management, and other special types. VLANs provide segmentation at layer 2. Virtual Routing and Forwarding (VRF) provides segmentation at layer 3, and works with Multiprotocol Label Switching (MPLS) for enterprise and WAN environments. When VRF is used without MPLS, it is referred to as VRF lite. For Voice Video systems, VLANs and VRFs are used to separate media and signaling streams from all other traffic.",
+      "description": "When network elements do not dynamically reconfigure the data security attributes as data is created and combined, the possibility exist that security attributes will not correctly reflect the data with which they are associated. For the Voice Video Session Manager, the use of 802.1q tags on media and signaling, and the use of VLANs provides this layer of security. VLANs facilitate access and traffic control for voice video system components and enhanced QoS.\n\nVirtualized networking is used to separate voice video traffic from other types of traffic, such as data, management, and other special types. VLANs provide segmentation at layer 2. Virtual Routing and Forwarding (VRF) provides segmentation at layer 3, and works with Multiprotocol Label Switching (MPLS) for enterprise and WAN environments. When VRF is used without MPLS, it is referred to as VRF lite. For Voice Video systems, subnets, VLANs, and VRFs are used to separate media and signaling streams from all other traffic.",
       "severity": "medium"
     },
     {

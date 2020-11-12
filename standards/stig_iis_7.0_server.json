@@ -1,0 +1,155 @@
+{
+  "name": "stig_iis_7.0_server",
+  "date": "2019-05-01",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "IIS 7.0 Server STIG",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-13591",
+      "title": "Classified web servers will be afforded physical security commensurate with the classification of its content.",
+      "description": "When data of a classified nature is migrated to a web server, fundamental principles applicable to the safeguarding of classified material must be followed. A classified web server needs to be afforded physical security commensurate with the classification of its content to ensure the protection of the data it houses.",
+      "severity": "high"
+    },
+    {
+      "id": "V-13621",
+      "title": "All web server documentation, sample code, example applications, and tutorials must be removed from a production web server.",
+      "description": "Web server documentation, sample code, example applications, and tutorials may be an exploitable threat to a web server. A production web server may only contain components that are operationally necessary (i.e., compiled code, scripts, web content, etc.). Delete all directories containing samples and any scripts used to execute the samples.",
+      "severity": "high"
+    },
+    {
+      "id": "V-13672",
+      "title": "The private web server must use an approved DoD certificate validation process.",
+      "description": "The Certificate Revocation List (CRL) is used for a number of reasons, for example, when an employee leaves, certificates expire, or if certificate keys become compromised and are reissued. Without the use of a certificate validation process, the server is vulnerable to accepting expired or revoked certificates. This could allow unauthorized individuals access to the web server. The CRL is a repository comprised of revoked certificate data, usually from many contributing CRL sources. \nSites using an Online Certificate Status Protocol (OCSP) rather than CRL download to validate certificates will have obtained and installed an OCSP validation application.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-13700",
+      "title": "The File System Object component must be disabled.",
+      "description": "Some Component Object Model (COM) components are not required for most applications and should be removed if possible.  Most notably, consider disabling the File System Object component; however, this will also remove the Dictionary object. Be aware some programs may require this component (e.g., Commerce Server), so it is highly recommended this be tested completely before implementing on the production web server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2234",
+      "title": "Public web server resources must not be shared with private assets.",
+      "description": "It is important to segregate public web server resources from private resources located behind the DoD DMZ in order to protect private assets. When folders, drives or other resources are directly shared between the public web server and private servers the intent of data and resource segregation can be compromised. \n\nResources, such as, printers, files, and folders/directories must not be shared between public web servers and assets located within the internal network. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2235",
+      "title": "The service account ID used to run the website must have its password changed at least annually.",
+      "description": "Normally, a service account is established for the web service to run under rather than permitting it to run as system or root.  If the web service account requires a password, the password must be changed at least annually.  It is a fundamental tenet of security that passwords are not to be null and must not be set to never expire.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2236",
+      "title": "Installation of compilers on production web servers is prohibited.",
+      "description": "The presence of a compiler on a production server facilitates the malicious user’s task of creating custom versions of programs and installing Trojan Horses or viruses.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2242",
+      "title": "A public web server, if hosted on the NIPRNet, must be isolated in an accredited DoD DMZ Extension.",
+      "description": "To minimize exposure of private assets to unnecessary risk by attackers, public web servers must be isolated from internal systems.  Public web servers are by nature more vulnerable to attack from publically based sources, such as the public Internet. Once compromised, a public web server might be used as a base for further attack on private resources, unless additional layers of protection are implemented. Public web servers must be located in a DoD DMZ Extension, if hosted on the NIPRNet, with carefully controlled access. Failure to isolate resources in this way increase risk that private assets are exposed to attacks from public sources.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2243",
+      "title": "A private web server must be located on a separate controlled access subnet.",
+      "description": "Private web servers, which host sites that serve controlled access data, must be protected from outside threats in addition to insider threats, which can cause a disruption in service of the web server. To protect the private web server from these threats, it must be located on a separately controlled access subnet and must not be a part of the public DMZ that houses the public web servers. It also cannot be located inside the enclave as part of the local general population LAN.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2246",
+      "title": "The web server must use a vendor-supported version of the web server software.",
+      "description": "Several vulnerabilities are associated with older versions of web server software. As hot fixes and patches are issued, these solutions are included in the next version of the server software.  Maintaining the web server at a current version makes the efforts of a malicious user more difficult.",
+      "severity": "high"
+    },
+    {
+      "id": "V-2247",
+      "title": "Only administrators are allowed access to the directory tree, the shell, or other operating system functions and utilities.",
+      "description": "As a rule, accounts on a web server are to be kept to a minimum. Only administrators, web managers, developers, auditors, and web authors require accounts on the machine hosting the web server. This is in addition to the anonymous web user account. The resources to which these accounts have access must also be closely monitored and controlled. Only the SA needs access to all the system’s capabilities, while the web administrator and associated staff require access and control of the web content and web server configuration files. The anonymous web user account must not have access to system resources as that account could then control the server.",
+      "severity": "high"
+    },
+    {
+      "id": "V-2248",
+      "title": "Access to web administration tools must be restricted to the web manager and the web managers designees.",
+      "description": "The key web service administrative and configuration tools must only be accessible by the web server staff.  All users granted this authority will be documented and approved by the ISSO. Access to the IIS Manager will be limited to authorized users and administrators. ",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2251",
+      "title": "Programs and features not necessary for operations must be removed.",
+      "description": "Just as running unneeded services and protocols increase the attack surface of the web server, running unneeded utilities and programs is also an added risk to the web server.",
+      "severity": "low"
+    },
+    {
+      "id": "V-2257",
+      "title": "Administrative users and groups with access privilege to the web server must be documented. ",
+      "description": "There are typically several individuals and groups involved in running a production web-site. In most cases, several types of users on a web server can be identified, such as, SA's, Web Managers, Auditors, Authors, Developers, and the Clients.  Nonetheless, only necessary user and administrative accounts will be allowed on the web server.  Accounts will be restricted to those who are necessary to maintain web services, review the server’s operation and the OS.  Owing to the sensitivity of web servers, a detailed record of these accounts must be maintained.",
+      "severity": "low"
+    },
+    {
+      "id": "V-2259",
+      "title": "Web server system files must conform to minimum file permission requirements.",
+      "description": "This check verifies the key web server system configuration files are owned by the SA or the web administrator controlled account. These same files that control the configuration of the web server, and thus its behavior, must also be accessible by the account running the web service. If these files are altered by a malicious user, the web server would no longer be under the control of its managers and owners; properties in the web server configuration could be altered to compromise the entire server platform.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2261",
+      "title": "A web server must limit e-mail to outbound only.",
+      "description": "Incoming e-mails have been known to provide hackers with access to servers. Disabling the incoming mail service prevents this type of attacks. Additionally, e-mail is a specialized application requiring the dedication of server resources. A production web server should only provide hosting services for web-sites. Supporting mail services on a web server opens the server to the risk of abuse as an e-mail relay. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-2265",
+      "title": "Java software installed on the production web server must be limited to .class files and the Java Virtual Machine.",
+      "description": "Source code for a Java program is, many times, stored in files with either .java or .jpp file extensions.  From the .java and .jpp files the Java compiler produces a binary file with an extension of .class. The .java or .jpp file could therefore reveal sensitive information regarding an application's logic and permissions to resources on the server.",
+      "severity": "low"
+    },
+    {
+      "id": "V-2271",
+      "title": "Monitoring software must include CGI type files or equivalent programs.",
+      "description": "By their very nature, CGI type files permit the anonymous web user to interact with data and perhaps store data on the web server. In many cases, CGI scripts exercise system-level control over the server’s resources. These files make appealing targets for the malicious user. If these files can be modified or exploited, the web server can be compromised. CGI or equivalent files must be monitored by a security tool alerting the web administrator of any unauthorized changes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-25994",
+      "title": "Directory Browsing must be disabled on the production web server.",
+      "description": "Directory browsing allows the contents of a directory to be displayed upon request from a web client. If directory browsing is enabled for a directory in IIS, users could receive a web page listing the contents of the directory.  If directory browsing is enabled the risk of inadvertently disclosing sensitive content is increased.",
+      "severity": "low"
+    },
+    {
+      "id": "V-25999",
+      "title": "Unspecified file extensions must not be allowed to execute on the production web server.",
+      "description": "By allowing unspecified file extensions to execute, the web servers attack surface is significantly increased.  This increased risk can be reduced by only allowing specific ISAPI extensions or CGI extensions to run on the web server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-26006",
+      "title": "A global authorization rule to restrict access must exist on the web server.",
+      "description": "Authorization rules can be configured at the server, web site, folder (including Virtual Directories), or file level.  It is recommended that URL Authorization be configured to only grant access to the necessary security principals. Configuring a global Authorization rule that restricts access ensures inheritance of the settings down through the hierarchy of web directories.  This will ensure access to current and future content is only granted to the appropriate principals, mitigating risk of unauthorized access. ",
+      "severity": "low"
+    },
+    {
+      "id": "V-6537",
+      "title": "Anonymous access accounts must be restricted.",
+      "description": "Many of the security problems that occur are not the result of a user gaining access to files or data for which the user does not have permissions, but rather users are assigned incorrect permissions to unauthorized data. The files, directories, and data that are stored on the web server need to be evaluated and a determination made concerning authorized access to information and programs on the server. Only authorized users and administrative accounts will be allowed on the host server in order to maintain the web server, applications, and review the server operations.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6577",
+      "title": "A web server must not be co-hosted with other services.",
+      "description": "A detailed web server installation and configuration plan should be followed to provide standardization during the installation process.  The installation and configuration plan should not support the co-hosting of multiple services, such as, Domain Name Service (DNS), e-mail, databases, search engines, indexing, or streaming media on the same server that is providing the web publishing service.\n\nDisallowed or restricted services in the context of this vulnerability applies to services that are not directly associated with the delivery of web content. An operating system supporting a web server will not provide other services (e.g., domain controller, email server, database server, etc.). Only those services necessary to support the web server and its hosted sites are specifically allowed and may include, but are not limited to, operating system, logging, anti-virus, host intrusion detection, administrative maintenance, or network requirements. Any unnecessary services or protocols should be removed.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6754",
+      "title": "The use of Internet Printing Protocol (IPP) must be disabled on the IIS web server. ",
+      "description": "The use of Internet Printing Protocol (IPP) on an  IIS web server allows client’s access to shared printers.  This privileged access could allow remote code execution by increasing the web servers attack surface.  Additionally, since IPP does not support SSL, it is considered a risk and will not be deployed. ",
+      "severity": "medium"
+    }
+  ]
+}

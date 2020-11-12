@@ -1,6 +1,6 @@
 {
   "name": "stig_application_security_and_development",
-  "date": "2018-04-03",
+  "date": "2019-09-30",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Application Security and Development Security Technical Implementation Guide",
   "version": "4",
@@ -352,7 +352,7 @@
     {
       "id": "V-69371",
       "title": "The application must provide audit record generation capability for session timeouts.",
-      "description": "When a user's session times out, it is important to be able to identify these events in the application logs.\n\nWithout the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident, or identify those responsible for one.\n\nAudit records can be generated from various components within the application (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoD has defined the list of events for which the application will provide an audit record generation capability as the following:\n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities or other system level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nWeb based applications will often utilize an application server that creates, manages and logs session IDs.  It is acceptable for the application to delegate this requirement to the application server.",
+      "description": "When a user's session times out, it is important to be able to identify these events in the application logs.\n\nWithout the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident, or identify those responsible for one.\n\nAudit records can be generated from various components within the application (e.g., process, module). Certain specific application functionalities may be audited as well. The list of audited events is the set of events for which audits are to be generated. This set of events is typically a subset of the list of all events for which the system is capable of generating audit records.\n\nDoD has defined the list of events for which the application will provide an audit record generation capability as the following:\n\n(i) Successful and unsuccessful attempts to access, modify, or delete privileges, security objects, security levels, or categories of information (e.g., classification levels);\n\n(ii) Access actions, such as successful and unsuccessful logon attempts, privileged activities or other system level access, starting and ending time for user access to the system, concurrent logons from different workstations, successful and unsuccessful accesses to objects, all program initiations, and all direct access to the information system; and\n\n(iii) All account creation, modification, disabling, and termination actions.\n\nWeb-based applications will often utilize an application server that creates, manages, and logs session timeout information. It is acceptable for the application to delegate this requirement to the application server.\n",
       "severity": "medium"
     },
     {
@@ -381,7 +381,7 @@
     },
     {
       "id": "V-69381",
-      "title": "The application must generate audit records when successful/unsuccessful attempts to access privileges occur.",
+      "title": "The application must generate audit records when successful/unsuccessful attempts to grant privileges occur.",
       "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident, or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nWhen a user is granted access or rights to application features and function not afforded to an ordinary user, they have been granted access to privilege and that action must be logged.",
       "severity": "medium"
     },
@@ -485,12 +485,6 @@
       "id": "V-69415",
       "title": "The application must generate audit records for all account creations, modifications, disabling, and termination events.",
       "description": "When application user accounts are created, modified, disabled or terminated the event must be logged.\n\nCentralized management of user accounts allows for rapid response to user related security events and also provides ease of management.\n\nAllowing the centralized user management solution to log these events is acceptable practice; however, if the application provides a user management interface to manage these tasks, the application must also log these events.\n\nApplication developers are encouraged to integrate their applications with enterprise-level authentication/access/audit mechanisms such as Syslog, Active Directory or LDAP.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-69417",
-      "title": "The application must provide the capability for authorized users to select a user session to capture/record or view/hear.",
-      "description": "This is a specialized requirement for monitoring applications. Not all applications will be required to capture/record or view/hear user sessions.",
       "severity": "medium"
     },
     {
@@ -1012,13 +1006,13 @@
     {
       "id": "V-70157",
       "title": "The application must not display passwords/PINs as clear text.",
-      "description": "To prevent the compromise of authentication information such as passwords during the authentication process, the feedback from the information system must not provide any information that would allow an unauthorized user to compromise the authentication mechanism.\n\nObfuscation of user-provided information when typed into the system is a method used in addressing this risk.\n\nFor example, displaying asterisks when a user types in a password is an example of obscuring feedback of authentication information.\n\nA common tactic employed to circumvent password obfuscation is to copy the obfuscated password and paste it to a text file.  Proper obfuscation techniques will not paste the clear text password.",
+      "description": "To prevent the compromise of authentication information such as passwords during the authentication process, the feedback from the information system must not provide any information that would allow an unauthorized user to compromise the authentication mechanism.\n\nObfuscation of user-provided information when typed into the system is a method used in addressing this risk.\n\nFor example, displaying asterisks when a user types in a password is an example of obscuring feedback of authentication information.\n\nAnother method is to display authentication feedback for a very limited time, usually in fractions of a second. This occurs during password character entry where the password characters are displayed for a very small window of time and then automatically obfuscated. This allows users with just enough time to confirm their password as they type it while limiting the ability of \"shoulder surfers\" to covertly witness the values.\n\nA common tactic employed to circumvent password obfuscation is to copy the obfuscated password and paste it to a text file.  Proper obfuscation techniques will not paste the clear text password.",
       "severity": "high"
     },
     {
       "id": "V-70159",
       "title": "The application must use mechanisms meeting the requirements of applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance for authentication to a cryptographic module.",
-      "description": "Unapproved mechanisms that are used for authentication to the cryptographic module are not verified, and therefore cannot be relied upon to provide confidentiality or integrity and DoD data may be compromised.\n\nApplications utilizing encryption are required to use FIPS compliant mechanisms for authenticating to cryptographic modules.\n\nFIPS 140-2 is the current standard for validating that mechanisms used to access cryptographic modules utilize authentication that meets DoD requirements.",
+      "description": "A cryptographic module is a hardware or software device or component that performs cryptographic operations securely within a physical or logical boundary, using a hardware, software or hybrid cryptographic engine contained within the boundary, and cryptographic keys that do not leave the boundary.\nBased on the criticality of the application, system designers might choose to utilize a hardware based cryptographic module due to the protections and security benefits a hardware based solution provides over a software based solution. Due to various factors, including expense, hardware based encryption modules are usually relegated to only those applications where the system requirements specify it as a required protection. Examples include applications that handle extremely sensitive data or those used in life and death situations, e.g., weapons systems. \nGeneral purpose applications such as a web site will often opt to leverage an underlying software based encryption capability that is offered by the OS, database or application development framework.  Operating systems or database products often provide their own cryptographic modules that are FIPS 140-2 compliant and can meet the authentication to the crypto module requirement via their Role Based Access Controls (users and groups) built into the product.  \nIn all cases, user’s accessing the cryptographic module must be authenticated and granted the appropriate rights in order to access the encryption module.  Any encryption utilized by the access control mechanisms must be FIPS 140-2 compliant.\n",
       "severity": "medium"
     },
     {
@@ -1498,7 +1492,7 @@
     {
       "id": "V-70345",
       "title": "A Configuration Control Board (CCB) that meets at least every release cycle, for managing the Configuration Management (CM) process must be established.",
-      "description": "Software Configuration Management (SCM) is very important in tracking code releases, baselines, and managing access to the configuration management repository. The SCM plan identifies what should be under configuration management control. Without an SCM plan code, and a CCB, releases can be tracked and vulnerabilities can be inserted intentionally or unintentionally into the code base of the application.\n\nThis requirement is intended to be applied to application developers or organizations responsible for code management or who have and operate an application CM repository.",
+      "description": "Software Configuration Management (SCM) is very important in tracking code releases, baselines, and managing access to the configuration management repository. An SCM plan or charter identifies what should be under configuration management control. Without an SCM plan and a CCB, application releases can't be tracked and vulnerabilities can be inserted intentionally or unintentionally into the code base of the application.\n\nThis requirement is intended to be applied to application developers or organizations responsible for code management or who have and operate an application CM repository.",
       "severity": "medium"
     },
     {

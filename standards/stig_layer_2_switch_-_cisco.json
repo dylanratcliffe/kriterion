@@ -1,6 +1,6 @@
 {
   "name": "stig_layer_2_switch_-_cisco",
-  "date": "2018-03-02",
+  "date": "2019-01-09",
   "description": "Layer 2 Switch Security Technical Implementation Guide - Cisco",
   "title": "Layer 2 Switch Security Technical Implementation Guide - Cisco",
   "version": "8",
@@ -332,12 +332,6 @@
       "severity": "medium"
     },
     {
-      "id": "V-5624",
-      "title": "The ISSO/NSO will ensure if 802.1x Port Authentication is implemented, re-authentication must occur every 60 minutes.",
-      "description": "Eliminating unauthorized access to the network from inside the enclave is vital to keeping a network secure. Internal access to the private network is enabled by simply connecting a workstation or laptop to a wall plate or access point located in the work area.",
-      "severity": "medium"
-    },
-    {
       "id": "V-5626",
       "title": "The switch must be configured to use 802.1x authentication on host facing access switch ports.",
       "description": "The IEEE 802.1x standard is a client-server based access control and authentication protocol that restricts unauthorized clients from connecting to a local area network through host facing switch ports.  The authentication server authenticates each client connected to to a switch port before making any services available to the client from the LAN.  Unless the client is successfully authenticated, 802.1x access control allows only Extensible Authentication Protocol over LAN (EAPOL) traffic through the port to which the client is connected.  After authentication is successful, normal traffic can pass through the port.  Without the use of 802.1x, a malicious user could use the switch port to connect an unauthorized piece of computer or other network device to inject or steal data from the network without detection.",
@@ -347,12 +341,6 @@
       "id": "V-5628",
       "title": "A dedicated management VLAN or VLANs must be configured to keep management traffic separate from user data and control plane traffic.",
       "description": "All ports, including the internal sc0 interface, are configured by default to be members of VLAN 1. In a VLAN-based network, switches use VLAN 1 as the default VLAN for in-band management and to communicate with other networking devices using Spanning-Tree Protocol (STP), Cisco Discovery Protocol (CDP), Dynamic Trunking Protocol (DTP), VLAN Trunking Protocol (VTP), and Port Aggregation Protocol (PAgP) all untagged traffic. As a consequence, VLAN 1 may unwisely span the entire network if not appropriately pruned. If its scope is large enough, the risk of compromise can increase significantly.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-5646",
-      "title": "The network device must drop half-open TCP connections through filtering thresholds or timeout periods.",
-      "description": "A TCP connection consists of a three-way handshake message sequence. A connection request is transmitted by the originator, an acknowledgement is returned from the receiver, and then an acceptance of that acknowledgement is sent by the originator.\n\nAn attacker’s goal in this scenario is to cause a denial of service to the network or device by initiating a high volume of TCP packets, then never sending an acknowledgement, leaving connections in a half-opened state.  Without the device having a connection or time threshold for these half-opened sessions, the device risks being a victim of a denial of service attack.  Setting a TCP timeout threshold will instruct the device to shut down any incomplete connections. Services such as SSH, BGP, SNMP, LDP, etc. are some services that may be prone to these types of denial of service attacks. If the router does not have any BGP connections with BGP neighbors across WAN links, values could be set to even tighter constraints.",
       "severity": "medium"
     },
     {

@@ -1,6 +1,6 @@
 {
   "name": "stig_hp-ux_11.31",
-  "date": "2018-03-01",
+  "date": "2018-09-14",
   "description": "The HP-UX 11.31 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "HP-UX 11.31 Security Technical Implementation Guide",
   "version": "1",
@@ -477,8 +477,8 @@
     },
     {
       "id": "V-22303",
-      "title": "The system must use a FIPS 140-2 approved cryptographic hashing algorithm for generating account password hashes.",
-      "description": "Systems must employ cryptographic hashes for passwords using the SHA-2 family of algorithms or FIPS 140-2 approved successors.  The use of unapproved algorithms may result in weak password hashes that are more vulnerable to compromise.",
+      "title": "The system must use a FIPS 140-2-approved cryptographic hashing algorithm for generating account password hashes.",
+      "description": "Systems must employ cryptographic hashes for passwords using the SHA-2 family of algorithms or FIPS 140-2-approved successors. The use of unapproved algorithms may result in weak password hashes that are more vulnerable to compromise.",
       "severity": "medium"
     },
     {
@@ -2385,8 +2385,8 @@
     },
     {
       "id": "V-766",
-      "title": "The system must disable accounts after three consecutive unsuccessful login attempts.",
-      "description": "Disabling accounts after a limited number of unsuccessful login attempts improves protection against password guessing attacks.",
+      "title": "The system must disable accounts after three consecutive unsuccessful logon attempts.",
+      "description": "Disabling accounts after a limited number of unsuccessful logon attempts improves protection against password guessing attacks.",
       "severity": "medium"
     },
     {
@@ -2639,6 +2639,12 @@
       "id": "V-814",
       "title": "The audit system must be configured to audit failed attempts to access files and programs.",
       "description": "If the system is not configured to audit certain activities and write them to an audit log, it is more difficult to detect and track system compromises and damages incurred during a system compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81451",
+      "title": "The HPUX 11.31 operating system must use a virus scan program.",
+      "description": "Virus scanning software can be used to protect a system from penetration from computer viruses and to limit their spread through intermediate systems.\n\nThe virus scanning software should be configured to perform scans dynamically on accessed files. If this capability is not available, the system must be configured to scan, at a minimum, all altered files on the system on a daily basis.\n\nIf the system processes inbound SMTP mail, the virus scanner must be configured to scan all received mail.\n",
       "severity": "medium"
     },
     {

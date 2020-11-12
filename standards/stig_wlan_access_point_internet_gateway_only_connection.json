@@ -1,6 +1,6 @@
 {
   "name": "stig_wlan_access_point_internet_gateway_only_connection",
-  "date": "2018-03-01",
+  "date": "2019-02-26",
   "description": "This STIG contains the technical security controls for the operation of a WLAN access point (Internet Gateway Only Connection role) in the DoD environment.",
   "title": "WLAN Access Point (Internet Gateway Only Connection) Security Technical Implementation Guide (STIG)",
   "version": "6",
@@ -204,6 +204,24 @@
       "title": "The auxiliary port must be disabled unless it is connected to a secured modem providing encryption and authentication.",
       "description": "The use of POTS lines to modems connecting to network devices provides clear text of authentication traffic over commercial circuits that could be captured and used to compromise the network.  Additional war dial attacks on the device could degrade the device and the production network.\n\nSecured modem devices must be able to authenticate users and must negotiate a key exchange before full encryption takes place.  The modem will provide full encryption capability (Triple DES) or stronger.  The technician who manages these devices will be authenticated using a key fob and granted access to the appropriate maintenance port, thus the technician will gain access to the managed device (router, switch, etc.).  The token provides a method of strong (two-factor) user authentication.  The token works in conjunction with a server to generate one-time user passwords that will change values at second intervals.  The user must know a personal identification number (PIN) and possess the token to be allowed access to the device.",
       "severity": "low"
+    },
+    {
+      "id": "V-92237",
+      "title": "WLAN components must be FIPS 140-2 certified.",
+      "description": "If the DoD WLAN components (WLAN AP, controller, or client) are not NIST FIPS 140-2 (Cryptographic Module Validation Program – CMVP) certified, the WLAN system may not adequately protect sensitive unclassified DoD data from compromise during transmission.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-92239",
+      "title": "WLAN components must be Wi-Fi Alliance certified with WPA2 or WPA3.",
+      "description": null,
+      "severity": "medium"
+    },
+    {
+      "id": "V-92241",
+      "title": "DoD Components providing guest WLAN access (Internet access only) must use separate WLAN or logical segmentation of the enterprise WLAN (e.g., separate service set identifier (SSID) and virtual LAN) or DoD network.",
+      "description": "The purpose of the Guest WLAN network is to provide WLAN services to authorized site guests. Guests, by definition, are not authorized access to the enterprise network. If the guest WLAN is not correctly installed unauthorized access to the enterprise wireless and/or wired network could be obtained.",
+      "severity": "medium"
     }
   ]
 }

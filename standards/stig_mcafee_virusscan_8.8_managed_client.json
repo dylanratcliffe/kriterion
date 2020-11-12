@@ -1,6 +1,6 @@
 {
   "name": "stig_mcafee_virusscan_8.8_managed_client",
-  "date": "2018-04-04",
+  "date": "2019-09-24",
   "description": "The McAfee VirusScan Managed Client STIG is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the NIST 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "McAfee VirusScan 8.8 Managed Client STIG",
   "version": "5",

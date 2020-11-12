@@ -1,6 +1,6 @@
 {
   "name": "stig_ibm_db2_v10.5_luw",
-  "date": "2017-11-16",
+  "date": "2019-09-27",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "IBM DB2 V10.5 LUW Security Technical Implementation Guide",
   "version": "1",
@@ -424,7 +424,7 @@
     {
       "id": "V-74607",
       "title": "DB2 must maintain the confidentiality and integrity of information during reception.",
-      "description": "Information can be either unintentionally or maliciously disclosed or modified during reception, including, for example, during aggregation, at protocol transformation points, and during packing/unpacking. These unauthorized disclosures or modifications compromise the confidentiality or integrity of the information.\n\nThis requirement applies only to those applications that are either distributed or can allow access to data non-locally. Use of this requirement will be limited to situations where the data owner has a strict requirement for ensuring data integrity and confidentiality is maintained at every step of the data transfer and handling process. \n\nWhen receiving data, the DBMS, associated applications, and infrastructure must leverage protection mechanisms.",
+      "description": ": Information can be either unintentionally or maliciously disclosed or modified during reception, including, for example, during aggregation, at protocol transformation points, and during packing/unpacking. These unauthorized disclosures or modifications compromise the confidentiality or integrity of the information.\n\nThis requirement applies only to those applications that are either distributed or can allow access to data non-locally. Use of this requirement will be limited to situations where the data owner has a strict requirement for ensuring data integrity and confidentiality is maintained at every step of the data transfer and handling process. \n\nWhen receiving data, the DBMS, associated applications, and infrastructure must leverage protection mechanisms.",
       "severity": "medium"
     },
     {
@@ -563,12 +563,6 @@
       "id": "V-74653",
       "title": "DB2 must generate audit records when unsuccessful attempts to delete categorized information (e.g., classification levels/security levels) occur.",
       "description": "Changes in categorized information must be tracked. Without an audit trail, unauthorized access to protected data could go undetected.\n\nTo aid in diagnosis, it is necessary to keep track of failed attempts in addition to the successful ones.\n\nFor detailed information on categorizing information, refer to FIPS Publication 199, Standards for Security Categorization of Federal Information and Information Systems, and FIPS Publication 200, Minimum Security Requirements for Federal Information and Information Systems.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-74661",
-      "title": "DB2 must provide the capability for authorized users to capture, record, and log all content related to a user session.",
-      "description": "Without the capability to capture, record, and log all content related to a user session, investigations into suspicious user activity would be hampered.\n\nTypically, this DBMS capability would be used in conjunction with comparable monitoring of a user's online session, involving other software components such as operating systems, web servers and front-end user applications. The current requirement, however, deals specifically with the DBMS.",
       "severity": "medium"
     }
   ]

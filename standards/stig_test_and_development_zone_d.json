@@ -1,9 +1,9 @@
 {
   "name": "stig_test_and_development_zone_d",
-  "date": "2015-12-17",
-  "description": "None",
+  "date": "2018-09-17",
+  "description": "The Test & Development Zone A STIG is published as a tool to improve the security of Department of Defense (DoD) information systems. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Test and Development Zone D Security Technical Implementation Guide",
-  "version": "None",
+  "version": "1",
   "item_syntax": "^\\w-\\d+$",
   "section_separator": null,
   "items": [

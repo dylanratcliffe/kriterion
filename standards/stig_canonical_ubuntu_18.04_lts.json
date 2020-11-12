@@ -1,0 +1,1211 @@
+{
+  "name": "stig_canonical_ubuntu_18.04_lts",
+  "date": "2020-04-04",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Canonical Ubuntu 18.04 LTS Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-100519",
+      "title": "Ubuntu operating systems booted with a BIOS must require authentication upon booting into single-user and maintenance modes.",
+      "description": "To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoD-approved PKIs, all DoD systems (e.g., web servers and web portals) must be properly configured to incorporate access control methods that do not rely solely on the possession of a certificate for access. Successful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement.\n\nAccess control policies include: identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include: access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-100521",
+      "title": "Ubuntu operating systems booted with United Extensible Firmware Interface (UEFI) implemented must require authentication upon booting into single-user mode and maintenance.",
+      "description": "To mitigate the risk of unauthorized access to sensitive information by entities that have been issued certificates by DoD-approved PKIs, all DoD systems (e.g., web servers and web portals) must be properly configured to incorporate access control methods that do not rely solely on the possession of a certificate for access. Successful authentication must not automatically give an entity access to an asset or security boundary. Authorization procedures and controls must be implemented to ensure each authenticated entity also has a validated and current authorization. Authorization is the process of determining whether an entity, once authenticated, is permitted to access a specific asset. Information systems use access control policies and enforcement mechanisms to implement this requirement.\n\nAccess control policies include: identity-based policies, role-based policies, and attribute-based policies. Access enforcement mechanisms include: access control lists, access control matrices, and cryptography. These policies and mechanisms must be employed by the application to control access between users (or processes acting on behalf of users) and objects (e.g., devices, files, records, processes, programs, and domains) in the information system.",
+      "severity": "high"
+    },
+    {
+      "id": "V-100523",
+      "title": "The Ubuntu operating system must initiate session audits at system startup.",
+      "description": "If auditing is enabled late in the startup process, the actions of some startup processes may not be audited. Some audit systems also maintain state information only available if auditing is enabled before a given process is created.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100525",
+      "title": "Ubuntu operating systems handling data requiring data at rest protections must employ cryptographic mechanisms to prevent unauthorized disclosure and modification of the information at rest.",
+      "description": "Information at rest refers to the state of information when it is located on a secondary storage device (e.g., disk drive and tape drive, when used for backups) within an operating system.\n\nThis requirement addresses protection of user-generated data, as well as Ubuntu operating system-specific configuration data. Organizations may choose to employ different mechanisms to achieve confidentiality and integrity protections, as appropriate, in accordance with the security category and/or classification of the information.\n\nSatisfies: SRG-OS-000185-GPOS-00079, SRG-OS-000404-GPOS-00183, SRG-OS-000405-GPOS-00184",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100527",
+      "title": "The Ubuntu operating system must implement NIST FIPS-validated cryptography to protect classified information and for the following: to provision digital signatures, to generate cryptographic hashes, and to protect unclassified information requiring confidentiality and cryptographic protection in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.",
+      "description": "Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The operating system must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.\n\nSatisfies: SRG-OS-000478-GPOS-00223, SRG-OS-000396-GPOS-00176",
+      "severity": "high"
+    },
+    {
+      "id": "V-100529",
+      "title": "The Ubuntu operating system must immediately notify the SA and ISSO (at a minimum) when allocated audit record storage volume reaches 75% of the repository maximum audit record storage capacity.",
+      "description": "If security personnel are not notified immediately when storage volume reaches 75% utilization, they are unable to plan for audit record storage capacity expansion.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100531",
+      "title": "The Ubuntu operating system audit event multiplexor must be configured to off-load audit logs onto a different system in real time, if the system is interconnected.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100533",
+      "title": "The Ubuntu operating system must have a crontab script running weekly to off-load audit events of standalone systems.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100535",
+      "title": "Advance package Tool (APT) must be configured to prevent the installation of patches, service packs, device drivers, or Ubuntu operating system components without verification they have been digitally signed using a certificate that is recognized and approved by the organization.",
+      "description": "Changes to any software components can have significant effects on the overall security of the Ubuntu operating system. This requirement ensures the software has not been tampered with and that it has been provided by a trusted vendor.\n\nAccordingly, patches, service packs, device drivers, or Ubuntu operating system components must be signed with a certificate recognized and approved by the organization.\n\nVerifying the authenticity of the software prior to installation validates the integrity of the patch or upgrade received from a vendor. This ensures the software has not been tampered with and that it has been provided by a trusted vendor. Self-signed certificates are disallowed by this requirement. The Ubuntu operating system should not have to verify the software again. This requirement does not mandate DoD certificates for this purpose; however, the certificate used to verify the software must be from an approved CA.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100537",
+      "title": "The Ubuntu operating system must be configured so that Advance package Tool (APT) removes all software components after updated versions have been installed.",
+      "description": "Previous versions of software components that are not removed from the information system after updates have been installed may be exploited by adversaries. Some information technology products may remove older versions of software automatically from the information system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100539",
+      "title": "The Ubuntu operating system must not have the Network Information Service (NIS) package installed.",
+      "description": "Removing the Network Information Service (NIS) package decreases the risk of the accidental (or intentional) activation of NIS or NIS+ services.",
+      "severity": "high"
+    },
+    {
+      "id": "V-100541",
+      "title": "The Ubuntu operating system must not have the rsh-server package installed.",
+      "description": "It is detrimental for Ubuntu operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.\n\nUbuntu operating systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions).\n\nThe rsh-server service provides an unencrypted remote access service that does not provide for the confidentiality and integrity of user passwords or the remote session and has very weak authentication.\n\nIf a privileged user were to log on using this service, the privileged user password could be compromised.",
+      "severity": "high"
+    },
+    {
+      "id": "V-100545",
+      "title": "The Ubuntu operating system must deploy Endpoint Security for Linux Threat Prevention (ENSLTP).",
+      "description": "Without the use of automated mechanisms to scan for security flaws on a continuous and/or periodic basis, the operating system or other system components may remain vulnerable to the exploits presented by undetected software flaws.\n\nTo support this requirement, the Ubuntu operating system may have an integrated solution incorporating continuous scanning using HBSS and periodic scanning using other tools, as specified in the requirement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100547",
+      "title": "The Ubuntu operating system must be configured to preserve log records from failure events.",
+      "description": "Failure to a known state can address safety or security in accordance with the mission/business needs of the organization. Failure to a known secure state helps prevent a loss of confidentiality, integrity, or availability in the event of a failure of the information system or a component of the system. \n\nPreserving operating system state information helps to facilitate operating system restart and return to the operational mode of the organization with least disruption to mission/business processes.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100549",
+      "title": "The Ubuntu operating system must have an application firewall installed in order to control remote access methods.",
+      "description": "Remote access services, such as those providing remote access to network devices and information systems, which lack automated control capabilities, increase risk and make remote user access management difficult at best.\n\nRemote access is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nUbuntu operating system functionality (e.g., RDP) must be capable of taking enforcement action if the audit reveals unauthorized activity. Automated control of remote access sessions allows organizations to ensure ongoing compliance with remote access policies by enforcing connection rules of remote access applications on a variety of information system components (e.g., servers, workstations, notebook computers, smartphones, and tablets).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100551",
+      "title": "The Ubuntu operating system audit event multiplexor must be configured to off-load audit logs onto a different system or storage media from the system being audited.",
+      "description": "Information stored in one location is vulnerable to accidental or incidental deletion or alteration.\n\nOff-loading is a common process in information systems with limited audit storage capacity.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100553",
+      "title": "The Ubuntu operating system must be configured such that Pluggable Authentication Module (PAM) prohibits the use of cached authentications after one day.",
+      "description": "If cached authentication information is out-of-date, the validity of the authentication information may be questionable.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100555",
+      "title": "The Ubuntu operating system must enforce a delay of at least 4 seconds between logon prompts following a failed logon attempt.",
+      "description": "Limiting the number of logon attempts over a certain time interval reduces the chances that an unauthorized user may gain access to an account.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100557",
+      "title": "The Ubuntu operating system must display the date and time of the last successful account logon upon logon.",
+      "description": "Configuring the Ubuntu operating system to implement organization-wide security implementation guides and security checklists ensures compliance with federal standards and establishes a common security baseline across DoD that reflects the most restrictive security posture consistent with operational requirements.\n\nConfiguration settings are the set of parameters that can be changed in hardware, software, or firmware components of the system that affect the security posture and/or functionality of the system. Security-related parameters are those parameters impacting the security state of the system, including the parameters required to satisfy other security control requirements. Security-related parameters include, for example: registry settings; account, file, directory permission settings; and settings for functions, ports, protocols, services, and remote connections.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100559",
+      "title": "The Ubuntu operating system must be configured so that three consecutive invalid logon attempts by a user locks the account.",
+      "description": "By limiting the number of failed logon attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-force attacks, is reduced. Limits are imposed by locking the account.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100561",
+      "title": "The Ubuntu operating system must display the Standard Mandatory DoD Notice and Consent Banner before granting local access to the system via a graphical user logon.",
+      "description": "The banner must be acknowledged by the user prior to allowing the user access to the operating system. This provides assurance that the user has seen the message and accepted the conditions for access. If the consent banner is not acknowledged by the user, DoD will not be in compliance with system use notifications required by law.\n\nTo establish acceptance of the application usage policy, a click-through banner at system logon is required. The system must prevent further activity until the user executes a positive action to manifest agreement by clicking on a box indicating \"OK\".",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100563",
+      "title": "The Ubuntu operating system must prevent direct login into the root account.",
+      "description": "To assure individual accountability and prevent unauthorized access, organizational users must be individually identified and authenticated.\n\nA group authenticator is a generic account used by multiple individuals. Use of a group authenticator alone does not uniquely identify individual users. Examples of the group authenticator is the UNIX OS \"root\" user account, the Windows \"Administrator\" account, the \"sa\" account, or a \"helpdesk\" account.\n\nFor example, the UNIX and Windows operating systems offer a 'switch user' capability allowing users to authenticate with their individual credentials and, when needed, 'switch' to the administrator role. This method provides for unique individual authentication prior to using a group authenticator.\n\nUsers (and any processes acting on behalf of users) need to be uniquely identified and authenticated for all accesses other than those accesses explicitly identified and documented by the organization, which outlines specific user actions that can be performed on the operating system without identification or authentication.\n\nRequiring individuals to be authenticated with an individual authenticator prior to using a group authenticator allows for traceability of actions, as well as adding an additional level of protection of the actions that can be taken with group account knowledge.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100565",
+      "title": "The Ubuntu operating system must be configured so that only users who need access to security functions are part of the sudo group.",
+      "description": "An isolation boundary provides access control and protects the integrity of the hardware, software, and firmware that perform security functions.\n\nSecurity functions are the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Operating systems implement code separation (i.e., separation of security functions from nonsecurity functions) in a number of ways, including through the provision of security kernels via processor rings or processor modes. For non-kernel code, security function isolation is often achieved through file system protections that serve to protect the code on disk and address space protections that protect executing code.\n\nDevelopers and implementers can increase the assurance in security functions by employing well-defined security policy models; structured, disciplined, and rigorous hardware and software development techniques; and sound system/security engineering principles. Implementation may include isolation of memory space and libraries. \n\nThe Ubuntu operating system restricts access to security functions through the use of access control mechanisms and by implementing least privilege capabilities.",
+      "severity": "high"
+    },
+    {
+      "id": "V-100567",
+      "title": "The Ubuntu operating system must display the Standard Mandatory DoD Notice and Consent Banner before granting any publically accessible connection to the system.",
+      "description": "Display of a standardized and approved use notification before granting access to the Ubuntu operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.\n\nSystem use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.\n\nThe banner must be formatted in accordance with applicable DoD policy:\n\n\"You are accessing a U.S. Government (USG) Information System (IS) that is provided for USG-authorized use only.\n\nBy using this IS (which includes any device attached to this IS), you consent to the following conditions:\n\n-The USG routinely intercepts and monitors communications on this IS for purposes including, but not limited to, penetration testing, COMSEC monitoring, network operations and defense, personnel misconduct (PM), law enforcement (LE), and counterintelligence (CI) investigations.\n\n-At any time, the USG may inspect and seize data stored on this IS.\n\n-Communications using, or data stored on, this IS are not private, are subject to routine monitoring, interception, and search, and may be disclosed or used for any USG-authorized purpose.\n\n-This IS includes security measures (e.g., authentication and access controls) to protect USG interests--not for your personal benefit or privacy.\n\n-Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details.\"\n\nSatisfies: SRG-OS-000228-GPOS-00088, SRG-OS-000023-GPOS-00006",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100569",
+      "title": "The Ubuntu operating system must automatically lock an account until the locked account is released by an administrator when three unsuccessful logon attempts.",
+      "description": "By limiting the number of failed logon attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced. Limits are imposed by locking the account.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100571",
+      "title": "The Ubuntu operating system must enforce password complexity by requiring that at least one upper-case character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.\n\nPassword complexity is one factor of several that determines how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100573",
+      "title": "The Ubuntu operating system must enforce password complexity by requiring that at least one lower-case character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.\n\nPassword complexity is one factor of several that determines how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100575",
+      "title": "The Ubuntu operating system must enforce password complexity by requiring that at least one numeric character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.\n\nPassword complexity is one factor of several that determines how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100577",
+      "title": "The Ubuntu operating system must require the change of at least 8 characters when passwords are changed.",
+      "description": "If the Ubuntu operating system allows the user to consecutively reuse extensive portions of passwords, this increases the chances of password compromise by increasing the window of opportunity for attempts at guessing and brute-force attacks.\n\nThe number of changed characters refers to the number of changes required with respect to the total number of positions in the current password. In other words, characters may be the same within the two passwords; however, the positions of the like characters must be different.\n\nIf the password length is an odd number then number of changed characters must be rounded up. For example, a password length of 15 characters must require the change of at least 8 characters.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100579",
+      "title": "The Ubuntu operating system must encrypt all stored passwords with a FIPS 140-2 approved cryptographic hashing algorithm.",
+      "description": "Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100581",
+      "title": "The Ubuntu operating system must not have the telnet package installed.",
+      "description": "Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised.",
+      "severity": "high"
+    },
+    {
+      "id": "V-100583",
+      "title": "The Ubuntu operating system must enforce 24 hours/1 day as the minimum password lifetime. Passwords for new users must have a 24 hours/1 day minimum password lifetime restriction.",
+      "description": "Enforcing a minimum password lifetime helps to prevent repeated password changes to defeat the password reuse or history enforcement requirement. If users are allowed to immediately and continually change their password, then the password could be repeatedly changed in a short period of time to defeat the organization's policy regarding password reuse.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100585",
+      "title": "The Ubuntu operating system must enforce a 60-day maximum password lifetime restriction. Passwords for new users must have a 60-day maximum password lifetime restriction.",
+      "description": "Any password, no matter how complex, can eventually be cracked. Therefore, passwords need to be changed periodically. If the operating system does not limit the lifetime of passwords and force users to change their passwords, there is the risk that the operating system passwords could be compromised.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100587",
+      "title": "The Ubuntu operating system must prohibit password reuse for a minimum of five generations.",
+      "description": "Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. If the information system or application allows the user to consecutively reuse their password when that password has exceeded its defined lifetime, the end result is a password that is not changed as per policy requirements.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100589",
+      "title": "The Ubuntu operating system must enforce a minimum 15-character password length.",
+      "description": "The shorter the password, the lower the number of possible combinations that need to be tested before the password is compromised.\n\nPassword complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. Password length is one factor of several that helps to determine strength and how long it takes to crack a password. Use of more characters in a password helps to exponentially increase the time and/or resources required to compromise the password.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100591",
+      "title": "The Ubuntu operating system must employ a FIPS 140-2 approved cryptographic hashing algorithms for all created and stored passwords.",
+      "description": "The Ubuntu operating system must use a FIPS-compliant hashing algorithm to securely store the password. The FIPS-compliant hashing algorithm parameters must be selected in order to harden the system against offline attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100593",
+      "title": "The Ubuntu operating system must allow the use of a temporary password for system logons with an immediate change to a permanent password.",
+      "description": "Without providing this capability, an account may be created without a password. Non-repudiation cannot be guaranteed once an account is created if a user is not forced to change the temporary password upon initial logon.\n\nTemporary passwords are typically used to allow access when new accounts are created or passwords are changed. It is common practice for administrators to create temporary passwords for user accounts which allow the users to log on, yet force them to change the password once they have successfully authenticated.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100595",
+      "title": "The Ubuntu operating system must prevent the use of dictionary words for passwords.",
+      "description": "If the Ubuntu operating system allows the user to select passwords based on dictionary words, then this increases the chances of password compromise by increasing the opportunity for successful guesses and brute-force attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100597",
+      "title": "The Ubuntu operating system must require users to re-authenticate for privilege escalation and changing roles.",
+      "description": "Without re-authentication, users may access resources or perform tasks for which they do not have authorization. \n\nWhen the Ubuntu operating system provides the capability to escalate a functional capability or change security roles, it is critical the user re-authenticate.\n\nSatisfies: SRG-OS-000373-GPOS-00156, SRG-OS-000373-GPOS-00157",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100599",
+      "title": "The Ubuntu Operating system must be configured so that when passwords are changed or new passwords are established, pwquality must be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. \"pwquality\" enforces complex password construction configuration and has the ability to limit brute-force attacks on the system.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100601",
+      "title": "The Ubuntu operating system must set a sticky bit on all public directories to prevent unauthorized and unintended information transferred via shared system resources.",
+      "description": "Preventing unauthorized information transfers mitigates the risk of information, including encrypted representations of information, produced by the actions of prior users/roles (or the actions of processes acting on behalf of prior users/roles) from being available to any current users/roles (or current processes) that obtain access to shared system resources (e.g., registers, main memory, hard disks) after those resources have been released back to information systems. The control of information in shared resources is also commonly referred to as object reuse and residual information protection.\n\nThis requirement generally applies to the design of an information technology product, but it can also apply to the configuration of particular information system components that are, or use, such products. This can be verified by acceptance/validation processes in DoD or other government agencies.\n\nThere may be shared resources with configurable protections (e.g., files in storage) that may be assessed on specific information system components.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100603",
+      "title": "The Ubuntu operating system must generate error messages that provide information necessary for corrective actions without revealing information that could be exploited by adversaries.",
+      "description": "Any operating system providing too much information in error messages risks compromising the data and security of the structure, and content of error messages needs to be carefully considered by the organization.\n\nOrganizations carefully consider the structure/content of error messages. The extent to which information systems are able to identify and handle error conditions is guided by organizational policy and operational requirements. Information that could be exploited by adversaries includes, for example, erroneous logon attempts with passwords entered by mistake as the username, mission/business information that can be derived from (if not stated explicitly by) information recorded, and personal information, such as account numbers, social security numbers, and credit card numbers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100605",
+      "title": "The Ubuntu operating system must configure the /var/log directory to be group-owned by syslog.",
+      "description": "Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state or can identify the operating system or platform. Additionally, Personally Identifiable Information (PII) and operational information must not be revealed through error messages to unauthorized personnel or their designated representatives.\n\nThe structure and content of error messages must be carefully considered by the organization and development team. The extent to which the information system is able to identify and handle error conditions is guided by organizational policy and operational requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100607",
+      "title": "The Ubuntu operating system must configure the /var/log directory to be owned by root.",
+      "description": "Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state or can identify the operating system or platform. Additionally, Personally Identifiable Information (PII) and operational information must not be revealed through error messages to unauthorized personnel or their designated representatives.\n\nThe structure and content of error messages must be carefully considered by the organization and development team. The extent to which the information system is able to identify and handle error conditions is guided by organizational policy and operational requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100609",
+      "title": "The Ubuntu operating system must configure the /var/log directory to have mode 0750 or less permissive.",
+      "description": "Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state or can identify the operating system or platform. Additionally, Personally Identifiable Information (PII) and operational information must not be revealed through error messages to unauthorized personnel or their designated representatives.\n\nThe structure and content of error messages must be carefully considered by the organization and development team. The extent to which the information system is able to identify and handle error conditions is guided by organizational policy and operational requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100611",
+      "title": "The Ubuntu operating system must configure the /var/log/syslog file to be group-owned by adm.",
+      "description": "Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state or can identify the operating system or platform. Additionally, Personally Identifiable Information (PII) and operational information must not be revealed through error messages to unauthorized personnel or their designated representatives.\n\nThe structure and content of error messages must be carefully considered by the organization and development team. The extent to which the information system is able to identify and handle error conditions is guided by organizational policy and operational requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100613",
+      "title": "The Ubuntu operating system must configure /var/log/syslog file to be owned by syslog.",
+      "description": "Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state or can identify the operating system or platform. Additionally, Personally Identifiable Information (PII) and operational information must not be revealed through error messages to unauthorized personnel or their designated representatives.\n\nThe structure and content of error messages must be carefully considered by the organization and development team. The extent to which the information system is able to identify and handle error conditions is guided by organizational policy and operational requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100615",
+      "title": "The Ubuntu operating system must configure /var/log/syslog file with mode 0640 or less permissive.",
+      "description": "Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state or can identify the operating system or platform. Additionally, Personally Identifiable Information (PII) and operational information must not be revealed through error messages to unauthorized personnel or their designated representatives.\n\nThe structure and content of error messages must be carefully considered by the organization and development team. The extent to which the information system is able to identify and handle error conditions is guided by organizational policy and operational requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100617",
+      "title": "The Ubuntu operating system must configure audit tools with a mode of 0755 or less permissive.",
+      "description": "Protecting audit information also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit information.\n\nThe Ubuntu operating system providing tools to interface with audit information will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys in order to make access decisions regarding the access to audit tools.\n\nAudit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.\n\nSatisfies: SRG-OS-000256-GPOS-00097, SRG-OS-000257-GPOS-00098, SRG-OS-000258-GPOS-00099",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100619",
+      "title": "The Ubuntu operating system must configure audit tools to be owned by root.",
+      "description": "Protecting audit information also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit information.\n\nThe Ubuntu operating system providing tools to interface with audit information will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys in order to make access decisions regarding the access to audit tools.\n\nAudit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100621",
+      "title": "The Ubuntu operating system must configure the audit tools to be group-owned by root.",
+      "description": "Protecting audit information also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit information.\n\nThe Ubuntu operating system providing tools to interface with audit information will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys in order to make access decisions regarding the access to audit tools.\n\nAudit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100623",
+      "title": "The Ubuntu operating system library files must have mode 0755 or less permissive.",
+      "description": "If the operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100625",
+      "title": "The Ubuntu operating system library directories must have mode 0755 or less permissive.",
+      "description": "If the Ubuntu operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to Ubuntu operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100627",
+      "title": "The Ubuntu operating system library files must be owned by root.",
+      "description": "If the Ubuntu operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to Ubuntu operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100629",
+      "title": "The Ubuntu operating system library directories must be owned by root.",
+      "description": "If the Ubuntu operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to Ubuntu operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100631",
+      "title": "The Ubuntu operating system library files must be group-owned by root.",
+      "description": "If the Ubuntu operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to Ubuntu operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100633",
+      "title": "The Ubuntu operating system library directories must be group-owned by root.",
+      "description": "If the Ubuntu operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to Ubuntu operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100635",
+      "title": "The Ubuntu operating system must have system commands set to a mode of 0755 or less permissive.",
+      "description": "If the Ubuntu operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to Ubuntu operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100637",
+      "title": "The Ubuntu operating system must have directories that contain system commands set to a mode of 0755 or less permissive.",
+      "description": "If the Ubuntu operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to Ubuntu operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100639",
+      "title": "The Ubuntu operating system must have system commands owned by root.",
+      "description": "If the Ubuntu operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to Ubuntu operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100641",
+      "title": "The Ubuntu operating system must have directories that contain system commands owned by root.",
+      "description": "If the Ubuntu operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to Ubuntu operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100643",
+      "title": "The Ubuntu operating system must have system commands group-owned by root.",
+      "description": "If the Ubuntu operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to Ubuntu operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100645",
+      "title": "The Ubuntu operating system must have directories that contain system commands group-owned by root.",
+      "description": "If the Ubuntu operating system were to allow any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.\n\nThis requirement applies to Ubuntu operating systems with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs which execute with escalated privileges. Only qualified and authorized individuals must be allowed to obtain access to information system components for purposes of initiating changes, including upgrades and modifications.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100647",
+      "title": "The Ubuntu operating system must enforce password complexity by requiring that at least one special character be used.",
+      "description": "Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity or strength is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.\n\nPassword complexity is one factor in determining how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.\n\nSpecial characters are those characters that are not alphanumeric. Examples include: ~ ! @ # $ % ^ *.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100649",
+      "title": "The Ubuntu Operating system must disable the x86 Ctrl-Alt-Delete key sequence if a graphical user interface is installed.",
+      "description": "A locally logged-on user who presses Ctrl-Alt-Delete, when at the console, can reboot the system. If accidentally pressed, as could happen in the case of a mixed OS environment, this can create the risk of short-term loss of availability of systems due to unintentional reboot. In the graphical environment, risk of unintentional reboot from the Ctrl-Alt-Delete sequence is reduced because the user will be prompted before any action is taken.",
+      "severity": "high"
+    },
+    {
+      "id": "V-100651",
+      "title": "The Ubuntu Operating system must disable the x86 Ctrl-Alt-Delete key sequence.",
+      "description": "A locally logged-on user who presses Ctrl-Alt-Delete, when at the console, can reboot the system. If accidentally pressed, as could happen in the case of a mixed OS environment, this can create the risk of short-term loss of availability of systems due to unintentional reboot.",
+      "severity": "high"
+    },
+    {
+      "id": "V-100653",
+      "title": "The Ubuntu operating system must generate audit records for the use and modification of the tallylog file.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000064-GPOS-00033, SRG-OS-000470-GPOS-00214, SRG-OS-000473-GPOS-00218",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100655",
+      "title": "The Ubuntu operating system must generate audit records for the use and modification of faillog file.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000064-GPOS-00033, SRG-OS-000470-GPOS-00214, SRG-OS-000473-GPOS-00218",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100657",
+      "title": "The Ubuntu operating system must generate audit records for the use and modification of the lastlog file.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000064-GPOS-00033, SRG-OS-000470-GPOS-00214, SRG-OS-000473-GPOS-00218",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100659",
+      "title": "The Ubuntu operating system must generate audit records for privileged activities or other system-level access.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100661",
+      "title": "The Ubuntu operating system must generate audit records for the /var/log/wtmp file.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100663",
+      "title": "The Ubuntu operating system must generate audit records for the /var/run/wtmp file.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100665",
+      "title": "The Ubuntu operating system must generate audit records for the /var/log/btmp file.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100667",
+      "title": "The Ubuntu operating system must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/passwd.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000476-GPOS-00221, SRG-OS-000239-GPOS-00089, SRG-OS-000240-GPOS-00090, SRG-OS-000241-GPOS-00091, SRG-OS-000303-GPOS-00120, SRG-OS-000458-GPOS-00203, SRG-OS-000463-GPOS-00207, SRG-OS-000004-GPOS-00004",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100669",
+      "title": "The Ubuntu operating system must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/group.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000476-GPOS-00221, SRG-OS-000239-GPOS-00089, SRG-OS-000240-GPOS-00090, SRG-OS-000241-GPOS-00091, SRG-OS-000303-GPOS-00120, SRG-OS-000458-GPOS-00203, SRG-OS-000463-GPOS-00207",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100671",
+      "title": "The Ubuntu operating system must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/gshadow.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000476-GPOS-00221, SRG-OS-000463-GPOS-00207, SRG-OS-000458-GPOS-00203, SRG-OS-000303-GPOS-00120, SRG-OS-000241-GPOS-00091, SRG-OS-000240-GPOS-00090, SRG-OS-000239-GPOS-00089",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100673",
+      "title": "The Ubuntu operating system must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/shadow.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000476-GPOS-00221, SRG-OS-000463-GPOS-00207, SRG-OS-000458-GPOS-00203, SRG-OS-000303-GPOS-00120, SRG-OS-000241-GPOS-00091, SRG-OS-000240-GPOS-00090, SRG-OS-000239-GPOS-00089",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100675",
+      "title": "The Ubuntu operating system must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/security/opasswd.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000476-GPOS-00221, SRG-OS-000463-GPOS-00207, SRG-OS-000458-GPOS-00203, SRG-OS-000303-GPOS-00120, SRG-OS-000241-GPOS-00091, SRG-OS-000240-GPOS-00090, SRG-OS-000239-GPOS-00089",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100677",
+      "title": "The Ubuntu operating system must produce audit records and reports containing information to establish when, where, what type, the source, and the outcome for all DoD-defined auditable events and actions in near real time.",
+      "description": "Without establishing the when, where, type, source, and outcome of events that occurred, it would be difficult to establish, correlate, and investigate the events leading up to an outage or attack.\n\nWithout the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit record content that may be necessary to satisfy this requirement includes, for example, time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nReconstruction of harmful events or forensic analysis is not possible if audit records do not contain enough information.\n\nSuccessful incident response and auditing relies on timely, accurate system information and analysis in order to allow the organization to identify and respond to potential incidents in a proficient manner. If the operating system does not provide the ability to centrally review the operating system logs, forensic analysis is negatively impacted.\n\nAssociating event types with detected events in the Ubuntu operating system audit logs provides a means of investigating an attack; recognizing resource utilization or capacity thresholds; or identifying an improperly configured operating system.\n\nSatisfies: SRG-OS-000038-GPOS-00016, SRG-OS-000039-GPOS-00017, SRG-OS-000040-GPOS-00018, SRG-OS-000041-GPOS-00019, SRG-OS-000042-GPOS-00020, SRG-OS-000042-GPOS-00021, SRG-OS-000051-GPOS-00024, SRG-OS-000054-GPOS-00025, SRG-OS-000062-GPOS-00031, SRG-OS-000122-GPOS-00063, SRG-OS-000337-GPOS-00129, SRG-OS-000348-GPOS-00136, SRG-OS-000349-GPOS-00137, SRG-OS-000350-GPOS-00138, SRG-OS-000351-GPOS-00139, SRG-OS-000352-GPOS-00140, SRG-OS-000365-GPOS-00152, SRG-OS-000392-GPOS-00172, SRG-OS-000475-GPOS-00220",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100679",
+      "title": "The Ubuntu operating system must alert the ISSO and SA (at a minimum) in the event of an audit processing failure.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without this notification, the security personnel may be unaware of an impending failure of the audit capability, and system operation may be adversely affected.\n\nAudit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded.\n\nThis requirement applies to each audit data storage repository (i.e., distinct information system component where audit records are stored), the centralized audit storage capacity of organizations (i.e., all audit data storage repositories combined), or both.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100681",
+      "title": "The Ubuntu operating system must shut down by default upon audit failure (unless availability is an overriding concern).",
+      "description": "It is critical that when the Ubuntu operating system is at risk of failing to process audit logs as required, it takes action to mitigate the failure. Audit processing failures include: software/hardware errors; failures in the audit capturing mechanisms; and audit storage capacity being reached or exceeded. Responses to audit failure depend upon the nature of the failure mode.\n\nWhen availability is an overriding concern, other approved actions in response to an audit failure are as follows: \n\n1) If the failure was caused by the lack of audit record storage capacity, the Ubuntu operating system must continue generating audit records if possible (automatically restarting the audit service if necessary), overwriting the oldest audit records in a first-in-first-out manner.\n\n2) If audit records are sent to a centralized collection server and communication with this server is lost or the server fails, the Ubuntu operating system must queue audit records locally until communication is restored or until the audit records are retrieved manually. Upon restoration of the connection to the centralized collection server, action should be taken to synchronize the local audit data with the collection server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100683",
+      "title": "The Ubuntu operating system must be configured so that audit log files cannot be read or write-accessible by unauthorized users.",
+      "description": "If audit information were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.\n\nTo ensure the veracity of audit information, the operating system must protect audit information from unauthorized modification.\n\nAudit information includes all information (e.g., audit records, audit settings, audit reports) needed to successfully audit information system activity.\n\nSatisfies: SRG-OS-000058-GPOS-00028, SRG-OS-000057-GPOS-00027",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100685",
+      "title": "The Ubuntu operating system must permit only authorized accounts ownership of the audit log files.",
+      "description": "If audit information were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.\n\nTo ensure the veracity of audit information, the operating system must protect audit information from unauthorized modification.\n\nAudit information includes all information (e.g., audit records, audit settings, audit reports) needed to successfully audit information system activity.\n\nSatisfies: SRG-OS-000058-GPOS-00028, SRG-OS-000057-GPOS-00027",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100687",
+      "title": "The Ubuntu operating system must permit only authorized groups to own the audit log files.",
+      "description": "If audit information were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.\n\nTo ensure the veracity of audit information, the operating system must protect audit information from unauthorized modification.\n\nAudit information includes all information (e.g., audit records, audit settings, audit reports) needed to successfully audit information system activity.\n\nSatisfies: SRG-OS-000058-GPOS-00028, SRG-OS-000057-GPOS-00027",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100689",
+      "title": "The Ubuntu operating system must be configured so that the audit log directory is not write-accessible by unauthorized users.",
+      "description": "If audit information were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.\n\nTo ensure the veracity of audit information, the operating system must protect audit information from unauthorized deletion. This requirement can be achieved through multiple methods, which will depend upon system architecture and design.\n\nAudit information includes all information (e.g., audit records, audit settings, audit reports) needed to successfully audit information system activity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100691",
+      "title": "The Ubuntu operating system must allow only authorized accounts to own the audit log directory.",
+      "description": "If audit information were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.\n\nTo ensure the veracity of audit information, the operating system must protect audit information from unauthorized deletion. This requirement can be achieved through multiple methods, which will depend upon system architecture and design.\n\nAudit information includes all information (e.g., audit records, audit settings, audit reports) needed to successfully audit information system activity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100693",
+      "title": "The Ubuntu operating system must ensure only authorized groups can own the audit log directory and its underlying files.",
+      "description": "If audit information were to become compromised, then forensic analysis and discovery of the true source of potentially malicious system activity is impossible to achieve.\n\nTo ensure the veracity of audit information, the operating system must protect audit information from unauthorized deletion. This requirement can be achieved through multiple methods, which will depend upon system architecture and design.\n\nAudit information includes all information (e.g., audit records, audit settings, audit reports) needed to successfully audit information system activity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100695",
+      "title": "The Ubuntu operating system must be configured so that audit configuration files are not write-accessible by unauthorized users.",
+      "description": "Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent the auditing of critical events. Misconfigured audits may degrade the system's performance by overwhelming the audit log. Misconfigured audits may also make it more difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100697",
+      "title": "The Ubuntu operating system must permit only authorized accounts to own the audit configuration files.",
+      "description": "Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent the auditing of critical events. Misconfigured audits may degrade the system's performance by overwhelming the audit log. Misconfigured audits may also make it more difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100699",
+      "title": "The Ubuntu operating system must permit only authorized groups to own the audit configuration files.",
+      "description": "Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent the auditing of critical events. Misconfigured audits may degrade the system's performance by overwhelming the audit log. Misconfigured audits may also make it more difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100701",
+      "title": "The Ubuntu operating system must allocate audit record storage capacity to store at least one weeks worth of audit records, when audit records are not immediately sent to a central audit record storage facility.",
+      "description": "In order to ensure Ubuntu operating systems have sufficient storage capacity in which to write the audit logs, Ubuntu operating system needs to be able to allocate audit record storage capacity.\n\nThe task of allocating audit record storage capacity is usually performed during initial installation of the Ubuntu operating system.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100703",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the su command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100705",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the chfn command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100707",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the mount command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100709",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the umount command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100711",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the ssh-agent command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100713",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the ssh-keysign command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100715",
+      "title": "The Ubuntu operating system must generate audit records for any usage of the setxattr system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100717",
+      "title": "The Ubuntu operating system must generate audit records for any usage of the lsetxattr system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100719",
+      "title": "The Ubuntu operating system must generate audit records for any usage of the fsetxattr system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100721",
+      "title": "The Ubuntu operating system must generate audit records for any usage of the lremovexattr system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100723",
+      "title": "The Ubuntu operating system must generate audit records for any usage of the fremovexattr system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000064-GPOS-00033, SRG-OS-000462-GPOS-00206, SRG-OS-000466-GPOS-00210",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100725",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the chown system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000064-GPOS-00033, SRG-OS-000462-GPOS-00206",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100727",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the fchown system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000064-GPOS-00033, SRG-OS-000462-GPOS-00206",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100729",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the fchownat system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100731",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the lchown system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000064-GPOS-00033, SRG-OS-000462-GPOS-00206",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100733",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the chmod system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000064-GPOS-00033, SRG-OS-000462-GPOS-00206",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100735",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the fchmod system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000064-GPOS-00033, SRG-OS-000462-GPOS-00206",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100737",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the fchmodat system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000064-GPOS-00033, SRG-OS-000462-GPOS-00206",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100739",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the open system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000064-GPOS-00033, SRG-OS-000474-GPOS-00219",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100741",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the truncate system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100743",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the ftruncate system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100745",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the creat system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100747",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the openat system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000064-GPOS-00033, SRG-OS-000474-GPOS-00219",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100749",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the open_by_handle_at system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000064-GPOS-00033, SRG-OS-000474-GPOS-00219",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100751",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the sudo command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100753",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the sudoedit command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100755",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the chsh command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100757",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the newgrp command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100759",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the chcon command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100761",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the apparmor_parser command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100763",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the setfacl command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100765",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the chacl command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100767",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the passwd command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100769",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the unix_update command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100771",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the gpasswd command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100773",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the chage command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100775",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the usermod command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100777",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the pam_timestamp_check command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100779",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the init_module syscall.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100781",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the finit_module syscall.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100783",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the delete_module syscall.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100785",
+      "title": "The Ubuntu operating system must prevent all software from executing at higher privilege levels than users executing the software and the audit system must be configured to audit the execution of privileged functions.",
+      "description": "In certain situations, software applications/programs need to execute with elevated privileges to perform required functions. However, if the privileges required for execution are at a higher level than the privileges assigned to organizational users invoking such applications/programs, those users are indirectly provided with greater privileges than assigned by the organizations.\n\nSome programs and processes are required to operate at a higher privilege level and therefore should be excluded from the organization-defined software list after review.\n\nSatisfies: SRG-OS-000326-GPOS-00126, SRG-OS-000327-GPOS-00127",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100787",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful attempts to use setxattr system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100789",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful attempts to use lsetxattr system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100791",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful attempts to use fsetxattr system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100793",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful attempts to use the removexattr system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000462-GPOS-00206, SRG-OS-000466-GPOS-00210",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100795",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful attempts to use the lremovexattr system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).\n\nSatisfies: SRG-OS-000462-GPOS-00206, SRG-OS-000466-GPOS-00210",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100797",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful use of unlink system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100799",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful use of unlinkat system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100801",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful use of rename system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100803",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful use of renameat system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100805",
+      "title": "The Ubuntu operating system must generate audit records when loading dynamic kernel modules.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100807",
+      "title": "The Ubuntu operating system must generate audit records when unloading dynamic kernel modules.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one. \n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100809",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful uses of the truncate system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100811",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful uses of the ftruncate system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100813",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful uses of the creat system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100815",
+      "title": "The Ubuntu operating system must generate records for successful/unsuccessful uses of init_module or finit_module syscalls.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100817",
+      "title": "The Ubuntu operating system must generate records for successful/unsuccessful uses of delete_module syscall.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100819",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful attempts to use modprobe command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100821",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful attempts to use the kmod command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100823",
+      "title": "The Ubuntu operating system must generate audit records when successful/unsuccessful attempts to use the fdisk command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100825",
+      "title": "The Ubuntu operating system must limit the number of concurrent sessions to ten for all accounts and/or account types.",
+      "description": "Ubuntu operating system management includes the ability to control the number of users and user sessions that utilize an operating system. Limiting the number of allowed users and sessions per user is helpful in reducing the risks related to DoS attacks.\n\nThis requirement addresses concurrent sessions for information system accounts and does not address concurrent sessions by single users via multiple system accounts. The maximum number of concurrent sessions should be defined based on mission needs and the operational environment for each system.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100827",
+      "title": "The Ubuntu operating system must retain a users session lock until that user reestablishes access using established identification and authentication procedures.",
+      "description": "A session lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not want to log out because of the temporary nature of the absence.\n\nThe session lock is implemented at the point where session activity can be determined. Rather than be forced to wait for a period of time to expire before the user session can be locked, Ubuntu operating systems need to provide users with the ability to manually invoke a session lock so users may secure their session should the need arise for them to temporarily vacate the immediate physical vicinity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100829",
+      "title": "The Ubuntu operating system must initiate a session lock after a 15-minute period of inactivity for all connection types.",
+      "description": "A session time-out lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence. Rather than relying on the user to manually lock their operating system session prior to vacating the vicinity, the Ubuntu operating system need to be able to identify when a user's session has idled and take action to initiate the session lock.\n\nThe session lock is implemented at the point where session activity can be determined and/or controlled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100831",
+      "title": "The Ubuntu operating system must be configured for users to directly initiate a session lock for all connection types.",
+      "description": "A session lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not want to log out because of the temporary nature of the absence.\n\nThe session lock is implemented at the point where session activity can be determined. Rather than be forced to wait for a period of time to expire before the user session can be locked, the Ubuntu operating system need to provide users with the ability to manually invoke a session lock so users may secure their session should the need arise for them to temporarily vacate the immediate physical vicinity.\n\nSatisfies: SRG-OS-000030-GPOS-00011, SRG-OS-000031-GPOS-00012",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100833",
+      "title": "The Ubuntu operating system must automatically terminate a user session after inactivity time-outs have expired.",
+      "description": "Automatic session termination addresses the termination of user-initiated logical sessions in contrast to the termination of network connections that are associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever a user (or process acting on behalf of a user) accesses an organizational information system. Such user sessions can be terminated (and thus terminate user access) without terminating network sessions.\n\nSession termination terminates all processes associated with a user's logical session except those processes that are specifically created by the user (i.e., session owner) to continue after the session is terminated.\n\nConditions or trigger events requiring automatic session termination can include, for example, organization-defined periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use.\n\nThis capability is typically reserved for specific operating system functionality where the system owner, data owner, or organization requires additional assurance.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100835",
+      "title": "The Ubuntu operating system must monitor remote access methods.",
+      "description": "Remote access services, such as those providing remote access to network devices and information systems, which lack automated monitoring capabilities, increase risk and make remote user access management difficult at best.\n\nRemote access is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nAutomated monitoring of remote access sessions allows organizations to detect cyber attacks and also ensure ongoing compliance with remote access policies by auditing connection activities of remote access capabilities, such as Remote Desktop Protocol (RDP), on a variety of information system components (e.g., servers, workstations, notebook computers, smartphones, and tablets).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100837",
+      "title": "The Ubuntu operating system must implement DoD-approved encryption to protect the confidentiality of remote access sessions.",
+      "description": "Without confidentiality protection mechanisms, unauthorized individuals may gain access to sensitive information via a remote access session.\n\nRemote access is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nEncryption provides a means to secure the remote connection to prevent unauthorized access to the data traversing the remote access connection (e.g., RDP), thereby providing a degree of confidentiality. The encryption strength of a mechanism is selected based on the security categorization of the information.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100839",
+      "title": "The Ubuntu operating system must enforce SSHv2 for network access to all accounts.",
+      "description": "A replay attack may enable an unauthorized user to gain access to the operating system. Authentication sessions between the authenticator and the operating system validating the user credentials must not be vulnerable to a replay attack.\n\nAn authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message.\n\nA privileged account is any information system account with authorizations of a privileged user.\n\nTechniques used to address this include protocols using nonces (e.g., numbers generated for a specific one-time use) or challenges (e.g., TLS, WS_Security). Additional techniques include time-synchronous or challenge-response one-time authenticators.\n\nSatisfies: SRG-OS-000112-GPOS-00057, SRG-OS-000113-GPOS-00058",
+      "severity": "high"
+    },
+    {
+      "id": "V-100841",
+      "title": "The Ubuntu operating system must use strong authenticators in establishing nonlocal maintenance and diagnostic sessions.",
+      "description": "Nonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the Internet) or an internal network. Local maintenance and diagnostic activities are those activities carried out by individuals physically present at the information system or information system component and not communicating across a network connection. Typically, strong authentication requires authenticators that are resistant to replay attacks and employ multifactor authentication. Strong authenticators include, for example, PKI where certificates are stored on a token protected by a password, passphrase, or biometric.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100843",
+      "title": "The Ubuntu operating system must immediately terminate all network connections associated with SSH traffic after a period of inactivity.",
+      "description": "Automatic session termination addresses the termination of user-initiated logical sessions in contrast to the termination of network connections that are associated with communications sessions (i.e., network disconnect). A logical session (for local, network, and remote access) is initiated whenever a user (or process acting on behalf of a user) accesses an organizational information system. Such user sessions can be terminated (and thus terminate user access) without terminating network sessions.\n\nSession termination terminates all processes associated with a user's logical session except those processes that are specifically created by the user (i.e., session owner) to continue after the session is terminated.\n\nConditions or trigger events requiring automatic session termination can include, for example, organization-defined periods of user inactivity, targeted responses to certain types of incidents, and time-of-day restrictions on information system use.\n\nThis capability is typically reserved for specific Ubuntu operating system functionality where the system owner, data owner, or organization requires additional assurance.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100845",
+      "title": "The Ubuntu operating system must immediately terminate all network connections associated with SSH traffic at the end of the session or after 10 minutes of inactivity.",
+      "description": "Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended. In addition, quickly terminating an idle session will also free up resources committed by the managed network element. \n\nTerminating network connections associated with communications sessions includes, for example, de-allocating associated TCP/IP address/port pairs at the operating system level, and de-allocating networking assignments at the application level if multiple application sessions are using a single operating system-level network connection. This does not mean that the operating system terminates all sessions or network access; it only ends the inactive session and releases the resources associated with that session.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100847",
+      "title": "The Ubuntu operating system must configure the SSH daemon to only use Message Authentication Codes (MACs) employing FIPS 140-2 approved cryptographic hash algorithms to protect the integrity of nonlocal maintenance and diagnostic communications.",
+      "description": "Without cryptographic integrity protections, information can be altered by unauthorized users without detection.\n\nNonlocal maintenance and diagnostic activities are those activities conducted by individuals communicating through a network, either an external network (e.g., the Internet) or an internal network. Local maintenance and diagnostic activities are those activities carried out by individuals physically present at the information system or information system component and not communicating across a network connection.\n\nRemote access (e.g., RDP) is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nCryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.\n\nSatisfies: SRG-OS-000250-GPOS-00093, SRG-OS-000393-GPOS-00173, SRG-OS-000394-GPOS-00174",
+      "severity": "high"
+    },
+    {
+      "id": "V-100849",
+      "title": "The Ubuntu operating system must use SSH to protect the confidentiality and integrity of transmitted information unless otherwise protected by alternative physical safeguards, such as, at a minimum, a Protected Distribution System (PDS).",
+      "description": "Without protection of the transmitted information, confidentiality and integrity may be compromised because unprotected communications can be intercepted and either read or altered. \n\nThis requirement applies to both internal and external networks and all types of information system components from which information can be transmitted (e.g., servers, mobile devices, notebook computers, printers, copiers, scanners, and facsimile machines). Communication paths outside the physical protection of a controlled boundary are exposed to the possibility of interception and modification. \n\nProtecting the confidentiality and integrity of organizational information can be accomplished by physical means (e.g., employing physical distribution systems) or by logical means (e.g., employing cryptographic techniques). If physical means of protection are employed, then logical means (cryptography) do not have to be employed, and vice versa.\n\nAlternative physical protection measures include PDS. PDSs are used to transmit unencrypted classified National Security Information (NSI) through an area of lesser classification or control. Since the classified NSI is unencrypted, the PDS must provide adequate electrical, electromagnetic, and physical safeguards to deter exploitation.\n\nSatisfies: SRG-OS-000423-GPOS-00187, SRG-OS-000424-GPOS-00188, SRG-OS-000425-GPOS-00189, SRG-OS-000426-GPOS-00190",
+      "severity": "high"
+    },
+    {
+      "id": "V-100851",
+      "title": "The Ubuntu operating system must not allow unattended or automatic login via ssh.",
+      "description": "Failure to restrict system access to authenticated users negatively impacts Ubuntu operating system security.",
+      "severity": "high"
+    },
+    {
+      "id": "V-100853",
+      "title": "The Ubuntu operating system, for PKI-based authentication, must validate certificates by constructing a certification path (which includes status information) to an accepted trust anchor.",
+      "description": "Without path validation, an informed trust decision by the relying party cannot be made when presented with any certificate not already explicitly trusted.\n\nA trust anchor is an authoritative entity represented via a public key and associated data. It is used in the context of public key infrastructures, X.509 digital certificates, and DNSSEC.\n\nWhen there is a chain of trust, usually the top entity to be trusted becomes the trust anchor; it can be, for example, a Certification Authority (CA). A certification path starts with the subject certificate and proceeds through a number of intermediate certificates up to a trusted root certificate, typically issued by a trusted CA.\n\nThis requirement verifies that a certification path to an accepted trust anchor is used for certificate validation and that the path includes status information. Path validation is necessary for a relying party to make an informed trust decision when presented with any certificate not already explicitly trusted. Status information for certification paths includes certificate revocation lists or online certificate status protocol responses. Validation of the certificate status information is out of scope for this requirement.\n\nSatisfies: SRG-OS-000066-GPOS-00034, SRG-OS-000384-GPOS-00167",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100855",
+      "title": "The Ubuntu operating system must map the authenticated identity to the user or group account for PKI-based authentication.",
+      "description": "Without mapping the certificate used to authenticate to the user account, the ability to determine the identity of the individual user or group will not be available for forensic analysis.",
+      "severity": "high"
+    },
+    {
+      "id": "V-100857",
+      "title": "The Ubuntu operating system must implement smart card logins for multifactor authentication for access to accounts.",
+      "description": "Without the use of multifactor authentication, the ease of access to privileged functions is greatly increased.\n\nMultifactor authentication requires using two or more factors to achieve authentication.\n\nFactors include: \n1) something a user knows (e.g., password/PIN);\n2) something a user has (e.g., cryptographic identification device, token); and\n3) something a user is (e.g., biometric).\n\nA privileged account is defined as an information system account with authorizations of a privileged user.\n\nNetwork access is defined as access to an information system by a user (or a process acting on behalf of a user) communicating through a network (e.g., local area network, wide area network, or the Internet).\n\nThe DoD CAC with DoD-approved PKI is an example of multifactor authentication.\n\nSatisfies: SRG-OS-000105-GPOS-00052, SRG-OS-000106-GPOS-00053, SRG-OS-000107-GPOS-00054, SRG-OS-000108-GPOS-00055, SRG-OS-000377-GPOS-00162",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100859",
+      "title": "The Ubuntu operating system must implement multifactor authentication for remote access to privileged accounts in such a way that one of the factors is provided by a device separate from the system gaining access.",
+      "description": "Using an authentication device, such as a CAC or token that is separate from the information system, ensures that even if the information system is compromised, that compromise will not affect credentials stored on the authentication device.\n\nMultifactor solutions that require devices separate from information systems gaining access include, for example, hardware tokens providing time-based or challenge-response authenticators and smart cards such as the U.S. Government Personal Identity Verification card and the DoD Common Access Card.\n\nA privileged account is defined as an information system account with authorizations of a privileged user.\n\nRemote access is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nThis requirement only applies to components where this is specific to the function of the device or has the concept of an organizational user (e.g., VPN, proxy capability). This does not apply to authentication for the purpose of configuring the device itself (management).\n\nRequires further clarification from NIST.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100861",
+      "title": "The Ubuntu operating system must accept Personal Identity Verification (PIV) credentials.",
+      "description": "The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access.\n\nDoD has mandated the use of the CAC to support identity management and personal authentication for systems covered under Homeland Security Presidential Directive (HSPD) 12, as well as making the CAC a primary component of layered protection for national security systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100863",
+      "title": "The Ubuntu operating system must implement certificate status checking for multifactor authentication.",
+      "description": "The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access.\n\nDoD has mandated the use of the CAC to support identity management and personal authentication for systems covered under Homeland Security Presidential Directive (HSPD) 12, as well as making the CAC a primary component of layered protection for national security systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100865",
+      "title": "The Ubuntu operating system must only allow the use of DoD PKI-established certificate authorities for verification of the establishment of protected sessions.",
+      "description": "Untrusted Certificate Authorities (CA) can issue certificates, but they may be issued by organizations or individuals that seek to compromise DoD systems or by organizations with insufficient security controls. If the CA used for verifying the certificate is not a DoD-approved CA, trust of this CA has not been established.\n\nThe DoD will only accept PKI-certificates obtained from a DoD-approved internal or external certificate authority. Reliance on CAs for the establishment of secure sessions includes, for example, the use of SSL/TLS certificates.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100867",
+      "title": "Pam_Apparmor must be configured to allow system administrators to pass information to any other Ubuntu operating system administrator or user, change security attributes, and to confine all non-privileged users from executing functions to include disabling, circumventing, or altering implemented security safeguards/countermeasures.",
+      "description": "When discretionary access control policies are implemented, subjects are not constrained with regard to what actions they can take with information for which they have already been granted access. Thus, subjects that have been granted access to information are not prevented from passing (i.e., the subjects have the discretion to pass) the information to other subjects or objects. A subject that is constrained in its operation by Mandatory Access Control policies is still able to operate under the less rigorous constraints of this requirement. Thus, while Mandatory Access Control imposes constraints preventing a subject from passing information to another subject operating at a different sensitivity level, this requirement permits the subject to pass the information to any subject at the same sensitivity level. The policy is bounded by the information system boundary. Once the information is passed outside the control of the information system, additional means may be required to ensure the constraints remain in effect. While the older, more traditional definitions of discretionary access control require identity-based access control, that limitation is not required for this use of discretionary access control.\n\nSatisfies: SRG-OS-000312-GPOS-00122, SRG-OS-000312-GPOS-00123, SRG-OS-000312-GPOS-00124, SRG-OS-000324-GPOS-0012",
+      "severity": "low"
+    },
+    {
+      "id": "V-100869",
+      "title": "The Ubuntu operating system must be configured to use AppArmor.",
+      "description": "Control of program execution is a mechanism used to prevent execution of unauthorized programs. Some operating systems may provide a capability that runs counter to the mission or provides users with functionality that exceeds mission requirements. This includes functions and services installed at the operating system level.\n\nSome of the programs, installed by default, may be harmful or may not be necessary to support essential organizational operations (e.g., key missions, functions). Removal of executable programs is not always possible; therefore, establishing a method of preventing program execution is critical to maintaining a secure system baseline.\n\nMethods for complying with this requirement include restricting execution of programs in certain environments, while preventing execution in other environments; or limiting execution of certain program functionality based on organization-defined criteria (e.g., privileges, subnets, sandboxed environments, or roles).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100871",
+      "title": "The Apparmor module must be configured to employ a deny-all, permit-by-exception policy to allow the execution of authorized software programs and limit the ability of non-privileged users to grant other users direct access to the contents of their home directories/folders.",
+      "description": "Control of program execution is a mechanism used to prevent execution of unauthorized programs. Some operating systems may provide a capability that runs counter to the mission or provides users with functionality that exceeds mission requirements. This includes functions and services installed at the operating system level.\n\nSome of the programs, installed by default, may be harmful or may not be necessary to support essential organizational operations (e.g., key missions, functions). Removal of executable programs is not always possible; therefore, establishing a method of preventing program execution is critical to maintaining a secure system baseline.\n\nMethods for complying with this requirement include restricting execution of programs in certain environments, while preventing execution in other environments; or limiting execution of certain program functionality based on organization-defined criteria (e.g., privileges, subnets, sandboxed environments, or roles).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100873",
+      "title": "The Ubuntu operating system must uniquely identify interactive users.",
+      "description": "To assure accountability and prevent unauthenticated access, organizational users must be identified and authenticated to prevent potential misuse and compromise of the system.\n\nOrganizational users include organizational employees or individuals the organization deems to have equivalent status of employees (e.g., contractors). Organizational users (and processes acting on behalf of users) must be uniquely identified and authenticated to all accesses, except for the following: \n\n1) Accesses explicitly identified and documented by the organization. Organizations document specific user actions that can be performed on the information system without identification or authentication; and\n\n2) Accesses that occur through authorized use of group authenticators without individual authentication. Organizations may require unique identification of individuals in group accounts (e.g., shared privilege accounts) or for detailed accountability of individual activity.\n\nSatisfies: SRG-OS-000104-GPOS-00051, SRG-OS-000121-GPOS-00062",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100875",
+      "title": "The Ubuntu operating system must disable account identifiers (individuals, groups, roles, and devices) after 35 days of inactivity.",
+      "description": "Inactive identifiers pose a risk to systems and applications because attackers may exploit an inactive identifier and potentially obtain undetected access to the system. Owners of inactive accounts will not notice if unauthorized access to their user account has been obtained.\n\nUbuntu operating systems need to track periods of inactivity and disable application identifiers after 35 days of inactivity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100877",
+      "title": "The Ubuntu operating system must automatically remove or disable emergency accounts after 72 hours.",
+      "description": "Emergency accounts are different from infrequently used accounts (i.e., local logon accounts used by the organization's system administrators when network or normal logon/access is not available). Infrequently used accounts are not subject to automatic termination dates. Emergency accounts are accounts created in response to crisis situations, usually for use by maintenance personnel. The automatic expiration or disabling time period may be extended as needed until the crisis is resolved; however, it must not be extended indefinitely. A permanent account should be established for privileged users who need long-term maintenance accounts.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100879",
+      "title": "The Ubuntu operating system default filesystem permissions must be defined in such a way that all authenticated users can only read and modify their own files.",
+      "description": "Setting the most restrictive default permissions ensures that when new accounts are created they do not have unnecessary access.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100881",
+      "title": "The Ubuntu operating system must provision temporary user accounts with an expiration time of 72 hours or less.",
+      "description": "If temporary user accounts remain active when no longer needed or for an excessive period, these accounts may be used to gain unauthorized access. To mitigate this risk, automated termination of all temporary accounts must be set upon account creation.\n\nTemporary accounts are established as part of normal account activation procedures when there is a need for short-term accounts without the demand for immediacy in account activation.\n\nIf temporary accounts are used, the Ubuntu operating system must be configured to automatically terminate these types of accounts after a DoD-defined time period of 72 hours.\n\nTo address access requirements, the Ubuntu operating system may be integrated with enterprise-level authentication/access mechanisms that meet or exceed access control policy requirements.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100883",
+      "title": "The Ubuntu operating system must be configured to use TCP syncookies.",
+      "description": "DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity. \n\nManaging excess capacity ensures that sufficient capacity is available to counter flooding attacks. Employing increased capacity and service redundancy may reduce the susceptibility to some DoS attacks. Managing excess capacity may include, for example, establishing selected usage priorities, quotas, or partitioning.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100885",
+      "title": "The Ubuntu operating system must, for networked systems, compare internal information system clocks at least every 24 hours with a server which is synchronized to one of the redundant United States Naval Observatory (USNO) time servers, or a time server designated for the appropriate DoD network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS).",
+      "description": "Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. Sources outside the configured acceptable allowance (drift) may be inaccurate.\n\nSynchronizing internal information system clocks provides uniformity of time stamps for information systems with multiple system clocks and systems connected over a network.\n\nOrganizations should consider endpoints that may not have regular access to the authoritative time server (e.g., mobile, teleworking, and tactical endpoints).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100887",
+      "title": "The Ubuntu operating system must synchronize internal information system clocks to the authoritative time source when the time difference is greater than one second.",
+      "description": "Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events.\n\nSynchronizing internal information system clocks provides uniformity of time stamps for information systems with multiple system clocks and systems connected over a network. Organizations should consider setting time periods for different types of systems (e.g., financial, legal, or mission-critical systems).\n\nOrganizations should also consider endpoints that may not have regular access to the authoritative time server (e.g., mobile, teleworking, and tactical endpoints). This requirement is related to the comparison done every 24 hours in SRG-OS-000355 because a comparison must be done in order to determine the time difference.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100889",
+      "title": "The Ubuntu operating system must record time stamps for audit records that can be mapped to Coordinated Universal Time (UTC) or Greenwich Mean Time (GMT).",
+      "description": "If time stamps are not consistently applied and there is no common time reference, it is difficult to perform forensic analysis.\n\nTime stamps generated by the operating system include date and time. Time is commonly expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.",
+      "severity": "low"
+    },
+    {
+      "id": "V-100891",
+      "title": "The Ubuntu operating system must be configured to prohibit or restrict the use of functions, ports, protocols, and/or services, as defined in the PPSM CAL and vulnerability assessments.",
+      "description": "In order to prevent unauthorized connection of devices, unauthorized transfer of information, or unauthorized tunneling (i.e., embedding of data types within data types), organizations must disable or restrict unused or unnecessary physical and logical ports/protocols on information systems.\n\nThe Ubuntu operating system is capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations. Additionally, it is sometimes convenient to provide multiple services from a single component (e.g., VPN and IPS); however, doing so increases risk over limiting the services provided by any one component.\n\nTo support the requirements and principles of least functionality, the Ubuntu operating system must support the organizational requirements, providing only essential capabilities and limiting the use of ports, protocols, and/or services to only those required, authorized, and approved to conduct official business or to address authorized quality of life issues.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100893",
+      "title": "Kernel core dumps must be disabled unless needed.",
+      "description": "Kernel core dumps may contain the full contents of system memory at the time of the crash. Kernel core dumps may consume a considerable amount of disk space and may result in denial of service by exhausting the available space on the target file system partition.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100895",
+      "title": "The Ubuntu operating system must use cryptographic mechanisms to protect the integrity of audit tools.",
+      "description": "Protecting the integrity of the tools used for auditing purposes is a critical step toward ensuring the integrity of audit information. Audit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit information system activity.\n\nAudit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.\n\nIt is not uncommon for attackers to replace the audit tools or inject code into the existing tools with the purpose of providing the capability to hide or erase system activity from the audit logs.\n\nTo address this risk, audit tools must be cryptographically signed in order to provide the capability to identify when the audit tools have been modified, manipulated, or replaced. An example is a checksum hash of the file or files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100897",
+      "title": "The Ubuntu operating system must enable and run the uncomplicated firewall(ufw).",
+      "description": "Remote access services, such as those providing remote access to network devices and information systems, which lack automated control capabilities, increase risk and make remote user access management difficult at best.\n\nRemote access is access to DoD nonpublic information systems by an authorized user (or an information system) communicating through an external, non-organization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.\n\nUbuntu operating system functionality (e.g., RDP) must be capable of taking enforcement action if the audit reveals unauthorized activity. Automated control of remote access sessions allows organizations to ensure ongoing compliance with remote access policies by enforcing connection rules of remote access applications on a variety of information system components (e.g., servers, workstations, notebook computers, smartphones, and tablets).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100899",
+      "title": "The Ubuntu operating system must notify designated personnel if baseline configurations are changed in an unauthorized manner. The file integrity tool must notify the system administrator when changes to the baseline configuration or anomalies in the operation of any security functions are discovered.",
+      "description": "Unauthorized changes to the baseline configuration could make the system vulnerable to various attacks or allow unauthorized access to the Ubuntu operating system. Changes to Ubuntu operating system configurations can have unintended side effects, some of which may be relevant to security.\n\nDetecting such changes and providing an automated response can help avoid unintended, negative consequences that could ultimately affect the security state of the Ubuntu operating system. The Ubuntu operating system's IMO/ISSO and SAs must be notified via email and/or monitoring system trap when there is an unauthorized modification of a configuration item.\n\nSatisfies: SRG-OS-000363-GPOS-00150, SRG-OS-000447-GPOS-00201",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100901",
+      "title": "The Ubuntu operating system must configure the uncomplicated firewall to rate-limit impacted network interfaces.",
+      "description": "DoS is a condition when a resource is not available for legitimate users. When this occurs, the organization either cannot accomplish its mission or must operate at degraded capacity.\n\nThis requirement addresses the configuration of the Ubuntu operating system to mitigate the impact of DoS attacks that have occurred or are ongoing on system availability. For each system, known and potential DoS attacks must be identified and solutions for each type implemented. A variety of technologies exist to limit or, in some cases, eliminate the effects of DoS attacks (e.g., limiting processes or establishing memory partitions). Employing increased capacity and bandwidth, combined with service redundancy, may reduce the susceptibility to some DoS attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100903",
+      "title": "The Ubuntu operating system must implement non-executable data to protect its memory from unauthorized code execution.",
+      "description": "Some adversaries launch attacks with the intent of executing code in non-executable regions of memory or in memory locations that are prohibited. Security safeguards employed to protect memory include, for example, data execution prevention and address space layout randomization. Data execution prevention safeguards can either be hardware-enforced or software-enforced with hardware providing the greater strength of mechanism.\n\nExamples of attacks are buffer overflow attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100905",
+      "title": "The Ubuntu operating system must implement address space layout randomization to protect its memory from unauthorized code execution.",
+      "description": "Some adversaries launch attacks with the intent of executing code in non-executable regions of memory or in memory locations that are prohibited. Security safeguards employed to protect memory include, for example, data execution prevention and address space layout randomization. Data execution prevention safeguards can either be hardware-enforced or software-enforced with hardware providing the greater strength of mechanism.\n\nExamples of attacks are buffer overflow attacks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100907",
+      "title": "The Ubuntu operating system must use a file integrity tool to verify correct operation of all security functions.",
+      "description": "Without verification of the security functions, security functions may not operate correctly and the failure may go unnoticed. Security function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Security functionality includes, but is not limited to, establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters.\n\nThis requirement applies to the Ubuntu operating system performing security function verification/testing and/or systems and environments that require this functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100909",
+      "title": "The Ubuntu operating system must be configured so that a file integrity tool verifies the correct operation of security functions every 30 days.",
+      "description": "Without verification of the security functions, security functions may not operate correctly and the failure may go unnoticed. Security function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Security functionality includes, but is not limited to, establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters.\n\nNotifications provided by information systems include, for example, electronic alerts to system administrators, messages to local computer consoles, and/or hardware indications, such as lights.\n\nThis requirement applies to the Ubuntu operating system performing security function verification/testing and/or systems and environments that require this functionality.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100911",
+      "title": "The Ubuntu operating system must have an application firewall enabled.",
+      "description": "Firewalls protect computers from network attacks by blocking or limiting access to open network ports. Application firewalls limit which applications are allowed to communicate over the network.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100913",
+      "title": "The Ubuntu operating system must disable all wireless network adapters.",
+      "description": "Without protection of communications with wireless peripherals, confidentiality and integrity may be compromised because unprotected communications can be intercepted and either read, altered, or used to compromise the operating system.\n\nThis requirement applies to wireless peripheral technologies (e.g., wireless mice, keyboards, displays, etc.) used with an operating system. Wireless peripherals (e.g., Wi-Fi/Bluetooth/IR Keyboards, Mice, and Pointing Devices and Near Field Communications [NFC]) present a unique challenge by creating an open, unsecured port on a computer. Wireless peripherals must meet DoD requirements for wireless data transmission and be approved for use by the AO. Even though some wireless peripherals, such as mice and pointing devices, do not ordinarily carry information that need to be protected, modification of communications with these wireless peripherals may be used to compromise the operating system. Communication paths outside the physical protection of a controlled boundary are exposed to the possibility of interception and modification.\n\nProtecting the confidentiality and integrity of communications with wireless peripherals can be accomplished by physical means (e.g., employing physical barriers to wireless radio frequencies) or by logical means (e.g., employing cryptographic techniques). If physical means of protection are employed, then logical means (cryptography) do not have to be employed, and vice versa. If the wireless peripheral is only passing telemetry data, encryption of the data may not be required.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100915",
+      "title": "The Ubuntu operating system must generate audit records for any usage of the removexattr system call.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100917",
+      "title": "The Ubuntu operating system must generate audit records for successful/unsuccessful uses of the crontab command.",
+      "description": "Without generating audit records that are specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.\n\nAudit records can be generated from various components within the information system (e.g., module or policy filter).",
+      "severity": "medium"
+    },
+    {
+      "id": "V-100919",
+      "title": "The Ubuntu operating system must disable automatic mounting of Universal Serial Bus (USB) mass storage driver.",
+      "description": "Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity.\n\nPeripherals include, but are not limited to, such devices as flash drives, external storage, and printers.",
+      "severity": "medium"
+    }
+  ]
+}

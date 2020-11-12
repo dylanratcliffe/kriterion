@@ -1,0 +1,113 @@
+{
+  "name": "stig_zos_webspheremqracf",
+  "date": "2020-01-23",
+  "description": "None",
+  "title": "zOS WebsphereMQ for RACF STIG",
+  "version": "None",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-31561",
+      "title": "Production WebSphere MQ Remotes must utilize Certified Name Filters (CNF)",
+      "description": "IBM Websphere MQ can use a user ID associated with an ACP certificate as a channel user ID.  When an entity at one end of an SSL channel receives a certificate from a remote connection, the entity asks The ACP if there is a user ID associated with that certificate. The entity uses that user ID as the channel user ID. If there is no user ID associated with the certificate, the entity uses the user ID under which the channel initiator is running.  Without a validly defined Certificate Name Filter for the entity IBM Websphere MQ will set the channel user ID to the default.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3903",
+      "title": "User timeout parameter values for WebSphere MQ queue managers are not specified in accordance with security requirements.\n",
+      "description": "Users signed on to a WebSphere MQ queue manager could leave their terminals unattended for long periods of time.  This may allow unauthorized individuals to gain access to WebSphere MQ resources and application data.  This exposure could compromise the availability, integrity, and confidentiality of some system services and application data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3904",
+      "title": "WebSphere MQ started tasks are not defined in accordance with the proper security requirements.",
+      "description": "Started tasks are used to execute WebSphere MQ queue manager services.  Improperly defined WebSphere MQ started tasks may result in inappropriate access to application resources and the loss of accountability.  This exposure could compromise the availability of some system services and application data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-3905",
+      "title": "WebSphere MQ all update and alter access to MQSeries/WebSphere MQ product and system data sets are not properly restricted ",
+      "description": "MVS data sets provide the configuration, operational, and executable properties of WebSphere MQ.  Some data sets are responsible for the security implementation of WebSphere MQ.  Failure to properly protect these data sets may lead to unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6958",
+      "title": "WebSphere MQ channel security must be implemented in accordance with security requirements.",
+      "description": "WebSphere MQ Channel security can be configured to provide authentication, message privacy, and message integrity between queue managers.  Secure Sockets Layer (SSL) uses encryption techniques, digital signatures and digital certificates to provide message privacy, message integrity and mutual authentication between clients and servers.\n\nFailure to properly secure a WebSphere MQ channel may lead to unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of some system services, applications, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6959",
+      "title": "WebSphere MQ resource classes are not properly actived for security checking by the ACP.\n",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to ensure the classes have been made ACTIVE under RACF will prevent RACF from enforcing security rules.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6960",
+      "title": "WebSphere MQ switch profiles must be properly defined to the MQADMIN class.",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "high"
+    },
+    {
+      "id": "V-6962",
+      "title": "WebSphere MQ MQCONN Class (Connection) resource definitions must be protected in accordance with security.\n",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6964",
+      "title": "WebSphere MQ dead letter and alias dead letter queues are not properly defined.",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6965",
+      "title": "WebSphere MQ MQQUEUE (Queue) resource profiles defined to the MQQUEUE class are not protected in accordance with security requirements.\n",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6966",
+      "title": "WebSphere MQ Process resource profiles defined in the MQPROC Class are not protected in accordance with security requirements.\n\n",
+      "description": "WebSphere MQ Process resources allow for the control of processes.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6967",
+      "title": "WebSphere MQ Namelist resource profiles defined in the MQNLIST Class are not protected in accordance with security requirements.\n",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6969",
+      "title": "WebSphere MQ Alternate User resources defined to MQADMIN resource class are not protected in accordance with security requirements.\n",
+      "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6971",
+      "title": "WebSphere MQ context resources defined to the MQADMIN resource class are not protected in accordance with security requirements.",
+      "description": "Context security validates whether a userid has authority to pass or set identity and/or origin data\nfor a message. Context security will be active to avoid security exposure.  \n\nThis exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6973",
+      "title": "WebSphere MQ command resources defined to MQCMDS resource class are not protected in accordance with security requirements.",
+      "description": "WebSphere MQ resources allow for the control of  commands.  Failure to properly protect WebSphere MQ Command resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.\n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6975",
+      "title": "WebSphere MQ RESLEVEL resources in the MQADMIN resource class are not protected in accordance with security requirements. ",
+      "description": "RESLEVEL security profiles control the number of userids checked for API-resource security.\nRESLEVEL is a powerful option that can cause the bypassing of all security checks.\nRESLEVEL security will not be implemented. \n",
+      "severity": "medium"
+    },
+    {
+      "id": "V-6980",
+      "title": "WebSphere MQ channel security is not implemented in accordance with security requirements.",
+      "description": "WebSphere MQ channel security can be configured to provide authentication, message privacy, and message integrity between queue managers.  WebSphere MQ channels use SSL encryption techniques, digital signatures and digital certificates to provide message privacy, message integrity and mutual authentication between clients and servers.\n\nFailure to properly secure a WebSphere MQ channel may lead to unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of some system services, applications, and customer data.",
+      "severity": "medium"
+    }
+  ]
+}

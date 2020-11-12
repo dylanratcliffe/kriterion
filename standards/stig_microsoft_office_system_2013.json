@@ -1,6 +1,6 @@
 {
   "name": "stig_microsoft_office_system_2013",
-  "date": "2018-03-19",
+  "date": "2019-09-30",
   "description": "The Microsoft Office System 2013 STIG is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the NIST 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Microsoft Office System 2013 STIG",
   "version": "1",

@@ -1,6 +1,6 @@
 {
   "name": "stig_zos_racf",
-  "date": "2018-04-04",
+  "date": "2019-12-12",
   "description": "None",
   "title": "z/OS RACF STIG",
   "version": "None",
@@ -285,7 +285,7 @@
     },
     {
       "id": "V-263",
-      "title": "The PASSWORD(MINCHANGE) value will specified a value greater the zero (0).",
+      "title": "The PASSWORD(MINCHANGE) value must be specified as (1).\n\n",
       "description": "MINCHANGE specifies the number of days that must pass between a user’s password and password phrase changes.  Users can not change their own passwords and password phrases within the minimum change interval.\n\nThe system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data. The ACP provides the ability to set a number of these fields at the subsystem level. If no setting is found, the system-wide defaults will be used. The improper setting of any of these fields, individually or in combination with another, can compromise the security of the processing environment. In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during migration process or contingency plan activation.",
       "severity": "medium"
     },
@@ -357,7 +357,7 @@
     },
     {
       "id": "V-276",
-      "title": "The PROTECTALL SETROPTS value specified is improperly set.",
+      "title": "The PROTECTALL SETROPTS value specified must be properly set.",
       "description": "When PROTECTALL processing is active and set to FAIL, the system automatically rejects any request to create or access a data set that is not RACF protected.\n\nTemporary data sets that comply with standard MVS temporary data set naming conventions are excluded from PROTECTALL processing.  PROTECTALL requires that data sets be RACF protected.  In order for PROTECTALL to work effectively, you must specify GENERIC to activate generic profile checking.   Otherwise, RACF would allow users to create or access only data sets protected by discrete profiles.\n\nThe system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during migration process or contingency plan activation.",
       "severity": "high"
     },
@@ -375,7 +375,7 @@
     },
     {
       "id": "V-279",
-      "title": "The SETROPTS RVARYPW values will be properly set.",
+      "title": "The SETROPTS RVARYPW values must be properly set.",
       "description": "RVARYPW specifies passwords that an operator is to use to respond with requests to approve RVARY command processing.\n\nThe system-wide options control the default settings for determining how the ACP will function when handling requests for access to the operating system environment, ACP, and customer data.  The ACP provides the ability to set a number of these fields at the subsystem level.  If no setting is found, the system-wide defaults will be used.  The improper setting of any of these fields, individually or in combination with another, can compromise the security of the processing environment.  In addition, failure to establish standardized settings for the ACP control options introduces the possibility of exposure during migration process or contingency plan activation.",
       "severity": "medium"
     },
@@ -465,13 +465,13 @@
     },
     {
       "id": "V-294",
-      "title": "Assignment of the RACF OPERATIONS attribute to individual userids is not fully justified.\n",
+      "title": "Assignment of the RACF OPERATIONS attribute to individual userids must be fully justified. \n",
       "description": "A user possessing the OPERATIONS attribute has authorization to do maintenance operations on all RACF-protected data sets, tape volumes, and DASD volumes except those where the access list specifically limits the OPERATIONS user to a lower access authority than the operation requires.\n\nBecause the OPERATIONS and GROUP-OPERATIONS privileges allow widespread access they should be limited to users documented with a valid requirement.  Delegation of GROUP-OPERATIONS processing to other personnel by site-defined Group Administrators is forbidden.\n",
       "severity": "medium"
     },
     {
       "id": "V-295",
-      "title": "The use of the RACF AUDITOR privilege is not justified.",
+      "title": "The use of the RACF AUDITOR privilege must be justified.",
       "description": "A user having the AUDITOR attribute has the authority to specify logging options, gives control of logging SMF data and list auditing information.  With the AUDITOR attribute, a user could alter SMF logging data so no trace of the activity could be found.  This could destroy audit trace information for the RACF system.  This attribute should be limited to a minimum number of people.  This also applies to the use of Group-Auditor in cases where users are connected to sensitive system dataset HLQ or general resource owning groups with Group-Auditor.\n\n",
       "severity": "medium"
     },
@@ -579,13 +579,13 @@
     },
     {
       "id": "V-3222",
-      "title": "PROFILE.TCPIP configuration statements for the TN3270 Telnet Server are not properly specified.",
+      "title": "PROFILE.TCPIP configuration statements for the TN3270 Telnet Server must be properly specified.",
       "description": "The PROFILE.TCPIP configuration file provides system operation and configuration parameters for the TN3270 Telnet Server.  Several of these parameters have potential impact to system security.  Failure to code the appropriate values could result in unexpected operations and degraded security.  This exposure may result in unauthorized access impacting data integrity or the availability of some system services.",
       "severity": "medium"
     },
     {
       "id": "V-3223",
-      "title": "VTAM session setup controls for the TN3270 Telnet Server are not properly specified. ",
+      "title": "VTAM session setup controls for the TN3270 Telnet Server must be properly specified. \n\n",
       "description": "After a connection from a Telnet client to the TN3270 Telnet Server has been established, the process of session setup with a VTAM application occurs.  A number of BEGINVTAM statements must be coded in a specific configuration to ensure adequate control to VTAM applications is maintained.  Failure to code the appropriate statements could result in unauthorized access to the host and application resources.  This exposure may impact data integrity or the availability of some system services.",
       "severity": "medium"
     },
@@ -621,7 +621,7 @@
     },
     {
       "id": "V-3231",
-      "title": "The warning banner for the z/OS UNIX Telnet Server is not specified or not properly specified.",
+      "title": "The warning banner for the z/OS UNIX Telnet Server must be properly specified",
       "description": "A logon banner can be used to inform users about the environment during the initial logon.  Logon banners are used to warn users against unauthorized entry and the possibility of legal action for unauthorized users, and advise all users that system use constitutes consent to monitoring.  Failure to display a logon warning banner without this type of information could adversely impact the ability to prosecute unauthorized users and users who abuse the system.",
       "severity": "medium"
     },
@@ -657,7 +657,7 @@
     },
     {
       "id": "V-3237",
-      "title": "The warning banner for the FTP Server is not specified properely.",
+      "title": "The warning banner for the FTP Server must be specified properly.",
       "description": "A logon banner can be used to inform users about the environment during the initial logon.  In the DISA environment, logon banners are used to warn users against unauthorized entry and the possibility of legal action for unauthorized users, and advise all users that system use constitutes consent to monitoring.  Failure to display a logon warning banner without this type of information could adversely impact the ability to prosecute unauthorized users and users who abuse the system.",
       "severity": "medium"
     },
@@ -765,7 +765,7 @@
     },
     {
       "id": "V-3900",
-      "title": "Vendor-supplied user accounts for the WebSphere Application Server are defined to the ACP.",
+      "title": "Vendor-supplied user accounts for the WebSphere Application Server must be defined to the ACP.",
       "description": "Vendor-supplied user accounts are defined to the ACP with factory-set passwords during the installation of the WebSphere Application Server (WAS).  These user accounts are common to all WAS environments and have access to restricted resources and functions.  Failure to delete vendor-supplied user accounts from the ACP may lead to unauthorized access.  This exposure could compromise the integrity and availability of system services, applications, and customer data.",
       "severity": "high"
     },
@@ -801,7 +801,7 @@
     },
     {
       "id": "V-4850",
-      "title": "Allocate access to system user catalogs are not limited to system programmers only.  ",
+      "title": "Allocate access to system user catalogs must be limited to system programmers only.",
       "description": "System catalogs are the basis for locating all files on the system.  Unauthorized access could result in the compromise of the operating system environment, ACP, and customer data.",
       "severity": "medium"
     },
@@ -819,7 +819,7 @@
     },
     {
       "id": "V-5627",
-      "title": "The hosts identified by the NSINTERADDR statement will be properly protected.",
+      "title": "The hosts identified by the NSINTERADDR statement must be properly protected.",
       "description": "If the hosts identified by NSINTERADDR statement are not properly protected they can be stolen, damaged, or disturbed. Without adequate physical security, unauthorized users can access the host and the hosts' components. Therefore, they can interfere with the normal operations of the host. Improper control of hosts and the hosts' components could compromise network operations.",
       "severity": "medium"
     },
@@ -1029,7 +1029,7 @@
     },
     {
       "id": "V-6945",
-      "title": "z/OS UNIX BPXPRMxx security parameters in PARMLIB are not properly specified.",
+      "title": "z/OS UNIX BPXPRMxx security parameters in PARMLIB must be properly specified.",
       "description": "Parameter settings in PARMLIB and /etc specify values for z/OS UNIX security controls.  The parameters impact HFS data access and operating system services.  Undesirable values can allow users to gain inappropriate privileges that could impact data integrity or the availability of some system services.",
       "severity": "medium"
     },
@@ -1071,7 +1071,7 @@
     },
     {
       "id": "V-6960",
-      "title": "WebSphere MQ \"switch\" profiles are improperly defined to the MQADMIN class.",
+      "title": "WebSphere MQ switch profiles must be properly defined to the MQADMIN class.",
       "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
       "severity": "high"
     },
@@ -1083,7 +1083,7 @@
     },
     {
       "id": "V-6962",
-      "title": "WebSphere MQ MQCONN Class (Connection) resource definitions are not protected in accordance with security.\n",
+      "title": "WebSphere MQ MQCONN Class (Connection) resource definitions must be protected in accordance with security.\n",
       "description": "WebSphere MQ resources allow for the control of administrator functions, connections, commands, queues, processes, and namelists.  Some resources provide the ability to disable or bypass security checking.  Failure to properly protect WebSphere MQ resources may result in unauthorized access.  This exposure could compromise the availability, integrity, and confidentiality of system services, applications, and customer data.",
       "severity": "medium"
     },
@@ -1233,7 +1233,7 @@
     },
     {
       "id": "V-6991",
-      "title": "UID(0) is improperly assigned.",
+      "title": "UID(0) must be properly assigned.",
       "description": "User identifiers (ACF2 logonids, RACF userids, and Top Secret ACIDs), groups, and started tasks that use z/OS UNIX facilities are defined to an ACP with attributes including UID and GID.  If these attributes are not correctly defined, data access or command privilege controls could be compromised.",
       "severity": "high"
     },
@@ -1275,7 +1275,7 @@
     },
     {
       "id": "V-7120",
-      "title": "CICS logonid(s) do not have time-out limit set to 15 minutes.\n",
+      "title": "CICS logonid(s) must have time-out limit set to 15 minutes. \n",
       "description": "CICS is a transaction-processing product that provides programmers with the facilities to develop interactive applications. Improperly defined or controlled CICS region userids may provide an exposure and vulnerability within the CICS environment.  This could result in the compromise of the confidentiality, integrity, and availability of the CICS region, applications, and customer data.\n\nRACF provides the PROPCNTL class to prevent userids such as the CICS region userid from being propogated/used by unauthorized userids.",
       "severity": "medium"
     },
@@ -1401,8 +1401,8 @@
     },
     {
       "id": "V-86",
-      "title": "The review of AC=1 modules in APF authorized libraries will be reviewed annually and documentation verifying the modules integrity is available.",
-      "description": "The review of AC=1 modules that reside in APF authorized libraries will be reviewed annually.  The IAO will maintain documentation identifying the integrity and justification of Vendor APF authorized libraries.  For non-vendor APF authorized libraries, the source and documentation identifying the integrity and justification that describes the AC=1 module process will be maintained by the IAO.  Sites have undocumented and/or unauthorized AC=1 modules have a possible risk to the confidentiality, integrity, and availability of the system and present a clear risk to the operating system, ACP, and customer data.",
+      "title": "The review of AC=1 modules in APF authorized libraries must be reviewed annually and documentation verifying the modules integrity must be available.",
+      "description": "The review of AC=1 modules that reside in APF authorized libraries must be reviewed annually.  The IAO will maintain documentation identifying the integrity and justification of Vendor APF authorized libraries.  For non-vendor APF authorized libraries, the source and documentation identifying the integrity and justification that describes the AC=1 module process will be maintained by the IAO.  Sites have undocumented and/or unauthorized AC=1 modules have a possible risk to the confidentiality, integrity, and availability of the system and present a clear risk to the operating system, ACP, and customer data.",
       "severity": "medium"
     },
     {

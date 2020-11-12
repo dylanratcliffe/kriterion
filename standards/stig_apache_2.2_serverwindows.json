@@ -1,8 +1,8 @@
 {
   "name": "stig_apache_2.2_serverwindows",
-  "date": "2017-10-02",
+  "date": "2018-12-24",
   "description": "All directives specified in this STIG must be specifically set (i.e. the server is not allowed to revert to programmed defaults for these directives).\n\nIncluded files should be reviewed if they are used.  Procedures for reviewing included files are included in the overview document.\n\nThe use of .htaccess files are not authorized for use according to the STIG.  However, if they are used, there are procedures for reviewing them in the overview document.\n\nThe Web Policy STIG should be used in addition to the Apache Site and Server STIGs in order to  do a comprehensive web server review.",
-  "title": "APACHE 2.2 SERVER for Windows Security Technical Implementation Guide",
+  "title": "APACHE 2.2 Server for Windows Security Technical Implementation Guide",
   "version": "1",
   "item_syntax": "^\\w-\\d+$",
   "section_separator": null,

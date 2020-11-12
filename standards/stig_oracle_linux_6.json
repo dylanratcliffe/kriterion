@@ -1,12 +1,24 @@
 {
   "name": "stig_oracle_linux_6",
-  "date": "2018-03-01",
+  "date": "2020-03-25",
   "description": "The Oracle Linux 6 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Oracle Linux 6 Security Technical Implementation Guide",
   "version": "1",
   "item_syntax": "^\\w-\\d+$",
   "section_separator": null,
   "items": [
+    {
+      "id": "V-100007",
+      "title": "The Oracle Linux operating system must not contain .shosts or shosts.equiv files.",
+      "description": "The .shosts and shosts.equiv files are used to configure host-based authentication for the system via SSH. Host-based authentication is not sufficient for preventing unauthorized access to the system, as it does not require interactive identification and authentication of a connection request, or for the use of two-factor authentication.",
+      "severity": "high"
+    },
+    {
+      "id": "V-100009",
+      "title": "The Oracle Linux operating system must be configured so that the SSH daemon is configured to only use Message Authentication Codes (MACs) employing FIPS 140-2 approved cryptographic hash algorithms.",
+      "description": "DoD information systems are required to use FIPS 140-2 approved cryptographic hash functions. The only SSHv2 hash algorithm meeting this requirement is SHA.",
+      "severity": "medium"
+    },
     {
       "id": "V-50515",
       "title": "Automated file system mounting tools must not be enabled unless needed.",
@@ -880,7 +892,7 @@
     {
       "id": "V-50877",
       "title": "The x86 Ctrl-Alt-Delete key sequence must be disabled.",
-      "description": "A locally logged-in user who presses Ctrl-Alt-Delete, when at the console, can reboot the system. If accidentally pressed, as could happen in the case of mixed OS environment, this can create the risk of short-term loss of availability of systems due to unintentional reboot. In the GNOME graphical environment, risk of unintentional reboot from the Ctrl-Alt-Delete sequence is reduced because the user will be prompted before any action is taken.",
+      "description": "A locally logged-on user who presses Ctrl-Alt-Delete, when at the console, can reboot the system. If accidentally pressed, as could happen in the case of mixed OS environment, this can create the risk of short-term loss of availability of systems due to unintentional reboot. In the GNOME graphical environment, risk of unintentional reboot from the Ctrl-Alt-Delete sequence is reduced because the user will be prompted before any action is taken.",
       "severity": "high"
     },
     {
@@ -958,7 +970,7 @@
     {
       "id": "V-50919",
       "title": "The system must require at least eight characters be changed between the old and new passwords during a password change.",
-      "description": "Requiring a minimum number of different characters during password changes ensures that newly changed passwords should not resemble previously compromised ones. Note that passwords which are changed on compromised systems will still be compromised, however.",
+      "description": "Requiring a minimum number of different characters during password changes ensures that newly changed passwords should not resemble previously compromised ones. Note: Passwords which are changed on compromised systems will still be compromised.",
       "severity": "low"
     },
     {
@@ -969,8 +981,8 @@
     },
     {
       "id": "V-50923",
-      "title": "The system must use a FIPS 140-2 approved cryptographic hashing algorithm for generating account password hashes (system-auth).",
-      "description": "Using a stronger hashing algorithm makes password cracking attacks more difficult.",
+      "title": "The system must use a FIPS 140-2-approved cryptographic hashing algorithm for generating account password hashes (system-auth).",
+      "description": "Using a stronger hashing algorithm makes password-cracking attacks more difficult.",
       "severity": "medium"
     },
     {
@@ -1578,6 +1590,42 @@
       "title": "Wireless network adapters must be disabled.",
       "description": "The use of wireless networking can introduce many different attack vectors into the organization’s network. Common attack vectors such as malicious association and ad hoc networks will allow an attacker to spoof a wireless access point (AP), allowing validated systems to connect to the malicious AP and enabling the attacker to monitor and record network traffic. These malicious APs can also serve to create a man-in-the-middle attack or be used to create a denial of service to valid network resources.",
       "severity": "medium"
+    },
+    {
+      "id": "V-81453",
+      "title": "The Oracle Linux 6 operating system must use a virus scan program.",
+      "description": "Virus scanning software can be used to protect a system from penetration from computer viruses and to limit their spread through intermediate systems.\n\nThe virus scanning software should be configured to perform scans dynamically on accessed files. If this capability is not available, the system must be configured to scan, at a minimum, all altered files on the system on a daily basis.\n\nIf the system processes inbound SMTP mail, the virus scanner must be configured to scan all received mail.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81457",
+      "title": "The Oracle Linux operating system must mount /dev/shm with the nodev option.",
+      "description": "The \"nodev\" mount option causes the system to not interpret character or block special devices. Executing character or block special devices from untrusted file systems increases the opportunity for unprivileged users to attain unauthorized administrative access.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81459",
+      "title": "The Oracle Linux operating system must mount /dev/shm with the nosuid option.",
+      "description": "The \"nosuid\" mount option causes the system to not execute \"setuid\" and \"setgid\" files with owner privileges. This option must be used for mounting any file system not containing approved \"setuid\" and \"setguid\" files. Executing files from untrusted file systems increases the opportunity for unprivileged users to attain unauthorized administrative access.",
+      "severity": "low"
+    },
+    {
+      "id": "V-81461",
+      "title": "The Oracle Linux operating system must mount /dev/shm with the noexec option.",
+      "description": "The \"noexec\" mount option causes the system to not execute binary files. This option must be used for mounting any file system not containing approved binary files as they may be incompatible. Executing files from untrusted file systems increases the opportunity for unprivileged users to attain unauthorized administrative access.",
+      "severity": "low"
+    },
+    {
+      "id": "V-92247",
+      "title": "System and application account passwords must be changed at least annually.",
+      "description": "Any password, no matter how complex, can eventually be cracked. Therefore, system and application account passwords need to be changed periodically. If an organization fails to change the system and application account passwords at least annually, there is the risk that the account passwords could be compromised.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-97233",
+      "title": "The Oracle Linux 6 operating system must implement NIST FIPS-validated cryptography for the following: to provision digital signatures, to generate cryptographic hashes, and to protect data requiring data-at-rest protections in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.",
+      "description": "Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data. The operating system must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated.\n\nSatisfies: SRG-OS-000033-GPOS-00014, SRG-OS-000185-GPOS-00079, SRG-OS-000396-GPOS-00176, SRG-OS-000405-GPOS-00184, SRG-OS-000478-GPOS-00223\n",
+      "severity": "high"
     }
   ]
 }

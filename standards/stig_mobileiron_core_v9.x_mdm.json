@@ -1,6 +1,6 @@
 {
   "name": "stig_mobileiron_core_v9.x_mdm",
-  "date": "2017-06-02",
+  "date": "2019-05-06",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "MobileIron Core v9.x MDM Security Technical Implementation Guide",
   "version": "1",
@@ -84,6 +84,12 @@
       "title": "The MobileIron Core MDM agent must be configured for the periodicity of reachability events for six hours or less.",
       "description": "Mobile devices that do not enforce security policy or verify the status of the device are vulnerable to a variety of attacks. The key security function of MDM technology is to distribute mobile device security polices in such a manner that they are enforced on managed mobile devices. To accomplish this function, the MDM agent must verify the status and other key information of the managed device and report that status to the MDM server periodically.\n\nSFR ID: FMT_SMF_EXT.3.2",
       "severity": "low"
+    },
+    {
+      "id": "V-94559",
+      "title": "Only authorized versions of the MobileIron Core 9.x server must be used.",
+      "description": "The MobileIron Core 9.x server is no longer supported by MobileIron and therefore, may contain security vulnerabilities. The MobileIron Core 9.x MDM server is not authorized within the DoD.\n\nCCI-000366",
+      "severity": "high"
     }
   ]
 }

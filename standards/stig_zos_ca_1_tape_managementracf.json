@@ -1,6 +1,6 @@
 {
   "name": "stig_zos_ca_1_tape_managementracf",
-  "date": "2016-12-21",
+  "date": "2019-09-26",
   "description": "None",
   "title": "z/OS CA 1 Tape Management for RACF STIG",
   "version": "None",
@@ -63,7 +63,7 @@
     },
     {
       "id": "V-18014",
-      "title": "CA 1 Tape Management external security options will be specified properly.",
+      "title": "CA 1 Tape Management external security options must be specified properly.",
       "description": "CA 1 Tape Management offers multiple external security interfaces that are controlled by parameters specified in TMOOPT00.  These interfaces provide security controls for several CA 1 system and user functions.  Without proper controls of these sensitive functions, the integrity of the CA 1 Tape Management System and the confidentiality of data stored on tape volumes may be compromised.",
       "severity": "medium"
     },

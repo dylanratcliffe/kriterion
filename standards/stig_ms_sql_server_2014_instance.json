@@ -1,6 +1,6 @@
 {
   "name": "stig_ms_sql_server_2014_instance",
-  "date": "2017-11-30",
+  "date": "2020-03-12",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "MS SQL Server 2014 Instance Security Technical Implementation Guide",
   "version": "1",
@@ -129,20 +129,8 @@
     },
     {
       "id": "V-67795",
-      "title": "SQL Server must protect its audit features from unauthorized access, modification, or removal.",
-      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. \n\nDepending upon the log format and application, system and application log tools may provide the only means to manipulate and manage application and system log data. It is, therefore, imperative that access to audit tools be controlled and protected from unauthorized access. \n\nIf an attacker were to gain access to audit tools, he could analyze audit logs for system weaknesses or weaknesses in the auditing itself. An attacker could also manipulate logs to hide evidence of malicious activity.\n\nThis focuses on audit/trace log tools within SQL Server.  Other STIG requirements govern operating system settings to control access to external tools.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-67797",
-      "title": "SQL Server Profiler must be protected  from unauthorized access, modification, or removal.",
-      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data.  SQL Server Profiler is one such tool.\n\nIf an attacker were to gain access to audit tools, he could analyze audit logs for system weaknesses or weaknesses in the auditing itself. An attacker could also manipulate logs to hide evidence of malicious activity.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-67799",
-      "title": "Audit tools used in conjunction with SQL Server  must be protected  from unauthorized access.",
-      "description": "Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. \n\nDepending upon the log format and application, system and application log tools may provide the only means to manipulate and manage application and system log data. It is, therefore, imperative that access to audit tools be controlled and protected from unauthorized access. \n\nApplications providing tools to interface with audit data will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user enjoys in order make access decisions regarding the access to audit tools.\n\nAudit tools include, but are not limited to, OS-provided audit tools, vendor-provided audit tools, and open source audit tools needed to successfully view and manipulate audit information system activity and records. \n\nIf an attacker were to gain access to audit tools, he could analyze audit logs for system weaknesses or weaknesses in the auditing itself. An attacker could also manipulate logs to hide evidence of malicious activity.\n\nThis focuses on external tools for log maintenance and review.  Other STIG requirements govern SQL Server privileges to maintain trace or audit definitions.",
+      "title": "Audit tools used in, or in conjunction with, SQL Server must be protected from unauthorized access.",
+      "description": " Protecting audit data also includes identifying and protecting the tools used to view and manipulate log data. \n\nDepending upon the log format and application, system and application log tools may provide the only means to manipulate and manage application and system log data. It is, therefore, imperative that access to audit tools be controlled and protected from unauthorized access. \n\nApplications providing tools to interface with audit data will leverage user permissions and roles identifying the user accessing the tools and the corresponding rights the user has in order to make access decisions regarding access to the audit tools. SQL Server is an application that does provide access to audit data. \n\nAudit tools include, but are not limited to, OS-provided audit tools, vendor-provided audit tools, and open source audit tools needed to successfully view and manipulate audit information system activity and records. \n\nIf an attacker were to gain access to audit tools, he could analyze audit logs for system weaknesses or weaknesses in the auditing itself. An attacker could also manipulate logs to hide evidence of malicious activity.",
       "severity": "medium"
     },
     {
@@ -411,8 +399,8 @@
     },
     {
       "id": "V-67895",
-      "title": "SQL Server or software monitoring SQL Server must provide an immediate real-time alert to appropriate support staff of all audit failure events requiring real-time alerts.",
-      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability, and system operation may be adversely affected. \n\nAs noted elsewhere in this document, SQL Server's Audit and/or Trace features can be used for auditing purposes.  This requirement applies to both.\n\nThe appropriate support staff include, at a minimum, the ISSO and the DBA/SA.\n\nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less).",
+      "title": "SQL Server or software monitoring SQL Server must provide an immediate real-time alert to appropriate support staff of all audit log failures.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability, and system operation may be adversely affected. \n\nAs noted elsewhere in this document, SQL Server's Audit and/or Trace features can be used for auditing purposes. This requirement applies to both.\n\nThe appropriate support staff include, at a minimum, the ISSO and the DBA/SA.\n\nA failure of database auditing will result in either the database continuing to function without auditing or in a complete halt to database operations. When audit processing fails, appropriate personnel must be alerted immediately to avoid further downtime or unaudited transactions\n\nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less).",
       "severity": "medium"
     },
     {

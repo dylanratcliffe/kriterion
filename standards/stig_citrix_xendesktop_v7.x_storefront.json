@@ -1,0 +1,17 @@
+{
+  "name": "stig_citrix_xendesktop_v7.x_storefront",
+  "date": "2018-08-28",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "Citrix XenDesktop v7.x StoreFront Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-81431",
+      "title": "XenDesktop StoreFront must accept Personal Identity Verification (PIV) credentials.",
+      "description": "The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access.\n\nDoD has mandated the use of the CAC to support identity management and personal authentication for systems covered under HSPD 12, as well as a primary component of layered protection for national security systems.\n\nSatisfies: SRG-APP-000391, SRG-APP-000033, SRG-APP-000392, SRG-APP-000439, SRG-APP-000440, SRG-APP-000442",
+      "severity": "medium"
+    }
+  ]
+}

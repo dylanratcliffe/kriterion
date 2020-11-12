@@ -1,6 +1,6 @@
 {
   "name": "stig_firewall_security_requirements_guide",
-  "date": "2018-03-21",
+  "date": "2019-06-28",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "Firewall Security Requirements Guide",
   "version": "1",
@@ -27,7 +27,7 @@
     },
     {
       "id": "V-79415",
-      "title": "The firewall must be configured to use filters that prevent or limit the effects of all types of commonly known denial-of-service (DoS) attacks, including flooding, packet sweeps, and unauthorized port scanning.",
+      "title": "The firewall must deny network communications traffic by default and allow network communications traffic by exception (i.e., deny all, permit by exception).",
       "description": "To prevent malicious or accidental leakage of traffic, organizations must implement a deny-by-default security posture at the network perimeter. Such rulesets prevent many malicious exploits or accidental leakage by restricting the traffic to only known sources and only those ports, protocols, or services that are permitted and operationally necessary.\n\nAs a managed boundary interface, the firewall must block all inbound and outbound network traffic unless a filter is installed to explicitly allow it. The allow filters must comply with the Ports, Protocols, and Services Management (PPSM) Category Assurance List (CAL) and Vulnerability Assessment (VA).",
       "severity": "high"
     },
@@ -196,13 +196,13 @@
     {
       "id": "V-79471",
       "title": "The firewall must apply egress filters to traffic that is outbound from the network through any internal interface.",
-      "description": "If outbound communications traffic is not filtered, hostile activity intended to harm other networks or packets from networks destined to unauthorized networks may not be detected and prevented. \n\nAccess control policies and access control lists implemented on devices, such as firewalls, that control the flow of network traffic ensure the flow of traffic is only allowed from authorized sources to authorized destinations. Networks with different levels of trust (e.g., the Internet) must be kept separated.\n\nThis requirement addresses the binding of the ingress filter to the interface/zone rather than the content of the ingress filter.",
+      "description": "If outbound communications traffic is not filtered, hostile activity intended to harm other networks or packets from networks destined to unauthorized networks may not be detected and prevented.\n\nAccess control policies and access control lists implemented on devices, such as firewalls, that control the flow of network traffic ensure the flow of traffic is only allowed from authorized sources to authorized destinations. Networks with different levels of trust (e.g., the Internet) must be kept separated.\n\nThis requirement addresses the binding of the egress filter to the interface/zone rather than the content of the egress filter.",
       "severity": "medium"
     },
     {
       "id": "V-79473",
       "title": "The firewall must establish ingress filters that block inbound packets where the destination is an IP address assigned to the management or loopback addresses of the enclave protection devices unless the packet has a source address assigned to the management network or network infrastructure.",
-      "description": "The firewall must reject requests for access or services where the source address received by the firewall specifies a loopback address. The loopback address is used by an Inter-Processor Control (IPC) mechanism that enables the client and server portion of an application running on the same machine to communicate, and so it is trusted. It should never be used as the source IP address of an inbound or outbound transmission.\n\nIt is a best practice for the management network to use the loopback addresses.",
+      "description": "The firewall must reject requests for access or services where the source address received by the firewall specifies a loopback address. The network loopback address or management IP addresses should never be used as the source IP address of an inbound or outbound transmission since it is most likely a spoofing attempt ll traffic with a destination of a management address or to a loopback address for a network protection device should be blocked unless the source is from an authorized management range. The rule or filter should be applied to traffic ingressing on the external interfaces and ingressing onto internal interfaces.\n\nIt is a best practice for the management network to use the network loopback addresses.\n",
       "severity": "medium"
     },
     {

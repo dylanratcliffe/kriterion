@@ -1,6 +1,6 @@
 {
   "name": "stig_ms_exchange_2013_client_access_server",
-  "date": "2016-07-19",
+  "date": "2019-12-18",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "MS Exchange 2013 Client Access Server Security Technical Implementation Guide",
   "version": "1",
@@ -21,7 +21,7 @@
     },
     {
       "id": "V-69719",
-      "title": "Exchange must have Forms-based Authentication enabled.",
+      "title": "Exchange must have Forms-based Authentication disabled.",
       "description": "Identification and Authentication provide the foundation for access control. Access to email services applications in the DoD requires authentication using DoD Public Key Infrastructure (PKI) certificates. Authentication for Outlook Web App (OWA) is used to enable web access to user email mailboxes and should assume that certificate-based authentication has been configured. This setting controls whether forms-based logon should be used by the OWA website. \n\nBecause the DoD requires Common Access Card (CAC)-based authentication to applications, OWA access must be brokered through an application proxy or other pre-authenticator, which performs CAC authentication prior to arrival at the CA server. The authenticated request is then forwarded directly to OWA, where authentication is repeated without requiring the user to repeat authentication steps. For this scenario to work, the Application Proxy server must have forms-based authentication enabled, and Exchange must have forms-based Authentication disabled. \n\nIf forms-based Authentication is enabled on the Exchange CA server, it is evidence that the application proxy server is either not correctly configured, or it may be missing.",
       "severity": "medium"
     },

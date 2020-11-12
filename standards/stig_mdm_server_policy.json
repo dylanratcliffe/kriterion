@@ -1,6 +1,6 @@
 {
   "name": "stig_mdm_server_policy",
-  "date": "2016-09-30",
+  "date": "2019-05-17",
   "description": "This STIG contains the policy, training, and operating procedure security controls for the use of MDM servers in the DoD environment. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "MDM Server Policy Security Technical Implementation Guide (STIG)",
   "version": "2",
@@ -9,26 +9,26 @@
   "items": [
     {
       "id": "V-24955",
-      "title": "A data spill (Classified Message Incident (CMI)) procedure or policy must be published for site CMDs.",
-      "description": "When a data spill occurs on a CMD, classified or sensitive data must be protected to prevent disclosure. After a data spill, the CMD must either be wiped using approved procedures, or destroyed if no procedures are available, so classified or sensitive data is not exposed. If a data spill procedure is not published, the site may not use approved procedures to remediate after a data spill occurs and classified data could be exposed.",
+      "title": "Publish data spill procedures for mobile devices",
+      "description": "When a data spill occurs on a mobile device, classified or sensitive data must be protected to prevent disclosure. After a data spill, the mobile device must either be wiped using approved procedures, or destroyed if no procedures are available, so classified or sensitive data is not exposed. If a data spill procedure is not published, the site may not use approved procedures to remediate after a data spill occurs and classified data could be exposed.",
       "severity": "medium"
     },
     {
       "id": "V-24957",
-      "title": "If a data spill (Classified Message Incident (CMI)) occurs on a wireless email device or system at a site, the site must follow required data spill procedures.",
+      "title": "If a data spill (Classified Message Incident (CMI)) occurs on a mobile device, the site must follow required data spill procedures.",
       "description": "If required procedures are not followed after a data spill, classified data could be exposed to unauthorized personnel.",
       "severity": "high"
     },
     {
       "id": "V-24962",
       "title": "The site Incident Response Plan or other procedure must include procedures to follow when a mobile operating system (OS) based mobile device is reported lost or stolen.",
-      "description": "Sensitive DoD data could be stored in memory on a DoD operated mobile operating system (OS) based CMD and the data could be compromised if required actions are not followed when a CMD is lost or stolen. Without procedures for lost or stolen mobile operating system (OS) based CMD devices, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA.",
+      "description": "Sensitive DoD data could be stored in memory on a DoD operated mobile operating system (OS) based  mobile device and the data could be compromised if required actions are not followed when a  mobile device is lost or stolen. Without procedures for lost or stolen mobile operating system (OS) based mobile devices, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA.",
       "severity": "low"
     },
     {
       "id": "V-24969",
-      "title": "Required actions must be followed at the site when a CMD has been lost or stolen.",
-      "description": "If procedures for lost or stolen CMDs are not followed, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA.",
+      "title": "Required actions must be followed at the site when a  mobile device has been lost or stolen.",
+      "description": "If procedures for lost or stolen  mobile devices are not followed, it is more likely that an adversary could obtain the device and use it to access DoD networks or otherwise compromise DoD IA.",
       "severity": "low"
     },
     {

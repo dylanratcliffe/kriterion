@@ -1,0 +1,245 @@
+{
+  "name": "stig_vmware_vsphere_6.5_virtual_machine",
+  "date": "2019-10-01",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "title": "VMware vSphere 6.5 Virtual Machine Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-94563",
+      "title": "Copy operations must be disabled on the virtual machine.",
+      "description": "Copy and paste operations are disabled by default; however, by explicitly disabling this feature it will enable audit controls to check that this setting is correct. Copy, paste, drag and drop, or GUI copy/paste operations between the guest OS and the remote console could provide the means for an attacker to compromise the VM.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94565",
+      "title": "Drag and drop operations must be disabled on the virtual machine.",
+      "description": "Copy and paste operations are disabled by default; however, by explicitly disabling this feature it will enable audit controls to check that this setting is correct. Copy, paste, drag and drop, or GUI copy/paste operations between the guest OS and the remote console could provide the means for an attacker to compromise the VM.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94567",
+      "title": "GUI functionality for copy/paste operations must be disabled on the virtual machine.",
+      "description": "Copy and paste operations are disabled by default; however, by explicitly disabling this feature it will enable audit controls to check that this setting is correct. Copy, paste, drag and drop, or GUI copy/paste operations between the guest OS and the remote console could provide the means for an attacker to compromise the VM.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94569",
+      "title": "Paste operations must be disabled on the virtual machine.",
+      "description": "Copy and paste operations are disabled by default; however, by explicitly disabling this feature it will enable audit controls to check that this setting is correct. Copy, paste, drag and drop, or GUI copy/paste operations between the guest OS and the remote console could provide the means for an attacker to compromise the VM.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94571",
+      "title": "Virtual disk shrinking must be disabled on the virtual machine.",
+      "description": "Shrinking a virtual disk reclaims unused space in it. If there is empty space in the disk, this process reduces the amount of space the virtual disk occupies on the host drive. Normal users and processes-that is, users and processes without root or administrator privileges-within virtual machines have the capability to invoke this procedure. However, if this is done repeatedly, the virtual disk can become unavailable while this shrinking is being performed, effectively causing a denial-of-service. In most datacenter environments, disk shrinking is not done, so this feature must be disabled. Repeated disk shrinking can make a virtual disk unavailable. The capability to shrink is available to non-administrative users operating within the VMs guest OS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-94573",
+      "title": "Virtual disk erasure must be disabled on the virtual machine.",
+      "description": "Shrinking and wiping (erasing) a virtual disk reclaims unused space in it. If there is empty space in the disk, this process reduces the amount of space the virtual disk occupies on the host drive. Normal users and processes - that is, users and processes without root or administrator privileges - within virtual machines have the capability to invoke this procedure. However, if this is done repeatedly, the virtual disk can become unavailable while this shrinking is being performed, effectively causing a denial-of-service. In most datacenter environments, disk shrinking is not done, so this feature must be disabled. Repeated disk shrinking can make a virtual disk unavailable. The capability to wipe (erase) is available to non-administrative users operating within the VMs guest OS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-94575",
+      "title": "Independent, non-persistent disks must be not be used on the virtual machine.",
+      "description": "The security issue with nonpersistent disk mode is that successful attackers, with a simple shutdown or reboot, might undo or remove any traces that they were ever on the machine. To safeguard against this risk, production virtual machines should be set to use persistent disk mode; additionally, make sure that activity within the VM is logged remotely on a separate server, such as a syslog server or equivalent Windows-based event collector. Without a persistent record of activity on a VM, administrators might never know whether they have been attacked or hacked.  \n\nThere can be valid use cases for these types of disks such as with an application presentation solution where read only disks are desired and such cases should be identified and documented.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-94577",
+      "title": "HGFS file transfers must be disabled on the virtual machine.",
+      "description": "Setting isolation.tools.hgfsServerSet.disable to true disables registration of the guest's HGFS server with the host. APIs that use HGFS to transfer files to and from the guest operating system, such as some VIX commands, will not function. An attacker could potentially use this to transfer files inside the guest OS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-94579",
+      "title": "The unexposed feature keyword isolation.tools.ghi.autologon.disable must be set on the virtual machine.",
+      "description": "Some virtual machine advanced settings parameters do not apply on vSphere because VMware virtual machines work on both vSphere and hosted virtualization platforms such as Workstation and Fusion. Explicitly disabling these features reduces the potential for vulnerabilities because it reduces the number of ways in which a guest can affect the host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94581",
+      "title": "The unexposed feature keyword isolation.tools.ghi.launchmenu.change must be set on the virtual machine.",
+      "description": "Some virtual machine advanced settings parameters do not apply on vSphere because VMware virtual machines work on both vSphere and hosted virtualization platforms such as Workstation and Fusion. Explicitly disabling these features reduces the potential for vulnerabilities because it reduces the number of ways in which a guest can affect the host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94583",
+      "title": "The unexposed feature keyword isolation.tools.memSchedFakeSampleStats.disable must be set on the virtual machine.",
+      "description": "Some virtual machine advanced settings parameters do not apply on vSphere because VMware virtual machines work on both vSphere and hosted virtualization platforms such as Workstation and Fusion. Explicitly disabling these features reduces the potential for vulnerabilities because it reduces the number of ways in which a guest can affect the host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94585",
+      "title": "The unexposed feature keyword isolation.tools.ghi.protocolhandler.info.disable must be set on the virtual machine.",
+      "description": "Some virtual machine advanced settings parameters do not apply on vSphere because VMware virtual machines work on both vSphere and hosted virtualization platforms such as Workstation and Fusion. Explicitly disabling these features reduces the potential for vulnerabilities because it reduces the number of ways in which a guest can affect the host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94593",
+      "title": "The unexposed feature keyword isolation.ghi.host.shellAction.disable must be set on the virtual machine.",
+      "description": "Some virtual machine advanced settings parameters do not apply on vSphere because VMware virtual machines work on both vSphere and hosted virtualization platforms such as Workstation and Fusion. Explicitly disabling these features reduces the potential for vulnerabilities because it reduces the number of ways in which a guest can affect the host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94595",
+      "title": "The unexposed feature keyword isolation.tools.ghi.trayicon.disable must be set on the virtual machine.",
+      "description": "Some virtual machine advanced settings parameters do not apply on vSphere because VMware virtual machines work on both vSphere and hosted virtualization platforms such as Workstation and Fusion. Explicitly disabling these features reduces the potential for vulnerabilities because it reduces the number of ways in which a guest can affect the host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94597",
+      "title": "The unexposed feature keyword isolation.tools.unity.disable must be set on the virtual machine.",
+      "description": "Some virtual machine advanced settings parameters do not apply on vSphere because VMware virtual machines work on both vSphere and hosted virtualization platforms such as Workstation and Fusion. Explicitly disabling these features reduces the potential for vulnerabilities because it reduces the number of ways in which a guest can affect the host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94599",
+      "title": "The unexposed feature keyword isolation.tools.unityInterlockOperation.disable must be set on the virtual machine.",
+      "description": "Some virtual machine advanced settings parameters do not apply on vSphere because VMware virtual machines work on both vSphere and hosted virtualization platforms such as Workstation and Fusion. Explicitly disabling these features reduces the potential for vulnerabilities because it reduces the number of ways in which a guest can affect the host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94601",
+      "title": "The unexposed feature keyword isolation.tools.unity.push.update.disable must be set on the virtual machine.",
+      "description": "Some virtual machine advanced settings parameters do not apply on vSphere because VMware virtual machines work on both vSphere and hosted virtualization platforms such as Workstation and Fusion. Explicitly disabling these features reduces the potential for vulnerabilities because it reduces the number of ways in which a guest can affect the host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94603",
+      "title": "The unexposed feature keyword isolation.tools.unity.taskbar.disable must be set on the virtual machine.",
+      "description": "Some virtual machine advanced settings parameters do not apply on vSphere because VMware virtual machines work on both vSphere and hosted virtualization platforms such as Workstation and Fusion. Explicitly disabling these features reduces the potential for vulnerabilities because it reduces the number of ways in which a guest can affect the host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94605",
+      "title": "The unexposed feature keyword isolation.tools.unityActive.disable must be set on the virtual machine.",
+      "description": "Some virtual machine advanced settings parameters do not apply on vSphere because VMware virtual machines work on both vSphere and hosted virtualization platforms such as Workstation and Fusion. Explicitly disabling these features reduces the potential for vulnerabilities because it reduces the number of ways in which a guest can affect the host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94607",
+      "title": "The unexposed feature keyword isolation.tools.unity.windowContents.disable must be set on the virtual machine.",
+      "description": "Some virtual machine advanced settings parameters do not apply on vSphere because VMware virtual machines work on both vSphere and hosted virtualization platforms such as Workstation and Fusion. Explicitly disabling these features reduces the potential for vulnerabilities because it reduces the number of ways in which a guest can affect the host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94609",
+      "title": "The unexposed feature keyword isolation.tools.vmxDnDVersionGet.disable must be set on the virtual machine.",
+      "description": "Some virtual machine advanced settings parameters do not apply on vSphere because VMware virtual machines work on both vSphere and hosted virtualization platforms such as Workstation and Fusion. Explicitly disabling these features reduces the potential for vulnerabilities because it reduces the number of ways in which a guest can affect the host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94611",
+      "title": "The unexposed feature keyword isolation.tools.guestDnDVersionSet.disable must be set on the virtual machine.",
+      "description": "Some virtual machine advanced settings parameters do not apply on vSphere because VMware virtual machines work on both vSphere and hosted virtualization platforms such as Workstation and Fusion. Explicitly disabling these features reduces the potential for vulnerabilities because it reduces the number of ways in which a guest can affect the host.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94613",
+      "title": "Unauthorized floppy devices must be disconnected on the virtual machine.",
+      "description": "Ensure that no device is connected to a virtual machine if it is not required. For example, floppy, serial and parallel ports are rarely used for virtual machines in a datacenter environment, and CD/DVD drives are usually connected only temporarily during software installation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-94615",
+      "title": "Unauthorized CD/DVD devices must be disconnected on the virtual machine.",
+      "description": "Ensure that no device is connected to a virtual machine if it is not required. For example, floppy, serial and parallel ports are rarely used for virtual machines in a datacenter environment, and CD/DVD drives are usually connected only temporarily during software installation.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94617",
+      "title": "Unauthorized parallel devices must be disconnected on the virtual machine.",
+      "description": "Ensure that no device is connected to a virtual machine if it is not required. For example, floppy, serial and parallel ports are rarely used for virtual machines in a datacenter environment, and CD/DVD drives are usually connected only temporarily during software installation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-94619",
+      "title": "Unauthorized serial devices must be disconnected on the virtual machine.",
+      "description": "Ensure that no device is connected to a virtual machine if it is not required. For example, floppy, serial and parallel ports are rarely used for virtual machines in a datacenter environment, and CD/DVD drives are usually connected only temporarily during software installation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-94621",
+      "title": "Unauthorized USB devices must be disconnected on the virtual machine.",
+      "description": "Ensure that no device is connected to a virtual machine if it is not required. For example, floppy, serial and parallel ports are rarely used for virtual machines in a datacenter environment, and CD/DVD drives are usually connected only temporarily during software installation.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-94623",
+      "title": "Console connection sharing must be limited on the virtual machine.",
+      "description": "By default, remote console sessions can be connected to by more than one user at a time.  When multiple sessions are activated, each terminal window gets a notification about the new session. If an administrator in the VM logs in using a VMware remote console during their session, a non-administrator in the VM might connect to the console and observe the administrator's actions.  Also, this could result in an administrator losing console access to a virtual machine. For example, if a jump box is being used for an open console session and the admin loses connection to that box, then the console session remains open. Allowing two console sessions permits debugging via a shared session.  For highest security, only one remote console session at a time should be allowed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-94625",
+      "title": "Console access through the VNC protocol must be disabled on the virtual machine.",
+      "description": "The VM console enables you to connect to the console of a virtual machine, in effect seeing what a monitor on a physical server would show. This console is also available via the VNC protocol and should be disabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-94627",
+      "title": "Informational messages from the virtual machine to the VMX file must be limited on the virtual machine.",
+      "description": "The configuration file containing these name-value pairs is limited to a size of 1MB. If not limited, VMware tools in the guest OS are capable of sending a large and continuous data stream to the host. This 1MB capacity should be sufficient for most cases, but this value can change if necessary. The value can be increased if large amounts of custom information are being stored in the configuration file. The default limit is 1MB.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94629",
+      "title": "Unauthorized removal, connection and modification of devices must be prevented on the virtual machine.",
+      "description": "In a virtual machine, users and processes without root or administrator privileges can connect or disconnect devices, such as network adaptors and CD-ROM drives, and can modify device settings. Use the virtual machine settings editor or configuration editor to remove unneeded or unused hardware devices. If you want to use the device again, you can prevent a user or running process in the virtual machine from connecting, disconnecting, or modifying a device from within the guest operating system. By default, a rogue user with nonadministrator privileges in a virtual machine can: \n1. Connect a disconnected CD-ROM drive and access sensitive information on the media left in the drive\n2. Disconnect a network adaptor to isolate the virtual machine from its network, which is a denial of service\n3. Modify settings on a device",
+      "severity": "medium"
+    },
+    {
+      "id": "V-94631",
+      "title": "The virtual machine must not be able to obtain host information from the hypervisor.",
+      "description": "If enabled, a VM can obtain detailed information about the physical host. The default value for the parameter is FALSE. This setting should not be TRUE unless a particular VM requires this information for performance monitoring. An adversary potentially can use this information to inform further attacks on the host.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-94633",
+      "title": "Shared salt values must be disabled on the virtual machine.",
+      "description": "When salting is enabled (Mem.ShareForceSalting=1 or 2) in order to share a page between two virtual machines both salt and the content of the page must be same. A salt value is a configurable advanced option for each virtual machine. You can manually specify the salt values in the virtual machine's advanced settings with the new option sched.mem.pshare.salt. If this option is not present in the virtual machine's advanced settings, then the value of the vc.uuid option is taken as the default value. Since the vc.uuid is unique to each virtual machine, by default TPS happens only among the pages belonging to a particular virtual machine (Intra-VM).",
+      "severity": "low"
+    },
+    {
+      "id": "V-94635",
+      "title": "Access to virtual machines through the dvfilter network APIs must be controlled.",
+      "description": "An attacker might compromise a VM by making use the dvFilter API. Configure only those VMs to use the API that need this access.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94637",
+      "title": "System administrators must use templates to deploy virtual machines whenever possible.",
+      "description": "By capturing a hardened base operating system image (with no applications installed) in a template, ensure all virtual machines are created with a known baseline level of security. Then use this template to create other, application-specific templates, or use the application template to deploy virtual machines. Manual installation of the OS and applications into a VM introduces the risk of misconfiguration due to human or process error.",
+      "severity": "low"
+    },
+    {
+      "id": "V-94639",
+      "title": "Use of the virtual machine console must be minimized.",
+      "description": "The VM console enables a connection to the console of a virtual machine, in effect seeing what a monitor on a physical server would show. The VM console also provides power management and removable device connectivity controls, which might potentially allow a malicious user to bring down a virtual machine. In addition, it also has a performance impact on the service console, especially if many VM console sessions are open simultaneously.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-94647",
+      "title": "The virtual machine guest operating system must be locked when the last console connection is closed.",
+      "description": "When accessing the VM console the guest OS must be locked when the last console user disconnects, limiting the possibility of session hijacking. This setting only applies to Windows-based VMs with VMware tools installed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-94649",
+      "title": "3D features on the virtual machine must be disabled when not required.",
+      "description": "It is recommended that 3D acceleration be disabled on virtual machines that do not require 3D functionality, (e.g. most server workloads or desktops not using 3D applications).",
+      "severity": "low"
+    },
+    {
+      "id": "V-94651",
+      "title": "Encryption must be enabled for vMotion on the virtual machine.",
+      "description": "vMotion migrations in vSphere 6.0 and earlier transferred working memory and CPU state information in clear text over the vMotion network. As of vSphere 6.5 this transfer can be transparently encrypted using 256bit AES-GCM with negligible performance impact. vSphere 6.5 enables encrypted vMotion by default as 'Opportunistic', meaning that encrypted channels are used where supported but the operation will continue in plain text where encryption is not supported. For example when vMotioning between two 6.5 hosts encryption will always be utilized but since 6.0 and earlier releases do not support this feature vMotion from a 6.5 host to a 6.0 host would be allowed but would not be encrypted. If this finding is set to 'Required' then vMotions to unsupported hosts will fail. This setting must be set to 'Opportunistic' or 'Required'.",
+      "severity": "medium"
+    }
+  ]
+}

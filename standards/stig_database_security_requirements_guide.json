@@ -1,6 +1,6 @@
 {
   "name": "stig_database_security_requirements_guide",
-  "date": "2017-11-30",
+  "date": "2020-03-06",
   "description": "The Database Security Requirements Guide (SRG) is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the NIST 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Database Security Requirements Guide",
   "version": "2",
@@ -53,12 +53,6 @@
       "id": "V-32365",
       "title": "The DBMS must initiate session auditing upon startup.",
       "description": "Session auditing is for use when a user's activities are under investigation. To be sure of capturing all activity during those periods when session auditing is in use, it needs to be in operation for the whole time the DBMS is running.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-32366",
-      "title": "The DBMS must provide the capability for authorized users to capture, record, and log all content related to a user session.",
-      "description": "Without the capability to capture, record, and log all content related to a user session, investigations into suspicious user activity would be hampered.\n\nTypically, this DBMS capability would be used in conjunction with comparable monitoring of a user's online session, involving other software components such as operating systems, web servers and front-end user applications. The current requirement, however, deals specifically with the DBMS.",
       "severity": "medium"
     },
     {
@@ -405,8 +399,8 @@
     },
     {
       "id": "V-58059",
-      "title": "The DBMS must provide an immediate real-time alert to appropriate support staff of all audit failure events requiring real-time alerts.",
-      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability, and system operation may be adversely affected. \n\nThe appropriate support staff include, at a minimum, the ISSO and the DBA/SA.\n\nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less).",
+      "title": "The DBMS must provide an immediate real-time alert to appropriate support staff of all audit log failures. ",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability, and system operation may be adversely affected. \n\nThe appropriate support staff include, at a minimum, the ISSO and the DBA/SA.\n\nA failure of database auditing will result in either the database continuing to function without auditing or in a complete halt to database operations. When audit processing fails, appropriate personnel must be alerted immediately to avoid further downtime or unaudited transactions.\n\nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less).",
       "severity": "medium"
     },
     {

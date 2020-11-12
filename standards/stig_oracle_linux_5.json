@@ -1,6 +1,6 @@
 {
   "name": "stig_oracle_linux_5",
-  "date": "2018-03-01",
+  "date": "2020-02-25",
   "description": "The Oracle Linux 5 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Oracle Linux 5 Security Technical Implementation Guide",
   "version": "1",
@@ -2951,6 +2951,12 @@
       "id": "V-814",
       "title": "The audit system must be configured to audit failed attempts to access files and programs.",
       "description": "If the system is not configured to audit certain activities and write them to an audit log, it is more difficult to detect and track system compromises and damages incurred during a system compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-81455",
+      "title": "The Oracle Linux 5 operating system must use a virus scan program.",
+      "description": "Virus scanning software can be used to protect a system from penetration from computer viruses and to limit their spread through intermediate systems.\n\nThe virus scanning software should be configured to perform scans dynamically on accessed files. If this capability is not available, the system must be configured to scan, at a minimum, all altered files on the system on a daily basis.\n\nIf the system processes inbound SMTP mail, the virus scanner must be configured to scan all received mail.",
       "severity": "medium"
     },
     {

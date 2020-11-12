@@ -1,9 +1,9 @@
 {
   "name": "stig_test_and_development_zone_a",
-  "date": "2015-12-17",
-  "description": "None",
+  "date": "2018-09-17",
+  "description": "The Test & Development Zone A STIG is published as a tool to improve the security of Department of Defense (DoD) information systems. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
   "title": "Test and Development Zone A Security Technical Implementation Guide",
-  "version": "None",
+  "version": "1",
   "item_syntax": "^\\w-\\d+$",
   "section_separator": null,
   "items": [
@@ -89,6 +89,12 @@
       "id": "V-39619",
       "title": "Access to source code during application development must be restricted to authorized users.",
       "description": "Restricting access to source code and the application to authorized users will limit the risk of source code theft or other potential compromise.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-39621",
+      "title": "The organization must sanitize data transferred to test and development environments from DoD operational networks for testing to remove personal and sensitive information exempt from the Freedom of Information Act.",
+      "description": "If DoD production data is transferred to a test and development environment and personal or sensitive information has not been sanitized from the data, personal or sensitive information could be exposed or compromised.",
       "severity": "medium"
     },
     {

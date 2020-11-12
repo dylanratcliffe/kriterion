@@ -1,0 +1,383 @@
+{
+  "name": "stig_vmware_vrealize_automation_7.x_lighttpd",
+  "date": "2018-10-12",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
+  "title": "VMware vRealize Automation 7.x Lighttpd Security Technical Implementation Guide",
+  "version": "1",
+  "item_syntax": "^\\w-\\d+$",
+  "section_separator": null,
+  "items": [
+    {
+      "id": "V-89219",
+      "title": "Lighttpd must limit the number of simultaneous requests.",
+      "description": "Resource exhaustion can occur when an unlimited number of concurrent requests are allowed on a web site, facilitating a denial of service attack. Mitigating this kind of attack will include limiting the number of concurrent HTTP/HTTPS requests.\n\nLighttpd is used for administrative purposes only. Lighttpd provides the maxConnections attribute of the <Connector Elements> to limit the number of concurrent TCP connections.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89221",
+      "title": "Lighttpd must be configured with FIPS 140-2 compliant ciphers for https connections.",
+      "description": "Transport Layer Security (TLS) is optional for a public web server. However, if authentication is being performed, then the use of the TLS protocol is required. \n\nWithout the use of TLS, the authentication data would be transmitted unencrypted and would become vulnerable to disclosure. Using TLS along with DoD PKI certificates for encryption of the authentication data protects the information from being accessed by all parties on the network. To further protect the authentication data, the web server must use a FIPS 140-2 approved TLS version and all non-FIPS-approved SSL versions must be disabled. \n\nFIPS 140-2 approved TLS versions include TLS V1.0 or greater. NIST SP 800-52 specifies the preferred configurations for government systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89223",
+      "title": "Lighttpd must be configured to use the SSL engine.",
+      "description": "Data exchanged between the user and the web server can range from static display data to credentials used to log into the hosted application. Even when data appears to be static, the non-displayed logic in a web page may expose business logic or trusted system relationships. The integrity of all the data being exchanged between the user and web server must always be trusted. To protect the integrity and trust, encryption methods should be used to protect the complete communication session.\n\nIn order to protect the integrity and confidentiality of the remote sessions, Lighttpd uses SSL/TLS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89225",
+      "title": "Lighttpd must be configured to use mod_accesslog.",
+      "description": "Lighttpd is the administration panel for vRealize Automation. Because it is intended to provide remote access to the appliance, vRA must provide remote access information to external monitoring systems.\n\nmod_accesslog is the module in Lighttpd that configures Lighttpd to share information with external monitoring systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89227",
+      "title": "Lighttpd must generate log records for system startup and shutdown.",
+      "description": "Log records can be generated from various components within the web server (e.g., httpd, plug-ins to external backends, etc.). From a web server perspective, certain specific web server functionalities may be logged as well. \n\nLighttpd records system event information in the error.log file. Included in the file is system start and stop events.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89229",
+      "title": "Lighttpd must capture, record, and log the IP address associated with a user session.",
+      "description": "A user session to a web server is in the context of a user accessing a hosted application that extends to any plug-ins/modules and services that may execute on behalf of the user.\n\nLighttpd logs user activity in the access.log file using the Common Log Format (CLF). The CLF format, a World Wide Web Consortium standard, captures logs all user session information related to the hosted application session. This will enable forensic analysis of server events in case of malicious event.\n\nLighttpd logs IPv4 addresses as \"IPv4-mapped IPv6 addresses\". As a result, in the Lighttpd log, client IP addresses will begin with \"::ffff:\". For example, if the client address was 255.255.255.255, the Lighttpd log will record the address as ::ffff:255.255.255.255.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89231",
+      "title": "Lighttpd must produce log records containing sufficient information to establish what type of events occurred.",
+      "description": "Ascertaining the correct type of event that occurred is important during forensic analysis. The correct determination of the event and when it occurred is important in relation to other events that happened at that same time. \n\nWithout sufficient information establishing what type of log event occurred, investigation into the cause of event is severely hindered. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, file names involved, access control, or flow control rules invoked.\n\nLighttpd logs user activity in the access.log file using the Common Log Format (CLF). The CLF format, a World Wide Web Consortium standard, captures logs all user session information related to the hosted application session. This will enable forensic analysis of server events in case of malicious event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89233",
+      "title": "Lighttpd must produce log records containing sufficient information to establish when (date and time) events occurred.",
+      "description": "Ascertaining the correct order of the events that occurred is important during forensic analysis. Events that appear harmless by themselves might be flagged as a potential threat when properly viewed in sequence. By also establishing the event date and time, an event can be properly viewed with an enterprise tool to fully see a possible threat in its entirety.\n\nWithout sufficient information establishing when the log event occurred, investigation into the cause of event is severely hindered. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, file names involved, access control, or flow control rules invoked.\n\nLighttpd logs user activity in the access.log file using the Common Log Format (CLF). The CLF format, a World Wide Web Consortium standard, captures logs all user session information related to the hosted application session. This will enable forensic analysis of server events in case of malicious event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89235",
+      "title": "Lighttpd must produce log records containing sufficient information to establish where within the web server the events occurred.",
+      "description": "Ascertaining the correct location or process within the web server where the events occurred is important during forensic analysis. Correctly determining the web service, plug-in, or module will add information to the overall reconstruction of the logged event. For example, an event that occurred during communication to a cgi module might be handled differently than an event that occurred during a communication session to a user.\n\nWithout sufficient information establishing where the log event occurred within the web server, investigation into the cause of event is severely hindered. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, file names involved, access control, or flow control rules invoked.\n\nLighttpd logs user activity in the access.log file using the Common Log Format (CLF). The CLF format, a World Wide Web Consortium standard, captures logs all user session information related to the hosted application session. This will enable forensic analysis of server events in case of malicious event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89237",
+      "title": "Lighttpd must produce log records containing sufficient information to establish the source of events.",
+      "description": "Ascertaining the correct source, e.g. source IP, of the events is important during forensic analysis. Correctly determining the source will add information to the overall reconstruction of the logable event. By determining the source of the event correctly, analysis of the enterprise can be undertaken to determine if the event compromised other assets within the enterprise.\n\nWithout sufficient information establishing the source of the logged event, investigation into the cause of event is severely hindered. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, file names involved, access control, or flow control rules invoked.\n\nLighttpd logs user activity in the access.log file using the Common Log Format (CLF). The CLF format, a World Wide Web Consortium standard, captures logs all user session information related to the hosted application session. This will enable forensic analysis of server events in case of malicious event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89239",
+      "title": "Lighttpd must produce log records containing sufficient information to establish the outcome (success or failure) of events.",
+      "description": "Ascertaining the success or failure of an event is important during forensic analysis. Correctly determining the outcome will add information to the overall reconstruction of the logable event. By determining the success or failure of the event correctly, analysis of the enterprise can be undertaken to determine if events tied to the event occurred in other areas within the enterprise.\n\nWithout sufficient information establishing the success or failure of the logged event, investigation into the cause of event is severely hindered. The success or failure also provides a means to measure the impact of an event and help authorized personnel to determine the appropriate response. Log record content that may be necessary to satisfy the requirement of this control includes, but is not limited to, time stamps, source and destination IP addresses, user/process identifiers, event descriptions, application-specific events, success/fail indications, file names involved, access control, or flow control rules invoked.\n\nLighttpd logs user activity in the access.log file using the Common Log Format (CLF). The CLF format, a World Wide Web Consortium standard, captures logs all user session information related to the hosted application session. This will enable forensic analysis of server events in case of malicious event.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89241",
+      "title": "Lighttpd must have the correct ownership on the log files to ensure they are only be accessible by privileged users.",
+      "description": "Log data is essential in the investigation of events. If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity would be difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to their advantage since each event record might contain communication ports, protocols, services, trust relationships, user names, etc.\n\nLighttpd creates its own logs. It does not use an external log system. The Lighttpd log must only be accessible by privileged users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89243",
+      "title": "Lighttpd must have the correct group-ownership on the log files to ensure they are only be accessible by privileged users.",
+      "description": "Log data is essential in the investigation of events. If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity would be difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to their advantage since each event record might contain communication ports, protocols, services, trust relationships, user names, etc.\n\nLighttpd creates its own logs. It does not use an external log system. The Lighttpd log must only be accessible by privileged users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89245",
+      "title": "Lighttpd must have the correct permissions on the log files to ensure they are only be accessible by privileged users.",
+      "description": "Log data is essential in the investigation of events. If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity would be difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to their advantage since each event record might contain communication ports, protocols, services, trust relationships, user names, etc.\n\nLighttpd creates its own logs. It does not use an external log system. The Lighttpd log must only be accessible by privileged users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89247",
+      "title": "Lighttpd must have the correct ownership on the log files to ensure they are protected from unauthorized modification.",
+      "description": "Log data is essential in the investigation of events. If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity would be difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to their advantage since each event record might contain communication ports, protocols, services, trust relationships, user names, etc.\n\nLighttpd creates its own logs. It does not use an external log system. The Lighttpd log must be protected from unauthorized modification.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89249",
+      "title": "Lighttpd must have the correct ownership on the log files to ensure they are protected from unauthorized deletion.",
+      "description": "Log data is essential in the investigation of events. If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity would be difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to their advantage since each event record might contain communication ports, protocols, services, trust relationships, user names, etc.\n\nLighttpd creates its own logs. It does not use an external log system. The Lighttpd log must be protected from unauthorized deletion.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89251",
+      "title": "Lighttpd log data and records must be backed up onto a different system or media.",
+      "description": "Protection of Lighttpd log data includes assuring log data is not accidentally lost or deleted. Backing up Lighttpd log records to an unrelated system or onto separate media than the system the web server is actually running on helps to assure that, in the event of a catastrophic system failure, the log records will be retained.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89253",
+      "title": "Lighttpd files must be verified for their integrity before being added to a production web server.",
+      "description": "Being able to verify that a patch, upgrade, certificate, etc., being added to the web server is unchanged from the producer of the file is essential for file validation and non-repudiation of the information. \n\nThe Lighttpd web server files on vRA must be part of a documented build process. Checksums of the production files must be available to verify their integrity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89255",
+      "title": "Lighttpd expansion modules must be verified for their integrity before being added to a production web server.",
+      "description": "Being able to verify that a patch, upgrade, certificate, etc., being added to the web server is unchanged from the producer of the file is essential for file validation and non-repudiation of the information. \n\nExpansion modules that are installed on the production Lighttpd web server on vRA must be part of a documented build process. Checksums of the production files must be available to verify their integrity.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89257",
+      "title": "Lighttpd must prohibit unnecessary services, functions or processes.",
+      "description": "Just as running unneeded services and protocols is a danger to the web server at the lower levels of the OSI model, running unneeded utilities and programs is also a danger at the application layer of the OSI model. Office suites, development tools, and graphical editors are examples of such programs that are troublesome. Individual productivity tools have no legitimate place or use on an enterprise, production web server and they are also prone to their own security risks.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89259",
+      "title": "Lighttpd must only contain components that are operationally necessary.",
+      "description": "Web server documentation, sample code, example applications, and tutorials may be an exploitable threat to a web server because this type of code has not been evaluated and approved. A production web server must only contain components that are operationally necessary (e.g., compiled code, scripts, web-content, etc.). \n\nAny documentation, sample code, example applications, and tutorials must be removed from a production web server. To make certain that the documentation and code are not installed or uninstalled completely; the web server must offer an option as part of the installation process to exclude these packages or to uninstall the packages if necessary.",
+      "severity": "high"
+    },
+    {
+      "id": "V-89261",
+      "title": "Lighttpd must have MIME types for csh or sh shell programs disabled.",
+      "description": "Users must not be allowed to access the shell programs. Shell programs might execute shell escapes and could then perform unauthorized activities that could damage the security posture of the web server. A shell is a program that serves as the basic interface between the user and the operating system. In this regard, there are shells that are security risks in the context of a web server and shells that are unauthorized in the context of the Security Features User's Guide.\n\nLighttpd must be configured to disable MIME types for csh or sh shell programs.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89263",
+      "title": "Lighttpd must only enable mappings to necessary and approved scripts.",
+      "description": "Lighttpd will only allow or deny script execution based on file extension. The ability to control script execution is controlled with the cgi.assign variable in lighttpd.conf. For script mappings, the ISSO must document and approve all allowable file extensions the web site allows (whitelist). The whitelist will be compared to the script mappings in Lighttpd.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89265",
+      "title": "Lighttpd must have resource mappings set to disable the serving of certain file types.",
+      "description": "Resource mapping is the process of tying a particular file type to a process in Lighttpd that can serve that type of file to a requesting client and to identify which file types are not to be delivered to a client.\n\nLighttpd provides the url.access-deny parameter to specify a blacklist of file types which should be denied.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89267",
+      "title": "Lighttpd must not have the Web Distributed Authoring (WebDAV) module installed.",
+      "description": "A web server can be installed with functionality that, just by its nature, is not secure. Web Distributed Authoring (WebDAV) is an extension to the HTTP protocol that, when developed, was meant to allow users to create, change, and move documents on a server, typically a web server or web share. Allowing this functionality, development, and deployment is much easier for web authors.\n\nWebDAV is not widely used and has serious security concerns because it may allow clients to modify unauthorized files on the web server.\n\nLighttpd uses the mod_webdav module to provide WebDAV services. This module must not be installed.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89269",
+      "title": "Lighttpd must not have the webdav configuration file included.",
+      "description": "A web server can be installed with functionality that, just by its nature, is not secure. Web Distributed Authoring (WebDAV) is an extension to the HTTP protocol that, when developed, was meant to allow users to create, change, and move documents on a server, typically a web server or web share. Allowing this functionality, development, and deployment is much easier for web authors.\n\nWebDAV is not widely used and has serious security concerns because it may allow clients to modify unauthorized files on the web server.\n\nThe Lighttpd configuration file uses the 'include' statement to include other configuration files. The default lighttpd.conf file contains a reference to include a webdav.conf file, and it is possible for the WebDAV module to be loaded in other files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89271",
+      "title": "Lighttpd must prevent hosted applications from exhausting system resources.",
+      "description": "When it comes to DoS attacks, most of the attention is paid to ensuring that systems and applications are not victims of these attacks. While it is true that those accountable for systems want to ensure they are not affected by a DoS attack, they also need to ensure their systems and applications are not used to launch such an attack against others. To that extent, a variety of technologies exist to limit, or in some cases, eliminate the effects of DoS attacks. Limiting system resources that are allocated to any user to a bare minimum may also reduce the ability of users to launch some DoS attacks. Applications and application developers must take the steps needed to ensure users cannot use these applications to launch DoS attacks against other systems and networks. \n\nAn example would be preventing Lighttpd from keeping idle connections open for too long.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89273",
+      "title": "Lighttpd must not use symbolic links in the Lighttpd web content directory tree.",
+      "description": "A symbolic link allows a file or a directory to be referenced using a symbolic name raising a potential hazard if symbolic linkage is made to a sensitive area. When web scripts are executed and symbolic links are allowed, the Lighttpd could be allowed to access locations on the server that are outside the scope of the hosted application document root or home directory.",
+      "severity": "high"
+    },
+    {
+      "id": "V-89275",
+      "title": "Lighttpd must be configured to use port 5480.",
+      "description": "Lighttpd is used as the web server for vRealize Automation's Virtual Appliance Management Interface (vAMI). To segregate appliance management from appliance operation, Lighttpd can be configured to listen on a separate port. Port 5488 is the recommended port setting.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89277",
+      "title": "Lighttpd must use SSL/TLS protocols in order to secure passwords during transmission from the client.",
+      "description": "Data used to authenticate, especially passwords, needs to be protected at all times, and encryption is the standard method for protecting authentication data during transmission. Data used to authenticate the vAMI admin must be sent to Lighttpd via SSL/TLS.\n\nTo ensure that Lighttpd is using SSL/TLS, the ssl.engine must be enabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89279",
+      "title": "Lighttpd must have private key access restricted.",
+      "description": "Lighttpd's private key is used to prove the identity of the server to clients and securely exchange the shared secret key used to encrypt communications between the web server and clients.\n\nOnly authenticated system administrators or the designated PKI Sponsor for the web server must have access to the web servers private key. \n\nBy gaining access to the private key, an attacker can pretend to be an authorized server and decrypt the encrypted traffic between a client and the web server.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89281",
+      "title": "Lighttpd must be configured to use only FIPS 140-2 approved ciphers.",
+      "description": "Use of cryptography to provide confidentiality and non-repudiation is not effective unless strong methods are employed with its use. Many earlier encryption methods and modules have been broken and/or overtaken by increasing computing power. The NIST FIPS 140-2 cryptographic standards provide proven methods and strengths to employ cryptography effectively.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89283",
+      "title": "Lighttpd must prohibit non-privileged accounts from accessing the directory tree, the shell, or other operating system functions and utilities.",
+      "description": "As a rule, accounts on the Lighttpd server are to be kept to a minimum. Only administrators, web managers, developers, auditors, and web authors require accounts on the machine hosting the Lighttpd server. The resources to which these accounts have access must also be closely monitored and controlled. Only the system administrator needs access to all the system's capabilities, while the web administrator and associated staff require access and control of the web content and the Lighttpd server configuration files.",
+      "severity": "high"
+    },
+    {
+      "id": "V-89285",
+      "title": "Lighttpd must have the latest version installed.",
+      "description": "Allowing malicious users the capability to traverse server directory tree can create significant vulnerabilities. Such information and the contents of files listed should not be normally readable by the web users as they often contain information relevant to the configuration and security of the web service.\n\nOlder version of Lighttpd, up to 1.4.34, have been found to be vulnerable to directory traversal and subsequent directory traversal exploits. See CVE-2014-2324 for details.",
+      "severity": "high"
+    },
+    {
+      "id": "V-89287",
+      "title": "The Lighttpd baseline must be maintained.",
+      "description": "Without maintenance of a baseline of current Lighttpd software, monitoring for changes cannot be complete and unauthorized changes to the software can go undetected. Changes to Lighttpd could be the result of intentional or unintentional actions.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89289",
+      "title": "Lighttpd must protect against or limit the effects of HTTP types of Denial of Service (DoS) attacks.",
+      "description": "In UNIX and related computer operating systems, a file descriptor is an indicator used to access a file or other input/output resource, such as a pipe or network connection. File descriptors index into a per-process file descriptor table maintained by the kernel, that in turn indexes into a system-wide table of files opened by all processes, called the file table.\n\nAs a single-threaded server, Lighttpd must be limited in the number of file descriptors that can be allocated. This will prevent Lighttpd from being used in a form of DoS attack against the Operating System.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89291",
+      "title": "Lighttpd must disable directory browsing.",
+      "description": "If not disabled, the directory listing feature can be used to facilitate a directory traversal exploit. Directory listing must be disabled.\n\nLighttpd provides a configuration setting, dir-listing.activate, that must be set properly in order to globally disable directory listing.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89293",
+      "title": "Lighttpd must not be configured to use mod_status.",
+      "description": "Any application providing too much information in error logs and in administrative messages to the screen risks compromising the data and security of the application and system. The structure and content of error messages needs to be carefully considered by the organization and development team. \n\nLighttpd must only generate error messages that provide information necessary for corrective actions without revealing sensitive or potentially harmful information in error logs and administrative messages. The mod_status module generates the status overview of the webserver. The information covers:\n\nuptime\naverage throughput\ncurrent throughput\nactive connections and their state\n\nWhile this information is useful on a development system, production systems must not have mod_status enabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89295",
+      "title": "Lighttpd must have debug logging disabled.",
+      "description": "Information needed by an attacker to begin looking for possible vulnerabilities in a web server includes any information about the web server and plug-ins or modules being used. When debugging or trace information is enabled in a production web server, information about the web server, such as web server type, version, patches installed, plug-ins and modules installed, type of code being used by the hosted application, and any backends being used for data storage may be displayed. Since this information may be placed in logs and general messages during normal operation of the web server, an attacker does not need to cause an error condition to gain this information.\n\nWhile this information is useful on a development system, production systems must not have debug logging enabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89297",
+      "title": "Lighttpd must be configured to utilize the Common Information Model Object Manager.",
+      "description": "Remote access to the web server is any access that communicates through an external, non-organization-controlled network. Remote access can be used to access hosted applications or to perform management functions.\n\nA web server can be accessed remotely and must be able to enforce remote access policy requirements or work in conjunction with enterprise tools designed to enforce policy requirements.\n\nAs the web server for the vRA Virtual Appliance Management Interface (vAMI), Lighttpd is the primary remote access management system for vRA. vRA uses CIMOM to Authenticate the sysadmin and to enforce policy requirements.",
+      "severity": "high"
+    },
+    {
+      "id": "V-89299",
+      "title": "The web server must use a logging mechanism that is configured to provide a warning to the ISSO and SA when allocated record storage volume reaches 75% of maximum log record storage capacity.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process logs as required. Log processing failures include: software/hardware errors, failures in the log capturing mechanisms, and log storage capacity being reached or exceeded. \n\nIf log capacity were to be exceeded, then events subsequently occurring would not be recorded. Organizations shall define a maximum allowable percentage of storage capacity serving as an alarming threshold (e.g., web server has exceeded 75% of log storage capacity allocated), at which time the web server or the logging mechanism the web server utilizes will provide a warning to the ISSO and SA at a minimum. \n\nThis requirement can be met by configuring the web server to utilize a dedicated log tool that meets this requirement.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89301",
+      "title": "Lighttpd audit records must be mapped to a time stamp.",
+      "description": "If time stamps are not consistently applied and there is no common time reference, it is difficult to perform forensic analysis across multiple devices and log records.\n\nTime stamps generated by the web server include date and time. Time is commonly expressed in Coordinated Universal Time (UTC), a modern continuation of Greenwich Mean Time (GMT), or local time with an offset from UTC.\n\nIn order to ensure that Lighttpd is correctly logging timestamps, the accesslog.format setting must be enabled.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89303",
+      "title": "Lighttpd must record time stamps for log records to a minimum granularity of time.",
+      "description": "Without sufficient granularity of time stamps, it is not possible to adequately determine the chronological order of records. \n\nTime stamps generated by the web server include date and time and must be to a granularity of one second.\n\nIn order to ensure that Lighttpd is correctly logging timestamps, the accesslog.format setting must be configured correctly.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89305",
+      "title": "Lighttpd must prohibit non-privileged accounts from accessing the application, libraries, and configuration files.",
+      "description": "As a rule, accounts on the Lighttpd server are to be kept to a minimum. Only administrators, web managers, developers, auditors, and web authors require accounts on the machine hosting the Lighttpd server. The resources to which these accounts have access must also be closely monitored and controlled. Only the system administrator needs access to all the system's capabilities, while the web administrator and associated staff require access and control of the web content and the Lighttpd server configuration files.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89307",
+      "title": "Lighttpd must not be configured to listen to unnecessary ports.",
+      "description": "Web servers must provide the capability to disable or deactivate network-related services that are deemed to be non-essential to the server mission, are too unsecure, or are prohibited by the PPSM CAL and vulnerability assessments.\n\nLighttpd will listen on ports that are specified with the server.port configuration parameter. Lighttpd listens to port 5480 to provide remote access to the Virtual Appliance Management Interface (vAMI). Lighttpd must not be configured to listen to any other port.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89309",
+      "title": "Lighttpd must be configured with FIPS 140-2 compliant ciphers for https connections.",
+      "description": "Transport Layer Security (TLS) is optional for a public web server. However, if authentication is being performed, then the use of the TLS protocol is required. \n\nWithout the use of TLS, the authentication data would be transmitted unencrypted and would become vulnerable to disclosure. Using TLS along with DoD PKI certificates for encryption of the authentication data protects the information from being accessed by all parties on the network. To further protect the authentication data, the web server must use a FIPS 140-2 approved TLS version and all non-FIPS-approved SSL versions must be disabled. \n\nFIPS 140-2 approved TLS versions include TLS V1.0 or greater. NIST SP 800-52 specifies the preferred configurations for government systems.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89311",
+      "title": "Lighttpd must be protected from being stopped by a non-privileged user.",
+      "description": "An attacker has at least two reasons to stop a web server. The first is to cause a DoS, and the second is to put in place changes the attacker made to the web server configuration. \n\nTo prohibit an attacker from stopping the Lighttpd, the process ID (pid) must be owned by privileged users.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89313",
+      "title": "Lighttpd must be configured to use the SSL engine.",
+      "description": "Data exchanged between the user and the web server can range from static display data to credentials used to log into the hosted application. Even when data appears to be static, the non-displayed logic in a web page may expose business logic or trusted system relationships. The integrity of all the data being exchanged between the user and web server must always be trusted. To protect the integrity and trust, encryption methods should be used to protect the complete communication session.\n\nIn order to protect the integrity and confidentiality of the remote sessions, Lighttpd uses SSL/TLS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89315",
+      "title": "Lighttpd must be configured to use the SSL engine.",
+      "description": "Data exchanged between the user and the web server can range from static display data to credentials used to log into the hosted application. Even when data appears to be static, the non-displayed logic in a web page may expose business logic or trusted system relationships. The integrity of all the data being exchanged between the user and web server must always be trusted. To protect the integrity and trust, encryption methods should be used to protect the complete communication session.\n\nIn order to protect the integrity and confidentiality of the remote sessions, Lighttpd uses SSL/TLS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89317",
+      "title": "Lighttpd must use an approved TLS version for encryption.",
+      "description": "Transport Layer Security (TLS) is a required transmission protocol for a web server hosting controlled information. The use of TLS provides confidentiality of data in transit between the web server and client. FIPS 140-2 approved TLS versions must be enabled and non-FIPS-approved SSL versions must be disabled.\n\nNIST SP 800-52 defines the approved TLS versions for government applications.\n\nSSL/TLS is a collection of protocols. Weaknesses have been identified with earlier SSL protocols, including SSLv2 and SSLv3, hence SSL versions 1, 2, and 3 should no longer be used. The best practice for transport layer protection is to only provide support for the TLS protocols - TLS 1.0, TLS 1.1 and TLS 1.2. This configuration will provide maximum protection against skilled and determined attackers and is appropriate for applications handling sensitive data or performing critical operations.\n\nLighttpd must explicitly disable all of the SSL-series protocols. If these protocols are not disabled, the vRA appliance may be vulnerable to a loss of confidentiality.",
+      "severity": "high"
+    },
+    {
+      "id": "V-89319",
+      "title": "Lighttpd must remove all export ciphers to transmitted information.",
+      "description": "During the initial setup of a Transport Layer Security (TLS) connection to the web server, the client sends a list of supported cipher suites in order of preference. The Lighttpd will reply with the cipher suite it will use for communication from the client list. If an attacker can intercept the submission of cipher suites to the web server and place, as the preferred cipher suite, a weak export suite, the encryption used for the session becomes easy for the attacker to break, often within minutes to hours.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89321",
+      "title": "Lighttpd must be configured to use SSL.",
+      "description": "Data exchanged between the user and the web server can range from static display data to credentials used to log into the hosted application. Even when data appears to be static, the non-displayed logic in a web page may expose business logic or trusted system relationships. The integrity of all the data being exchanged between the user and web server must always be trusted. To protect the integrity and trust, encryption methods should be used to protect the complete communication session.\n\nIn order to protect the integrity and confidentiality of the remote sessions, Lighttpd uses SSL/TLS.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89323",
+      "title": "Lighttpd must have the latest approved security-relevant software updates installed.",
+      "description": "All vRA components, to include Lighttpd, are under VMware configuration management control. The CM process ensures that all patches, functions, and modules have been thoroughly tested before being introduced into the production version.\n\nBy using the most current version of Lighttpd, the Lighttpd server will always be using the most stable and known baseline.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-89325",
+      "title": "Lighttpd must disable IP forwarding.",
+      "description": "IP forwarding permits Lighttpd to forward packets from one network interface to another. The ability to forward packets between two networks is only appropriate for systems acting as routers. Lighttpd is not implemented as a router.\n\nWith the url.redirect configuration parameter, Lighttpd can be configured to forward IPv4 packets. This configuration parameter is prohibited, unless Lighttpd is redirecting packets to localhost, 127.0.0.1.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90325",
+      "title": "Lighttpd must have the correct group-ownership on the log files to ensure they are protected from unauthorized modification.",
+      "description": "Log data is essential in the investigation of events. If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity would be difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to their advantage since each event record might contain communication ports, protocols, services, trust relationships, user names, etc.\n\nLighttpd creates its own logs. It does not use an external log system. The Lighttpd log must be protected from unauthorized modification.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90327",
+      "title": "Lighttpd must have the correct permissions on the log files to ensure they are protected from unauthorized modification.",
+      "description": "Log data is essential in the investigation of events. If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity would be difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to their advantage since each event record might contain communication ports, protocols, services, trust relationships, user names, etc.\n\nLighttpd creates its own logs. It does not use an external log system. The Lighttpd log must be protected from unauthorized modification.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90329",
+      "title": "Lighttpd must have the correct group-ownership on the log files to ensure they are protected from unauthorized deletion.",
+      "description": "Log data is essential in the investigation of events. If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity would be difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to their advantage since each event record might contain communication ports, protocols, services, trust relationships, user names, etc.\n\nLighttpd creates its own logs. It does not use an external log system. The Lighttpd log must be protected from unauthorized deletion.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90331",
+      "title": "Lighttpd must have the correct permissions on the log files to ensure they are protected from unauthorized deletion.",
+      "description": "Log data is essential in the investigation of events. If log data were to become compromised, then competent forensic analysis and discovery of the true source of potentially malicious system activity would be difficult, if not impossible, to achieve. In addition, access to log records provides information an attacker could potentially use to their advantage since each event record might contain communication ports, protocols, services, trust relationships, user names, etc.\n\nLighttpd creates its own logs. It does not use an external log system. The Lighttpd log must be protected from unauthorized deletion.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90333",
+      "title": "Lighttpd proxy settings must be configured.",
+      "description": "A web server should be primarily a web server or a proxy server but not both, for the same reasons that other multi-use servers are not recommended. Scanning for web servers that will also proxy requests into an otherwise protected network is a very common attack making the attack anonymous.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90335",
+      "title": "Lighttpd must restrict inbound connections from nonsecure zones.",
+      "description": "Remote access to the web server is any access that communicates through an external, non-organization-controlled network. Remote access can be used to access hosted applications or to perform management functions. A web server can be accessed remotely and must be capable of restricting access from what the DoD defines as nonsecure zones. Nonsecure zones are defined as any IP, subnet, or region that is defined as a threat to the organization. The nonsecure zones must be defined for public web servers logically located in a DMZ, as well as private web servers with perimeter protection devices. By restricting access from nonsecure zones, through internal web server access list, the web server can stop or slow denial of service (DoS) attacks on the web server.\n\nAs the web server for the vRA Virtual Appliance Management Interface (vAMI), Lighttpd is the primary remote access management system for vRA. Lighttpd must be configured to restrict inbound connections from nonsecure zones. To accomplish this, the SSL engine must be enabled. The SSL engine forces Lighttpd to only listen via secure protocols.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90337",
+      "title": "Lighttpd must be configured to use syslog.",
+      "description": "Writing events to a centralized management audit system offers many benefits to the enterprise over having dispersed logs. Centralized management of audit records and logs provides for efficiency in maintenance and management of records, enterprise analysis of events, and backup and archiving of event records enterprise-wide. The web server and related components are required to be capable of writing logs to centralized audit log servers.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-90339",
+      "title": "Lighttpd must be configured to use syslog.",
+      "description": "A web server will typically utilize logging mechanisms for maintaining a historical log of activity that occurs within a hosted application. This information can then be used for diagnostic purposes, forensics purposes, or other purposes relevant to ensuring the availability and integrity of the hosted application.\n\nWhile it is important to log events identified as being critical and relevant to security, it is equally important to notify the appropriate personnel in a timely manner so they are able to respond to events as they occur. \n\nManual review of the web server logs may not occur in a timely manner, and each event logged is open to interpretation by a reviewer. By integrating the web server into an overall or organization-wide log review, a larger picture of events can be viewed, and analysis can be done in a timely and reliable manner.",
+      "severity": "medium"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "stig_ms_sql_server_2016_instance",
-  "date": "2018-03-09",
+  "date": "2020-03-12",
   "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "MS SQL Server 2016 Instance Security Technical Implementation Guide",
   "version": "1",
@@ -77,12 +77,6 @@
       "id": "V-79141",
       "title": "SQL Server must initiate session auditing upon startup.",
       "description": "Session auditing is for use when a user's activities are under investigation. To be sure of capturing all activity during those periods when session auditing is in use, it needs to be in operation for the whole time SQL Server is running.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-79143",
-      "title": "SQL Server must be configured to allow authorized users to capture, record, and log all content related to a user session.",
-      "description": "Without the capability to capture, record, and log all content related to a user session, investigations into suspicious user activity would be hampered. \n \nTypically, this DBMS capability would be used in conjunction with comparable monitoring of a user's online session, involving other software components such as operating systems, web servers and front-end user applications. The current requirement, however, deals specifically with SQL Server.",
       "severity": "medium"
     },
     {
@@ -226,7 +220,7 @@
     {
       "id": "V-79191",
       "title": "If DBMS authentication, using passwords, is employed, SQL Server must enforce the DoD standards for password complexity and lifetime.",
-      "description": "OS/enterprise authentication and identification must be used (SQL2-00-023600).  Native DBMS authentication may be used only when circumstances make it unavoidable; and must be documented and AO-approved. \n \nThe DoD standard for authentication is DoD-approved PKI certificates.  Authentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires AO approval. \n \nIn such cases, the DoD standards for password complexity and lifetime must be implemented.  DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so.  For other DBMSs, the rules must be enforced using available configuration parameters or custom code.",
+      "description": "OS/enterprise authentication and identification must be used (SRG-APP-000023-DB-000001).  Native DBMS authentication may be used only when circumstances make it unavoidable; and must be documented and AO-approved. \n \nThe DoD standard for authentication is DoD-approved PKI certificates.  Authentication based on User ID and Password may be used only when it is not possible to employ a PKI certificate, and requires AO approval. \n \nIn such cases, the DoD standards for password complexity and lifetime must be implemented.  DBMS products that can inherit the rules for these from the operating system or access control program (e.g., Microsoft Active Directory) must be configured to do so.  For other DBMSs, the rules must be enforced using available configuration parameters or custom code.",
       "severity": "medium"
     },
     {
@@ -345,8 +339,8 @@
     },
     {
       "id": "V-79231",
-      "title": "SQL Server must provide an immediate real-time alert to appropriate support staff of all audit failure events requiring real-time alerts.",
-      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability, and system operation may be adversely affected.  \n \nThe appropriate support staff include, at a minimum, the ISSO and the DBA/SA. \n \nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less). Alerts can be generated using tools like the SQL Server Agent Alerts and Database Mail.",
+      "title": "SQL Server must provide an immediate real-time alert to appropriate support staff of all audit log failures.",
+      "description": "It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without a real-time alert, security personnel may be unaware of an impending failure of the audit capability, and system operation may be adversely affected.  \n\nThe appropriate support staff include, at a minimum, the ISSO and the DBA/SA. \n\nA failure of database auditing will result in either the database continuing to function without auditing or in a complete halt to database operations. When audit processing fails, appropriate personnel must be alerted immediately to avoid further downtime or unaudited transactions\n\nAlerts provide organizations with urgent messages. Real-time alerts provide these messages immediately (i.e., the time from event detection to alert occurs in seconds or less). Alerts can be generated using tools like the SQL Server Agent Alerts and Database Mail.",
       "severity": "medium"
     },
     {
@@ -644,14 +638,8 @@
       "severity": "medium"
     },
     {
-      "id": "V-79331",
-      "title": "The Filestream setting in registry and in SQL Server configuration must match.",
-      "description": "Information systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nIt is detrimental for applications to provide, or install by default, functionality exceeding requirements or mission objectives. \n\nApplications must adhere to the principles of least functionality by providing only essential capabilities.\n\nThere are two settings governing Filestream option, one in the registry (OS level) and one in SQL Server configuration. There is a separation of security concerns between the Windows and database administrators, and the same access level set for the Windows service needs to be set for the SQL Server instance.",
-      "severity": "medium"
-    },
-    {
       "id": "V-79333",
-      "title": "Ole Automation Procedures feature must be disabled, unless specifically required and approved.",
+      "title": "Ole Automation Procedures feature must be disabled, unless specifically required and approved. ",
       "description": "Information systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nIt is detrimental for applications to provide, or install by default, functionality exceeding requirements or mission objectives. \n\nApplications must adhere to the principles of least functionality by providing only essential capabilities.\n\nSQL Server may spawn additional external processes to execute procedures that are defined in the SQL Server but stored in external host files (external procedures). The spawned process used to execute the external procedure may operate within a different OS security context than SQL Server and provide unauthorized access to the host system.\n\nSQL Server is capable of providing a wide range of features and services. Some of the features and services, provided by default, may not be necessary, and enabling them could adversely affect the security of the system.\n\nThe Ole Automation Procedures option controls whether OLE Automation objects can be instantiated within Transact-SQL batches. These are extended stored procedures that allow SQL Server users to execute functions external to SQL Server in the security context of SQL Server.\n\nThe Ole Automation Procedures extended stored procedure allows execution of host executables outside the controls of database access permissions. This access may be exploited by malicious users who have compromised the integrity of the SQL Server database process to control the host operating system to perpetrate additional malicious activity.",
       "severity": "medium"
     },
@@ -668,26 +656,20 @@
       "severity": "medium"
     },
     {
-      "id": "V-79339",
-      "title": "Smo and Dmo Xps feature must be disabled, unless specifically required and approved.",
-      "description": "Information systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nIt is detrimental for applications to provide, or install by default, functionality exceeding requirements or mission objectives. \n\nApplications must adhere to the principles of least functionality by providing only essential capabilities.\n\nSQL Server may spawn additional external processes to execute procedures that are defined in the SQL Server but stored in external host files (external procedures). The spawned process used to execute the external procedure may operate within a different OS security context than SQL Server and provide unauthorized access to the host system.\n\nSQL Server is capable of providing a wide range of features and services. Some of the features and services, provided by default, may not be necessary, and enabling them could adversely affect the security of the system.\n\nThe SMO and DMO XPs are management object extended stored procedures that provide highly privileged actions that run externally to the DBMS under the security context of the SQL Server service account. If these procedures are available from a database session, an exploit to the SQL Server instance could result in a compromise of the host system and external SQL Server resources.",
-      "severity": "medium"
-    },
-    {
       "id": "V-79341",
-      "title": "Hadoop Connectivity feature must be disabled, unless specifically required and approved.",
+      "title": "Hadoop Connectivity feature must be disabled, unless specifically required and approved. ",
       "description": "Information systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nIt is detrimental for applications to provide, or install by default, functionality exceeding requirements or mission objectives. \n\nApplications must adhere to the principles of least functionality by providing only essential capabilities.\n\nSQL Server may spawn additional external processes to execute procedures that are defined in the SQL Server but stored in external host files (external procedures). The spawned process used to execute the external procedure may operate within a different OS security context than SQL Server and provide unauthorized access to the host system.\n\nSQL Server is capable of providing a wide range of features and services. Some of the features and services, provided by default, may not be necessary, and enabling them could adversely affect the security of the system.\n\nThe Hadoop Connectivity feature allows multiple types of external data sources to be created and used across all sessions on the server.  An exploit to the SQL Server instance could result in a compromise of the host system and external SQL Server resources.",
       "severity": "medium"
     },
     {
       "id": "V-79343",
-      "title": "Allow Polybase Export feature must be disabled, unless specifically required and approved.",
+      "title": "Allow Polybase Export feature must be disabled, unless specifically required and approved. ",
       "description": "Information systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nIt is detrimental for applications to provide, or install by default, functionality exceeding requirements or mission objectives. \n\nApplications must adhere to the principles of least functionality by providing only essential capabilities.\n\nSQL Server may spawn additional external processes to execute procedures that are defined in the SQL Server but stored in external host files (external procedures). The spawned process used to execute the external procedure may operate within a different OS security context than SQL Server and provide unauthorized access to the host system.\n\nSQL Server is capable of providing a wide range of features and services. Some of the features and services, provided by default, may not be necessary, and enabling them could adversely affect the security of the system.\n\nThe Allow Polybase Export feature allows an export of data to an external data source such as Hadoop File System or Azure Data Lake. An exploit to the SQL Server instance could result in a compromise of the host system and external SQL Server resources.",
       "severity": "medium"
     },
     {
       "id": "V-79345",
-      "title": "Remote Data Archive feature must be disabled, unless specifically required and approved.",
+      "title": "Remote Data Archive feature must be disabled, unless specifically required and approved. ",
       "description": "Information systems are capable of providing a wide variety of functions and services. Some of the functions and services, provided by default, may not be necessary to support essential organizational operations (e.g., key missions, functions). \n\nIt is detrimental for applications to provide, or install by default, functionality exceeding requirements or mission objectives. \n\nApplications must adhere to the principles of least functionality by providing only essential capabilities.\n\nSQL Server may spawn additional external processes to execute procedures that are defined in the SQL Server but stored in external host files (external procedures). The spawned process used to execute the external procedure may operate within a different OS security context than SQL Server and provide unauthorized access to the host system.\n\nSQL Server is capable of providing a wide range of features and services. Some of the features and services, provided by default, may not be necessary, and enabling them could adversely affect the security of the system.\n\nThe Remote Data Archive feature allows an export of local SQL Server data to an Azure SQL Database. An exploit to the SQL Server instance could result in a compromise of the host system and external SQL Server resources.",
       "severity": "medium"
     },
@@ -726,6 +708,12 @@
       "title": "Applications must obscure feedback of authentication information during the authentication process to protect the information from possible exploitation/use by unauthorized individuals.",
       "description": "To prevent the compromise of authentication information, such as passwords and PINs, during the authentication process, the feedback from the information system must not provide any information that would allow an unauthorized user to compromise the authentication mechanism.\n\nObfuscation of user-provided information when typed into the system is a method used in addressing this risk.\n\nFor example, displaying asterisks when a user types in a password or PIN, is an example of obscuring feedback of authentication information.\n\nDatabase applications may allow for entry of the account name and password as a visible parameter of the application execution command. This practice must be prohibited and disabled to prevent shoulder surfing.",
       "severity": "high"
+    },
+    {
+      "id": "V-97521",
+      "title": "Confidentiality of controlled information during transmission through the use of an approved TLS version.",
+      "description": "Transport Layer Security (TLS) encryption is a required security setting as a number of known vulnerabilities have been reported against Secure Sockets Layer (SSL) and earlier versions of TLS. Encryption of private information is essential to ensuring data confidentiality. If private information is not encrypted, it can be intercepted and easily read by an unauthorized party.  SQL Server must use a minimum of FIPS 140-2-approved TLS version 1.2, and all non-FIPS-approved SSL and TLS versions must be disabled. NIST SP 800-52 Rev.2 specifies the preferred configurations for government systems.\n\nReferences:\nTLS Support 1.2 for SQL Server: https://support.microsoft.com/en-us/kb/3135244 \nTLS Registry Settings:  https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings\n",
+      "severity": "medium"
     }
   ]
 }

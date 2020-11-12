@@ -1,6 +1,6 @@
 {
   "name": "stig_windows_server_2008_r2_member_server",
-  "date": "2018-03-07",
+  "date": "2019-06-18",
   "description": "The Windows Server 2008 R2 Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  The requirements were developed from DoD consensus, as well as the Windows Server 2008 R2 Security Guide and security templates published by Microsoft Corporation.  Comments or proposed revisions to this document should be sent via e-mail to the following address:  disa.stig_spt@mail.mil.",
   "title": "Windows Server 2008 R2 Member Server Security Technical Implementation Guide",
   "version": "1",
@@ -166,7 +166,7 @@
     {
       "id": "V-1127",
       "title": "Only administrators responsible for the system must have Administrator rights on the system.",
-      "description": "An account that does not have Administrator duties must not have Administrator rights.  Such rights would allow the account to bypass or modify required security restrictions on that machine and make it vulnerable to attack.\n\nSystem administrators must log on to systems only using accounts with the minimum level of authority necessary.\n\nFor domain-joined member servers, the Domain Admins group must be replaced by a domain member server administrator group (see V-36433 in the Active Directory Domain STIG).  Restricting highly privileged accounts from the local Administrators group helps mitigate the risk of privilege escalation resulting from credential theft attacks. \n\nSystems dedicated to the management of Active Directory (AD admin platforms, see V-36436 in the Active Directory Domain STIG) are exempt from this.  AD admin platforms may use the Domain Admins group or a domain administrative group created specifically for AD admin platforms (see V-43711 in the Active Directory Domain STIG).\n\nStandard user accounts must not be members of the built-in Administrators group.",
+      "description": "An account that does not have Administrator duties must not have Administrator rights.  Such rights would allow the account to bypass or modify required security restrictions on that machine and make it vulnerable to attack.\n\nSystem administrators must log on to systems only using accounts with the minimum level of authority necessary.\n\nFor domain-joined member servers, the Domain Admins group must be replaced by a domain member server administrator group (see V-36433 in the Active Directory Domain STIG).  Restricting highly privileged accounts from the local Administrators group helps mitigate the risk of privilege escalation resulting from credential theft attacks. \n\nStandard user accounts must not be members of the built-in Administrators group.",
       "severity": "high"
     },
     {
@@ -320,15 +320,9 @@
       "severity": "low"
     },
     {
-      "id": "V-14224",
-      "title": "The system will have a backup administrator account.",
-      "description": "This check verifies that a backup administrator account has been created to ensure system availability in the event that no administrators are able or available to access the system.  The built-in administrator account may be used for this purpose.  The IAO will ensure the backup administrator account is stored in a secure location. ",
-      "severity": "medium"
-    },
-    {
       "id": "V-14225",
-      "title": "Administrator passwords will be changed as required.",
-      "description": "This check verifies that the passwords for the default and backup administrator accounts are changed at least annually or when any member of the administrative team leaves the organization.\n",
+      "title": "The Windows 2008 R2 password for the built-in Administrator account must be changed at least annually or when a member of the administrative team leaves the organization.",
+      "description": "The longer a password is in use, the greater the opportunity for someone to gain unauthorized knowledge of the password. The password for the built-in Administrator account must be changed at least annually or when any member of the administrative team leaves the organization.\n\nOrganizations that use an automated tool, such as Microsoft's Local Administrator Password Solution (LAPS), on domain-joined systems can configure this to occur more frequently. LAPS will change the password every 30 days by default.",
       "severity": "medium"
     },
     {
@@ -903,7 +897,7 @@
     },
     {
       "id": "V-26470",
-      "title": "Unauthorized accounts must not have the Access this computer from the network user right on member servers.",
+      "title": "The Access this computer from the network user right must only be assigned to the Administrators and Authenticated Users groups on member servers.",
       "description": "Inappropriate granting of user rights can provide system, administrative, and other high-level capabilities.\n\nAccounts with the \"Access this computer from the network\" user right may access resources on the system, and must be limited to those that require it.",
       "severity": "medium"
     },
@@ -1491,8 +1485,8 @@
     },
     {
       "id": "V-3472",
-      "title": "If the time service is configured, it will use an authorized time server.",
-      "description": "The Windows Time Service controls time synchronization settings.  Time synchronization is essential for authentication and auditing purposes.  If the Windows Time Service is used, it should synchronize with a secure, authorized time source.   Domain joined systems are automatically configured to synchronize with domain controllers.  If an NTP server is configured it should synchronize with a secure, authorized time source.  ",
+      "title": "The time service must synchronize with an appropriate DoD time source.",
+      "description": "The Windows Time Service controls time synchronization settings. Time synchronization is essential for authentication and auditing purposes. If the Windows Time Service is used, it must synchronize with a secure, authorized time source. Domain joined systems are automatically configured to synchronize with domain controllers. If an NTP server is configured, it must synchronize with a secure, authorized time source.",
       "severity": "low"
     },
     {
@@ -1557,8 +1551,8 @@
     },
     {
       "id": "V-40237",
-      "title": "The US DoD CCEB Interoperability Root CA cross-certificate must be installed in the Untrusted Certificates Store on unclassified systems.",
-      "description": "To ensure users do not experience denial of service when performing certificate-based authentication to DoD websites due to the system chaining to a root other than DoD Root CAs, the US DoD CCEB Interoperability Root CA cross-certificate must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.",
+      "title": "The US DoD CCEB Interoperability Root CA cross-certificates must be installed in the Untrusted Certificates Store on unclassified systems.",
+      "description": "To ensure users do not experience denial of service when performing certificate-based authentication to DoD websites due to the system chaining to a root other than DoD Root CAs, the US DoD CCEB Interoperability Root CA cross-certificates must be installed in the Untrusted Certificate Store. This requirement only applies to unclassified systems.",
       "severity": "medium"
     },
     {
@@ -1739,6 +1733,18 @@
       "id": "V-78063",
       "title": "Windows Server 2008 R2 must be configured to audit System - Other System Events failures.",
       "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks. Audit logs are necessary to provide a trail of evidence in case the system or network is compromised. Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nAudit Other System Events records information related to cryptographic key operations and the Windows Firewall service.",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80473",
+      "title": "Windows PowerShell must be updated to a version that supports script block logging on Windows 2008 R2.",
+      "description": "Later versions of Windows PowerShell provide additional security and advanced logging features that can provide greater detail when malware has been run on a system.  PowerShell 5.x includes the advanced logging features. PowerShell 4.0 with the addition of patch KB3109118 on Windows 2008 R2 adds advanced logging features.\n\nPowerShell is updated with the installation of the corresponding version of the Windows Management Framework (WMF).\n\nUpdating to a later PowerShell version may have compatibility issues with some applications.  The following links should be reviewed and updates tested before applying to a production environment.\n\nWMF 4.0:\nReview the System Requirements under the download link - https://www.microsoft.com/en-us/download/details.aspx?id=40855\n\nWMF 5.0:\nhttps://docs.microsoft.com/en-us/powershell/wmf/5.0/productincompat\n\nWMF 5.1:\nhttps://docs.microsoft.com/en-us/powershell/wmf/5.1/productincompat",
+      "severity": "medium"
+    },
+    {
+      "id": "V-80475",
+      "title": "PowerShell script block logging must be enabled on Windows 2008 R2.",
+      "description": "Maintaining an audit trail of system activity logs can help identify configuration errors, troubleshoot service disruptions, and analyze compromises that have occurred, as well as detect attacks. Audit logs are necessary to provide a trail of evidence in case the system or network is compromised. Collecting this data is essential for analyzing the security of information assets and detecting signs of suspicious and unexpected behavior.\n\nEnabling PowerShell script block logging will record detailed information from the processing of PowerShell commands and scripts. This can provide additional detail when malware has run on a system.\n\nPowerShell 5.x supports script block logging. PowerShell 4.0 with the addition of patch KB3109118 on Windows 2008 R2 adds support for script block logging.",
       "severity": "medium"
     }
   ]

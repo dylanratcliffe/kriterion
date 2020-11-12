@@ -1,6 +1,6 @@
 {
   "name": "stig_zos_bmc_control-oracf",
-  "date": "2015-06-22",
+  "date": "2018-09-20",
   "description": "None",
   "title": "z/OS BMC CONTROL-O for RACF STIG",
   "version": "None",
@@ -33,7 +33,7 @@
     },
     {
       "id": "V-17947",
-      "title": "BMC CONTROL-O resources will be properly defined and protected.",
+      "title": "BMC CONTROL-O resources must be properly defined and protected.",
       "description": "BMC CONTROL-O can run with sensitive system privileges, and potentially can circumvent system controls.  Failure to properly control access to product resources could result in the compromise of the operating system environment, and compromise the confidentiality of customer data.  Many utilities assign resource controls that can be granted to system programmers only in greater than read authority.  Resources are also granted to certain non systems personnel with read only authority.",
       "severity": "medium"
     },

@@ -1,8 +1,8 @@
 {
   "name": "stig_suse_linux_enterprise_server_v11system_z",
-  "date": "2017-08-25",
+  "date": "2018-09-19",
   "description": "The SUSE Linux Enterprise Server Ver 11 for System z Security Technical Implementation Guide (STIG) is published as a tool to improve the security of Department of Defense (DoD) information systems.  Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil",
-  "title": "SUSE Linux Enterprise Server v11 for System z",
+  "title": "SUSE Linux Enterprise Server v11 for System z Security Technical Implementation Guide",
   "version": "1",
   "item_syntax": "^\\w-\\d+$",
   "section_separator": null,
@@ -310,7 +310,7 @@
     {
       "id": "V-12010",
       "title": "Unencrypted FTP must not be used on the system.",
-      "description": ":  FTP is typically unencrypted and presents confidentiality and integrity risks. FTP may be protected by encryption in certain cases, such as when used in a Kerberos environment. SFTP and FTPS are encrypted alternatives to FTP.",
+      "description": "FTP is typically unencrypted and presents confidentiality and integrity risks. FTP may be protected by encryption in certain cases, such as when used in a Kerberos environment. SFTP and FTPS are encrypted alternatives to FTP.",
       "severity": "medium"
     },
     {

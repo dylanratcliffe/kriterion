@@ -1,6 +1,6 @@
 {
   "name": "stig_application_server_security_requirements_guide",
-  "date": "2018-01-08",
+  "date": "2020-03-24",
   "description": "The Application Server Security Requirements Guide (SRG) is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the NIST 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.letterkenny.FSO.mbx.stig-customer-support-mailbox@mail.mil.",
   "title": "Application Server Security Requirements Guide",
   "version": "2",
@@ -22,7 +22,7 @@
     {
       "id": "V-35090",
       "title": "The application server must implement cryptography mechanisms to protect the integrity of the remote access session.",
-      "description": "Encryption is critical for protection of remote access sessions. If encryption is not being used for integrity, malicious users may gain the ability to modify the application server configuration. The use of cryptography for ensuring integrity of remote access sessions mitigates that risk.\n\nApplication servers utilize a web management interface and scripted commands when allowing remote access. Web access requires the use of TLS and scripted access requires using ssh or some other form of approved cryptography. Application servers must have a capability to enable a secure remote admin capability.\n\nFIPS 140-2 approved TLS versions include TLS V1.0 or greater.\n\nFIPS 140-2 approved TLS versions must be enabled and non-FIPS-approved SSL versions must be disabled.\n\nNIST SP 800-52 specifies the preferred configurations for government systems.",
+      "description": "Encryption is critical for protection of remote access sessions. If encryption is not being used for integrity, malicious users may gain the ability to modify the application server configuration. The use of cryptography for ensuring integrity of remote access sessions mitigates that risk.\n\nApplication servers utilize a web management interface and scripted commands when allowing remote access. Web access requires the use of TLS and scripted access requires using ssh or some other form of approved cryptography. Application servers must have a capability to enable a secure remote admin capability.\n\nFIPS 140-2 approved TLS versions must be enabled and non-FIPS-approved SSL versions must be disabled.\n\nNIST SP 800-52 specifies the preferred configurations for government systems.",
       "severity": "medium"
     },
     {
@@ -74,12 +74,6 @@
       "severity": "medium"
     },
     {
-      "id": "V-35150",
-      "title": "The application server must provide the capability for authorized users to capture, record, and log all content related to a user session.",
-      "description": "The application server must be capable of enabling a setting for troubleshooting or debugging purposes which will log all user session information specified by an authorized user.",
-      "severity": "medium"
-    },
-    {
       "id": "V-35159",
       "title": "The application server must produce log records containing information to establish what type of events occurred.",
       "description": "Information system logging capability is critical for accurate forensic analysis.  Without being able to establish what type of event occurred, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible. \n\nLog record content that may be necessary to satisfy the requirement of this control includes time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.\n\nApplication servers must log all relevant log data that pertains to the application server.  Examples of relevant data include, but are not limited to, Java Virtual Machine (JVM) activity, HTTPD/Web server activity, and application server-related system process activity.",
@@ -94,7 +88,7 @@
     {
       "id": "V-35167",
       "title": "The application server must produce log records containing sufficient information to establish where the events occurred.",
-      "description": "Application server logging capability is critical for accurate forensic analysis.  Without sufficient and accurate information, a correct replay of the events cannot be determined. \n\nAscertaining the correct location or process within the application server where the events occurred is important during forensic analysis.  To determine where an event occurred, the log data must contain data such as application components, modules, session identifiers, filenames, host names, and functionality.",
+      "description": "Application server logging capability is critical for accurate forensic analysis. Without sufficient and accurate information, a correct replay of the events cannot be determined.\n\nAscertaining the correct location or process within the application server where the events occurred is important during forensic analysis. To determine where an event occurred, the log data must contain information that identifies the source and destination of the events such as application components, modules, filenames, host names, servlets, containers, API’s, and other functionality.\n",
       "severity": "medium"
     },
     {
@@ -178,7 +172,7 @@
     {
       "id": "V-35217",
       "title": "The application server must use cryptographic mechanisms to protect the integrity of log information.",
-      "description": "Protection of log records is of critical importance. Encrypting log records provides a level of protection that does not rely on host-based protections that can be accidentally misconfigured, such as file system permissions. Cryptographic mechanisms are the industry-established standard used to protect the integrity of log data. An example of a cryptographic mechanism is the computation and application of a cryptographic-signed hash using asymmetric cryptography.",
+      "description": "Protecting the integrity of log records helps to ensure log files are not tampered with. Cryptographic mechanisms are the industry-established standard used to protect the integrity of log data. An example of cryptographic mechanisms is the computation and application of a cryptographic hash and using asymmetric cryptography with digital signatures.  Application Servers often write log data to files on the file system.  These files typically roll over on a periodic basis. Once the logs are rolled over, hashing and signing the logs assures the logs are not tampered with and helps to assure log integrity.",
       "severity": "medium"
     },
     {
@@ -221,12 +215,6 @@
       "id": "V-35304",
       "title": "The application server must provide security extensions to extend the SOAP protocol and provide secure authentication when accessing sensitive data.",
       "description": "Application servers may provide a web services capability that could be leveraged to allow remote access to sensitive application data. A web service, which is a repeatable process used to make data available to remote clients, should not be confused with a web server. \n\nMany web services utilize SOAP, which in turn utilizes XML and HTTP as a transport. Natively, SOAP does not provide security protections. As such, the application server must provide security extensions to enhance SOAP capabilities to ensure that secure authentication mechanisms are employed to protect sensitive data. The WS_Security suite is a widely used and acceptable SOAP security extension.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-35306",
-      "title": "The application server must uniquely identify all network-connected endpoint devices before establishing any connection.",
-      "description": "Without identifying devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity.\n\nFor distributed application servers and components, the decisions regarding the validation of identification claims may be made by services separate from the application server. In such situations, it is necessary to provide the identification decisions (as opposed to the actual identifiers) to the services that need to act on those decisions.",
       "severity": "medium"
     },
     {
@@ -280,7 +268,7 @@
     {
       "id": "V-35329",
       "title": "The application server must utilize FIPS 140-2 approved encryption modules when authenticating users and processes.",
-      "description": "Encryption is only as good as the encryption modules utilized.  Unapproved cryptographic module algorithms cannot be verified and cannot be relied upon to provide confidentiality or integrity, and DoD data may be compromised due to weak algorithms.  The use of TLS provides confidentiality of data in transit between the application server and client.  FIPS 140-2 approved TLS versions include TLS V1.0 or greater. \n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled.  NIST SP 800-52 specifies the preferred configurations for government systems.",
+      "description": "Encryption is only as good as the encryption modules utilized.  Unapproved cryptographic module algorithms cannot be verified and cannot be relied upon to provide confidentiality or integrity, and DoD data may be compromised due to weak algorithms.  The use of TLS provides confidentiality of data in transit between the application server and client.  \n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled.  NIST SP 800-52 specifies the preferred configurations for government systems.",
       "severity": "medium"
     },
     {
@@ -291,8 +279,8 @@
     },
     {
       "id": "V-35381",
-      "title": "The application server must ensure authentication of both client and server during the entire session.",
-      "description": "This control focuses on communications protection at the session, versus packet level.\n\nAt the application layer, session IDs are tokens generated by web applications to uniquely identify an application user's session. Web applications utilize session tokens or session IDs in order to establish application user identity. Proper use of session IDs addresses man-in-the-middle attacks, including session hijacking or insertion of false information into a session.\n\nApplication servers must provide the capability to perform mutual authentication. Mutual authentication is when both the client and the server authenticate each other.",
+      "title": "The application server must be configured to mutually authenticate connecting proxies, application servers or gateways. ",
+      "description": "Application architecture may sometimes require a configuration where an application server is placed behind a web proxy, an application gateway or communicates directly with another application server. In those instances, the application server hosting the service/application is considered the server. The application server, proxy or application gateway consuming the hosted service is considered a client. Authentication is accomplished via the use of certificates and protocols such as TLS mutual authentication. Authentication must be performed when the proxy is exposed to an untrusted network or when data protection requirements specified in the system security plan mandate the need to establish the identity of the connecting application server, proxy or application gateway.",
       "severity": "medium"
     },
     {
@@ -542,12 +530,6 @@
       "severity": "medium"
     },
     {
-      "id": "V-57489",
-      "title": "The application server must provide the capability for authorized users to remotely view/hear, in real time, all content related to an established user session.",
-      "description": "Without the capability to remotely view/hear all content related to a user session, investigations into suspicious user activity would be hampered. Real-time monitoring allows authorized personnel to take action before additional damage is done. The ability to observe user sessions as they are happening allows for interceding in ongoing events that after-the-fact review of captured content would not allow.",
-      "severity": "medium"
-    },
-    {
       "id": "V-57491",
       "title": "The application server must enforce access restrictions associated with changes to application server configuration.",
       "description": "When dealing with access restrictions pertaining to change control, it should be noted that any changes to the software, and/or application server configuration can potentially have significant effects on the overall security of the system.\n\nAccess restrictions for changes also include application software libraries.\n\nIf the application server provides automatic code deployment capability, (where updates to applications hosted on the application server are automatically performed, usually by the developers' IDE tool), it must also provide a capability to restrict the use of automatic application deployment. Automatic code deployments are allowable in a development environment, but not in production.",
@@ -593,18 +575,6 @@
       "id": "V-57505",
       "title": "The application server must electronically verify Personal Identity Verification (PIV) credentials for access to the management interface.",
       "description": "The use of Personal Identity Verification (PIV) credentials facilitates standardization and reduces the risk of unauthorized access.\n\nPIV credentials are only used in an unclassified environment.\n\nDoD has mandated the use of the CAC to support identity management and personal authentication for systems covered under HSPD 12, as well as its use as a primary component of layered protection for national security systems.\n\nThe application server must electronically verify the use of PIV credentials to access the management interface and perform management functions.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-57507",
-      "title": "The application server must authenticate all network-connected endpoint devices before establishing any connection.",
-      "description": "Device authentication requires unique identification and authentication that may be defined by type, by specific device, or by a combination of type and device.\n\nDevice authentication is accomplished via the use of certificates and protocols such as SSL mutual authentication.\n\nDevice authentication is performed when the application server is providing web services capabilities and data protection requirements mandate the need to establish the identity of the connecting device before the connection is established.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-57509",
-      "title": "The application server must authenticate all endpoint devices before establishing a local, remote, and/or network connection using bidirectional authentication that is cryptographically based.",
-      "description": "Device authentication requires unique identification and authentication that may be defined by type, by specific device, or by a combination of type and device.\n\nBidirectional authentication provides stronger safeguards to validate the identity of other devices for connections that are of greater risk.\n\nDevice authentication is performed when the application server is providing web services capabilities and data protection requirements mandate the need to establish the identity of the connecting device before the connection is established.\n\nBecause of the challenges of applying this requirement on a large scale, organizations are encouraged to only apply the requirement to those limited number (and type) of devices that truly need to support this capability.",
       "severity": "medium"
     },
     {
@@ -658,7 +628,7 @@
     {
       "id": "V-57527",
       "title": "The application server must provide a log reduction capability that supports on-demand reporting requirements.",
-      "description": "The ability to generate on-demand reports, including after the log data has been subjected to log reduction, greatly facilitates the organization's ability to generate incident reports as needed to better handle larger-scale or more complex security incidents.\n\nLog reduction is a process that manipulates collected log information and organizes such information in a summary format that is more meaningful to analysts. The report generation capability provided by the application must support on-demand (i.e., customizable, ad-hoc, and as-needed) reports.\n\nTo fully understand and investigate an incident within the components of the application server, the application server, when providing a reduction capability, must provide an on-demand reporting capability.",
+      "description": "The ability to generate on-demand reports, including after the log data has been subjected to log reduction, greatly facilitates the organization's ability to generate incident reports as needed to better handle larger-scale or more complex security incidents.\n\nLog reduction is a process that manipulates collected log information and organizes such information in a summary format that is more meaningful to analysts. The report generation capability provided by the application must support on-demand (i.e., customizable, ad-hoc, and as needed) reports.\n\nInstead of the application server providing the log reduction function; it is also accepted practice to configure the application server to send its logs to a centralized log system that can be used to provide the log reduction with reporting capability. Security Incident Event Management (SIEM) systems are an example of such a solution.\n\nTo fully understand and investigate an incident within the components of the application server, the application server, must be configured to provide log reduction and on-demand reporting or be configured to send its logs to a centralized log system.\n",
       "severity": "medium"
     },
     {
@@ -676,13 +646,13 @@
     {
       "id": "V-57533",
       "title": "The application server must protect the confidentiality and integrity of transmitted information through the use of an approved TLS version.",
-      "description": "Preventing the disclosure of transmitted information requires that the application server take measures to employ some form of cryptographic mechanism in order to protect the information during transmission.  This is usually achieved through the use of Transport Layer Security (TLS).\n\nTransmission of data can take place between the application server and a large number of devices/applications external to the application server.  Examples are a web client used by a user, a backend database, a log server, or other application servers in an application server cluster.\n\nIf data is transmitted unencrypted, the data then becomes vulnerable to disclosure.  The disclosure may reveal user identifier/password combinations, website code revealing business logic, or other user personal information.\n\nFIPS 140-2 approved TLS versions include TLS V1.0 or greater.\n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled.  NIST SP 800-52 specifies the preferred configurations for government systems.",
+      "description": "Preventing the disclosure of transmitted information requires that the application server take measures to employ some form of cryptographic mechanism in order to protect the information during transmission.  This is usually achieved through the use of Transport Layer Security (TLS).\n\nTransmission of data can take place between the application server and a large number of devices/applications external to the application server.  Examples are a web client used by a user, a backend database, a log server, or other application servers in an application server cluster.\n\nIf data is transmitted unencrypted, the data then becomes vulnerable to disclosure.  The disclosure may reveal user identifier/password combinations, website code revealing business logic, or other user personal information.\n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled.  NIST SP 800-52 specifies the preferred configurations for government systems.",
       "severity": "medium"
     },
     {
       "id": "V-57535",
       "title": "The application server must employ approved cryptographic mechanisms to prevent unauthorized disclosure of information and/or detect changes to information during transmission.",
-      "description": "Preventing the disclosure or modification of transmitted information requires that application servers take measures to employ approved cryptography in order to protect the information during transmission over the network. This is usually achieved through the use of Transport Layer Security (TLS), SSL VPN, or IPSec tunnel.\n\nIf data in transit is unencrypted, it is vulnerable to disclosure and modification. If approved cryptographic algorithms are not used, encryption strength cannot be assured.\n\nFIPS 140-2 approved TLS versions include TLS V1.0 or greater.\n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled.  NIST SP 800-52 specifies the preferred configurations for government systems.",
+      "description": "Preventing the disclosure or modification of transmitted information requires that application servers take measures to employ approved cryptography in order to protect the information during transmission over the network. This is usually achieved through the use of Transport Layer Security (TLS), SSL VPN, or IPSec tunnel.\n\nIf data in transit is unencrypted, it is vulnerable to disclosure and modification. If approved cryptographic algorithms are not used, encryption strength cannot be assured.\n\nTLS must be enabled and non-FIPS-approved SSL versions must be disabled.  NIST SP 800-52 specifies the preferred configurations for government systems.",
       "severity": "medium"
     },
     {

@@ -1,7 +1,7 @@
 {
   "name": "stig_arista_mls_dcs-7000_series_l2s",
-  "date": "2016-03-29",
-  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via e-mail to the following address: disa.stig_spt@mail.mil.",
+  "date": "2018-11-28",
+  "description": "This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense (DoD) information systems. The requirements are derived from the National Institute of Standards and Technology (NIST) 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address: disa.stig_spt@mail.mil.",
   "title": "Arista MLS DCS-7000 Series L2S Security Technical Implementation Guide",
   "version": "1",
   "item_syntax": "^\\w-\\d+$",
@@ -29,18 +29,6 @@
       "id": "V-60825",
       "title": "The Arista Multilayer Switch must authenticate all endpoint devices before establishing a network connection using bidirectional authentication that is cryptographically based.",
       "description": "Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity on the network. Bidirectional authentication provides stronger safeguards to validate the identity of other devices for connections that are of greater risk (e.g., remote connections).\n\nBidirectional authentication solutions include, but are not limited to, IEEE 802.1x and Extensible Authentication Protocol (EAP) and Radius server with EAP-Transport Layer Security (TLS) authentication.\n \nA network connection is any connection with a device that communicates through a network (e.g., local area network, wide area network, or the Internet).\n\nAuthentication must use a form of cryptography to ensure a high level of trust and authenticity.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-60827",
-      "title": "The Arista Multilayer Switch must re-authenticate all endpoint devices every 60 minutes or less.",
-      "description": "Without authenticating devices, unidentified or unknown devices may be introduced, thereby facilitating malicious activity on the network. Bidirectional authentication provides stronger safeguards to validate the identity of other devices for connections that are of greater risk (e.g., remote connections).\n\nBidirectional authentication solutions include, but are not limited to, IEEE 802.1x and Extensible Authentication Protocol (EAP) and Radius server with EAP-Transport Layer Security (TLS) authentication.\n \nA network connection is any connection with a device that communicates through a network (e.g., local area network, wide area network, or the Internet).\n\nAuthentication must use a form of cryptography to ensure a high level of trust and authenticity. Re-authentication must occur to ensure session security.",
-      "severity": "medium"
-    },
-    {
-      "id": "V-60829",
-      "title": "The Arista Multilayer Switch must re-authenticate 802.1X connected devices every hour.",
-      "description": "Without re-authentication, users may access resources or perform tasks for which they do not have authorization. \n\nIn addition to the re-authentication requirements associated with session locks, organizations may require re-authentication of individuals and/or devices in other situations, including (but not limited to) the following circumstances:\n\n(i) When authenticators change; \n(ii) When roles change; \n(iii) When security categories of information systems change; \n(iv) When the execution of privileged functions occurs; \n(v) After a fixed period of time; or\n(vi) Periodically.\n\nWithin the DoD, the minimum circumstances requiring re-authentication are privilege escalation and role changes. \n\nThis requirement only applies to components where this is specific to the function of the device or has the concept of user authentication (e.g., VPN or ALG capability). This does not apply to authentication for the purpose of configuring the device itself (i.e., device management).",
       "severity": "medium"
     },
     {
